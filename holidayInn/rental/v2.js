@@ -6,10 +6,13 @@ utils.observeSelector('[class*="CheckoutPageSummary_container"]', function (chec
         .opti-cost-summary-accordion {
             width: 100%;
             margin-bottom: 10px;
+            margin-right: 1%;
+            margin-left: 1%;
         }
 
         .opti-cost-summary-accordion label {
-            padding: 1rem 4px;
+            padding-left: 4px;
+            padding-right: 22px;
         }
 
         .opti-accordion-item {
@@ -49,7 +52,7 @@ utils.observeSelector('[class*="CheckoutPageSummary_container"]', function (chec
         .opti-booking-summary-new-design img {
             flex-basis: 30%;
             width: 30%;
-            min-height: 108px;
+            min-height: 106px;
         }
 
         .opti-booking-summary-new-design .opti-booking-address {
@@ -66,6 +69,11 @@ utils.observeSelector('[class*="CheckoutPageSummary_container"]', function (chec
 
         @media (min-width: 400px) {
             .opti-accordion-button-booking {
+                margin-right: 1.25%;
+                margin-left: 1.25%;
+            }
+
+            .opti-cost-summary-accordion {
                 margin-right: 1.25%;
                 margin-left: 1.25%;
             }
@@ -216,6 +224,8 @@ utils.observeSelector('[class*="CheckoutPageSummary_container"]', function (chec
 
         const opti_guest_info_form = document.querySelector('.opti-guest-information-form');
 
+        contact_method.querySelector('div').style.marginBottom = "8px";
+
         opti_guest_info_form.append(cloned_step_info_section, cloned_guest_info_section, cloned_primary_guest_heading, first_name_last_name, email_address, phone_number_and_type, contact_method, cloned_required_field_text_message);
 
         booking_summary_section.after(IHG_banner);
@@ -277,6 +287,8 @@ utils.observeSelector('[class*="CheckoutPageSummary_container"]', function (chec
                             const cloned_primary_guest_heading = primary_guest_heading.cloneNode(true);
 
                             primary_guest_heading.style.display = 'none';
+
+                            contact_method.querySelector('div').style.marginBottom = "8px";
 
                             opti_guest_info_form.append(cloned_step_info_section, cloned_guest_info_section, cloned_primary_guest_heading, first_name_last_name, email_address, phone_number_and_type, contact_method, cloned_required_field_text_message);
                         }
