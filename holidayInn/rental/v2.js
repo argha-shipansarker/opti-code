@@ -26,6 +26,7 @@ utils.observeSelector('[class*="CheckoutPageSummary_container"]', function (chec
             cursor: pointer;
             margin-right: 1%;
             margin-left: 1%;
+            margin-bottom: 16px;
         }
 
         .opti-accordion-button-booking.collapsed::after {
@@ -88,6 +89,8 @@ utils.observeSelector('[class*="CheckoutPageSummary_container"]', function (chec
 
     const first_hr = checkout_summary.querySelector('[class*="CheckoutPageSummary_booking-summary"] > div > div hr:nth-of-type(1)');
 
+    const second_hr = checkout_summary.querySelector('[class*="CheckoutPageSummary_booking-summary"] > div > div hr:nth-of-type(2)');
+
     const cost_summary_accordion = checkout_summary.querySelector('[class*="CheckoutPageSummary_booking-summary"] > div > div div:nth-of-type(2)');
 
     const booking_summary_accordion = checkout_summary.querySelector('[class*="CheckoutPageSummary_booking-summary"] > div > div div:nth-of-type(1)');
@@ -114,11 +117,14 @@ utils.observeSelector('[class*="CheckoutPageSummary_container"]', function (chec
 
     const contact_method = checkout_summary.querySelector('#confirmation-column #form-checkout div:nth-of-type(1) div:nth-of-type(2) div:nth-of-type(1) div:nth-of-type(5)');
 
+    const additional_guest = checkout_summary.querySelector('#confirmation-column #form-checkout div:nth-of-type(1) div:nth-of-type(2) div:nth-of-type(1) div:nth-of-type(6)');
+
     if (
         booking_summary_section &&
         booking_summary_section_inner_part &&
         booking_summary_heading &&
         first_hr &&
+        second_hr &&
         cost_summary_accordion &&
         booking_summary_accordion &&
         booking_summary_accordion_breakdown &&
@@ -131,7 +137,8 @@ utils.observeSelector('[class*="CheckoutPageSummary_container"]', function (chec
         first_name_last_name &&
         email_address &&
         phone_number_and_type &&
-        contact_method
+        contact_method &&
+        additional_guest
     ) {
         booking_summary_heading.classList.add('opti-accordion-button-booking', 'collapsed');
         booking_summary_section_inner_part.classList.add('opti-accordion-item');
@@ -155,6 +162,10 @@ utils.observeSelector('[class*="CheckoutPageSummary_container"]', function (chec
 
         first_hr.after(booking_summary_accordion_breakdown);
         first_hr.style.display = 'none';
+
+        second_hr.style.marginBottom = "32px";
+
+        additional_guest.style.marginBottom = "16px";
 
         const booking_image = booking_summary_section_inner_part.querySelector('img');
         const booking_heading = booking_summary_section_inner_part.querySelector('[data-uitest="subheading"]');
@@ -258,6 +269,8 @@ utils.observeSelector('[class*="CheckoutPageSummary_container"]', function (chec
 
                         const contact_method = checkout_summary.querySelector('#confirmation-column #form-checkout div:nth-of-type(1) div:nth-of-type(2) div:nth-of-type(1) div:nth-of-type(5)');
 
+                        const additional_guest = checkout_summary.querySelector('#confirmation-column #form-checkout div:nth-of-type(1) div:nth-of-type(2) div:nth-of-type(1) div:nth-of-type(6)');
+
                         form_container_section.insertAdjacentHTML("afterbegin", `<div class="opti-guest-information-form"></div>`);
 
                         const opti_guest_info_form = document.querySelector('.opti-guest-information-form');
@@ -270,7 +283,8 @@ utils.observeSelector('[class*="CheckoutPageSummary_container"]', function (chec
                             first_name_last_name &&
                             email_address &&
                             phone_number_and_type &&
-                            contact_method
+                            contact_method &&
+                            additional_guest
                         ) {
                             const cloned_required_field_text_message = required_field_text_message.cloneNode(true);
 
@@ -305,6 +319,8 @@ utils.observeSelector('[class*="CheckoutPageSummary_container"]', function (chec
                         booking_summary_heading.before(cost_summary_accordion);
 
                         form_container_section.style.marginTop = '0px'
+
+                        additional_guest.style.marginBottom = "16px";
 
 
                     } else if (step_info_section.textContent.trim() === 'Step 2 of 2') {
