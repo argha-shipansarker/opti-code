@@ -358,7 +358,7 @@ if (window.location.href.indexOf('/Admiral/quote') > -1) {
                             d="M18.0671 28.0813C18.0671 25.8823 19.7635 25.1816 19.7635 25.1816C19.7635 25.1816 20.6237 21.7538 21.0423 20.0361C21.4056 18.6699 21.8618 17.6189 24.7222 17.1663C24.8109 17.1556 24.9049 17.1471 24.9957 17.1375C22.9517 15.3815 21.1989 13.8758 21.1989 13.8758C21.1989 13.8758 14.9917 19.197 11.9684 21.8038C11.8881 21.8731 11.8265 22.0158 11.8254 22.1254C11.8181 24.8068 11.816 27.1506 11.8265 29.833C11.8275 30.0247 11.9037 30.2345 11.9987 30.4028C12.2138 30.7872 12.5708 30.9064 12.9831 30.9054C14.6754 30.9022 16.3686 30.9033 18.0608 30.9033C18.0629 29.963 18.0671 29.0216 18.0671 28.0813ZM26.7161 16.9938C28.0085 16.915 29.4011 16.8873 30.7571 16.9107C30.7571 16.8287 30.7561 16.6807 30.7571 16.5582C30.7665 15.685 30.7613 14.8118 30.7613 13.9386C30.7613 12.6203 30.7613 10.1487 30.7613 10.1487C30.7613 10.1487 30.7613 9.33301 29.6276 9.33301C29.2361 9.33301 28.1484 9.33301 27.7725 9.33301C26.6534 9.33301 26.6597 10.1487 26.6597 10.1487C26.6597 10.1487 26.6367 11.2945 26.6367 11.943C26.6367 12.3328 26.6169 12.9206 26.6169 13.3593C26.5344 13.2965 26.2714 13.1101 26.2338 13.0771C24.9873 12.0005 23.7388 10.925 22.4934 9.84628C21.7062 9.16476 20.6404 9.16156 19.8522 9.84202C19.0077 10.5715 18.1621 11.2977 17.3155 12.025C14.3142 14.6084 11.3118 17.1908 8.31155 19.7731C7.92529 20.1064 7.90232 20.3545 8.21968 20.7496C8.50989 21.1085 8.80011 21.4652 9.09032 21.8219C9.33042 22.1169 9.64047 22.1425 9.93068 21.8922C13.1721 19.1012 20.6602 12.6533 21.1655 12.2188C21.1978 12.2455 23.8891 14.5626 26.7161 16.9938ZM37.2692 37.3319C38.6837 37.3319 39.1211 37.1967 39.1211 35.1244C39.1222 34.6665 39.1211 34.2097 39.1211 33.7518V33.6091C39.1545 33.6006 39.9959 33.4568 39.9959 33.1672C39.9959 31.6636 40.0074 30.1578 39.9918 28.6553C39.9918 26.731 38.5021 25.8674 38.5021 25.8674C38.5021 25.8674 37.7577 22.6547 37.3767 21.052C37.0562 19.7028 36.4414 18.8371 34.2094 18.5144C31.6789 18.1939 27.9949 18.1939 25.3851 18.5176C22.8984 18.9361 22.5017 19.9083 22.1854 21.1702C21.8211 22.7569 21.0736 25.9249 21.0736 25.9249C21.0736 25.9249 19.5985 26.5724 19.5985 28.6052C19.5985 30.1355 19.586 31.6668 19.5965 33.197C19.5985 33.4473 20.3564 33.6006 20.417 33.6049C20.417 34.1373 20.4139 35.4972 20.418 36.0115C20.4264 37.3 20.8868 37.333 22.3336 37.333C23.816 37.333 24.2012 37.1978 24.2012 35.9348C24.2012 35.446 24.2012 34.2949 24.2012 33.7891C27.6546 34.2086 31.9764 34.2086 35.3358 33.7891V33.9712C35.3358 34.4184 35.339 34.6836 35.3348 35.1308C35.3358 37.1978 35.601 37.3319 37.2692 37.3319ZM36.7055 27.9397C37.6774 27.945 38.4739 28.7852 38.4728 29.8235C38.4718 30.8756 37.6826 31.7094 36.7002 31.7158C35.6114 31.7221 34.959 30.67 34.9287 29.9044C34.8911 28.9556 35.649 27.9333 36.7055 27.9397ZM24.4236 21.0105C24.8245 19.7348 34.9527 19.8583 35.1939 20.97C35.767 23.0199 36.147 25.4543 36.1532 25.4873C32.5193 25.0208 27.0543 25.0581 23.4726 25.4873C23.4726 25.4873 23.8306 22.8964 24.4236 21.0105ZM20.9097 29.8937C20.8753 28.9769 21.6269 27.9237 22.6969 27.9397C23.6647 27.9535 24.456 28.7916 24.4528 29.8171C24.4497 30.8745 23.6657 31.7062 22.6865 31.7158C21.5695 31.7264 20.9369 30.6243 20.9097 29.8937Z"
                             fill="white" />
                     </svg>
-                    <p>
+                    <p class='opti-home-heading'>
                         Add your home from £123* and
                         <span>
                             SAVE £78
@@ -408,14 +408,24 @@ if (window.location.href.indexOf('/Admiral/quote') > -1) {
                 <p class="footer-info">*Your home price, for our lowest level of cover, is based on assumptions. Price may
                     change depending on your cover needs.</p>
                 <div class="footer-cta">
-                    <button onclick="document.querySelector('.opt-home-details-container').remove()" style="text-transform: uppercase;">
+                    <button onclick="document.querySelector('.opt-home-details-container').remove()" style="text-transform: uppercase;" class="opti-home-tile-cancel">
                         Cancel
                     </button>
-                    <a href="https://quote.admiral.com/Admiral/multicover/homedetails" style="text-transform: uppercase;">Continue</a>
+                    <a href="https://quote.admiral.com/Admiral/multicover/homedetails" style="text-transform: uppercase;" class="opti-home-tile-continue">Continue</a>
                 </div>
             </div>
         </div>
     </div>`);
+
+        const existing_heading = document.querySelector('.opt-home-details-container .opti-home-heading')
+        const dynamic_heading = document.querySelector('.adm-section:has(+#quote-summary) [data-test="multicover-promo-text"]').cloneNode(true);
+        dynamic_heading.classList.add('opti-home-heading');
+        existing_heading.parentNode.replaceChild(dynamic_heading, existing_heading);
+
+        const existing_footer = document.querySelector('.opt-home-details-container .footer-info')
+        const dynamic_footer = document.querySelector('.adm-section:has(+#quote-summary) [data-test="multicover-promo-footer"]').cloneNode(true);
+        dynamic_heading.classList.add('footer-info');
+        existing_footer.parentNode.replaceChild(dynamic_footer, existing_footer);
     };
 
     window.showHomeLearnMoreModal = () => {
@@ -545,7 +555,7 @@ if (window.location.href.indexOf('/Admiral/quote') > -1) {
                     <p>
                         On average our customers
                         <span style="display: block;">
-                            SAVE £117*
+                            SAVE £233*
                         </span> by switching to MultiCar
                     </p>
                 </div>
@@ -579,12 +589,12 @@ if (window.location.href.indexOf('/Admiral/quote') > -1) {
                         <p>You only pay for each car’s cover when it starts</p>
                     </div>
                 </div>
-                <p class="footer-info">*Average savings versus identical single policies. Date from Jan 24 -June 24.</p>
+                <p class="footer-info">*Average savings versus identical single policies. Date from Jan 24 -Jun 24.</p>
                 <div class="footer-cta">
-                    <button onclick="document.querySelector('.opt-car-details-container').remove()" style="text-transform: uppercase;">
+                    <button onclick="document.querySelector('.opt-car-details-container').remove()" style="text-transform: uppercase;" class="opti-car-tile-cancel">
                         Cancel
                     </button>
-                    <a href="https://quote.admiral.com/Admiral/addcar/car" style="text-transform: uppercase;">Continue</a>
+                    <a href="https://quote.admiral.com/Admiral/addcar/car" style="text-transform: uppercase;" class="opti-car-tile-continue">Continue</a>
                 </div>
             </div>
         </div>
@@ -660,12 +670,12 @@ if (window.location.href.indexOf('/Admiral/quote') > -1) {
                         </span>
                     </div>
                 </div>
-                <p class="footer-info">*Average savings versus identical single policies. Date from Jan 24 -June 24.​</p>
+                <p class="footer-info">*Average savings versus identical single policies. Date from Jan 24 -Jun 24.​</p>
                 <div class="footer-cta">
-                    <button onclick="document.querySelector('.opt-van-details-container').remove()" style="text-transform: uppercase;">
+                    <button onclick="document.querySelector('.opt-van-details-container').remove()" style="text-transform: uppercase;" class="opti-van-tile-cancel">
                         Cancel
                     </button>
-                    <a href="https://quote.admiral.com/Admiral/addvan/van" style="text-transform: uppercase;">Continue</a>
+                    <a href="https://quote.admiral.com/Admiral/addvan/van" style="text-transform: uppercase;" class="opti-van-tile-continue">Continue</a>
                 </div>
             </div>
         </div>
