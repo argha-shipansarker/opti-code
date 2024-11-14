@@ -1,53 +1,64 @@
 const utils = optimizely.get('utils');
 
 if (window.location.href.indexOf('/Admiral/quote') > -1) {
-    window.setCarouselCopySlide = slideNumber => {
+    window.setCarouselCopySlide = (slideNumber, will_auto_scroll, will_update_arrow_dot) => {
+
         window.currentSlide = slideNumber;
 
         if (window.currentSlide > window.carouselSlideCount) {
             window.currentSlide = 1;
         }
 
-        document.querySelector('.opti-quote-carousel ul.slider').style = `transform: translate3d(-${(window.currentSlide - 1) * 100}%, 0px, 0px); transition-duration: 500ms;`;
+        if (will_auto_scroll) {
+            const carousel = document.querySelector('.opti-quote-carousel ul.slider');
+            const items = carousel.querySelectorAll('li');
 
-        if (window.currentSlide === 1) {
-            var prevArrow = document.querySelector('.opti-quote-carousel #previousCarouselArrow:not(.' + window.disabledArrowClass + ')');
-            if (prevArrow) {
-                prevArrow.setAttribute('disabled', true);
-                prevArrow.classList.add(window.disabledArrowClass);
+            carousel.scrollTo({
+                left: items[window.currentSlide - 1].offsetLeft,
+                behavior: 'smooth'
+            });
+        }
+
+        if (will_update_arrow_dot) {
+            if (window.currentSlide === 1) {
+                var prevArrow = document.querySelector('.opti-quote-carousel #previousCarouselArrow:not(.' + window.disabledArrowClass + ')');
+                if (prevArrow) {
+                    prevArrow.setAttribute('disabled', true);
+                    prevArrow.classList.add(window.disabledArrowClass);
+                }
             }
-        }
-        else {
-            var prevArrow = document.querySelector('.opti-quote-carousel #previousCarouselArrow.' + window.disabledArrowClass);
-            if (prevArrow) {
-                prevArrow.classList.remove(window.disabledArrowClass);
-                prevArrow.removeAttribute('disabled');
+            else {
+                var prevArrow = document.querySelector('.opti-quote-carousel #previousCarouselArrow.' + window.disabledArrowClass);
+                if (prevArrow) {
+                    prevArrow.classList.remove(window.disabledArrowClass);
+                    prevArrow.removeAttribute('disabled');
+                }
             }
-        }
 
-        document.querySelectorAll('.opti-quote-carousel .arrow-dots-container .dot.' + window.disabledCircleClass).forEach(btn => {
-            btn.classList.remove(window.disabledCircleClass);
-            btn.removeAttribute('disabled');
-        });
+            document.querySelectorAll('.opti-quote-carousel .arrow-dots-container .dot.' + window.disabledCircleClass).forEach(btn => {
+                btn.classList.remove(window.disabledCircleClass);
+                btn.removeAttribute('disabled');
+            });
 
-        var currentCircle = document.querySelector('.opti-quote-carousel .arrow-dots-container .dot:nth-child(' + (window.currentSlide + 1) + ')');
-        if (currentCircle) {
-            currentCircle.setAttribute('disabled', true);
-            currentCircle.classList.add(window.disabledCircleClass);
-        }
-
-        if (window.currentSlide === window.carouselSlideCount) {
-            var nextArrow = document.querySelector('.opti-quote-carousel #nextCarouselArrow:not(.' + window.disabledArrowClass + ')');
-            if (nextArrow) {
-                nextArrow.setAttribute('disabled', true);
-                nextArrow.classList.add(window.disabledArrowClass);
+            var currentCircle = document.querySelector('.opti-quote-carousel .arrow-dots-container .dot:nth-child(' + (window.currentSlide + 1) + ')');
+            if (currentCircle) {
+                currentCircle.setAttribute('disabled', true);
+                currentCircle.classList.add(window.disabledCircleClass);
             }
-        }
-        else {
-            var nextArrow = document.querySelector('.opti-quote-carousel #nextCarouselArrow.' + window.disabledArrowClass);
-            if (nextArrow) {
-                nextArrow.classList.remove(window.disabledArrowClass);
-                nextArrow.removeAttribute('disabled');
+
+            if (window.currentSlide === window.carouselSlideCount) {
+                var nextArrow = document.querySelector('.opti-quote-carousel #nextCarouselArrow:not(.' + window.disabledArrowClass + ')');
+                if (nextArrow) {
+                    nextArrow.setAttribute('disabled', true);
+                    nextArrow.classList.add(window.disabledArrowClass);
+                }
+            }
+            else {
+                var nextArrow = document.querySelector('.opti-quote-carousel #nextCarouselArrow.' + window.disabledArrowClass);
+                if (nextArrow) {
+                    nextArrow.classList.remove(window.disabledArrowClass);
+                    nextArrow.removeAttribute('disabled');
+                }
             }
         }
     };
@@ -75,6 +86,8 @@ if (window.location.href.indexOf('/Admiral/quote') > -1) {
     
             .opti-text-carousel .opti-quote-carousel {
                 margin-bottom: 32px;
+                -webkit-tap-highlight-color: transparent;
+                -moz-tap-highlight-color: transparent;
             }
     
             .opti-text-carousel .opti-quote-carousel .carousel-container {
@@ -117,6 +130,15 @@ if (window.location.href.indexOf('/Admiral/quote') > -1) {
                     padding: 0;
                     position: relative;
                     width: 100%;
+                    scroll-snap-type: x mandatory;
+                    scroll-behavior: smooth;
+                    scrollbar-width: none;
+                    overflow-x: auto;
+                    -ms-overflow-style: none;
+                }
+
+                .opti-quote-carousel .carousel-container .carousel.carousel-slider .slider-wrapper .slide {
+                    scroll-snap-align: start;
                 }
     
                 .opti-quote-carousel .arrow-dots-container {
@@ -198,6 +220,10 @@ if (window.location.href.indexOf('/Admiral/quote') > -1) {
                                         line-height: 36px;
                                         display: block;
                                     }
+
+                                    .opti-slide-data.desktop-view.home .description .heading span {
+                                        display: unset;
+                                    }
     
                                     .opti-slide-content.van .description .heading span,
                                     .opti-slide-data.car .description .heading span {
@@ -247,6 +273,10 @@ if (window.location.href.indexOf('/Admiral/quote') > -1) {
                                         margin-top: -19px;
                                         color: #656560;
     
+                                    }
+
+                                    .opti-slide-data.desktop-view.home .footer-info {
+                                        max-width: 470px;
                                     }
     
                                     .opti-slide-data .footer-info.van {
@@ -461,7 +491,7 @@ if (window.location.href.indexOf('/Admiral/quote') > -1) {
                                                 src="//cdn.optimizely.com/img/25237771658/8677169b3c804d178b5f113f0d0de852.png" />
                                         </div>
                                         <p class="footer-info">
-                                            *Average savings versus identical single policies. Date from Jan 24 -June 24.
+                                            *Average savings versus identical single policies. Date from Jan 24 -Jun 24.
                                         </p>
                                     </div>
     
@@ -481,7 +511,7 @@ if (window.location.href.indexOf('/Admiral/quote') > -1) {
                                             Add a Car
                                         </a>
                                         <p class="footer-info">
-                                            *Average savings versus identical single policies. Date from Jan 24 -June 24.
+                                            *Average savings versus identical single policies. Date from Jan 24 -Jun 24.
                                         </p>
                                     </div>
                                 </li>
@@ -513,7 +543,7 @@ if (window.location.href.indexOf('/Admiral/quote') > -1) {
                                                 </div>
                                                 <p class="footer-info van">
                                                     *Average savings versus identical single policies. Date from Jan 24
-                                                    -June 24.
+                                                    -Jun 24.
                                                 </p>
                                             </div>
                                         </div>
@@ -545,7 +575,7 @@ if (window.location.href.indexOf('/Admiral/quote') > -1) {
                                             </span>
                                         </div>
                                         <p class="footer-info van">
-                                            *Average savings versus identical single policies. Date from Jan 24 -June 24.
+                                            *Average savings versus identical single policies. Date from Jan 24 -Jun 24.
                                         </p>
                                     </div>
                                 </li>
@@ -575,7 +605,34 @@ if (window.location.href.indexOf('/Admiral/quote') > -1) {
         </div>
     </div>`);
 
+        const existing_heading_home_desktop = document.querySelector('.opti-slide-data.desktop-view.home .description .heading');
+        const existing_heading_home_mobile = document.querySelector('.opti-slide-data.mobile-view.home .description .heading');
+
+        const dynamic_heading_home_desktop = document.querySelector('.adm-section:has(+#quote-summary) [data-test="multicover-promo-text"]').cloneNode(true);
+        const dynamic_heading_home_mobile = document.querySelector('.adm-section:has(+#quote-summary) [data-test="multicover-promo-text"]').cloneNode(true);
+
+        dynamic_heading_home_mobile.querySelectorAll('br').forEach(br => br.remove());
+
+        dynamic_heading_home_desktop.classList.add('heading');
+        dynamic_heading_home_mobile.classList.add('heading');
+
+        existing_heading_home_desktop.parentNode.replaceChild(dynamic_heading_home_desktop, existing_heading_home_desktop);
+        existing_heading_home_mobile.parentNode.replaceChild(dynamic_heading_home_mobile, existing_heading_home_mobile);
+
+        const existing_footer_home_desktop = document.querySelector('.opti-slide-data.desktop-view.home .footer-info');
+        const existing_footer_home_mobile = document.querySelector('.opti-slide-data.mobile-view.home .footer-info');
+
+        const dynamic_footer_home_desktop = document.querySelector('.adm-section:has(+#quote-summary) [data-test="multicover-promo-footer"]').cloneNode(true);
+        const dynamic_footer_home_mobile = document.querySelector('.adm-section:has(+#quote-summary) [data-test="multicover-promo-footer"]').cloneNode(true);
+
+        dynamic_footer_home_desktop.classList.add('footer-info');
+        dynamic_footer_home_mobile.classList.add('footer-info');
+
+        existing_footer_home_desktop.parentNode.replaceChild(dynamic_footer_home_desktop, existing_footer_home_desktop);
+        existing_footer_home_mobile.parentNode.replaceChild(dynamic_footer_home_mobile, existing_footer_home_mobile);
+
         window.currentSlide = 1;
+        let carouselInterval;
 
         var all_slides = document.querySelectorAll('.opti-quote-carousel .slider .slide');
         if (all_slides) {
@@ -585,21 +642,52 @@ if (window.location.href.indexOf('/Admiral/quote') > -1) {
         var prevArrow = document.querySelector('.opti-quote-carousel #previousCarouselArrow');
         if (prevArrow) {
             prevArrow.addEventListener('click', () => {
-                window.setCarouselCopySlide(window.currentSlide - 1);
+                window.setCarouselCopySlide(window.currentSlide - 1, true, false);
             });
         }
         var nextArrow = document.querySelector('.opti-quote-carousel #nextCarouselArrow');
         if (nextArrow) {
             nextArrow.addEventListener('click', () => {
-                window.setCarouselCopySlide(window.currentSlide + 1);
+                window.setCarouselCopySlide(window.currentSlide + 1, true, false);
             });
         }
 
         document.querySelectorAll('.opti-quote-carousel .arrow-dots-container .dot').forEach((btn, index) => {
             btn.addEventListener('click', () => {
-                window.setCarouselCopySlide(index + 1);
+                window.setCarouselCopySlide(index + 1, true, false);
             });
         });
+
+        function startCarouselInterval() {
+            clearInterval(carouselInterval);
+
+            carouselInterval = setInterval(() => {
+                window.setCarouselCopySlide(window.currentSlide + 1, true, false);
+            }, 10000);
+        }
+
+
+        const items = document.querySelectorAll('.opti-quote-carousel .slide');
+        let currentItemIndex = 0;
+
+        const observer = new IntersectionObserver(
+            (entries) => {
+                entries.forEach((entry) => {
+                    if (entry.isIntersecting) {
+                        currentItemIndex = Array.from(items).indexOf(entry.target);
+                        window.setCarouselCopySlide(currentItemIndex + 1, false, true);
+                        startCarouselInterval()
+                    } else {
+                    }
+                });
+            },
+            {
+                root: document.querySelector('.opti-quote-carousel .slider'),
+                threshold: 0.5 // Adjust this threshold as needed
+            }
+        );
+
+        items.forEach((item) => observer.observe(item));
 
     });
 
