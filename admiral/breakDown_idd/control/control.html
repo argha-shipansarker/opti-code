@@ -1,0 +1,152 @@
+<div class="opti-europe-home-radio-inputs">
+    <style>
+        .opti-europe-home-radio-inputs {
+            padding: 0px 16px 16px;
+        }
+
+        .opti-europe-home-radio-inputs .europe-section,
+        .opti-europe-home-radio-inputs .home-section {
+            display: flex;
+            align-items: baseline;
+            flex-direction: row;
+        }
+
+        .opti-europe-home-radio-inputs .home-section .home-radio-inputs {
+            padding-top: 10px;
+        }
+
+        .opti-europe-home-radio-inputs .home-section {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.5s;
+        }
+
+        .opti-europe-home-radio-inputs .europe-section .europe-radio-inputs,
+        .opti-europe-home-radio-inputs .home-section .home-radio-inputs {
+            display: flex;
+            flex: 1 1 50%;
+            justify-content: space-around;
+        }
+
+        .opti-europe-home-radio-inputs .europe-section .europe-question,
+        .opti-europe-home-radio-inputs .home-section .home-question {
+            flex: 1 1 50%;
+            margin-bottom: 0;
+        }
+
+
+        .opti-europe-home-radio-inputs input[type="radio"] {
+            display: none;
+        }
+
+        .opti-europe-home-radio-inputs label {
+            width: 140px;
+            padding: 9px 12px;
+            border: 1px solid #CED9E5;
+            border-radius: 2px;
+            margin-bottom: 0;
+        }
+
+        .opti-europe-home-radio-inputs .radio-label {
+            display: flex;
+            align-items: center;
+            cursor: pointer;
+        }
+
+        .opti-europe-home-radio-inputs .radio-label .radio-icon {
+            width: 20px;
+            height: 20px;
+            border: 2px solid #006DCC;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 10px;
+            transition: border-color 0.3s ease;
+        }
+
+        .opti-europe-home-radio-inputs .radio-label .radio-text {
+            font-size: 16px;
+            line-height: 24px;
+            color: #444444;
+        }
+
+        .opti-europe-home-radio-inputs .radio-label .radio-icon::after {
+            content: "";
+            width: 10px;
+            height: 10px;
+            background-color: transparent;
+            border-radius: 50%;
+            transition: background-color 0.3s ease;
+        }
+
+        .opti-europe-home-radio-inputs label:has(input[type="radio"]:checked) {
+            border-color: #0A8A19;
+        }
+
+        .opti-europe-home-radio-inputs input[type="radio"]:checked+.radio-label .radio-icon {
+            border-color: #0A8A19;
+        }
+
+        .opti-europe-home-radio-inputs input[type="radio"]:checked+.radio-label .radio-icon::after {
+            background-color: #0A8A19;
+        }
+
+        @media (max-width: 500px) {
+
+            .opti-europe-home-radio-inputs .europe-section,
+            .opti-europe-home-radio-inputs .home-section {
+                flex-direction: column;
+            }
+
+            .opti-europe-home-radio-inputs .home-section .home-question {
+                margin-top: 10px;
+            }
+
+            .opti-europe-home-radio-inputs .europe-section .europe-question {
+                margin-bottom: 6px;
+            }
+
+            .opti-europe-home-radio-inputs .home-section .home-radio-inputs {
+                padding-top: 6px;
+            }
+
+            .opti-europe-home-radio-inputs .europe-section .europe-radio-inputs,
+            .opti-europe-home-radio-inputs .home-section .home-radio-inputs {
+                justify-content: space-between;
+                width: 100%;
+            }
+
+            .opti-europe-home-radio-inputs .europe-section .europe-radio-inputs label,
+            .opti-europe-home-radio-inputs .home-section .home-radio-inputs label {
+                flex-basis: 48%;
+            }
+        }
+    </style>
+    <div class="europe-section">
+        <p class="europe-question">Is Breakdown cover in Europe essential?</p>
+        <div class="europe-radio-inputs">
+            <label>
+                <input type="radio" name="europe-choice" id="europe-cover-yes" value="yes">
+                <span class="radio-label"><span class="radio-icon"></span><span class="radio-text">Yes</span></span>
+            </label>
+            <label>
+                <input type="radio" name="europe-choice" id="europe-cover-no" value="no">
+                <span class="radio-label"><span class="radio-icon"></span><span class="radio-text">No</span></span>
+            </label>
+        </div>
+    </div>
+    <div class="home-section">
+        <p class="home-question">Is Breakdown cover at your home address essential?</p>
+        <div class="home-radio-inputs">
+            <label>
+                <input type="radio" name="home-choice" id="home-cover-yes" value="yes">
+                <span class="radio-label"><span class="radio-icon"></span><span class="radio-text">Yes</span></span>
+            </label>
+            <label>
+                <input type="radio" name="home-choice" id="home-cover-no" value="no">
+                <span class="radio-label"><span class="radio-icon"></span><span class="radio-text">No</span></span>
+            </label>
+        </div>
+    </div>
+</div>
