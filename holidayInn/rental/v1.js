@@ -9,7 +9,8 @@ utils.observeSelector('[class*="CheckoutPageSummary_container"]', function (chec
         }
 
         .opti-cost-summary-accordion label {
-            padding: 1rem 4px;
+            padding-left: 4px;
+            padding-right: 22px;
         }
 
         .opti-accordion-item {
@@ -96,6 +97,8 @@ utils.observeSelector('[class*="CheckoutPageSummary_container"]', function (chec
         cost_summary_accordion.classList.add('opti-cost-summary-accordion');
         const cloned_required_field_text_message = required_field_text_message.cloneNode(true);
 
+        preferred_contact.style.marginBottom = "8px";
+
         preferred_contact.after(cloned_required_field_text_message, cost_summary_accordion);
 
         required_field_text_message.style.display = 'none';
@@ -111,6 +114,7 @@ utils.observeSelector('[class*="CheckoutPageSummary_container"]', function (chec
                         const preferred_contact = checkout_summary.querySelector('[class*="GuestInformationFormFields_preferred-contact-method-dropdown"]');
 
                         if (preferred_contact) {
+                            preferred_contact.style.marginBottom = "8px";
                             preferred_contact.after(cloned_required_field_text_message, cost_summary_accordion);
                         }
 
