@@ -1,0 +1,139 @@
+<div class="opti-including-ancillary-radio-inputs">
+    <style>
+        .opti-including-ancillary-radio-inputs {
+            background: #FFFFFF;
+            padding: 20px;
+        }
+
+        .opti-including-ancillary-radio-inputs input[type="radio"] {
+            display: none;
+        }
+
+        .opti-including-ancillary-radio-inputs label {
+            padding: 12px 16px;
+            border: 1px solid #CED9E5;
+            border-radius: 4px;
+            margin-bottom: 8px;
+        }
+
+        .opti-including-ancillary-radio-inputs .radio-label {
+            display: flex;
+            align-items: center;
+            cursor: pointer;
+        }
+
+        .opti-including-ancillary-radio-inputs .radio-label.ancillary-text {
+            justify-content: space-between;
+        }
+
+        .opti-including-ancillary-radio-inputs .radio-label.ancillary-text .price-text {
+            display: flex;
+            align-items: center;
+        }
+
+        .opti-including-ancillary-radio-inputs .radio-label.ancillary-text .price-text .radio-text {
+            font-size: 20px;
+            line-height: 30px;
+            font-weight: 700;
+            color: #444444;
+        }
+
+        .opti-including-ancillary-radio-inputs .radio-label.ancillary-text .price-value {
+            font-size: 24px;
+            line-height: 30px;
+            color: #444444;
+        }
+
+        .opti-including-ancillary-radio-inputs .radio-label.ancillary-text .price-value .price {
+            font-weight: 700;
+            color: #0F7632;
+        }
+
+        .opti-including-ancillary-radio-inputs .radio-label .radio-icon {
+            width: 20px;
+            height: 20px;
+            border: 2px solid #006DCC;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 10px;
+            transition: border-color 0.3s ease;
+        }
+
+        .opti-including-ancillary-radio-inputs .radio-label .radio-text {
+            font-size: 20px;
+            line-height: 30px;
+            color: #444444;
+        }
+
+        .opti-including-ancillary-radio-inputs .radio-label .radio-icon::after {
+            content: "";
+            width: 10px;
+            height: 10px;
+            background-color: transparent;
+            border-radius: 50%;
+            transition: background-color 0.3s ease;
+        }
+
+        .opti-including-ancillary-radio-inputs label:has(input[type="radio"]:checked) {
+            border-color: #0A8A19;
+        }
+
+        .opti-including-ancillary-radio-inputs input[type="radio"]:checked+.radio-label .radio-icon {
+            border-color: #0A8A19;
+        }
+
+        .opti-including-ancillary-radio-inputs input[type="radio"]:checked+.radio-label .radio-icon::after {
+            background-color: #0A8A19;
+        }
+
+        .opti-including-ancillary-radio-inputs .footer-info {
+            font-size: 14px;
+            line-height: 21px;
+            color: #656560;
+        }
+
+        @media (max-width: 500px) {
+            .opti-including-ancillary-radio-inputs .radio-label.ancillary-text {
+                flex-direction: column;
+                align-items: unset;
+            }
+
+            .opti-including-ancillary-radio-inputs .radio-label.ancillary-text .price-text {
+                flex: none;
+            }
+
+            .opti-including-ancillary-radio-inputs .radio-label.ancillary-text .price-text .radio-icon {
+                transform: translateY(75%);
+                min-width: 20px;
+            }
+
+            .opti-including-ancillary-radio-inputs .radio-label.ancillary-text .price-value {
+                flex: none;
+                margin-left: 30px;
+            }
+        }
+    </style>
+    <label>
+        <input type="radio" name="ancillary-choice" id="ancillary-yes" value="yes">
+        <span class="radio-label ancillary-text">
+            <span class="price-text">
+                <span class="radio-icon"></span>
+                <span class="radio-text">${cover_name}</span>
+            </span>
+            <span class="price-value">
+                <span class="price">${cover_price}</span>
+                year
+            </span>
+        </span>
+    </label>
+    <label>
+        <input type="radio" name="ancillary-choice" id="ancillary-no" value="no">
+        <span class="radio-label">
+            <span class="radio-icon"></span>
+            <span class="radio-text">No cover needed</span>
+        </span>
+    </label>
+    <span class="footer-info">${cover_footer}</span>
+</div>

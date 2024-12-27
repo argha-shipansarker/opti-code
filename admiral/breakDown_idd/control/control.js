@@ -25,7 +25,7 @@ if (window.location.pathname == '/Admiral/ancillary/breakdown') {
         }
 
     }
-</style>`)
+</style>`);
 
         headerSection.insertAdjacentHTML("afterend", `<div class="opti-whats-included">
     <style>
