@@ -1,0 +1,69 @@
+<div class="opti-uk-europe-radio-inputs">
+    <style>
+        .opti-uk-europe-radio-inputs {
+            padding: 0px 16px 23px;
+            display: flex;
+            justify-content: center;
+        }
+
+        .opti-uk-europe-radio-inputs .radio-inputs {
+            display: flex;
+        }
+
+        .opti-uk-europe-radio-inputs input[type="radio"] {
+            display: none;
+        }
+
+        .opti-uk-europe-radio-inputs label {
+            width: 140px;
+            padding: 6px 0px;
+            border: 1px solid #CED9E5;
+            margin-bottom: 0;
+            background-color: #F7F7F5;
+            text-align: center;
+            cursor: pointer;
+        }
+
+        .opti-uk-europe-radio-inputs .radio-inputs label:nth-of-type(1) {
+            border-top-left-radius: 16px;
+            border-bottom-left-radius: 16px;
+        }
+
+        .opti-uk-europe-radio-inputs .radio-inputs label:nth-of-type(2) {
+            border-top-right-radius: 16px;
+            border-bottom-right-radius: 16px;
+        }
+
+        .opti-uk-europe-radio-inputs .radio-text {
+            font-size: 14px;
+            line-height: 21px;
+            color: #656560;
+            font-weight: 400;
+        }
+
+        .opti-uk-europe-radio-inputs label:has(input[type="radio"]:checked) {
+            background-color: #FFFFFF;
+        }
+
+        .opti-uk-europe-radio-inputs input[type="radio"]:checked+.radio-text {
+            color: #0A8A19;
+            font-weight: 700;
+        }
+
+        @media (max-width: 500px) {
+            .opti-uk-europe-radio-inputs {
+                padding: 0px 16px 6px;
+            }
+        }
+    </style>
+    <div class="radio-inputs">
+        <label>
+            <input type="radio" name="radio-choice" id="uk-only" value="uk-only">
+            <span class="radio-text">UK ONLY</span>
+        </label>
+        <label>
+            <input type="radio" name="radio-choice" id="uk-and-europe" value="uk-and-europe">
+            <span class="radio-text">UK AND EUROPE</span>
+        </label>
+    </div>
+</div>

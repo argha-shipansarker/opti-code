@@ -4,78 +4,101 @@ if (window.location.pathname == '/Admiral/ancillary/breakdown') {
     utils.observeSelector('#breakdown-benefits-and-contents-header', function (headerSection) {
         headerSection.style.fontWeight = '700';
         headerSection.style.marginBottom = '20px';
-        header_info = headerSection.querySelector('#breakdown-benefits-and-contents-info');
-        if (header_info) {
-            header_info.style.fontWeight = '400';
-        }
+        headerSection.insertAdjacentHTML("beforebegin", `<style>
+            #breakdown-benefits-and-contents-header {
+                font-size: 16px;
+            }
+        
+            #breakdown-benefits-and-contents-header #breakdown-benefits-and-contents-info {
+                font-size: 14px;
+                font-weight: 400;
+            }
+        
+            @media (max-width: 500px) {
+                #breakdown-benefits-and-contents-header {
+                    font-size: 18px;
+                }
+        
+                #breakdown-benefits-and-contents-header #breakdown-benefits-and-contents-info {
+                    font-size: 14px;
+                }
+        
+            }
+        </style>`);
     });
 
     utils.observeSelector('#breakdown-tiers-banner-header', function (breakdownTierHeader) {
         breakdownTierHeader.style.borderBottom = 0;
         breakdownTierHeader.style.marginBottom = "7px";
         breakdownTierHeader.insertAdjacentHTML("afterend", `<div class="opti-uk-europe-radio-inputs">
-            <style>
-                .opti-uk-europe-radio-inputs {
-                    padding: 0px 16px 23px;
-                    display: flex;
-                    justify-content: center;
-                }
+    <style>
+        .opti-uk-europe-radio-inputs {
+            padding: 0px 16px 23px;
+            display: flex;
+            justify-content: center;
+        }
 
-                .opti-uk-europe-radio-inputs .radio-inputs {
-                    display: flex;
-                }
+        .opti-uk-europe-radio-inputs .radio-inputs {
+            display: flex;
+        }
 
-                .opti-uk-europe-radio-inputs input[type="radio"] {
-                    display: none;
-                }
+        .opti-uk-europe-radio-inputs input[type="radio"] {
+            display: none;
+        }
 
-                .opti-uk-europe-radio-inputs label {
-                    width: 140px;
-                    padding: 6px 0px;
-                    border: 1px solid #CED9E5;
-                    margin-bottom: 0;
-                    background-color: #F7F7F5;
-                    text-align: center;
-                    cursor: pointer;
-                }
+        .opti-uk-europe-radio-inputs label {
+            width: 140px;
+            padding: 6px 0px;
+            border: 1px solid #CED9E5;
+            margin-bottom: 0;
+            background-color: #F7F7F5;
+            text-align: center;
+            cursor: pointer;
+        }
 
-                .opti-uk-europe-radio-inputs .radio-inputs label:nth-of-type(1) {
-                    border-top-left-radius: 16px;
-                    border-bottom-left-radius: 16px;
-                }
+        .opti-uk-europe-radio-inputs .radio-inputs label:nth-of-type(1) {
+            border-top-left-radius: 16px;
+            border-bottom-left-radius: 16px;
+        }
 
-                .opti-uk-europe-radio-inputs .radio-inputs label:nth-of-type(2) {
-                    border-top-right-radius: 16px;
-                    border-bottom-right-radius: 16px;
-                }
+        .opti-uk-europe-radio-inputs .radio-inputs label:nth-of-type(2) {
+            border-top-right-radius: 16px;
+            border-bottom-right-radius: 16px;
+        }
 
-                .opti-uk-europe-radio-inputs .radio-text {
-                    font-size: 14px;
-                    line-height: 21px;
-                    color: #656560;
-                    font-weight: 400;
-                }
+        .opti-uk-europe-radio-inputs .radio-text {
+            font-size: 14px;
+            line-height: 21px;
+            color: #656560;
+            font-weight: 400;
+        }
 
-                .opti-uk-europe-radio-inputs label:has(input[type="radio"]:checked) {
-                    background-color: #FFFFFF;
-                }
+        .opti-uk-europe-radio-inputs label:has(input[type="radio"]:checked) {
+            background-color: #FFFFFF;
+        }
 
-                .opti-uk-europe-radio-inputs input[type="radio"]:checked+.radio-text {
-                    color: #0A8A19;
-                    font-weight: 700;
-                }
-            </style>
-            <div class="radio-inputs">
-                <label>
-                    <input type="radio" name="radio-choice" id="uk-only" value="uk-only">
-                    <span class="radio-text">UK ONLY</span>
-                </label>
-                <label>
-                    <input type="radio" name="radio-choice" id="uk-and-europe" value="uk-and-europe">
-                    <span class="radio-text">UK AND EUROPE</span>
-                </label>
-            </div>
-        </div>`);
+        .opti-uk-europe-radio-inputs input[type="radio"]:checked+.radio-text {
+            color: #0A8A19;
+            font-weight: 700;
+        }
+
+        @media (max-width: 500px) {
+            .opti-uk-europe-radio-inputs {
+                padding: 0px 16px 6px;
+            }
+        }
+    </style>
+    <div class="radio-inputs">
+        <label>
+            <input type="radio" name="radio-choice" id="uk-only" value="uk-only">
+            <span class="radio-text">UK ONLY</span>
+        </label>
+        <label>
+            <input type="radio" name="radio-choice" id="uk-and-europe" value="uk-and-europe">
+            <span class="radio-text">UK AND EUROPE</span>
+        </label>
+    </div>
+</div>`);
 
         document.querySelector('#uk-only').checked = true;
 
@@ -95,11 +118,21 @@ if (window.location.pathname == '/Admiral/ancillary/breakdown') {
                     const national_cover = document.querySelector('#ancillary-table colgroup col:nth-of-type(3)');
                     rodeside_assistance.style.width = "27%";
                     national_cover.style.width = "27%";
+
+                    if (window.innerWidth < 500) {
+                        document.querySelector('#ancillary-table').classList.remove('adm-table-col-select--num-cols-3');
+                        document.querySelector('#ancillary-table').classList.add('adm-table-col-select--num-cols-2');
+                    }
+
                 } else {
                     const europ_cover_yes = document.querySelector('#europeCover-yes');
                     europ_cover_yes.click();
                     const europe_cover = document.querySelector('#ancillary-table colgroup col:nth-of-type(2)');
                     europe_cover.style.width = "54%";
+
+                    if (window.innerWidth < 500) {
+                        document.querySelector('#ancillary-table').classList.remove('adm-table-col-select--num-cols-2');
+                    }
                 }
             });
         });
@@ -145,6 +178,11 @@ if (window.location.pathname == '/Admiral/ancillary/breakdown') {
         const national_cover = colgroup.querySelector('col:nth-of-type(3)');
         rodeside_assistance.style.width = "27%";
         national_cover.style.width = "27%";
+
+        if (window.innerWidth < 500) {
+            tableSection.classList.remove('adm-table-col-select--num-cols-3');
+            tableSection.classList.add('adm-table-col-select--num-cols-2');
+        }
     });
 
     utils.observeSelector('#no-breakdown-cover-selected', function (no_cover_selected) {
