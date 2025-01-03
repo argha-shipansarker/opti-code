@@ -4,10 +4,27 @@ if (window.location.pathname == '/Admiral/ancillary/breakdown') {
     utils.observeSelector('#breakdown-benefits-and-contents-header', function (headerSection) {
         headerSection.style.fontWeight = '700';
         headerSection.style.marginBottom = '20px';
-        header_info = headerSection.querySelector('#breakdown-benefits-and-contents-info');
-        if (header_info) {
-            header_info.style.fontWeight = '400';
-        }
+        headerSection.insertAdjacentHTML("beforebegin", `<style>
+            #breakdown-benefits-and-contents-header {
+                font-size: 16px;
+            }
+        
+            #breakdown-benefits-and-contents-header #breakdown-benefits-and-contents-info {
+                font-size: 14px;
+                font-weight: 400;
+            }
+        
+            @media (max-width: 500px) {
+                #breakdown-benefits-and-contents-header {
+                    font-size: 18px;
+                }
+        
+                #breakdown-benefits-and-contents-header #breakdown-benefits-and-contents-info {
+                    font-size: 14px;
+                }
+        
+            }
+        </style>`);
     });
 
     utils.observeSelector('#breakdown-tiers-banner-header', function (breakdownTierHeader) {
@@ -105,6 +122,37 @@ if (window.location.pathname == '/Admiral/ancillary/breakdown') {
                 .opti-europe-home-radio-inputs input[type="radio"]:checked+.radio-label .radio-icon::after {
                     background-color: #0A8A19;
                 }
+
+                @media (max-width: 500px) {
+
+                    .opti-europe-home-radio-inputs .europe-section,
+                    .opti-europe-home-radio-inputs .home-section {
+                        flex-direction: column;
+                    }
+
+                    .opti-europe-home-radio-inputs .home-section .home-question {
+                        margin-top: 10px;
+                    }
+
+                    .opti-europe-home-radio-inputs .europe-section .europe-question {
+                        margin-bottom: 6px;
+                    }
+
+                    .opti-europe-home-radio-inputs .home-section .home-radio-inputs {
+                        padding-top: 6px;
+                    }
+
+                    .opti-europe-home-radio-inputs .europe-section .europe-radio-inputs,
+                    .opti-europe-home-radio-inputs .home-section .home-radio-inputs {
+                        justify-content: space-between;
+                        width: 100%;
+                    }
+
+                    .opti-europe-home-radio-inputs .europe-section .europe-radio-inputs label,
+                    .opti-europe-home-radio-inputs .home-section .home-radio-inputs label {
+                        flex-basis: 48%;
+                    }
+                }
             </style>
             <div class="europe-section">
                 <p class="europe-question">Is Breakdown cover in Europe essential?</p>
@@ -181,6 +229,12 @@ if (window.location.pathname == '/Admiral/ancillary/breakdown') {
                                 color: #25469B;
                                 margin-bottom: 0;
                             }
+
+                            @media (max-width: 500px) {
+                                .opti-europe-best-cover {
+                                    margin-bottom: 0px;
+                                }
+                            }
                         </style>
                         <p class="heading">Based on your answers, we think European Cover is the most suitable to your needs.</p>
                         <p class="info">Please compare the benefits below and select the cover that's right for you.</p>
@@ -189,6 +243,11 @@ if (window.location.pathname == '/Admiral/ancillary/breakdown') {
                     const recomended_section = document.querySelector('.opti-recomended-section');
                     recomended_section.style.display = 'block';
                     recomended_section.style.right = '0px';
+
+                    if (window.innerWidth < 500) {
+                        recomended_section.style.top = '37px';
+                        recomended_section.style.zIndex = 10;
+                    }
                 } else {
                     const home_section = document.querySelector('.opti-europe-home-radio-inputs .home-section');
                     home_section.style.maxHeight = home_section.scrollHeight + 'px';
@@ -236,6 +295,12 @@ if (window.location.pathname == '/Admiral/ancillary/breakdown') {
                                 color: #25469B;
                                 margin-bottom: 0;
                             }
+
+                            @media (max-width: 500px) {
+                                .opti-national-best-cover {
+                                    margin-bottom: 0px;
+                                }
+                            }
                         </style>
                         <p class="heading">Based on your answers, we think National Cover is the most suitable to your needs.</p>
                         <p class="info">Please compare the benefits below and select the cover that's right for you.</p>
@@ -243,7 +308,15 @@ if (window.location.pathname == '/Admiral/ancillary/breakdown') {
 
                     const recomended_section = document.querySelector('.opti-recomended-section');
                     recomended_section.style.display = 'block';
-                    recomended_section.style.right = '115px';
+
+                    if (window.innerWidth < 500) {
+                        recomended_section.style.right = '0px';
+                        recomended_section.style.top = '76px';
+                        recomended_section.style.zIndex = 10;
+                    } else {
+                        recomended_section.style.right = '115px';
+                    }
+
                 } else {
                     europe_home_radio_section.insertAdjacentHTML("afterend", `<div class="opti-no-best-cover">
                         <style>
