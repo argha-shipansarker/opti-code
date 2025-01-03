@@ -9,16 +9,43 @@ function applyMessaging(container) {
 
     const light_bundle_box = container.querySelector('[class*="light-bundle"], .bundle-top.light');
 
-    if (staff_pad && flight_info_image && light_bundle_box && !container.querySelector('.opti-new-staff-pad')) {
+    const lightPrice_currency = container.querySelector('[class*="light-bundle"] .amount .currency, .bundle-top.light .amount .currency');
+    const valuePrice_currency = container.querySelector('[class*="valu-bundle"] .amount .currency, .bundle-top.valu .amount .currency');
+    const plusPrice_currency = container.querySelector('[class*="pusd-bundle"] .amount .currency, .bundle-top.pusd .amount .currency');
+    const premiumPrice_currency = container.querySelector('[class*="premium-bundle"] .amount .currency, .bundle-top.premium .amount .currency');
+
+    if (staff_pad && flight_info_image && light_bundle_box && !container.querySelector('.opti-new-staff-pad') &&
+        (
+            (lightPrice_currency && (lightPrice_currency.innerText == "SAR" || lightPrice_currency.innerText == "ريال")) ||
+            (valuePrice_currency && (valuePrice_currency.innerText == "SAR" || valuePrice_currency.innerText == "ريال")) ||
+            (plusPrice_currency && (plusPrice_currency.innerText == "SAR" || plusPrice_currency.innerText == "ريال")) ||
+            (premiumPrice_currency && (premiumPrice_currency.innerText == "SAR" || premiumPrice_currency.innerText == "ريال"))
+        )
+    ) {
 
         const lightPrice_staffpad = light_bundle_box.querySelector('[class*="light-bundle"] .amount, .bundle-top.light .amount');
 
         const flight_info_text = flight_info_image.previousElementSibling;
 
-        const existing_new_staff_pad = document.querySelector('.opti-new-staff-pad');
-        const existing_staff_pad = document.querySelector('.staff-pad.opti-altered');
-        const flight_info_image_altered = document.querySelector('.flight-info-image-altered');
-        const flight_info_text_altered = document.querySelector('.flight-info-text-altered');
+        const idPrefix = container.id.split('-')[0] + '-';
+
+        const containers = Array.from(document.querySelectorAll(`[id^="${idPrefix}"]`));
+
+        let existing_new_staff_pad = null;
+        let existing_staff_pad = null;
+        let flight_info_image_altered = null;
+        let flight_info_text_altered = null;
+
+        for (const single_container of containers) {
+            existing_new_staff_pad = single_container.querySelector('.opti-new-staff-pad');
+            existing_staff_pad = single_container.querySelector('.staff-pad.opti-altered');
+            flight_info_image_altered = single_container.querySelector('.flight-info-image-altered');
+            flight_info_text_altered = single_container.querySelector('.flight-info-text-altered');
+
+            if (existing_new_staff_pad && existing_staff_pad && flight_info_image_altered && flight_info_text_altered) {
+                break;
+            }
+        }
 
         if (existing_staff_pad && existing_new_staff_pad && flight_info_image_altered && flight_info_text_altered) {
             existing_new_staff_pad.remove();
@@ -196,8 +223,8 @@ function applyMessaging(container) {
             </div>`);
         }
 
-        const priceElement = document.querySelector('.opti-new-staff-pad .pack-block .pack-price .price');
-        const continueBtn = document.querySelector('.opti-new-staff-pad .pack-block .pack-price .conti-btn');
+        const priceElement = container.querySelector('.opti-new-staff-pad .pack-block .pack-price .price');
+        const continueBtn = container.querySelector('.opti-new-staff-pad .pack-block .pack-price .conti-btn');
 
         if (priceElement && lightPrice_staffpad) {
             priceElement.appendChild(lightPrice_staffpad.cloneNode(true));
@@ -276,8 +303,10 @@ function applyMessaging(container) {
         </div>
     </div>`)
 
-                const price_block = document.querySelector(".opti-value-price-block");
+                const price_block = container.querySelector(".opti-value-price-block");
                 price_block.appendChild(bundle_price_section);
+            } else {
+                value_bundle_box.style.pointerEvents = "auto";
             }
 
         }
@@ -335,8 +364,10 @@ function applyMessaging(container) {
         </div>
     </div>`)
 
-                const price_block = document.querySelector(".opti-plus-price-block");
+                const price_block = container.querySelector(".opti-plus-price-block");
                 price_block.appendChild(bundle_price_section);
+            } else {
+                plus_bundle_box.style.pointerEvents = "auto";
             }
         }
 
@@ -393,8 +424,10 @@ function applyMessaging(container) {
         </div>
     </div>`)
 
-                const price_block = document.querySelector(".opti-premium-price-block");
+                const price_block = container.querySelector(".opti-premium-price-block");
                 price_block.appendChild(bundle_price_section);
+            } else {
+                premium_bundle_box.style.pointerEvents = "auto";
             }
 
         }
