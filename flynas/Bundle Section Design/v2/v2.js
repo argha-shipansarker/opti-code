@@ -258,6 +258,10 @@ function applyMessaging(container) {
             const price_container = value_bundle_box.querySelector(".selectflightbtn");
             if (price_container) {
                 price_container.style.setProperty("border", "none", "important");
+
+                if (document.querySelector('.picon.picon_en')) {
+                    price_container.style.setProperty("padding-top", "0", "important");
+                }
             }
 
             const tamaraplans_section = value_bundle_box.querySelector(".tamaraplans");
@@ -319,6 +323,10 @@ function applyMessaging(container) {
             const price_container = plus_bundle_box.querySelector(".selectflightbtn");
             if (price_container) {
                 price_container.style.setProperty("border", "none", "important");
+
+                if (document.querySelector('.picon.picon_en')) {
+                    price_container.style.setProperty("padding-top", "0", "important");
+                }
             }
 
             const tamaraplans_section = plus_bundle_box.querySelector(".tamaraplans");
@@ -379,6 +387,10 @@ function applyMessaging(container) {
             const price_container = premium_bundle_box.querySelector(".selectflightbtn");
             if (price_container) {
                 price_container.style.setProperty("border", "none", "important");
+
+                if (document.querySelector('.picon.picon_en')) {
+                    price_container.style.setProperty("padding-top", "0", "important");
+                }
             }
 
             const tamaraplans_section = premium_bundle_box.querySelector(".tamaraplans");
