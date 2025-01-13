@@ -2,8 +2,6 @@ const { observeSelector, waitUntil } = window.optimizely.get("utils");
 
 function applyMessaging(container) {
     if (!container) return;
-    if (document.querySelector('.dropdown-toggle .picon.picon_ru')) return;
-
     const lightPrice = container.querySelector('[class*="light-bundle"] .amount-price, .bundle-top.light .amount-price');
     const valuePrice = container.querySelector('[class*="valu-bundle"] .amount-price, .bundle-top.valu .amount-price');
     const plusPrice = container.querySelector('[class*="pusd-bundle"] .amount-price, .bundle-top.pusd .amount-price');
@@ -34,33 +32,33 @@ function applyMessaging(container) {
             const [integerPart, decimalPart] = extra_value_price.split('.');
             const valuePrice_int = valuePrice.querySelector('.priceInt');
             if (valuePrice_int) {
-                if (document.querySelector('.dropdown-toggle .picon.picon_en')) {
-                    valuePrice_int.innerText = `+${integerPart}`;
-                } else {
+                if (document.querySelector('.picon.picon_en')) {
                     valuePrice_int.innerText = `${integerPart}`;
+                } else {
+                    valuePrice_int.innerText = `+${integerPart}`;
                 }
             }
             const valuePrice_dec = valuePrice.querySelector('.priceDec');
             if (valuePrice_dec) {
-                if (document.querySelector('.dropdown-toggle .picon.picon_en')) {
-                    valuePrice_dec.innerText = `.${decimalPart}`;
-                } else {
+                if (document.querySelector('.picon.picon_en')) {
                     valuePrice_dec.innerText = `.${decimalPart}`;
                     const plusSpan = document.createElement('span');
                     plusSpan.innerText = ' +';
                     plusSpan.style.fontFamily = 'flynas-Bold';
                     plusSpan.style.fontSize = '22px';
                     valuePrice_dec.appendChild(plusSpan);
+                } else {
+                    valuePrice_dec.innerText = `.${decimalPart}`;
                 }
             }
 
             currencySibling.classList.add('opti');
 
             if (total_passenger > 1 && !is_1_adult_1_infant_0_child) {
-                if (document.querySelector('.dropdown-toggle .picon.picon_en')) {
-                    currencySibling.insertAdjacentHTML("afterend", `<div style="margin-top: 6px;font-size: 14px;">per passenger</div>`);
-                } else {
+                if (document.querySelector('.picon.picon_en')) {
                     currencySibling.insertAdjacentHTML("afterend", `<div style="margin-top: 6px;font-size: 14px;">لكل مسافر</div>`);
+                } else {
+                    currencySibling.insertAdjacentHTML("afterend", `<div style="margin-top: 6px;font-size: 14px;">per passenger</div>`);
                 }
 
             }
@@ -77,31 +75,31 @@ function applyMessaging(container) {
 
             const plusPrice_int = plusPrice.querySelector('.priceInt');
             if (plusPrice_int) {
-                if (document.querySelector('.dropdown-toggle .picon.picon_en')) {
-                    plusPrice_int.innerText = `+${integerPart}`;
-                } else {
+                if (document.querySelector('.picon.picon_en')) {
                     plusPrice_int.innerText = `${integerPart}`;
+                } else {
+                    plusPrice_int.innerText = `+${integerPart}`;
                 }
             }
             const plusPrice_dec = plusPrice.querySelector('.priceDec');
             if (plusPrice_dec) {
-                if (document.querySelector('.dropdown-toggle .picon.picon_en')) {
-                    plusPrice_dec.innerText = `.${decimalPart}`;
-                } else {
+                if (document.querySelector('.picon.picon_en')) {
                     plusPrice_dec.innerText = `.${decimalPart}`;
                     const plusSpan = document.createElement('span');
                     plusSpan.innerText = ' +';
                     plusSpan.style.fontFamily = 'flynas-Bold';
                     plusSpan.style.fontSize = '22px';
                     plusPrice_dec.appendChild(plusSpan);
+                } else {
+                    plusPrice_dec.innerText = `.${decimalPart}`;
                 }
             }
             currencySibling.classList.add('opti');
             if (total_passenger > 1 && !is_1_adult_1_infant_0_child) {
-                if (document.querySelector('.dropdown-toggle .picon.picon_en')) {
-                    currencySibling.insertAdjacentHTML("afterend", `<div style="margin-top: 6px;font-size: 14px;">per passenger</div>`);
-                } else {
+                if (document.querySelector('.picon.picon_en')) {
                     currencySibling.insertAdjacentHTML("afterend", `<div style="margin-top: 6px;font-size: 14px;">لكل مسافر</div>`);
+                } else {
+                    currencySibling.insertAdjacentHTML("afterend", `<div style="margin-top: 6px;font-size: 14px;">per passenger</div>`);
                 }
             }
         }
@@ -117,31 +115,31 @@ function applyMessaging(container) {
 
             const premiumPrice_int = premiumPrice.querySelector('.priceInt');
             if (premiumPrice_int) {
-                if (document.querySelector('.dropdown-toggle .picon.picon_en')) {
-                    premiumPrice_int.innerText = `+${integerPart}`;
-                } else {
+                if (document.querySelector('.picon.picon_en')) {
                     premiumPrice_int.innerText = `${integerPart}`;
+                } else {
+                    premiumPrice_int.innerText = `+${integerPart}`;
                 }
             }
             const premiumPrice_dec = premiumPrice.querySelector('.priceDec');
             if (premiumPrice_dec) {
-                if (document.querySelector('.dropdown-toggle .picon.picon_en')) {
-                    premiumPrice_dec.innerText = `.${decimalPart}`;
-                } else {
+                if (document.querySelector('.picon.picon_en')) {
                     premiumPrice_dec.innerText = `.${decimalPart}`;
                     const plusSpan = document.createElement('span');
                     plusSpan.innerText = ' +';
                     plusSpan.style.fontFamily = 'flynas-Bold';
                     plusSpan.style.fontSize = '22px';
                     premiumPrice_dec.appendChild(plusSpan);
+                } else {
+                    premiumPrice_dec.innerText = `.${decimalPart}`;
                 }
             }
             currencySibling.classList.add('opti');
             if (total_passenger > 1 && !is_1_adult_1_infant_0_child) {
-                if (document.querySelector('.dropdown-toggle .picon.picon_en')) {
-                    currencySibling.insertAdjacentHTML("afterend", `<div style="margin-top: 6px;font-size: 14px;">per passenger</div>`);
-                } else {
+                if (document.querySelector('.picon.picon_en')) {
                     currencySibling.insertAdjacentHTML("afterend", `<div style="margin-top: 6px;font-size: 14px;">لكل مسافر</div>`);
+                } else {
+                    currencySibling.insertAdjacentHTML("afterend", `<div style="margin-top: 6px;font-size: 14px;">per passenger</div>`);
                 }
             }
         }
