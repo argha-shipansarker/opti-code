@@ -436,4 +436,15 @@ if (window.location.pathname == '/Admiral/ancillary/breakdown') {
         }
 
     });
+
+    utils.observeSelector('#including-tiers-divided-ancillary .adm-confirm__result-change', function (change_btn) {
+        change_btn.addEventListener('click', function () {
+            const europ_cover_no = document.querySelector('#europeCover-no');
+            const home_cover_no = document.querySelector('#homeCover-no');
+            if (europ_cover_no && home_cover_no) {
+                europ_cover_no.click();
+                home_cover_no.click();
+            }
+        });
+    });
 }
