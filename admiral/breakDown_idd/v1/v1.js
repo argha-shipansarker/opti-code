@@ -260,6 +260,14 @@ if (window.location.pathname == '/Admiral/ancillary/breakdown') {
                 if (event.target.value == "yes") {
                     if (cover_message == "No cover added") {
                         change_btn.click();
+                        if (cover_name == "Add Roadside Assistance") {
+                            cover_footer = "By adding this cover, you confirm that you do not need breakdown cover at home and do not need breakdown cover in Europe";
+                        } else if (cover_name == "Add National Cover") {
+                            cover_footer = "By adding this cover, you confirm that it is essential to have breakdown cover from home and do not need breakdown cover in Europe.";
+                        } else if (cover_name == "Add European Cover") {
+                            cover_footer = "By adding this cover, you confirm that it is essential to have breakdown cover from home and Europe";
+                        }
+                        document.querySelector('.opti-including-ancillary-radio-inputs .footer-info').innerText = cover_footer;
                         setTimeout(() => {
                             add_cover_button.click();
                         }, 1000);
@@ -267,6 +275,8 @@ if (window.location.pathname == '/Admiral/ancillary/breakdown') {
                 } else {
                     if (cover_message == "Cover added") {
                         change_btn.click();
+                        cover_footer = "By selecting this option, you confirm that you do not need breakdown cover at home and do not need breakdown cover in Europe";
+                        document.querySelector('.opti-including-ancillary-radio-inputs .footer-info').innerText = cover_footer;
                         setTimeout(() => {
                             remove_cover_button.click();
                         }, 1000);
