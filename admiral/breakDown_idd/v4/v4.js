@@ -1,10 +1,18 @@
+function cleanup(selector) {
+    document.querySelectorAll(selector).forEach(el => el.remove());
+}
+
 const utils = optimizely.get('utils');
 
 if (window.location.pathname == '/Admiral/ancillary/breakdown') {
+    document.body.classList.add("ad409-v4");
     utils.observeSelector('#breakdown-benefits-and-contents-header', function (headerSection) {
         headerSection.style.fontWeight = '700';
         headerSection.style.marginBottom = '20px';
-        headerSection.insertAdjacentHTML("beforebegin", `<style>
+
+        cleanup('#opti-header-styles');
+        headerSection.insertAdjacentHTML("beforebegin", `<style id="opti-header-styles">
+            thead adm-table-col-select-option-price {display: none !important;}
             #breakdown-benefits-and-contents-header {
                 font-size: 16px;
             }
@@ -30,6 +38,8 @@ if (window.location.pathname == '/Admiral/ancillary/breakdown') {
     utils.observeSelector('#breakdown-tiers-banner-header', function (breakdownTierHeader) {
         breakdownTierHeader.style.borderBottom = 0;
         breakdownTierHeader.style.marginBottom = "4px";
+
+        cleanup(".opti-europe-home-radio-inputs");
         breakdownTierHeader.insertAdjacentHTML("afterend", `<div class="opti-europe-home-radio-inputs">
             <style>
                 .opti-europe-home-radio-inputs {
@@ -204,6 +214,8 @@ if (window.location.pathname == '/Admiral/ancillary/breakdown') {
                     }
                     const home_section = document.querySelector('.opti-europe-home-radio-inputs .home-section');
                     home_section.style.maxHeight = 0;
+
+                    cleanup(".opti-europe-best-cover");
                     europe_home_radio_section.insertAdjacentHTML("afterend", `<div class="opti-europe-best-cover">
                         <style>
                             .opti-europe-best-cover {
@@ -270,6 +282,8 @@ if (window.location.pathname == '/Admiral/ancillary/breakdown') {
                     if (no_best_cover) {
                         no_best_cover.remove();
                     }
+
+                    cleanup(".opti-national-best-cover");
                     europe_home_radio_section.insertAdjacentHTML("afterend", `<div class="opti-national-best-cover">
                         <style>
                             .opti-national-best-cover {
@@ -318,6 +332,8 @@ if (window.location.pathname == '/Admiral/ancillary/breakdown') {
                     }
 
                 } else {
+
+                    cleanup(".opti-no-best-cover");
                     europe_home_radio_section.insertAdjacentHTML("afterend", `<div class="opti-no-best-cover">
                         <style>
                             .opti-no-best-cover {
@@ -365,6 +381,7 @@ if (window.location.pathname == '/Admiral/ancillary/breakdown') {
     });
 
     utils.observeSelector('#ancillary-table', function (tableSection) {
+        cleanup(".opti-recomended-section");
         tableSection.parentElement.parentElement.insertAdjacentHTML("beforebegin", `<div class="opti-recomended-section">
             <style>
                 .opti-recomended-section {
