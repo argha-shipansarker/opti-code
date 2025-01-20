@@ -2,6 +2,7 @@ const { observeSelector, waitUntil } = window.optimizely.get("utils");
 
 function applyMessaging(container) {
     if (!container) return;
+    if (document.querySelector('.dropdown-toggle .picon.picon_ru')) return;
 
     const staff_pad = container.querySelector('.staff-pad');
 
@@ -61,87 +62,7 @@ function applyMessaging(container) {
             flight_info_text_altered.classList.remove('flight-info-text-altered');
         }
 
-        if (document.querySelector('.picon.picon_en')) {
-            staff_pad.insertAdjacentHTML("afterend", `<div class="opti-new-staff-pad col-md-6 text-end m-auto">
-                <style>
-                    .opti-new-staff-pad {
-                        max-width: 520px;
-                    }
-            
-                    .opti-new-staff-pad .pack-block {
-                        border: 2px solid #AFAFAF;
-                        border-radius: 10px;
-                        padding: 20px;
-                        display: flex;
-                    }
-            
-                    .opti-new-staff-pad .pack-block .pack-info {
-                        flex-basis: 65%;
-                        text-align: start;
-                    }
-            
-                    .opti-new-staff-pad .pack-block .pack-price {
-                        flex-basis: 35%;
-                        text-align: center;
-                    }
-            
-                    .opti-new-staff-pad .pack-block .pack-info p {
-                        margin-bottom: 0;
-                        font-family: 'flynas-Bold';
-                        font-size: 16px;
-                        color: #000000;
-                        letter-spacing: 0.32px;
-                    }
-            
-                    .opti-new-staff-pad .pack-block .pack-info p span {
-                        font-family: 'flynas-Medium';
-                        font-size: 16px;
-                        color: #949494;
-                    }
-            
-                    .opti-new-staff-pad .pack-block .pack-price .name {
-                        font-size: 20px;
-                        line-height: 21px;
-                        color: #AFAFAF;
-                        font-family: 'flynas-Bold';
-                        margin-bottom: 10px;
-                    }
-            
-                    .opti-new-staff-pad .pack-block .pack-price .price {
-                        margin-bottom: 10px;
-                    }
-            
-                    .opti-new-staff-pad .pack-block .pack-price .conti-btn {
-                        width: 80%;
-                        height: 33px;
-                        display: flex;
-                        justify-content: center;
-                        align-items: center;
-                        cursor: pointer;
-                        background-color: #E0396D;
-                        color: #FFFFFF;
-                        font-size: 18px;
-                        line-height: 19px;
-                        margin: auto;
-                        border-radius: 30px;
-                    }
-                </style>
-                <div class="pack-block">
-                    <div class="pack-info">
-                        <p>حقيبة المقصورة - <span>7كجمx1 </span></p>
-                        <p>حقيبة الشحن  - <span>20كجمx1</span></p>
-                        <p>الوجبات - <span>وجبة خفيفة</span></p>
-                        <p>أميال ناسمايلز: <span>200 ميل</span></p>
-                        <p>إعادة الحجز: <span>متاح مقابل رسوم ($$)</span></p>
-                    </div>
-                    <div class="pack-price">
-                        <p class="name"> لايت </p>
-                        <p class="price"></p>
-                        <div class="conti-btn">يكمل</div>
-                    </div>
-                </div>
-            </div>`)
-        } else {
+        if (document.querySelector('.dropdown-toggle .picon.picon_en')) {
             staff_pad.insertAdjacentHTML("afterend", `<div class="opti-new-staff-pad col-md-6 text-end m-auto">
                 <style>
                     .opti-new-staff-pad {
@@ -221,6 +142,86 @@ function applyMessaging(container) {
                     </div>
                 </div>
             </div>`);
+        } else {
+            staff_pad.insertAdjacentHTML("afterend", `<div class="opti-new-staff-pad col-md-6 text-end m-auto">
+                <style>
+                    .opti-new-staff-pad {
+                        max-width: 520px;
+                    }
+            
+                    .opti-new-staff-pad .pack-block {
+                        border: 2px solid #AFAFAF;
+                        border-radius: 10px;
+                        padding: 20px;
+                        display: flex;
+                    }
+            
+                    .opti-new-staff-pad .pack-block .pack-info {
+                        flex-basis: 65%;
+                        text-align: start;
+                    }
+            
+                    .opti-new-staff-pad .pack-block .pack-price {
+                        flex-basis: 35%;
+                        text-align: center;
+                    }
+            
+                    .opti-new-staff-pad .pack-block .pack-info p {
+                        margin-bottom: 0;
+                        font-family: 'flynas-Bold';
+                        font-size: 16px;
+                        color: #000000;
+                        letter-spacing: 0.32px;
+                    }
+            
+                    .opti-new-staff-pad .pack-block .pack-info p span {
+                        font-family: 'flynas-Medium';
+                        font-size: 16px;
+                        color: #949494;
+                    }
+            
+                    .opti-new-staff-pad .pack-block .pack-price .name {
+                        font-size: 20px;
+                        line-height: 21px;
+                        color: #AFAFAF;
+                        font-family: 'flynas-Bold';
+                        margin-bottom: 10px;
+                    }
+            
+                    .opti-new-staff-pad .pack-block .pack-price .price {
+                        margin-bottom: 10px;
+                    }
+            
+                    .opti-new-staff-pad .pack-block .pack-price .conti-btn {
+                        width: 80%;
+                        height: 33px;
+                        display: flex;
+                        justify-content: center;
+                        align-items: center;
+                        cursor: pointer;
+                        background-color: #E0396D;
+                        color: #FFFFFF;
+                        font-size: 18px;
+                        line-height: 19px;
+                        margin: auto;
+                        border-radius: 30px;
+                    }
+                </style>
+                <div class="pack-block">
+                    <div class="pack-info">
+                        <p>حقيبة المقصورة - <span>7كجمx1 </span></p>
+                        <p>حقيبة الشحن  - <span>20كجمx1</span></p>
+                        <p>الوجبات - <span>وجبة خفيفة</span></p>
+                        <p>أميال ناسمايلز: <span>200 ميل</span></p>
+                        <p>إعادة الحجز: <span>متاح مقابل رسوم ($$)</span></p>
+                    </div>
+                    <div class="pack-price">
+                        <p class="name"> لايت </p>
+                        <p class="price"></p>
+                        <div class="conti-btn">يكمل</div>
+                    </div>
+                </div>
+            </div>`)
         }
 
         const priceElement = container.querySelector('.opti-new-staff-pad .pack-block .pack-price .price');
@@ -232,7 +233,11 @@ function applyMessaging(container) {
                 light_bundle_box.click();
             });
         } else {
-            continueBtn.innerText = "Sold Out";
+            if (document.querySelector('.dropdown-toggle .picon.picon_en')) {
+                continueBtn.innerText = "Sold Out";
+            } else {
+                continueBtn.innerText = "لا تتوفر مقاعد";
+            }
             continueBtn.style.cursor = "default";
         }
 
@@ -259,7 +264,7 @@ function applyMessaging(container) {
             if (price_container) {
                 price_container.style.setProperty("border", "none", "important");
 
-                if (document.querySelector('.picon.picon_en')) {
+                if (document.querySelector('.dropdown-toggle .picon.picon_ar')) {
                     price_container.style.setProperty("padding-top", "0", "important");
                 }
             }
@@ -303,7 +308,7 @@ function applyMessaging(container) {
         </style>
     
         <div class="add-button">
-            ${document.querySelector('.picon.picon_en') ? "يضيف" : "Add"}
+            ${document.querySelector('.dropdown-toggle .picon.picon_en') ? "Add" : "يضيف"}
         </div>
     </div>`)
 
@@ -324,7 +329,7 @@ function applyMessaging(container) {
             if (price_container) {
                 price_container.style.setProperty("border", "none", "important");
 
-                if (document.querySelector('.picon.picon_en')) {
+                if (document.querySelector('.dropdown-toggle .picon.picon_ar')) {
                     price_container.style.setProperty("padding-top", "0", "important");
                 }
             }
@@ -368,7 +373,7 @@ function applyMessaging(container) {
         </style>
     
         <div class="add-button">
-        ${document.querySelector('.picon.picon_en') ? "يضيف" : "Add"}
+        ${document.querySelector('.dropdown-toggle .picon.picon_en') ? "Add" : "يضيف"}
         </div>
     </div>`)
 
@@ -388,7 +393,7 @@ function applyMessaging(container) {
             if (price_container) {
                 price_container.style.setProperty("border", "none", "important");
 
-                if (document.querySelector('.picon.picon_en')) {
+                if (document.querySelector('.dropdown-toggle .picon.picon_ar')) {
                     price_container.style.setProperty("padding-top", "0", "important");
                 }
             }
@@ -432,7 +437,7 @@ function applyMessaging(container) {
         </style>
     
         <div class="add-button">
-        ${document.querySelector('.picon.picon_en') ? "يضيف" : "Add"}
+        ${document.querySelector('.dropdown-toggle .picon.picon_en') ? "Add" : "يضيف"}
         </div>
     </div>`)
 
@@ -476,33 +481,33 @@ function applyMessaging(container) {
             const [integerPart, decimalPart] = extra_value_price.split('.');
             const valuePrice_int = valuePrice.querySelector('.priceInt');
             if (valuePrice_int) {
-                if (document.querySelector('.picon.picon_en')) {
-                    valuePrice_int.innerText = `${integerPart}`;
-                } else {
+                if (document.querySelector('.dropdown-toggle .picon.picon_en')) {
                     valuePrice_int.innerText = `+${integerPart}`;
+                } else {
+                    valuePrice_int.innerText = `${integerPart}`;
                 }
             }
             const valuePrice_dec = valuePrice.querySelector('.priceDec');
             if (valuePrice_dec) {
-                if (document.querySelector('.picon.picon_en')) {
+                if (document.querySelector('.dropdown-toggle .picon.picon_en')) {
+                    valuePrice_dec.innerText = `.${decimalPart}`;
+                } else {
                     valuePrice_dec.innerText = `.${decimalPart}`;
                     const plusSpan = document.createElement('span');
                     plusSpan.innerText = ' +';
                     plusSpan.style.fontFamily = 'flynas-Bold';
                     plusSpan.style.fontSize = '22px';
                     valuePrice_dec.appendChild(plusSpan);
-                } else {
-                    valuePrice_dec.innerText = `.${decimalPart}`;
                 }
             }
 
             currencySibling.classList.add('opti');
 
             if (total_passenger > 1 && !is_1_adult_1_infant_0_child) {
-                if (document.querySelector('.picon.picon_en')) {
-                    currencySibling.insertAdjacentHTML("afterend", `<div style="margin-top: 6px;font-size: 14px;">لكل مسافر</div>`);
-                } else {
+                if (document.querySelector('.dropdown-toggle .picon.picon_en')) {
                     currencySibling.insertAdjacentHTML("afterend", `<div style="margin-top: 6px;font-size: 14px;">per passenger</div>`);
+                } else {
+                    currencySibling.insertAdjacentHTML("afterend", `<div style="margin-top: 6px;font-size: 14px;">لكل مسافر</div>`);
                 }
 
             }
@@ -519,31 +524,31 @@ function applyMessaging(container) {
 
             const plusPrice_int = plusPrice.querySelector('.priceInt');
             if (plusPrice_int) {
-                if (document.querySelector('.picon.picon_en')) {
-                    plusPrice_int.innerText = `${integerPart}`;
-                } else {
+                if (document.querySelector('.dropdown-toggle .picon.picon_en')) {
                     plusPrice_int.innerText = `+${integerPart}`;
+                } else {
+                    plusPrice_int.innerText = `${integerPart}`;
                 }
             }
             const plusPrice_dec = plusPrice.querySelector('.priceDec');
             if (plusPrice_dec) {
-                if (document.querySelector('.picon.picon_en')) {
+                if (document.querySelector('.dropdown-toggle .picon.picon_en')) {
+                    plusPrice_dec.innerText = `.${decimalPart}`;
+                } else {
                     plusPrice_dec.innerText = `.${decimalPart}`;
                     const plusSpan = document.createElement('span');
                     plusSpan.innerText = ' +';
                     plusSpan.style.fontFamily = 'flynas-Bold';
                     plusSpan.style.fontSize = '22px';
                     plusPrice_dec.appendChild(plusSpan);
-                } else {
-                    plusPrice_dec.innerText = `.${decimalPart}`;
                 }
             }
             currencySibling.classList.add('opti');
             if (total_passenger > 1 && !is_1_adult_1_infant_0_child) {
-                if (document.querySelector('.picon.picon_en')) {
-                    currencySibling.insertAdjacentHTML("afterend", `<div style="margin-top: 6px;font-size: 14px;">لكل مسافر</div>`);
-                } else {
+                if (document.querySelector('.dropdown-toggle .picon.picon_en')) {
                     currencySibling.insertAdjacentHTML("afterend", `<div style="margin-top: 6px;font-size: 14px;">per passenger</div>`);
+                } else {
+                    currencySibling.insertAdjacentHTML("afterend", `<div style="margin-top: 6px;font-size: 14px;">لكل مسافر</div>`);
                 }
             }
         }
@@ -559,31 +564,31 @@ function applyMessaging(container) {
 
             const premiumPrice_int = premiumPrice.querySelector('.priceInt');
             if (premiumPrice_int) {
-                if (document.querySelector('.picon.picon_en')) {
-                    premiumPrice_int.innerText = `${integerPart}`;
-                } else {
+                if (document.querySelector('.dropdown-toggle .picon.picon_en')) {
                     premiumPrice_int.innerText = `+${integerPart}`;
+                } else {
+                    premiumPrice_int.innerText = `${integerPart}`;
                 }
             }
             const premiumPrice_dec = premiumPrice.querySelector('.priceDec');
             if (premiumPrice_dec) {
-                if (document.querySelector('.picon.picon_en')) {
+                if (document.querySelector('.dropdown-toggle .picon.picon_en')) {
+                    premiumPrice_dec.innerText = `.${decimalPart}`;
+                } else {
                     premiumPrice_dec.innerText = `.${decimalPart}`;
                     const plusSpan = document.createElement('span');
                     plusSpan.innerText = ' +';
                     plusSpan.style.fontFamily = 'flynas-Bold';
                     plusSpan.style.fontSize = '22px';
                     premiumPrice_dec.appendChild(plusSpan);
-                } else {
-                    premiumPrice_dec.innerText = `.${decimalPart}`;
                 }
             }
             currencySibling.classList.add('opti');
             if (total_passenger > 1 && !is_1_adult_1_infant_0_child) {
-                if (document.querySelector('.picon.picon_en')) {
-                    currencySibling.insertAdjacentHTML("afterend", `<div style="margin-top: 6px;font-size: 14px;">لكل مسافر</div>`);
-                } else {
+                if (document.querySelector('.dropdown-toggle .picon.picon_en')) {
                     currencySibling.insertAdjacentHTML("afterend", `<div style="margin-top: 6px;font-size: 14px;">per passenger</div>`);
+                } else {
+                    currencySibling.insertAdjacentHTML("afterend", `<div style="margin-top: 6px;font-size: 14px;">لكل مسافر</div>`);
                 }
             }
         }
