@@ -1,10 +1,16 @@
+function cleanup(selector) {
+    document.querySelectorAll(selector).forEach(el => el.remove());
+}
+
 const utils = optimizely.get('utils');
 
 if (window.location.pathname == '/Admiral/ancillary/breakdown') {
     utils.observeSelector('#breakdown-benefits-and-contents-header', function (headerSection) {
         headerSection.style.fontWeight = '700';
         headerSection.style.marginBottom = '20px';
-        headerSection.insertAdjacentHTML("beforebegin", `<style>
+        cleanup('#opti-header-styles');
+        headerSection.insertAdjacentHTML("beforebegin", `<style id="opti-header-styles">
+            thead adm-table-col-select-option-price {display: none !important;}
             #breakdown-benefits-and-contents-header {
                 font-size: 16px;
             }
@@ -29,6 +35,8 @@ if (window.location.pathname == '/Admiral/ancillary/breakdown') {
 
     utils.observeSelector('#breakdown-tiers-banner-header', function (breakdownTierHeader) {
         breakdownTierHeader.style.borderBottom = 0;
+
+        cleanup('.opti-no-best-cover');
         breakdownTierHeader.insertAdjacentHTML("afterend", `<div class="opti-no-best-cover">
             <style>
                 .opti-no-best-cover {
@@ -90,6 +98,7 @@ if (window.location.pathname == '/Admiral/ancillary/breakdown') {
             cover_footer = "By adding this cover, you confirm that it is essential to have breakdown cover from home and Europe";
         }
 
+        cleanup('.opti-including-ancillary-radio-inputs');
         includingAncillary.insertAdjacentHTML("afterend", `<div class="opti-including-ancillary-radio-inputs">
     <style>
         .opti-including-ancillary-radio-inputs {
@@ -251,12 +260,16 @@ if (window.location.pathname == '/Admiral/ancillary/breakdown') {
                 if (event.target.value == "yes") {
                     if (cover_message == "No cover added") {
                         change_btn.click();
-                        add_cover_button.click();
+                        setTimeout(() => {
+                            add_cover_button.click();
+                        }, 1000);
                     }
                 } else {
                     if (cover_message == "Cover added") {
                         change_btn.click();
-                        remove_cover_button.click();
+                        setTimeout(() => {
+                            remove_cover_button.click();
+                        }, 1000);
                     }
                 }
             });
@@ -311,6 +324,7 @@ if (window.location.pathname == '/Admiral/ancillary/breakdown') {
         if (header) {
             header.style.borderBottom = 0;
             header.style.paddingBottom = 0;
+            cleanup('.opti-ancillary-new-text');
             header.insertAdjacentHTML('afterend', `<div class="opti-ancillary-new-text">
     <style>
         .opti-ancillary-new-text {
@@ -335,5 +349,16 @@ if (window.location.pathname == '/Admiral/ancillary/breakdown') {
             money_section.style.borderTop = 0;
         }
 
+    });
+
+    utils.observeSelector('#including-tiers-divided-ancillary .adm-confirm__result-change', function (change_btn) {
+        change_btn.addEventListener('click', function () {
+            const europ_cover_no = document.querySelector('#europeCover-no');
+            const home_cover_no = document.querySelector('#homeCover-no');
+            if (europ_cover_no && home_cover_no) {
+                europ_cover_no.click();
+                home_cover_no.click();
+            }
+        });
     });
 }
