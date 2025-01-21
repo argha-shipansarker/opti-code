@@ -1,10 +1,17 @@
+function cleanup(selector) {
+    document.querySelectorAll(selector).forEach(el => el.remove());
+}
+
 const utils = optimizely.get('utils');
 
 if (window.location.pathname == '/Admiral/ancillary/breakdown') {
     utils.observeSelector('#breakdown-benefits-and-contents-header', function (headerSection) {
         headerSection.style.fontWeight = '700';
         headerSection.style.marginBottom = '20px';
-        headerSection.insertAdjacentHTML("beforebegin", `<style>
+
+        cleanup('#opti-header-styles');
+        headerSection.insertAdjacentHTML("beforebegin", `<style id="opti-header-styles">
+            thead adm-table-col-select-option-price {display: none !important;}
             #breakdown-benefits-and-contents-header {
                 font-size: 16px;
             }
@@ -30,6 +37,8 @@ if (window.location.pathname == '/Admiral/ancillary/breakdown') {
     utils.observeSelector('#breakdown-tiers-banner-header', function (breakdownTierHeader) {
         breakdownTierHeader.style.borderBottom = 0;
         breakdownTierHeader.style.marginBottom = "4px";
+
+        cleanup('.opti-europe-checkbox');
         breakdownTierHeader.insertAdjacentHTML("afterend", `<div class="opti-europe-checkbox">
                 <style>
                     .opti-europe-checkbox {
@@ -132,6 +141,7 @@ if (window.location.pathname == '/Admiral/ancillary/breakdown') {
 
         });
 
+        cleanup('.opti-no-best-cover');
         document.querySelector('.opti-europe-checkbox').insertAdjacentHTML("afterend", `<div class="opti-no-best-cover">
                             <style>
                                 .opti-no-best-cover {
