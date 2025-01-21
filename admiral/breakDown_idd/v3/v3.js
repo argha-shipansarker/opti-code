@@ -109,7 +109,11 @@ if (window.location.pathname == '/Admiral/ancillary/breakdown') {
     </div>
 </div>`);
 
-        document.querySelector('#uk-only').checked = true;
+        if (document.querySelector('#europeCover-yes').checked) {
+            document.querySelector('#uk-and-europe').checked = true;
+        } else {
+            document.querySelector('#uk-only').checked = true;
+        }
 
         const radio_inputs = document.querySelectorAll('.opti-uk-europe-radio-inputs .radio-inputs input[type="radio"]');
 
@@ -136,12 +140,15 @@ if (window.location.pathname == '/Admiral/ancillary/breakdown') {
                 } else {
                     const europ_cover_yes = document.querySelector('#europeCover-yes');
                     europ_cover_yes.click();
-                    const europe_cover = document.querySelector('#ancillary-table colgroup col:nth-of-type(2)');
-                    europe_cover.style.width = "54%";
+                    if (europ_cover_yes.checked) {
+                        const europe_cover = document.querySelector('#ancillary-table colgroup col:nth-of-type(2)');
+                        europe_cover.style.width = "54%";
 
-                    if (window.innerWidth < 500) {
-                        document.querySelector('#ancillary-table').classList.remove('adm-table-col-select--num-cols-2');
+                        if (window.innerWidth < 500) {
+                            document.querySelector('#ancillary-table').classList.remove('adm-table-col-select--num-cols-2');
+                        }
                     }
+
                 }
             });
         });
@@ -177,8 +184,12 @@ if (window.location.pathname == '/Admiral/ancillary/breakdown') {
         const europ_cover_no = radioButtonSection.querySelector('#europeCover-no');
         const home_cover_no = radioButtonSection.querySelector('#homeCover-no');
         if (europ_cover_no && home_cover_no) {
-            europ_cover_no.click();
-            home_cover_no.click();
+
+            if (!document.querySelector('.adm-table-col-select--num-cols-1')) {
+                europ_cover_no.click();
+                home_cover_no.click();
+            }
+
         }
     });
 
@@ -186,13 +197,17 @@ if (window.location.pathname == '/Admiral/ancillary/breakdown') {
         const colgroup = tableSection.querySelector('colgroup');
         const rodeside_assistance = colgroup.querySelector('col:nth-of-type(2)');
         const national_cover = colgroup.querySelector('col:nth-of-type(3)');
-        rodeside_assistance.style.width = "27%";
-        national_cover.style.width = "27%";
 
-        if (window.innerWidth < 500) {
-            tableSection.classList.remove('adm-table-col-select--num-cols-3');
-            tableSection.classList.add('adm-table-col-select--num-cols-2');
+        if (!document.querySelector('.adm-table-col-select--num-cols-1')) {
+            rodeside_assistance.style.width = "27%";
+            national_cover.style.width = "27%";
+
+            if (window.innerWidth < 500) {
+                tableSection.classList.remove('adm-table-col-select--num-cols-3');
+                tableSection.classList.add('adm-table-col-select--num-cols-2');
+            }
         }
+
     });
 
     utils.observeSelector('#no-breakdown-cover-selected', function (no_cover_selected) {
@@ -216,6 +231,17 @@ if (window.location.pathname == '/Admiral/ancillary/breakdown') {
             money_section.style.borderTop = 0;
         }
 
+    });
+
+    utils.observeSelector('#including-tiers-divided-ancillary .adm-confirm__result-change', function (change_btn) {
+        change_btn.addEventListener('click', function () {
+            const europ_cover_no = document.querySelector('#europeCover-no');
+            const home_cover_no = document.querySelector('#homeCover-no');
+            if (europ_cover_no && home_cover_no) {
+                europ_cover_no.click();
+                home_cover_no.click();
+            }
+        });
     });
 
 }
