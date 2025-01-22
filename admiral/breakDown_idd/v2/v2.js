@@ -107,6 +107,10 @@ if (window.location.pathname == '/Admiral/ancillary/breakdown') {
                 </label>
             </div>`);
 
+        if (document.querySelector('#europeCover-yes').checked) {
+            document.querySelector('#opti-euro-checkbox').checked = true
+        }
+
         document.getElementById('opti-euro-checkbox').addEventListener('change', (event) => {
 
             if (event.target.checked) {
