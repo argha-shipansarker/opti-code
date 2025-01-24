@@ -417,14 +417,14 @@ if (window.location.href.indexOf('/Admiral/quote') > -1) {
         </div>
     </div>`);
 
-        const existing_heading = document.querySelector('.opt-home-details-container .opti-home-heading')
+        const existing_heading = document.querySelector('.opt-home-details-container .opti-home-heading');
         const dynamic_heading = document.querySelector('.adm-section:has(+#quote-summary) [data-test="multicover-promo-text"]').cloneNode(true);
         dynamic_heading.classList.add('opti-home-heading');
         existing_heading.parentNode.replaceChild(dynamic_heading, existing_heading);
 
-        const existing_footer = document.querySelector('.opt-home-details-container .footer-info')
+        const existing_footer = document.querySelector('.opt-home-details-container .footer-info');
         const dynamic_footer = document.querySelector('.adm-section:has(+#quote-summary) [data-test="multicover-promo-footer"]').cloneNode(true);
-        dynamic_heading.classList.add('footer-info');
+        dynamic_footer.classList.add('footer-info');
         existing_footer.parentNode.replaceChild(dynamic_footer, existing_footer);
     };
 
