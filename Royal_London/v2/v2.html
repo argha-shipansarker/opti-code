@@ -1,0 +1,70 @@
+<div class="opti-login-dropdown">
+    <style>
+        .opti-login-dropdown {
+            position: absolute;
+            top: 52px;
+            background: #F2F3F4;
+            z-index: 9999999999;
+            left: 86px;
+            display: none;
+        }
+
+        .opti-login-dropdown .dd-container {
+            padding: 32px 16px 11px;
+            text-align: start;
+        }
+
+        .opti-login-dropdown .dd-container a {
+            color: #470054;
+            font-size: 16px;
+            line-height: 21px;
+            font-weight: 700;
+            font-family: Grot10 Bold, Helvetica, Arial, sans-serif;
+            text-decoration: none;
+            display: inline-block;
+            border-bottom: 0;
+            position: relative;
+        }
+
+        .opti-login-dropdown .dd-container a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background-color: #470054;
+            display: none;
+        }
+
+        .opti-login-dropdown .dd-container a:hover {
+            opacity: 0.8;
+        }
+
+        .opti-login-dropdown .dd-container a:hover::after {
+            display: block;
+        }
+
+        .opti-login-dropdown .dd-container .margin-bottom {
+            margin-bottom: 24px;
+        }
+
+        .opti-login-dropdown .dd-container .horizontal-line {
+            width: 100%;
+            height: 2px;
+            background-color: #D9D9D9;
+        }
+    </style>
+    <div class="dd-container">
+        <a class="margin-bottom" href="https://www.royallondon.com/secure/customer/dashboard">Pensions started in 2004
+            or later</a>
+        <a class="margin-bottom" href="https://my.royallondon.com/">Pensions started before 2004</a>
+        <a class="margin-bottom" href="https://www.royallondon.com/existing-customers/online-service/">Not sure?</a>
+        <div class="horizontal-line margin-bottom"></div>
+        <a class="margin-bottom" href="https://my.royallondon.com/">Life Insurance & Investments</a>
+        <div class="horizontal-line margin-bottom"></div>
+        <a href="https://www.royallondon.com/existing-customers/online-service/download-our-mobile-app/">Download our
+            app <span style="font-weight: 400; display: block; font-family: PT Serif,Georgia,serif;">(Pensions
+                started in 2004 or later)</span></a>
+    </div>
+</div>
