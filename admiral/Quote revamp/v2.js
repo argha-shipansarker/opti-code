@@ -240,6 +240,11 @@ if (window.location.href.indexOf('/Admiral/quote') > -1) {
                                         line-height: 30px;
                                         display: block;
                                     }
+
+                                    .opti-slide-content.van .description .heading span[data-test="add-car-van-banner-van-text"]{
+                                        font-size: 18px;
+                                        line-height: 24px;
+                                    }
     
                                     .opti-slide-content img {
                                         flex-basis: 40%;
@@ -354,7 +359,8 @@ if (window.location.href.indexOf('/Admiral/quote') > -1) {
                                         padding-left: 10px;
                                     }
     
-                                    .opti-slide-data.mobile-view .opti-slide-content .description .heading {
+                                    .opti-slide-data.mobile-view .opti-slide-content .description .heading,
+                                    .opti-slide-data.mobile-view .opti-slide-content .description .heading span[data-test="add-car-van-banner-van-text"] {
                                         font-weight: 400;
                                     }
     
@@ -615,6 +621,7 @@ if (window.location.href.indexOf('/Admiral/quote') > -1) {
         <p class="opti-footer-text">More offers available</p>
     </div>`);
 
+        // dynamic home heading and footer
         const existing_heading_home_desktop = document.querySelector('.opti-slide-data.desktop-view.home .description .heading');
         const existing_heading_home_mobile = document.querySelector('.opti-slide-data.mobile-view.home .description .heading');
 
@@ -640,6 +647,62 @@ if (window.location.href.indexOf('/Admiral/quote') > -1) {
 
         existing_footer_home_desktop.parentNode.replaceChild(dynamic_footer_home_desktop, existing_footer_home_desktop);
         existing_footer_home_mobile.parentNode.replaceChild(dynamic_footer_home_mobile, existing_footer_home_mobile);
+
+        // dynamic car heading and footer
+        const existing_heading_car_desktop = document.querySelector('.opti-slide-data.desktop-view.car .description .heading');
+        const existing_heading_car_mobile = document.querySelector('.opti-slide-data.mobile-view.car .description .heading');
+
+        const dynamic_heading_car_desktop = document.querySelector('.adm-section:has(+#quote-summary) [data-test="add-car-van-banner-car-header"] p.adm-text-helper').cloneNode(true);
+        const dynamic_heading_car_mobile = document.querySelector('.adm-section:has(+#quote-summary) [data-test="add-car-van-banner-car-header"] p.adm-text-helper').cloneNode(true);
+
+        dynamic_heading_car_mobile.querySelectorAll('br').forEach(br => br.remove());
+        dynamic_heading_car_desktop.querySelectorAll('br').forEach(br => br.remove());
+
+        dynamic_heading_car_desktop.classList.add('heading');
+        dynamic_heading_car_mobile.classList.add('heading');
+
+        existing_heading_car_desktop.parentNode.replaceChild(dynamic_heading_car_desktop, existing_heading_car_desktop);
+        existing_heading_car_mobile.parentNode.replaceChild(dynamic_heading_car_mobile, existing_heading_car_mobile);
+
+        const existing_footer_car_desktop = document.querySelector('.opti-slide-data.desktop-view.car .footer-info');
+        const existing_footer_car_mobile = document.querySelector('.opti-slide-data.mobile-view.car .footer-info');
+
+        const dynamic_footer_car_desktop = document.querySelector('.adm-section:has(+#quote-summary) [data-test="add-car-van-banner-car-footer"]').cloneNode(true);
+        const dynamic_footer_car_mobile = document.querySelector('.adm-section:has(+#quote-summary) [data-test="add-car-van-banner-car-footer"]').cloneNode(true);
+
+        dynamic_footer_car_desktop.classList.add('footer-info');
+        dynamic_footer_car_mobile.classList.add('footer-info');
+
+        existing_footer_car_desktop.parentNode.replaceChild(dynamic_footer_car_desktop, existing_footer_car_desktop);
+        existing_footer_car_mobile.parentNode.replaceChild(dynamic_footer_car_mobile, existing_footer_car_mobile);
+
+        // dynamic van heading and footer
+        const existing_heading_van_desktop = document.querySelector('.opti-slide-data.desktop-view.van .description .heading');
+        const existing_heading_van_mobile = document.querySelector('.opti-slide-data.mobile-view.van .description .heading');
+
+        const dynamic_heading_van_desktop = document.querySelector('.adm-section:has(+#quote-summary) [data-test="add-car-van-banner-van-savings"]').cloneNode(true);
+        const dynamic_heading_van_mobile = document.querySelector('.adm-section:has(+#quote-summary) [data-test="add-car-van-banner-van-savings"]').cloneNode(true);
+
+        dynamic_heading_van_mobile.querySelectorAll('br').forEach(br => br.remove());
+        dynamic_heading_van_desktop.querySelectorAll('br').forEach(br => br.remove());
+
+        dynamic_heading_van_desktop.classList.add('heading');
+        dynamic_heading_van_mobile.classList.add('heading');
+
+        existing_heading_van_desktop.parentNode.replaceChild(dynamic_heading_van_desktop, existing_heading_van_desktop);
+        existing_heading_van_mobile.parentNode.replaceChild(dynamic_heading_van_mobile, existing_heading_van_mobile);
+
+        const existing_footer_van_desktop = document.querySelector('.opti-slide-data.desktop-view.van .footer-info');
+        const existing_footer_van_mobile = document.querySelector('.opti-slide-data.mobile-view.van .footer-info');
+
+        const dynamic_footer_van_desktop = document.querySelector('.adm-section:has(+#quote-summary) [data-test="add-car-van-banner-van-disclaimer"]').cloneNode(true);
+        const dynamic_footer_van_mobile = document.querySelector('.adm-section:has(+#quote-summary) [data-test="add-car-van-banner-van-disclaimer"]').cloneNode(true);
+
+        dynamic_footer_van_desktop.classList.add('footer-info', 'van');
+        dynamic_footer_van_mobile.classList.add('footer-info', 'van');
+
+        existing_footer_van_desktop.parentNode.replaceChild(dynamic_footer_van_desktop, existing_footer_van_desktop);
+        existing_footer_van_mobile.parentNode.replaceChild(dynamic_footer_van_mobile, existing_footer_van_mobile);
 
         window.currentSlide = 1;
         let carouselInterval;
