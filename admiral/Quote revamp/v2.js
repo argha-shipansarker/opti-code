@@ -85,9 +85,18 @@ if (window.location.href.indexOf('/Admiral/quote') > -1) {
             }
     
             .opti-text-carousel .opti-quote-carousel {
-                margin-bottom: 32px;
+                margin-bottom: 6px;
                 -webkit-tap-highlight-color: transparent;
                 -moz-tap-highlight-color: transparent;
+            }
+
+            .opti-text-carousel .opti-footer-text {
+                margin-bottom: 32px;
+                font-size: 16px;
+                line-height: 24px;
+                font-weight: 700;
+                text-align: center;
+                color: #25469B;
             }
     
             .opti-text-carousel .opti-quote-carousel .carousel-container {
@@ -603,6 +612,7 @@ if (window.location.href.indexOf('/Admiral/quote') > -1) {
                 </button>
             </div>
         </div>
+        <p class="opti-footer-text">More offers available</p>
     </div>`);
 
         const existing_heading_home_desktop = document.querySelector('.opti-slide-data.desktop-view.home .description .heading');
