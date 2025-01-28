@@ -749,7 +749,7 @@ if (window.location.href.indexOf('/Admiral/quote') > -1) {
                     if (entry.isIntersecting) {
                         currentItemIndex = Array.from(items).indexOf(entry.target);
                         window.setCarouselCopySlide(currentItemIndex + 1, false, true);
-                        startCarouselInterval()
+                        startCarouselInterval();
                     } else {
                     }
                 });
