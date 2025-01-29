@@ -101,7 +101,7 @@ utils.waitForElement('#header .login-container .d-lg-flex a[title="Customer Logi
 
     login_btn.addEventListener('click', function (event) {
         event.preventDefault();
-        const login_dd = document.querySelector('.opti-login-dropdown')
+        const login_dd = document.querySelector('.opti-login-dropdown');
         if (login_dd) {
             const login_dd_display_value = window.getComputedStyle(login_dd).display;
             if (login_dd_display_value == "none") {
@@ -110,7 +110,7 @@ utils.waitForElement('#header .login-container .d-lg-flex a[title="Customer Logi
                 login_dd.style.display = 'none';
             }
         }
-    })
+    });
 
     document.addEventListener("click", function (event) {
         const dropdown = document.querySelector(".opti-login-dropdown");
@@ -237,6 +237,6 @@ utils.waitForElement('#header .navbar-expand-lg .d-lg-none a[title="Customer Log
                 dropdown.style.height = "0px";
             }
         }
-    })
+    });
 
 });
