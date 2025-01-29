@@ -1,6 +1,7 @@
 var utils = optimizely.get('utils');
 
 utils.waitForElement('#header .login-container .d-lg-flex a[title="Customer Login"]').then(function (login_btn) {
+    login_btn.classList.add("opti-login-dd");
     login_btn.insertAdjacentHTML("afterend", `
 <div class="opti-register-btn">
     <style>
@@ -127,6 +128,7 @@ utils.waitForElement('#header .login-container .d-lg-flex a[title="Customer Logi
 });
 
 utils.waitForElement('#header .navbar-expand-lg .d-lg-none a[title="Customer Login"]').then(function (login_btn_mobile) {
+    login_btn_mobile.innerText = "Login";
     login_btn_mobile.insertAdjacentHTML("afterend", `
 <div class="opti-register-btn-mobile">
     <style>
