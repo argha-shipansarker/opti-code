@@ -287,6 +287,11 @@ if (window.location.pathname == '/Admiral/ancillary/breakdown') {
                 padding-top: 6px;
             }
 
+            .opti-europe-home-radio-inputs .europe-section .europe-input-error,
+            .opti-europe-home-radio-inputs .home-section .home-input-error {
+                width: 100%;
+            }
+
             .opti-europe-home-radio-inputs .europe-section .europe-radio-inputs,
             .opti-europe-home-radio-inputs .home-section .home-radio-inputs {
                 justify-content: space-between;
@@ -299,12 +304,8 @@ if (window.location.pathname == '/Admiral/ancillary/breakdown') {
             }
 
             .opti-europe-home-radio-inputs .error-design {
-                padding: 8px 16px;
-                display: flex;
-                background: #fae5ea;
                 width: 100%;
                 margin-left: 0px;
-                margin-top: 8px;
             }
         }
     </style>
@@ -637,7 +638,12 @@ if (window.location.pathname == '/Admiral/ancillary/breakdown') {
                             home_error.style.display = "flex";
 
                             const home_section = document.querySelector('.opti-europe-home-radio-inputs .home-section');
-                            home_section.style.maxHeight = document.querySelector('.opti-europe-home-radio-inputs .home-input-error').scrollHeight + 'px';
+
+                            if (window.innerWidth < 500) {
+                                home_section.style.maxHeight = '180px';
+                            } else {
+                                home_section.style.maxHeight = document.querySelector('.opti-europe-home-radio-inputs .home-input-error').scrollHeight + 'px';
+                            }
 
                             document.querySelector(".opti-europe-home-radio-inputs .home-radio-inputs").scrollIntoView({ behavior: "smooth", block: "center" });
                         }
