@@ -78,7 +78,7 @@ utils.waitForElement('#main-content .standardPage .content-heading').then(functi
                     font-size: 61px;
                     font-weight: 700;
                     line-height: 70px;
-                    color: #6C3376;
+                    color: #470054;
                 }
 
                 @media (max-width: 600px) {
@@ -216,11 +216,11 @@ utils.waitForElement('.richtextcontainerblock').then(function (rich_text) {
             gap: 24px;
         }
 
-        .opti-login-new-design .login-description.desktop {
+        .opti-login-new-design .desktop {
             display: block;
         }
 
-        .opti-login-new-design .login-description.mobile {
+        .opti-login-new-design .mobile {
             display: none;
         }
 
@@ -309,11 +309,11 @@ utils.waitForElement('.richtextcontainerblock').then(function (rich_text) {
                 width: 100%;
             }
 
-            .opti-login-new-design .login-description.desktop {
+            .opti-login-new-design .desktop {
                 display: none;
             }
 
-            .opti-login-new-design .login-description.mobile {
+            .opti-login-new-design .mobile {
                 display: block;
             }
 
@@ -374,7 +374,7 @@ utils.waitForElement('.richtextcontainerblock').then(function (rich_text) {
                 </ul>
             </div>
             <div class="login-description mobile" style="margin-top: 16px;">
-                <p class="description-text" style="margin-bottom: 16px;">Royal London and Scottish Life customers can
+                <p class="description-text" style="margin-bottom: 16px;">Royal London and Scottish Life customers.
                 </p>
                 <p class="description-text" style="margin-bottom: 24px;">Our <a
                         href="https://www.royallondon.com/existing-customers/online-service/download-our-mobile-app/">mobile
@@ -394,8 +394,11 @@ utils.waitForElement('.richtextcontainerblock').then(function (rich_text) {
                 <p class="description-text">
                     If you have a Personal Menu or Whole of Life insurance policy with Royal London.
                 </p>
-                <p class="description-text" style="margin-bottom: 16px; margin-top: 20px;">
+                <p class="description-text desktop" style="margin-bottom: 16px; margin-top: 20px;">
                     You can also log in to manage pensions or investments started before 2004 with:
+                </p>
+                <p class="description-text mobile" style="margin-bottom: 16px; margin-top: 20px;">
+                    You can also log in to manage pensions or investments started before 2004.
                 </p>
                 <ul style="margin-bottom: 40px;">
                     <li>Royal London</li>
