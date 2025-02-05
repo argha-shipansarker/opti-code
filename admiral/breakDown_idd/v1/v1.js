@@ -10,7 +10,6 @@ if (window.location.pathname == '/Admiral/ancillary/breakdown') {
         headerSection.style.marginBottom = '20px';
         cleanup('#opti-header-styles');
         headerSection.insertAdjacentHTML("beforebegin", `<style id="opti-header-styles">
-            thead adm-table-col-select-option-price {display: none !important;}
             #breakdown-benefits-and-contents-header {
                 font-size: 16px;
             }
