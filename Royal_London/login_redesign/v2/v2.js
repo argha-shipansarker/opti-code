@@ -1,6 +1,7 @@
 var utils = optimizely.get('utils');
 
 utils.waitForElement('#header .login-container .d-lg-flex a[title="Customer Login"]').then(function (login_btn) {
+    login_btn.innerText = "Customer login";
     login_btn.insertAdjacentHTML("afterend", `
 <div class="opti-register-btn">
     <style>
