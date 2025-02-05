@@ -79,7 +79,7 @@ if (window.location.pathname == '/Admiral/ancillary/breakdown') {
         cover_selected.parentElement.parentElement.style.display = "none";
     });
 
-    utils.observeSelector('#including-ancillary', function (includingAncillary) {
+    utils.observeSelector('eui-breakdown #including-ancillary', function (includingAncillary) {
         includingAncillary.style.display = "none";
 
         let cover_name = includingAncillary.querySelector('h3').innerText;
