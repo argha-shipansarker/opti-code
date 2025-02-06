@@ -8,7 +8,13 @@ utils.waitForElement('#header .navbar-expand-lg').then(function (mobile_nav_sect
     const login_btn = mobile_nav_section.querySelector('.header__login-navigation');
     const scroll_wrapper = mobile_nav_section.querySelector('.scroll-wrapper');
     if (login_btn && scroll_wrapper) {
+        login_btn.style.paddingTop = "0px";
         scroll_wrapper.prepend(login_btn);
+    }
+
+    const search_bar = mobile_nav_section.querySelector('.header__search-bar');
+    if (search_bar) {
+        search_bar.style.marginBottom = "19px";
     }
 });
 
