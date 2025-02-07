@@ -192,6 +192,7 @@ utils.waitForElement('.richtextcontainerblock').then(function (rich_text) {
             background-color: #00818A;
             width: 116px;
             color: white;
+            border-bottom: 0;
         }
 
         .opti-login-new-design .register-btn {
@@ -204,10 +205,12 @@ utils.waitForElement('.richtextcontainerblock').then(function (rich_text) {
         .opti-login-new-design .mobile-app-section .section-content .app-btn:hover,
         .opti-login-new-design .online-service-section .online-service-btn:hover {
             color: white;
+            background-color: #00676e;
         }
 
         .opti-login-new-design .register-btn:hover {
-            color: #00818A;
+            color: white;
+            background-color: #00818A;
         }
 
         .opti-login-new-design .login-section .button-section {
@@ -240,6 +243,7 @@ utils.waitForElement('.richtextcontainerblock').then(function (rich_text) {
             background-color: #00818A;
             width: 165px;
             color: white;
+            border-bottom: 0;
         }
 
         .opti-login-new-design .mobile-app-section .section-content .app-heading {
@@ -275,6 +279,7 @@ utils.waitForElement('.richtextcontainerblock').then(function (rich_text) {
             background-color: #00818A;
             width: 170px;
             color: white;
+            border-bottom: 0;
         }
 
         @media (max-width: 600px) {
