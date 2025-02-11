@@ -40,3 +40,34 @@ utils.waitForElement('#productRecommendations #productRecommendationsCarousel .f
     });
 
 });
+
+
+var bcprofile = blueConicClient.profile.getProfile();
+console.warn("bcprofile", bcprofile);
+var bcProfileId = bcprofile.getId();
+var requestParameters = {
+    profileId: bcProfileId,
+    storeId: "75214ee2-d8db-468d-bc89-a3acfdac9c5c",
+    itemId: window.location.href,
+    request: [
+        {
+            id: "test_algo1",
+            boosts: [{
+                value: "1",
+                algorithm: "INTEREST"
+            }],
+            filters: ["IN_STOCK", "SAME_CATEGORY", "BOUGHT"],
+            count: 4
+        },
+    ],
+    frequencyCap: 1000
+};
+
+console.warn("requestParameters", requestParameters);
+
+// Make the API call for recommendations
+blueConicClient.recommendation.getRecommendations(requestParameters, function (response) {
+    var items = response.getItems();
+    console.warn('TESTING rec items', items);
+
+});
