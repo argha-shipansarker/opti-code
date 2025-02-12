@@ -2,72 +2,51 @@ const utils = optimizely.get('utils');
 
 utils.waitForElement('#productRecommendations #productRecommendationsCarousel .flickity-slider').then(function (sliderSection) {
 
-    let count = 0;
-
     var bcprofile = blueConicClient.profile.getProfile();
-    console.warn("bcprofile", bcprofile);
     var bcProfileId = bcprofile.getId();
-    var propertiesToLoad = ['creations_product_recs_test_brand_affinity'];
+    var requestParameters = {
+        profileId: bcProfileId,
+        storeId: "a98e0d67-bb4d-421f-9d94-57a06adc35e3",
+        itemId: window.location.href,
+        request: [
+            {
+                id: "test_algo1",
+                boosts: [{
+                    value: "1",
+                    algorithm: "INTEREST"
+                }],
+                filters: ["IN_STOCK", "SAME_CATEGORY", "BOUGHT"],
+                count: 4
+            },
+        ],
+        frequencyCap: 1000
+    };
 
-    bcprofile.loadValues(propertiesToLoad, this, function () {
+    // Make the API call for recommendations
+    blueConicClient.recommendation.getRecommendations(requestParameters, function (response) {
+        var items = response.getItems();
+        console.warn('TESTING rec items', items);
 
-        var requestParameters = {
-            profileId: bcProfileId,
-            storeId: "75214ee2-d8db-468d-bc89-a3acfdac9c5c",
-            itemId: window.location.href,
-            request: [
-                {
-                    id: "test_algo1",
-                    boosts: [{
-                        value: "1",
-                        algorithm: "INTEREST"
-                    }],
-                    filters: ["IN_STOCK", "SAME_CATEGORY", "BOUGHT"],
-                    count: 4
-                },
-            ],
-            frequencyCap: 1000
-        };
+        let count = 0;
+        let new_product = '';
 
-        console.warn("requestParameters", requestParameters);
+        utils.observeSelector(`#productRecommendations #productRecommendationsCarousel .flickity-slider article`, function (product) {
+            if (count > 3) {
+                product.remove();
+            }
 
-        // Make the API call for recommendations
-        blueConicClient.recommendation.getRecommendations(requestParameters, function (response) {
-            var items = response.getItems();
-            console.warn('TESTING rec items', items);
-
+            // if (count < 4) {
+            //     product.remove();
+            //     new_product += product.outerHTML;
+            // } else {
+            //     product.remove();
+            // }
+            count++;
         });
+
+        utils.waitForElement('#productRecommendations #productRecommendationsCarousel').then(function (sliderSection) {
+            sliderSection.insertAdjacentHTML("afterend", new_product);
+        });
+
     });
-
-});
-
-
-var bcprofile = blueConicClient.profile.getProfile();
-console.warn("bcprofile", bcprofile);
-var bcProfileId = bcprofile.getId();
-var requestParameters = {
-    profileId: bcProfileId,
-    storeId: "75214ee2-d8db-468d-bc89-a3acfdac9c5c",
-    itemId: window.location.href,
-    request: [
-        {
-            id: "test_algo1",
-            boosts: [{
-                value: "1",
-                algorithm: "INTEREST"
-            }],
-            filters: ["IN_STOCK", "SAME_CATEGORY", "BOUGHT"],
-            count: 4
-        },
-    ],
-    frequencyCap: 1000
-};
-
-console.warn("requestParameters", requestParameters);
-
-// Make the API call for recommendations
-blueConicClient.recommendation.getRecommendations(requestParameters, function (response) {
-    var items = response.getItems();
-    console.warn('TESTING rec items', items);
-
 });
