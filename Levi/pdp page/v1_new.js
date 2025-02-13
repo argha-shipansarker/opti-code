@@ -12,7 +12,7 @@ utils.observeSelector('.lowest-recent-price-block', function (lowest_price_block
 
                 let new_text = "";
 
-                if (window.location.href.includes('/IT/en/')) {
+                if (window.location.href.includes('/FR/en/') || window.location.href.includes('/IT/en/') || window.location.href.includes('/ES/en/') || window.location.href.includes('/NL/en/') || window.location.href.includes('/DE/en/')) {
 
                     new_text = "The lowest price in last 30 days was ";
 
