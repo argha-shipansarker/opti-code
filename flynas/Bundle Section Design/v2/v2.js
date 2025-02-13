@@ -1,5 +1,22 @@
 const { observeSelector, waitUntil } = window.optimizely.get("utils");
 
+function isCorrectFlight(container) {
+    const forbiddenTerminals = ["CAI", "CZL", "ALG", "SPX"];
+    const activeTerminals = [...document.querySelectorAll(".sector")].map(x => x.textContent.replace(/\(.*?\)/g, "").trim().toUpperCase()).filter(terminal => terminal !== "");
+
+    if (!container) return false;
+    if (!container.querySelector("i.non-stop")) return false;
+    if (activeTerminals.length < 2) return false;
+    return !activeTerminals.some(terminal => forbiddenTerminals.includes(terminal));
+}
+
+function isDomestic() {
+    const domesticTerminals = ["RUH", "JED", "DMM", "MED", "AHB", "TUU", "HAS", "RAE", "TIF", "BHH", "EAM", "ELQ", "YNB", "GIZ", "AJF", "WAE", "URY", "DWD", "ABT", "AQI", "ULH", "TUI"];
+    const activeTerminals = [...document.querySelectorAll(".sector")].map(x => x.textContent.replace(/\(.*?\)/g, "").trim().toUpperCase()).filter(terminal => terminal !== "");
+
+    return activeTerminals.every(terminal => domesticTerminals.includes(terminal));
+}
+
 function applyMessaging(container) {
     if (!container) return;
     if (document.querySelector('.dropdown-toggle .picon.picon_ru')) return;
@@ -62,7 +79,10 @@ function applyMessaging(container) {
             flight_info_text_altered.classList.remove('flight-info-text-altered');
         }
 
+        if (!isCorrectFlight(container)) return;
+
         if (document.querySelector('.dropdown-toggle .picon.picon_en')) {
+            const check_in_eng = isDomestic() ? '<p>Check-In - <span>Online check-in</span></p>' : '';
             staff_pad.insertAdjacentHTML("afterend", `<div class="opti-new-staff-pad col-md-6 text-end m-auto">
                 <style>
                     .opti-new-staff-pad {
@@ -129,11 +149,8 @@ function applyMessaging(container) {
                 </style>
                 <div class="pack-block">
                     <div class="pack-info">
-                        <p>Cabin baggage - <span>1x7 kg</span></p>
-                        <p>Checked baggage - <span>1x20 kg</span></p>
-                        <p>Meal - <span>Snack meal</span></p>
-                        <p>naSmiles Earned: <span>200 Miles</span></p>
-                        <p>Rebooking: <span>Available for a fee ($$)</span></p>
+                        <p>Cabin baggage - <span>1x7 kg (56cm x 36cm x 23cm)</span></p>
+                        ${check_in_eng}
                     </div>
                     <div class="pack-price">
                         <p class="name">Light</p>
@@ -143,6 +160,7 @@ function applyMessaging(container) {
                 </div>
             </div>`);
         } else {
+            const check_in_arb = isDomestic() ? '<p>إنهاء إجراءات السفر - <span>إنهاء الإجراءات إلكترونياً</span></p>' : '';
             staff_pad.insertAdjacentHTML("afterend", `<div class="opti-new-staff-pad col-md-6 text-end m-auto">
                 <style>
                     .opti-new-staff-pad {
@@ -209,11 +227,8 @@ function applyMessaging(container) {
                 </style>
                 <div class="pack-block">
                     <div class="pack-info">
-                        <p>حقيبة المقصورة - <span>7كجمx1 </span></p>
-                        <p>حقيبة الشحن  - <span>20كجمx1</span></p>
-                        <p>الوجبات - <span>وجبة خفيفة</span></p>
-                        <p>أميال ناسمايلز: <span>200 ميل</span></p>
-                        <p>إعادة الحجز: <span>متاح مقابل رسوم ($$)</span></p>
+                        <p>حقيبة المقصورة - <span> (56سم x 36سم x 23سم)   7كجمx1</span></p>
+                        ${check_in_arb}
                     </div>
                     <div class="pack-price">
                         <p class="name"> لايت </p>
@@ -243,7 +258,7 @@ function applyMessaging(container) {
 
         light_bundle_box.parentElement.parentElement.style.display = 'none';
 
-        staff_pad.style.display = "none";
+        staff_pad.style.setProperty("display", "none", "important");
         staff_pad.classList.add('opti-altered');
 
         flight_info_image.classList.remove('col-md-7');
