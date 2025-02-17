@@ -238,16 +238,16 @@ utils.waitForElement('.richtextcontainerblock').then(function (rich_text) {
             width: 141px;
         }
 
-        .opti-login-new-design .login-btn:hover,
-        .opti-login-new-design .mobile-app-section .section-content .app-btn:hover,
-        .opti-login-new-design .online-service-section .online-service-btn:hover {
-            color: white;
-            background-color: #00676e;
+        .opti-login-new-design .register-btn.cta-button::before {
+            background: #00818A;
+        }
+
+        .opti-login-new-design .register-btn.cta-button::after {
+            background: transparent;
         }
 
         .opti-login-new-design .register-btn:hover {
             color: white;
-            background-color: #00818A;
         }
 
         .opti-login-new-design .login-section .button-section {
@@ -424,8 +424,8 @@ utils.waitForElement('.richtextcontainerblock').then(function (rich_text) {
                 </p>
             </div>
             <div class="button-section">
-                <a class="login-btn common-btn" href="https://www.royallondon.com/secure/customer/dashboard">Login</a>
-                <a class="register-btn common-btn"
+                <a class="login-btn common-btn cta-button" href="https://www.royallondon.com/secure/customer/dashboard">Login</a>
+                <a class="register-btn common-btn cta-button"
                     href="/existing-customers/online-service/register-for-access-to-pensions-started-in-2004-or-later/">Register</a>
             </div>
         </div>
@@ -452,8 +452,8 @@ utils.waitForElement('.richtextcontainerblock').then(function (rich_text) {
                 </ul>
             </div>
             <div class="button-section">
-                <a class="login-btn common-btn" href="https://my.royallondon.com/">Login</a>
-                <a class="register-btn common-btn"
+                <a class="login-btn common-btn cta-button" href="https://my.royallondon.com/">Login</a>
+                <a class="register-btn common-btn cta-button"
                     href="/existing-customers/online-service/register-to-access-your-insurance-policy-or-pensions-and-investments-started-before-2004/">Register</a>
             </div>
         </div>
@@ -473,7 +473,7 @@ utils.waitForElement('.richtextcontainerblock').then(function (rich_text) {
                     <li>Nominate beneficiaries, and more.</li>
                 </ul>
                 <!-- <p class="description-text" style="margin-bottom: 24px;">and more.</p> -->
-                <a class="app-btn common-btn" href="/existing-customers/online-service/download-our-mobile-app/">Get the
+                <a class="app-btn common-btn cta-button" href="/existing-customers/online-service/download-our-mobile-app/">Get the
                     app</a>
             </div>
         </div>
@@ -487,7 +487,7 @@ utils.waitForElement('.richtextcontainerblock').then(function (rich_text) {
                 with
                 registering, or if you can't remember your login details, you can visit our online service help page.
             </p>
-            <a class="online-service-btn common-btn" href="/existing-customers/online-service/help/">Get support</a>
+            <a class="online-service-btn common-btn cta-button" href="/existing-customers/online-service/help/">Get support</a>
         </div>
     </div>
 </div>
