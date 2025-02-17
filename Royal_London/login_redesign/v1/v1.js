@@ -39,12 +39,20 @@ utils.waitForElement('#header .mainnavcolumn .navbar').then(function (mainHead) 
                     font-family: Grot10 Bold, Helvetica, Arial, sans-serif;
                 }
 
+                .opti-back-to-main-site a.cta-button::before {
+                    background: #6C3376;
+                }
+
+                .opti-back-to-main-site a.cta-button::after {
+                    background: white;
+                }
+
                 .opti-back-to-main-site a:hover {
                     color: white;
-                    background-color: #6C3376;
+                    border: 3px solid #6C3376 !important;
                 }
             </style>
-            <a href="https://www.royallondon.com/">Back</a>
+            <a class="cta-button" href="https://www.royallondon.com/">Back</a>
         </div>
     `);
 });
@@ -76,12 +84,20 @@ utils.waitForElement('.header__burger-menu').then(function (mobileBurgerMenu) {
                     font-family: Grot10 Bold, Helvetica, Arial, sans-serif;
                 }
 
+                .opti-back-mobile a.cta-button::before {
+                    background: #6C3376;
+                }
+
+                .opti-back-mobile a.cta-button::after {
+                    background: white;
+                }
+
                 .opti-back-mobile a:hover {
                     color: white;
-                    background-color: #6C3376;
+                    border: 3px solid #6C3376 !important;
                 }
             </style>
-            <a href="https://www.royallondon.com/">Back</a>
+            <a class="cta-button" href="https://www.royallondon.com/">Back</a>
         </div>
     `);
 });
