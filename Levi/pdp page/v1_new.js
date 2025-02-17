@@ -1,9 +1,10 @@
 const utils = window.optimizely.get('utils');
 
-utils.observeSelector('.lowest-recent-price-block', function (lowest_price_block) {
-
+utils.observeSelector('.product-details-page .lowest-recent-price-block', function (lowest_price_block) {
+    let interval_count = 0;
     const interval = setInterval(() => {
-        if (lowest_price_block.querySelectorAll('.opti-new-text').length == 2) {
+
+        if (interval_count == 10) {
             clearInterval(interval);
         } else {
 
@@ -88,6 +89,7 @@ utils.observeSelector('.lowest-recent-price-block', function (lowest_price_block
 
             }
         }
+        interval_count++;
     }, 1500);
 
     lowest_price_block.style.fontSize = "14px";
@@ -101,6 +103,6 @@ utils.observeSelector('.lowest-recent-price-block', function (lowest_price_block
     });
 });
 
-utils.observeSelector('.promo-badge', function (promo_badge) {
+utils.observeSelector('.product-details-page .promo-badge', function (promo_badge) {
     promo_badge.style.display = "none";
 });
