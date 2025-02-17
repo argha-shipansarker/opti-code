@@ -3,7 +3,10 @@ const utils = optimizely.get('utils');
 utils.observeSelector('.cart.cart-page .product-card-container .product-info .product-image', function (product_image) {
     product_image.addEventListener('click', function () {
         let product_image_url = null;
-        if (window.innerWidth < 500) {
+
+        if (window.innerWidth < 1400 && window.innerWidth > 1000) {
+            product_image_url = `${product_image.src.split('?')[0]}?sw=450"`;
+        } else if (window.innerWidth < 500) {
             product_image_url = `${product_image.src.split('?')[0]}?sw=300"`;
         } else {
             product_image_url = `${product_image.src.split('?')[0]}?sw=600"`;
