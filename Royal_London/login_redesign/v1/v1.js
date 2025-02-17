@@ -44,7 +44,44 @@ utils.waitForElement('#header .mainnavcolumn .navbar').then(function (mainHead) 
                     background-color: #6C3376;
                 }
             </style>
-            <a href="https://www.royallondon.com/">Back to main site</a>
+            <a href="https://www.royallondon.com/">Back</a>
+        </div>
+    `);
+});
+
+utils.waitForElement('.header__burger-menu').then(function (mobileBurgerMenu) {
+    mobileBurgerMenu.style.display = "none";
+    mobileBurgerMenu.parentElement.style.display = "flex";
+
+    mobileBurgerMenu.parentElement.insertAdjacentHTML("afterbegin", `
+        <div class="opti-back-mobile">
+            <style>
+                .opti-back-mobile {
+                    margin-left: auto;
+                    margin-top: auto;
+                }
+
+                .opti-back-mobile a {
+                    width: 90px;
+                    height: 40px;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    border: 2px solid #6C3376;
+                    font-size: 16px;
+                    font-weight: 700;
+                    line-height: 18px;
+                    color: #6C3376;
+                    background-color: white;
+                    font-family: Grot10 Bold, Helvetica, Arial, sans-serif;
+                }
+
+                .opti-back-mobile a:hover {
+                    color: white;
+                    background-color: #6C3376;
+                }
+            </style>
+            <a href="https://www.royallondon.com/">Back</a>
         </div>
     `);
 });
@@ -78,7 +115,7 @@ utils.waitForElement('#main-content .standardPage .content-heading').then(functi
                     font-size: 61px;
                     font-weight: 700;
                     line-height: 70px;
-                    color: #470054;
+                    color: #6c3376;
                 }
 
                 @media (max-width: 600px) {
@@ -433,9 +470,9 @@ utils.waitForElement('.richtextcontainerblock').then(function (rich_text) {
                 <ul style="margin-left: 24px;">
                     <li>See how your plan is doing</li>
                     <li>Make a payment</li>
-                    <li>Nominate beneficiaries</li>
+                    <li>Nominate beneficiaries, and more.</li>
                 </ul>
-                <p class="description-text" style="margin-bottom: 24px;">and more.</p>
+                <!-- <p class="description-text" style="margin-bottom: 24px;">and more.</p> -->
                 <a class="app-btn common-btn" href="/existing-customers/online-service/download-our-mobile-app/">Get the
                     app</a>
             </div>
