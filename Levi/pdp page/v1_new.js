@@ -4,7 +4,7 @@ utils.observeSelector('.product-details-page .lowest-recent-price-block', functi
     let interval_count = 0;
     const interval = setInterval(() => {
 
-        if (interval_count == 10) {
+        if (interval_count == 20) {
             clearInterval(interval);
         } else {
 
@@ -18,7 +18,7 @@ utils.observeSelector('.product-details-page .lowest-recent-price-block', functi
                 let discount_percentage = "";
 
                 if (original_price && lowest_discount_price) {
-                    discount_percentage = Math.abs(((parseFloat(original_price) - parseFloat(lowest_discount_price)) / parseFloat(original_price)) * 100).toFixed(2);
+                    discount_percentage = Math.abs(((parseFloat(lowest_discount_price) - parseFloat(original_price)) / parseFloat(lowest_discount_price)) * 100).toFixed(2);
                 }
 
                 if (window.location.href.includes('/FR/en/') || window.location.href.includes('/IT/en/') || window.location.href.includes('/ES/en/') || window.location.href.includes('/NL/en/') || window.location.href.includes('/DE/en/')) {
