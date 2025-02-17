@@ -12,35 +12,80 @@ utils.observeSelector('.lowest-recent-price-block', function (lowest_price_block
 
                 let new_text = "";
 
-                if (window.location.href.includes('/FR/en/') || window.location.href.includes('/IT/en/') || window.location.href.includes('/ES/en/') || window.location.href.includes('/NL/en/') || window.location.href.includes('/DE/en/')) {
+                let original_price = document.querySelector('.price-section-block .price-container .price.hard-sale').textContent.trim().replace(',', '.').match(/[\d.]+/)[0];
+                let lowest_discount_price = document.querySelector('.lowest-recent-price-block .price').textContent.trim().replace(',', '.').match(/[\d.]+/)[0];
+                let discount_percentage = "";
 
-                    new_text = "The lowest price in last 30 days was ";
+                if (original_price && lowest_discount_price) {
+                    discount_percentage = Math.abs(((parseFloat(original_price) - parseFloat(lowest_discount_price)) / parseFloat(original_price)) * 100).toFixed(2);
+                }
+
+                if (window.location.href.includes('/FR/en/') || window.location.href.includes('/IT/en/') || window.location.href.includes('/ES/en/') || window.location.href.includes('/NL/en/') || window.location.href.includes('/DE/en/')) {
+                    if (discount_percentage == 0.00) {
+                        new_text = 'This is the lowest price in the last 30 days';
+                        document.querySelectorAll('.lowest-recent-price-block .price').forEach(function (price) {
+                            price.style.display = 'none';
+                        });
+                    } else {
+                        new_text = "The lowest price in last 30 days was ";
+                    }
 
                 } else if (window.location.href.includes('/FR/fr_FR/')) {
-
-                    new_text = "Le plus bas prix du mois était ";
+                    if (discount_percentage == 0.00) {
+                        new_text = "C'est le prix le plus bas des 30 derniers jours.";
+                        document.querySelectorAll('.lowest-recent-price-block .price').forEach(function (price) {
+                            price.style.display = 'none';
+                        });
+                    } else {
+                        new_text = "Le plus bas prix du mois était ";
+                    }
 
                 } else if (window.location.href.includes('/IT/it_IT/')) {
-
-                    new_text = "Prezzo minimo degli ultimi 30 giorni: ";
+                    if (discount_percentage == 0.00) {
+                        new_text = "Questo è il prezzo più basso degli ultimi 30 giorni.";
+                        document.querySelectorAll('.lowest-recent-price-block .price').forEach(function (price) {
+                            price.style.display = 'none';
+                        });
+                    } else {
+                        new_text = "Prezzo minimo degli ultimi 30 giorni: ";
+                    }
 
                 } else if (window.location.href.includes('/ES/es_ES/')) {
-
-                    new_text = "El precio mínimo en los últimos 30 días fue ";
+                    if (discount_percentage == 0.00) {
+                        new_text = "Este es el precio más bajo en los últimos 30 días.";
+                        document.querySelectorAll('.lowest-recent-price-block .price').forEach(function (price) {
+                            price.style.display = 'none';
+                        });
+                    } else {
+                        new_text = "El precio mínimo en los últimos 30 días fue ";
+                    }
 
                 } else if (window.location.href.includes('/NL/nl_NL/')) {
-
-                    new_text = "Laagste prijs van laatste 30 dagen: ";
+                    if (discount_percentage == 0.00) {
+                        new_text = "Dit is de laagste prijs van de laatste 30 dagen.";
+                        document.querySelectorAll('.lowest-recent-price-block .price').forEach(function (price) {
+                            price.style.display = 'none';
+                        });
+                    } else {
+                        new_text = "Laagste prijs van laatste 30 dagen: ";
+                    }
 
                 } else if (window.location.href.includes('/DE/de_DE/')) {
-
-                    new_text = "Der Tiefstpreis der letzten 30 Tage war ";
+                    if (discount_percentage == 0.00) {
+                        new_text = "Dies ist der niedrigste Preis der letzten 30 Tage.";
+                        document.querySelectorAll('.lowest-recent-price-block .price').forEach(function (price) {
+                            price.style.display = 'none';
+                        });
+                    } else {
+                        new_text = "Der Tiefstpreis der letzten 30 Tage war ";
+                    }
 
                 }
 
                 lowest_price_block.insertAdjacentHTML("afterbegin", `
                     <p class='opti-new-text' style='display: inline;'>${new_text}</p>
                 `);
+
             }
         }
     }, 1500);
