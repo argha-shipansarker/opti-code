@@ -88,6 +88,14 @@ utils.observeSelector('.product-details-page .lowest-recent-price-block', functi
                     <p class='opti-new-text' style='display: inline;'>${new_text}</p>
                 `);
 
+                if (discount_percentage != 0.00) {
+                    document.querySelectorAll('.product-details-page .lowest-recent-price-block .price').forEach(function (price) {
+                        if (!price.textContent.startsWith('(')) {
+                            price.textContent = `(${price.textContent.trim()})`;
+                        }
+                    });
+                }
+
             }
         }
         interval_count++;
