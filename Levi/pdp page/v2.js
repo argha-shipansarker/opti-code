@@ -29,7 +29,11 @@ utils.observeSelector('.product-details-page .lowest-recent-price-block', functi
                             price.style.display = 'none';
                         });
                     } else {
-                        new_text = `<span style='color: #c41320;'>${Math.floor(discount_percentage)}% off </span>the lowest price in last 30 days `;
+                        if (parseFloat(original_price) > parseFloat(lowest_discount_price)) {
+                            new_text = "The lowest price in last 30 days was ";
+                        } else {
+                            new_text = `<span style='color: #c41320;'>${Math.floor(discount_percentage)}% off </span>the lowest price in last 30 days `;
+                        }
                     }
 
                 } else if (window.location.href.includes('/FR/fr_FR/')) {
@@ -39,7 +43,11 @@ utils.observeSelector('.product-details-page .lowest-recent-price-block', functi
                             price.style.display = 'none';
                         });
                     } else {
-                        new_text = `<span style='color: #c41320;'>-${Math.floor(discount_percentage)}% </span>que le plus bas prix du mois `;
+                        if (parseFloat(original_price) > parseFloat(lowest_discount_price)) {
+                            new_text = "Le plus bas prix du mois était ";
+                        } else {
+                            new_text = `<span style='color: #c41320;'>-${Math.floor(discount_percentage)}% </span>que le plus bas prix du mois `;
+                        }
                     }
 
                 } else if (window.location.href.includes('/IT/it_IT/')) {
@@ -49,7 +57,11 @@ utils.observeSelector('.product-details-page .lowest-recent-price-block', functi
                             price.style.display = 'none';
                         });
                     } else {
-                        new_text = `<span style='color: #c41320;'>-${Math.floor(discount_percentage)}% </span>sul prezzo minimo degli ultimi 30 giorni `;
+                        if (parseFloat(original_price) > parseFloat(lowest_discount_price)) {
+                            new_text = "Prezzo minimo degli ultimi 30 giorni: ";
+                        } else {
+                            new_text = `<span style='color: #c41320;'>-${Math.floor(discount_percentage)}% </span>sul prezzo minimo degli ultimi 30 giorni `;
+                        }
                     }
 
                 } else if (window.location.href.includes('/ES/es_ES/')) {
@@ -59,7 +71,11 @@ utils.observeSelector('.product-details-page .lowest-recent-price-block', functi
                             price.style.display = 'none';
                         });
                     } else {
-                        new_text = `<span style='color: #c41320;'>-${Math.floor(discount_percentage)}% </span>del precio mínimo en los últimos 30 días `;
+                        if (parseFloat(original_price) > parseFloat(lowest_discount_price)) {
+                            new_text = "El precio mínimo en los últimos 30 días fue ";
+                        } else {
+                            new_text = `<span style='color: #c41320;'>-${Math.floor(discount_percentage)}% </span>del precio mínimo en los últimos 30 días `;
+                        }
                     }
 
                 } else if (window.location.href.includes('/NL/nl_NL/')) {
@@ -69,7 +85,11 @@ utils.observeSelector('.product-details-page .lowest-recent-price-block', functi
                             price.style.display = 'none';
                         });
                     } else {
-                        new_text = `<span style='color: #c41320;'>${Math.floor(discount_percentage)}% </span>korting op laagste prijs laatste 30 dagen `;
+                        if (parseFloat(original_price) > parseFloat(lowest_discount_price)) {
+                            new_text = "Laagste prijs van laatste 30 dagen: ";
+                        } else {
+                            new_text = `<span style='color: #c41320;'>${Math.floor(discount_percentage)}% </span>korting op laagste prijs laatste 30 dagen `;
+                        }
                     }
 
                 } else if (window.location.href.includes('/DE/de_DE/')) {
@@ -79,7 +99,11 @@ utils.observeSelector('.product-details-page .lowest-recent-price-block', functi
                             price.style.display = 'none';
                         });
                     } else {
-                        new_text = `<span style='color: #c41320;'>-${Math.floor(discount_percentage)}% </span>auf den Tiefstpreis der letzten 30 Tage `;
+                        if (parseFloat(original_price) > parseFloat(lowest_discount_price)) {
+                            new_text = "Der Tiefstpreis der letzten 30 Tage war ";
+                        } else {
+                            new_text = `<span style='color: #c41320;'>-${Math.floor(discount_percentage)}% </span>auf den Tiefstpreis der letzten 30 Tage `;
+                        }
                     }
 
                 }
@@ -88,7 +112,7 @@ utils.observeSelector('.product-details-page .lowest-recent-price-block', functi
                     <p class='opti-new-text' style='display: inline;'>${new_text}</p>
                 `);
 
-                if (discount_percentage != 0.00) {
+                if (parseFloat(original_price) < parseFloat(lowest_discount_price) && discount_percentage != 0.00) {
                     document.querySelectorAll('.product-details-page .lowest-recent-price-block .price').forEach(function (price) {
                         if (!price.textContent.startsWith('(')) {
                             price.textContent = `(${price.textContent.trim()})`;
