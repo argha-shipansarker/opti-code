@@ -17,7 +17,7 @@ utils.waitForElement('#productRecommendations #productRecommendationsCarousel .j
                 id: "test_algo1",
                 boosts: [{
                     value: "1",
-                    algorithm: "INTEREST"
+                    algorithm: "COLLABORATIVE_FILTERING"
                 }],
                 filters: ["IN_STOCK", "SAME_CATEGORY", "BOUGHT"],
                 count: 4
