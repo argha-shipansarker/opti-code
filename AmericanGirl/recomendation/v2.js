@@ -74,11 +74,14 @@ utils.waitForElement('#productRecommendations #productRecommendationsCarousel .j
                     const product_wish_list_add = product.querySelector('.product-item__wishlist .js-wishlist-add');
                     if (product_wish_list_add) {
                         product_wish_list_add.setAttribute('data-product-id', api_product_data.customProperties.variantid[0]);
+                        product_wish_list_add.setAttribute('data-handle', api_product_data.id.split('/').pop());
+                        product_wish_list_add.setAttribute('data-image', api_product_data.image);
                     }
 
                     const product_wish_list_remove = product.querySelector('.product-item__wishlist .js-wishlist-remove');
                     if (product_wish_list_remove) {
                         product_wish_list_remove.setAttribute('data-product-id', api_product_data.customProperties.variantid[0]);
+                        product_wish_list_remove.setAttribute('data-handle', api_product_data.id.split('/').pop());
                     }
 
                     const quick_add = product.querySelector('.product-item__quick-shop .js-quick-add-trigger');
