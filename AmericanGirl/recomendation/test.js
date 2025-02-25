@@ -2,7 +2,9 @@ const utils = optimizely.get('utils');
 
 utils.waitForElement('#productRecommendations #productRecommendationsCarousel .js-carousel-flickity > .flickity-viewport > .flickity-slider').then(function (sliderSection) {
 
-    let api_products = null;
+    console.warn("TESTING rec items", sliderSection);
+
+    let api_products = null
 
     let count = 0;
 
@@ -17,7 +19,7 @@ utils.waitForElement('#productRecommendations #productRecommendationsCarousel .j
                 id: "test_algo1",
                 boosts: [{
                     value: "1",
-                    algorithm: "INTEREST"
+                    algorithm: "COLLABORATIVE_FILTERING"
                 }],
                 filters: ["IN_STOCK", "SAME_CATEGORY", "BOUGHT"],
                 count: 4
@@ -32,9 +34,10 @@ utils.waitForElement('#productRecommendations #productRecommendationsCarousel .j
                 api_products = response.getItems()
             })
         })
+        console.warn("api_products", api_products)
         return api_products;
     }).then(function () {
-        console.warn("api_product_data", api_product_data)
+        console.warn("okkkkkkkkkkkkkkkkkkkkkk")
         if (window.innerWidth > 1024) {
             SDG.Data.flickityInstance.remove(document.querySelectorAll('#productRecommendations #productRecommendationsCarousel .js-carousel-flickity article:nth-child(n+5)'));
             SDG.Data.flickityInstance.destroy();
