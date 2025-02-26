@@ -25,7 +25,7 @@ utils.waitForElement('#header .mainnavcolumn .navbar').then(function (mainHead) 
                 }
 
                 .opti-back-to-main-site a {
-                    width: 209px;
+                    width: 150px;
                     height: 50px;
                     display: flex;
                     justify-content: center;
@@ -70,18 +70,19 @@ utils.waitForElement('.header__burger-menu').then(function (mobileBurgerMenu) {
                 }
 
                 .opti-back-mobile a {
-                    width: 90px;
-                    height: 40px;
+                    width: 60px;
+                    height: 30px;
                     display: flex;
                     justify-content: center;
                     align-items: center;
                     border: 2px solid #6C3376;
-                    font-size: 16px;
+                    font-size: 14px;
                     font-weight: 700;
                     line-height: 18px;
                     color: #6C3376;
                     background-color: white;
                     font-family: Grot10 Bold, Helvetica, Arial, sans-serif;
+                    padding: 0;
                 }
 
                 .opti-back-mobile a.cta-button::before {
@@ -335,7 +336,7 @@ utils.waitForElement('.richtextcontainerblock').then(function (rich_text) {
             border-bottom: 0;
         }
 
-        @media (max-width: 600px) {
+        @media (max-width: 991px) {
             .opti-login-new-design .login-section {
                 flex-direction: column;
             }
