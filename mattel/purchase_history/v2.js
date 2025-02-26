@@ -1,6 +1,6 @@
 const utils = optimizely.get('utils');
 
-utils.waitForElement('#js-product-recommendations .flickity-viewport .flickity-slider').then(function (sliderSection) {
+utils.waitForElement('[id*="product_personalized_recs"] .product-recommendations .flickity-slider').then(function (sliderSection) {
 
     let count = 0;
 
@@ -17,17 +17,17 @@ utils.waitForElement('#js-product-recommendations .flickity-viewport .flickity-s
         var requestParameters = {
             profileId: bcProfileId,
             storeId: "8b35c321-7616-4e3c-9cc6-4df6f8bb9cf5",
-            itemId: window.location.href,
+            itemId: window.location.href.replace(/http(s):\/\/(www.)/gi, '').split('?')[0],
             request: [
                 {
-                    id: "test_algo1",
+                    id: "recently_viewed",
                     boosts: [{
-                        value: "1",
-                        algorithm: "Interest"
+                        value: "100",
+                        algorithm: "RECENTLY_VIEWED"
                     }],
-                    filters: ["IN_STOCK", "SAME_CATEGORY", "BOUGHT"],
-                    count: 16
-                }
+                    filters: ["IN_STOCK", "BOUGHT"],
+                    count: 4
+                },
             ],
             frequencyCap: 1000
         };
@@ -39,7 +39,7 @@ utils.waitForElement('#js-product-recommendations .flickity-viewport .flickity-s
             var items = response.getItems();
             console.log('TESTING rec items', items);
 
-            utils.observeSelector(`#js-product-recommendations .flickity-viewport .flickity-slider .product-recommendation`, function (product) {
+            utils.observeSelector(`[id*="product_personalized_recs"] .product-recommendations .flickity-slider .product-recommendation`, function (product) {
                 let api_product_data = null;
 
                 if (count < items.length) {
@@ -129,6 +129,11 @@ utils.waitForElement('#js-product-recommendations .flickity-viewport .flickity-s
 
                 count++;
             });
+
+            const first_banner = document.querySelector('[id*="a_spot_regular"]:nth-of-type(2)');
+            if (first_banner) {
+                first_banner.after(document.querySelector('[id*="product_personalized_recs"]'));
+            }
 
         });
     });

@@ -17,13 +17,13 @@ utils.waitForElement('[id*="product_personalized_recs"] .product-recommendations
         var requestParameters = {
             profileId: bcProfileId,
             storeId: "8b35c321-7616-4e3c-9cc6-4df6f8bb9cf5",
-            // itemId: window.location.href,
+            itemId: window.location.href.replace(/http(s):\/\/(www.)/gi, '').split('?')[0],
             request: [
                 {
-                    id: "recently_viewed",
+                    id: "bought",
                     boosts: [{
                         value: "100",
-                        algorithm: "RECENTLY_VIEWED"
+                        algorithm: "BOUGHT"
                     }],
                     filters: ["IN_STOCK", "BOUGHT"],
                     count: 4
