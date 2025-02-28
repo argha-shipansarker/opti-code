@@ -99,6 +99,8 @@ function applyMessaging(container) {
                     .opti-new-staff-pad .pack-block .pack-info {
                         flex-basis: 65%;
                         text-align: start;
+                        display: flex;
+                        flex-direction: column;
                     }
             
                     .opti-new-staff-pad .pack-block .pack-price {
@@ -109,14 +111,14 @@ function applyMessaging(container) {
                     .opti-new-staff-pad .pack-block .pack-info p {
                         margin-bottom: 0;
                         font-family: 'flynas-Bold';
-                        font-size: 16px;
+                        font-size: 14px;
                         color: #000000;
                         letter-spacing: 0.32px;
                     }
             
                     .opti-new-staff-pad .pack-block .pack-info p span {
                         font-family: 'flynas-Medium';
-                        font-size: 16px;
+                        font-size: 14px;
                         color: #949494;
                     }
             
@@ -149,8 +151,12 @@ function applyMessaging(container) {
                 </style>
                 <div class="pack-block">
                     <div class="pack-info">
-                        <p>Cabin baggage - <span>1x7 kg (56cm x 36cm x 23cm)</span></p>
+                        <p>Cabin baggage <span style="display: inline-block;">1x7 kg (56cm x 36cm x 23cm)</span></p>
                         ${check_in_eng}
+                        <div style="margin-top: auto;">
+                            <p>naSmiles Earned - <span>133 Miles</span></p>
+                            <p>Rebooking - <span>Available for a fee ($$)</span></p>
+                        </div>
                     </div>
                     <div class="pack-price">
                         <p class="name">Light</p>
@@ -177,6 +183,8 @@ function applyMessaging(container) {
                     .opti-new-staff-pad .pack-block .pack-info {
                         flex-basis: 65%;
                         text-align: start;
+                        display: flex;
+                        flex-direction: column;
                     }
             
                     .opti-new-staff-pad .pack-block .pack-price {
@@ -187,14 +195,14 @@ function applyMessaging(container) {
                     .opti-new-staff-pad .pack-block .pack-info p {
                         margin-bottom: 0;
                         font-family: 'flynas-Bold';
-                        font-size: 16px;
+                        font-size: 14px;
                         color: #000000;
                         letter-spacing: 0.32px;
                     }
             
                     .opti-new-staff-pad .pack-block .pack-info p span {
                         font-family: 'flynas-Medium';
-                        font-size: 16px;
+                        font-size: 14px;
                         color: #949494;
                     }
             
@@ -227,8 +235,12 @@ function applyMessaging(container) {
                 </style>
                 <div class="pack-block">
                     <div class="pack-info">
-                        <p>حقيبة المقصورة - <span> (56سم x 36سم x 23سم)   7كجمx1</span></p>
+                        <p>حقيبة المقصورة <span style="display: inline-block;">1×7 كجم (23 سم × 36 سم × 56 سم)</span></p>
                         ${check_in_arb}
+                        <div style="margin-top: auto;">
+                            <p>أميال ناسمايلز - <span>133 ميل</span></p>
+                            <p>إعادة الحجز - <span>متاح مقابل رسوم ($$)</span></p>
+                        </div>
                     </div>
                     <div class="pack-price">
                         <p class="name"> لايت </p>
