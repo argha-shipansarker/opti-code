@@ -8,10 +8,6 @@ utils.waitForElement('.have-an-account').then(function (have_account_section) {
     have_account_section.style.display = "none";
 });
 
-utils.waitForElement('.line-container').then(function (lineContainer) {
-    lineContainer.style.display = "none";
-});
-
 utils.waitForElement('.checkoutLogin').then(function (checkout_login_modal) {
     checkout_login_modal.insertAdjacentHTML("afterbegin", `
 <style>
@@ -132,7 +128,7 @@ utils.waitForElement('.checkoutLogin').then(function (checkout_login_modal) {
                 </style>
                 CONTINUE AS GUEST
             </div>         
-        `)
+        `);
     }
 
     const opti_guest = document.querySelector('.opti-guest-btn');
@@ -144,7 +140,7 @@ utils.waitForElement('.checkoutLogin').then(function (checkout_login_modal) {
             if (colse_btn) {
                 colse_btn.click();
             }
-        })
+        });
 
     }
 });
