@@ -172,8 +172,10 @@ utils.waitForElement('.checkoutLogin').then(function (checkout_login_modal) {
                         const email_input = document.querySelector('.shipping-email-container input');
                         const modal_email_input = document.querySelector('.checkoutLogin input[type="email"]');
                         const modal_open_btn = document.querySelector(".js-sign-in-popup");
+                        const modal_div = document.querySelector('.checkoutLogin');
 
                         if (email_input && modal_email_input && modal_open_btn) {
+                            modal_div.classList.add('opti-changed-login-modal');
                             modal_email_input.value = email_input.value;
 
                             modal_open_btn.click();
