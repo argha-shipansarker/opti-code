@@ -136,9 +136,9 @@ utils.waitForElement('.checkoutLogin').then(function (checkout_login_modal) {
     if (opti_guest) {
 
         opti_guest.addEventListener('click', function () {
-            const colse_btn = checkout_login_modal.querySelector('.login-box .close');
-            if (colse_btn) {
-                colse_btn.click();
+            const modal = document.querySelector('#have-an-account');
+            if (modal) {
+                modal.classList.remove('active');
             }
         });
 

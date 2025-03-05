@@ -282,8 +282,9 @@ utils.waitForElement('.checkoutLogin.opti-changed-login-modal').then(function (c
     if (opti_guest) {
 
         opti_guest.addEventListener('click', function () {
-            if (colse_btn) {
-                colse_btn.click();
+            const modal = document.querySelector('#have-an-account');
+            if (modal) {
+                modal.classList.remove('active')
             }
         })
 
