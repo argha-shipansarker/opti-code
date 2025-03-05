@@ -82,23 +82,134 @@
 
 
 <style>
-    .opti-new-vehicle-filter-cars-section {
-        border: 0;
-    }
-
-    .opti-new-vehicle-filter-cars-section ul {
+    .opti-new-sort-design {
         display: flex;
+        align-items: center;
     }
 
-    .opti-new-vehicle-filter-cars-section ul li div {
+    .opti-new-sort-design p {
+        margin-bottom: 0;
+    }
+
+    .opti-new-sort-design .opti-sort-options {
+        display: flex;
+        align-items: center;
+    }
+
+    .opti-new-sort-design .opti-sort-options li {
+        list-style: none;
+    }
+
+    .opti-new-sort-design .opti-sort-options a {
+        width: 100% !important;
+        padding: 10px 20px;
+        border: 1px solid rgb(238, 238, 238);
+        border-radius: 10px;
+        color: black;
+    }
+
+    .opti-new-sort-design .opti-sort-options a:hover {
+        background-color: rgb(217, 217, 217);
+    }
+
+    .opti-new-sort-design .opti-sort-options li.selected a {
+        background-color: black;
+        color: white;
+    }
+
+    .opti-new-sort-design .opti-sort-options a span {
+        display: none;
+    }
+</style>
+
+
+<style>
+    .vehiclePushDownBox .res-discount {
+        position: absolute;
+        top: 0;
+        right: 0;
+        z-index: 99999;
+        height: 100vh;
+        padding: 0;
+        width: 30%;
+    }
+
+    .vehiclePushDownBox .res-discount .res-dropWizDiv {
+        height: 100%;
+        padding: 8%;
+        border: 0 !important;
+    }
+
+    .vehiclePushDownBox .res-discount .res-dropWizDiv .closerd {
+        right: 5.9% !important;
+    }
+
+    .vehiclePushDownBox .res-discount .res-dropWizDiv .coupon-msg-filterandsort a {
+        display: none;
+    }
+
+    .vehiclePushDownBox .res-discount .res-dropWizDiv .coupon-msg-filterandsort label span:not(.res-helpIcon) {
+        font-size: 20px;
+        font-weight: 700;
+    }
+
+    .vehiclePushDownBox .res-discount .res-dropWizDiv .centerSixty {
         display: flex;
         flex-direction: column;
-        border-bottom: 0;
-        border: 2px solid rgb(238, 238, 238);
-        border-radius: 15px;
-        height: 100%;
-        align-items: center;
-        padding: 0;
-        padding: 15px 15px 100px 8px !important;
+    }
+
+    .vehiclePushDownBox .res-discount .res-dropWizDiv .centerSixty .res-dropWizInputDiv {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .vehiclePushDownBox .res-discount .res-dropWizDiv .centerSixty .res-dropWizInputDiv div {
+        width: 96%;
+    }
+
+    .vehiclePushDownBox .res-discount .res-dropWizDiv .centerSixty:has(.refineandsortupdate) {
+        width: 96%;
+    }
+
+    .vehiclePushDownBox .res-discount .res-dropWizDiv .centerSixty .refineandsortupdate {
+        width: 100%;
+    }
+</style>
+
+
+<style>
+    .vehiclePushDownBox .veh-Hide-Div-In-Mob:not(#myDiv)>.vehicleDiscount {
+        order: 2;
+        padding-bottom: 10px;
+        display: flex;
+        width: unset;
+        border: 1px solid rgb(204, 204, 204);
+        border-bottom-width: 1px !important;
+        border-radius: 25px;
+    }
+
+    .vehiclePushDownBox .veh-Hide-Div-In-Mob:not(#myDiv)>.vehicleDiscount .discount-dropdown .discount-dropdown.s-dropdown {
+        display: unset;
+    }
+
+    .vehiclePushDownBox .veh-Hide-Div-In-Mob:not(#myDiv)>.vehicleDiscount .discount-dropdown .discount-dropdown.s-dropdown span {
+        width: unset;
+        padding-right: 0;
+        color: black;
+    }
+
+    .vehiclePushDownBox .veh-Hide-Div-In-Mob:not(#myDiv)>.vehicleDiscount .discount-dropdown .discount-dropdown.s-dropdown::after {
+        display: none;
+    }
+</style>
+
+<p style="opacity: 1;"></p>
+
+
+<style>
+    .vehiclePushDownBox .veh-Hide-Div-In-Mob:not(#myDiv)>.currencyBoxdrop {
+        width: unset;
+        border: 0;
+        margin-left: auto;
     }
 </style>

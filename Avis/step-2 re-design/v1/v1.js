@@ -31,6 +31,116 @@ function handleGenerateFooter(car_container) {
     }
 }
 
+function handle_creating_new_car_design(car, car_count) {
+    const car_container = car.querySelector(`div[ng-include=" 'carTemplate.html' "]`);
+
+    if (car_container) {
+        car_container.style.display = "none";
+
+        if (car.querySelector('.opti-car-new-design')) {
+            car.querySelector('.opti-car-new-design').remove();
+            car.insertAdjacentHTML("afterbegin", `<div class="opti-car-new-design car-number-${car_count}">
+                <style>
+                    .opti-car-new-design {
+                        border: 1px solid rgb(204, 204, 204);
+                        display: flex;
+                        flex-direction: column;
+                        padding: 0 6%;
+                    }
+
+                    .opti-car-new-design .select-btn {
+                        width: 160px;
+                        min-width: 160px;
+                        font-size: 15px;
+                        margin: 10px 0px;
+                        padding: 0px 10px;
+                        height: 40px;
+                        line-height: 40px;
+                        font-family: Custom-Regular, Arial, sans-serif;
+                        background: rgb(247, 139, 0);
+                        border: 0;
+                        color: white;
+                    }
+
+                    .opti-car-new-design .only-select-btn .price-section span {
+                        color: rgb(0, 0, 0);
+                        font-size: 27px;
+                        font-weight: bold;
+                        margin: 0px;
+                        padding: 0px;
+                    }
+                </style>
+
+                <div class="car-header-section">
+                    <div class="car-info avilcardtl">
+                        ${car_container.querySelector('h3[ng-bind="car.carGroup"]') ? `<h3>
+                            ${car_container.querySelector('h3[ng-bind="car.carGroup"]').innerText}</h3>` : ""}
+
+                        ${car_container.querySelector('p.featurecartxt.similar-car') ? `<p class="featurecartxt">
+                            ${car_container.querySelector('p.featurecartxt.similar-car').innerText}</p>` : ""}
+
+                        ${car_container.querySelectorAll('.tableDiv.vehicle-features > span').length ? `
+                        <div class="tableDiv vehicle-features">
+                            ${[...car_container.querySelectorAll('.tableDiv.vehicle-features > span')].map(span =>
+                `<span class="${span.className}">${span.innerHTML}</span>`
+            ).join("")}
+                            ${car_container.querySelector('p[ng-bind="car.automaticCaption"]') &&
+                        car_container.querySelector('p[ng-bind="car.automaticCaption"]').innerText == "Automatic Transmission" ?
+                        `<span class="four-automatic-feat">
+                                <span></span>
+                                Automatic
+                            </span>`: ""}
+                            <span class="feature-display-icon">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 18 18" fill="none">
+                                    <path
+                                        d="M12 9C12 8.60218 12.158 8.22064 12.4393 7.93934C12.7206 7.65804 13.1022 7.5 13.5 7.5C13.8978 7.5 14.2794 7.65804 14.5607 7.93934C14.842 8.22064 15 8.60218 15 9C15 9.39782 14.842 9.77936 14.5607 10.0607C14.2794 10.342 13.8978 10.5 13.5 10.5C13.1022 10.5 12.7206 10.342 12.4393 10.0607C12.158 9.77936 12 9.39782 12 9ZM7.5 9C7.5 8.60218 7.65804 8.22064 7.93934 7.93934C8.22064 7.65804 8.60217 7.5 9 7.5C9.39782 7.5 9.77935 7.65804 10.0607 7.93934C10.342 8.22064 10.5 8.60218 10.5 9C10.5 9.39782 10.342 9.77936 10.0607 10.0607C9.77935 10.342 9.39782 10.5 9 10.5C8.60217 10.5 8.22064 10.342 7.93934 10.0607C7.65804 9.77936 7.5 9.39782 7.5 9ZM3 9C3 8.60218 3.15804 8.22064 3.43934 7.93934C3.72064 7.65804 4.10218 7.5 4.5 7.5C4.89782 7.5 5.27936 7.65804 5.56066 7.93934C5.84196 8.22064 6 8.60218 6 9C6 9.39782 5.84196 9.77936 5.56066 10.0607C5.27936 10.342 4.89782 10.5 4.5 10.5C4.10218 10.5 3.72064 10.342 3.43934 10.0607C3.15804 9.77936 3 9.39782 3 9Z"
+                                        fill="#D4002A" />
+                                </svg>
+                            </span>
+                        </div>
+                        ` : ""}
+
+                    </div>
+                    <div class="car-image">
+                        <img src='${car_container.querySelector(' img.img-responsive').getAttribute('lazy-load')}' />
+                    </div>
+                </div>
+
+                <div class="car-feature-section">
+                    <div class="available-car-fac">
+                        ${car_container.querySelector('.available-car-facilities .available-car-fac').innerHTML}
+                    </div>
+                    <div class="close-blue">
+                        <span></span>
+                    </div>
+                </div>
+
+                <div class="car-footer-section">
+                    ${handleGenerateFooter(car_container)}
+                </div>
+            </div>`);
+
+            if (document.querySelector(`.opti-car-new-design.car-number-${car_count} .car-footer-section .starting-from-btn button`)) {
+                document.querySelector(`.opti-car-new-design.car-number-${car_count} .car-footer-section .starting-from-btn button`).addEventListener('click', () => {
+                    if (car_container.querySelector('#res-vehicles-pay-later-memberRate')) {
+                        car_container.querySelector('#res-vehicles-pay-later-memberRate').click();
+                    }
+                });
+            }
+
+            if (document.querySelector(`.opti-car-new-design.car-number-${car_count} .car-footer-section .only-select-btn button`)) {
+                document.querySelector(`.opti-car-new-design.car-number-${car_count} .car-footer-section .only-select-btn button`).addEventListener('click', () => {
+                    if (car_container.querySelector('#res-vehicles-select')) {
+                        car_container.querySelector('#res-vehicles-select').click();
+                    }
+                });
+            }
+
+        }
+
+    }
+}
+
 if (window.location.pathname == '/en/reservation') {
     utils.observeSelector(`.vehicle-availability div[ng-class="{'three-grid-layout': vm.isStepTwoRedesign && vm.pageName == carRentalConstant.step2PageName, 'two-grid-layout': vm.isStepTwoRedesign && vm.pageName == carRentalConstant.step3PageName}"]`, function (car_list_container) {
 
@@ -43,30 +153,31 @@ if (window.location.pathname == '/en/reservation') {
 
         let car_count = 0;
 
+        const observer = new MutationObserver((mutationsList) => {
+            mutationsList.forEach(mutation => {
+                if (mutation.type === 'childList') {
+                    console.log('Child elements changed!', mutation, document.querySelector('.featuredcar.featured-car-box'));
+
+                    [...document.querySelectorAll(`.vehicle-availability div[ng-class="{'three-grid-layout': vm.isStepTwoRedesign && vm.pageName == carRentalConstant.step2PageName, 'two-grid-layout': vm.isStepTwoRedesign && vm.pageName == carRentalConstant.step3PageName}"] div[ng-class="{'grid-border': vm.isStepTwoRedesign}"]`)].forEach((car, car_count) => {
+                        handle_creating_new_car_design(car, car_count)
+                    })
+                }
+            });
+        });
+
+        observer.observe(car_list_container, { childList: true, subtree: false });
+
+
         utils.observeSelector(`.vehicle-availability div[ng-class="{'three-grid-layout': vm.isStepTwoRedesign && vm.pageName == carRentalConstant.step2PageName, 'two-grid-layout': vm.isStepTwoRedesign && vm.pageName == carRentalConstant.step3PageName}"] div[ng-class="{'grid-border': vm.isStepTwoRedesign}"]`, function (car) {
 
             console.warn("car", car);
-
-            const promotion_banner = car.querySelector(`div[ng-if="($index == vm.response.showPromotion.index) && (vm.response.showPromotion.section == 'additional')"]`);
-            if (promotion_banner) {
-                promotion_banner.style.display = "none";
-            }
-
-            const promotion_banner_2 = car.querySelector(`div[ng-if="($index == vm.response.showPromotion.index) && (vm.response.showPromotion.section == 'filtered')"]`);
-            if (promotion_banner_2) {
-                promotion_banner_2.style.display = "none";
-            }
-
-            const promotion_banner_3 = car.querySelector(`div[ng-if="!vm.isStepTwoRedesign && vm.pageControl.displayedVehicleType!='all' || vm.pageControl.specialFeatureFiltered"]`);
-            if (promotion_banner_3) {
-                promotion_banner_3.style.display = "none";
-            }
 
             const car_container = car.querySelector(`div[ng-include=" 'carTemplate.html' "]`);
             if (car_container) {
                 car_container.style.display = "none";
 
                 if (!car.querySelector('.opti-car-new-design')) {
+                    console.warn('going once===================')
                     car.insertAdjacentHTML("afterbegin", `<div class="opti-car-new-design car-number-${car_count}">
                         <style>
                             .opti-car-new-design {
@@ -74,6 +185,22 @@ if (window.location.pathname == '/en/reservation') {
                                 display: flex;
                                 flex-direction: column;
                                 padding: 0 6%;
+                            }
+
+                            .opti-car-new-design .car-header-section .vehicle-features .feature-display-icon { 
+                                cursor: pointer;
+                            }
+
+                            .opti-car-new-design .car-feature-section {
+                                position: relative;
+                                display: none;
+                            }
+
+                            .opti-car-new-design .car-feature-section .close-blue{
+                                position: absolute;
+                                top: 0;
+                                right: 0;
+                                cursor: pointer;
                             }
     
                             .opti-car-new-design .select-btn {
@@ -148,6 +275,18 @@ if (window.location.pathname == '/en/reservation') {
                         </div>
                     </div>`);
 
+
+                    document.querySelector(`.opti-car-new-design.car-number-${car_count} .car-header-section .vehicle-features .feature-display-icon`).addEventListener("click", function () {
+                        console.warn("helooooo", car.querySelector(`.opti-car-new-design .car-header-section`))
+                        car.querySelector(`.opti-car-new-design .car-header-section`).style.display = "none";
+                        car.querySelector(`.opti-car-new-design .car-feature-section`).style.display = "block";
+                    })
+
+                    document.querySelector(`.opti-car-new-design.car-number-${car_count} .car-feature-section .close-blue`).addEventListener("click", function () {
+                        car.querySelector(`.opti-car-new-design .car-header-section`).style.display = "block";
+                        car.querySelector(`.opti-car-new-design .car-feature-section`).style.display = "none";
+                    })
+
                     if (document.querySelector(`.opti-car-new-design.car-number-${car_count} .car-footer-section .starting-from-btn button`)) {
                         document.querySelector(`.opti-car-new-design.car-number-${car_count} .car-footer-section .starting-from-btn button`).addEventListener('click', () => {
                             if (car_container.querySelector('#res-vehicles-pay-later-memberRate')) {
@@ -171,7 +310,12 @@ if (window.location.pathname == '/en/reservation') {
         });
     });
 
+    utils.observeSelector(`.vehiclePushDownBox .veh-Hide-Div-In-Mob:not(#myDiv)`, function (filter_container) {
+        filter_container.style.display = "flex";
+    });
 
+
+    //vehicle filter work
     utils.observeSelector(`.vehiclePushDownBox .veh-Hide-Div-In-Mob:not(#myDiv) > div:nth-of-type(1)`, function (vehicle_filter) {
 
         vehicle_filter.insertAdjacentHTML("afterbegin", `<style>
@@ -251,7 +395,7 @@ if (window.location.pathname == '/en/reservation') {
             `
         }
     });
-
+    //vehicle filter dd
     utils.observeSelector(`#myDiv`, function (vehicle_filter_cars_section) {
         vehicle_filter_cars_section.classList.add('opti-new-vehicle-filter-cars-section');
         vehicle_filter_cars_section.insertAdjacentHTML("afterbegin", `<style>
@@ -276,5 +420,219 @@ if (window.location.pathname == '/en/reservation') {
         padding: 15px 15px 100px 8px !important;
     }
 </style>`)
+    });
+
+
+    //price filter work
+    utils.observeSelector(`.vehiclePushDownBox .veh-Hide-Div-In-Mob:not(#myDiv) > div:nth-of-type(2)`, function (vehicle_sort_section) {
+        vehicle_sort_section.style.display = "none"
+
+
+        vehicle_sort_section.insertAdjacentHTML("afterend", `<div class="opti-new-sort-design">
+<style>
+    .opti-new-sort-design {
+        display: flex;
+        align-items: center;
+        width: 50%;
+    }
+
+    .opti-new-sort-design p {
+        margin-bottom: 0;
+    }
+
+    .opti-new-sort-design .opti-sort-options {
+        display: flex;
+        align-items: center;
+    }
+
+    .opti-new-sort-design .opti-sort-options li {
+        list-style: none;
+        margin-left: 10px;
+    }
+
+    .opti-new-sort-design .opti-sort-options a {
+        width: 100% !important;
+        padding: 10px 20px;
+        border: 1px solid rgb(238, 238, 238);
+        border-radius: 10px;
+        color: black;
+    }
+
+    .opti-new-sort-design .opti-sort-options a:hover {
+        background-color: rgb(217, 217, 217);
+    }
+
+    .opti-new-sort-design .opti-sort-options li.selected a {
+        background-color: black;
+        color: white;
+    }
+
+    .opti-new-sort-design .opti-sort-options a span {
+        display: none;
+    }
+</style>
+            <p>Sort by:</p>
+            <div class="opti-sort-options">
+            </div>
+        </div>`);
+
+        const opti_sort_section = document.querySelector('.opti-sort-options');
+        const actual_sort_options = vehicle_sort_section.querySelector('.dropdown-menu');
+        if (opti_sort_section && actual_sort_options) {
+            const listItems = actual_sort_options.querySelectorAll('li');
+            listItems.forEach(li => {
+                const sort_name = li.querySelector('a').innerText.trim();
+                if (sort_name == 'Price (Low to High)') {
+                    li.querySelector('a').innerText = "Price";
+                } else if (sort_name == 'Mileage (High to Low)') {
+                    li.querySelector('a').innerText = "Mileage";
+                } else if (sort_name == 'Number of Seats (High to Low)') {
+                    li.querySelector('a').innerText = "Seats";
+                }
+                opti_sort_section.appendChild(li); // Move each <li> into .opti-sort-options
+            });
+        }
+
+
+        if (document.querySelectorAll(`.vehiclePushDownBox .veh-Hide-Div-In-Mob:not(#myDiv) > .opti-new-sort-design .opti-sort-options li`).length) {
+            [...document.querySelectorAll(`.vehiclePushDownBox .veh-Hide-Div-In-Mob:not(#myDiv) > .opti-new-sort-design .opti-sort-options li`)].forEach(sort_option => {
+                sort_option.addEventListener("click", function () {
+
+                    let checkInterval = setInterval(() => {
+                        if (sort_option.classList.contains("selected")) {
+                            [...document.querySelectorAll(`.vehicle-availability div[ng-class="{'three-grid-layout': vm.isStepTwoRedesign && vm.pageName == carRentalConstant.step2PageName, 'two-grid-layout': vm.isStepTwoRedesign && vm.pageName == carRentalConstant.step3PageName}"] div[ng-class="{'grid-border': vm.isStepTwoRedesign}"]`)].forEach((car, car_count) => {
+                                handle_creating_new_car_design(car, car_count)
+                            })
+                            clearInterval(checkInterval); // Stop checking once found
+                        }
+                    }, 50); // Check every 50ms
+
+                })
+            })
+        }
+
+
+
+    });
+
+    //discount filter work
+    utils.observeSelector(`.vehiclePushDownBox .veh-Hide-Div-In-Mob:not(#myDiv) > .vehicleDiscount`, function (vehicle_discount_section) {
+
+        const close_btn = vehicle_discount_section.querySelector('.close')
+        if (close_btn) {
+            close_btn.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
+<path d="M9.60764 3.56538C9.76352 3.40949 10.0163 3.40949 10.1721 3.56538L13.7246 7.11782C13.7994 7.19268 13.8415 7.29421 13.8415 7.40008L13.8415 15.001C13.8415 15.4419 13.484 15.7993 13.0431 15.7993L6.73666 15.7993C6.29575 15.7993 5.93832 15.4419 5.93832 15.001L5.93832 7.40008C5.93832 7.29421 5.98038 7.19268 6.05523 7.11782L9.60764 3.56538ZM9.32538 5.65323C9.01361 5.96501 9.01361 6.47049 9.32538 6.78227C9.63715 7.09404 10.1426 7.09404 10.4544 6.78227C10.7662 6.47049 10.7662 5.96501 10.4544 5.65323C10.1426 5.34146 9.63715 5.34146 9.32538 5.65323Z" fill="#3C3A37"/>
+</svg>`
+        }
+
+        vehicle_discount_section.insertAdjacentHTML("afterbegin", `
+            <style>
+    .vehiclePushDownBox .veh-Hide-Div-In-Mob:not(#myDiv)>.vehicleDiscount {
+        order: 2;
+        padding-bottom: 10px;
+        display: flex;
+        width: auto;
+        border: 1px solid rgb(204, 204, 204);
+        border-bottom-width: 1px !important;
+        border-radius: 25px;
+    }
+
+    .vehiclePushDownBox .veh-Hide-Div-In-Mob:not(#myDiv)>.vehicleDiscount .close {
+        padding: 0;
+        opacity: 1;
+    }
+
+    .vehiclePushDownBox .veh-Hide-Div-In-Mob:not(#myDiv)>.vehicleDiscount .discount-dropdown .discount-dropdown.s-dropdown {
+        display: unset;
+    }
+
+    .vehiclePushDownBox .veh-Hide-Div-In-Mob:not(#myDiv)>.vehicleDiscount .discount-dropdown .discount-dropdown.s-dropdown span {
+        width: unset;
+        padding-right: 0;
+        color: black;
+    }
+
+        .vehiclePushDownBox .veh-Hide-Div-In-Mob:not(#myDiv)>.vehicleDiscount .discount-dropdown .discount-dropdown.s-dropdown::after {
+        display: none;
+    }
+</style>
+        `)
+
+    });
+    //discount filter modal
+    utils.observeSelector(`.vehiclePushDownBox .res-discount`, function (vehicle_discount_dd) {
+        vehicle_discount_dd.insertAdjacentHTML("afterbegin", `
+<style>
+    .vehiclePushDownBox .res-discount {
+        position: absolute;
+        top: 0;
+        right: 0;
+        z-index: 99999;
+        height: 100vh;
+        padding: 0;
+        width: 30%;
+    }
+
+    .vehiclePushDownBox .res-discount .res-dropWizDiv {
+        height: 100%;
+        padding: 8%;
+        border: 0 !important;
+    }
+
+    .vehiclePushDownBox .res-discount .res-dropWizDiv .closerd {
+        right: 5.9% !important;
+    }
+
+    .vehiclePushDownBox .res-discount .res-dropWizDiv .coupon-msg-filterandsort a {
+        display: none;
+    }
+
+    .vehiclePushDownBox .res-discount .res-dropWizDiv .coupon-msg-filterandsort label span:not(.res-helpIcon) {
+        font-size: 20px;
+        font-weight: 700;
+    }
+
+    .vehiclePushDownBox .res-discount .res-dropWizDiv .centerSixty {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .vehiclePushDownBox .res-discount .res-dropWizDiv .centerSixty .res-dropWizInputDiv {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .vehiclePushDownBox .res-discount .res-dropWizDiv .centerSixty .res-dropWizInputDiv div {
+        width: 96%;
+    }
+
+    .vehiclePushDownBox .res-discount .res-dropWizDiv .centerSixty .inp-width-box-g {
+        width: 96%;
+    }
+
+    .vehiclePushDownBox .res-discount .res-dropWizDiv .centerSixty .refineandsortupdate {
+        width: 100%;
+    }
+</style>
+        `)
+
+        let offer_message = vehicle_discount_dd.querySelector('.res-dropWizDiv .coupon-msg-filterandsort label span:not(.res-helpIcon)');
+        if (offer_message) {
+            offer_message.innerText = "Enter a Discount Code";
+        }
+    });
+
+    //currency work
+
+    utils.observeSelector(`.vehiclePushDownBox .veh-Hide-Div-In-Mob:not(#myDiv) > .currencyBoxdrop`, function (currency_text) {
+        currency_text.insertAdjacentHTML("afterbegin", `
+            <style>
+    .vehiclePushDownBox .veh-Hide-Div-In-Mob:not(#myDiv)>.currencyBoxdrop {
+        width: unset;
+        border: 0;
+        margin-left: auto;
+    }
+</style>
+        `)
     });
 }
