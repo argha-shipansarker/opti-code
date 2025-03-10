@@ -15,18 +15,20 @@ function handleGenerateTag(car_container) {
     ];
 
     selectors.forEach(({ className, selector }) => {
-        const element = car_container.querySelector(selector);
-        if (element) {
+        const elements = car_container.querySelectorAll(selector); // Select **all** matching elements
+
+        elements.forEach(element => {
             tagsHTML += `
                 <div class="car-tag ${className}">
                     ${element.innerHTML}
                 </div>
             `;
-        }
+        });
     });
 
-    return `<div class="car-all-tags">${tagsHTML}</div>`; // Returns all matching tags as a single string
+    return tagsHTML ? `<div class="car-all-tags">${tagsHTML}</div>` : ""; // Wrap in a container only if there's content
 }
+
 
 function handleGenerateFooter(car_container) {
     if (car_container.querySelector("#res-vehicles-pay-later-memberRate")) {
@@ -45,13 +47,16 @@ function handleGenerateFooter(car_container) {
         return `
             <div class="only-select-btn price-btn-section" style="display: flex; flex-direction: column;">
 
-                ${car_container.querySelector(".paynow .payamntr.striked-text") ? `<div class="price-section payamntr striked-text">
-                    ${car_container.querySelector(".paynow .payamntr.striked-text").innerHTML}
-                </div>` : ""}
+                <div class="prices">
+                    ${car_container.querySelector(".paynow .payamntr.striked-text") ? `<div class="price-section payamntr striked-text">
+                        ${car_container.querySelector(".paynow .payamntr.striked-text").innerHTML}
+                    </div>` : ""}
 
-                <div class="price-section payamntr" style="display: flex; flex-direction: column; flex-basis: 100%; font-weight: bold;">
-                    ${car_container.querySelector(".paynow .payamntr:not(.striked-text)").innerHTML}
+                    <div class="price-section payamntr" style="display: flex; flex-direction: column; flex-basis: 100%; font-weight: bold;">
+                        ${car_container.querySelector(".paynow .payamntr:not(.striked-text)").innerHTML}
+                    </div>
                 </div>
+
                 <button class="select-btn" style="flex-basis: 100%; width: 100%;">
                     Select
                 </button>
@@ -89,12 +94,158 @@ function handle_creating_new_car_design(car, car_count) {
     const car_container = car.querySelector(`div[ng-include=" 'carTemplate.html' "]`);
 
     car.insertAdjacentHTML("afterbegin", `<div class="opti-car-new-design car-number-${car_count}">
-        <style>
+        <div class="car-header-section">
+            <div class="car-info avilcardtl">
+                ${car_container.querySelector('h3[ng-bind="car.carGroup"]') ? `<h3>
+                    ${car_container.querySelector('h3[ng-bind="car.carGroup"]').innerText}</h3>` : ""}
+
+                ${car_container.querySelector('p.featurecartxt.similar-car') ? `<p class="featurecartxt">
+                    ${car_container.querySelector('p.featurecartxt.similar-car').innerText}</p>` : ""}
+
+                ${car_container.querySelectorAll('.tableDiv.vehicle-features > span').length ? `
+                <div class="tableDiv vehicle-features">
+                    ${[...car_container.querySelectorAll('.tableDiv.vehicle-features > span')].map(span =>
+        `<span class="${span.className}">${span.innerHTML}</span>`
+    ).join("")}
+                    ${car_container.querySelector('p[ng-bind="car.automaticCaption"]') &&
+                car_container.querySelector('p[ng-bind="car.automaticCaption"]').innerText == "Automatic Transmission" ?
+                `<span class="four-automatic-feat">
+                        <span></span>
+                        Automatic
+                    </span>`: ""}
+                    <span class="feature-display-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 18 18" fill="none">
+                            <path
+                                d="M12 9C12 8.60218 12.158 8.22064 12.4393 7.93934C12.7206 7.65804 13.1022 7.5 13.5 7.5C13.8978 7.5 14.2794 7.65804 14.5607 7.93934C14.842 8.22064 15 8.60218 15 9C15 9.39782 14.842 9.77936 14.5607 10.0607C14.2794 10.342 13.8978 10.5 13.5 10.5C13.1022 10.5 12.7206 10.342 12.4393 10.0607C12.158 9.77936 12 9.39782 12 9ZM7.5 9C7.5 8.60218 7.65804 8.22064 7.93934 7.93934C8.22064 7.65804 8.60217 7.5 9 7.5C9.39782 7.5 9.77935 7.65804 10.0607 7.93934C10.342 8.22064 10.5 8.60218 10.5 9C10.5 9.39782 10.342 9.77936 10.0607 10.0607C9.77935 10.342 9.39782 10.5 9 10.5C8.60217 10.5 8.22064 10.342 7.93934 10.0607C7.65804 9.77936 7.5 9.39782 7.5 9ZM3 9C3 8.60218 3.15804 8.22064 3.43934 7.93934C3.72064 7.65804 4.10218 7.5 4.5 7.5C4.89782 7.5 5.27936 7.65804 5.56066 7.93934C5.84196 8.22064 6 8.60218 6 9C6 9.39782 5.84196 9.77936 5.56066 10.0607C5.27936 10.342 4.89782 10.5 4.5 10.5C4.10218 10.5 3.72064 10.342 3.43934 10.0607C3.15804 9.77936 3 9.39782 3 9Z"
+                                fill="#D4002A" />
+                        </svg>
+                    </span>
+                </div>
+                ` : ""}
+
+            </div>
+            <div class="car-image">
+                <img class="img-responsive" style="margin: ${car_container.querySelector('.upgrade-car-image img.img-responsive') ? "unset" : "auto"}" src='${car_container.querySelector('img.img-responsive').getAttribute('lazy-load')}' />
+                ${car_container.querySelector('.upgrade-car-image img.img-responsive') ? `<img class="upgrade-car-image img-responsive" src='${car_container.querySelector('.upgrade-car-image img.img-responsive').getAttribute('lazy-load')}'/>` : ""}
+            </div>
+        </div>
+
+        <div class="car-feature-section">
+            <div class="available-car-fac">
+                ${car_container.querySelector('.available-car-facilities .available-car-fac').innerHTML}
+            </div>
+            <div class="close-blue">
+                <span></span>
+            </div>
+        </div>
+
+        <div class="car-footer-section avilcardtl">
+            ${handleGenerateTag(car_container)}
+            ${handleGenerateFooter(car_container)}
+        </div>
+    </div>`);
+
+    car.querySelector(`.opti-car-new-design.car-number-${car_count} .car-header-section .vehicle-features .feature-display-icon`).addEventListener("click", function () {
+        car.querySelector(`.opti-car-new-design .car-feature-section`).style.height = `${car.querySelector(`.opti-car-new-design .car-header-section`).offsetHeight}px`
+        car.querySelector(`.opti-car-new-design .car-header-section`).style.display = "none";
+        car.querySelector(`.opti-car-new-design .car-feature-section`).style.display = "block";
+    })
+
+    car.querySelector(`.opti-car-new-design.car-number-${car_count} .car-feature-section .close-blue`).addEventListener("click", function () {
+        car.querySelector(`.opti-car-new-design .car-header-section`).style.display = "block";
+        car.querySelector(`.opti-car-new-design .car-feature-section`).style.display = "none";
+    })
+
+    //for starting-from-btn
+    if (car.querySelector(`.opti-car-new-design.car-number-${car_count} .car-footer-section .starting-from-btn button`)) {
+        car.querySelector(`.opti-car-new-design.car-number-${car_count} .car-footer-section .starting-from-btn button`).addEventListener('click', () => {
+            if (car_container.querySelector('#res-vehicles-pay-later-memberRate')) {
+                car_container.querySelector('#res-vehicles-pay-later-memberRate').click();
+            }
+        });
+    }
+
+    //for only select btn
+    if (car.querySelector(`.opti-car-new-design.car-number-${car_count} .car-footer-section .only-select-btn button`)) {
+        car.querySelector(`.opti-car-new-design.car-number-${car_count} .car-footer-section .only-select-btn button`).addEventListener('click', () => {
+            if (car_container.querySelector('#res-vehicles-select')) {
+                car_container.querySelector('#res-vehicles-select').click();
+            }
+        });
+    }
+
+    //for pay-now-pay-later-btn
+    if (car.querySelector(`.opti-car-new-design.car-number-${car_count} .car-footer-section .pay-now-pay-later-btn-section`)) {
+
+        if (car.querySelector(`.opti-car-new-design.car-number-${car_count} .car-footer-section .pay-now-pay-later-btn-section .pay-later-section .pay-later-btn`)) {
+            car.querySelector(`.opti-car-new-design.car-number-${car_count} .car-footer-section .pay-now-pay-later-btn-section .pay-later-section .pay-later-btn`).addEventListener('click', function () {
+                if (car_container.querySelector('#res-vehicles-pay-later')) {
+                    car_container.querySelector('#res-vehicles-pay-later').click()
+                }
+            })
+        }
+
+        if (car.querySelector(`.opti-car-new-design.car-number-${car_count} .car-footer-section .pay-now-pay-later-btn-section .pay-now-section .pay-now-btn`)) {
+
+            car.querySelector(`.opti-car-new-design.car-number-${car_count} .car-footer-section .pay-now-pay-later-btn-section .pay-now-section .pay-now-btn`).addEventListener('click', function () {
+                if (car_container.querySelector('#res-vehicles-pay-now')) {
+                    car_container.querySelector('#res-vehicles-pay-now').click()
+                }
+            })
+
+            const save_message = car_container.querySelector(".paybtndtl .paynow .savedata.res-inputFldFst.selected-car-save")
+
+            if (save_message) {
+                save_message.remove();
+                car.querySelector(`.opti-car-new-design.car-number-${car_count} .car-footer-section .pay-now-pay-later-btn-section .pay-now-section`).appendChild(save_message);
+            }
+        }
+    }
+
+    //setting the car-tags height.
+
+    const all_car_tags = document.querySelectorAll('.opti-car-new-design .car-all-tags');
+    let maxHeight_tag = 0;
+    all_car_tags.forEach(tag => {
+        const tagHeight = tag.offsetHeight;
+        if (tagHeight > maxHeight_tag) {
+            maxHeight_tag = tagHeight;
+        }
+    });
+
+    all_car_tags.forEach(tag => {
+        tag.style.height = `${maxHeight_tag}px`;
+    });
+
+
+    const all_car_price_btn_section = document.querySelectorAll('.opti-car-new-design .price-btn-section .prices');
+    let maxHeight_price_btn_section = 0;
+    all_car_price_btn_section.forEach(tag => {
+        const tagHeight = tag.offsetHeight;
+        if (tagHeight > maxHeight_price_btn_section) {
+            maxHeight_price_btn_section = tagHeight;
+        }
+    });
+
+    all_car_price_btn_section.forEach(tag => {
+        tag.style.height = `${maxHeight_price_btn_section}px`;
+    });
+}
+
+if (window.location.pathname == '/en/reservation') {
+    utils.observeSelector(`.vehicle-availability div[ng-class="{'three-grid-layout': vm.isStepTwoRedesign && vm.pageName == carRentalConstant.step2PageName, 'two-grid-layout': vm.isStepTwoRedesign && vm.pageName == carRentalConstant.step3PageName}"]`, function (car_list_container) {
+
+        car_list_container.insertAdjacentHTML("afterbegin", `
+            <style>
             .opti-car-new-design {
                 border: 1px solid rgb(204, 204, 204);
                 display: flex;
                 flex-direction: column;
                 padding: 0 6%;
+            }
+
+            .opti-car-new-design .vertical-line-feat{
+                display: none;
             }
 
             .opti-car-new-design .car-header-section .vehicle-features .feature-display-icon { 
@@ -222,149 +373,8 @@ function handle_creating_new_car_design(car, car_count) {
             .opti-car-new-design .car-footer-section .car-all-tags {
                 margin-bottom: 6px;
             }
-        </style>
-
-        <div class="car-header-section">
-            <div class="car-info avilcardtl">
-                ${car_container.querySelector('h3[ng-bind="car.carGroup"]') ? `<h3>
-                    ${car_container.querySelector('h3[ng-bind="car.carGroup"]').innerText}</h3>` : ""}
-
-                ${car_container.querySelector('p.featurecartxt.similar-car') ? `<p class="featurecartxt">
-                    ${car_container.querySelector('p.featurecartxt.similar-car').innerText}</p>` : ""}
-
-                ${car_container.querySelectorAll('.tableDiv.vehicle-features > span').length ? `
-                <div class="tableDiv vehicle-features">
-                    ${[...car_container.querySelectorAll('.tableDiv.vehicle-features > span')].map(span =>
-        `<span class="${span.className}">${span.innerHTML}</span>`
-    ).join("")}
-                    ${car_container.querySelector('p[ng-bind="car.automaticCaption"]') &&
-                car_container.querySelector('p[ng-bind="car.automaticCaption"]').innerText == "Automatic Transmission" ?
-                `<span class="four-automatic-feat">
-                        <span></span>
-                        Automatic
-                    </span>`: ""}
-                    <span class="feature-display-icon">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 18 18" fill="none">
-                            <path
-                                d="M12 9C12 8.60218 12.158 8.22064 12.4393 7.93934C12.7206 7.65804 13.1022 7.5 13.5 7.5C13.8978 7.5 14.2794 7.65804 14.5607 7.93934C14.842 8.22064 15 8.60218 15 9C15 9.39782 14.842 9.77936 14.5607 10.0607C14.2794 10.342 13.8978 10.5 13.5 10.5C13.1022 10.5 12.7206 10.342 12.4393 10.0607C12.158 9.77936 12 9.39782 12 9ZM7.5 9C7.5 8.60218 7.65804 8.22064 7.93934 7.93934C8.22064 7.65804 8.60217 7.5 9 7.5C9.39782 7.5 9.77935 7.65804 10.0607 7.93934C10.342 8.22064 10.5 8.60218 10.5 9C10.5 9.39782 10.342 9.77936 10.0607 10.0607C9.77935 10.342 9.39782 10.5 9 10.5C8.60217 10.5 8.22064 10.342 7.93934 10.0607C7.65804 9.77936 7.5 9.39782 7.5 9ZM3 9C3 8.60218 3.15804 8.22064 3.43934 7.93934C3.72064 7.65804 4.10218 7.5 4.5 7.5C4.89782 7.5 5.27936 7.65804 5.56066 7.93934C5.84196 8.22064 6 8.60218 6 9C6 9.39782 5.84196 9.77936 5.56066 10.0607C5.27936 10.342 4.89782 10.5 4.5 10.5C4.10218 10.5 3.72064 10.342 3.43934 10.0607C3.15804 9.77936 3 9.39782 3 9Z"
-                                fill="#D4002A" />
-                        </svg>
-                    </span>
-                </div>
-                ` : ""}
-
-            </div>
-            <div class="car-image">
-                <img class="img-responsive" style="margin: ${car_container.querySelector('.upgrade-car-image img.img-responsive') ? "unset" : "auto"}" src='${car_container.querySelector('img.img-responsive').getAttribute('lazy-load')}' />
-                ${car_container.querySelector('.upgrade-car-image img.img-responsive') ? `<img class="upgrade-car-image img-responsive" src='${car_container.querySelector('.upgrade-car-image img.img-responsive').getAttribute('lazy-load')}'/>` : ""}
-            </div>
-        </div>
-
-        <div class="car-feature-section">
-            <div class="available-car-fac">
-                ${car_container.querySelector('.available-car-facilities .available-car-fac').innerHTML}
-            </div>
-            <div class="close-blue">
-                <span></span>
-            </div>
-        </div>
-
-        <div class="car-footer-section avilcardtl">
-            ${handleGenerateTag(car_container)}
-            ${handleGenerateFooter(car_container)}
-        </div>
-    </div>`);
-
-    car.querySelector(`.opti-car-new-design.car-number-${car_count} .car-header-section .vehicle-features .feature-display-icon`).addEventListener("click", function () {
-        console.warn("helooooo", car.querySelector(`.opti-car-new-design .car-header-section`))
-        car.querySelector(`.opti-car-new-design .car-feature-section`).style.height = `${car.querySelector(`.opti-car-new-design .car-header-section`).offsetHeight}px`
-        car.querySelector(`.opti-car-new-design .car-header-section`).style.display = "none";
-        car.querySelector(`.opti-car-new-design .car-feature-section`).style.display = "block";
-    })
-
-    car.querySelector(`.opti-car-new-design.car-number-${car_count} .car-feature-section .close-blue`).addEventListener("click", function () {
-        car.querySelector(`.opti-car-new-design .car-header-section`).style.display = "block";
-        car.querySelector(`.opti-car-new-design .car-feature-section`).style.display = "none";
-    })
-
-    //for starting-from-btn
-    if (car.querySelector(`.opti-car-new-design.car-number-${car_count} .car-footer-section .starting-from-btn button`)) {
-        car.querySelector(`.opti-car-new-design.car-number-${car_count} .car-footer-section .starting-from-btn button`).addEventListener('click', () => {
-            if (car_container.querySelector('#res-vehicles-pay-later-memberRate')) {
-                car_container.querySelector('#res-vehicles-pay-later-memberRate').click();
-            }
-        });
-    }
-
-    //for only select btn
-    if (car.querySelector(`.opti-car-new-design.car-number-${car_count} .car-footer-section .only-select-btn button`)) {
-        car.querySelector(`.opti-car-new-design.car-number-${car_count} .car-footer-section .only-select-btn button`).addEventListener('click', () => {
-            if (car_container.querySelector('#res-vehicles-select')) {
-                car_container.querySelector('#res-vehicles-select').click();
-            }
-        });
-    }
-
-    //for pay-now-pay-later-btn
-    if (car.querySelector(`.opti-car-new-design.car-number-${car_count} .car-footer-section .pay-now-pay-later-btn-section`)) {
-
-        if (car.querySelector(`.opti-car-new-design.car-number-${car_count} .car-footer-section .pay-now-pay-later-btn-section .pay-later-section .pay-later-btn`)) {
-            car.querySelector(`.opti-car-new-design.car-number-${car_count} .car-footer-section .pay-now-pay-later-btn-section .pay-later-section .pay-later-btn`).addEventListener('click', function () {
-                if (car_container.querySelector('#res-vehicles-pay-later')) {
-                    car_container.querySelector('#res-vehicles-pay-later').click()
-                }
-            })
-        }
-
-        if (car.querySelector(`.opti-car-new-design.car-number-${car_count} .car-footer-section .pay-now-pay-later-btn-section .pay-now-section .pay-now-btn`)) {
-
-            car.querySelector(`.opti-car-new-design.car-number-${car_count} .car-footer-section .pay-now-pay-later-btn-section .pay-now-section .pay-now-btn`).addEventListener('click', function () {
-                if (car_container.querySelector('#res-vehicles-pay-now')) {
-                    car_container.querySelector('#res-vehicles-pay-now').click()
-                }
-            })
-
-            const save_message = car_container.querySelector(".paybtndtl .paynow .savedata.res-inputFldFst.selected-car-save")
-
-            if (save_message) {
-                save_message.remove();
-                car.querySelector(`.opti-car-new-design.car-number-${car_count} .car-footer-section .pay-now-pay-later-btn-section .pay-now-section`).appendChild(save_message);
-            }
-        }
-    }
-
-    //setting the car-tags height.
-
-    const all_car_tags = document.querySelectorAll('.opti-car-new-design .car-all-tags');
-    let maxHeight_tag = 0;
-    all_car_tags.forEach(tag => {
-        const tagHeight = tag.offsetHeight;
-        if (tagHeight > maxHeight_tag) {
-            maxHeight_tag = tagHeight;
-        }
-    });
-
-    all_car_tags.forEach(tag => {
-        tag.style.height = `${maxHeight_tag}px`;
-    });
-
-
-    const all_car_price_btn_section = document.querySelectorAll('.opti-car-new-design .price-btn-section .prices');
-    let maxHeight_price_btn_section = 0;
-    all_car_price_btn_section.forEach(tag => {
-        const tagHeight = tag.offsetHeight;
-        if (tagHeight > maxHeight_price_btn_section) {
-            maxHeight_price_btn_section = tagHeight;
-        }
-    });
-
-    all_car_price_btn_section.forEach(tag => {
-        tag.style.height = `${maxHeight_price_btn_section}px`;
-    });
-}
-
-if (window.location.pathname == '/en/reservation') {
-    utils.observeSelector(`.vehicle-availability div[ng-class="{'three-grid-layout': vm.isStepTwoRedesign && vm.pageName == carRentalConstant.step2PageName, 'two-grid-layout': vm.isStepTwoRedesign && vm.pageName == carRentalConstant.step3PageName}"]`, function (car_list_container) {
+        </style>    
+        `)
 
         console.warn("car_list_container", car_list_container);
 
@@ -414,7 +424,223 @@ if (window.location.pathname == '/en/reservation') {
 
             }
         });
+
+        utils.observeSelector(`div[ng-if="vm.response.featuredVehicles.length <= 1 || vm.deviceType == 'handheld'"]`, function (selected_car) {
+            selected_car.style.display = "none";
+
+            if (selected_car.querySelector('.featuredcar.featured-car-box')) {
+                if (car_list_container.querySelector('.opti-user-seleted-car')) {
+                    car_list_container.querySelector('.opti-user-seleted-car').remove();
+
+                    handle_generate_new_selected_car_design(car_list_container, selected_car)
+                } else {
+                    handle_generate_new_selected_car_design(car_list_container, selected_car)
+                }
+            }
+        })
     });
+
+    function handleGenerateFooter_For_Selected_Car(car_container) {
+        if (car_container.querySelector("#res-vehicles-pay-later-memberRate")) {
+            return `
+                <div class="starting-from-btn price-btn-section" style="display: flex; justify-content: space-between;">
+                    <div class="price-section" style="display: flex; flex-direction: column; flex-basis: 49%;">
+                        <p style="font-size: 16px; color: rgb(102, 102, 102); font-weight: normal;">${car_container.querySelector(".member-rate-price-container .member-rate-starts-from").innerText}</p>
+                        <p class="member-rate-price">${car_container.querySelector(".member-rate-price-container .totalPay.member-rate-price").innerHTML}</p>
+                    </div>
+                    <button class="select-btn" style="flex-basis: 49%;">
+                        Select
+                    </button>
+                </div>
+            `;
+        } else if (car_container.querySelector("#res-vehicle-select") && car_container.querySelector("#res-vehicles-pay-now")) {
+            return `
+                <div class="pay-now-pay-later-btn-section price-btn-section" style="display: flex; justify-content: space-between;">
+                    <div class="pay-later-section price-section" style="flex-basis: 48%;">
+                        <div class="prices">
+                            ${car_container.querySelector(".paybtndtl .payatcntr .striked-text") ? `${car_container.querySelector(".paybtndtl .payatcntr .striked-text").outerHTML}` : ""}
+                            ${car_container.querySelector(".paybtndtl .payatcntr .payamntp").outerHTML}
+                        </div>
+                        <button class="pay-later-btn">
+                            Pay Later
+                        </button>
+                    </div>
+                    <div class="pay-now-section price-section" style="flex-basis: 48%;">
+                        <div class="prices">
+                            ${car_container.querySelector(".paybtndtl .paynow .striked-text.payamntp") ? `${car_container.querySelector(".paybtndtl .paynow .striked-text.payamntp").outerHTML}` : ""}
+                            ${car_container.querySelector(".paybtndtl .paynow .payamntr:not(.striked-text)").outerHTML}
+                        </div>
+                        <button class="pay-now-btn">
+                            Pay Now
+                        </button>
+                    </div>
+                </div>
+            `
+        } else if (car_container.querySelector("#res-vehicle-select")) {
+            return `
+                <div class="only-select-btn price-btn-section" style="display: flex; flex-direction: column;">
+    
+                    <div class="prices">
+                        ${car_container.querySelector(".paynow .payamntr.striked-text") ? `<div class="price-section payamntr striked-text">
+                            ${car_container.querySelector(".paynow .payamntr.striked-text").innerHTML}
+                        </div>` : ""}
+    
+                        <div class="price-section payamntr" style="display: flex; flex-direction: column; flex-basis: 100%; font-weight: bold;">
+                            ${car_container.querySelector(".paynow .payamntr:not(.striked-text)").innerHTML}
+                        </div>
+                    </div>
+    
+                    <button class="select-btn" style="flex-basis: 100%; width: 100%;">
+                        Select
+                    </button>
+                </div>
+            `;
+        } else {
+            return ""
+        }
+    }
+
+    function handle_generate_new_selected_car_design(car_list_container, selected_car) {
+        car_list_container.insertAdjacentHTML("afterbegin", `<div class="opti-user-seleted-car">
+            <div class="opti-car-new-design">
+            <div class="car-header-section">
+                <div class="car-info avilcardtl">
+                    ${selected_car.querySelector(`h3[ng-if="vm.response.bundleFlow !== 'GUIDED_RES'"]`) ? `<h3>
+                        ${selected_car.querySelector(`h3[ng-if="vm.response.bundleFlow !== 'GUIDED_RES'"]`).innerText}</h3>` : ""}
+    
+                    ${selected_car.querySelector('p.featurecartxt') ? `<p class="featurecartxt">
+                        ${selected_car.querySelector('p.featurecartxt').innerText}</p>` : ""}
+    
+                    ${selected_car.querySelectorAll('.tableDiv.vehicle-features-step2 > span').length ? `
+                    <div class="tableDiv vehicle-features">
+                        ${[...selected_car.querySelectorAll('.tableDiv.vehicle-features-step2 > span')].map(span =>
+            `<span class="${span.className}">${span.innerHTML}</span>`
+        ).join("")}
+                        ${selected_car.querySelector('p[ng-bind="car.automaticCaption"]') &&
+                    selected_car.querySelector('p[ng-bind="car.automaticCaption"]').innerText == "Automatic Transmission" ?
+                    `<span class="four-automatic-feat">
+                            <span></span>
+                            Automatic
+                        </span>`: ""}
+                        <span class="feature-display-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 18 18" fill="none">
+                                <path
+                                    d="M12 9C12 8.60218 12.158 8.22064 12.4393 7.93934C12.7206 7.65804 13.1022 7.5 13.5 7.5C13.8978 7.5 14.2794 7.65804 14.5607 7.93934C14.842 8.22064 15 8.60218 15 9C15 9.39782 14.842 9.77936 14.5607 10.0607C14.2794 10.342 13.8978 10.5 13.5 10.5C13.1022 10.5 12.7206 10.342 12.4393 10.0607C12.158 9.77936 12 9.39782 12 9ZM7.5 9C7.5 8.60218 7.65804 8.22064 7.93934 7.93934C8.22064 7.65804 8.60217 7.5 9 7.5C9.39782 7.5 9.77935 7.65804 10.0607 7.93934C10.342 8.22064 10.5 8.60218 10.5 9C10.5 9.39782 10.342 9.77936 10.0607 10.0607C9.77935 10.342 9.39782 10.5 9 10.5C8.60217 10.5 8.22064 10.342 7.93934 10.0607C7.65804 9.77936 7.5 9.39782 7.5 9ZM3 9C3 8.60218 3.15804 8.22064 3.43934 7.93934C3.72064 7.65804 4.10218 7.5 4.5 7.5C4.89782 7.5 5.27936 7.65804 5.56066 7.93934C5.84196 8.22064 6 8.60218 6 9C6 9.39782 5.84196 9.77936 5.56066 10.0607C5.27936 10.342 4.89782 10.5 4.5 10.5C4.10218 10.5 3.72064 10.342 3.43934 10.0607C3.15804 9.77936 3 9.39782 3 9Z"
+                                    fill="#D4002A" />
+                            </svg>
+                        </span>
+                    </div>
+                    ` : ""}
+    
+                </div>
+                <div class="car-image">
+                    <img class="img-responsive" style="margin: ${selected_car.querySelector('.upgrade-car-image img.img-responsive') ? "unset" : "auto"}" src='${selected_car.querySelector('img.img-responsive').getAttribute('lazy-load')}' />
+                    ${selected_car.querySelector('.upgrade-car-image img.img-responsive') ? `<img class="upgrade-car-image img-responsive" src='${selected_car.querySelector('.upgrade-car-image img.img-responsive').getAttribute('lazy-load')}'/>` : ""}
+                </div>
+            </div>
+    
+            <div class="car-feature-section">
+                <div class="available-car-fac">
+                    ${selected_car.querySelector('.feature-car-facilities .featured-car-fac').innerHTML}
+                </div>
+                <div class="close-blue">
+                    <span></span>
+                </div>
+            </div>
+    
+            <div class="car-footer-section avilcardtl">
+                ${handleGenerateTag(selected_car)}
+                ${handleGenerateFooter_For_Selected_Car(selected_car)}
+            </div>
+        </div>    
+        </div>`);
+
+        car_list_container.querySelector(`.opti-user-seleted-car .opti-car-new-design .car-header-section .vehicle-features .feature-display-icon`).addEventListener("click", function () {
+            car_list_container.querySelector(`.opti-user-seleted-car .opti-car-new-design .car-feature-section`).style.height = `${car_list_container.querySelector(`.opti-user-seleted-car .opti-car-new-design .car-header-section`).offsetHeight}px`
+            car_list_container.querySelector(`.opti-user-seleted-car .opti-car-new-design .car-header-section`).style.display = "none";
+            car_list_container.querySelector(`.opti-user-seleted-car .opti-car-new-design .car-feature-section`).style.display = "block";
+        })
+
+        car_list_container.querySelector(`.opti-user-seleted-car .opti-car-new-design .car-feature-section .close-blue`).addEventListener("click", function () {
+            car_list_container.querySelector(`.opti-user-seleted-car .opti-car-new-design .car-header-section`).style.display = "block";
+            car_list_container.querySelector(`.opti-user-seleted-car .opti-car-new-design .car-feature-section`).style.display = "none";
+        })
+
+        //for starting-from-btn
+        if (car_list_container.querySelector(`.opti-user-seleted-car .opti-car-new-design .car-footer-section .starting-from-btn button`)) {
+            car_list_container.querySelector(`.opti-user-seleted-car .opti-car-new-design .car-footer-section .starting-from-btn button`).addEventListener('click', () => {
+                if (selected_car.querySelector('#res-vehicles-pay-later-memberRate')) {
+                    selected_car.querySelector('#res-vehicles-pay-later-memberRate').click();
+                }
+            });
+        }
+
+        //for only select btn
+        if (car_list_container.querySelector(`.opti-user-seleted-car .opti-car-new-design .car-footer-section .only-select-btn button`)) {
+            car_list_container.querySelector(`.opti-user-seleted-car .opti-car-new-design .car-footer-section .only-select-btn button`).addEventListener('click', () => {
+                if (selected_car.querySelector('#res-vehicle-select')) {
+                    selected_car.querySelector('#res-vehicle-select').click();
+                }
+            });
+        }
+
+        //for pay-now-pay-later-btn
+        // if (car_list_container.querySelector(`.opti-user-seleted-car .opti-car-new-design .car-footer-section .pay-now-pay-later-btn-section`)) {
+
+        //     if (car_list_container.querySelector(`.opti-user-seleted-car .opti-car-new-design .car-footer-section .pay-now-pay-later-btn-section .pay-later-section .pay-later-btn`)) {
+        //         car_list_container.querySelector(`.opti-user-seleted-car .opti-car-new-design .car-footer-section .pay-now-pay-later-btn-section .pay-later-section .pay-later-btn`).addEventListener('click', function () {
+        //             if (selected_car.querySelector('#res-vehicle-select')) {
+        //                 selected_car.querySelector('#res-vehicle-select').click()
+        //             }
+        //         })
+        //     }
+
+        //     if (car_list_container.querySelector(`.opti-user-seleted-car .opti-car-new-design .car-footer-section .pay-now-pay-later-btn-section .pay-now-section .pay-now-btn`)) {
+
+        //         car_list_container.querySelector(`.opti-user-seleted-car .opti-car-new-design .car-footer-section .pay-now-pay-later-btn-section .pay-now-section .pay-now-btn`).addEventListener('click', function () {
+        //             if (selected_car.querySelector('#res-vehicles-pay-now')) {
+        //                 selected_car.querySelector('#res-vehicles-pay-now').click()
+        //             }
+        //         })
+
+        //         const save_message = selected_car.querySelector(".paybtndtl .paynow .savedata.res-inputFldFst")
+
+        //         if (save_message) {
+        //             save_message.remove();
+        //             document.querySelector(`.opti-user-seleted-car .opti-car-new-design .car-footer-section .pay-now-pay-later-btn-section .pay-now-section`).appendChild(save_message);
+        //         }
+        //     }
+        // }
+
+        // //setting the car-tags height.
+
+        // const all_car_tags = document.querySelectorAll('.opti-car-new-design .car-all-tags');
+        // let maxHeight_tag = 0;
+        // all_car_tags.forEach(tag => {
+        //     const tagHeight = tag.offsetHeight;
+        //     if (tagHeight > maxHeight_tag) {
+        //         maxHeight_tag = tagHeight;
+        //     }
+        // });
+
+        // all_car_tags.forEach(tag => {
+        //     tag.style.height = `${maxHeight_tag}px`;
+        // });
+
+
+        // const all_car_price_btn_section = document.querySelectorAll('.opti-car-new-design .price-btn-section .prices');
+        // let maxHeight_price_btn_section = 0;
+        // all_car_price_btn_section.forEach(tag => {
+        //     const tagHeight = tag.offsetHeight;
+        //     if (tagHeight > maxHeight_price_btn_section) {
+        //         maxHeight_price_btn_section = tagHeight;
+        //     }
+        // });
+
+        // all_car_price_btn_section.forEach(tag => {
+        //     tag.style.height = `${maxHeight_price_btn_section}px`;
+        // });
+    }
 
     utils.observeSelector(`.vehiclePushDownBox .veh-Hide-Div-In-Mob:not(#myDiv)`, function (filter_container) {
         filter_container.style.display = "flex";
