@@ -4,12 +4,36 @@ function cleanup(selector) {
 
 const utils = optimizely.get('utils');
 
+function handleGenerateTag(car_container) {
+    let tagsHTML = "";
+
+    const selectors = [
+        { className: "coupnelg", selector: ".coupnelg" },
+        { className: "upgrade-coupon", selector: `p[ng-if="car.upgradeApplicable && !vm.isStepTwoRedesign"]` },
+        { className: "coupon-eligible-sub No-coupon-img-text", selector: ".coupon-eligible-sub.No-coupon-img-text" },
+        { className: "pp-prices", selector: ".member-rate" }
+    ];
+
+    selectors.forEach(({ className, selector }) => {
+        const element = car_container.querySelector(selector);
+        if (element) {
+            tagsHTML += `
+                <div class="car-tag ${className}">
+                    ${element.innerHTML}
+                </div>
+            `;
+        }
+    });
+
+    return `<div class="car-all-tags">${tagsHTML}</div>`; // Returns all matching tags as a single string
+}
+
 function handleGenerateFooter(car_container) {
     if (car_container.querySelector("#res-vehicles-pay-later-memberRate")) {
         return `
-            <div class="starting-from-btn" style="display: flex; justify-content: space-between;">
+            <div class="starting-from-btn price-btn-section" style="display: flex; justify-content: space-between;">
                 <div class="price-section" style="display: flex; flex-direction: column; flex-basis: 49%;">
-                    <p>${car_container.querySelector(".member-rate-price-container .member-rate-starts-from").innerText}</p>
+                    <p style="font-size: 16px; color: rgb(102, 102, 102); font-weight: normal;">${car_container.querySelector(".member-rate-price-container .member-rate-starts-from").innerText}</p>
                     <p class="member-rate-price">${car_container.querySelector(".member-rate-price-container .totalPay.member-rate-price").innerHTML}</p>
                 </div>
                 <button class="select-btn" style="flex-basis: 49%;">
@@ -19,15 +43,45 @@ function handleGenerateFooter(car_container) {
         `;
     } else if (car_container.querySelector("#res-vehicles-select")) {
         return `
-            <div class="only-select-btn" style="display: flex; flex-direction: column;">
+            <div class="only-select-btn price-btn-section" style="display: flex; flex-direction: column;">
+
+                ${car_container.querySelector(".paynow .payamntr.striked-text") ? `<div class="price-section payamntr striked-text">
+                    ${car_container.querySelector(".paynow .payamntr.striked-text").innerHTML}
+                </div>` : ""}
+
                 <div class="price-section payamntr" style="display: flex; flex-direction: column; flex-basis: 100%; font-weight: bold;">
-                    ${car_container.querySelector(".paynow .payamntr").innerHTML}
+                    ${car_container.querySelector(".paynow .payamntr:not(.striked-text)").innerHTML}
                 </div>
                 <button class="select-btn" style="flex-basis: 100%; width: 100%;">
                     Select
                 </button>
             </div>
         `;
+    } else if (car_container.querySelector(".paybtndtl .payatcntr #res-vehicles-pay-later") && car_container.querySelector(".paybtndtl .paynow #res-vehicles-pay-now")) {
+        return `
+            <div class="pay-now-pay-later-btn-section price-btn-section" style="display: flex; justify-content: space-between;">
+                <div class="pay-later-section price-section" style="flex-basis: 48%;">
+                    <div class="prices">
+                        ${car_container.querySelector(".paybtndtl .payatcntr .striked-text") ? `${car_container.querySelector(".paybtndtl .payatcntr .striked-text").outerHTML}` : ""}
+                        ${car_container.querySelector(".paybtndtl .payatcntr .payamntp").outerHTML}
+                    </div>
+                    <button class="pay-later-btn">
+                        Pay Later
+                    </button>
+                </div>
+                <div class="pay-now-section price-section" style="flex-basis: 48%;">
+                    <div class="prices">
+                        ${car_container.querySelector(".paybtndtl .paynow .striked-text.payamntp") ? `${car_container.querySelector(".paybtndtl .paynow .striked-text.payamntp").outerHTML}` : ""}
+                        ${car_container.querySelector(".paybtndtl .paynow .payamntr:not(.striked-text)").outerHTML}
+                    </div>
+                    <button class="pay-now-btn">
+                        Pay Now
+                    </button>
+                </div>
+            </div>
+        `
+    } else {
+        return ""
     }
 }
 
@@ -191,6 +245,17 @@ if (window.location.pathname == '/en/reservation') {
                                 cursor: pointer;
                             }
 
+                            .opti-car-new-design .car-header-section .car-image {
+                                position: relative;
+                            }
+
+                            .opti-car-new-design .car-header-section .car-image .upgrade-car-image {
+                                position: absolute;
+                                top: 20px;
+                                left: 22%;
+                                width: 85%;
+                            }
+
                             .opti-car-new-design .car-feature-section {
                                 position: relative;
                                 display: none;
@@ -216,13 +281,90 @@ if (window.location.pathname == '/en/reservation') {
                                 border: 0;
                                 color: white;
                             }
+
+                            .opti-car-new-design .pay-later-btn {
+                                width: 100%;
+                                background: transparent;
+                                border: 2px solid rgb(247, 139, 0);
+                                color: rgb(247, 139, 0);
+                                font-weight: bold;
+                                display: flex;
+                                align-items: center;
+                                justify-content: center;
+                                font-family: Custom-Regular, Arial, sans-serif;
+                                font-size: 15px;
+                                height: 40px;
+                                color: black;
+                            }
+
+                            .opti-car-new-design .pay-now-btn {
+                                width: 100%;
+                                background: rgb(0, 40, 95);
+                                font-weight: bold;
+                                display: flex;
+                                align-items: center;
+                                justify-content: center;
+                                font-family: Custom-Regular, Arial, sans-serif;
+                                font-size: 15px;
+                                height: 40px;
+                                color: white;
+                                border: 2px solid rgb(0, 40, 95);
+                            }
     
-                            .opti-car-new-design .only-select-btn .price-section span {
+                            .opti-car-new-design .price-section,
+                            .opti-car-new-design .price-section p {
                                 color: rgb(0, 0, 0);
-                                font-size: 27px;
+                                font-size: 21px;
                                 font-weight: bold;
                                 margin: 0px;
                                 padding: 0px;
+                            }
+
+                            .opti-car-new-design .price-section sup {
+                                top: 0;
+                            }
+
+                            .opti-car-new-design .price-section .striked-text,
+                            .opti-car-new-design .price-section p.striked-text {
+                                font-size: 16px;
+                            }
+
+                            .opti-car-new-design .price-section.striked-text {
+                                font-size: 16px;
+                            }
+
+                            .opti-car-new-design .savedata.res-inputFldFst.selected-car-save {
+                                background: rgb(240, 238, 236);
+                                padding: 0;
+                                text-align: center;
+                                color: rgb(0, 0, 0) !important;
+                                font-size: 10px;
+                                position: relative;
+                                margin-top: 12px;
+                            }
+
+                            .opti-car-new-design .savedata.res-inputFldFst.selected-car-save::after {
+                                content: " ";
+                                position: absolute;
+                                right: 45%;
+                                top: -10px;
+                                border-width: 0px 15px 12px;
+                                border-top-style: initial;
+                                border-top-color: initial;
+                                border-right-style: solid;
+                                border-right-color: transparent;
+                                border-left-style: solid;
+                                border-left-color: transparent;
+                                border-bottom-style: solid;
+                                border-bottom-color: rgb(240, 238, 236);
+                            }
+
+                            .opti-car-new-design .car-footer-section .car-tag.pp-prices {
+                                text-align: start;
+                            }
+
+                            .opti-car-new-design .car-footer-section .car-all-tags {
+                                margin-bottom: 6px;
                             }
                         </style>
     
@@ -257,7 +399,8 @@ if (window.location.pathname == '/en/reservation') {
     
                             </div>
                             <div class="car-image">
-                                <img src='${car_container.querySelector(' img.img-responsive').getAttribute('lazy-load')}' />
+                                <img class="img-responsive" style="margin: ${car_container.querySelector('.upgrade-car-image img.img-responsive') ? "unset" : "auto"}" src='${car_container.querySelector('img.img-responsive').getAttribute('lazy-load')}' />
+                                ${car_container.querySelector('.upgrade-car-image img.img-responsive') ? `<img class="upgrade-car-image img-responsive" src='${car_container.querySelector('.upgrade-car-image img.img-responsive').getAttribute('lazy-load')}'/>` : ""}
                             </div>
                         </div>
     
@@ -270,38 +413,99 @@ if (window.location.pathname == '/en/reservation') {
                             </div>
                         </div>
     
-                        <div class="car-footer-section">
+                        <div class="car-footer-section avilcardtl">
+                            ${handleGenerateTag(car_container)}
                             ${handleGenerateFooter(car_container)}
                         </div>
                     </div>`);
 
+                    car.querySelector(`.opti-car-new-design.car-number-${car_count} .car-feature-section`).style.height = `${car.querySelector(`.opti-car-new-design.car-number-${car_count} .car-header-section`).offsetHeight}px`;
 
-                    document.querySelector(`.opti-car-new-design.car-number-${car_count} .car-header-section .vehicle-features .feature-display-icon`).addEventListener("click", function () {
+                    car.querySelector(`.opti-car-new-design.car-number-${car_count} .car-header-section .vehicle-features .feature-display-icon`).addEventListener("click", function () {
                         console.warn("helooooo", car.querySelector(`.opti-car-new-design .car-header-section`))
                         car.querySelector(`.opti-car-new-design .car-header-section`).style.display = "none";
                         car.querySelector(`.opti-car-new-design .car-feature-section`).style.display = "block";
                     })
 
-                    document.querySelector(`.opti-car-new-design.car-number-${car_count} .car-feature-section .close-blue`).addEventListener("click", function () {
+                    car.querySelector(`.opti-car-new-design.car-number-${car_count} .car-feature-section .close-blue`).addEventListener("click", function () {
                         car.querySelector(`.opti-car-new-design .car-header-section`).style.display = "block";
                         car.querySelector(`.opti-car-new-design .car-feature-section`).style.display = "none";
                     })
 
-                    if (document.querySelector(`.opti-car-new-design.car-number-${car_count} .car-footer-section .starting-from-btn button`)) {
-                        document.querySelector(`.opti-car-new-design.car-number-${car_count} .car-footer-section .starting-from-btn button`).addEventListener('click', () => {
+                    //for starting-from-btn
+                    if (car.querySelector(`.opti-car-new-design.car-number-${car_count} .car-footer-section .starting-from-btn button`)) {
+                        car.querySelector(`.opti-car-new-design.car-number-${car_count} .car-footer-section .starting-from-btn button`).addEventListener('click', () => {
                             if (car_container.querySelector('#res-vehicles-pay-later-memberRate')) {
                                 car_container.querySelector('#res-vehicles-pay-later-memberRate').click();
                             }
                         });
                     }
 
-                    if (document.querySelector(`.opti-car-new-design.car-number-${car_count} .car-footer-section .only-select-btn button`)) {
-                        document.querySelector(`.opti-car-new-design.car-number-${car_count} .car-footer-section .only-select-btn button`).addEventListener('click', () => {
+                    //for only select btn
+                    if (car.querySelector(`.opti-car-new-design.car-number-${car_count} .car-footer-section .only-select-btn button`)) {
+                        car.querySelector(`.opti-car-new-design.car-number-${car_count} .car-footer-section .only-select-btn button`).addEventListener('click', () => {
                             if (car_container.querySelector('#res-vehicles-select')) {
                                 car_container.querySelector('#res-vehicles-select').click();
                             }
                         });
                     }
+
+                    //for pay-now-pay-later-btn
+                    if (car.querySelector(`.opti-car-new-design.car-number-${car_count} .car-footer-section .pay-now-pay-later-btn-section`)) {
+
+                        if (car.querySelector(`.opti-car-new-design.car-number-${car_count} .car-footer-section .pay-now-pay-later-btn-section .pay-later-section .pay-later-btn`)) {
+                            car.querySelector(`.opti-car-new-design.car-number-${car_count} .car-footer-section .pay-now-pay-later-btn-section .pay-later-section .pay-later-btn`).addEventListener('click', function () {
+                                if (car_container.querySelector('#res-vehicles-pay-later')) {
+                                    car_container.querySelector('#res-vehicles-pay-later').click()
+                                }
+                            })
+                        }
+
+                        if (car.querySelector(`.opti-car-new-design.car-number-${car_count} .car-footer-section .pay-now-pay-later-btn-section .pay-now-section .pay-now-btn`)) {
+
+                            car.querySelector(`.opti-car-new-design.car-number-${car_count} .car-footer-section .pay-now-pay-later-btn-section .pay-now-section .pay-now-btn`).addEventListener('click', function () {
+                                if (car_container.querySelector('#res-vehicles-pay-now')) {
+                                    car_container.querySelector('#res-vehicles-pay-now').click()
+                                }
+                            })
+
+                            const save_message = car_container.querySelector(".paybtndtl .paynow .savedata.res-inputFldFst.selected-car-save")
+
+                            if (save_message) {
+                                save_message.remove();
+                                car.querySelector(`.opti-car-new-design.car-number-${car_count} .car-footer-section .pay-now-pay-later-btn-section .pay-now-section`).appendChild(save_message);
+                            }
+                        }
+                    }
+
+                    //setting the car-tags height.
+
+                    const all_car_tags = document.querySelectorAll('.opti-car-new-design .car-all-tags');
+                    let maxHeight_tag = 0;
+                    all_car_tags.forEach(tag => {
+                        const tagHeight = tag.offsetHeight;
+                        if (tagHeight > maxHeight_tag) {
+                            maxHeight_tag = tagHeight;
+                        }
+                    });
+
+                    all_car_tags.forEach(tag => {
+                        tag.style.height = `${maxHeight_tag}px`;
+                    });
+
+
+                    const all_car_price_btn_section = document.querySelectorAll('.opti-car-new-design .price-btn-section .prices');
+                    let maxHeight_price_btn_section = 0;
+                    all_car_price_btn_section.forEach(tag => {
+                        const tagHeight = tag.offsetHeight;
+                        if (tagHeight > maxHeight_price_btn_section) {
+                            maxHeight_price_btn_section = tagHeight;
+                        }
+                    });
+
+                    all_car_price_btn_section.forEach(tag => {
+                        tag.style.height = `${maxHeight_price_btn_section}px`;
+                    });
 
                     car_count++;
                 }
