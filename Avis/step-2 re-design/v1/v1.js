@@ -88,288 +88,279 @@ function handleGenerateFooter(car_container) {
 function handle_creating_new_car_design(car, car_count) {
     const car_container = car.querySelector(`div[ng-include=" 'carTemplate.html' "]`);
 
-    if (car_container) {
-        car_container.style.display = "none";
+    car.insertAdjacentHTML("afterbegin", `<div class="opti-car-new-design car-number-${car_count}">
+        <style>
+            .opti-car-new-design {
+                border: 1px solid rgb(204, 204, 204);
+                display: flex;
+                flex-direction: column;
+                padding: 0 6%;
+            }
 
-        if (car.querySelector('.opti-car-new-design')) {
-            car.querySelector('.opti-car-new-design').remove();
-            car.insertAdjacentHTML("afterbegin", `<div class="opti-car-new-design car-number-${car_count}">
-                <style>
-                    .opti-car-new-design {
-                        border: 1px solid rgb(204, 204, 204);
-                        display: flex;
-                        flex-direction: column;
-                        padding: 0 6%;
-                    }
+            .opti-car-new-design .car-header-section .vehicle-features .feature-display-icon { 
+                cursor: pointer;
+            }
 
-                    .opti-car-new-design .car-header-section .vehicle-features .feature-display-icon { 
-                        cursor: pointer;
-                    }
+            .opti-car-new-design .car-header-section .car-image {
+                position: relative;
+            }
 
-                    .opti-car-new-design .car-header-section .car-image {
-                        position: relative;
-                    }
+            .opti-car-new-design .car-header-section .car-image .upgrade-car-image {
+                position: absolute;
+                top: 20px;
+                left: 22%;
+                width: 85%;
+            }
 
-                    .opti-car-new-design .car-header-section .car-image .upgrade-car-image {
-                        position: absolute;
-                        top: 20px;
-                        left: 22%;
-                        width: 85%;
-                    }
+            .opti-car-new-design .car-feature-section {
+                position: relative;
+                display: none;
+            }
 
-                    .opti-car-new-design .car-feature-section {
-                        position: relative;
-                        display: none;
-                    }
+            .opti-car-new-design .car-feature-section .close-blue{
+                position: absolute;
+                top: 0;
+                right: 0;
+                cursor: pointer;
+            }
 
-                    .opti-car-new-design .car-feature-section .close-blue{
-                        position: absolute;
-                        top: 0;
-                        right: 0;
-                        cursor: pointer;
-                    }
+            .opti-car-new-design .select-btn {
+                width: 160px;
+                min-width: 160px;
+                font-size: 15px;
+                margin: 10px 0px;
+                padding: 0px 10px;
+                height: 40px;
+                line-height: 40px;
+                font-family: Custom-Regular, Arial, sans-serif;
+                background: rgb(247, 139, 0);
+                border: 0;
+                color: white;
+            }
 
-                    .opti-car-new-design .select-btn {
-                        width: 160px;
-                        min-width: 160px;
-                        font-size: 15px;
-                        margin: 10px 0px;
-                        padding: 0px 10px;
-                        height: 40px;
-                        line-height: 40px;
-                        font-family: Custom-Regular, Arial, sans-serif;
-                        background: rgb(247, 139, 0);
-                        border: 0;
-                        color: white;
-                    }
+            .opti-car-new-design .pay-later-btn {
+                width: 100%;
+                background: transparent;
+                border: 2px solid rgb(247, 139, 0);
+                color: rgb(247, 139, 0);
+                font-weight: bold;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                font-family: Custom-Regular, Arial, sans-serif;
+                font-size: 15px;
+                height: 40px;
+                color: black;
+            }
 
-                    .opti-car-new-design .pay-later-btn {
-                        width: 100%;
-                        background: transparent;
-                        border: 2px solid rgb(247, 139, 0);
-                        color: rgb(247, 139, 0);
-                        font-weight: bold;
-                        display: flex;
-                        align-items: center;
-                        justify-content: center;
-                        font-family: Custom-Regular, Arial, sans-serif;
-                        font-size: 15px;
-                        height: 40px;
-                        color: black;
-                    }
+            .opti-car-new-design .pay-now-btn {
+                width: 100%;
+                background: rgb(0, 40, 95);
+                font-weight: bold;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                font-family: Custom-Regular, Arial, sans-serif;
+                font-size: 15px;
+                height: 40px;
+                color: white;
+                border: 2px solid rgb(0, 40, 95);
+            }
 
-                    .opti-car-new-design .pay-now-btn {
-                        width: 100%;
-                        background: rgb(0, 40, 95);
-                        font-weight: bold;
-                        display: flex;
-                        align-items: center;
-                        justify-content: center;
-                        font-family: Custom-Regular, Arial, sans-serif;
-                        font-size: 15px;
-                        height: 40px;
-                        color: white;
-                        border: 2px solid rgb(0, 40, 95);
-                    }
+            .opti-car-new-design .price-section,
+            .opti-car-new-design .price-section p {
+                color: rgb(0, 0, 0);
+                font-size: 21px;
+                font-weight: bold;
+                margin: 0px;
+                padding: 0px;
+            }
 
-                    .opti-car-new-design .price-section,
-                    .opti-car-new-design .price-section p {
-                        color: rgb(0, 0, 0);
-                        font-size: 21px;
-                        font-weight: bold;
-                        margin: 0px;
-                        padding: 0px;
-                    }
+            .opti-car-new-design .price-section sup {
+                top: 0;
+            }
 
-                    .opti-car-new-design .price-section sup {
-                        top: 0;
-                    }
+            .opti-car-new-design .price-section .striked-text,
+            .opti-car-new-design .price-section p.striked-text {
+                font-size: 16px;
+            }
 
-                    .opti-car-new-design .price-section .striked-text,
-                    .opti-car-new-design .price-section p.striked-text {
-                        font-size: 16px;
-                    }
+            .opti-car-new-design .price-section.striked-text {
+                font-size: 16px;
+            }
 
-                    .opti-car-new-design .price-section.striked-text {
-                        font-size: 16px;
-                    }
+            .opti-car-new-design .savedata.res-inputFldFst.selected-car-save {
+                background: rgb(240, 238, 236);
+                padding: 0;
+                text-align: center;
+                color: rgb(0, 0, 0) !important;
+                font-size: 10px;
+                position: relative;
+                margin-top: 12px;
+            }
 
-                    .opti-car-new-design .savedata.res-inputFldFst.selected-car-save {
-                        background: rgb(240, 238, 236);
-                        padding: 0;
-                        text-align: center;
-                        color: rgb(0, 0, 0) !important;
-                        font-size: 10px;
-                        position: relative;
-                        margin-top: 12px;
-                    }
+            .opti-car-new-design .savedata.res-inputFldFst.selected-car-save::after {
+                content: " ";
+                position: absolute;
+                right: 45%;
+                top: -10px;
+                border-width: 0px 15px 12px;
+                border-top-style: initial;
+                border-top-color: initial;
+                border-right-style: solid;
+                border-right-color: transparent;
+                border-left-style: solid;
+                border-left-color: transparent;
+                border-bottom-style: solid;
+                border-bottom-color: rgb(240, 238, 236);
+            }
 
-                    .opti-car-new-design .savedata.res-inputFldFst.selected-car-save::after {
-                        content: " ";
-                        position: absolute;
-                        right: 45%;
-                        top: -10px;
-                        border-width: 0px 15px 12px;
-                        border-top-style: initial;
-                        border-top-color: initial;
-                        border-right-style: solid;
-                        border-right-color: transparent;
-                        border-left-style: solid;
-                        border-left-color: transparent;
-                        border-bottom-style: solid;
-                        border-bottom-color: rgb(240, 238, 236);
-                    }
+            .opti-car-new-design .car-footer-section .car-tag.pp-prices {
+                text-align: start;
+            }
 
-                    .opti-car-new-design .car-footer-section .car-tag.pp-prices {
-                        text-align: start;
-                    }
+            .opti-car-new-design .car-footer-section .car-all-tags {
+                margin-bottom: 6px;
+            }
+        </style>
 
-                    .opti-car-new-design .car-footer-section .car-all-tags {
-                        margin-bottom: 6px;
-                    }
-                </style>
+        <div class="car-header-section">
+            <div class="car-info avilcardtl">
+                ${car_container.querySelector('h3[ng-bind="car.carGroup"]') ? `<h3>
+                    ${car_container.querySelector('h3[ng-bind="car.carGroup"]').innerText}</h3>` : ""}
 
-                <div class="car-header-section">
-                    <div class="car-info avilcardtl">
-                        ${car_container.querySelector('h3[ng-bind="car.carGroup"]') ? `<h3>
-                            ${car_container.querySelector('h3[ng-bind="car.carGroup"]').innerText}</h3>` : ""}
+                ${car_container.querySelector('p.featurecartxt.similar-car') ? `<p class="featurecartxt">
+                    ${car_container.querySelector('p.featurecartxt.similar-car').innerText}</p>` : ""}
 
-                        ${car_container.querySelector('p.featurecartxt.similar-car') ? `<p class="featurecartxt">
-                            ${car_container.querySelector('p.featurecartxt.similar-car').innerText}</p>` : ""}
-
-                        ${car_container.querySelectorAll('.tableDiv.vehicle-features > span').length ? `
-                        <div class="tableDiv vehicle-features">
-                            ${[...car_container.querySelectorAll('.tableDiv.vehicle-features > span')].map(span =>
-                `<span class="${span.className}">${span.innerHTML}</span>`
-            ).join("")}
-                            ${car_container.querySelector('p[ng-bind="car.automaticCaption"]') &&
-                        car_container.querySelector('p[ng-bind="car.automaticCaption"]').innerText == "Automatic Transmission" ?
-                        `<span class="four-automatic-feat">
-                                <span></span>
-                                Automatic
-                            </span>`: ""}
-                            <span class="feature-display-icon">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 18 18" fill="none">
-                                    <path
-                                        d="M12 9C12 8.60218 12.158 8.22064 12.4393 7.93934C12.7206 7.65804 13.1022 7.5 13.5 7.5C13.8978 7.5 14.2794 7.65804 14.5607 7.93934C14.842 8.22064 15 8.60218 15 9C15 9.39782 14.842 9.77936 14.5607 10.0607C14.2794 10.342 13.8978 10.5 13.5 10.5C13.1022 10.5 12.7206 10.342 12.4393 10.0607C12.158 9.77936 12 9.39782 12 9ZM7.5 9C7.5 8.60218 7.65804 8.22064 7.93934 7.93934C8.22064 7.65804 8.60217 7.5 9 7.5C9.39782 7.5 9.77935 7.65804 10.0607 7.93934C10.342 8.22064 10.5 8.60218 10.5 9C10.5 9.39782 10.342 9.77936 10.0607 10.0607C9.77935 10.342 9.39782 10.5 9 10.5C8.60217 10.5 8.22064 10.342 7.93934 10.0607C7.65804 9.77936 7.5 9.39782 7.5 9ZM3 9C3 8.60218 3.15804 8.22064 3.43934 7.93934C3.72064 7.65804 4.10218 7.5 4.5 7.5C4.89782 7.5 5.27936 7.65804 5.56066 7.93934C5.84196 8.22064 6 8.60218 6 9C6 9.39782 5.84196 9.77936 5.56066 10.0607C5.27936 10.342 4.89782 10.5 4.5 10.5C4.10218 10.5 3.72064 10.342 3.43934 10.0607C3.15804 9.77936 3 9.39782 3 9Z"
-                                        fill="#D4002A" />
-                                </svg>
-                            </span>
-                        </div>
-                        ` : ""}
-
-                    </div>
-                    <div class="car-image">
-                        <img class="img-responsive" style="margin: ${car_container.querySelector('.upgrade-car-image img.img-responsive') ? "unset" : "auto"}" src='${car_container.querySelector('img.img-responsive').getAttribute('lazy-load')}' />
-                        ${car_container.querySelector('.upgrade-car-image img.img-responsive') ? `<img class="upgrade-car-image img-responsive" src='${car_container.querySelector('.upgrade-car-image img.img-responsive').getAttribute('lazy-load')}'/>` : ""}
-                    </div>
-                </div>
-
-                <div class="car-feature-section">
-                    <div class="available-car-fac">
-                        ${car_container.querySelector('.available-car-facilities .available-car-fac').innerHTML}
-                    </div>
-                    <div class="close-blue">
+                ${car_container.querySelectorAll('.tableDiv.vehicle-features > span').length ? `
+                <div class="tableDiv vehicle-features">
+                    ${[...car_container.querySelectorAll('.tableDiv.vehicle-features > span')].map(span =>
+        `<span class="${span.className}">${span.innerHTML}</span>`
+    ).join("")}
+                    ${car_container.querySelector('p[ng-bind="car.automaticCaption"]') &&
+                car_container.querySelector('p[ng-bind="car.automaticCaption"]').innerText == "Automatic Transmission" ?
+                `<span class="four-automatic-feat">
                         <span></span>
-                    </div>
+                        Automatic
+                    </span>`: ""}
+                    <span class="feature-display-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 18 18" fill="none">
+                            <path
+                                d="M12 9C12 8.60218 12.158 8.22064 12.4393 7.93934C12.7206 7.65804 13.1022 7.5 13.5 7.5C13.8978 7.5 14.2794 7.65804 14.5607 7.93934C14.842 8.22064 15 8.60218 15 9C15 9.39782 14.842 9.77936 14.5607 10.0607C14.2794 10.342 13.8978 10.5 13.5 10.5C13.1022 10.5 12.7206 10.342 12.4393 10.0607C12.158 9.77936 12 9.39782 12 9ZM7.5 9C7.5 8.60218 7.65804 8.22064 7.93934 7.93934C8.22064 7.65804 8.60217 7.5 9 7.5C9.39782 7.5 9.77935 7.65804 10.0607 7.93934C10.342 8.22064 10.5 8.60218 10.5 9C10.5 9.39782 10.342 9.77936 10.0607 10.0607C9.77935 10.342 9.39782 10.5 9 10.5C8.60217 10.5 8.22064 10.342 7.93934 10.0607C7.65804 9.77936 7.5 9.39782 7.5 9ZM3 9C3 8.60218 3.15804 8.22064 3.43934 7.93934C3.72064 7.65804 4.10218 7.5 4.5 7.5C4.89782 7.5 5.27936 7.65804 5.56066 7.93934C5.84196 8.22064 6 8.60218 6 9C6 9.39782 5.84196 9.77936 5.56066 10.0607C5.27936 10.342 4.89782 10.5 4.5 10.5C4.10218 10.5 3.72064 10.342 3.43934 10.0607C3.15804 9.77936 3 9.39782 3 9Z"
+                                fill="#D4002A" />
+                        </svg>
+                    </span>
                 </div>
+                ` : ""}
 
-                <div class="car-footer-section avilcardtl">
-                    ${handleGenerateTag(car_container)}
-                    ${handleGenerateFooter(car_container)}
-                </div>
-            </div>`);
+            </div>
+            <div class="car-image">
+                <img class="img-responsive" style="margin: ${car_container.querySelector('.upgrade-car-image img.img-responsive') ? "unset" : "auto"}" src='${car_container.querySelector('img.img-responsive').getAttribute('lazy-load')}' />
+                ${car_container.querySelector('.upgrade-car-image img.img-responsive') ? `<img class="upgrade-car-image img-responsive" src='${car_container.querySelector('.upgrade-car-image img.img-responsive').getAttribute('lazy-load')}'/>` : ""}
+            </div>
+        </div>
 
-            car.querySelector(`.opti-car-new-design.car-number-${car_count} .car-header-section .vehicle-features .feature-display-icon`).addEventListener("click", function () {
-                console.warn("helooooo", car.querySelector(`.opti-car-new-design .car-header-section`))
-                car.querySelector(`.opti-car-new-design .car-feature-section`).style.height = `${car.querySelector(`.opti-car-new-design .car-header-section`).offsetHeight}px`
-                car.querySelector(`.opti-car-new-design .car-header-section`).style.display = "none";
-                car.querySelector(`.opti-car-new-design .car-feature-section`).style.display = "block";
+        <div class="car-feature-section">
+            <div class="available-car-fac">
+                ${car_container.querySelector('.available-car-facilities .available-car-fac').innerHTML}
+            </div>
+            <div class="close-blue">
+                <span></span>
+            </div>
+        </div>
+
+        <div class="car-footer-section avilcardtl">
+            ${handleGenerateTag(car_container)}
+            ${handleGenerateFooter(car_container)}
+        </div>
+    </div>`);
+
+    car.querySelector(`.opti-car-new-design.car-number-${car_count} .car-header-section .vehicle-features .feature-display-icon`).addEventListener("click", function () {
+        console.warn("helooooo", car.querySelector(`.opti-car-new-design .car-header-section`))
+        car.querySelector(`.opti-car-new-design .car-feature-section`).style.height = `${car.querySelector(`.opti-car-new-design .car-header-section`).offsetHeight}px`
+        car.querySelector(`.opti-car-new-design .car-header-section`).style.display = "none";
+        car.querySelector(`.opti-car-new-design .car-feature-section`).style.display = "block";
+    })
+
+    car.querySelector(`.opti-car-new-design.car-number-${car_count} .car-feature-section .close-blue`).addEventListener("click", function () {
+        car.querySelector(`.opti-car-new-design .car-header-section`).style.display = "block";
+        car.querySelector(`.opti-car-new-design .car-feature-section`).style.display = "none";
+    })
+
+    //for starting-from-btn
+    if (car.querySelector(`.opti-car-new-design.car-number-${car_count} .car-footer-section .starting-from-btn button`)) {
+        car.querySelector(`.opti-car-new-design.car-number-${car_count} .car-footer-section .starting-from-btn button`).addEventListener('click', () => {
+            if (car_container.querySelector('#res-vehicles-pay-later-memberRate')) {
+                car_container.querySelector('#res-vehicles-pay-later-memberRate').click();
+            }
+        });
+    }
+
+    //for only select btn
+    if (car.querySelector(`.opti-car-new-design.car-number-${car_count} .car-footer-section .only-select-btn button`)) {
+        car.querySelector(`.opti-car-new-design.car-number-${car_count} .car-footer-section .only-select-btn button`).addEventListener('click', () => {
+            if (car_container.querySelector('#res-vehicles-select')) {
+                car_container.querySelector('#res-vehicles-select').click();
+            }
+        });
+    }
+
+    //for pay-now-pay-later-btn
+    if (car.querySelector(`.opti-car-new-design.car-number-${car_count} .car-footer-section .pay-now-pay-later-btn-section`)) {
+
+        if (car.querySelector(`.opti-car-new-design.car-number-${car_count} .car-footer-section .pay-now-pay-later-btn-section .pay-later-section .pay-later-btn`)) {
+            car.querySelector(`.opti-car-new-design.car-number-${car_count} .car-footer-section .pay-now-pay-later-btn-section .pay-later-section .pay-later-btn`).addEventListener('click', function () {
+                if (car_container.querySelector('#res-vehicles-pay-later')) {
+                    car_container.querySelector('#res-vehicles-pay-later').click()
+                }
             })
-
-            car.querySelector(`.opti-car-new-design.car-number-${car_count} .car-feature-section .close-blue`).addEventListener("click", function () {
-                car.querySelector(`.opti-car-new-design .car-header-section`).style.display = "block";
-                car.querySelector(`.opti-car-new-design .car-feature-section`).style.display = "none";
-            })
-
-            //for starting-from-btn
-            if (car.querySelector(`.opti-car-new-design.car-number-${car_count} .car-footer-section .starting-from-btn button`)) {
-                car.querySelector(`.opti-car-new-design.car-number-${car_count} .car-footer-section .starting-from-btn button`).addEventListener('click', () => {
-                    if (car_container.querySelector('#res-vehicles-pay-later-memberRate')) {
-                        car_container.querySelector('#res-vehicles-pay-later-memberRate').click();
-                    }
-                });
-            }
-
-            //for only select btn
-            if (car.querySelector(`.opti-car-new-design.car-number-${car_count} .car-footer-section .only-select-btn button`)) {
-                car.querySelector(`.opti-car-new-design.car-number-${car_count} .car-footer-section .only-select-btn button`).addEventListener('click', () => {
-                    if (car_container.querySelector('#res-vehicles-select')) {
-                        car_container.querySelector('#res-vehicles-select').click();
-                    }
-                });
-            }
-
-            //for pay-now-pay-later-btn
-            if (car.querySelector(`.opti-car-new-design.car-number-${car_count} .car-footer-section .pay-now-pay-later-btn-section`)) {
-
-                if (car.querySelector(`.opti-car-new-design.car-number-${car_count} .car-footer-section .pay-now-pay-later-btn-section .pay-later-section .pay-later-btn`)) {
-                    car.querySelector(`.opti-car-new-design.car-number-${car_count} .car-footer-section .pay-now-pay-later-btn-section .pay-later-section .pay-later-btn`).addEventListener('click', function () {
-                        if (car_container.querySelector('#res-vehicles-pay-later')) {
-                            car_container.querySelector('#res-vehicles-pay-later').click()
-                        }
-                    })
-                }
-
-                if (car.querySelector(`.opti-car-new-design.car-number-${car_count} .car-footer-section .pay-now-pay-later-btn-section .pay-now-section .pay-now-btn`)) {
-
-                    car.querySelector(`.opti-car-new-design.car-number-${car_count} .car-footer-section .pay-now-pay-later-btn-section .pay-now-section .pay-now-btn`).addEventListener('click', function () {
-                        if (car_container.querySelector('#res-vehicles-pay-now')) {
-                            car_container.querySelector('#res-vehicles-pay-now').click()
-                        }
-                    })
-
-                    const save_message = car_container.querySelector(".paybtndtl .paynow .savedata.res-inputFldFst.selected-car-save")
-
-                    if (save_message) {
-                        save_message.remove();
-                        car.querySelector(`.opti-car-new-design.car-number-${car_count} .car-footer-section .pay-now-pay-later-btn-section .pay-now-section`).appendChild(save_message);
-                    }
-                }
-            }
-
-            //setting the car-tags height.
-
-            const all_car_tags = document.querySelectorAll('.opti-car-new-design .car-all-tags');
-            let maxHeight_tag = 0;
-            all_car_tags.forEach(tag => {
-                const tagHeight = tag.offsetHeight;
-                if (tagHeight > maxHeight_tag) {
-                    maxHeight_tag = tagHeight;
-                }
-            });
-
-            all_car_tags.forEach(tag => {
-                tag.style.height = `${maxHeight_tag}px`;
-            });
-
-
-            const all_car_price_btn_section = document.querySelectorAll('.opti-car-new-design .price-btn-section .prices');
-            let maxHeight_price_btn_section = 0;
-            all_car_price_btn_section.forEach(tag => {
-                const tagHeight = tag.offsetHeight;
-                if (tagHeight > maxHeight_price_btn_section) {
-                    maxHeight_price_btn_section = tagHeight;
-                }
-            });
-
-            all_car_price_btn_section.forEach(tag => {
-                tag.style.height = `${maxHeight_price_btn_section}px`;
-            });
-
         }
 
+        if (car.querySelector(`.opti-car-new-design.car-number-${car_count} .car-footer-section .pay-now-pay-later-btn-section .pay-now-section .pay-now-btn`)) {
+
+            car.querySelector(`.opti-car-new-design.car-number-${car_count} .car-footer-section .pay-now-pay-later-btn-section .pay-now-section .pay-now-btn`).addEventListener('click', function () {
+                if (car_container.querySelector('#res-vehicles-pay-now')) {
+                    car_container.querySelector('#res-vehicles-pay-now').click()
+                }
+            })
+
+            const save_message = car_container.querySelector(".paybtndtl .paynow .savedata.res-inputFldFst.selected-car-save")
+
+            if (save_message) {
+                save_message.remove();
+                car.querySelector(`.opti-car-new-design.car-number-${car_count} .car-footer-section .pay-now-pay-later-btn-section .pay-now-section`).appendChild(save_message);
+            }
+        }
     }
+
+    //setting the car-tags height.
+
+    const all_car_tags = document.querySelectorAll('.opti-car-new-design .car-all-tags');
+    let maxHeight_tag = 0;
+    all_car_tags.forEach(tag => {
+        const tagHeight = tag.offsetHeight;
+        if (tagHeight > maxHeight_tag) {
+            maxHeight_tag = tagHeight;
+        }
+    });
+
+    all_car_tags.forEach(tag => {
+        tag.style.height = `${maxHeight_tag}px`;
+    });
+
+
+    const all_car_price_btn_section = document.querySelectorAll('.opti-car-new-design .price-btn-section .prices');
+    let maxHeight_price_btn_section = 0;
+    all_car_price_btn_section.forEach(tag => {
+        const tagHeight = tag.offsetHeight;
+        if (tagHeight > maxHeight_price_btn_section) {
+            maxHeight_price_btn_section = tagHeight;
+        }
+    });
+
+    all_car_price_btn_section.forEach(tag => {
+        tag.style.height = `${maxHeight_price_btn_section}px`;
+    });
 }
 
 if (window.location.pathname == '/en/reservation') {
@@ -390,7 +381,14 @@ if (window.location.pathname == '/en/reservation') {
                     console.log('Child elements changed!', mutation, document.querySelector('.featuredcar.featured-car-box'));
 
                     [...document.querySelectorAll(`.vehicle-availability div[ng-class="{'three-grid-layout': vm.isStepTwoRedesign && vm.pageName == carRentalConstant.step2PageName, 'two-grid-layout': vm.isStepTwoRedesign && vm.pageName == carRentalConstant.step3PageName}"] div[ng-class="{'grid-border': vm.isStepTwoRedesign}"]`)].forEach((car, car_count) => {
-                        handle_creating_new_car_design(car, car_count)
+                        const car_container = car.querySelector(`div[ng-include=" 'carTemplate.html' "]`);
+                        if (car_container) {
+                            car_container.style.display = "none";
+                            if (car.querySelector('.opti-car-new-design')) {
+                                car.querySelector('.opti-car-new-design').remove();
+                                handle_creating_new_car_design(car, car_count)
+                            }
+                        }
                     })
                 }
             });
@@ -409,279 +407,7 @@ if (window.location.pathname == '/en/reservation') {
 
                 if (!car.querySelector('.opti-car-new-design')) {
                     console.warn('going once===================')
-                    car.insertAdjacentHTML("afterbegin", `<div class="opti-car-new-design car-number-${car_count}">
-                        <style>
-                            .opti-car-new-design {
-                                border: 1px solid rgb(204, 204, 204);
-                                display: flex;
-                                flex-direction: column;
-                                padding: 0 6%;
-                            }
-
-                            .opti-car-new-design .car-header-section .vehicle-features .feature-display-icon { 
-                                cursor: pointer;
-                            }
-
-                            .opti-car-new-design .car-header-section .car-image {
-                                position: relative;
-                            }
-
-                            .opti-car-new-design .car-header-section .car-image .upgrade-car-image {
-                                position: absolute;
-                                top: 20px;
-                                left: 22%;
-                                width: 85%;
-                            }
-
-                            .opti-car-new-design .car-feature-section {
-                                position: relative;
-                                display: none;
-                            }
-
-                            .opti-car-new-design .car-feature-section .close-blue{
-                                position: absolute;
-                                top: 0;
-                                right: 0;
-                                cursor: pointer;
-                            }
-    
-                            .opti-car-new-design .select-btn {
-                                width: 160px;
-                                min-width: 160px;
-                                font-size: 15px;
-                                margin: 10px 0px;
-                                padding: 0px 10px;
-                                height: 40px;
-                                line-height: 40px;
-                                font-family: Custom-Regular, Arial, sans-serif;
-                                background: rgb(247, 139, 0);
-                                border: 0;
-                                color: white;
-                            }
-
-                            .opti-car-new-design .pay-later-btn {
-                                width: 100%;
-                                background: transparent;
-                                border: 2px solid rgb(247, 139, 0);
-                                color: rgb(247, 139, 0);
-                                font-weight: bold;
-                                display: flex;
-                                align-items: center;
-                                justify-content: center;
-                                font-family: Custom-Regular, Arial, sans-serif;
-                                font-size: 15px;
-                                height: 40px;
-                                color: black;
-                            }
-
-                            .opti-car-new-design .pay-now-btn {
-                                width: 100%;
-                                background: rgb(0, 40, 95);
-                                font-weight: bold;
-                                display: flex;
-                                align-items: center;
-                                justify-content: center;
-                                font-family: Custom-Regular, Arial, sans-serif;
-                                font-size: 15px;
-                                height: 40px;
-                                color: white;
-                                border: 2px solid rgb(0, 40, 95);
-                            }
-    
-                            .opti-car-new-design .price-section,
-                            .opti-car-new-design .price-section p {
-                                color: rgb(0, 0, 0);
-                                font-size: 21px;
-                                font-weight: bold;
-                                margin: 0px;
-                                padding: 0px;
-                            }
-
-                            .opti-car-new-design .price-section sup {
-                                top: 0;
-                            }
-
-                            .opti-car-new-design .price-section .striked-text,
-                            .opti-car-new-design .price-section p.striked-text {
-                                font-size: 16px;
-                            }
-
-                            .opti-car-new-design .price-section.striked-text {
-                                font-size: 16px;
-                            }
-
-                            .opti-car-new-design .savedata.res-inputFldFst.selected-car-save {
-                                background: rgb(240, 238, 236);
-                                padding: 0;
-                                text-align: center;
-                                color: rgb(0, 0, 0) !important;
-                                font-size: 10px;
-                                position: relative;
-                                margin-top: 12px;
-                            }
-
-                            .opti-car-new-design .savedata.res-inputFldFst.selected-car-save::after {
-                                content: " ";
-                                position: absolute;
-                                right: 45%;
-                                top: -10px;
-                                border-width: 0px 15px 12px;
-                                border-top-style: initial;
-                                border-top-color: initial;
-                                border-right-style: solid;
-                                border-right-color: transparent;
-                                border-left-style: solid;
-                                border-left-color: transparent;
-                                border-bottom-style: solid;
-                                border-bottom-color: rgb(240, 238, 236);
-                            }
-
-                            .opti-car-new-design .car-footer-section .car-tag.pp-prices {
-                                text-align: start;
-                            }
-
-                            .opti-car-new-design .car-footer-section .car-all-tags {
-                                margin-bottom: 6px;
-                            }
-                        </style>
-    
-                        <div class="car-header-section">
-                            <div class="car-info avilcardtl">
-                                ${car_container.querySelector('h3[ng-bind="car.carGroup"]') ? `<h3>
-                                    ${car_container.querySelector('h3[ng-bind="car.carGroup"]').innerText}</h3>` : ""}
-    
-                                ${car_container.querySelector('p.featurecartxt.similar-car') ? `<p class="featurecartxt">
-                                    ${car_container.querySelector('p.featurecartxt.similar-car').innerText}</p>` : ""}
-    
-                                ${car_container.querySelectorAll('.tableDiv.vehicle-features > span').length ? `
-                                <div class="tableDiv vehicle-features">
-                                    ${[...car_container.querySelectorAll('.tableDiv.vehicle-features > span')].map(span =>
-                        `<span class="${span.className}">${span.innerHTML}</span>`
-                    ).join("")}
-                                    ${car_container.querySelector('p[ng-bind="car.automaticCaption"]') &&
-                                car_container.querySelector('p[ng-bind="car.automaticCaption"]').innerText == "Automatic Transmission" ?
-                                `<span class="four-automatic-feat">
-                                        <span></span>
-                                        Automatic
-                                    </span>`: ""}
-                                    <span class="feature-display-icon">
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 18 18" fill="none">
-                                            <path
-                                                d="M12 9C12 8.60218 12.158 8.22064 12.4393 7.93934C12.7206 7.65804 13.1022 7.5 13.5 7.5C13.8978 7.5 14.2794 7.65804 14.5607 7.93934C14.842 8.22064 15 8.60218 15 9C15 9.39782 14.842 9.77936 14.5607 10.0607C14.2794 10.342 13.8978 10.5 13.5 10.5C13.1022 10.5 12.7206 10.342 12.4393 10.0607C12.158 9.77936 12 9.39782 12 9ZM7.5 9C7.5 8.60218 7.65804 8.22064 7.93934 7.93934C8.22064 7.65804 8.60217 7.5 9 7.5C9.39782 7.5 9.77935 7.65804 10.0607 7.93934C10.342 8.22064 10.5 8.60218 10.5 9C10.5 9.39782 10.342 9.77936 10.0607 10.0607C9.77935 10.342 9.39782 10.5 9 10.5C8.60217 10.5 8.22064 10.342 7.93934 10.0607C7.65804 9.77936 7.5 9.39782 7.5 9ZM3 9C3 8.60218 3.15804 8.22064 3.43934 7.93934C3.72064 7.65804 4.10218 7.5 4.5 7.5C4.89782 7.5 5.27936 7.65804 5.56066 7.93934C5.84196 8.22064 6 8.60218 6 9C6 9.39782 5.84196 9.77936 5.56066 10.0607C5.27936 10.342 4.89782 10.5 4.5 10.5C4.10218 10.5 3.72064 10.342 3.43934 10.0607C3.15804 9.77936 3 9.39782 3 9Z"
-                                                fill="#D4002A" />
-                                        </svg>
-                                    </span>
-                                </div>
-                                ` : ""}
-    
-                            </div>
-                            <div class="car-image">
-                                <img class="img-responsive" style="margin: ${car_container.querySelector('.upgrade-car-image img.img-responsive') ? "unset" : "auto"}" src='${car_container.querySelector('img.img-responsive').getAttribute('lazy-load')}' />
-                                ${car_container.querySelector('.upgrade-car-image img.img-responsive') ? `<img class="upgrade-car-image img-responsive" src='${car_container.querySelector('.upgrade-car-image img.img-responsive').getAttribute('lazy-load')}'/>` : ""}
-                            </div>
-                        </div>
-    
-                        <div class="car-feature-section">
-                            <div class="available-car-fac">
-                                ${car_container.querySelector('.available-car-facilities .available-car-fac').innerHTML}
-                            </div>
-                            <div class="close-blue">
-                                <span></span>
-                            </div>
-                        </div>
-    
-                        <div class="car-footer-section avilcardtl">
-                            ${handleGenerateTag(car_container)}
-                            ${handleGenerateFooter(car_container)}
-                        </div>
-                    </div>`);
-
-                    car.querySelector(`.opti-car-new-design.car-number-${car_count} .car-header-section .vehicle-features .feature-display-icon`).addEventListener("click", function () {
-                        console.warn("helooooo", car.querySelector(`.opti-car-new-design .car-header-section`))
-                        car.querySelector(`.opti-car-new-design .car-feature-section`).style.height = `${car.querySelector(`.opti-car-new-design .car-header-section`).offsetHeight}px`
-                        car.querySelector(`.opti-car-new-design .car-header-section`).style.display = "none";
-                        car.querySelector(`.opti-car-new-design .car-feature-section`).style.display = "block";
-                    })
-
-                    car.querySelector(`.opti-car-new-design.car-number-${car_count} .car-feature-section .close-blue`).addEventListener("click", function () {
-                        car.querySelector(`.opti-car-new-design .car-header-section`).style.display = "block";
-                        car.querySelector(`.opti-car-new-design .car-feature-section`).style.display = "none";
-                    })
-
-                    //for starting-from-btn
-                    if (car.querySelector(`.opti-car-new-design.car-number-${car_count} .car-footer-section .starting-from-btn button`)) {
-                        car.querySelector(`.opti-car-new-design.car-number-${car_count} .car-footer-section .starting-from-btn button`).addEventListener('click', () => {
-                            if (car_container.querySelector('#res-vehicles-pay-later-memberRate')) {
-                                car_container.querySelector('#res-vehicles-pay-later-memberRate').click();
-                            }
-                        });
-                    }
-
-                    //for only select btn
-                    if (car.querySelector(`.opti-car-new-design.car-number-${car_count} .car-footer-section .only-select-btn button`)) {
-                        car.querySelector(`.opti-car-new-design.car-number-${car_count} .car-footer-section .only-select-btn button`).addEventListener('click', () => {
-                            if (car_container.querySelector('#res-vehicles-select')) {
-                                car_container.querySelector('#res-vehicles-select').click();
-                            }
-                        });
-                    }
-
-                    //for pay-now-pay-later-btn
-                    if (car.querySelector(`.opti-car-new-design.car-number-${car_count} .car-footer-section .pay-now-pay-later-btn-section`)) {
-
-                        if (car.querySelector(`.opti-car-new-design.car-number-${car_count} .car-footer-section .pay-now-pay-later-btn-section .pay-later-section .pay-later-btn`)) {
-                            car.querySelector(`.opti-car-new-design.car-number-${car_count} .car-footer-section .pay-now-pay-later-btn-section .pay-later-section .pay-later-btn`).addEventListener('click', function () {
-                                if (car_container.querySelector('#res-vehicles-pay-later')) {
-                                    car_container.querySelector('#res-vehicles-pay-later').click()
-                                }
-                            })
-                        }
-
-                        if (car.querySelector(`.opti-car-new-design.car-number-${car_count} .car-footer-section .pay-now-pay-later-btn-section .pay-now-section .pay-now-btn`)) {
-
-                            car.querySelector(`.opti-car-new-design.car-number-${car_count} .car-footer-section .pay-now-pay-later-btn-section .pay-now-section .pay-now-btn`).addEventListener('click', function () {
-                                if (car_container.querySelector('#res-vehicles-pay-now')) {
-                                    car_container.querySelector('#res-vehicles-pay-now').click()
-                                }
-                            })
-
-                            const save_message = car_container.querySelector(".paybtndtl .paynow .savedata.res-inputFldFst.selected-car-save")
-
-                            if (save_message) {
-                                save_message.remove();
-                                car.querySelector(`.opti-car-new-design.car-number-${car_count} .car-footer-section .pay-now-pay-later-btn-section .pay-now-section`).appendChild(save_message);
-                            }
-                        }
-                    }
-
-                    //setting the car-tags height.
-
-                    const all_car_tags = document.querySelectorAll('.opti-car-new-design .car-all-tags');
-                    let maxHeight_tag = 0;
-                    all_car_tags.forEach(tag => {
-                        const tagHeight = tag.offsetHeight;
-                        if (tagHeight > maxHeight_tag) {
-                            maxHeight_tag = tagHeight;
-                        }
-                    });
-
-                    all_car_tags.forEach(tag => {
-                        tag.style.height = `${maxHeight_tag}px`;
-                    });
-
-
-                    const all_car_price_btn_section = document.querySelectorAll('.opti-car-new-design .price-btn-section .prices');
-                    let maxHeight_price_btn_section = 0;
-                    all_car_price_btn_section.forEach(tag => {
-                        const tagHeight = tag.offsetHeight;
-                        if (tagHeight > maxHeight_price_btn_section) {
-                            maxHeight_price_btn_section = tagHeight;
-                        }
-                    });
-
-                    all_car_price_btn_section.forEach(tag => {
-                        tag.style.height = `${maxHeight_price_btn_section}px`;
-                    });
+                    handle_creating_new_car_design(car, car_count);
 
                     car_count++;
                 }
@@ -881,7 +607,14 @@ if (window.location.pathname == '/en/reservation') {
                     let checkInterval = setInterval(() => {
                         if (sort_option.classList.contains("selected")) {
                             [...document.querySelectorAll(`.vehicle-availability div[ng-class="{'three-grid-layout': vm.isStepTwoRedesign && vm.pageName == carRentalConstant.step2PageName, 'two-grid-layout': vm.isStepTwoRedesign && vm.pageName == carRentalConstant.step3PageName}"] div[ng-class="{'grid-border': vm.isStepTwoRedesign}"]`)].forEach((car, car_count) => {
-                                handle_creating_new_car_design(car, car_count)
+                                const car_container = car.querySelector(`div[ng-include=" 'carTemplate.html' "]`);
+                                if (car_container) {
+                                    car_container.style.display = "none";
+                                    if (car.querySelector('.opti-car-new-design')) {
+                                        car.querySelector('.opti-car-new-design').remove();
+                                        handle_creating_new_car_design(car, car_count)
+                                    }
+                                }
                             })
                             clearInterval(checkInterval); // Stop checking once found
                         }
