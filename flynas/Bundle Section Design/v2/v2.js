@@ -1,7 +1,7 @@
 const { observeSelector, waitUntil } = window.optimizely.get("utils");
 
 function isCorrectFlight(container) {
-    const forbiddenTerminals = ["CAI", "CZL", "ALG", "SPX"];
+    const forbiddenTerminals = ["CAI", "CZL", "ALG", "SPX", "EG1"];
     const activeTerminals = [...document.querySelectorAll(".sector")].map(x => x.textContent.replace(/\(.*?\)/g, "").trim().toUpperCase()).filter(terminal => terminal !== "");
 
     if (!container) return false;
@@ -245,7 +245,7 @@ function applyMessaging(container) {
                     <div class="pack-price">
                         <p class="name"> لايت </p>
                         <p class="price"></p>
-                        <div class="conti-btn">يكمل</div>
+                        <div class="conti-btn">استمرار</div>
                     </div>
                 </div>
             </div>`)
