@@ -84,7 +84,7 @@ utils.waitForElement('.cart__footer').then(function (cart_footer) {
                 <img class="sign-image" src="https://cdn.optimizely.com/img/25237771658/422bf76d4f304ce19564f0121a455791.png"
                     alt="sign">
             </div>
-        </div>`)
+        </div>`);
 
         cart_footer.insertAdjacentHTML("beforeend", `<div class="opti-upsell-cart-page-mobile">
             <style>
@@ -150,7 +150,7 @@ utils.waitForElement('.cart__footer').then(function (cart_footer) {
                     alt="sign">
             </div>
             <a href="https://creations.mattel.com/pages/barbie-club59-membership" class="btn">Join Now</a>
-        </div>`)
+        </div>`);
     } else if (bc_segments == "bc_affinity_hw") {
         cart_footer.insertAdjacentHTML("afterbegin", `<div class="opti-upsell-cart-page">
             <style>
@@ -226,7 +226,7 @@ utils.waitForElement('.cart__footer').then(function (cart_footer) {
                 <img class="main-image" src="https://cdn.optimizely.com/img/25237771658/a65406aa45344ebda0ff64525dca1cec.jpg"
                     alt="">
             </div>
-        </div>`)
+        </div>`);
 
         cart_footer.insertAdjacentHTML("beforeend", `<div class="opti-upsell-cart-page-mobile">
             <style>
@@ -302,6 +302,6 @@ utils.waitForElement('.cart__footer').then(function (cart_footer) {
                     alt="">
             </div>
             <a href="https://creations.mattel.com/pages/hot-wheels-collectors-membership" class="btn">Join Now</a>
-        </div>`)
+        </div>`);
     }
 });
