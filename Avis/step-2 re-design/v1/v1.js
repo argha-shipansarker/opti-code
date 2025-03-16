@@ -26,7 +26,7 @@ function handleGenerateTag(car_container) {
         });
     });
 
-    return tagsHTML ? `<div class="car-all-tags">${tagsHTML}</div>` : `<div class="car-all-tags"></div>`; // Wrap in a container only if there's content
+    return tagsHTML ? `<div class="car-all-tags">${tagsHTML}</div>` : `<div class="car-all-tags"></div>`;
 }
 
 
@@ -64,7 +64,20 @@ function handleGenerateFooter(car_container) {
         `;
     } else if (car_container.querySelector(".paybtndtl .payatcntr #res-vehicles-pay-later") && car_container.querySelector(".paybtndtl .paynow #res-vehicles-pay-now")) {
         return `
-            <div class="pay-now-pay-later-btn-section price-btn-section" style="display: flex; justify-content: space-between;">
+            <div class="pay-now-pay-later-btn-section price-btn-section" style="display: flex; justify-content: space-between; ${car_container.querySelector(".amazon-row-content") ? `position: relative; padding: 90px 20px 30px; background-color: rgb(250, 249, 249);` : ""}">
+
+                ${car_container.querySelector(".amazon-row-content") ? `
+                    <div class="amazon-section">
+                        <img src="${car_container.querySelector(".amazon-row-content .amazon-row-img img").getAttribute("ng-src")}"/>
+                        <div class="info">
+                            <p>${car_container.querySelector(".amazon-row-content p").innerHTML}</p>
+                            <div class="pop-over-container">
+                                <div class="pop-over-message">${car_container.querySelector(".amazon-row-content p a").getAttribute('data-content')}</div>
+                            </div>
+                        </div>
+                    </div>
+                ` : ""}
+
                 <div class="pay-later-section price-section" style="flex-basis: 48%;">
                     <div class="prices">
                         ${car_container.querySelector(".paybtndtl .payatcntr .striked-text") ? `${car_container.querySelector(".paybtndtl .payatcntr .striked-text").outerHTML}` : ""}
@@ -211,6 +224,19 @@ function handle_creating_new_car_design(car, car_count) {
                     car.querySelector(`.opti-car-new-design.car-number-${car_count} .car-footer-section .pay-now-pay-later-btn-section .pay-now-section .pop-over-container .pop-over-message`).style.opacity = "0";
                 })
             }
+        }
+
+        //amazon section
+        if (car.querySelector(`.opti-car-new-design.car-number-${car_count} .car-footer-section .pay-now-pay-later-btn-section .amazon-section .res-helpIcon`)) {
+            car.querySelector(`.opti-car-new-design.car-number-${car_count} .car-footer-section .pay-now-pay-later-btn-section .amazon-section .res-helpIcon`).addEventListener('mouseenter', function () {
+                car.querySelector(`.opti-car-new-design.car-number-${car_count} .car-footer-section .pay-now-pay-later-btn-section .amazon-section .pop-over-container .pop-over-message`).style.visibility = "visible";
+                car.querySelector(`.opti-car-new-design.car-number-${car_count} .car-footer-section .pay-now-pay-later-btn-section .amazon-section .pop-over-container .pop-over-message`).style.opacity = "1";
+            });
+
+            car.querySelector(`.opti-car-new-design.car-number-${car_count} .car-footer-section .pay-now-pay-later-btn-section .amazon-section .res-helpIcon`).addEventListener('mouseleave', function () {
+                car.querySelector(`.opti-car-new-design.car-number-${car_count} .car-footer-section .pay-now-pay-later-btn-section .amazon-section .pop-over-container .pop-over-message`).style.visibility = "hidden";
+                car.querySelector(`.opti-car-new-design.car-number-${car_count} .car-footer-section .pay-now-pay-later-btn-section .amazon-section .pop-over-container .pop-over-message`).style.opacity = "0";
+            });
         }
     }
 
@@ -450,6 +476,37 @@ if (window.location.pathname == '/en/reservation') {
                 border-top: 33px solid rgb(0, 0, 0) !important;
                 border-left: transparent !important;
             }
+
+            .opti-car-new-design .car-footer-section .pay-now-pay-later-btn-section .amazon-section {
+                position: absolute;
+                display: flex;
+                top: 20px;
+            }
+
+            .opti-car-new-design .car-footer-section .pay-now-pay-later-btn-section .amazon-section p {
+                font-size: 1.4rem;
+                margin-left: 13px;
+            }
+
+            .opti-car-new-design .car-footer-section .pay-now-pay-later-btn-section .amazon-section p .amazon-row-bold {
+                font-weight: bold;
+                font-size: 1.65rem;
+            }
+
+            .opti-car-new-design .car-footer-section .pay-now-pay-later-btn-section .amazon-section img {
+                width: 76px;
+                height: 56px;
+            }
+
+            .opti-car-new-design .car-footer-section .pay-now-pay-later-btn-section .amazon-section .pop-over-container .pop-over-message {
+                margin-top: 0;
+                left: 60px;
+                right: -60px;
+            }
+
+            .opti-car-new-design .car-footer-section .pay-now-pay-later-btn-section .amazon-section .pop-over-container .pop-over-message::after {
+                display: none;
+            }
         </style>    
         `)
 
@@ -543,7 +600,20 @@ if (window.location.pathname == '/en/reservation') {
             `;
         } else if (car_container.querySelector("#res-vehicle-select") && car_container.querySelector("#res-vehicles-pay-now")) {
             return `
-                <div class="pay-now-pay-later-btn-section price-btn-section" style="display: flex; justify-content: space-between;">
+                <div class="pay-now-pay-later-btn-section price-btn-section" style="display: flex; justify-content: space-between; ${car_container.querySelector(".amazon-row-content") ? `position: relative; padding: 90px 20px 30px; background-color: rgb(250, 249, 249);` : ""}">
+
+                    ${car_container.querySelector(".amazon-row-content") ? `
+                        <div class="amazon-section">
+                            <img src="${car_container.querySelector(".amazon-row-content .amazon-row-img img").getAttribute("ng-src")}"/>
+                            <div class="info">
+                                <p>${car_container.querySelector(".amazon-row-content p").innerHTML}</p>
+                                <div class="pop-over-container">
+                                    <div class="pop-over-message">${car_container.querySelector(".amazon-row-content p a").getAttribute('data-content')}</div>
+                                </div>
+                            </div>
+                        </div>
+                    ` : ""}
+
                     <div class="pay-later-section price-section" style="flex-basis: 48%;">
                         <div class="prices">
                             ${car_container.querySelector(".paybtndtl .payatcntr .striked-text") ? `${car_container.querySelector(".paybtndtl .payatcntr .striked-text").outerHTML}` : ""}
@@ -714,6 +784,20 @@ if (window.location.pathname == '/en/reservation') {
                         car_list_container.querySelector(`.opti-user-seleted-car .opti-car-new-design .car-footer-section .pay-now-pay-later-btn-section .pay-now-section .pop-over-container .pop-over-message`).style.opacity = "0";
                     })
                 }
+            }
+
+
+            //amazon section
+            if (car_list_container.querySelector(`.opti-user-seleted-car .opti-car-new-design .car-footer-section .pay-now-pay-later-btn-section .amazon-section .res-helpIcon`)) {
+                car_list_container.querySelector(`.opti-user-seleted-car .opti-car-new-design .car-footer-section .pay-now-pay-later-btn-section .amazon-section .res-helpIcon`).addEventListener('mouseenter', function () {
+                    car_list_container.querySelector(`.opti-user-seleted-car .opti-car-new-design .car-footer-section .pay-now-pay-later-btn-section .amazon-section .pop-over-container .pop-over-message`).style.visibility = "visible";
+                    car_list_container.querySelector(`.opti-user-seleted-car .opti-car-new-design .car-footer-section .pay-now-pay-later-btn-section .amazon-section .pop-over-container .pop-over-message`).style.opacity = "1";
+                });
+
+                car_list_container.querySelector(`.opti-user-seleted-car .opti-car-new-design .car-footer-section .pay-now-pay-later-btn-section .amazon-section .res-helpIcon`).addEventListener('mouseleave', function () {
+                    car_list_container.querySelector(`.opti-user-seleted-car .opti-car-new-design .car-footer-section .pay-now-pay-later-btn-section .amazon-section .pop-over-container .pop-over-message`).style.visibility = "hidden";
+                    car_list_container.querySelector(`.opti-user-seleted-car .opti-car-new-design .car-footer-section .pay-now-pay-later-btn-section .amazon-section .pop-over-container .pop-over-message`).style.opacity = "0";
+                });
             }
         }
 
