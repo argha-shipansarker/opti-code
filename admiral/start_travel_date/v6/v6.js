@@ -5,6 +5,17 @@ if (window.location.pathname == '/trip-details') {
     utils.observeSelector('.trip-type-container .annual', function (annual_trip_btn) {
         annual_trip_btn.addEventListener('click', function () {
 
+            utils.observeSelector('.section:has(.start-date) .control-label', function (label) {
+                const label_text = label.firstChild;
+                label.classList.add('opti-start-date');
+                setTimeout(() => {
+                    if (label_text && label_text.nodeType == 3) {
+                        label_text.nodeValue = "When do you need cover to start? ";
+                    }
+                }, 20);
+
+            });
+
             utils.observeSelector('.section:has(.start-date)', function (start_date_section) {
 
                 if (!document.querySelector('.opti-start-date-info')) {
@@ -267,6 +278,11 @@ if (window.location.pathname == '/trip-details') {
 
     utils.observeSelector('.trip-type-container .single', function (single_trip_btn) {
         single_trip_btn.addEventListener('click', function () {
+
+            utils.observeSelector('.section:has(.start-date) .control-label', function (label) {
+                label.classList.remove('opti-start-date');
+            });
+
 
             if (document.querySelector(".opti-today-date-checkbox")) {
                 document.querySelector(".opti-today-date-checkbox").remove();
