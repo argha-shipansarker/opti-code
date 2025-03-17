@@ -1,0 +1,130 @@
+<div class="opti-today-date-checkbox">
+    <style>
+        .opti-today-date-checkbox {
+            width: 45.9%;
+            margin-left: auto;
+            margin-right: 10.2%;
+            margin-top: 44px;
+        }
+
+        .opti-today-date-checkbox .checkbox-label {
+            border: 1px solid #CED9E5;
+            padding: 12px;
+            display: flex;
+            align-items: center;
+            cursor: pointer;
+            font-size: 16px;
+            line-height: 20px;
+            color: #444444;
+            border-radius: 3px;
+        }
+
+        .opti-today-date-checkbox .checkbox-label input {
+            display: none;
+        }
+
+        .opti-today-date-checkbox .checkbox-custom {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 20px;
+            height: 20px;
+            border: 2px solid #006DCC;
+            border-radius: 4px;
+            margin-right: 10px;
+            transition: background 0.2s, border-color 0.2s;
+        }
+
+        .opti-today-date-checkbox .checkbox-custom svg {
+            display: none;
+        }
+
+        .opti-today-date-checkbox .checkbox-label input:checked~.checkbox-custom {
+            background-color: #0A8A19;
+            border-color: #0F7632;
+        }
+
+        .opti-today-date-checkbox .checkbox-label input:checked~.checkbox-custom svg {
+            display: block;
+        }
+
+        .opti-today-date-checkbox:has(input:checked) .checkbox-label {
+            border-color: #00C535;
+        }
+    </style>
+
+    <label class="checkbox-label">
+        <input type="checkbox" name="opti-today-date" value="yes">
+        <span class="checkbox-custom">
+            <svg width="14" height="12" viewBox="0 0 14 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path fill-rule="evenodd" clip-rule="evenodd"
+                    d="M5 11.1637L0 6.16367L1.4 4.76367L5 8.36367L12.6 0.763672L14 2.16367L5 11.1637Z" fill="white" />
+            </svg>
+        </span>
+        Start cover today
+    </label>
+</div>
+
+
+<div class="opti-start-date-info">
+    <style>
+        .opti-start-date-info .different-day {
+            background-color: #E0F2FF;
+            border-left: 2px solid #41A5F5;
+            display: flex;
+            align-items: center;
+            padding: 16px;
+        }
+
+        .opti-start-date-info .today {
+            background-color: #D2F9DA;
+            border-left: 2px solid #00C535;
+            display: none;
+            align-items: center;
+            padding: 16px;
+        }
+
+        .opti-start-date-info .different-day .icon,
+        .opti-start-date-info .today .icon {
+            height: 16px;
+            width: 16px;
+        }
+
+        .opti-start-date-info .different-day p,
+        .opti-start-date-info .today p {
+            font-size: 14px;
+            line-height: 21px;
+            font-weight: 400;
+            margin-bottom: 0;
+            margin-left: 6px;
+        }
+
+        .opti-start-date-info .different-day .p {
+            color: #25469B;
+        }
+
+        .opti-start-date-info .today p {
+            color: #0F7632;
+        }
+    </style>
+    <div class="different-day">
+        <div class="icon">
+            <svg width="16" height="17" viewBox="0 0 16 17" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path
+                    d="M8.00016 1.59717C4.32016 1.59717 1.3335 4.58383 1.3335 8.26383C1.3335 11.9438 4.32016 14.9305 8.00016 14.9305C11.6802 14.9305 14.6668 11.9438 14.6668 8.26383C14.6668 4.58383 11.6802 1.59717 8.00016 1.59717ZM8.66683 11.5972H7.3335V7.59717H8.66683V11.5972ZM8.66683 6.26383H7.3335V4.9305H8.66683V6.26383Z"
+                    fill="#41A5F5" />
+            </svg>
+        </div>
+        <p>You will be covered for trip cancellation as soon as your policy starts</p>
+    </div>
+    <div class="today">
+        <div class="icon">
+            <svg width="16" height="17" viewBox="0 0 16 17" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path fill-rule="evenodd" clip-rule="evenodd"
+                    d="M7.99967 2.09717C4.31967 2.09717 1.33301 5.08383 1.33301 8.76383C1.33301 12.4438 4.31967 15.4305 7.99967 15.4305C11.6797 15.4305 14.6663 12.4438 14.6663 8.76383C14.6663 5.08383 11.6797 2.09717 7.99967 2.09717ZM6.66634 11.7105L3.99967 9.04383L4.93967 8.10383L6.66634 9.82383L11.0597 5.4305L11.9997 6.37717L6.66634 11.7105Z"
+                    fill="#0A8A19" />
+            </svg>
+        </div>
+        <p>You will immediately be covered for trip cancellation</p>
+    </div>
+</div>
