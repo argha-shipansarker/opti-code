@@ -1102,7 +1102,7 @@ if (window.location.pathname == '/en/reservation') {
     .vehiclePushDownBox .veh-Hide-Div-In-Mob:not(#myDiv)>.vehicleDiscount {
         order: 2;
         padding-bottom: 10px;
-        display: flex;
+        display: flex !important;
         width: auto;
         border: 1px solid rgb(204, 204, 204);
         border-bottom-width: 1px !important;
