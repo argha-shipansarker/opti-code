@@ -453,6 +453,7 @@ if (window.location.pathname == '/en/reservation') {
 
             .opti-car-new-design .car-footer-section .car-tag.pp-prices {
                 text-align: start;
+                font-weight: bold;
             }
 
             .opti-car-new-design .car-footer-section .car-all-tags {
@@ -585,9 +586,13 @@ if (window.location.pathname == '/en/reservation') {
 
                 if (!car.querySelector('.opti-car-new-design')) {
                     console.warn('going once===================')
-                    handle_creating_new_car_design(car, car_count);
 
-                    car_count++;
+                    setTimeout(() => {
+                        handle_creating_new_car_design(car, car_count);
+
+                        car_count++;
+                    }, 100);
+
                 }
 
             }
