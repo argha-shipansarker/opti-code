@@ -514,7 +514,7 @@ if (window.location.pathname == '/en/reservation') {
             }
 
             .opti-car-new-design .car-footer-section .pay-now-pay-later-btn-section .amazon-section .pop-over-container .pop-over-message span {
-                front-size: 12px;
+                font-size: 12px;
             }
 
             .opti-car-new-design .car-footer-section .pay-now-pay-later-btn-section .amazon-section .pop-over-container .pop-over-message::after {
@@ -571,12 +571,12 @@ if (window.location.pathname == '/en/reservation') {
 
             const promo_banner_1 = car.querySelector(`div[ng-if="($index == vm.response.showPromotion.index) && (vm.response.showPromotion.section == 'additional')"]`);
             if (promo_banner_1) {
-                promo_banner_1.remove();
+                promo_banner_1.style.display = "none";
             }
 
             const promo_banner_2 = car.querySelector(`section[ng-if="$first"]`);
             if (promo_banner_2) {
-                promo_banner_2.remove();
+                promo_banner_2.style.display = "none";
             }
 
             const car_container = car.querySelector(`div[ng-include=" 'carTemplate.html' "]`);
@@ -973,7 +973,9 @@ if (window.location.pathname == '/en/reservation') {
     utils.observeSelector(`.vehiclePushDownBox .veh-Hide-Div-In-Mob:not(#myDiv) > div:nth-of-type(2)`, function (vehicle_sort_section) {
         vehicle_sort_section.style.display = "none"
 
-        if (!document.querySelector('.vehiclePushDownBox .opti-new-sort-design')) {
+        cleanup(".vehiclePushDownBox .opti-new-sort-design");
+
+        if (!document.querySelector('.vehiclePushDownBox .opti-new-sort-design .opti-sort-options li')) {
             vehicle_sort_section.insertAdjacentHTML("afterend", `<div class="opti-new-sort-design">
                 <style>
                     .opti-new-sort-design {
