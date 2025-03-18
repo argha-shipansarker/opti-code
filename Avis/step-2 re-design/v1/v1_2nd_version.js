@@ -271,347 +271,361 @@ function handle_creating_new_car_design(car, car_count) {
 }
 
 if (window.location.pathname == '/en/reservation') {
-    utils.observeSelector(`.vehicle-availability div[ng-class="{'three-grid-layout': vm.isStepTwoRedesign && vm.pageName == carRentalConstant.step2PageName, 'two-grid-layout': vm.isStepTwoRedesign && vm.pageName == carRentalConstant.step3PageName}"]`, function (car_list_container) {
 
-        car_list_container.insertAdjacentHTML("afterbegin", `
-            <style>
-            .opti-car-new-design {
-                border: 1px solid rgb(204, 204, 204);
-                display: flex;
-                flex-direction: column;
-                padding: 15px 6% 0;
-                position: relative;
-            }
+    setTimeout(() => {
+        utils.observeSelector(`.vehicle-availability div[ng-class="{'three-grid-layout': vm.isStepTwoRedesign && vm.pageName == carRentalConstant.step2PageName, 'two-grid-layout': vm.isStepTwoRedesign && vm.pageName == carRentalConstant.step3PageName}"]`, function (car_list_container) {
 
-            .opti-car-new-design .vertical-line-feat{
-                display: none;
-            }
+            car_list_container.insertAdjacentHTML("afterbegin", `
+                <style>
+                .opti-car-new-design {
+                    border: 1px solid rgb(204, 204, 204);
+                    display: flex;
+                    flex-direction: column;
+                    padding: 15px 6% 0;
+                    position: relative;
+                }
+    
+                .opti-car-new-design .vertical-line-feat{
+                    display: none;
+                }
+    
+                .opti-car-new-design .car-header-section .vehicle-features .feature-display-icon { 
+                    cursor: pointer;
+                }
+    
+                .opti-car-new-design .car-header-section .car-image {
+                    position: relative;
+                }
+    
+                .opti-car-new-design .car-header-section .car-image .upgrade-car-image {
+                    position: absolute;
+                    top: 20px;
+                    left: 22%;
+                    width: 85%;
+                }
+    
+                .opti-car-new-design .car-feature-section {
+                    position: relative;
+                    display: none;
+                }
+    
+                .opti-car-new-design .car-feature-section .available-car-fac {
+                    padding: 30px 0px 0px;
+                    margin: 0;
+                }
+    
+                .opti-car-new-design .car-feature-section .close-blue{
+                    position: absolute;
+                    top: 3px;
+                    right: 0;
+                    cursor: pointer;
+                }
+    
+                .opti-car-new-design .select-btn {
+                    width: 160px;
+                    min-width: 160px;
+                    font-size: 15px;
+                    margin: 10px 0px;
+                    padding: 0px 10px;
+                    height: 40px;
+                    line-height: 40px;
+                    font-family: Custom-Regular, Arial, sans-serif;
+                    background: rgb(247, 139, 0);
+                    border: 0;
+                    color: white;
+                }
+    
+                .opti-car-new-design .pay-later-btn {
+                    width: 100%;
+                    background: transparent;
+                    border: 2px solid rgb(247, 139, 0);
+                    color: rgb(247, 139, 0);
+                    font-weight: bold;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    font-family: Custom-Regular, Arial, sans-serif;
+                    font-size: 15px;
+                    height: 40px;
+                    color: black;
+                }
+    
+                .opti-car-new-design .pay-now-btn {
+                    width: 100%;
+                    background: rgb(0, 40, 95);
+                    font-weight: bold;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    font-family: Custom-Regular, Arial, sans-serif;
+                    font-size: 15px;
+                    height: 40px;
+                    color: white;
+                    border: 2px solid rgb(0, 40, 95);
+                }
+    
+                .opti-car-new-design .price-section,
+                .opti-car-new-design .price-section p {
+                    color: rgb(0, 0, 0);
+                    font-size: 21px;
+                    font-weight: bold;
+                    margin: 0px;
+                    padding: 0px;
+                }
+    
+                .opti-car-new-design .price-section sup {
+                    top: 0;
+                }
+    
+                .opti-car-new-design .price-section .striked-text,
+                .opti-car-new-design .price-section p.striked-text {
+                    font-size: 16px;
+                }
+    
+                .opti-car-new-design .price-section.striked-text {
+                    font-size: 16px;
+                }
+    
+                .opti-car-new-design .pop-over-container .pop-over-text{
+                    background: rgb(240, 238, 236);
+                    padding: 0;
+                    text-align: center;
+                    color: rgb(0, 0, 0) !important;
+                    font-size: 10px;
+                    position: relative;
+                    margin-top: 12px;
+                }
+    
+                .opti-car-new-design .pop-over-container {
+                    position: relative;
+                }
+    
+                .opti-car-new-design .pop-over-container .pop-over-text::after,
+                .opti-car-new-design .pop-over-container .pop-over-message::after {
+                    content: " ";
+                    position: absolute;
+                    right: 45%;
+                    top: -10px;
+                    border-width: 0px 15px 12px;
+                    border-top-style: initial;
+                    border-top-color: initial;
+                    border-right-style: solid;
+                    border-right-color: transparent;
+                    border-left-style: solid;
+                    border-left-color: transparent;
+                    border-bottom-style: solid;
+                    border-bottom-color: rgb(240, 238, 236);
+                }
+    
+                .opti-car-new-design .pop-over-container .pop-over-message::after {
+                    top: -12px;
+                }
+    
+                .opti-car-new-design .pop-over-container .pop-over-text .pop-over-icon{
+                    background-position: -437px -1px;
+                    width: 16px;
+                    height: 19px;
+                    vertical-align: middle;
+                    background-image: url(https://www.budget.com/etc/designs/budget/common/clientlib/images/global_sprite.png);
+                    background-repeat: no-repeat;
+                    display: inline-block;
+                    background-size: 550px 550px;
+                    cursor: pointer;
+                }
+    
+                .opti-car-new-design .pop-over-container .pop-over-message {
+                    position: absolute;
+                    visibility: hidden;
+                    opacity: 0;
+                    background: white;
+                    padding: 20px;
+                    z-index: 99999;
+                    border: 1px solid rgb(240, 238, 236);
+                    margin-top: 12px;
+                }
+    
+                .opti-car-new-design .pop-over-container .pop-over-message p {
+                    font-size: 14px;
+                    font-weight: normal;
+                }
+    
+                .opti-car-new-design .pop-over-container .pop-over-message .closePopover {
+                    display: none;
+                }
+    
+                .opti-car-new-design .car-footer-section .car-tag.pp-prices {
+                    text-align: start;
+                    font-weight: bold;
+                }
+    
+                .opti-car-new-design .car-footer-section .car-all-tags {
+                    margin-bottom: 6px;
+                }
+    
+                .opti-user-seleted-car .selected-car-badge {
+                    position: absolute;
+                    top: 0;
+                    background: black;
+                    color: white;
+                    padding: 6px 6px 6px 12px;
+                    left: 20px;
+                }
+    
+                .opti-user-seleted-car .selected-car-badge::after {
+                    content: "";
+                    height: 33px;
+                    width: 15px;
+                    display: inline-block;
+                    position: absolute;
+                    top: 0px;
+                    right: -15px;
+                    background-image: none !important;
+                    border-right: 15px solid transparent !important;
+                    border-top: 33px solid rgb(0, 0, 0) !important;
+                    border-left: transparent !important;
+                }
+    
+                .opti-car-new-design .car-footer-section .pay-now-pay-later-btn-section .pay-later-section .prices,
+                .opti-car-new-design .car-footer-section .pay-now-pay-later-btn-section .pay-now-section .prices {
+                    display: flex;
+                    flex-direction: column;
+                }
+    
+                .opti-car-new-design .car-footer-section .pay-now-pay-later-btn-section .pay-later-section .prices p,
+                .opti-car-new-design .car-footer-section .pay-now-pay-later-btn-section .pay-now-section .prices p {
+                    margin-top: auto;
+                }
+    
+                .opti-car-new-design .car-footer-section .pay-now-pay-later-btn-section .amazon-section {
+                    position: absolute;
+                    display: flex;
+                    top: 20px;
+                }
+    
+                .opti-car-new-design .car-footer-section .pay-now-pay-later-btn-section .amazon-section p {
+                    font-size: 1.4rem;
+                    margin-left: 13px;
+                }
+    
+                .opti-car-new-design .car-footer-section .pay-now-pay-later-btn-section .amazon-section p .amazon-row-bold {
+                    font-weight: bold;
+                    font-size: 1.65rem;
+                }
+    
+                .opti-car-new-design .car-footer-section .pay-now-pay-later-btn-section .amazon-section img {
+                    width: 76px;
+                    height: 56px;
+                }
+    
+                .opti-car-new-design .car-footer-section .pay-now-pay-later-btn-section .amazon-section .info p .popover {
+                    display: none !important;
+                }
+    
+                .opti-car-new-design .car-footer-section .pay-now-pay-later-btn-section .amazon-section .pop-over-container .pop-over-message {
+                    margin-top: 0;
+                    left: 60px;
+                    right: -60px;
+                }
+    
+                .opti-car-new-design .car-footer-section .pay-now-pay-later-btn-section .amazon-section .pop-over-container .pop-over-message span {
+                    font-size: 12px;
+                }
+    
+                .opti-car-new-design .car-footer-section .pay-now-pay-later-btn-section .amazon-section .pop-over-container .pop-over-message::after {
+                    display: none;
+                }
+            </style>    
+            `)
 
-            .opti-car-new-design .car-header-section .vehicle-features .feature-display-icon { 
-                cursor: pointer;
-            }
+            console.warn("car_list_container", car_list_container);
 
-            .opti-car-new-design .car-header-section .car-image {
-                position: relative;
-            }
+            car_list_container.style.display = "grid";
+            car_list_container.style.gridTemplateColumns = "repeat(3, minmax(0px, 1fr))";
+            car_list_container.style.gap = "30px";
+            car_list_container.style.padding = "0 6%";
 
-            .opti-car-new-design .car-header-section .car-image .upgrade-car-image {
-                position: absolute;
-                top: 20px;
-                left: 22%;
-                width: 85%;
-            }
+            let car_count = 0;
 
-            .opti-car-new-design .car-feature-section {
-                position: relative;
-                display: none;
-            }
+            const observer = new MutationObserver((mutationsList) => {
+                mutationsList.forEach(mutation => {
+                    if (mutation.type === 'childList') {
+                        console.log('Child elements changed!', mutation, document.querySelector('.featuredcar.featured-car-box'));
 
-            .opti-car-new-design .car-feature-section .available-car-fac {
-                padding: 30px 0px 0px;
-                margin: 0;
-            }
+                        [...document.querySelectorAll(`.vehicle-availability div[ng-class="{'three-grid-layout': vm.isStepTwoRedesign && vm.pageName == carRentalConstant.step2PageName, 'two-grid-layout': vm.isStepTwoRedesign && vm.pageName == carRentalConstant.step3PageName}"] div[ng-class="{'grid-border': vm.isStepTwoRedesign}"]`)].forEach((car, car_count) => {
+                            const car_container = car.querySelector(`div[ng-include=" 'carTemplate.html' "]`);
+                            if (car_container) {
+                                car_container.style.display = "none";
+                                if (car.querySelector('.opti-car-new-design')) {
+                                    car.querySelector('.opti-car-new-design').remove();
+                                    handle_creating_new_car_design(car, car_count)
+                                }
+                            }
+                        })
 
-            .opti-car-new-design .car-feature-section .close-blue{
-                position: absolute;
-                top: 3px;
-                right: 0;
-                cursor: pointer;
-            }
+                        if (document.querySelector(`div[ng-if="vm.response.featuredVehicles.length <= 1 || vm.deviceType == 'handheld'"] .featuredcar.featured-car-box`)) {
 
-            .opti-car-new-design .select-btn {
-                width: 160px;
-                min-width: 160px;
-                font-size: 15px;
-                margin: 10px 0px;
-                padding: 0px 10px;
-                height: 40px;
-                line-height: 40px;
-                font-family: Custom-Regular, Arial, sans-serif;
-                background: rgb(247, 139, 0);
-                border: 0;
-                color: white;
-            }
-
-            .opti-car-new-design .pay-later-btn {
-                width: 100%;
-                background: transparent;
-                border: 2px solid rgb(247, 139, 0);
-                color: rgb(247, 139, 0);
-                font-weight: bold;
-                display: flex;
-                align-items: center;
-                justify-content: center;
-                font-family: Custom-Regular, Arial, sans-serif;
-                font-size: 15px;
-                height: 40px;
-                color: black;
-            }
-
-            .opti-car-new-design .pay-now-btn {
-                width: 100%;
-                background: rgb(0, 40, 95);
-                font-weight: bold;
-                display: flex;
-                align-items: center;
-                justify-content: center;
-                font-family: Custom-Regular, Arial, sans-serif;
-                font-size: 15px;
-                height: 40px;
-                color: white;
-                border: 2px solid rgb(0, 40, 95);
-            }
-
-            .opti-car-new-design .price-section,
-            .opti-car-new-design .price-section p {
-                color: rgb(0, 0, 0);
-                font-size: 21px;
-                font-weight: bold;
-                margin: 0px;
-                padding: 0px;
-            }
-
-            .opti-car-new-design .price-section sup {
-                top: 0;
-            }
-
-            .opti-car-new-design .price-section .striked-text,
-            .opti-car-new-design .price-section p.striked-text {
-                font-size: 16px;
-            }
-
-            .opti-car-new-design .price-section.striked-text {
-                font-size: 16px;
-            }
-
-            .opti-car-new-design .pop-over-container .pop-over-text{
-                background: rgb(240, 238, 236);
-                padding: 0;
-                text-align: center;
-                color: rgb(0, 0, 0) !important;
-                font-size: 10px;
-                position: relative;
-                margin-top: 12px;
-            }
-
-            .opti-car-new-design .pop-over-container {
-                position: relative;
-            }
-
-            .opti-car-new-design .pop-over-container .pop-over-text::after,
-            .opti-car-new-design .pop-over-container .pop-over-message::after {
-                content: " ";
-                position: absolute;
-                right: 45%;
-                top: -10px;
-                border-width: 0px 15px 12px;
-                border-top-style: initial;
-                border-top-color: initial;
-                border-right-style: solid;
-                border-right-color: transparent;
-                border-left-style: solid;
-                border-left-color: transparent;
-                border-bottom-style: solid;
-                border-bottom-color: rgb(240, 238, 236);
-            }
-
-            .opti-car-new-design .pop-over-container .pop-over-message::after {
-                top: -12px;
-            }
-
-            .opti-car-new-design .pop-over-container .pop-over-text .pop-over-icon{
-                background-position: -437px -1px;
-                width: 16px;
-                height: 19px;
-                vertical-align: middle;
-                background-image: url(https://www.budget.com/etc/designs/budget/common/clientlib/images/global_sprite.png);
-                background-repeat: no-repeat;
-                display: inline-block;
-                background-size: 550px 550px;
-                cursor: pointer;
-            }
-
-            .opti-car-new-design .pop-over-container .pop-over-message {
-                position: absolute;
-                visibility: hidden;
-                opacity: 0;
-                background: white;
-                padding: 20px;
-                z-index: 99999;
-                border: 1px solid rgb(240, 238, 236);
-                margin-top: 12px;
-            }
-
-            .opti-car-new-design .pop-over-container .pop-over-message p {
-                font-size: 14px;
-                font-weight: normal;
-            }
-
-            .opti-car-new-design .pop-over-container .pop-over-message .closePopover {
-                display: none;
-            }
-
-            .opti-car-new-design .car-footer-section .car-tag.pp-prices {
-                text-align: start;
-                font-weight: bold;
-            }
-
-            .opti-car-new-design .car-footer-section .car-all-tags {
-                margin-bottom: 6px;
-            }
-
-            .opti-user-seleted-car .selected-car-badge {
-                position: absolute;
-                top: 0;
-                background: black;
-                color: white;
-                padding: 6px 6px 6px 12px;
-                left: 20px;
-            }
-
-            .opti-user-seleted-car .selected-car-badge::after {
-                content: "";
-                height: 33px;
-                width: 15px;
-                display: inline-block;
-                position: absolute;
-                top: 0px;
-                right: -15px;
-                background-image: none !important;
-                border-right: 15px solid transparent !important;
-                border-top: 33px solid rgb(0, 0, 0) !important;
-                border-left: transparent !important;
-            }
-
-            .opti-car-new-design .car-footer-section .pay-now-pay-later-btn-section .amazon-section {
-                position: absolute;
-                display: flex;
-                top: 20px;
-            }
-
-            .opti-car-new-design .car-footer-section .pay-now-pay-later-btn-section .amazon-section p {
-                font-size: 1.4rem;
-                margin-left: 13px;
-            }
-
-            .opti-car-new-design .car-footer-section .pay-now-pay-later-btn-section .amazon-section p .amazon-row-bold {
-                font-weight: bold;
-                font-size: 1.65rem;
-            }
-
-            .opti-car-new-design .car-footer-section .pay-now-pay-later-btn-section .amazon-section img {
-                width: 76px;
-                height: 56px;
-            }
-
-            .opti-car-new-design .car-footer-section .pay-now-pay-later-btn-section .amazon-section .info p .popover {
-                display: none !important;
-            }
-
-            .opti-car-new-design .car-footer-section .pay-now-pay-later-btn-section .amazon-section .pop-over-container .pop-over-message {
-                margin-top: 0;
-                left: 60px;
-                right: -60px;
-            }
-
-            .opti-car-new-design .car-footer-section .pay-now-pay-later-btn-section .amazon-section .pop-over-container .pop-over-message span {
-                font-size: 12px;
-            }
-
-            .opti-car-new-design .car-footer-section .pay-now-pay-later-btn-section .amazon-section .pop-over-container .pop-over-message::after {
-                display: none;
-            }
-        </style>    
-        `)
-
-        console.warn("car_list_container", car_list_container);
-
-        car_list_container.style.display = "grid";
-        car_list_container.style.gridTemplateColumns = "repeat(3, minmax(0px, 1fr))";
-        car_list_container.style.gap = "30px";
-        car_list_container.style.padding = "0 6%";
-
-        let car_count = 0;
-
-        const observer = new MutationObserver((mutationsList) => {
-            mutationsList.forEach(mutation => {
-                if (mutation.type === 'childList') {
-                    console.log('Child elements changed!', mutation, document.querySelector('.featuredcar.featured-car-box'));
-
-                    [...document.querySelectorAll(`.vehicle-availability div[ng-class="{'three-grid-layout': vm.isStepTwoRedesign && vm.pageName == carRentalConstant.step2PageName, 'two-grid-layout': vm.isStepTwoRedesign && vm.pageName == carRentalConstant.step3PageName}"] div[ng-class="{'grid-border': vm.isStepTwoRedesign}"]`)].forEach((car, car_count) => {
-                        const car_container = car.querySelector(`div[ng-include=" 'carTemplate.html' "]`);
-                        if (car_container) {
-                            car_container.style.display = "none";
-                            if (car.querySelector('.opti-car-new-design')) {
-                                car.querySelector('.opti-car-new-design').remove();
-                                handle_creating_new_car_design(car, car_count)
+                            if (!car_list_container.querySelector('.opti-user-seleted-car')) {
+                                handle_generate_new_selected_car_design(car_list_container, document.querySelector(`div[ng-if="vm.response.featuredVehicles.length <= 1 || vm.deviceType == 'handheld'"]`))
+                            }
+                        } else {
+                            if (car_list_container.querySelector('.opti-user-seleted-car')) {
+                                car_list_container.querySelector('.opti-user-seleted-car').remove()
                             }
                         }
-                    })
-
-                    if (document.querySelector(`div[ng-if="vm.response.featuredVehicles.length <= 1 || vm.deviceType == 'handheld'"] .featuredcar.featured-car-box`)) {
-
-                        if (!car_list_container.querySelector('.opti-user-seleted-car')) {
-                            handle_generate_new_selected_car_design(car_list_container, document.querySelector(`div[ng-if="vm.response.featuredVehicles.length <= 1 || vm.deviceType == 'handheld'"]`))
-                        }
-                    } else {
-                        if (car_list_container.querySelector('.opti-user-seleted-car')) {
-                            car_list_container.querySelector('.opti-user-seleted-car').remove()
-                        }
                     }
-                }
+                });
             });
-        });
 
-        observer.observe(car_list_container, { childList: true, subtree: false });
+            observer.observe(car_list_container, { childList: true, subtree: false });
 
 
-        utils.observeSelector(`.vehicle-availability div[ng-class="{'three-grid-layout': vm.isStepTwoRedesign && vm.pageName == carRentalConstant.step2PageName, 'two-grid-layout': vm.isStepTwoRedesign && vm.pageName == carRentalConstant.step3PageName}"] div[ng-class="{'grid-border': vm.isStepTwoRedesign}"]`, function (car) {
+            utils.observeSelector(`.vehicle-availability div[ng-class="{'three-grid-layout': vm.isStepTwoRedesign && vm.pageName == carRentalConstant.step2PageName, 'two-grid-layout': vm.isStepTwoRedesign && vm.pageName == carRentalConstant.step3PageName}"] div[ng-class="{'grid-border': vm.isStepTwoRedesign}"]`, function (car) {
 
-            console.warn("car", car);
+                console.warn("car", car);
 
-            const promo_banner_1 = car.querySelector(`div[ng-if="($index == vm.response.showPromotion.index) && (vm.response.showPromotion.section == 'additional')"]`);
-            if (promo_banner_1) {
-                promo_banner_1.style.display = "none";
-            }
+                const promo_banner_1 = car.querySelector(`div[ng-if="($index == vm.response.showPromotion.index) && (vm.response.showPromotion.section == 'additional')"]`);
+                if (promo_banner_1) {
+                    promo_banner_1.style.display = "none";
+                }
 
-            const promo_banner_2 = car.querySelector(`section[ng-if="$first"]`);
-            if (promo_banner_2) {
-                promo_banner_2.style.display = "none";
-            }
+                const promo_banner_2 = car.querySelector(`section[ng-if="$first"]`);
+                if (promo_banner_2) {
+                    promo_banner_2.style.display = "none";
+                }
 
-            const car_container = car.querySelector(`div[ng-include=" 'carTemplate.html' "]`);
-            if (car_container) {
-                car_container.style.display = "none";
+                const car_container = car.querySelector(`div[ng-include=" 'carTemplate.html' "]`);
+                if (car_container) {
+                    car_container.style.display = "none";
 
-                if (!car.querySelector('.opti-car-new-design')) {
-                    console.warn('going once===================')
+                    if (!car.querySelector('.opti-car-new-design')) {
+                        console.warn('going once===================')
 
-                    setTimeout(() => {
                         handle_creating_new_car_design(car, car_count);
 
                         car_count++;
-                    }, 100);
+
+                    }
 
                 }
+            });
 
-            }
+            utils.observeSelector(`div[ng-if="vm.response.featuredVehicles.length <= 1 || vm.deviceType == 'handheld'"]`, function (selected_car) {
+                selected_car.style.display = "none";
+
+                if (selected_car.querySelector('.featuredcar.featured-car-box')) {
+                    if (car_list_container.querySelector('.opti-user-seleted-car')) {
+                        car_list_container.querySelector('.opti-user-seleted-car').remove();
+
+                        handle_generate_new_selected_car_design(car_list_container, selected_car)
+                    } else {
+                        handle_generate_new_selected_car_design(car_list_container, selected_car)
+                    }
+                }
+            })
         });
+    }, 50);
 
-        utils.observeSelector(`div[ng-if="vm.response.featuredVehicles.length <= 1 || vm.deviceType == 'handheld'"]`, function (selected_car) {
-            selected_car.style.display = "none";
 
-            if (selected_car.querySelector('.featuredcar.featured-car-box')) {
-                if (car_list_container.querySelector('.opti-user-seleted-car')) {
-                    car_list_container.querySelector('.opti-user-seleted-car').remove();
-
-                    handle_generate_new_selected_car_design(car_list_container, selected_car)
-                } else {
-                    handle_generate_new_selected_car_design(car_list_container, selected_car)
-                }
-            }
-        })
-    });
 
     function handleGenerateFooter_For_Selected_Car(car_container) {
         if (car_container.querySelector("#res-vehicles-pay-later-memberRate")) {
