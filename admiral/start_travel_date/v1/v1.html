@@ -1,2 +1,195 @@
-<input type="date"
-    style="appearance: none; -webkit-appearance: none; -moz-appearance: none; width: 200px; padding: 10px; position: relative;" />
+<div class="opti-new-date-input">
+    <style>
+        .opti-new-date-input {
+            margin-bottom: 25px;
+        }
+
+        .opti-new-date-input .heading {
+            font-size: 16px;
+            line-height: 24px;
+            color: #444444;
+            margin-bottom: 20px;
+            font-weight: 400;
+        }
+
+        .opti-new-date-input .date-input-section {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .opti-new-date-input .date-input-section .label-name {
+            font-size: 16px;
+            line-height: 24px;
+            color: #444444;
+            margin-bottom: 0px;
+            font-weight: 400;
+            flex-basis: 41.666667%;
+        }
+
+        .opti-new-date-input .date-input-section .input-section {
+            flex-basis: calc(100% - 41.666667%);
+            padding-left: 13px;
+            display: flex;
+            justify-content: space-between;
+            position: relative;
+        }
+
+        .opti-new-date-input .date-input-section .input-section input[type="date"],
+        .opti-new-date-input .date-input-section .input-section input[type="text"] {
+            height: 34px;
+            border: 1px solid #41A5F5;
+            border-radius: 3px 0 0 3px !important;
+            width: 85%;
+            padding: 6px 12px;
+            visibility: hidden;
+        }
+
+        .opti-new-date-input .date-input-section .input-section input[type="text"] {
+            position: absolute;
+            width: 82%;
+            visibility: visible;
+            font-size: 16px;
+        }
+
+        .opti-new-date-input .date-input-section .input-section input[type="text"]::placeholder {
+            color: #999999;
+        }
+
+        .opti-new-date-input .date-input-section .input-section input[type="date"]:focus,
+        .opti-new-date-input .date-input-section .input-section input[type="text"]:focus {
+            border-color: #66afe9;
+            outline: 0;
+            box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(102, 175, 233, 0.6);
+        }
+
+        .opti-new-date-input .date-input-section .input-section input[type="date"]::-webkit-calendar-picker-indicator {
+            display: none;
+            -webkit-appearance: none;
+            appearance: none;
+        }
+
+        .opti-new-date-input .date-input-section .input-section .icon {
+            background: #0045A0;
+            border-radius: 0 3px 3px 0;
+            width: 34px;
+            height: 34px;
+            padding: 0;
+            cursor: pointer;
+            margin-right: 1px;
+        }
+
+        .opti-new-date-input .date-input-section .input-section .icon img {
+            height: 34px;
+            width: 34px;
+        }
+    </style>
+    <p class="heading">When do you need your cover to start?</p>
+    <div class="date-input-section">
+        <p class="label-name">Start date of your first trip</p>
+        <div class="input-section">
+            <input type="date" placeholder="dd/mm/yyyy" name="opti-date-input">
+            <input type="text" placeholder="dd/mm/yyyy" name="opti-date-text-input" readonly>
+            <div class="icon">
+                <img src="https://travelinsurance.admiral.com/public/fonts/6f45b3a8e301bbf1320e908a45d4bf85.svg"
+                    alt="icon">
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="opti-info-message-section">
+    <style>
+        .opti-info-message-section .always-shown-message {
+            display: flex;
+            align-items: center;
+            background-color: #E0F2FF;
+            border-left: 2px solid #41A5F5;
+            padding: 16px;
+        }
+
+        .opti-info-message-section .trip-policy-start-date-same {
+            background-color: #E0F2FF;
+            border-left: 2px solid #41A5F5;
+            padding: 16px;
+            display: none;
+        }
+
+        .opti-info-message-section .always-shown-message .icon,
+        .opti-info-message-section .trip-policy-start-date-same .heading-section .icon {
+            height: 16px;
+            width: 16px;
+        }
+
+        .opti-info-message-section .always-shown-message p {
+            font-size: 16px;
+            line-height: 24px;
+            font-weight: 400;
+            color: #25469B;
+            margin-left: 6px;
+            margin-bottom: 0;
+        }
+
+        .opti-info-message-section .trip-policy-start-date-same .heading-section {
+            display: flex;
+            align-items: center;
+        }
+
+        .opti-info-message-section .trip-policy-start-date-same .heading-section p {
+            font-size: 16px;
+            line-height: 24px;
+            font-weight: 700;
+            color: #25469B;
+            margin-left: 6px;
+            margin-bottom: 0;
+        }
+
+        .opti-info-message-section .trip-policy-start-date-same ul {
+            font-size: 16px;
+            line-height: 24px;
+            font-weight: 400;
+            margin-left: 50px;
+            color: #25469B;
+            margin-bottom: 0;
+            padding: 0;
+        }
+
+        .opti-info-message-section .trip-policy-start-date-same ul li {
+            margin: 5px 0;
+        }
+
+        .opti-info-message-section .trip-policy-start-date-same ul li:nth-of-type(2) {
+            margin-bottom: 0;
+        }
+    </style>
+
+    <div class="always-shown-message">
+        <div class="icon">
+            <svg width="17" height="16" viewBox="0 0 17 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path
+                    d="M8.24998 1.3335C4.56998 1.3335 1.58331 4.32016 1.58331 8.00016C1.58331 11.6802 4.56998 14.6668 8.24998 14.6668C11.93 14.6668 14.9166 11.6802 14.9166 8.00016C14.9166 4.32016 11.93 1.3335 8.24998 1.3335ZM8.91665 11.3335H7.58331V7.3335H8.91665V11.3335ZM8.91665 6.00016H7.58331V4.66683H8.91665V6.00016Z"
+                    fill="#41A5F5" />
+            </svg>
+        </div>
+        <p>You will be covered for trip cancellation as soon as your policy starts.</p>
+    </div>
+
+    <div class="trip-policy-start-date-same">
+        <div class="heading-section">
+            <div class="icon">
+                <svg width="17" height="16" viewBox="0 0 17 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path
+                        d="M8.24998 1.3335C4.56998 1.3335 1.58331 4.32016 1.58331 8.00016C1.58331 11.6802 4.56998 14.6668 8.24998 14.6668C11.93 14.6668 14.9166 11.6802 14.9166 8.00016C14.9166 4.32016 11.93 1.3335 8.24998 1.3335ZM8.91665 11.3335H7.58331V7.3335H8.91665V11.3335ZM8.91665 6.00016H7.58331V4.66683H8.91665V6.00016Z"
+                        fill="#41A5F5" />
+                </svg>
+            </div>
+            <p>You will not be covered for holiday cancellation until your policy starts</p>
+        </div>
+        <ul>
+            <li>This means if your holiday is cancelled for any reason prior to the start date of the policy, you will
+                not be covered. </li>
+            <li>Choose today's date if you want cover as soon as possible.</li>
+        </ul>
+    </div>
+</div>
