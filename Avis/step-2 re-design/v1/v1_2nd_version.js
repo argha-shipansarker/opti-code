@@ -973,9 +973,9 @@ if (window.location.pathname == '/en/reservation') {
     utils.observeSelector(`.vehiclePushDownBox .veh-Hide-Div-In-Mob:not(#myDiv) > div:nth-of-type(2)`, function (vehicle_sort_section) {
         vehicle_sort_section.style.display = "none"
 
-        cleanup(".vehiclePushDownBox .opti-new-sort-design");
+        // cleanup(".vehiclePushDownBox .opti-new-sort-design");
 
-        if (!document.querySelector('.vehiclePushDownBox .opti-new-sort-design .opti-sort-options li')) {
+        if (!document.querySelector('.vehiclePushDownBox .opti-new-sort-design ')) {
             vehicle_sort_section.insertAdjacentHTML("afterend", `<div class="opti-new-sort-design">
                 <style>
                     .opti-new-sort-design {
@@ -1023,23 +1023,23 @@ if (window.location.pathname == '/en/reservation') {
                             <div class="opti-sort-options">
                             </div>
                         </div>`);
+        }
 
-            const opti_sort_section = document.querySelector('.opti-sort-options');
-            const actual_sort_options = vehicle_sort_section.querySelector('.dropdown-menu');
-            if (opti_sort_section && actual_sort_options) {
-                const listItems = actual_sort_options.querySelectorAll('li');
-                listItems.forEach(li => {
-                    const sort_name = li.querySelector('a').innerText.trim();
-                    if (sort_name == 'Price (Low to High)') {
-                        li.querySelector('a').innerText = "Price";
-                    } else if (sort_name == 'Mileage (High to Low)') {
-                        li.querySelector('a').innerText = "Mileage";
-                    } else if (sort_name == 'Number of Seats (High to Low)') {
-                        li.querySelector('a').innerText = "Seats";
-                    }
-                    opti_sort_section.appendChild(li); // Move each <li> into .opti-sort-options
-                });
-            }
+        const opti_sort_section = document.querySelector('.opti-sort-options');
+        const actual_sort_options = vehicle_sort_section.querySelector('.dropdown-menu');
+        if (opti_sort_section && actual_sort_options) {
+            const listItems = actual_sort_options.querySelectorAll('li');
+            listItems.forEach(li => {
+                const sort_name = li.querySelector('a').innerText.trim();
+                if (sort_name == 'Price (Low to High)') {
+                    li.querySelector('a').innerText = "Price";
+                } else if (sort_name == 'Mileage (High to Low)') {
+                    li.querySelector('a').innerText = "Mileage";
+                } else if (sort_name == 'Number of Seats (High to Low)') {
+                    li.querySelector('a').innerText = "Seats";
+                }
+                opti_sort_section.appendChild(li); // Move each <li> into .opti-sort-options
+            });
         }
 
 
