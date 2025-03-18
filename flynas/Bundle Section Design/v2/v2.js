@@ -335,7 +335,7 @@ function applyMessaging(container) {
         </style>
     
         <div class="add-button">
-            ${document.querySelector('.dropdown-toggle .picon.picon_en') ? "Add" : "يضيف"}
+            ${document.querySelector('.dropdown-toggle .picon.picon_en') ? "Add" : "إضافة"}
         </div>
     </div>`)
 
@@ -400,7 +400,7 @@ function applyMessaging(container) {
         </style>
     
         <div class="add-button">
-        ${document.querySelector('.dropdown-toggle .picon.picon_en') ? "Add" : "يضيف"}
+        ${document.querySelector('.dropdown-toggle .picon.picon_en') ? "Add" : "إضافة"}
         </div>
     </div>`)
 
@@ -464,7 +464,7 @@ function applyMessaging(container) {
         </style>
     
         <div class="add-button">
-        ${document.querySelector('.dropdown-toggle .picon.picon_en') ? "Add" : "يضيف"}
+        ${document.querySelector('.dropdown-toggle .picon.picon_en') ? "Add" : "إضافة"}
         </div>
     </div>`)
 
