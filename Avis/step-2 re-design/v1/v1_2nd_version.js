@@ -307,9 +307,14 @@ if (window.location.pathname == '/en/reservation') {
                 display: none;
             }
 
+            .opti-car-new-design .car-feature-section .available-car-fac {
+                padding: 30px 0px 0px;
+                margin: 0;
+            }
+
             .opti-car-new-design .car-feature-section .close-blue{
                 position: absolute;
-                top: 0;
+                top: 3px;
                 right: 0;
                 cursor: pointer;
             }
@@ -498,10 +503,18 @@ if (window.location.pathname == '/en/reservation') {
                 height: 56px;
             }
 
+            .opti-car-new-design .car-footer-section .pay-now-pay-later-btn-section .amazon-section .info p .popover {
+                display: none !important;
+            }
+
             .opti-car-new-design .car-footer-section .pay-now-pay-later-btn-section .amazon-section .pop-over-container .pop-over-message {
                 margin-top: 0;
                 left: 60px;
                 right: -60px;
+            }
+
+            .opti-car-new-design .car-footer-section .pay-now-pay-later-btn-section .amazon-section .pop-over-container .pop-over-message span {
+                front-size: 12px;
             }
 
             .opti-car-new-design .car-footer-section .pay-now-pay-later-btn-section .amazon-section .pop-over-container .pop-over-message::after {
@@ -555,6 +568,16 @@ if (window.location.pathname == '/en/reservation') {
         utils.observeSelector(`.vehicle-availability div[ng-class="{'three-grid-layout': vm.isStepTwoRedesign && vm.pageName == carRentalConstant.step2PageName, 'two-grid-layout': vm.isStepTwoRedesign && vm.pageName == carRentalConstant.step3PageName}"] div[ng-class="{'grid-border': vm.isStepTwoRedesign}"]`, function (car) {
 
             console.warn("car", car);
+
+            const promo_banner_1 = car.querySelector(`div[ng-if="($index == vm.response.showPromotion.index) && (vm.response.showPromotion.section == 'additional')"]`);
+            if (promo_banner_1) {
+                promo_banner_1.remove();
+            }
+
+            const promo_banner_2 = car.querySelector(`section[ng-if="$first"]`);
+            if (promo_banner_2) {
+                promo_banner_2.remove();
+            }
 
             const car_container = car.querySelector(`div[ng-include=" 'carTemplate.html' "]`);
             if (car_container) {
@@ -727,11 +750,13 @@ if (window.location.pathname == '/en/reservation') {
         car_list_container.querySelector(`.opti-user-seleted-car .opti-car-new-design .car-header-section .vehicle-features .feature-display-icon`).addEventListener("click", function () {
             car_list_container.querySelector(`.opti-user-seleted-car .opti-car-new-design .car-feature-section`).style.height = `${car_list_container.querySelector(`.opti-user-seleted-car .opti-car-new-design .car-header-section`).offsetHeight}px`
             car_list_container.querySelector(`.opti-user-seleted-car .opti-car-new-design .car-header-section`).style.display = "none";
+            car_list_container.querySelector(`.opti-user-seleted-car .opti-car-new-design .selected-car-badge`).style.display = "none";
             car_list_container.querySelector(`.opti-user-seleted-car .opti-car-new-design .car-feature-section`).style.display = "block";
         })
 
         car_list_container.querySelector(`.opti-user-seleted-car .opti-car-new-design .car-feature-section .close-blue`).addEventListener("click", function () {
             car_list_container.querySelector(`.opti-user-seleted-car .opti-car-new-design .car-header-section`).style.display = "block";
+            car_list_container.querySelector(`.opti-user-seleted-car .opti-car-new-design .selected-car-badge`).style.display = "block";
             car_list_container.querySelector(`.opti-user-seleted-car .opti-car-new-design .car-feature-section`).style.display = "none";
         })
 
