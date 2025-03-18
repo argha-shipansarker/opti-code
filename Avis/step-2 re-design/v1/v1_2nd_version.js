@@ -973,8 +973,6 @@ if (window.location.pathname == '/en/reservation') {
     utils.observeSelector(`.vehiclePushDownBox .veh-Hide-Div-In-Mob:not(#myDiv) > div:nth-of-type(2)`, function (vehicle_sort_section) {
         vehicle_sort_section.style.display = "none"
 
-        // cleanup(".vehiclePushDownBox .opti-new-sort-design");
-
         if (!document.querySelector('.vehiclePushDownBox .opti-new-sort-design ')) {
             vehicle_sort_section.insertAdjacentHTML("afterend", `<div class="opti-new-sort-design">
                 <style>
