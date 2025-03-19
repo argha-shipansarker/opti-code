@@ -272,6 +272,10 @@ function handle_creating_new_car_design(car, car_count) {
 
 if (window.location.pathname == '/en/reservation') {
 
+    utils.observeSelector(`.container-fluid.amazon-coupon-wrapper.strikethrough-coupon-wrapper`, function (savings_wrapper) {
+        savings_wrapper.style.marginBottom = "16px";
+    });
+
     setTimeout(() => {
         utils.observeSelector(`.vehicle-availability div[ng-class="{'three-grid-layout': vm.isStepTwoRedesign && vm.pageName == carRentalConstant.step2PageName, 'two-grid-layout': vm.isStepTwoRedesign && vm.pageName == carRentalConstant.step3PageName}"]`, function (car_list_container) {
 
