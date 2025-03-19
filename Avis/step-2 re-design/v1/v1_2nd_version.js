@@ -499,6 +499,19 @@ if (window.location.pathname == '/en/reservation') {
                 .opti-car-new-design .car-footer-section .pay-now-pay-later-btn-section .pay-now-section .prices p {
                     margin-top: auto;
                 }
+
+                .opti-car-new-design .car-footer-section .only-select-btn .prices {
+                    display: flex;
+                    flex-direction: column;
+                }
+
+                .opti-car-new-design .car-footer-section .only-select-btn .prices div {
+                    margin-top: auto;
+                }
+
+                .opti-car-new-design .car-footer-section .only-select-btn .prices div price {
+                    margin-top: auto;
+                }
     
                 .opti-car-new-design .car-footer-section .pay-now-pay-later-btn-section .amazon-section {
                     position: absolute;
