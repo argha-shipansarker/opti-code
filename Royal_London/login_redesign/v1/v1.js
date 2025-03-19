@@ -514,3 +514,36 @@ utils.waitForElement('.richtextcontainerblock').then(function (rich_text) {
 utils.observeSelector('.featurebannerblock', function (featureBlock) {
     featureBlock.style.display = 'none';
 });
+
+utils.waitForElement('.opti-login-new-design .insurance-login .login-btn').then(function (btn) {
+    btn.addEventListener("click", function () {
+        window['optimizely'] = window['optimizely'] || [];
+        window['optimizely'].push({
+            type: "event",
+            eventName: "pensions_login_cta__",
+        });
+
+        window['optimizely'] = window['optimizely'] || [];
+        window['optimizely'].push({
+            type: "event",
+            eventName: "pensions_2004_before_login_cta__",
+        });
+    });
+});
+
+utils.waitForElement('.opti-login-new-design .pension-login .login-btn').then(function (btn) {
+    btn.addEventListener("click", function () {
+        window['optimizely'] = window['optimizely'] || [];
+        window['optimizely'].push({
+            type: "event",
+            eventName: "pensions_login_cta__",
+        });
+
+        window['optimizely'] = window['optimizely'] || [];
+        window['optimizely'].push({
+            type: "event",
+            eventName: "pensions_2004_later_login_cta___",
+        });
+    });
+});
+

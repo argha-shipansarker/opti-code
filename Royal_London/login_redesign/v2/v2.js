@@ -128,7 +128,7 @@ utils.waitForElement('#header .login-container .d-lg-flex a[title="Customer Logi
 });
 
 utils.waitForElement('#header .navbar-expand-lg .d-lg-none a[title="Customer Login"]').then(function (login_btn_mobile) {
-    login_btn_mobile.innerText = "Login";
+    login_btn_mobile.innerText = "Customer login";
     login_btn_mobile.insertAdjacentHTML("afterend", `
 <div class="opti-register-btn-mobile">
     <style>
@@ -255,4 +255,110 @@ utils.waitForElement('#header .navbar-expand-lg').then(function (mobile_nav_sect
     if (search_bar) {
         search_bar.style.marginBottom = "19px";
     }
+});
+
+utils.observeSelector('#header .navbar-expand-lg .d-lg-none a[title="Customer Login"] , #header .login-container .d-lg-flex a[title="Customer Login"]', function (login_cta) {
+    login_cta.addEventListener('click', function () {
+        window['optimizely'] = window['optimizely'] || [];
+        window['optimizely'].push({
+            type: "event",
+            eventName: "customer_login_cta_",
+        });
+    });
+});
+
+utils.waitForElement('.opti-login-dropdown a[href="https://www.royallondon.com/secure/customer/dashboard"]').then(function (btn) {
+    btn.addEventListener("click", function () {
+        window['optimizely'] = window['optimizely'] || [];
+        window['optimizely'].push({
+            type: "event",
+            eventName: "pensions_login_cta__",
+        });
+
+        window['optimizely'] = window['optimizely'] || [];
+        window['optimizely'].push({
+            type: "event",
+            eventName: "pensions_2004_later_login_cta___",
+        });
+    });
+});
+
+utils.waitForElement('.opti-login-dropdown-mobile a[href="https://www.royallondon.com/secure/customer/dashboard"]').then(function (btn) {
+    btn.addEventListener("click", function () {
+        window['optimizely'] = window['optimizely'] || [];
+        window['optimizely'].push({
+            type: "event",
+            eventName: "pensions_login_cta__",
+        });
+
+        window['optimizely'] = window['optimizely'] || [];
+        window['optimizely'].push({
+            type: "event",
+            eventName: "pensions_2004_later_login_cta___",
+        });
+    });
+});
+
+utils.waitForElement('.opti-login-dropdown a:nth-of-type(2)').then(function (btn) {
+    btn.addEventListener("click", function () {
+        window['optimizely'] = window['optimizely'] || [];
+        window['optimizely'].push({
+            type: "event",
+            eventName: "pensions_login_cta__",
+        });
+
+        window['optimizely'] = window['optimizely'] || [];
+        window['optimizely'].push({
+            type: "event",
+            eventName: "pensions_2004_before_login_cta__",
+        });
+    });
+});
+
+utils.waitForElement('.opti-login-dropdown-mobile a:nth-of-type(2)').then(function (btn) {
+    btn.addEventListener("click", function () {
+        window['optimizely'] = window['optimizely'] || [];
+        window['optimizely'].push({
+            type: "event",
+            eventName: "pensions_login_cta__",
+        });
+
+        window['optimizely'] = window['optimizely'] || [];
+        window['optimizely'].push({
+            type: "event",
+            eventName: "pensions_2004_before_login_cta__",
+        });
+    });
+});
+
+utils.waitForElement('.opti-login-dropdown a:nth-of-type(4)').then(function (btn) {
+    btn.addEventListener("click", function () {
+        window['optimizely'] = window['optimizely'] || [];
+        window['optimizely'].push({
+            type: "event",
+            eventName: "pensions_login_cta__",
+        });
+
+        window['optimizely'] = window['optimizely'] || [];
+        window['optimizely'].push({
+            type: "event",
+            eventName: "pensions_2004_before_login_cta__",
+        });
+    });
+});
+
+utils.waitForElement('.opti-login-dropdown-mobile a:nth-of-type(4)').then(function (btn) {
+    btn.addEventListener("click", function () {
+        window['optimizely'] = window['optimizely'] || [];
+        window['optimizely'].push({
+            type: "event",
+            eventName: "pensions_login_cta__",
+        });
+
+        window['optimizely'] = window['optimizely'] || [];
+        window['optimizely'].push({
+            type: "event",
+            eventName: "pensions_2004_before_login_cta__",
+        });
+    });
 });
