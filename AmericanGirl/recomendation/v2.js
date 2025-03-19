@@ -121,6 +121,11 @@ utils.waitForElement('#productRecommendations #productRecommendationsCarousel .j
                 if (product_promo) {
                     product_promo.remove();
                 }
+
+                const product_badge = product.querySelector('.product-item__reward');
+                if (product_badge) {
+                    product_badge.remove();
+                }
             }
 
             count++;
