@@ -560,6 +560,7 @@ if (window.location.pathname == '/en/reservation') {
             car_list_container.style.gridTemplateColumns = "repeat(3, minmax(0px, 1fr))";
             car_list_container.style.gap = "30px";
             car_list_container.style.padding = "0 6%";
+            car_list_container.style.marginBottom = "16px";
 
             let car_count = 0;
 
