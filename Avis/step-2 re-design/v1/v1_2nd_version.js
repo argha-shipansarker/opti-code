@@ -564,6 +564,11 @@ if (window.location.pathname == '/en/reservation') {
                                     promo_banner_2.style.display = "none";
                                 }
 
+                                const promo_banner_3 = car.querySelector(`div[ng-if="($index == vm.response.showPromotion.index) && (vm.response.showPromotion.section == 'filtered')"]`);
+                                if (promo_banner_3) {
+                                    promo_banner_3.style.display = "none";
+                                }
+
                                 const car_container = car.querySelector(`div[ng-include=" 'carTemplate.html' "]`);
                                 if (car_container) {
                                     car_container.style.display = "none";
@@ -606,6 +611,11 @@ if (window.location.pathname == '/en/reservation') {
                 const promo_banner_2 = car.querySelector(`section[ng-if="$first"]`);
                 if (promo_banner_2) {
                     promo_banner_2.style.display = "none";
+                }
+
+                const promo_banner_3 = car.querySelector(`div[ng-if="($index == vm.response.showPromotion.index) && (vm.response.showPromotion.section == 'filtered')"]`);
+                if (promo_banner_3) {
+                    promo_banner_3.style.display = "none";
                 }
 
                 const car_container = car.querySelector(`div[ng-include=" 'carTemplate.html' "]`);
@@ -1091,6 +1101,11 @@ if (window.location.pathname == '/en/reservation') {
                                 const promo_banner_2 = car.querySelector(`section[ng-if="$first"]`);
                                 if (promo_banner_2) {
                                     promo_banner_2.style.display = "none";
+                                }
+
+                                const promo_banner_3 = car.querySelector(`div[ng-if="($index == vm.response.showPromotion.index) && (vm.response.showPromotion.section == 'filtered')"]`);
+                                if (promo_banner_3) {
+                                    promo_banner_3.style.display = "none";
                                 }
 
                                 const car_container = car.querySelector(`div[ng-include=" 'carTemplate.html' "]`);
