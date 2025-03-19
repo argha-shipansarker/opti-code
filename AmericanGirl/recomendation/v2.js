@@ -13,7 +13,7 @@ utils.waitForElement('#productRecommendations #productRecommendationsCarousel .j
     var requestParameters = {
         profileId: bcProfileId,
         storeId: "a98e0d67-bb4d-421f-9d94-57a06adc35e3",
-        itemId: window.location.href.replace(/http(s):\/\/(www.)/gi, '').split('?')[0],
+        itemId: window.location.href.replace(/^https?:\/\//i, '').split('?')[0],
         request: [
             {
                 id: "test_algo1",

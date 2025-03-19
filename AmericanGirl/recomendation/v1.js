@@ -10,10 +10,13 @@ utils.waitForElement('#productRecommendations #productRecommendationsCarousel .j
 
     var bcprofile = blueConicClient.profile.getProfile();
     var bcProfileId = bcprofile.getId();
+
+    console.log('bc profile id', bcProfileId)
+
     var requestParameters = {
         profileId: bcProfileId,
         storeId: "a98e0d67-bb4d-421f-9d94-57a06adc35e3",
-        itemId: window.location.href.replace(/http(s):\/\/(www.)/gi, '').split('?')[0],
+        itemId: window.location.href.replace(/^https?:\/\//i, '').split('?')[0],
         request: [
             {
                 id: "test_algo1",
@@ -27,6 +30,8 @@ utils.waitForElement('#productRecommendations #productRecommendationsCarousel .j
         ],
         frequencyCap: 1000
     };
+
+    console.log('bc request parameters', requestParameters)
 
     utils.waitUntil(function () {
         bcprofile.loadValues(_, this, function () {
