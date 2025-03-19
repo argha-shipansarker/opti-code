@@ -648,7 +648,7 @@ if (window.location.pathname == '/en/reservation') {
                 }
             })
         });
-    }, 50);
+    }, 100);
 
 
 
