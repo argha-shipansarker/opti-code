@@ -546,37 +546,52 @@ if (window.location.pathname == '/en/reservation') {
 
             let car_count = 0;
 
-            const observer = new MutationObserver((mutationsList) => {
-                mutationsList.forEach(mutation => {
-                    if (mutation.type === 'childList') {
-                        console.log('Child elements changed!', mutation, document.querySelector('.featuredcar.featured-car-box'));
+            if (!car_list_container.dataset.observerInitialized) {
+                const observer = new MutationObserver((mutationsList) => {
+                    mutationsList.forEach(mutation => {
+                        if (mutation.type === 'childList') {
+                            console.log('Child elements changed!', mutation, document.querySelector('.featuredcar.featured-car-box'));
 
-                        [...document.querySelectorAll(`.vehicle-availability div[ng-class="{'three-grid-layout': vm.isStepTwoRedesign && vm.pageName == carRentalConstant.step2PageName, 'two-grid-layout': vm.isStepTwoRedesign && vm.pageName == carRentalConstant.step3PageName}"] div[ng-class="{'grid-border': vm.isStepTwoRedesign}"]`)].forEach((car, car_count) => {
-                            const car_container = car.querySelector(`div[ng-include=" 'carTemplate.html' "]`);
-                            if (car_container) {
-                                car_container.style.display = "none";
-                                if (car.querySelector('.opti-car-new-design')) {
-                                    car.querySelector('.opti-car-new-design').remove();
-                                    handle_creating_new_car_design(car, car_count)
+                            [...document.querySelectorAll(`.vehicle-availability div[ng-class="{'three-grid-layout': vm.isStepTwoRedesign && vm.pageName == carRentalConstant.step2PageName, 'two-grid-layout': vm.isStepTwoRedesign && vm.pageName == carRentalConstant.step3PageName}"] div[ng-class="{'grid-border': vm.isStepTwoRedesign}"]`)].forEach((car, car_count) => {
+
+                                const promo_banner_1 = car.querySelector(`div[ng-if="($index == vm.response.showPromotion.index) && (vm.response.showPromotion.section == 'additional')"]`);
+                                if (promo_banner_1) {
+                                    promo_banner_1.style.display = "none";
+                                }
+
+                                const promo_banner_2 = car.querySelector(`section[ng-if="$first"]`);
+                                if (promo_banner_2) {
+                                    promo_banner_2.style.display = "none";
+                                }
+
+                                const car_container = car.querySelector(`div[ng-include=" 'carTemplate.html' "]`);
+                                if (car_container) {
+                                    car_container.style.display = "none";
+                                    if (car.querySelector('.opti-car-new-design')) {
+                                        car.querySelector('.opti-car-new-design').remove();
+                                        handle_creating_new_car_design(car, car_count)
+                                    }
+                                }
+                            })
+
+                            if (document.querySelector(`div[ng-if="vm.response.featuredVehicles.length <= 1 || vm.deviceType == 'handheld'"] .featuredcar.featured-car-box`)) {
+
+                                if (!car_list_container.querySelector('.opti-user-seleted-car')) {
+                                    handle_generate_new_selected_car_design(car_list_container, document.querySelector(`div[ng-if="vm.response.featuredVehicles.length <= 1 || vm.deviceType == 'handheld'"]`))
+                                }
+                            } else {
+                                if (car_list_container.querySelector('.opti-user-seleted-car')) {
+                                    car_list_container.querySelector('.opti-user-seleted-car').remove()
                                 }
                             }
-                        })
-
-                        if (document.querySelector(`div[ng-if="vm.response.featuredVehicles.length <= 1 || vm.deviceType == 'handheld'"] .featuredcar.featured-car-box`)) {
-
-                            if (!car_list_container.querySelector('.opti-user-seleted-car')) {
-                                handle_generate_new_selected_car_design(car_list_container, document.querySelector(`div[ng-if="vm.response.featuredVehicles.length <= 1 || vm.deviceType == 'handheld'"]`))
-                            }
-                        } else {
-                            if (car_list_container.querySelector('.opti-user-seleted-car')) {
-                                car_list_container.querySelector('.opti-user-seleted-car').remove()
-                            }
                         }
-                    }
+                    });
                 });
-            });
 
-            observer.observe(car_list_container, { childList: true, subtree: false });
+                observer.observe(car_list_container, { childList: true, subtree: false });
+
+                car_list_container.dataset.observerInitialized = "true";
+            }
 
 
             utils.observeSelector(`.vehicle-availability div[ng-class="{'three-grid-layout': vm.isStepTwoRedesign && vm.pageName == carRentalConstant.step2PageName, 'two-grid-layout': vm.isStepTwoRedesign && vm.pageName == carRentalConstant.step3PageName}"] div[ng-class="{'grid-border': vm.isStepTwoRedesign}"]`, function (car) {
@@ -1067,6 +1082,17 @@ if (window.location.pathname == '/en/reservation') {
                     let checkInterval = setInterval(() => {
                         if (sort_option.classList.contains("selected")) {
                             [...document.querySelectorAll(`.vehicle-availability div[ng-class="{'three-grid-layout': vm.isStepTwoRedesign && vm.pageName == carRentalConstant.step2PageName, 'two-grid-layout': vm.isStepTwoRedesign && vm.pageName == carRentalConstant.step3PageName}"] div[ng-class="{'grid-border': vm.isStepTwoRedesign}"]`)].forEach((car, car_count) => {
+
+                                const promo_banner_1 = car.querySelector(`div[ng-if="($index == vm.response.showPromotion.index) && (vm.response.showPromotion.section == 'additional')"]`);
+                                if (promo_banner_1) {
+                                    promo_banner_1.style.display = "none";
+                                }
+
+                                const promo_banner_2 = car.querySelector(`section[ng-if="$first"]`);
+                                if (promo_banner_2) {
+                                    promo_banner_2.style.display = "none";
+                                }
+
                                 const car_container = car.querySelector(`div[ng-include=" 'carTemplate.html' "]`);
                                 if (car_container) {
                                     car_container.style.display = "none";
