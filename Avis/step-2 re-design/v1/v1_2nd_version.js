@@ -144,7 +144,8 @@ function handle_creating_new_car_design(car, car_count) {
 
             </div>
             <div class="car-image">
-                <img class="img-responsive" style="margin: ${car_container.querySelector('.upgrade-car-image img.img-responsive') ? "unset" : "auto"}" src='${car_container.querySelector('img.img-responsive').getAttribute('lazy-load')}' />
+                <img class="img-responsive" style="margin: ${car_container.querySelector('.upgrade-car-image img.img-responsive') ? "unset" : "auto"}" src='${car_container.querySelector('h3[ng-bind="car.carGroup"]').innerText.trim() == "Mystery Car" ? car_container.querySelector('img.img-responsive').getAttribute('error-fallback-src') : car_container.querySelector('img.img-responsive').getAttribute('lazy-load')}' />
+                
                 ${car_container.querySelector('.upgrade-car-image img.img-responsive') ? `<img class="upgrade-car-image img-responsive" src='${car_container.querySelector('.upgrade-car-image img.img-responsive').getAttribute('lazy-load')}'/>` : ""}
             </div>
         </div>
