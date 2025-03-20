@@ -464,65 +464,68 @@ utils.observeSelector('.header-bar__inner-wrapper .top-nav__item-btn', function 
                 </div>
             </div>`);
 
-            window.currentSlide = 1;
-            let carouselInterval;
+            setTimeout(() => {
+                window.currentSlide = 1;
+                let carouselInterval;
 
-            var all_slides = document.querySelectorAll('.opti-quote-carousel .slider .slide');
-            if (all_slides) {
-                window.carouselSlideCount = all_slides.length;
-            }
-
-            var prevArrow = document.querySelector('.opti-quote-carousel #previousCarouselArrow');
-            if (prevArrow) {
-                prevArrow.addEventListener('click', () => {
-                    console.warn("aaaaa prev arrow");
-                    window.setCarouselCopySlide(window.currentSlide - 1, true, false);
-                });
-            }
-            var nextArrow = document.querySelector('.opti-quote-carousel #nextCarouselArrow');
-            if (nextArrow) {
-                nextArrow.addEventListener('click', () => {
-                    console.warn("aaaaa next arrow");
-                    window.setCarouselCopySlide(window.currentSlide + 1, true, false);
-                });
-            }
-
-            document.querySelectorAll('.opti-quote-carousel .arrow-dots-container .dot').forEach((btn, index) => {
-                btn.addEventListener('click', () => {
-                    window.setCarouselCopySlide(index + 1, true, false);
-                });
-            });
-
-            function startCarouselInterval() {
-                clearInterval(carouselInterval);
-
-                carouselInterval = setInterval(() => {
-                    window.setCarouselCopySlide(window.currentSlide + 1, true, false);
-                }, 10000);
-            }
-
-
-            const items = document.querySelectorAll('.opti-quote-carousel .slide');
-            let currentItemIndex = 0;
-
-            const observer = new IntersectionObserver(
-                (entries) => {
-                    entries.forEach((entry) => {
-                        if (entry.isIntersecting) {
-                            currentItemIndex = Array.from(items).indexOf(entry.target);
-                            window.setCarouselCopySlide(currentItemIndex + 1, false, true);
-                            startCarouselInterval();
-                        } else {
-                        }
-                    });
-                },
-                {
-                    root: document.querySelector('.opti-quote-carousel .slider'),
-                    threshold: 0.5 // Adjust this threshold as needed
+                var all_slides = document.querySelectorAll('.opti-quote-carousel .slider .slide');
+                if (all_slides) {
+                    window.carouselSlideCount = all_slides.length;
                 }
-            );
 
-            items.forEach((item) => observer.observe(item));
+                var prevArrow = document.querySelector('.opti-quote-carousel #previousCarouselArrow');
+                if (prevArrow) {
+                    prevArrow.addEventListener('click', () => {
+                        console.warn("aaaaa prev arrow");
+                        window.setCarouselCopySlide(window.currentSlide - 1, true, false);
+                    });
+                }
+                var nextArrow = document.querySelector('.opti-quote-carousel #nextCarouselArrow');
+                if (nextArrow) {
+                    nextArrow.addEventListener('click', () => {
+                        console.warn("aaaaa next arrow");
+                        window.setCarouselCopySlide(window.currentSlide + 1, true, false);
+                    });
+                }
+
+                document.querySelectorAll('.opti-quote-carousel .arrow-dots-container .dot').forEach((btn, index) => {
+                    btn.addEventListener('click', () => {
+                        window.setCarouselCopySlide(index + 1, true, false);
+                    });
+                });
+
+                function startCarouselInterval() {
+                    clearInterval(carouselInterval);
+
+                    carouselInterval = setInterval(() => {
+                        window.setCarouselCopySlide(window.currentSlide + 1, true, false);
+                    }, 10000);
+                }
+
+
+                const items = document.querySelectorAll('.opti-quote-carousel .slide');
+                let currentItemIndex = 0;
+
+                const observer = new IntersectionObserver(
+                    (entries) => {
+                        entries.forEach((entry) => {
+                            if (entry.isIntersecting) {
+                                currentItemIndex = Array.from(items).indexOf(entry.target);
+                                console.warn("aaaaa currentItemIndex", currentItemIndex)
+                                window.setCarouselCopySlide(currentItemIndex + 1, false, true);
+                                startCarouselInterval();
+                            } else {
+                            }
+                        });
+                    },
+                    {
+                        root: document.querySelector('.opti-quote-carousel .slider'),
+                        threshold: 0.5 // Adjust this threshold as needed
+                    }
+                );
+
+                items.forEach((item) => observer.observe(item));
+            }, 2500);
 
         }
     });
