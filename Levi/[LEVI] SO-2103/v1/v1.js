@@ -4,6 +4,8 @@ window.setCarouselCopySlide = (slideNumber, will_auto_scroll, will_update_arrow_
 
     window.currentSlide = slideNumber;
 
+    console.warn("aaaaa inside the function", slideNumber, window.currentSlide)
+
     if (window.currentSlide > window.carouselSlideCount) {
         window.currentSlide = 1;
     }
