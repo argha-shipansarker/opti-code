@@ -108,6 +108,7 @@
                                 left: 50%;
                                 transform: translate(-50%, -50%);
                                 color: #FFFFFF;
+                                width: 925px;
                             }
 
                             .opti-quote-carousel .opti-slide-data .description .eye {
@@ -132,7 +133,14 @@
                                 line-height: 150%;
                                 letter-spacing: 2px;
                                 font-weight: 400;
-                                margin-bottom: 23.33px;
+                                margin: 0 auto 23.33px;
+                                max-width: 615px;
+                            }
+
+                            .opti-quote-carousel .opti-slide-data .description .all-cta {
+                                display: flex;
+                                justify-content: center;
+                                gap: 15.56px;
                             }
 
                             .opti-quote-carousel .opti-slide-data .description .all-cta a {
@@ -141,7 +149,6 @@
                                 letter-spacing: 2px;
                                 font-size: 15.56px;
                                 padding: 11.67px 31.11px;
-                                margin-right: 15.56px;
                                 background-color: #FFFFFF;
                                 border-radius: 1.94px;
                                 color: #000000;
@@ -150,11 +157,6 @@
                             .opti-quote-carousel .opti-slide-data .description .all-cta a:hover {
                                 color: #000000;
                             }
-
-                            .opti-quote-carousel .opti-slide-data .description .all-cta a:last-child {
-                                margin-right: 0;
-                            }
-
 
                             .opti-quote-carousel .opti-slide-data.linen-denim img {
                                 width: 100%;
@@ -167,11 +169,67 @@
                             .opti-quote-carousel .opti-slide-data.find-your-perfect-fit img {
                                 width: 100%;
                             }
+
+                            .opti-quote-carousel .opti-slide-data img.mobile {
+                                display: none;
+                            }
+
+                            .opti-quote-carousel .opti-slide-data img.desktop {
+                                display: block;
+                            }
+
+                            @media (max-width: 1024px) {
+                                .opti-quote-carousel .opti-slide-data img.mobile {
+                                    display: block;
+                                }
+
+                                .opti-quote-carousel .opti-slide-data img.desktop {
+                                    display: none;
+                                }
+
+                                .opti-quote-carousel .opti-slide-data .description {
+                                    width: 84%;
+                                }
+
+                                .opti-quote-carousel .opti-slide-data .description .eye {
+                                    font-size: 14px;
+                                    font-weight: 700;
+                                    line-height: 20px;
+                                    letter-spacing: 0px;
+                                    margin-bottom: 24px;
+                                }
+
+                                .opti-quote-carousel .opti-slide-data .description .head {
+                                    font-size: 32px;
+                                    font-weight: 700;
+                                    line-height: 32px;
+                                    letter-spacing: 2px;
+                                    margin-bottom: 16px;
+                                }
+
+                                .opti-quote-carousel .opti-slide-data .description .sub {
+                                    font-size: 16px;
+                                    line-height: 24px;
+                                    letter-spacing: 0px;
+                                    font-weight: 400;
+                                    margin: 0 0 24px;
+                                }
+
+                                .opti-quote-carousel .opti-slide-data .description .all-cta {
+                                    flex-direction: column;
+                                    gap: 16px;
+                                }
+                            }
                         </style>
                         <li class="slide" style="min-width: 100%;">
 
                             <div class="opti-slide-data linen-denim">
-                                <img src="https://cdn.optimizely.com/img/21017440049/429fa762fb3e4a0c85b637ffe1fe5730.jpg"
+                                <img class="desktop"
+                                    src="https://cdn.optimizely.com/img/21017440049/429fa762fb3e4a0c85b637ffe1fe5730.jpg"
+                                    alt="">
+
+                                <img class="mobile"
+                                    src="https://cdn.optimizely.com/img/21017440049/a89806f4357d468d855822711071653a.jpg"
                                     alt="">
 
                                 <div class="description">
@@ -191,7 +249,12 @@
                         <li class="slide" style="min-width: 100%;">
 
                             <div class="opti-slide-data spring-new-arrivals">
-                                <img src="https://cdn.optimizely.com/img/21017440049/76b06169f73c4a02bd06ccbce9c9391a.jpg"
+                                <img class="desktop"
+                                    src="https://cdn.optimizely.com/img/21017440049/76b06169f73c4a02bd06ccbce9c9391a.jpg"
+                                    alt="">
+
+                                <img class="mobile"
+                                    src="https://cdn.optimizely.com/img/21017440049/30b77ca3466e4bc2a991c4ed4c542c6f.jpg"
                                     alt="">
 
                                 <div class="description">
@@ -210,7 +273,12 @@
                         <li class="slide" style="min-width: 100%;">
 
                             <div class="opti-slide-data find-your-perfect-fit">
-                                <img src="https://cdn.optimizely.com/img/21017440049/493a42322aaa41c1a9999e5bd0e01a62.jpg"
+                                <img class="desktop"
+                                    src="https://cdn.optimizely.com/img/21017440049/493a42322aaa41c1a9999e5bd0e01a62.jpg"
+                                    alt="">
+
+                                <img class="mobile"
+                                    src="https://cdn.optimizely.com/img/21017440049/d4dcb51300f94678b896cffaa6a14459.jpg"
                                     alt="">
 
                                 <div class="description">
