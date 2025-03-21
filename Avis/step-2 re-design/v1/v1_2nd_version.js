@@ -171,7 +171,7 @@ function handle_creating_new_car_design(car, car_count) {
         car.querySelector(`.opti-car-new-design .car-feature-section`).style.display = "block";
     })
 
-    car.querySelector(`.opti-car-new-design.car-number-${car_count} .car-feature-section .close-blue`).addEventListener("click", function () {
+    car.querySelector(`.opti-car-new-design.car-number-${car_count} .car-feature-section .close-blue:not(.text-right)`).addEventListener("click", function () {
         car.querySelector(`.opti-car-new-design .car-header-section`).style.display = "block";
         car.querySelector(`.opti-car-new-design .car-feature-section`).style.display = "none";
     })
@@ -319,7 +319,7 @@ if (window.location.pathname == '/en/reservation') {
                     margin: 0;
                 }
     
-                .opti-car-new-design .car-feature-section .close-blue{
+                .opti-car-new-design .car-feature-section .close-blue:not(.text-right) {
                     position: absolute;
                     top: 3px;
                     right: 0;
@@ -810,6 +810,7 @@ if (window.location.pathname == '/en/reservation') {
         </div>    
         </div>`);
 
+        //for showing car features
         car_list_container.querySelector(`.opti-user-seleted-car .opti-car-new-design .car-header-section .vehicle-features .feature-display-icon`).addEventListener("click", function () {
             car_list_container.querySelector(`.opti-user-seleted-car .opti-car-new-design .car-feature-section`).style.height = `${car_list_container.querySelector(`.opti-user-seleted-car .opti-car-new-design .car-header-section`).offsetHeight}px`
             car_list_container.querySelector(`.opti-user-seleted-car .opti-car-new-design .car-header-section`).style.display = "none";
@@ -817,7 +818,7 @@ if (window.location.pathname == '/en/reservation') {
             car_list_container.querySelector(`.opti-user-seleted-car .opti-car-new-design .car-feature-section`).style.display = "block";
         })
 
-        car_list_container.querySelector(`.opti-user-seleted-car .opti-car-new-design .car-feature-section .close-blue`).addEventListener("click", function () {
+        car_list_container.querySelector(`.opti-user-seleted-car .opti-car-new-design .car-feature-section .close-blue:not(.text-right)`).addEventListener("click", function () {
             car_list_container.querySelector(`.opti-user-seleted-car .opti-car-new-design .car-header-section`).style.display = "block";
             car_list_container.querySelector(`.opti-user-seleted-car .opti-car-new-design .selected-car-badge`).style.display = "block";
             car_list_container.querySelector(`.opti-user-seleted-car .opti-car-new-design .car-feature-section`).style.display = "none";
