@@ -325,6 +325,10 @@ if (window.location.pathname == '/en/reservation') {
                     right: 0;
                     cursor: pointer;
                 }
+
+                .opti-car-new-design .car-feature-section p.close-blue.text-right {
+                    display: none;
+                }
     
                 .opti-car-new-design .select-btn {
                     width: 160px;
