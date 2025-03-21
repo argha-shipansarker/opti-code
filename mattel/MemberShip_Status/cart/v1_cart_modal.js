@@ -65,6 +65,11 @@ utils.observeSelector('.mini-cart__inner', function (cart_section) {
                     color: #000000;
                     margin-bottom: 12px;
                 }
+
+                .opti-upsell-section .description ul {
+                    list-style-position: outside;
+                    padding-left: 15px;
+                }
         
                 .opti-upsell-section .description ul li {
                     font-family: HelveticaNeueLTPro-Bd, Arial, sans-serif;
@@ -153,6 +158,11 @@ utils.observeSelector('.mini-cart__inner', function (cart_section) {
             line-height: 16.9px;
             color: #000000;
             margin-bottom: 12px;
+        }
+
+        .opti-upsell-section .description ul {
+            list-style-position: outside;
+            padding-left: 15px;
         }
 
         .opti-upsell-section .description ul li {
