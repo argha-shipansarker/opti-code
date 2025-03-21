@@ -305,3 +305,23 @@ utils.waitForElement('.cart__footer').then(function (cart_footer) {
         </div>`);
     }
 });
+
+utils.waitForElement('.opti-upsell-cart-page .btn').then(function (cart_page_join_btn_desktop) {
+    cart_page_join_btn_desktop.addEventListener('click', function () {
+        window['optimizely'] = window['optimizely'] || [];
+        window['optimizely'].push({
+            type: "event",
+            eventName: "join_now_clicks_-_aggregate",
+        });
+    });
+});
+
+utils.waitForElement('.opti-upsell-cart-page-mobile .btn').then(function (cart_page_join_btn_mobile) {
+    cart_page_join_btn_mobile.addEventListener('click', function () {
+        window['optimizely'] = window['optimizely'] || [];
+        window['optimizely'].push({
+            type: "event",
+            eventName: "join_now_clicks_-_aggregate",
+        });
+    });
+});
