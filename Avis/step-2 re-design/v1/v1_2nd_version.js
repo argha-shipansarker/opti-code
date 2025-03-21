@@ -470,6 +470,10 @@ if (window.location.pathname == '/en/reservation') {
                 .opti-car-new-design .pop-over-container .pop-over-message .closePopover {
                     display: none;
                 }
+
+                .opti-car-new-design .car-footer-section {
+                    margin-top: auto !important;
+                }
     
                 .opti-car-new-design .car-footer-section .car-tag.pp-prices {
                     text-align: start;
