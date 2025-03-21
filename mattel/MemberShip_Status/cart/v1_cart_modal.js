@@ -31,6 +31,7 @@ utils.observeSelector('.mini-cart__inner', function (cart_section) {
                     font-weight: 600;
                     color: #000000;
                     margin-bottom: 9px;
+                    text-transform: uppercase;
                 }
         
                 .opti-upsell-section .heading span {
@@ -123,6 +124,7 @@ utils.observeSelector('.mini-cart__inner', function (cart_section) {
             font-weight: 600;
             color: #000000;
             margin-bottom: 9px;
+            text-transform: uppercase;
         }
 
         .opti-upsell-section .heading span {
