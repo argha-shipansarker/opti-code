@@ -295,6 +295,7 @@ if (window.location.pathname == '/en/reservation') {
                     flex-direction: column;
                     padding: 15px 6% 0;
                     position: relative;
+                    height: 100%;
                 }
     
                 .opti-car-new-design .vertical-line-feat{
