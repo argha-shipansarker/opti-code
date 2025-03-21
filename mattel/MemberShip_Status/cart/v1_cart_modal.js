@@ -21,7 +21,7 @@ utils.observeSelector('.mini-cart__inner', function (cart_section) {
             <style>
                 .opti-upsell-section {
                     width: 100%;
-                    margin-top: 54px;
+                    margin-top: 31px;
                 }
         
                 .opti-upsell-section .heading {
@@ -113,7 +113,7 @@ utils.observeSelector('.mini-cart__inner', function (cart_section) {
     <style>
         .opti-upsell-section {
             width: 100%;
-            margin-top: 54px;
+            margin-top: 31px;
         }
 
         .opti-upsell-section .heading {
