@@ -194,3 +194,13 @@ utils.observeSelector('.mini-cart__inner', function (cart_section) {
     }
 
 });
+
+utils.observeSelector('.opti-upsell-section .btn', function (cart_modal_join_btn) {
+    cart_modal_join_btn.addEventListener('click', function () {
+        window['optimizely'] = window['optimizely'] || [];
+        window['optimizely'].push({
+            type: "event",
+            eventName: "join_now_clicks_-_aggregate",
+        });
+    });
+});
