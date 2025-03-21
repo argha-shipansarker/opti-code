@@ -233,14 +233,16 @@
                                     alt="">
 
                                 <div class="description">
-                                    <p class="eye">Introducing</p>
-                                    <p class="head">LINEN+ DENIM</p>
-                                    <p class="sub">Your favourite fits are ready for spring—thanks to lightweight
-                                        fabrics and our newest fabric innovation Linen+ Denim.</p>
+                                    <p class="eye">${handleTranslation("linen-denim", "eye")}</p>
+                                    <p class="head">${handleTranslation("linen-denim", "head")}</p>
+                                    <p class="sub">${handleTranslation("linen-denim", "sub")}</p>
                                     <div class="all-cta">
-                                        <a href="/c/levi_men_collections_linen_denim">Shop Men</a>
-                                        <a href="/c/levi_women_collections_linen_denim">Shop Women</a>
-                                        <a href="/features/linen-denim">Learn More</a>
+                                        <a href="${window.location.href}c/levi_men_collections_linen_denim">${handleTranslation("linen-denim",
+                                            "men_cta")}</a>
+                                        <a href="${window.location.href}c/levi_women_collections_linen_denim">${handleTranslation("linen-denim",
+                                            "women_cta")}</a>
+                                        <a href="${window.location.href}features/linen-denim">${handleTranslation("linen-denim",
+                                            "learn_cta")}</a>
                                     </div>
                                 </div>
                             </div>
@@ -258,12 +260,13 @@
                                     alt="">
 
                                 <div class="description">
-                                    <p class="head">SPRING NEW ARRIVALS</p>
-                                    <p class="sub">Fresh styles, new icons and best-selling fits to get you ready for a
-                                        new season.</p>
+                                    <p class="head">${handleTranslation("spring-new-arrivals", "head")}</p>
+                                    <p class="sub">${handleTranslation("spring-new-arrivals", "sub")}</p>
                                     <div class="all-cta">
-                                        <a href="/c/levi_clothing_men_new_arrivals">Shop Men</a>
-                                        <a href="/c/levi_clothing_women_new_arrivals">Shop Women</a>
+                                        <a href="${window.location.href}c/levi_clothing_men_new_arrivals">${handleTranslation("spring-new-arrivals",
+                                            "men_cta")}</a>
+                                        <a href="${window.location.href}c/levi_clothing_women_new_arrivals">${handleTranslation("spring-new-arrivals",
+                                            "women_cta")}</a>
                                     </div>
                                 </div>
                             </div>
@@ -282,12 +285,14 @@
                                     alt="">
 
                                 <div class="description">
-                                    <p class="eye">Find your perfect fit </p>
-                                    <p class="head">JEANS FIT GUIDE</p>
-                                    <p class="sub">Here, we breakdown exactly what makes each fit unique.</p>
+                                    <p class="eye">${handleTranslation("find-your-perfect-fit", "eye")}</p>
+                                    <p class="head">${handleTranslation("find-your-perfect-fit", "head")}</p>
+                                    <p class="sub">${handleTranslation("find-your-perfect-fit", "sub")}</p>
                                     <div class="all-cta">
-                                        <a href="/features/men-jeans">Fit Guide Men</a>
-                                        <a href="/features/women-jeans">Fit Guide Women</a>
+                                        <a href="${window.location.href}features/men-jeans">${handleTranslation("find-your-perfect-fit",
+                                            "men_cta")}</a>
+                                        <a href="${window.location.href}features/women-jeans">${handleTranslation("find-your-perfect-fit",
+                                            "women_cta")}</a>
                                     </div>
                                 </div>
                             </div>
@@ -306,8 +311,7 @@
                     fill="black" />
             </svg>
         </button>
-        <button type="button" class="dot dot-disabled" disabled="">
-        </button>
+        <button type="button" class="dot dot-disabled" disabled="true"></button>
         <button type="button" class="dot"></button>
         <button type="button" class="dot"></button>
         <button id="nextCarouselArrow" type="button" class="arrow">
