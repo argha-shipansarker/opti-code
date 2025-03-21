@@ -470,6 +470,12 @@ function handleCreatingCarousel(hero_video_section) {
                                     gap: 12px;
                                 }
                             }
+
+                            @media (max-width: 370px) {
+                                .opti-quote-carousel .opti-slide-data .description .dd-section .dd-label .label {
+                                    margin-right: 36px;
+                                }
+                            }
                         </style>
                         <li class="slide" style="min-width: 100%;">
 
