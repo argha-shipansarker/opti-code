@@ -47,6 +47,7 @@ utils.waitForElement('.cart__footer').then(function (cart_footer) {
                     line-height: 64px;
                     color: #000000;
                     margin-bottom: 10px;
+                    text-transform: uppercase;
                 }
         
                 .opti-upsell-cart-page .banner-image-desktop .upsell-info a {
@@ -100,6 +101,7 @@ utils.waitForElement('.cart__footer').then(function (cart_footer) {
                     margin-right: -24px;
                     margin-left: -24px;
                     padding-left: 24px;
+                    text-transform: uppercase;
                 }
         
                 .opti-upsell-cart-page-mobile .banner-image {
@@ -144,7 +146,7 @@ utils.waitForElement('.cart__footer').then(function (cart_footer) {
                     }
                 }
             </style>
-            <p class="heading">Become amember $9.99/Yr</p>
+            <p class="heading">Become a member $9.99/Yr</p>
             <div class="banner-image">
                 <img class="sign-image" src="https://cdn.optimizely.com/img/25237771658/422bf76d4f304ce19564f0121a455791.png"
                     alt="sign">
@@ -180,6 +182,7 @@ utils.waitForElement('.cart__footer').then(function (cart_footer) {
                     line-height: 64px;
                     color: white;
                     margin-bottom: 10px;
+                    text-transform: uppercase;
                 }
         
                 .opti-upsell-cart-page .banner-image-desktop .upsell-info a {
@@ -242,6 +245,7 @@ utils.waitForElement('.cart__footer').then(function (cart_footer) {
                     margin-right: -24px;
                     margin-left: -24px;
                     padding-left: 24px;
+                    text-transform: uppercase;
                 }
         
                 .opti-upsell-cart-page-mobile .banner-image {
@@ -294,7 +298,7 @@ utils.waitForElement('.cart__footer').then(function (cart_footer) {
                     }
                 }
             </style>
-            <p class="heading">Become amember $9.99/Yr</p>
+            <p class="heading">Become a member $9.99/Yr</p>
             <div class="banner-image">
                 <img class="sign-image" src="https://cdn.optimizely.com/img/25237771658/2e1701e967e743e590dde630d50d27d9.png"
                     alt="sign">
