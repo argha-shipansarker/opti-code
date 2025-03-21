@@ -91,6 +91,12 @@
         .opti-quote-carousel .arrow-dots-container .arrow.arrow-disabled {
             cursor: unset;
         }
+
+        @media (max-width: 500px) {
+            .opti-quote-carousel .arrow-dots-container {
+                bottom: 10px;
+            }
+        }
     </style>
     <div class="carousel-container">
         <div class="carousel-root">
@@ -218,6 +224,30 @@
                                 .opti-quote-carousel .opti-slide-data .description .all-cta {
                                     flex-direction: column;
                                     gap: 16px;
+                                }
+                            }
+
+                            @media (max-width: 500px) {
+                                .opti-quote-carousel .opti-slide-data .description {
+                                    width: 90%;
+                                }
+                            }
+
+                            @media (max-width: 400px) {
+                                .opti-quote-carousel .opti-slide-data .description .eye {
+                                    margin-bottom: 12px;
+                                }
+
+                                .opti-quote-carousel .opti-slide-data .description .head {
+                                    margin-bottom: 10px;
+                                }
+
+                                .opti-quote-carousel .opti-slide-data .description .sub {
+                                    margin: 0 0 12px;
+                                }
+
+                                .opti-quote-carousel .opti-slide-data.linen-denim .description .all-cta {
+                                    gap: 12px;
                                 }
                             }
                         </style>
