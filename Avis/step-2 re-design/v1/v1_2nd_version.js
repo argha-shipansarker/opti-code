@@ -569,6 +569,12 @@ if (window.location.pathname == '/en/reservation') {
                 .opti-car-new-design .car-footer-section .pay-now-pay-later-btn-section .amazon-section .pop-over-container .pop-over-message::after {
                     display: none;
                 }
+
+                @media (max-width: 1400px) {
+                    .opti-car-new-design .car-feature-section .available-car-fac > span {
+                        width: 40%;
+                    }
+                }
             </style>    
             `)
 
@@ -1067,7 +1073,7 @@ if (window.location.pathname == '/en/reservation') {
                     .opti-new-sort-design {
                         display: flex;
                         align-items: center;
-                        width: 50%;
+                        max-width: 50%;
                     }
                 
                     .opti-new-sort-design p {
