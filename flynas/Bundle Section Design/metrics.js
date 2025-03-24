@@ -25,7 +25,7 @@ observeSelector('.footer-wrapper #summaryNext', (addPassengerDetailsBtn) => {
             window['optimizely'] = window['optimizely'] || [];
             window['optimizely'].push({
                 type: "event",
-                eventName: "add_passenger_details___bundle",
+                eventName: "add_passenger_details___bundle_",
             });
         }
     });
