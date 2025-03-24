@@ -38,6 +38,7 @@ utils.observeSelector('.mini-cart__inner', function (cart_section) {
                     font-family: HelveticaNeueLTPro-Bd, Arial, sans-serif;
                     font-size: 20px;
                     line-height: 22px;
+                    text-transform: none;
                 }
         
                 .opti-upsell-section .image {
@@ -131,6 +132,7 @@ utils.observeSelector('.mini-cart__inner', function (cart_section) {
             font-family: HelveticaNeueLTPro-Bd, Arial, sans-serif;
             font-size: 20px;
             line-height: 22px;
+            text-transform: none;
         }
 
         .opti-upsell-section .image {
