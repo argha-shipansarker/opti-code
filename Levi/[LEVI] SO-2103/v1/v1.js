@@ -266,15 +266,16 @@ function handleCreatingCarousel(hero_video_section) {
                                 font-size: 15.56px;
                                 font-weight: 700;
                                 line-height: 150%;
-                                letter-spacing: 2px;
+                                letter-spacing: .02em;
                                 margin-bottom: 23.33px;
+                                font-family: Helvetica-Now-Text-Bold,Helvetica,Arial,sans-serif;
                             }
 
                             .opti-quote-carousel .opti-slide-data .description .head {
                                 font-size: 54.44px;
                                 font-weight: 700;
                                 line-height: 120%;
-                                letter-spacing: 4px;
+                                letter-spacing: .04em;
                                 font-family: InterstateWGL-Black, Helvetica, Arial, sans-serif;
                                 margin-bottom: 15.56px;
                             }
@@ -282,7 +283,7 @@ function handleCreatingCarousel(hero_video_section) {
                             .opti-quote-carousel .opti-slide-data .description .sub {
                                 font-size: 15.56px;
                                 line-height: 150%;
-                                letter-spacing: 2px;
+                                letter-spacing: .02em;
                                 font-weight: 400;
                                 margin: 0 auto 23.33px;
                                 max-width: 615px;
@@ -297,12 +298,13 @@ function handleCreatingCarousel(hero_video_section) {
                             .opti-quote-carousel .opti-slide-data .description .all-cta a {
                                 font-weight: 700;
                                 line-height: 150%;
-                                letter-spacing: 2px;
+                                letter-spacing: .02em;
                                 font-size: 15.56px;
                                 padding: 11.67px 31.11px;
                                 background-color: #FFFFFF;
                                 border-radius: 1.94px;
                                 color: #000000;
+                                font-family: Helvetica-Now-Text-Bold,Helvetica,Arial,sans-serif;
                             }
 
                             .opti-quote-carousel .opti-slide-data .description .all-cta a:hover {
@@ -354,7 +356,7 @@ function handleCreatingCarousel(hero_video_section) {
                                     font-size: 32px;
                                     font-weight: 700;
                                     line-height: 32px;
-                                    letter-spacing: 2px;
+                                    letter-spacing: .02em;
                                     margin-bottom: 16px;
                                 }
 
@@ -498,6 +500,16 @@ function handleCreatingCarousel(hero_video_section) {
         </button>
     </div>
 </div>`);
+
+        function toTitleCase(str) {
+            return str.toLowerCase().replace(/\b\w/g, char => char.toUpperCase());
+        }
+
+        // Select all matching elements
+        document.querySelectorAll('.opti-quote-carousel .opti-slide-data .description .all-cta a')
+            .forEach(element => {
+                element.textContent = toTitleCase(element.textContent); // Apply title case
+            });
 
         setTimeout(() => {
             window.currentSlide = 1;
