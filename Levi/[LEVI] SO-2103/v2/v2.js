@@ -334,6 +334,7 @@ function handleCreatingCarousel(hero_video_section) {
                             .opti-quote-carousel .opti-slide-data .description .dd-section {
                                 display: inline-block;
                                 margin: auto;
+                                position: relative;
                             }
 
                             .opti-quote-carousel .opti-slide-data .description .dd-section .dd-label {
@@ -378,6 +379,8 @@ function handleCreatingCarousel(hero_video_section) {
                             .opti-quote-carousel .opti-slide-data .description .dd-section .dd-panel {
                                 display: flex;
                                 flex-direction: column;
+                                position: absolute;
+                                width: 100%;
                             }
 
                             .opti-quote-carousel .opti-slide-data .description .dd-section .dd-panel a {
@@ -481,11 +484,19 @@ function handleCreatingCarousel(hero_video_section) {
                                 .opti-quote-carousel .opti-slide-data.linen-denim .description .all-cta {
                                     gap: 12px;
                                 }
+
+                                .opti-quote-carousel .opti-slide-data.spring-new-arrivals .description {
+                                    transform: translate(-50%, -60%);
+                                }
                             }
 
                             @media (max-width: 370px) {
                                 .opti-quote-carousel .opti-slide-data .description .dd-section .dd-label .label {
                                     margin-right: 36px;
+                                }
+
+                                .opti-quote-carousel .opti-slide-data.spring-new-arrivals .description {
+                                    transform: translate(-50%, -65%);
                                 }
                             }
                         </style>
