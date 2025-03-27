@@ -299,16 +299,18 @@ function handleCreatingCarousel(hero_video_section) {
                                 font-weight: 700;
                                 line-height: 150%;
                                 letter-spacing: .02em;
-                                font-size: 15.56px;
-                                padding: 11.67px 31.11px;
-                                background-color: #FFFFFF;
+                                font-size: 16px;
+                                padding: 12px 32px;
+                                background-color: #000000;
                                 border-radius: 1.94px;
-                                color: #000000;
+                                color: #FFFFFF;
                                 font-family: Helvetica-Now-Text-Bold,Helvetica,Arial,sans-serif;
                             }
 
-                            .opti-quote-carousel .opti-slide-data .description .all-cta a:hover {
-                                color: #000000;
+                            .opti-quote-carousel .opti-slide-data .description .all-cta a:hover,
+                            .opti-quote-carousel .opti-slide-data .description .all-cta a:focus {
+                                color: #FFFFFF;
+                                background-color: #403E3F;
                             }
 
                             .opti-quote-carousel .opti-slide-data.linen-denim img {
