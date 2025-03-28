@@ -1,350 +1,360 @@
 const utils = optimizely.get('utils');
 
 if (window.location.href.indexOf('/Admiral/quote') > -1) {
-    utils.observeSelector('.adm-section:has(+#quote-summary)', function (home_car_van_section) {
-        home_car_van_section.style.display = "none";
 
-        if (!JSON.parse(sessionStorage.getItem("is_car_removed"))) {
-            home_car_van_section.insertAdjacentHTML("beforebegin", `<div class="opti-home-car-van-section">
-    
-                <!-- Details Modal Style -->
-                <style>
-                    .opt-variation-close {
-                        position: absolute;
-                        right: 25px;
-                        top: 23px;
-                        cursor: pointer;
-                    }
-            
-                    .opt-variation-modal {
-                        max-width: 424px;
-                        background-color: white;
-                        margin: auto;
-                        padding: 30px 30px 26px;
-                        display: flex;
-                        position: relative;
-                    }
-            
-                    .opt-variation-modal .opt-variation-body .heading-section {
-                        display: flex;
-                        margin-bottom: 16px;
-                    }
-            
-                    .opt-variation-modal .opt-variation-body .heading-section svg {
-                        height: 48px;
-                        width: 48px;
-                    }
-            
-                    .opt-variation-modal .opt-variation-body .heading-section p {
-                        font-size: 16px;
-                        line-height: 24px;
-                        font-weight: 700;
-                        color: #25469B;
-                        flex: 1;
-                        margin-left: 18px;
-                    }
-            
-                    .opt-variation-modal.van .opt-variation-body .heading-section p {
-                        flex: 0.9;
-                    }
-            
-                    .opt-variation-modal .opt-variation-body .heading-section p span {
-                        font-size: 24px;
-                        line-height: 30px;
-                        font-weight: 700;
-                    }
+    utils.waitForElement('.adm-section:has(+#quote-summary)').then(function (home_car_van_section_wait) {
+        utils.observeSelector('.adm-section:has(+#quote-summary)', function (home_car_van_section) {
+            home_car_van_section.style.display = "none";
+
+            if (!JSON.parse(sessionStorage.getItem("is_car_removed"))) {
+
+                if (!document.querySelector('.opti-home-car-van-section')) {
+                    home_car_van_section.insertAdjacentHTML("beforebegin", `<div class="opti-home-car-van-section">
         
-                    .opt-variation-modal .opt-variation-body .heading-section p.opti-van-heading span[data-test="add-car-van-banner-van-text"] {
-                        font-size: 16px;
-                        line-height: 24px;
-                    }
-            
-                    .opt-variation-modal .opt-variation-body .sub-heading-section {
-                        font-size: 14px;
-                        font-weight: 400;
-                        line-height: 21px;
-                        color: #444444;
-                        margin-bottom: 16px;
-                    }
-            
-                    .opt-variation-modal .opt-variation-body .save-today-section .heading {
-                        font-size: 16px;
-                        line-height: 24px;
-                        font-weight: 700;
-                        color: #25469B;
-                        margin-bottom: 8px;
-                    }
-            
-                    .opt-variation-modal .opt-variation-body .save-today-section .listing {
-                        display: flex;
-                        margin-bottom: 8px;
-                    }
-            
-                    .opt-variation-modal .opt-variation-body .save-today-section .listing p {
-                        font-size: 14px;
-                        line-height: 21px;
-                        font-weight: 400;
-                        color: #444444;
-                        margin-left: 9px;
-                    }
-            
-                    .opt-variation-modal .opt-variation-body .save-today-section .learn-more-cta {
-                        font-size: 14px;
-                        line-height: 21px;
-                        font-weight: 400;
-                        display: flex;
-                        align-items: center;
-                        cursor: pointer;
-                        margin-bottom: 16px;
-                    }
-            
-                    .opt-variation-modal .opt-variation-body .save-today-section .learn-more-cta span {
-                        color: #006DCC;
-                        margin-left: 9px;
-                    }
-            
-                    .opt-variation-modal .opt-variation-body .footer-info {
-                        font-size: 12px;
-                        line-height: 21px;
-                        font-weight: 400;
-                        color: #656560;
-                        margin-bottom: 20px;
-                    }
-            
-                    .opt-variation-modal .opt-variation-body .footer-cta {
-                        display: flex;
-                        height: 44px;
-                        justify-content: space-between;
-                    }
-            
-                    .opt-variation-modal .opt-variation-body .footer-cta button {
-                        flex-basis: 48%;
-                        border: 1px solid #006DCC;
-                        text-align: center;
-                        font-size: 16px;
-                        font-weight: 400;
-                        color: #006DCC;
-                        border-radius: 4px;
-                        cursor: pointer;
-                    }
-            
-                    .opt-variation-modal .opt-variation-body .footer-cta a {
-                        flex-basis: 48%;
-                        font-size: 16px;
-                        line-height: 24px;
-                        font-weight: 400;
-                        text-align: center;
-                        display: flex;
-                        justify-content: center;
-                        align-items: center;
-                        background: #0A8A19;
-                        color: white;
-                        border-radius: 4px;
-                    }
-            
-                    @media (max-width: 435px) {
-                        .opt-variation-modal .opt-variation-body .heading-section p {
-                            flex: 1 !important;
-                        }
-            
-                        .opt-variation-close {
-                            display: none;
-                        }
-            
-                        .opt-variation-modal {
-                            border-top-right-radius: 8px;
-                            border-top-left-radius: 8px;
-                        }
-                    }
-                </style>
-            
-                <style>
-                    .opti-home-car-van-section {
-                        margin-bottom: 63px;
-                        -webkit-tap-highlight-color: transparent;
-                    }
-            
-                    .opti-home-car-van-section .section-heading {
-                        font-size: 24px;
-                        line-height: 30px;
-                        font-weight: 700;
-                        text-align: center;
-                        color: #25469B;
-                    }
-            
-                    .opti-home-car-van-section .section-sub-heading {
-                        font-size: 20px;
-                        line-height: 25px;
-                        font-weight: 400;
-                        text-align: center;
-                        color: #444444;
-                    }
-            
-                    @media (max-width: 435px) {
-                        .opti-home-car-van-section .section-heading {
-                            font-size: 20px;
-                        }
-            
-                        .opti-home-car-van-section .section-sub-heading {
-                            display: none;
-                        }
-            
-                        .opti-home-car-van-section {
-                            margin-bottom: 39px;
-                        }
-                    }
-                </style>
-                <h3 class="section-heading">Bundle your insurance to save more.</h3>
-                <p class="section-sub-heading">You can add more vehicles or homes to your policy whenever you want, and set them to
-                    join when their renewal is due.</p>
-            
-                <div class="insurance-type-section">
-                    <style>
-                        .opti-home-car-van-section .insurance-type-section {
-                            display: flex;
-                            overflow-x: auto;
-                            scroll-snap-type: x mandatory;
-                            scroll-behavior: smooth;
-                            width: 100%;
-                            gap: 18px;
-                            scrollbar-width: none;
-                            -ms-overflow-style: none;
-                        }
-            
-                        .opti-home-car-van-section .insurance-type-section::-webkit-scrollbar {
-                            display: none;
-                        }
-            
-                        .opti-home-car-van-section .insurance-type-section .card {
-                            padding: 16px;
-                            flex-basis: 33%;
-                            background: white;
-                            display: flex;
-                            flex-direction: column;
-                            min-width: 200px;
-                            scroll-snap-align: center;
-                            cursor: pointer;
-                        }
-            
-                        .opti-home-car-van-section .insurance-type-section .card img {
-                            height: 80px;
-                        }
-            
-                        .opti-home-car-van-section .insurance-type-section .card.home img,
-                        .opti-home-car-van-section .insurance-type-section .card.car img {
-                            width: 110px;
-                            margin: 0 auto;
-                        }
-            
-                        .opti-home-car-van-section .insurance-type-section .card p {
-                            line-height: 24px;
-                            font-weight: 700;
-                            color: #25469B;
-                            text-align: center;
-                            margin-top: 10px;
-                        }
-                    </style>
-                    <div class="card home" onclick="window.showHomeDetailsModal()">
-                        <img src="//cdn.optimizely.com/img/25237771658/a3ee4a0b6944436f9db17d0441ab3613.png" />
-                        <p>Get a discount when you add a home</p>
-                    </div>
-                    <div class="card car" onclick="window.showCarDetailsModal()">
-                        <img src="//cdn.optimizely.com/img/25237771658/27b8e8245fa34dc9b61edfab4779e07e.png" />
-                        <p>Add multiple cars to increase your discount</p>
-                    </div>
-                    <div class="card van" onclick="window.showVanDetailsModal()">
-                        <img src="//cdn.optimizely.com/img/25237771658/71ccf92e01774d968c37bf6e4131efe4.png" />
-                        <p>Add a van to get an instant discount</p>
-                    </div>
-                </div>
-                <div class="insurance-type-pagination">
-                    <style>
-                        .opti-home-car-van-section .insurance-type-pagination {
-                            display: flex;
-                            justify-content: center;
-                            margin-top: 12px;
-                        }
-            
-                        .dot {
-                            height: 8px;
-                            width: 44px;
-                            margin: 0 4px;
-                            background: #FFFFFF;
-                            border-radius: 4px;
-                            display: inline-block;
-                            border: 1px solid #CED9E5;
-                        }
-            
-                        .dot.active {
-                            background: #41A5F5;
-                        }
-            
-                        @media (min-width: 435px) {
-                            .opti-home-car-van-section .insurance-type-pagination {
-                                display: none;
+                        <!-- Details Modal Style -->
+                        <style>
+                            .opt-variation-close {
+                                position: absolute;
+                                right: 25px;
+                                top: 23px;
+                                cursor: pointer;
                             }
-                        }
-                    </style>
-                    <span class="dot"></span>
-                    <span class="dot"></span>
-                    <span class="dot"></span>
-                </div>
-            </div>`);
+                    
+                            .opt-variation-modal {
+                                max-width: 424px;
+                                background-color: white;
+                                margin: auto;
+                                padding: 30px 30px 26px;
+                                display: flex;
+                                position: relative;
+                            }
+                    
+                            .opt-variation-modal .opt-variation-body .heading-section {
+                                display: flex;
+                                margin-bottom: 16px;
+                            }
+                    
+                            .opt-variation-modal .opt-variation-body .heading-section svg {
+                                height: 48px;
+                                width: 48px;
+                            }
+                    
+                            .opt-variation-modal .opt-variation-body .heading-section p {
+                                font-size: 16px;
+                                line-height: 24px;
+                                font-weight: 700;
+                                color: #25469B;
+                                flex: 1;
+                                margin-left: 18px;
+                            }
+                    
+                            .opt-variation-modal.van .opt-variation-body .heading-section p {
+                                flex: 0.9;
+                            }
+                    
+                            .opt-variation-modal .opt-variation-body .heading-section p span {
+                                font-size: 24px;
+                                line-height: 30px;
+                                font-weight: 700;
+                            }
+                
+                            .opt-variation-modal .opt-variation-body .heading-section p.opti-van-heading span[data-test="add-car-van-banner-van-text"] {
+                                font-size: 16px;
+                                line-height: 24px;
+                            }
+                    
+                            .opt-variation-modal .opt-variation-body .sub-heading-section {
+                                font-size: 14px;
+                                font-weight: 400;
+                                line-height: 21px;
+                                color: #444444;
+                                margin-bottom: 16px;
+                            }
+                    
+                            .opt-variation-modal .opt-variation-body .save-today-section .heading {
+                                font-size: 16px;
+                                line-height: 24px;
+                                font-weight: 700;
+                                color: #25469B;
+                                margin-bottom: 8px;
+                            }
+                    
+                            .opt-variation-modal .opt-variation-body .save-today-section .listing {
+                                display: flex;
+                                margin-bottom: 8px;
+                            }
+                    
+                            .opt-variation-modal .opt-variation-body .save-today-section .listing p {
+                                font-size: 14px;
+                                line-height: 21px;
+                                font-weight: 400;
+                                color: #444444;
+                                margin-left: 9px;
+                            }
+                    
+                            .opt-variation-modal .opt-variation-body .save-today-section .learn-more-cta {
+                                font-size: 14px;
+                                line-height: 21px;
+                                font-weight: 400;
+                                display: flex;
+                                align-items: center;
+                                cursor: pointer;
+                                margin-bottom: 16px;
+                            }
+                    
+                            .opt-variation-modal .opt-variation-body .save-today-section .learn-more-cta span {
+                                color: #006DCC;
+                                margin-left: 9px;
+                            }
+                    
+                            .opt-variation-modal .opt-variation-body .footer-info {
+                                font-size: 12px;
+                                line-height: 21px;
+                                font-weight: 400;
+                                color: #656560;
+                                margin-bottom: 20px;
+                            }
+                    
+                            .opt-variation-modal .opt-variation-body .footer-cta {
+                                display: flex;
+                                height: 44px;
+                                justify-content: space-between;
+                            }
+                    
+                            .opt-variation-modal .opt-variation-body .footer-cta button {
+                                flex-basis: 48%;
+                                border: 1px solid #006DCC;
+                                text-align: center;
+                                font-size: 16px;
+                                font-weight: 400;
+                                color: #006DCC;
+                                border-radius: 4px;
+                                cursor: pointer;
+                            }
+                    
+                            .opt-variation-modal .opt-variation-body .footer-cta a {
+                                flex-basis: 48%;
+                                font-size: 16px;
+                                line-height: 24px;
+                                font-weight: 400;
+                                text-align: center;
+                                display: flex;
+                                justify-content: center;
+                                align-items: center;
+                                background: #0A8A19;
+                                color: white;
+                                border-radius: 4px;
+                            }
+                    
+                            @media (max-width: 435px) {
+                                .opt-variation-modal .opt-variation-body .heading-section p {
+                                    flex: 1 !important;
+                                }
+                    
+                                .opt-variation-close {
+                                    display: none;
+                                }
+                    
+                                .opt-variation-modal {
+                                    border-top-right-radius: 8px;
+                                    border-top-left-radius: 8px;
+                                }
+                            }
+                        </style>
+                    
+                        <style>
+                            .opti-home-car-van-section {
+                                margin-bottom: 63px;
+                                -webkit-tap-highlight-color: transparent;
+                            }
+                    
+                            .opti-home-car-van-section .section-heading {
+                                font-size: 24px;
+                                line-height: 30px;
+                                font-weight: 700;
+                                text-align: center;
+                                color: #25469B;
+                            }
+                    
+                            .opti-home-car-van-section .section-sub-heading {
+                                font-size: 20px;
+                                line-height: 25px;
+                                font-weight: 400;
+                                text-align: center;
+                                color: #444444;
+                            }
+                    
+                            @media (max-width: 435px) {
+                                .opti-home-car-van-section .section-heading {
+                                    font-size: 20px;
+                                }
+                    
+                                .opti-home-car-van-section .section-sub-heading {
+                                    display: none;
+                                }
+                    
+                                .opti-home-car-van-section {
+                                    margin-bottom: 39px;
+                                }
+                            }
+                        </style>
+                        <h3 class="section-heading">Bundle your insurance to save more.</h3>
+                        <p class="section-sub-heading">You can add more vehicles or homes to your policy whenever you want, and set them to
+                            join when their renewal is due.</p>
+                    
+                        <div class="insurance-type-section">
+                            <style>
+                                .opti-home-car-van-section .insurance-type-section {
+                                    display: flex;
+                                    overflow-x: auto;
+                                    scroll-snap-type: x mandatory;
+                                    scroll-behavior: smooth;
+                                    width: 100%;
+                                    gap: 18px;
+                                    scrollbar-width: none;
+                                    -ms-overflow-style: none;
+                                }
+                    
+                                .opti-home-car-van-section .insurance-type-section::-webkit-scrollbar {
+                                    display: none;
+                                }
+                    
+                                .opti-home-car-van-section .insurance-type-section .card {
+                                    padding: 16px;
+                                    flex-basis: 33%;
+                                    background: white;
+                                    display: flex;
+                                    flex-direction: column;
+                                    min-width: 200px;
+                                    scroll-snap-align: center;
+                                    cursor: pointer;
+                                }
+                    
+                                .opti-home-car-van-section .insurance-type-section .card img {
+                                    height: 80px;
+                                }
+                    
+                                .opti-home-car-van-section .insurance-type-section .card.home img,
+                                .opti-home-car-van-section .insurance-type-section .card.car img {
+                                    width: 110px;
+                                    margin: 0 auto;
+                                }
+                    
+                                .opti-home-car-van-section .insurance-type-section .card p {
+                                    line-height: 24px;
+                                    font-weight: 700;
+                                    color: #25469B;
+                                    text-align: center;
+                                    margin-top: 10px;
+                                }
+                            </style>
+                            <div class="card home" onclick="window.showHomeDetailsModal()">
+                                <img src="//cdn.optimizely.com/img/25237771658/a3ee4a0b6944436f9db17d0441ab3613.png" />
+                                <p>Get a discount when you add a home</p>
+                            </div>
+                            <div class="card car" onclick="window.showCarDetailsModal()">
+                                <img src="//cdn.optimizely.com/img/25237771658/27b8e8245fa34dc9b61edfab4779e07e.png" />
+                                <p>Add multiple cars to increase your discount</p>
+                            </div>
+                            <div class="card van" onclick="window.showVanDetailsModal()">
+                                <img src="//cdn.optimizely.com/img/25237771658/71ccf92e01774d968c37bf6e4131efe4.png" />
+                                <p>Add a van to get an instant discount</p>
+                            </div>
+                        </div>
+                        <div class="insurance-type-pagination">
+                            <style>
+                                .opti-home-car-van-section .insurance-type-pagination {
+                                    display: flex;
+                                    justify-content: center;
+                                    margin-top: 12px;
+                                }
+                    
+                                .dot {
+                                    height: 8px;
+                                    width: 44px;
+                                    margin: 0 4px;
+                                    background: #FFFFFF;
+                                    border-radius: 4px;
+                                    display: inline-block;
+                                    border: 1px solid #CED9E5;
+                                }
+                    
+                                .dot.active {
+                                    background: #41A5F5;
+                                }
+                    
+                                @media (min-width: 435px) {
+                                    .opti-home-car-van-section .insurance-type-pagination {
+                                        display: none;
+                                    }
+                                }
+                            </style>
+                            <span class="dot"></span>
+                            <span class="dot"></span>
+                            <span class="dot"></span>
+                        </div>
+                    </div>`);
 
 
-            const scrollContainer = document.querySelector('.opti-home-car-van-section .insurance-type-section');
-            const boxes = document.querySelectorAll('.opti-home-car-van-section .insurance-type-section .card');
-            const dots = document.querySelectorAll('.opti-home-car-van-section .insurance-type-pagination .dot');
+                    const scrollContainer = document.querySelector('.opti-home-car-van-section .insurance-type-section');
+                    const boxes = document.querySelectorAll('.opti-home-car-van-section .insurance-type-section .card');
+                    const dots = document.querySelectorAll('.opti-home-car-van-section .insurance-type-pagination .dot');
 
-            // Function to find the index of the box closest to the center
-            function updateActiveDot() {
-                const containerRect = scrollContainer.getBoundingClientRect();
-                const containerCenter = containerRect.left + containerRect.width / 2;
+                    // Function to find the index of the box closest to the center
+                    function updateActiveDot() {
+                        const containerRect = scrollContainer.getBoundingClientRect();
+                        const containerCenter = containerRect.left + containerRect.width / 2;
 
-                let closestBoxIndex = 0;
-                let closestDistance = Infinity;
+                        let closestBoxIndex = 0;
+                        let closestDistance = Infinity;
 
-                boxes.forEach((box, index) => {
-                    const boxRect = box.getBoundingClientRect();
-                    const boxCenter = boxRect.left + boxRect.width / 2;
-                    const distanceToCenter = Math.abs(boxCenter - containerCenter);
+                        boxes.forEach((box, index) => {
+                            const boxRect = box.getBoundingClientRect();
+                            const boxCenter = boxRect.left + boxRect.width / 2;
+                            const distanceToCenter = Math.abs(boxCenter - containerCenter);
 
-                    if (distanceToCenter < closestDistance) {
-                        closestDistance = distanceToCenter;
-                        closestBoxIndex = index;
+                            if (distanceToCenter < closestDistance) {
+                                closestDistance = distanceToCenter;
+                                closestBoxIndex = index;
+                            }
+                        });
+
+                        // Update the active dot
+                        dots.forEach((dot, idx) => {
+                            dot.classList.toggle('active', idx === closestBoxIndex);
+                        });
                     }
-                });
 
-                // Update the active dot
-                dots.forEach((dot, idx) => {
-                    dot.classList.toggle('active', idx === closestBoxIndex);
-                });
+                    // Listen to the scroll event to update the active dot
+                    scrollContainer.addEventListener('scroll', () => {
+                        updateActiveDot();
+                    });
+
+                    // Scroll to the respective box when a dot is clicked
+                    // dots.forEach((dot, index) => {
+                    //     dot.addEventListener('click', () => {
+                    //         const boxOffsetLeft = boxes[index].offsetLeft;
+                    //         scrollContainer.scrollTo({
+                    //             left: boxOffsetLeft - scrollContainer.offsetWidth / 2 + boxes[index].offsetWidth / 2,
+                    //             behavior: 'smooth'
+                    //         });
+                    //     });
+                    // });
+
+                    // Initialize the active dot on page load
+                    updateActiveDot();
+                }
             }
-
-            // Listen to the scroll event to update the active dot
-            scrollContainer.addEventListener('scroll', () => {
-                updateActiveDot();
-            });
-
-            // Scroll to the respective box when a dot is clicked
-            // dots.forEach((dot, index) => {
-            //     dot.addEventListener('click', () => {
-            //         const boxOffsetLeft = boxes[index].offsetLeft;
-            //         scrollContainer.scrollTo({
-            //             left: boxOffsetLeft - scrollContainer.offsetWidth / 2 + boxes[index].offsetWidth / 2,
-            //             behavior: 'smooth'
-            //         });
-            //     });
-            // });
-
-            // Initialize the active dot on page load
-            updateActiveDot();
-        }
+        });
     });
 
     utils.observeSelector('.adm-important-message .adm-important-message__action[data-test="confirm-remove"]', function (car_remove_confirm_btn) {
         car_remove_confirm_btn.addEventListener("click", function () {
             sessionStorage.setItem("is_car_removed", JSON.stringify(true));
+
+            utils.observeSelector('.adm-section:has(+#quote-summary)', function (home_car_van_section) {
+                home_car_van_section.style.display = "none";
+            });
         })
     });
 
