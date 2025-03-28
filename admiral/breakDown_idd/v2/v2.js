@@ -186,6 +186,8 @@ if (window.location.pathname == '/Admiral/ancillary/breakdown') {
     });
 
     utils.observeSelector('#ancillary-table', function (tableSection) {
+        tableSection.style.overflow = "hidden";
+
         const colgroup = tableSection.querySelector('colgroup');
         const rodeside_assistance = colgroup.querySelector('col:nth-of-type(2)');
         const national_cover = colgroup.querySelector('col:nth-of-type(3)');
