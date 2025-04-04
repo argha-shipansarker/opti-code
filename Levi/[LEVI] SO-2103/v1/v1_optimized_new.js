@@ -579,6 +579,20 @@ function handleCreatingCarousel(hero_video_section) {
     }
 }
 
+utils.waitForElement('head').then(function (head) {
+
+    if (!head.querySelector("#opti-image-1") && !head.querySelector("#opti-image-2") && !head.querySelector("#opti-image-3") && !head.querySelector("#opti-image-4") && !head.querySelector("#opti-image-5") && !head.querySelector("#opti-image-6")) {
+        head.insertAdjacentHTML("beforeend", `
+            <link id="opti-image-1" rel="preload" href="https://cdn.optimizely.com/img/21017440049/429fa762fb3e4a0c85b637ffe1fe5730.jpg" as="image">
+            <link id="opti-image-2" rel="preload" href="https://cdn.optimizely.com/img/21017440049/a89806f4357d468d855822711071653a.jpg" as="image">
+            <link id="opti-image-3" rel="preload" href="https://cdn.optimizely.com/img/21017440049/76b06169f73c4a02bd06ccbce9c9391a.jpg" as="image">
+            <link id="opti-image-4" rel="preload" href="https://cdn.optimizely.com/img/21017440049/30b77ca3466e4bc2a991c4ed4c542c6f.jpg" as="image">
+            <link id="opti-image-5" rel="preload" href="https://cdn.optimizely.com/img/21017440049/493a42322aaa41c1a9999e5bd0e01a62.jpg" as="image">
+            <link id="opti-image-6" rel="preload" href="https://cdn.optimizely.com/img/21017440049/d4dcb51300f94678b896cffaa6a14459.jpg" as="image">
+        `)
+    }
+});
+
 utils.observeSelector('.header-bar__inner-wrapper .top-nav__item-btn', function (nav_item) {
     utils.observeSelector('section[section_label="LINEN+ DENIM "]', function (hero_video_section) {
         handleCreatingCarousel(hero_video_section);
