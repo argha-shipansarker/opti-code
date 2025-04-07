@@ -11,7 +11,8 @@ function handleGenerateTag(car_container) {
         { className: "coupnelg", selector: ".coupnelg:not(.mpg-seats-feat):not(.four-seats-feat)" },
         { className: "upgrade-coupon", selector: `p[ng-if="car.upgradeApplicable && !vm.isStepTwoRedesign"]` },
         { className: "coupon-eligible-sub No-coupon-img-text", selector: ".coupon-eligible-sub.No-coupon-img-text" },
-        { className: "pp-prices", selector: ".member-rate" }
+        { className: "pp-prices", selector: ".member-rate" },
+        { className: "aarp-row-content", selector: ".aarp-row-content" }
     ];
 
     selectors.forEach(({ className, selector }) => {
@@ -592,7 +593,7 @@ if (window.location.pathname == '/en/reservation') {
                 const observer = new MutationObserver((mutationsList) => {
                     mutationsList.forEach(mutation => {
                         if (mutation.type === 'childList') {
-                            console.log('Child elements changed!', mutation, document.querySelector('.featuredcar.featured-car-box'));
+                            console.log('Child elements changed!', mutation, document.querySelectorAll('.member-rate'));
 
                             [...document.querySelectorAll(`.vehicle-availability div[ng-class="{'three-grid-layout': vm.isStepTwoRedesign && vm.pageName == carRentalConstant.step2PageName, 'two-grid-layout': vm.isStepTwoRedesign && vm.pageName == carRentalConstant.step3PageName}"] div[ng-class="{'grid-border': vm.isStepTwoRedesign}"]`)].forEach((car, car_count) => {
 
@@ -690,7 +691,7 @@ if (window.location.pathname == '/en/reservation') {
                 }
             })
         });
-    }, 100);
+    }, 3000);
 
 
 
