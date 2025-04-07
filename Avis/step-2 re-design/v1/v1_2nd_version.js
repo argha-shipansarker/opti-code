@@ -643,6 +643,47 @@ if (window.location.pathname == '/en/reservation') {
                 car_list_container.dataset.observerInitialized = "true";
             }
 
+            utils.observeSelector(`.vehicle-availability div[ng-class="{'three-grid-layout': vm.isStepTwoRedesign && vm.pageName == carRentalConstant.step2PageName, 'two-grid-layout': vm.isStepTwoRedesign && vm.pageName == carRentalConstant.step3PageName}"] div[ng-class="{'grid-border': vm.isStepTwoRedesign}"]`, function (car) {
+
+                console.warn("car", car);
+
+                const promo_banner_1 = car.querySelector(`div[ng-if="($index == vm.response.showPromotion.index) && (vm.response.showPromotion.section == 'additional')"]`);
+                if (promo_banner_1) {
+                    promo_banner_1.style.display = "none";
+                }
+
+                const promo_banner_2 = car.querySelector(`section[ng-if="$first"]`);
+                if (promo_banner_2) {
+                    promo_banner_2.style.display = "none";
+                }
+
+                const promo_banner_3 = car.querySelector(`div[ng-if="($index == vm.response.showPromotion.index) && (vm.response.showPromotion.section == 'filtered')"]`);
+                if (promo_banner_3) {
+                    promo_banner_3.style.display = "none";
+                }
+
+                const car_container = car.querySelector(`div[ng-include=" 'carTemplate.html' "]`);
+                if (car_container) {
+                    car_container.style.display = "none";
+
+                    if (car.querySelector('.opti-car-new-design')) {
+                        console.warn('going and going===================');
+                        car.querySelector('.opti-car-new-design').remove();
+
+                        handle_creating_new_car_design(car, car_count);
+
+                        car_count++;
+
+                    } else {
+                        console.warn('going once===================');
+                        handle_creating_new_car_design(car, car_count);
+
+                        car_count++;
+                    }
+
+                }
+            });
+
 
             const car_interval = setInterval(() => {
                 if (normar_car_interval_count == 4) {
