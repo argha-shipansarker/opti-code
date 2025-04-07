@@ -645,7 +645,7 @@ if (window.location.pathname == '/en/reservation') {
 
 
             const car_interval = setInterval(() => {
-                if (normar_car_interval_count == 2) {
+                if (normar_car_interval_count == 4) {
                     clearInterval(car_interval);
                     normar_car_interval_count = 0
                 } else {
@@ -672,13 +672,19 @@ if (window.location.pathname == '/en/reservation') {
                         if (car_container) {
                             car_container.style.display = "none";
 
-                            if (!car.querySelector('.opti-car-new-design')) {
-                                console.warn('going once===================')
+                            if (car.querySelector('.opti-car-new-design')) {
+                                console.warn('going and going===================');
+                                car.querySelector('.opti-car-new-design').remove();
 
                                 handle_creating_new_car_design(car, car_count);
 
                                 car_count++;
 
+                            } else {
+                                console.warn('going once===================');
+                                handle_creating_new_car_design(car, car_count);
+
+                                car_count++;
                             }
 
                         }
@@ -701,7 +707,7 @@ if (window.location.pathname == '/en/reservation') {
                 }
             })
         });
-    }, 3000);
+    }, 1000);
 
 
 
@@ -1301,6 +1307,7 @@ if (window.location.pathname == '/en/reservation') {
 
     .vehiclePushDownBox .res-discount .res-dropWizDiv .centerSixty .inp-width-box-g {
         width: 96%;
+        order: 3;
     }
 
     .vehiclePushDownBox .res-discount .res-dropWizDiv .centerSixty .refineandsortupdate {
