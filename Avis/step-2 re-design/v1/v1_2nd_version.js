@@ -285,6 +285,8 @@ if (window.location.pathname == '/en/reservation') {
         savings_wrapper.style.marginBottom = "16px";
     });
 
+    var normar_car_interval_count = 0
+
     setTimeout(() => {
         utils.observeSelector(`.vehicle-availability div[ng-class="{'three-grid-layout': vm.isStepTwoRedesign && vm.pageName == carRentalConstant.step2PageName, 'two-grid-layout': vm.isStepTwoRedesign && vm.pageName == carRentalConstant.step3PageName}"]`, function (car_list_container) {
 
@@ -642,40 +644,48 @@ if (window.location.pathname == '/en/reservation') {
             }
 
 
-            utils.observeSelector(`.vehicle-availability div[ng-class="{'three-grid-layout': vm.isStepTwoRedesign && vm.pageName == carRentalConstant.step2PageName, 'two-grid-layout': vm.isStepTwoRedesign && vm.pageName == carRentalConstant.step3PageName}"] div[ng-class="{'grid-border': vm.isStepTwoRedesign}"]`, function (car) {
+            const car_interval = setInterval(() => {
+                if (normar_car_interval_count == 2) {
+                    clearInterval(car_interval);
+                    normar_car_interval_count = 0
+                } else {
+                    utils.observeSelector(`.vehicle-availability div[ng-class="{'three-grid-layout': vm.isStepTwoRedesign && vm.pageName == carRentalConstant.step2PageName, 'two-grid-layout': vm.isStepTwoRedesign && vm.pageName == carRentalConstant.step3PageName}"] div[ng-class="{'grid-border': vm.isStepTwoRedesign}"]`, function (car) {
 
-                console.warn("car", car);
+                        console.warn("car", car);
 
-                const promo_banner_1 = car.querySelector(`div[ng-if="($index == vm.response.showPromotion.index) && (vm.response.showPromotion.section == 'additional')"]`);
-                if (promo_banner_1) {
-                    promo_banner_1.style.display = "none";
+                        const promo_banner_1 = car.querySelector(`div[ng-if="($index == vm.response.showPromotion.index) && (vm.response.showPromotion.section == 'additional')"]`);
+                        if (promo_banner_1) {
+                            promo_banner_1.style.display = "none";
+                        }
+
+                        const promo_banner_2 = car.querySelector(`section[ng-if="$first"]`);
+                        if (promo_banner_2) {
+                            promo_banner_2.style.display = "none";
+                        }
+
+                        const promo_banner_3 = car.querySelector(`div[ng-if="($index == vm.response.showPromotion.index) && (vm.response.showPromotion.section == 'filtered')"]`);
+                        if (promo_banner_3) {
+                            promo_banner_3.style.display = "none";
+                        }
+
+                        const car_container = car.querySelector(`div[ng-include=" 'carTemplate.html' "]`);
+                        if (car_container) {
+                            car_container.style.display = "none";
+
+                            if (!car.querySelector('.opti-car-new-design')) {
+                                console.warn('going once===================')
+
+                                handle_creating_new_car_design(car, car_count);
+
+                                car_count++;
+
+                            }
+
+                        }
+                    });
+                    normar_car_interval_count++;
                 }
-
-                const promo_banner_2 = car.querySelector(`section[ng-if="$first"]`);
-                if (promo_banner_2) {
-                    promo_banner_2.style.display = "none";
-                }
-
-                const promo_banner_3 = car.querySelector(`div[ng-if="($index == vm.response.showPromotion.index) && (vm.response.showPromotion.section == 'filtered')"]`);
-                if (promo_banner_3) {
-                    promo_banner_3.style.display = "none";
-                }
-
-                const car_container = car.querySelector(`div[ng-include=" 'carTemplate.html' "]`);
-                if (car_container) {
-                    car_container.style.display = "none";
-
-                    if (!car.querySelector('.opti-car-new-design')) {
-                        console.warn('going once===================')
-
-                        handle_creating_new_car_design(car, car_count);
-
-                        car_count++;
-
-                    }
-
-                }
-            });
+            }, 1000);
 
             utils.observeSelector(`div[ng-if="vm.response.featuredVehicles.length <= 1 || vm.deviceType == 'handheld'"]`, function (selected_car) {
                 selected_car.style.display = "none";
