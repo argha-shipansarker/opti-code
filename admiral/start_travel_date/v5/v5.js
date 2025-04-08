@@ -132,7 +132,7 @@ if (window.location.pathname == '/trip-details') {
                         }
                 
                         .opti-new-date-selection .selection-box .radio-fields .radio-label:has(input[type="radio"]:checked) {
-                            border: 2px solid #0A8A19;
+                            border: 1px solid #00C535;
                         }
                     </style>
                     <div class="selection-box">
