@@ -255,6 +255,14 @@ if (window.location.pathname == '/trip-details') {
                                             trip_policy_start_date_same_message.style.display = "none";
                                         }
                                     }
+
+                                    if (policy_date.getAttribute("value").length == 10 && document.getElementById('annual-btn') && document.getElementById('annual-btn').checked) {
+                                        window['optimizely'] = window['optimizely'] || [];
+                                        window['optimizely'].push({
+                                            type: "event",
+                                            eventName: "cover_start_date_complete",
+                                        });
+                                    }
                                 }
 
                             }
@@ -278,6 +286,14 @@ if (window.location.pathname == '/trip-details') {
                                         always_show_message.style.display = "flex";
                                         trip_policy_start_date_same_message.style.display = "none";
                                     }
+                                }
+
+                                if (policy_date.getAttribute("value").length == 10 && document.getElementById('annual-btn') && document.getElementById('annual-btn').checked && !isNaN(tripDate)) {
+                                    window['optimizely'] = window['optimizely'] || [];
+                                    window['optimizely'].push({
+                                        type: "event",
+                                        eventName: "cover_start_date_complete",
+                                    });
                                 }
                             }
                         });
