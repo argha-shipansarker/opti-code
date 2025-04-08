@@ -241,6 +241,14 @@ if (window.location.pathname == '/trip-details') {
                                         }
                                     }
                                 }
+
+                                if (start_date_input_field.getAttribute("value") && start_date_input_field.getAttribute("value").length == 10 && document.getElementById('annual-btn') && document.getElementById('annual-btn').checked && !start_date_input_field.parentElement.classList.contains('has-error')) {
+                                    window['optimizely'] = window['optimizely'] || [];
+                                    window['optimizely'].push({
+                                        type: "event",
+                                        eventName: "cover_start_date_complete",
+                                    });
+                                }
                             });
 
                             // Start observing the 'value' attribute
