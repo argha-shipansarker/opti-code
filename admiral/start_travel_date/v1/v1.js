@@ -12,6 +12,11 @@ if (window.location.pathname == '/trip-details') {
                     if (label_text && label_text.nodeType == 3) {
                         label_text.nodeValue = "What date would you like your policy to start?";
                     }
+
+                    label.insertAdjacentHTML("beforeend", `<svg class="opti-policy-date-icon" width="19" height="19" viewBox="0 0 19 19" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M9.5 2C5.36 2 2 5.36 2 9.5C2 13.64 5.36 17 9.5 17C13.64 17 17 13.64 17 9.5C17 5.36 13.64 2 9.5 2ZM10.25 13.25H8.75V8.75H10.25V13.25ZM10.25 7.25H8.75V5.75H10.25V7.25Z" fill="#006DCC"/>
+                    </svg>
+                    `)
                 }, 20);
 
             });
@@ -142,6 +147,13 @@ if (window.location.pathname == '/trip-details') {
                                 margin-bottom: 0px;
                                 font-weight: 400;
                                 flex-basis: 41.666667%;
+                                display: flex;
+                                justify-content: space-between;
+                                align-items: center;
+                            }
+
+                            .opti-new-date-input .date-input-section .label-name .opti-start-date-icon{
+                                cursor: pointer;
                             }
                     
                             .opti-new-date-input .date-input-section .input-section {
@@ -203,7 +215,12 @@ if (window.location.pathname == '/trip-details') {
                         </style>
                         <p class="heading">When do you need your cover to start?</p>
                         <div class="date-input-section">
-                            <p class="label-name">Start date of your first trip</p>
+                            <p class="label-name">
+                                Start date of your first trip
+                                <svg class="opti-start-date-icon" width="19" height="19" viewBox="0 0 19 19" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M9.5 2C5.36 2 2 5.36 2 9.5C2 13.64 5.36 17 9.5 17C13.64 17 17 13.64 17 9.5C17 5.36 13.64 2 9.5 2ZM10.25 13.25H8.75V8.75H10.25V13.25ZM10.25 7.25H8.75V5.75H10.25V7.25Z" fill="#006DCC"/>
+                                </svg> 
+                            </p>
                             <div class="input-section">
                                 <input type="date" placeholder="dd/mm/yyyy" name="opti-date-input">
                                 <input type="text" placeholder="dd/mm/yyyy" name="opti-date-text-input" readonly>
@@ -347,6 +364,9 @@ if (window.location.pathname == '/trip-details') {
 
             utils.observeSelector('.section:has(.start-date) .control-label', function (label) {
                 label.classList.remove('opti-start-date');
+                if (label.querySelector('.opti-policy-date-icon')) {
+                    label.querySelector('.opti-policy-date-icon').remove();
+                }
             });
 
             if (document.querySelector(".opti-new-date-input")) {
