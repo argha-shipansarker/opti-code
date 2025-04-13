@@ -89,6 +89,17 @@ if (window.location.pathname == '/trip-details') {
                                 margin-bottom: 0;
                             }
                         </style>
+
+                        <div class="opti-start-date-policy-date-info not-show opti-policy-date-icon-info">
+                            <div class="icon">
+                                <svg width="17" height="16" viewBox="0 0 17 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path
+                                        d="M8.24998 1.3335C4.56998 1.3335 1.58331 4.32016 1.58331 8.00016C1.58331 11.6802 4.56998 14.6668 8.24998 14.6668C11.93 14.6668 14.9166 11.6802 14.9166 8.00016C14.9166 4.32016 11.93 1.3335 8.24998 1.3335ZM8.91665 11.3335H7.58331V7.3335H8.91665V11.3335ZM8.91665 6.00016H7.58331V4.66683H8.91665V6.00016Z"
+                                        fill="#41A5F5" />
+                                </svg>
+                            </div>
+                            <p>The date you wish your policy to begin will be the date your cancellation.</p>
+                        </div>
                     
                         <div class="always-shown-message">
                             <div class="icon">
@@ -212,6 +223,43 @@ if (window.location.pathname == '/trip-details') {
                                 height: 34px;
                                 width: 34px;
                             }
+
+                            .opti-start-date-policy-date-info {
+                                display: flex;
+                                background-color: #E0F2FF;
+                                border-left: 2px solid #41A5F5;
+                                padding: 16px;
+                            }
+
+                            .opti-start-date-policy-date-info.opti-start-date-icon-info {
+                                margin-top: 14px;
+                            }
+
+                            .opti-start-date-policy-date-info.opti-policy-date-icon-info {
+                                margin-bottom: 14px;
+                            }
+
+                            .opti-start-date-policy-date-info.not-show {
+                                display: none;
+                            }
+
+                            .opti-start-date-policy-date-info.show {
+                                display: flex !important;
+                            }
+
+                            .opti-start-date-policy-date-info .icon {
+                                height: 16px;
+                                width: 16px;
+                            }
+
+                            .opti-start-date-policy-date-info p {
+                                font-size: 16px;
+                                line-height: 24px;
+                                font-weight: 400;
+                                color: #25469B;
+                                margin-left: 6px;
+                                margin-bottom: 0;
+                            }
                         </style>
                         <p class="heading">When do you need your cover to start?</p>
                         <div class="date-input-section">
@@ -230,7 +278,49 @@ if (window.location.pathname == '/trip-details') {
                                 </div>
                             </div>
                         </div>
+                        <div class="opti-start-date-policy-date-info not-show opti-start-date-icon-info">
+                            <div class="icon">
+                                <svg width="17" height="16" viewBox="0 0 17 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path
+                                        d="M8.24998 1.3335C4.56998 1.3335 1.58331 4.32016 1.58331 8.00016C1.58331 11.6802 4.56998 14.6668 8.24998 14.6668C11.93 14.6668 14.9166 11.6802 14.9166 8.00016C14.9166 4.32016 11.93 1.3335 8.24998 1.3335ZM8.91665 11.3335H7.58331V7.3335H8.91665V11.3335ZM8.91665 6.00016H7.58331V4.66683H8.91665V6.00016Z"
+                                        fill="#41A5F5" />
+                                </svg>
+                            </div>
+                            <p>This is the departure date for the first trip you wish to be covered on this policy.</p>
+                        </div>
                     </div>`);
+
+                    if (document.querySelector('.opti-start-date-icon')) {
+                        document.querySelector('.opti-start-date-icon').addEventListener('click', function () {
+                            const opti_start_date_icon_info = document.querySelector('.opti-start-date-icon-info');
+                            if (opti_start_date_icon_info) {
+                                if (opti_start_date_icon_info.classList.contains('not-show')) {
+                                    opti_start_date_icon_info.classList.remove("not-show");
+                                    opti_start_date_icon_info.classList.add("show");
+                                } else {
+                                    opti_start_date_icon_info.classList.remove("show");
+                                    opti_start_date_icon_info.classList.add("not-show");
+                                }
+                            }
+                        })
+                    }
+
+                    setTimeout(() => {
+                        if (document.querySelector('.opti-policy-date-icon')) {
+                            document.querySelector('.opti-policy-date-icon').addEventListener('click', function () {
+                                const opti_policy_date_icon_info = document.querySelector('.opti-policy-date-icon-info');
+                                if (opti_policy_date_icon_info) {
+                                    if (opti_policy_date_icon_info.classList.contains('not-show')) {
+                                        opti_policy_date_icon_info.classList.remove("not-show");
+                                        opti_policy_date_icon_info.classList.add("show");
+                                    } else {
+                                        opti_policy_date_icon_info.classList.remove("show");
+                                        opti_policy_date_icon_info.classList.add("not-show");
+                                    }
+                                }
+                            })
+                        }
+                    }, 25);
 
                     const trip_date_input = document.querySelector('.opti-new-date-input input[name="opti-date-input"]');
                     const trip_date_text_input = document.querySelector('.opti-new-date-input input[name="opti-date-text-input"]');
