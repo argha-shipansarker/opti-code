@@ -62,7 +62,75 @@ function handleUpdateSessionStorage_Cover_Page(cover_element) {
     sessionStorage.setItem('opti-cover-info', JSON.stringify(session_storage_variable));
 }
 
+function handleUpdatingValueOf_Basket() {
+
+    const svg_mapping = {
+        motorlegal: `<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32">
+                    <path d="M29.331 27.559c0.043-0.998-0.461-1.729-1.1-2.421-3.303-3.58-6.593-7.173-9.887-10.762-0.102-0.112-0.2-0.227-0.267-0.303 0.541-0.832 1.069-1.642 1.592-2.454 0.274-0.426 0.21-0.769-0.143-1.164-1.521-1.704-3.019-3.43-4.497-5.173-0.31-0.365-0.626-0.469-1.013-0.275-0.848 0.424-1.743 0.793-2.505 1.346-1.691 1.228-3.237 2.622-4.21 4.552-0.24 0.475-0.217 0.808 0.155 1.224 1.509 1.686 2.991 3.397 4.451 5.126 0.323 0.382 0.647 0.486 1.060 0.295 0.861-0.397 1.709-0.823 2.644-1.276 0.931 1.138 1.936 2.36 2.935 3.586 2.201 2.701 4.399 5.403 6.6 8.104 0.137 0.169 0.282 0.332 0.432 0.488 1.137 1.179 2.6 1.016 3.483-0.384 0.057-0.091 0.129-0.171 0.194-0.256 0.025-0.084 0.050-0.168 0.074-0.253zM15.693 5.174l4.147 4.362c0.592 0.623 1.614 0.68 2.282 0.128s0.729-1.505 0.137-2.128l-4.146-4.362c-0.592-0.623-1.614-0.68-2.282-0.128s-0.73 1.505-0.137 2.128zM3.816 14.812l4.164 4.382c0.595 0.626 1.621 0.683 2.291 0.128s0.732-1.512 0.138-2.138l-4.164-4.382c-0.595-0.626-1.621-0.683-2.291-0.128s-0.732 1.512-0.138 2.138zM9.697 29.336h-5.339c-1.216 0-1.854-0.662-1.656-1.75 0.046-0.254 0.154-0.515 0.304-0.734 0.252-0.368 0.674-0.478 1.139-0.477 1.671 0.002 3.343 0.001 5.014 0 1.96-0.001 3.919-0.003 5.879-0.003 1.23 0 1.871 0.687 1.672 1.786-0.101 0.556-0.374 0.993-1.030 1.14-0.158 0.035-0.329 0.037-0.493 0.037-1.829 0.002-3.659 0.002-5.489 0.002zM9.317 24.889c-1.373 0-2.745 0.001-4.118-0-0.604-0-0.917-0.232-1.015-0.774-0.061-0.337-0.055-0.675 0.11-0.996 0.145-0.284 0.389-0.433 0.73-0.449 0.121-0.006 0.242-0.002 0.364-0.002 2.685-0.001 5.369-0.001 8.055-0.001 0.684 0 1.026 0.276 1.074 0.897 0.017 0.218 0.005 0.445-0.045 0.657-0.106 0.454-0.411 0.666-0.923 0.667-1.411 0.003-2.821 0.001-4.232 0z"></path>
+                    </svg>`,
+        breakdown: `<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32">
+                    <path d="M10.493 10.973c-1.008 0.551-2.015 1.102-3.023 1.653-0.183 0.092-0.366 0.092-0.55 0-1.282-0.826-2.565-1.561-3.847-2.295-0.275-0.184-0.641-0.367-0.916-0.459-0.458-0.275-0.824 0-0.824 0.459 0 0.367 0.092 0.734 0.183 1.102 0.733 3.213 3.481 5.784 6.686 6.335 4.488 0.735 8.793-2.295 9.526-6.794 0.824-4.774-2.565-8.447-6.228-9.365-0.641-0.184-1.282-0.184-1.924-0.275-1.282 0-2.565 0.367-3.664 0.826-0.275 0.184-0.458 0.275-0.641 0.459-0.275 0.275-0.275 0.643 0 0.918 0.092 0.092 0.183 0.092 0.275 0.184 1.649 0.918 3.206 1.836 4.855 2.754 0.183 0.092 0.275 0.275 0.275 0.459 0 1.194 0 2.295 0 3.489 0.092 0.275 0 0.459-0.183 0.551zM19.469 14.37c-0.092-0.092-0.092-0.092-0.183-0.184-1.008 2.387-2.656 4.040-5.129 5.141 0.092 0.092 0.275 0.092 0.366 0.184 3.847 3.948 6.595 6.61 10.442 10.466 0.916 0.918 2.29 0.918 3.206 0 0.55-0.643 1.191-1.194 1.74-1.836 1.007-1.010 1.007-2.295 0-3.305-3.939-3.856-6.595-6.518-10.442-10.466zM26.064 27.958c-1.008 0-1.832-0.826-1.832-1.836s0.824-1.836 1.74-1.836c1.008 0 1.832 0.826 1.923 1.744 0 1.010-0.824 1.928-1.832 1.928z"></path>
+                    </svg>`,
+        personalinjury: `<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32">
+                    <path d="M20.023 12.308c1.595-1.078 2.644-2.904 2.644-4.974 0-3.314-2.686-6-6-6s-6 2.686-6 6c0 1.78 0.775 3.378 2.006 4.477 0.040 2.004 0.394 11.204 3.57 15.195 0 0-3.558 0.365-7.307-0.908-0.005-0.079-0.013-0.181-0.023-0.305-0.157-2.085-0.773-10.243 1.004-12.539 0 0-4.584 2.109-4.584 8.526 0 6.325 7.334 7.059 7.334 7.059s6.784 0.458 9.076-6.234c0 0 0.847 1.395 0 4.217-0.17 0.565-0.409 0.973-0.605 1.308-0.44 0.751-0.663 1.132 0.605 2.084 1.833 1.375 3.392-0.642 4.584-2.567 1.007-2.314 1.75-8.049-0.993-11.647-1.727-2.265-3.922-3.263-5.311-3.692z"></path>
+                    </svg>`,
+        hirecar: `<svg version="1.1" xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32">
+                    <path d="M13.333 9.333c0 0.719 0.081 1.418 0.235 2.090-3.134-0.020-6.356 0.306-6.585 1.023-0.7 2.084-1.099 4.99-1.099 4.99 3.234-0.373 7.803-0.488 11.696-0.277 1.463 0.953 3.211 1.507 5.087 1.507 0.589 0 1.166-0.055 1.725-0.159 0.458 0.512 0.941 1.323 0.941 2.468v5.039c0 0.291-1 0.485-1.050 0.485v1.696c0 2.326-0.55 2.471-2.2 2.471-1.95 0-2.25-0.145-2.25-2.471v-1.502c-3.95 0.485-9.050 0.485-13.1 0v2.423c0 1.405-0.45 1.55-2.2 1.55-1.7 0-2.2-0.049-2.25-1.454v-2.713c-0.050 0-0.95-0.145-0.95-0.436v-5.137c0-2.277 1.8-3.053 1.8-3.053s0.85-3.537 1.3-5.33c0.35-1.406 0.85-2.471 3.75-2.956 1.526-0.167 3.342-0.252 5.15-0.255zM2.883 22.331c0.050 0.824 0.8 2.035 2.1 2.035 1.15 0 2.050-0.92 2.050-2.132 0-1.115-0.9-2.084-2.050-2.084-1.25 0-2.15 1.163-2.1 2.18zM19.333 22.331c0.050 0.872 0.8 2.035 2.1 2.035 1.15 0 2.1-0.92 2.1-2.132 0-1.115-0.95-2.084-2.1-2.084-1.25 0-2.15 1.114-2.1 2.18zM22.667 17.333c-4.418 0-8-3.582-8-8s3.582-8 8-8c4.418 0 8 3.582 8 8s-3.582 8-8 8zM23.333 10h4v-1.333h-4v-4h-1.333v4h-4v1.333h4v4h1.333v-4z"></path>
+                    </svg>`
+    }
+
+    let session_storage_variable = {}
+
+    if (sessionStorage.getItem('opti-cover-info')) {
+        session_storage_variable = { ...JSON.parse(sessionStorage.getItem('opti-cover-info')) }
+    }
+
+    const car_reg_number = document.querySelector('.opti-quote-basket-dd-container .dd-panel .car-info-section .reg-number-section .reg-number');
+    const level_of_cover = document.querySelector('.opti-quote-basket-dd-container .dd-panel .car-info-section .level-of-cover-section .level-of-cover-name');
+
+    const upgrade_section = document.querySelector('.opti-quote-basket-dd-container .dd-panel .added-upgrade-section');
+    const upgrade_number_section = document.querySelector('.opti-quote-basket-dd-container .dd-panel .added-upgrade-section .upgrade-number-section .upgrade-number');
+    const upgrade_info_section = document.querySelector('.opti-quote-basket-dd-container .dd-panel .added-upgrade-section .upgrade-info');
+
+    const driver_name = document.querySelector('.opti-quote-basket-dd-container .dd-panel .driver-info-section .driver-name-section .individual-driver-section .individual-driver-info .name');
+
+    const cover_image = document.querySelector('.opti-quote-basket-dd-container .dd-panel .price-section .cover-image');
+    const cover_price = document.querySelector('.opti-quote-basket-dd-container .dd-panel .price-section .price');
+
+    car_reg_number.innerText = session_storage_variable.vehicle_reg_number;
+    level_of_cover.innerText = session_storage_variable.level_of_cover;
+    cover_image.setAttribute('src', session_storage_variable.cover_image);
+    cover_price.innerText = `${session_storage_variable.cover_price} total`;
+
+    driver_name.innerText = `${session_storage_variable.driver_name.title} ${session_storage_variable.driver_name.firstName} ${session_storage_variable.driver_name.lastName}`
+
+    if (Object.entries(session_storage_variable.cover_benefit_list).length) {
+
+        upgrade_section.style.display = "block";
+
+        upgrade_number_section.innerText = `${Object.entries(session_storage_variable.cover_benefit_list).length} ${Object.entries(session_storage_variable.cover_benefit_list).length == 1 ? "Upgrade" : "Upgrades"} Added`;
+
+        upgrade_info_section.innerHTML = Object.entries(session_storage_variable.cover_benefit_list).map(
+            ([key, label]) => `
+              <div class="individual-upgrade">
+                  ${svg_mapping[key] || ''}
+                  <p class="upgrade-name">${label}</p>
+              </div>
+            `
+        ).join('');
+    } else {
+        upgrade_section.style.display = "none";
+    }
+}
+
+utils.observeSelector('eui-motor-tier-select > adm-wrap', function (selected_cover) {
+    if (window.location.pathname == '/Admiral/cover') {
+        handleUpdateSessionStorage_Cover_Page(selected_cover)
+    }
+})
+
 utils.observeSelector('.adm-navbar__wrap .adm-navbar__nav', function (right_nav) {
+
     right_nav.insertAdjacentHTML("beforeend", `<div class="opti-quote-basket-dd-container">
     <style>
         .opti-quote-basket-dd-container {
@@ -126,6 +194,146 @@ utils.observeSelector('.adm-navbar__wrap .adm-navbar__nav', function (right_nav)
         .opti-quote-basket-dd-container .dd-panel.panel-open {
             display: block;
         }
+
+        .opti-quote-basket-dd-container .dd-panel .car-info-section {
+            padding-bottom: 12px;
+            border-bottom: 1px solid #CED9E5;
+        }
+
+        .opti-quote-basket-dd-container .dd-panel .car-info-section .reg-number-section {
+            display: flex;
+            align-items: center;
+            margin-bottom: 4px;
+        }
+
+        .opti-quote-basket-dd-container .dd-panel .car-info-section .reg-number-section .reg-number {
+            padding: 4px 8px;
+            background-color: #EED667;
+            color: #444444;
+            font-size: 12px;
+            font-weight: 700;
+            text-transform: uppercase;
+            margin-left: 8px;
+            border-radius: 2px;
+            line-height: 100%;
+        }
+
+        .opti-quote-basket-dd-container .dd-panel .car-info-section .level-of-cover-section {
+            display: flex;
+            align-items: center;
+        }
+
+        .opti-quote-basket-dd-container .dd-panel .car-info-section .level-of-cover-section .level-of-cover-name {
+            margin-left: 4px;
+            font-weight: 400;
+            font-size: 12px;
+            line-height: 21px;
+            color: #444444;
+        }
+
+        .opti-quote-basket-dd-container .dd-panel .driver-info-section {
+            margin-top: 12px;
+            padding-bottom: 12px;
+            border-bottom: 1px solid #CED9E5;
+        }
+
+        .opti-quote-basket-dd-container .dd-panel .driver-info-section .driver-number-section {
+            display: flex;
+            align-items: center;
+        }
+
+        .opti-quote-basket-dd-container .dd-panel .driver-info-section .driver-number-section .driver-number {
+            font-size: 14px;
+            font-weight: 700;
+            line-height: 24px;
+            text-transform: capitalize;
+            margin-left: 8px;
+            color: #444444;
+        }
+
+        .opti-quote-basket-dd-container .dd-panel .driver-info-section .driver-name-section {
+            margin-left: 24px;
+            margin-top: 4px;
+        }
+
+        .opti-quote-basket-dd-container .dd-panel .driver-info-section .driver-name-section .individual-driver-section {
+            display: flex;
+        }
+
+        .opti-quote-basket-dd-container .dd-panel .driver-info-section .driver-name-section .individual-driver-section .individual-driver-info {
+            margin-left: 8px;
+        }
+
+        .opti-quote-basket-dd-container .dd-panel .driver-info-section .driver-name-section .individual-driver-section .individual-driver-info .name {
+            font-size: 12px;
+            font-weight: 700;
+            line-height: 18px;
+            color: #444444;
+            text-transform: capitalize;
+        }
+
+        .opti-quote-basket-dd-container .dd-panel .added-upgrade-section {
+            margin-top: 12px;
+            padding-bottom: 12px;
+            border-bottom: 1px solid #CED9E5;
+        }
+
+        .opti-quote-basket-dd-container .dd-panel .added-upgrade-section .upgrade-number-section {
+            display: flex;
+            align-items: center;
+        }
+
+        .opti-quote-basket-dd-container .dd-panel .added-upgrade-section .upgrade-number-section .upgrade-number {
+            font-size: 14px;
+            font-weight: 700;
+            line-height: 21px;
+            text-transform: capitalize;
+            color: #444444;
+            margin-left: 8px;
+        }
+
+        .opti-quote-basket-dd-container .dd-panel .added-upgrade-section .upgrade-info {
+            margin-left: 24px;
+            margin-top: 4px;
+        }
+
+        .opti-quote-basket-dd-container .dd-panel .added-upgrade-section .upgrade-info .individual-upgrade {
+            display: flex;
+            align-items: center;
+        }
+
+        .opti-quote-basket-dd-container .dd-panel .added-upgrade-section .upgrade-info .individual-upgrade svg {
+            height: 16px;
+            width: 16px;
+            fill: #CED9E5;
+        }
+
+        .opti-quote-basket-dd-container .dd-panel .added-upgrade-section .upgrade-info .individual-upgrade .upgrade-name {
+            margin-left: 8px;
+            font-size: 12px;
+            line-height: 21px;
+            text-transform: capitalize;
+            color: #444444;
+        }
+
+        .opti-quote-basket-dd-container .dd-panel .price-section {
+            margin-top: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .opti-quote-basket-dd-container .dd-panel .price-section .cover-image {
+            width: 81px;
+            height: 41px;
+        }
+
+        .opti-quote-basket-dd-container .dd-panel .price-section .price {
+            font-size: 14px;
+            line-height: 21px;
+            font-weight: 700;
+            color: #444444;
+        }
     </style>
     <div class="dd-label panel-close">
         <svg class="car-icon" width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -146,7 +354,91 @@ utils.observeSelector('.adm-navbar__wrap .adm-navbar__nav', function (right_nav)
 
     </div>
     <div class="dd-panel panel-close">
-        argha
+
+        <div class="car-info-section">
+
+            <div class="reg-number-section">
+                <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path fill-rule="evenodd" clip-rule="evenodd"
+                        d="M2 3.33341L8 0.666748L14 3.33341V7.33341C14 11.0334 11.44 14.4934 8 15.3334C4.56 14.4934 2 11.0334 2 7.33341V3.33341ZM10.9833 5.07024C11.1165 5.68661 11.4165 6.91911 11.4165 6.91911C11.4165 6.91911 12 7.25266 12 8.0022V9.73439C12 9.83433 11.6667 9.90104 11.65 9.90104V10.4839C11.65 11.2834 11.4668 11.3334 10.9167 11.3334C10.2668 11.3334 10.1667 11.2834 10.1667 10.4839V9.9675C8.85 10.1341 7.15 10.1341 5.8 9.9675V10.8002C5.8 11.2832 5.65 11.3332 5.06675 11.3332C4.5 11.3332 4.3335 11.3164 4.31675 10.8335V9.90079C4.3 9.90079 4 9.85082 4 9.75088V7.98521C4 7.20244 4.6 6.93585 4.6 6.93585C4.6 6.93585 4.88325 5.72009 5.03325 5.10372C5.15 4.62051 5.3165 4.25424 6.28325 4.08759C7.31675 3.97091 8.75 3.97091 9.75 4.08759C10.6165 4.22076 10.85 4.55381 10.9833 5.07024ZM4.5165 8.46816C4.53325 8.75124 4.78325 9.16774 5.2165 9.16774C5.59975 9.16774 5.89975 8.85143 5.89975 8.43493C5.89975 8.05167 5.59975 7.71862 5.2165 7.71862C4.79975 7.71862 4.49975 8.11838 4.5165 8.46816ZM5.88325 5.07024C5.64975 5.78655 5.5165 6.78594 5.5165 6.78594C6.9165 6.61929 9.06675 6.60255 10.5 6.78569C10.4951 6.78088 10.4789 6.69819 10.4526 6.56403C10.3887 6.238 10.2653 5.60807 10.1 5.0535C10.0165 4.62051 6.03325 4.58728 5.88325 5.07024ZM9.99975 8.46816C10.0165 8.76798 10.2665 9.16774 10.6998 9.16774C11.083 9.16774 11.3998 8.85143 11.3998 8.43493C11.3998 8.05167 11.083 7.71862 10.6998 7.71862C10.283 7.71862 9.983 8.10164 9.99975 8.46816Z"
+                        fill="#41A5F5" />
+                </svg>
+                <p class="reg-number">LY04 hFk</p>
+            </div>
+
+            <div class="level-of-cover-section">
+                <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path
+                        d="M8 0.666748L2 3.33341V7.33341C2 11.0334 4.56 14.4934 8 15.3334C11.44 14.4934 14 11.0334 14 7.33341V3.33341L8 0.666748ZM6.66667 11.3334L4 8.66675L4.94 7.72675L6.66667 9.44675L11.06 5.05341L12 6.00008L6.66667 11.3334Z"
+                        fill="#CED9E5" />
+                </svg>
+                <p class="level-of-cover-name">Comprehensive</p>
+            </div>
+        </div>
+
+        <div class="driver-info-section">
+
+            <div class="driver-number-section">
+                <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path fill-rule="evenodd" clip-rule="evenodd"
+                        d="M8.66699 5.33341C8.66699 6.80617 7.47309 8.00008 6.00033 8.00008C4.52757 8.00008 3.33366 6.80617 3.33366 5.33341C3.33366 3.86066 4.52757 2.66675 6.00033 2.66675C7.47309 2.66675 8.66699 3.86066 8.66699 5.33341ZM12.667 11.3334C12.667 10.2134 12.027 9.37342 11.1137 8.75342C12.9537 9.02009 15.3337 9.88008 15.3337 11.3334V13.3334H12.667V11.3334ZM10.0003 8.00008C11.4737 8.00008 12.667 6.80675 12.667 5.33341C12.667 3.86008 11.4737 2.66675 10.0003 2.66675C9.687 2.66675 9.39367 2.73341 9.11367 2.82675C9.667 3.51341 10.0003 4.38675 10.0003 5.33341C10.0003 6.28008 9.667 7.15341 9.11367 7.84008C9.39367 7.93341 9.687 8.00008 10.0003 8.00008ZM0.666992 11.3334C0.666992 9.56008 4.22033 8.66675 6.00033 8.66675C7.78033 8.66675 11.3337 9.56008 11.3337 11.3334V13.3334H0.666992V11.3334Z"
+                        fill="#CED9E5" />
+                </svg>
+                <p class="driver-number">1 Driver</p>
+            </div>
+
+            <div class="driver-name-section">
+                <div class="individual-driver-section">
+                    <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path
+                            d="M8.00033 3.93341C8.77366 3.93341 9.40033 4.56008 9.40033 5.33341C9.40033 6.10675 8.77366 6.73341 8.00033 6.73341C7.22699 6.73341 6.60033 6.10675 6.60033 5.33341C6.60033 4.56008 7.22699 3.93341 8.00033 3.93341ZM8.00033 9.93341C9.98033 9.93341 12.067 10.9067 12.067 11.3334V12.0667H3.93366V11.3334C3.93366 10.9067 6.02033 9.93341 8.00033 9.93341ZM8.00033 2.66675C6.52699 2.66675 5.33366 3.86008 5.33366 5.33341C5.33366 6.80675 6.52699 8.00008 8.00033 8.00008C9.47366 8.00008 10.667 6.80675 10.667 5.33341C10.667 3.86008 9.47366 2.66675 8.00033 2.66675ZM8.00033 8.66675C6.22033 8.66675 2.66699 9.56008 2.66699 11.3334V13.3334H13.3337V11.3334C13.3337 9.56008 9.78032 8.66675 8.00033 8.66675Z"
+                            fill="#CED9E5" />
+                    </svg>
+                    <div class="individual-driver-info">
+                        <p class="name">Mrs Sue Jones</p>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="added-upgrade-section">
+
+            <div class="upgrade-number-section">
+                <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path fill-rule="evenodd" clip-rule="evenodd"
+                        d="M2 3.33341L8 0.666748L14 3.33341V7.33341C14 11.0334 11.44 14.4934 8 15.3334C4.56 14.4934 2 11.0334 2 7.33341V3.33341ZM11.3333 8.66675H8.66667V11.3334H7.33333V8.66675H4.66667V7.33341H7.33333V4.66675H8.66667V7.33341H11.3333V8.66675Z"
+                        fill="#CED9E5" />
+                </svg>
+                <p class="upgrade-number">3 Upgrades Added</p>
+            </div>
+
+            <div class="upgrade-info">
+                <div class="individual-upgrade">
+                    <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <g clip-path="url(#clip0_23168_3303)">
+                            <path
+                                d="M15.133 12.6666L9.0663 6.59993C9.6663 5.06659 9.33297 3.26659 8.0663 1.99993C6.73297 0.666593 4.73297 0.399927 3.13297 1.13326L5.99963 3.99993L3.99963 5.99993L1.0663 3.13326C0.266301 4.73326 0.599634 6.73326 1.93297 8.06659C3.19963 9.33326 4.99963 9.66659 6.53297 9.06659L12.5996 15.1333C12.8663 15.3999 13.2663 15.3999 13.533 15.1333L15.0663 13.5999C15.3996 13.3333 15.3996 12.8666 15.133 12.6666Z"
+                                fill="#CED9E5" />
+                        </g>
+                        <defs>
+                            <clipPath id="clip0_23168_3303">
+                                <rect width="16" height="16" fill="white" />
+                            </clipPath>
+                        </defs>
+                    </svg>
+                    <p class="upgrade-name">Breakdown Cover</p>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="price-section">
+            <img class="cover-image" src="/eui-cq-assets/helm/images/brands/admiral/cover-levels/admiral-level.svg"
+                alt="">
+            <p class="price">£123.45 total</p>
+        </div>
+
     </div>
 </div>`)
 
@@ -171,6 +463,9 @@ utils.observeSelector('.adm-navbar__wrap .adm-navbar__nav', function (right_nav)
 
 
             if (basket_container_panel.classList.contains("panel-close")) {
+
+                handleUpdatingValueOf_Basket()
+
                 basket_container_panel.classList.remove("panel-close");
                 basket_container_panel.classList.add("panel-open");
 
@@ -197,9 +492,3 @@ utils.observeSelector('#continue-button', function (continue_btn) {
         }
     })
 });
-
-utils.observeSelector('eui-motor-tier-select > adm-wrap', function (selected_cover) {
-    if (window.location.pathname == '/Admiral/cover') {
-        handleUpdateSessionStorage_Cover_Page(selected_cover)
-    }
-})
