@@ -446,18 +446,18 @@ utils.observeSelector('.adm-navbar__wrap .adm-navbar__nav', function (right_nav)
     if (basket_container_label) {
         basket_container_label.addEventListener('click', function () {
             const basket_container_panel = document.querySelector('.opti-quote-basket-dd-container .dd-panel');
-            const basket_container_Label = document.querySelector('.opti-quote-basket-dd-container .dd-label');
 
             if (window.location.pathname == '/Admiral/cover') {
                 const selected_cover = document.querySelector('eui-motor-tier-select > adm-wrap');
                 if (selected_cover) {
                     handleUpdateSessionStorage_Cover_Page(selected_cover)
                 }
-            } else if (window.location.pathname == '/Admiral/ancillary/motorlegal') {
+            } else if (window.location.pathname == '/Admiral/ancillary/motorlegal' || window.location.pathname == '/Admiral/ancillary/breakdown' || window.location.pathname == '/Admiral/ancillary/personalinjury' || window.location.pathname == '/Admiral/ancillary/hirecar') {
                 let session_storage_variable = { ...JSON.parse(sessionStorage.getItem('opti-cover-info')) }
-                const motor_legal_added_text = document.querySelector('eui-motor-legal span[data-test="cover-added-info"]');
-                if (motor_legal_added_text) {
-
+                let ancils = [...dataLayer].reverse().find(obj => obj.event === 'ancils');
+                if (ancils) {
+                    session_storage_variable.cover_price = ancils.totalPriceAnnualAncil;
+                    sessionStorage.setItem('opti-cover-info', JSON.stringify(session_storage_variable));
                 }
             }
 
@@ -469,16 +469,30 @@ utils.observeSelector('.adm-navbar__wrap .adm-navbar__nav', function (right_nav)
                 basket_container_panel.classList.remove("panel-close");
                 basket_container_panel.classList.add("panel-open");
 
-                basket_container_Label.classList.remove("panel-close");
-                basket_container_Label.classList.add("panel-open");
+                basket_container_label.classList.remove("panel-close");
+                basket_container_label.classList.add("panel-open");
             } else {
                 basket_container_panel.classList.remove("panel-open");
                 basket_container_panel.classList.add("panel-close");
 
-                basket_container_Label.classList.remove("panel-open");
-                basket_container_Label.classList.add("panel-close");
+                basket_container_label.classList.remove("panel-open");
+                basket_container_label.classList.add("panel-close");
             }
         })
+
+        document.addEventListener('click', function (e) {
+            const isLabel = e.target.closest('.opti-quote-basket-dd-container .dd-label');
+            const isPanel = e.target.closest('.opti-quote-basket-dd-container .dd-panel');
+            const basket_container_panel = document.querySelector('.opti-quote-basket-dd-container .dd-panel');
+
+            if (!isLabel && !isPanel) {
+                basket_container_panel.classList.remove("panel-open");
+                basket_container_panel.classList.add("panel-close");
+
+                basket_container_label.classList.remove("panel-open");
+                basket_container_label.classList.add("panel-close");
+            }
+        });
     }
 });
 
@@ -489,6 +503,74 @@ utils.observeSelector('#continue-button', function (continue_btn) {
             if (new_selected_cover) {
                 handleUpdateSessionStorage_Cover_Page(new_selected_cover)
             }
+        } else if (window.location.pathname == '/Admiral/ancillary/motorlegal') {
+            let session_storage_variable = { ...JSON.parse(sessionStorage.getItem('opti-cover-info')) }
+            const motor_legal_added_text = document.querySelector('eui-motor-legal span[data-test="cover-added-info"]');
+            if (motor_legal_added_text) {
+                session_storage_variable.cover_benefit_list.motorlegal = "motor legal protection";
+            } else {
+                if ('motorlegal' in session_storage_variable.cover_benefit_list) {
+                    delete session_storage_variable.cover_benefit_list.motorlegal;
+                }
+            }
+
+            sessionStorage.setItem('opti-cover-info', JSON.stringify(session_storage_variable));
+        } else if (window.location.pathname == '/Admiral/ancillary/breakdown') {
+            let session_storage_variable = { ...JSON.parse(sessionStorage.getItem('opti-cover-info')) }
+            const breakdown_added_text = document.querySelector('eui-breakdown span[data-test="cover-added-info"]');
+            if (breakdown_added_text) {
+
+                let added_breakdown_node = document.querySelector('eui-breakdown #including-ancillary .adm-card__header-title');
+                if (added_breakdown_node) {
+                    let added_breakdown_name = added_breakdown_node.innerText.toLowerCase().trim();
+                    if (added_breakdown_name.includes('roadside assistance')) {
+                        session_storage_variable.cover_benefit_list.breakdown = 'roadside assistance breakdown cover';
+                    } else if (added_breakdown_name.includes('national')) {
+                        session_storage_variable.cover_benefit_list.breakdown = 'national breakdown cover';
+                    } else if (added_breakdown_name.includes('european')) {
+                        session_storage_variable.cover_benefit_list.breakdown = 'european breakdown cover';
+                    }
+                }
+            } else {
+                if ('breakdown' in session_storage_variable.cover_benefit_list) {
+                    delete session_storage_variable.cover_benefit_list.breakdown;
+                }
+            }
+
+            sessionStorage.setItem('opti-cover-info', JSON.stringify(session_storage_variable));
+        } else if (window.location.pathname == '/Admiral/ancillary/personalinjury') {
+            let session_storage_variable = { ...JSON.parse(sessionStorage.getItem('opti-cover-info')) }
+            const personalinjury_added_text = document.querySelector('eui-personal-injury span[data-test="cover-added-info"]');
+            if (personalinjury_added_text) {
+
+                let added_personalinjury_node = document.querySelector('eui-personal-injury #including-ancillary .adm-card__header-title');
+                if (added_personalinjury_node) {
+                    let added_personalinjury_name = added_personalinjury_node.innerText.toLowerCase().trim();
+                    if (added_personalinjury_name.includes('personal injury plus')) {
+                        session_storage_variable.cover_benefit_list.personalinjury = 'personal injury plus cover';
+                    } else if (added_personalinjury_name.includes('personal injury')) {
+                        session_storage_variable.cover_benefit_list.personalinjury = 'personal injury cover';
+                    }
+                }
+            } else {
+                if ('personalinjury' in session_storage_variable.cover_benefit_list) {
+                    delete session_storage_variable.cover_benefit_list.personalinjury;
+                }
+            }
+
+            sessionStorage.setItem('opti-cover-info', JSON.stringify(session_storage_variable));
+        } else if (window.location.pathname == '/Admiral/ancillary/hirecar') {
+            let session_storage_variable = { ...JSON.parse(sessionStorage.getItem('opti-cover-info')) }
+            const hirecar_added_text = document.querySelector('eui-hire-car span[data-test="cover-added-info"]');
+            if (hirecar_added_text) {
+                session_storage_variable.cover_benefit_list.hirecar = 'hire vehicle cover';
+            } else {
+                if ('hirecar' in session_storage_variable.cover_benefit_list) {
+                    delete session_storage_variable.cover_benefit_list.hirecar;
+                }
+            }
+
+            sessionStorage.setItem('opti-cover-info', JSON.stringify(session_storage_variable));
         }
     })
 });
