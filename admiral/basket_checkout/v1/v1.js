@@ -452,7 +452,7 @@ utils.observeSelector('.adm-navbar__wrap .adm-navbar__nav', function (right_nav)
                 if (selected_cover) {
                     handleUpdateSessionStorage_Cover_Page(selected_cover);
                 }
-            } else if (window.location.pathname == '/Admiral/ancillary/motorlegal' || window.location.pathname == '/Admiral/ancillary/breakdown' || window.location.pathname == '/Admiral/ancillary/personalinjury' || window.location.pathname == '/Admiral/ancillary/hirecar') {
+            } else if (window.location.pathname == '/Admiral/ancillary/motorlegal' || window.location.pathname == '/Admiral/ancillary/breakdown' || window.location.pathname == '/Admiral/ancillary/personalinjury' || window.location.pathname == '/Admiral/ancillary/hirecar' || window.location.pathname == '/Admiral/upgrade') {
                 let session_storage_variable = JSON.parse(sessionStorage.getItem('opti-cover-info'));
                 let ancils = dataLayer.reverse().find(obj => obj.event === 'ancils');
                 if (ancils) {
@@ -570,6 +570,14 @@ utils.observeSelector('#continue-button', function (continue_btn) {
                 }
             }
 
+            sessionStorage.setItem('opti-cover-info', JSON.stringify(session_storage_variable));
+        } else if (window.location.pathname == '/Admiral/upgrade') {
+            let session_storage_variable = JSON.parse(sessionStorage.getItem('opti-cover-info'));
+            const selected_cover = document.querySelector('.adm-card--selected');
+            if (selected_cover) {
+                session_storage_variable.cover_name = selected_cover.querySelector('h3[data-test="tier-header"]').innerText;
+                session_storage_variable.cover_image = selected_cover.querySelector('.adm-flex-grid__item img').getAttribute('src');
+            }
             sessionStorage.setItem('opti-cover-info', JSON.stringify(session_storage_variable));
         }
     });
