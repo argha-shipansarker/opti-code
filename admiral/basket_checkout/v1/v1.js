@@ -103,6 +103,16 @@ function handleUpdateSessionStorage_Quote_Page() {
         session_storage_variable.driver_name = personalDetails.driver1name;
     }
 
+    if (session_storage_variable.driver_name && document.querySelector('eui-quote .adm-driver-ncb__content-years')) {
+        session_storage_variable.driver_name.ncb_year = document.querySelector('eui-quote .adm-driver-ncb__content-years').innerText;
+    }
+
+    if (session_storage_variable.driver_name && document.querySelector('eui-quote #pncbAddButton adm-icon')) {
+        session_storage_variable.driver_name.is_protected = true;
+    } else {
+        session_storage_variable.driver_name.is_protected = false;
+    }
+
     sessionStorage.setItem('opti-cover-info', JSON.stringify(session_storage_variable));
 
 }
@@ -139,6 +149,10 @@ function handleUpdatingValueOf_Basket() {
 
     const driver_name = document.querySelector('.opti-quote-basket-dd-container .dd-panel .driver-info-section .driver-name-section .individual-driver-section .individual-driver-info .name');
 
+    const driver_ncb_year_node = document.querySelector('.opti-quote-basket-dd-container .dd-panel .driver-info-section .driver-name-section .individual-driver-section .individual-driver-info .ncb-info');
+
+    const driver_protect_info_node = document.querySelector('.opti-quote-basket-dd-container .dd-panel .driver-info-section .driver-name-section .individual-driver-section .individual-driver-info .protect-info');
+
     const cover_image = document.querySelector('.opti-quote-basket-dd-container .dd-panel .price-section .cover-image');
     const cover_price = document.querySelector('.opti-quote-basket-dd-container .dd-panel .price-section .price');
 
@@ -148,6 +162,14 @@ function handleUpdatingValueOf_Basket() {
     cover_price.innerText = `${session_storage_variable.cover_price} total`;
 
     driver_name.innerText = `${session_storage_variable.driver_name.title} ${session_storage_variable.driver_name.firstName} ${session_storage_variable.driver_name.lastName}`;
+
+    if (session_storage_variable.driver_name.ncb_year) {
+        driver_ncb_year_node.innerText = `Policyholder with ${session_storage_variable.driver_name.ncb_year}`;
+    }
+
+    if (session_storage_variable.driver_name.is_protected) {
+        driver_protect_info_node.innerText = `Protected`;
+    }
 
     if (Object.entries(session_storage_variable.cover_benefit_list).length) {
 
@@ -184,315 +206,330 @@ utils.observeSelector('.adm-navbar__wrap .adm-navbar__nav', function (right_nav)
 
     if (!document.querySelector('.opti-quote-basket-dd-container')) {
         right_nav.insertAdjacentHTML("beforeend", `<div class="opti-quote-basket-dd-container">
-            <style>
-                .opti-quote-basket-dd-container {
-                    position: relative;
-                    margin-left: 16px;
-                }
-        
-                .opti-quote-basket-dd-container .dd-label {
-                    display: flex;
-                    align-items: center;
-                    padding: 10px;
-                    border: 1px solid #CED9E5;
-                    border-radius: 3px;
-                    cursor: pointer;
-                }
-        
-                .opti-quote-basket-dd-container .dd-label .car-icon {
-                    margin-right: 8px;
-                }
-        
-                .opti-quote-basket-dd-container .dd-label .lable {
-                    font-weight: 700;
-                    font-size: 16px;
-                    line-height: 24px;
-                    color: #25469B;
-                    margin-bottom: 0;
-                }
-        
-                .opti-quote-basket-dd-container .dd-label.panel-close .arrow-down {
-                    display: block;
-                }
-        
-                .opti-quote-basket-dd-container .dd-label.panel-open .arrow-down {
-                    display: none;
-                }
-        
-                .opti-quote-basket-dd-container .dd-label.panel-close .arrow-up {
-                    display: none;
-                }
-        
-                .opti-quote-basket-dd-container .dd-label.panel-open .arrow-up {
-                    display: block;
-                }
-        
-                .opti-quote-basket-dd-container .dd-panel {
-                    position: absolute;
-                    width: 320px;
-                    right: 0;
-                    z-index: 9;
-                    background: white;
-                    padding: 12px;
-                    border: 1px solid #CED9E5;
-                    box-shadow: 0px 4px 8px 0px rgba(0, 0, 0, 0.15);
-                    min-height: 200px;
-                }
-        
-                .opti-quote-basket-dd-container .dd-panel.panel-close {
-                    display: none;
-                }
-        
-                .opti-quote-basket-dd-container .dd-panel.panel-open {
-                    display: block;
-                }
-        
-                .opti-quote-basket-dd-container .dd-panel .car-info-section {
-                    padding-bottom: 12px;
-                    border-bottom: 1px solid #CED9E5;
-                }
-        
-                .opti-quote-basket-dd-container .dd-panel .car-info-section .reg-number-section {
-                    display: flex;
-                    align-items: center;
-                    margin-bottom: 4px;
-                }
-        
-                .opti-quote-basket-dd-container .dd-panel .car-info-section .reg-number-section .reg-number {
-                    padding: 4px 8px;
-                    background-color: #EED667;
-                    color: #444444;
-                    font-size: 12px;
-                    font-weight: 700;
-                    text-transform: uppercase;
-                    margin-left: 8px;
-                    border-radius: 2px;
-                    line-height: 100%;
-                }
-        
-                .opti-quote-basket-dd-container .dd-panel .car-info-section .level-of-cover-section {
-                    display: flex;
-                    align-items: center;
-                }
-        
-                .opti-quote-basket-dd-container .dd-panel .car-info-section .level-of-cover-section .level-of-cover-name {
-                    margin-left: 4px;
-                    font-weight: 400;
-                    font-size: 12px;
-                    line-height: 21px;
-                    color: #444444;
-                }
-        
-                .opti-quote-basket-dd-container .dd-panel .driver-info-section {
-                    margin-top: 12px;
-                    padding-bottom: 12px;
-                    border-bottom: 1px solid #CED9E5;
-                }
-        
-                .opti-quote-basket-dd-container .dd-panel .driver-info-section .driver-number-section {
-                    display: flex;
-                    align-items: center;
-                }
-        
-                .opti-quote-basket-dd-container .dd-panel .driver-info-section .driver-number-section .driver-number {
-                    font-size: 14px;
-                    font-weight: 700;
-                    line-height: 24px;
-                    text-transform: capitalize;
-                    margin-left: 8px;
-                    color: #444444;
-                }
-        
-                .opti-quote-basket-dd-container .dd-panel .driver-info-section .driver-name-section {
-                    margin-left: 24px;
-                    margin-top: 4px;
-                }
-        
-                .opti-quote-basket-dd-container .dd-panel .driver-info-section .driver-name-section .individual-driver-section {
-                    display: flex;
-                }
-        
-                .opti-quote-basket-dd-container .dd-panel .driver-info-section .driver-name-section .individual-driver-section .individual-driver-info {
-                    margin-left: 8px;
-                }
-        
-                .opti-quote-basket-dd-container .dd-panel .driver-info-section .driver-name-section .individual-driver-section .individual-driver-info .name {
-                    font-size: 12px;
-                    font-weight: 700;
-                    line-height: 18px;
-                    color: #444444;
-                    text-transform: capitalize;
-                }
-        
-                .opti-quote-basket-dd-container .dd-panel .added-upgrade-section {
-                    margin-top: 12px;
-                    padding-bottom: 12px;
-                    border-bottom: 1px solid #CED9E5;
-                }
-        
-                .opti-quote-basket-dd-container .dd-panel .added-upgrade-section .upgrade-number-section {
-                    display: flex;
-                    align-items: center;
-                }
-        
-                .opti-quote-basket-dd-container .dd-panel .added-upgrade-section .upgrade-number-section .upgrade-number {
-                    font-size: 14px;
-                    font-weight: 700;
-                    line-height: 21px;
-                    text-transform: capitalize;
-                    color: #444444;
-                    margin-left: 8px;
-                }
-        
-                .opti-quote-basket-dd-container .dd-panel .added-upgrade-section .upgrade-info {
-                    margin-left: 24px;
-                    margin-top: 4px;
-                }
-        
-                .opti-quote-basket-dd-container .dd-panel .added-upgrade-section .upgrade-info .individual-upgrade {
-                    display: flex;
-                    align-items: center;
-                }
-        
-                .opti-quote-basket-dd-container .dd-panel .added-upgrade-section .upgrade-info .individual-upgrade svg {
-                    height: 16px;
-                    width: 16px;
-                    fill: #CED9E5;
-                }
-        
-                .opti-quote-basket-dd-container .dd-panel .added-upgrade-section .upgrade-info .individual-upgrade .upgrade-name {
-                    margin-left: 8px;
-                    font-size: 12px;
-                    line-height: 21px;
-                    text-transform: capitalize;
-                    color: #444444;
-                }
-        
-                .opti-quote-basket-dd-container .dd-panel .price-section {
-                    margin-top: 12px;
-                    display: flex;
-                    align-items: center;
-                    justify-content: space-between;
-                }
-        
-                .opti-quote-basket-dd-container .dd-panel .price-section .cover-image {
-                    width: 81px;
-                    height: 41px;
-                }
-        
-                .opti-quote-basket-dd-container .dd-panel .price-section .price {
-                    font-size: 14px;
-                    line-height: 21px;
-                    font-weight: 700;
-                    color: #444444;
-                }
-            </style>
-            <div class="dd-label panel-close">
-                <svg class="car-icon" width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path
-                        d="M13.6938 6.86802C13.6938 6.86802 13.1938 4.8126 12.9718 3.78469C12.7497 2.92344 12.3605 2.36802 10.9163 2.14594C9.24967 1.95135 6.86092 1.95135 5.13842 2.14594C3.52717 2.42385 3.24967 3.03469 3.05509 3.84052C2.80509 4.86844 2.33301 6.89594 2.33301 6.89594C2.33301 6.89594 1.33301 7.34052 1.33301 8.64594C1.33301 9.61802 1.33301 10.618 1.33301 11.5905C1.33301 11.7572 1.83301 11.8405 1.86092 11.8405C1.86092 12.1739 1.86092 13.0626 1.86092 13.3959C1.88884 14.2014 2.16634 14.2293 3.11092 14.2293C4.08301 14.2293 4.33301 14.1459 4.33301 13.3405C4.33301 13.0351 4.33301 12.2851 4.33301 11.9518C6.58301 12.2297 9.41634 12.2297 11.6109 11.9518V12.063C11.6109 12.3409 11.6109 12.5076 11.6109 12.813C11.6109 14.1464 11.7776 14.2297 12.8609 14.2297C13.7776 14.2297 14.083 14.1464 14.083 12.813C14.083 12.5076 14.083 12.2297 14.083 11.9243V11.8409C14.1109 11.8409 14.6663 11.7297 14.6663 11.563C14.6663 10.5909 14.6663 9.64636 14.6663 8.67427C14.6663 7.42427 13.6943 6.86885 13.6943 6.86885L13.6938 6.86802ZM3.36051 10.618C2.63842 10.618 2.22176 9.92344 2.19384 9.45136C2.16592 8.86802 2.66592 8.20136 3.36051 8.20136C3.99926 8.20136 4.49926 8.75677 4.49926 9.39594C4.49926 10.0905 3.99926 10.618 3.36051 10.618ZM3.86051 6.64594C3.86051 6.64594 4.08259 4.97927 4.47176 3.78469C4.72176 2.97927 11.3605 3.03469 11.4997 3.75677C11.8884 5.06219 12.1384 6.61802 12.1663 6.64552C9.77759 6.34011 6.19426 6.36761 3.86092 6.64552L3.86051 6.64594ZM12.4993 10.618C11.7772 10.618 11.3605 9.95136 11.3326 9.45136C11.3047 8.84011 11.8047 8.20136 12.4993 8.20136C13.138 8.20136 13.6659 8.75677 13.6659 9.39594C13.6659 10.0905 13.138 10.618 12.4993 10.618Z"
+    <style>
+        .opti-quote-basket-dd-container {
+            position: relative;
+            margin-left: 16px;
+        }
+
+        .opti-quote-basket-dd-container .dd-label {
+            display: flex;
+            align-items: center;
+            padding: 10px;
+            border: 1px solid #CED9E5;
+            border-radius: 3px;
+            cursor: pointer;
+        }
+
+        .opti-quote-basket-dd-container .dd-label .car-icon {
+            margin-right: 8px;
+        }
+
+        .opti-quote-basket-dd-container .dd-label .lable {
+            font-weight: 700;
+            font-size: 16px;
+            line-height: 24px;
+            color: #25469B;
+            margin-bottom: 0;
+        }
+
+        .opti-quote-basket-dd-container .dd-label.panel-close .arrow-down {
+            display: block;
+        }
+
+        .opti-quote-basket-dd-container .dd-label.panel-open .arrow-down {
+            display: none;
+        }
+
+        .opti-quote-basket-dd-container .dd-label.panel-close .arrow-up {
+            display: none;
+        }
+
+        .opti-quote-basket-dd-container .dd-label.panel-open .arrow-up {
+            display: block;
+        }
+
+        .opti-quote-basket-dd-container .dd-panel {
+            position: absolute;
+            width: 320px;
+            right: 0;
+            z-index: 9;
+            background: white;
+            padding: 12px;
+            border: 1px solid #CED9E5;
+            box-shadow: 0px 4px 8px 0px rgba(0, 0, 0, 0.15);
+            min-height: 200px;
+        }
+
+        .opti-quote-basket-dd-container .dd-panel.panel-close {
+            display: none;
+        }
+
+        .opti-quote-basket-dd-container .dd-panel.panel-open {
+            display: block;
+        }
+
+        .opti-quote-basket-dd-container .dd-panel .car-info-section {
+            padding-bottom: 12px;
+            border-bottom: 1px solid #CED9E5;
+        }
+
+        .opti-quote-basket-dd-container .dd-panel .car-info-section .reg-number-section {
+            display: flex;
+            align-items: center;
+            margin-bottom: 4px;
+        }
+
+        .opti-quote-basket-dd-container .dd-panel .car-info-section .reg-number-section .reg-number {
+            padding: 4px 8px;
+            background-color: #EED667;
+            color: #444444;
+            font-size: 12px;
+            font-weight: 700;
+            text-transform: uppercase;
+            margin-left: 8px;
+            border-radius: 2px;
+            line-height: 100%;
+        }
+
+        .opti-quote-basket-dd-container .dd-panel .car-info-section .level-of-cover-section {
+            display: flex;
+            align-items: center;
+        }
+
+        .opti-quote-basket-dd-container .dd-panel .car-info-section .level-of-cover-section .level-of-cover-name {
+            margin-left: 4px;
+            font-weight: 400;
+            font-size: 12px;
+            line-height: 21px;
+            color: #444444;
+        }
+
+        .opti-quote-basket-dd-container .dd-panel .driver-info-section {
+            margin-top: 12px;
+            padding-bottom: 12px;
+            border-bottom: 1px solid #CED9E5;
+        }
+
+        .opti-quote-basket-dd-container .dd-panel .driver-info-section .driver-number-section {
+            display: flex;
+            align-items: center;
+        }
+
+        .opti-quote-basket-dd-container .dd-panel .driver-info-section .driver-number-section .driver-number {
+            font-size: 14px;
+            font-weight: 700;
+            line-height: 24px;
+            text-transform: capitalize;
+            margin-left: 8px;
+            color: #444444;
+        }
+
+        .opti-quote-basket-dd-container .dd-panel .driver-info-section .driver-name-section {
+            margin-left: 24px;
+            margin-top: 4px;
+        }
+
+        .opti-quote-basket-dd-container .dd-panel .driver-info-section .driver-name-section .individual-driver-section {
+            display: flex;
+        }
+
+        .opti-quote-basket-dd-container .dd-panel .driver-info-section .driver-name-section .individual-driver-section .individual-driver-info {
+            margin-left: 8px;
+        }
+
+        .opti-quote-basket-dd-container .dd-panel .driver-info-section .driver-name-section .individual-driver-section .individual-driver-info .name {
+            font-size: 12px;
+            font-weight: 700;
+            line-height: 18px;
+            color: #444444;
+            text-transform: capitalize;
+        }
+
+        .opti-quote-basket-dd-container .dd-panel .driver-info-section .driver-name-section .individual-driver-section .individual-driver-info .ncb-info,
+        .opti-quote-basket-dd-container .dd-panel .driver-info-section .driver-name-section .individual-driver-section .individual-driver-info .protect-info {
+            font-weight: 400;
+            font-size: 12px;
+            font-weight: 700;
+            line-height: 18px;
+            color: #444444;
+        }
+
+        .opti-quote-basket-dd-container .dd-panel .driver-info-section .driver-name-section .individual-driver-section .individual-driver-info .protect-info {
+            color: #0F7632;
+        }
+
+        .opti-quote-basket-dd-container .dd-panel .added-upgrade-section {
+            margin-top: 12px;
+            padding-bottom: 12px;
+            border-bottom: 1px solid #CED9E5;
+        }
+
+        .opti-quote-basket-dd-container .dd-panel .added-upgrade-section .upgrade-number-section {
+            display: flex;
+            align-items: center;
+        }
+
+        .opti-quote-basket-dd-container .dd-panel .added-upgrade-section .upgrade-number-section .upgrade-number {
+            font-size: 14px;
+            font-weight: 700;
+            line-height: 21px;
+            text-transform: capitalize;
+            color: #444444;
+            margin-left: 8px;
+        }
+
+        .opti-quote-basket-dd-container .dd-panel .added-upgrade-section .upgrade-info {
+            margin-left: 24px;
+            margin-top: 4px;
+        }
+
+        .opti-quote-basket-dd-container .dd-panel .added-upgrade-section .upgrade-info .individual-upgrade {
+            display: flex;
+            align-items: center;
+        }
+
+        .opti-quote-basket-dd-container .dd-panel .added-upgrade-section .upgrade-info .individual-upgrade svg {
+            height: 16px;
+            width: 16px;
+            fill: #CED9E5;
+        }
+
+        .opti-quote-basket-dd-container .dd-panel .added-upgrade-section .upgrade-info .individual-upgrade .upgrade-name {
+            margin-left: 8px;
+            font-size: 12px;
+            line-height: 21px;
+            text-transform: capitalize;
+            color: #444444;
+        }
+
+        .opti-quote-basket-dd-container .dd-panel .price-section {
+            margin-top: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .opti-quote-basket-dd-container .dd-panel .price-section .cover-image {
+            width: 81px;
+            height: 41px;
+        }
+
+        .opti-quote-basket-dd-container .dd-panel .price-section .price {
+            font-size: 14px;
+            line-height: 21px;
+            font-weight: 700;
+            color: #444444;
+        }
+    </style>
+    <div class="dd-label panel-close">
+        <svg class="car-icon" width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path
+                d="M13.6938 6.86802C13.6938 6.86802 13.1938 4.8126 12.9718 3.78469C12.7497 2.92344 12.3605 2.36802 10.9163 2.14594C9.24967 1.95135 6.86092 1.95135 5.13842 2.14594C3.52717 2.42385 3.24967 3.03469 3.05509 3.84052C2.80509 4.86844 2.33301 6.89594 2.33301 6.89594C2.33301 6.89594 1.33301 7.34052 1.33301 8.64594C1.33301 9.61802 1.33301 10.618 1.33301 11.5905C1.33301 11.7572 1.83301 11.8405 1.86092 11.8405C1.86092 12.1739 1.86092 13.0626 1.86092 13.3959C1.88884 14.2014 2.16634 14.2293 3.11092 14.2293C4.08301 14.2293 4.33301 14.1459 4.33301 13.3405C4.33301 13.0351 4.33301 12.2851 4.33301 11.9518C6.58301 12.2297 9.41634 12.2297 11.6109 11.9518V12.063C11.6109 12.3409 11.6109 12.5076 11.6109 12.813C11.6109 14.1464 11.7776 14.2297 12.8609 14.2297C13.7776 14.2297 14.083 14.1464 14.083 12.813C14.083 12.5076 14.083 12.2297 14.083 11.9243V11.8409C14.1109 11.8409 14.6663 11.7297 14.6663 11.563C14.6663 10.5909 14.6663 9.64636 14.6663 8.67427C14.6663 7.42427 13.6943 6.86885 13.6943 6.86885L13.6938 6.86802ZM3.36051 10.618C2.63842 10.618 2.22176 9.92344 2.19384 9.45136C2.16592 8.86802 2.66592 8.20136 3.36051 8.20136C3.99926 8.20136 4.49926 8.75677 4.49926 9.39594C4.49926 10.0905 3.99926 10.618 3.36051 10.618ZM3.86051 6.64594C3.86051 6.64594 4.08259 4.97927 4.47176 3.78469C4.72176 2.97927 11.3605 3.03469 11.4997 3.75677C11.8884 5.06219 12.1384 6.61802 12.1663 6.64552C9.77759 6.34011 6.19426 6.36761 3.86092 6.64552L3.86051 6.64594ZM12.4993 10.618C11.7772 10.618 11.3605 9.95136 11.3326 9.45136C11.3047 8.84011 11.8047 8.20136 12.4993 8.20136C13.138 8.20136 13.6659 8.75677 13.6659 9.39594C13.6659 10.0905 13.138 10.618 12.4993 10.618Z"
+                fill="#41A5F5" />
+        </svg>
+        <p class="lable">Your Quote</p>
+        <svg class="arrow-down" width="16" height="16" viewBox="0 0 16 16" fill="none"
+            xmlns="http://www.w3.org/2000/svg">
+            <path d="M4.94 5.72668L8 8.78002L11.06 5.72668L12 6.66668L8 10.6667L4 6.66668L4.94 5.72668Z"
+                fill="#CED9E5" />
+        </svg>
+        <svg class="arrow-up" width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M4.94 10.2734L8 7.22004L11.06 10.2734L12 9.33337L8 5.33337L4 9.33337L4.94 10.2734Z"
+                fill="#CED9E5" />
+        </svg>
+
+    </div>
+    <div class="dd-panel panel-close">
+
+        <div class="car-info-section">
+
+            <div class="reg-number-section">
+                <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path fill-rule="evenodd" clip-rule="evenodd"
+                        d="M2 3.33341L8 0.666748L14 3.33341V7.33341C14 11.0334 11.44 14.4934 8 15.3334C4.56 14.4934 2 11.0334 2 7.33341V3.33341ZM10.9833 5.07024C11.1165 5.68661 11.4165 6.91911 11.4165 6.91911C11.4165 6.91911 12 7.25266 12 8.0022V9.73439C12 9.83433 11.6667 9.90104 11.65 9.90104V10.4839C11.65 11.2834 11.4668 11.3334 10.9167 11.3334C10.2668 11.3334 10.1667 11.2834 10.1667 10.4839V9.9675C8.85 10.1341 7.15 10.1341 5.8 9.9675V10.8002C5.8 11.2832 5.65 11.3332 5.06675 11.3332C4.5 11.3332 4.3335 11.3164 4.31675 10.8335V9.90079C4.3 9.90079 4 9.85082 4 9.75088V7.98521C4 7.20244 4.6 6.93585 4.6 6.93585C4.6 6.93585 4.88325 5.72009 5.03325 5.10372C5.15 4.62051 5.3165 4.25424 6.28325 4.08759C7.31675 3.97091 8.75 3.97091 9.75 4.08759C10.6165 4.22076 10.85 4.55381 10.9833 5.07024ZM4.5165 8.46816C4.53325 8.75124 4.78325 9.16774 5.2165 9.16774C5.59975 9.16774 5.89975 8.85143 5.89975 8.43493C5.89975 8.05167 5.59975 7.71862 5.2165 7.71862C4.79975 7.71862 4.49975 8.11838 4.5165 8.46816ZM5.88325 5.07024C5.64975 5.78655 5.5165 6.78594 5.5165 6.78594C6.9165 6.61929 9.06675 6.60255 10.5 6.78569C10.4951 6.78088 10.4789 6.69819 10.4526 6.56403C10.3887 6.238 10.2653 5.60807 10.1 5.0535C10.0165 4.62051 6.03325 4.58728 5.88325 5.07024ZM9.99975 8.46816C10.0165 8.76798 10.2665 9.16774 10.6998 9.16774C11.083 9.16774 11.3998 8.85143 11.3998 8.43493C11.3998 8.05167 11.083 7.71862 10.6998 7.71862C10.283 7.71862 9.983 8.10164 9.99975 8.46816Z"
                         fill="#41A5F5" />
                 </svg>
-                <p class="lable">Your Quote</p>
-                <svg class="arrow-down" width="16" height="16" viewBox="0 0 16 16" fill="none"
-                    xmlns="http://www.w3.org/2000/svg">
-                    <path d="M4.94 5.72668L8 8.78002L11.06 5.72668L12 6.66668L8 10.6667L4 6.66668L4.94 5.72668Z"
-                        fill="#CED9E5" />
-                </svg>
-                <svg class="arrow-up" width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M4.94 10.2734L8 7.22004L11.06 10.2734L12 9.33337L8 5.33337L4 9.33337L4.94 10.2734Z"
-                        fill="#CED9E5" />
-                </svg>
-        
+                <p class="reg-number">LY04 hFk</p>
             </div>
-            <div class="dd-panel panel-close">
-        
-                <div class="car-info-section">
-        
-                    <div class="reg-number-section">
-                        <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path fill-rule="evenodd" clip-rule="evenodd"
-                                d="M2 3.33341L8 0.666748L14 3.33341V7.33341C14 11.0334 11.44 14.4934 8 15.3334C4.56 14.4934 2 11.0334 2 7.33341V3.33341ZM10.9833 5.07024C11.1165 5.68661 11.4165 6.91911 11.4165 6.91911C11.4165 6.91911 12 7.25266 12 8.0022V9.73439C12 9.83433 11.6667 9.90104 11.65 9.90104V10.4839C11.65 11.2834 11.4668 11.3334 10.9167 11.3334C10.2668 11.3334 10.1667 11.2834 10.1667 10.4839V9.9675C8.85 10.1341 7.15 10.1341 5.8 9.9675V10.8002C5.8 11.2832 5.65 11.3332 5.06675 11.3332C4.5 11.3332 4.3335 11.3164 4.31675 10.8335V9.90079C4.3 9.90079 4 9.85082 4 9.75088V7.98521C4 7.20244 4.6 6.93585 4.6 6.93585C4.6 6.93585 4.88325 5.72009 5.03325 5.10372C5.15 4.62051 5.3165 4.25424 6.28325 4.08759C7.31675 3.97091 8.75 3.97091 9.75 4.08759C10.6165 4.22076 10.85 4.55381 10.9833 5.07024ZM4.5165 8.46816C4.53325 8.75124 4.78325 9.16774 5.2165 9.16774C5.59975 9.16774 5.89975 8.85143 5.89975 8.43493C5.89975 8.05167 5.59975 7.71862 5.2165 7.71862C4.79975 7.71862 4.49975 8.11838 4.5165 8.46816ZM5.88325 5.07024C5.64975 5.78655 5.5165 6.78594 5.5165 6.78594C6.9165 6.61929 9.06675 6.60255 10.5 6.78569C10.4951 6.78088 10.4789 6.69819 10.4526 6.56403C10.3887 6.238 10.2653 5.60807 10.1 5.0535C10.0165 4.62051 6.03325 4.58728 5.88325 5.07024ZM9.99975 8.46816C10.0165 8.76798 10.2665 9.16774 10.6998 9.16774C11.083 9.16774 11.3998 8.85143 11.3998 8.43493C11.3998 8.05167 11.083 7.71862 10.6998 7.71862C10.283 7.71862 9.983 8.10164 9.99975 8.46816Z"
-                                fill="#41A5F5" />
-                        </svg>
-                        <p class="reg-number">LY04 hFk</p>
+
+            <div class="level-of-cover-section">
+                <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path
+                        d="M8 0.666748L2 3.33341V7.33341C2 11.0334 4.56 14.4934 8 15.3334C11.44 14.4934 14 11.0334 14 7.33341V3.33341L8 0.666748ZM6.66667 11.3334L4 8.66675L4.94 7.72675L6.66667 9.44675L11.06 5.05341L12 6.00008L6.66667 11.3334Z"
+                        fill="#CED9E5" />
+                </svg>
+                <p class="level-of-cover-name">Comprehensive</p>
+            </div>
+        </div>
+
+        <div class="driver-info-section">
+
+            <div class="driver-number-section">
+                <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path fill-rule="evenodd" clip-rule="evenodd"
+                        d="M8.66699 5.33341C8.66699 6.80617 7.47309 8.00008 6.00033 8.00008C4.52757 8.00008 3.33366 6.80617 3.33366 5.33341C3.33366 3.86066 4.52757 2.66675 6.00033 2.66675C7.47309 2.66675 8.66699 3.86066 8.66699 5.33341ZM12.667 11.3334C12.667 10.2134 12.027 9.37342 11.1137 8.75342C12.9537 9.02009 15.3337 9.88008 15.3337 11.3334V13.3334H12.667V11.3334ZM10.0003 8.00008C11.4737 8.00008 12.667 6.80675 12.667 5.33341C12.667 3.86008 11.4737 2.66675 10.0003 2.66675C9.687 2.66675 9.39367 2.73341 9.11367 2.82675C9.667 3.51341 10.0003 4.38675 10.0003 5.33341C10.0003 6.28008 9.667 7.15341 9.11367 7.84008C9.39367 7.93341 9.687 8.00008 10.0003 8.00008ZM0.666992 11.3334C0.666992 9.56008 4.22033 8.66675 6.00033 8.66675C7.78033 8.66675 11.3337 9.56008 11.3337 11.3334V13.3334H0.666992V11.3334Z"
+                        fill="#CED9E5" />
+                </svg>
+                <p class="driver-number">1 Driver</p>
+            </div>
+
+            <div class="driver-name-section">
+                <div class="individual-driver-section">
+                    <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path
+                            d="M8.00033 3.93341C8.77366 3.93341 9.40033 4.56008 9.40033 5.33341C9.40033 6.10675 8.77366 6.73341 8.00033 6.73341C7.22699 6.73341 6.60033 6.10675 6.60033 5.33341C6.60033 4.56008 7.22699 3.93341 8.00033 3.93341ZM8.00033 9.93341C9.98033 9.93341 12.067 10.9067 12.067 11.3334V12.0667H3.93366V11.3334C3.93366 10.9067 6.02033 9.93341 8.00033 9.93341ZM8.00033 2.66675C6.52699 2.66675 5.33366 3.86008 5.33366 5.33341C5.33366 6.80675 6.52699 8.00008 8.00033 8.00008C9.47366 8.00008 10.667 6.80675 10.667 5.33341C10.667 3.86008 9.47366 2.66675 8.00033 2.66675ZM8.00033 8.66675C6.22033 8.66675 2.66699 9.56008 2.66699 11.3334V13.3334H13.3337V11.3334C13.3337 9.56008 9.78032 8.66675 8.00033 8.66675Z"
+                            fill="#CED9E5" />
+                    </svg>
+                    <div class="individual-driver-info">
+                        <p class="name">Mrs Sue Jones</p>
+                        <p class="ncb-info"></p>
+                        <p class="protect-info"></p>
                     </div>
-        
-                    <div class="level-of-cover-section">
-                        <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                </div>
+            </div>
+
+        </div>
+
+        <div class="added-upgrade-section">
+
+            <div class="upgrade-number-section">
+                <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path fill-rule="evenodd" clip-rule="evenodd"
+                        d="M2 3.33341L8 0.666748L14 3.33341V7.33341C14 11.0334 11.44 14.4934 8 15.3334C4.56 14.4934 2 11.0334 2 7.33341V3.33341ZM11.3333 8.66675H8.66667V11.3334H7.33333V8.66675H4.66667V7.33341H7.33333V4.66675H8.66667V7.33341H11.3333V8.66675Z"
+                        fill="#CED9E5" />
+                </svg>
+                <p class="upgrade-number">3 Upgrades Added</p>
+            </div>
+
+            <div class="upgrade-info">
+                <div class="individual-upgrade">
+                    <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <g clip-path="url(#clip0_23168_3303)">
                             <path
-                                d="M8 0.666748L2 3.33341V7.33341C2 11.0334 4.56 14.4934 8 15.3334C11.44 14.4934 14 11.0334 14 7.33341V3.33341L8 0.666748ZM6.66667 11.3334L4 8.66675L4.94 7.72675L6.66667 9.44675L11.06 5.05341L12 6.00008L6.66667 11.3334Z"
+                                d="M15.133 12.6666L9.0663 6.59993C9.6663 5.06659 9.33297 3.26659 8.0663 1.99993C6.73297 0.666593 4.73297 0.399927 3.13297 1.13326L5.99963 3.99993L3.99963 5.99993L1.0663 3.13326C0.266301 4.73326 0.599634 6.73326 1.93297 8.06659C3.19963 9.33326 4.99963 9.66659 6.53297 9.06659L12.5996 15.1333C12.8663 15.3999 13.2663 15.3999 13.533 15.1333L15.0663 13.5999C15.3996 13.3333 15.3996 12.8666 15.133 12.6666Z"
                                 fill="#CED9E5" />
-                        </svg>
-                        <p class="level-of-cover-name">Comprehensive</p>
-                    </div>
+                        </g>
+                        <defs>
+                            <clipPath id="clip0_23168_3303">
+                                <rect width="16" height="16" fill="white" />
+                            </clipPath>
+                        </defs>
+                    </svg>
+                    <p class="upgrade-name">Breakdown Cover</p>
                 </div>
-        
-                <div class="driver-info-section">
-        
-                    <div class="driver-number-section">
-                        <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path fill-rule="evenodd" clip-rule="evenodd"
-                                d="M8.66699 5.33341C8.66699 6.80617 7.47309 8.00008 6.00033 8.00008C4.52757 8.00008 3.33366 6.80617 3.33366 5.33341C3.33366 3.86066 4.52757 2.66675 6.00033 2.66675C7.47309 2.66675 8.66699 3.86066 8.66699 5.33341ZM12.667 11.3334C12.667 10.2134 12.027 9.37342 11.1137 8.75342C12.9537 9.02009 15.3337 9.88008 15.3337 11.3334V13.3334H12.667V11.3334ZM10.0003 8.00008C11.4737 8.00008 12.667 6.80675 12.667 5.33341C12.667 3.86008 11.4737 2.66675 10.0003 2.66675C9.687 2.66675 9.39367 2.73341 9.11367 2.82675C9.667 3.51341 10.0003 4.38675 10.0003 5.33341C10.0003 6.28008 9.667 7.15341 9.11367 7.84008C9.39367 7.93341 9.687 8.00008 10.0003 8.00008ZM0.666992 11.3334C0.666992 9.56008 4.22033 8.66675 6.00033 8.66675C7.78033 8.66675 11.3337 9.56008 11.3337 11.3334V13.3334H0.666992V11.3334Z"
-                                fill="#CED9E5" />
-                        </svg>
-                        <p class="driver-number">1 Driver</p>
-                    </div>
-        
-                    <div class="driver-name-section">
-                        <div class="individual-driver-section">
-                            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <path
-                                    d="M8.00033 3.93341C8.77366 3.93341 9.40033 4.56008 9.40033 5.33341C9.40033 6.10675 8.77366 6.73341 8.00033 6.73341C7.22699 6.73341 6.60033 6.10675 6.60033 5.33341C6.60033 4.56008 7.22699 3.93341 8.00033 3.93341ZM8.00033 9.93341C9.98033 9.93341 12.067 10.9067 12.067 11.3334V12.0667H3.93366V11.3334C3.93366 10.9067 6.02033 9.93341 8.00033 9.93341ZM8.00033 2.66675C6.52699 2.66675 5.33366 3.86008 5.33366 5.33341C5.33366 6.80675 6.52699 8.00008 8.00033 8.00008C9.47366 8.00008 10.667 6.80675 10.667 5.33341C10.667 3.86008 9.47366 2.66675 8.00033 2.66675ZM8.00033 8.66675C6.22033 8.66675 2.66699 9.56008 2.66699 11.3334V13.3334H13.3337V11.3334C13.3337 9.56008 9.78032 8.66675 8.00033 8.66675Z"
-                                    fill="#CED9E5" />
-                            </svg>
-                            <div class="individual-driver-info">
-                                <p class="name">Mrs Sue Jones</p>
-                            </div>
-                        </div>
-                    </div>
-        
-                </div>
-        
-                <div class="added-upgrade-section">
-        
-                    <div class="upgrade-number-section">
-                        <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path fill-rule="evenodd" clip-rule="evenodd"
-                                d="M2 3.33341L8 0.666748L14 3.33341V7.33341C14 11.0334 11.44 14.4934 8 15.3334C4.56 14.4934 2 11.0334 2 7.33341V3.33341ZM11.3333 8.66675H8.66667V11.3334H7.33333V8.66675H4.66667V7.33341H7.33333V4.66675H8.66667V7.33341H11.3333V8.66675Z"
-                                fill="#CED9E5" />
-                        </svg>
-                        <p class="upgrade-number">3 Upgrades Added</p>
-                    </div>
-        
-                    <div class="upgrade-info">
-                        <div class="individual-upgrade">
-                            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <g clip-path="url(#clip0_23168_3303)">
-                                    <path
-                                        d="M15.133 12.6666L9.0663 6.59993C9.6663 5.06659 9.33297 3.26659 8.0663 1.99993C6.73297 0.666593 4.73297 0.399927 3.13297 1.13326L5.99963 3.99993L3.99963 5.99993L1.0663 3.13326C0.266301 4.73326 0.599634 6.73326 1.93297 8.06659C3.19963 9.33326 4.99963 9.66659 6.53297 9.06659L12.5996 15.1333C12.8663 15.3999 13.2663 15.3999 13.533 15.1333L15.0663 13.5999C15.3996 13.3333 15.3996 12.8666 15.133 12.6666Z"
-                                        fill="#CED9E5" />
-                                </g>
-                                <defs>
-                                    <clipPath id="clip0_23168_3303">
-                                        <rect width="16" height="16" fill="white" />
-                                    </clipPath>
-                                </defs>
-                            </svg>
-                            <p class="upgrade-name">Breakdown Cover</p>
-                        </div>
-                    </div>
-        
-                </div>
-        
-                <div class="price-section">
-                    <img class="cover-image" src="/eui-cq-assets/helm/images/brands/admiral/cover-levels/admiral-level.svg"
-                        alt="">
-                    <p class="price">£123.45 total</p>
-                </div>
-        
             </div>
-        </div>`);
+
+        </div>
+
+        <div class="price-section">
+            <img class="cover-image" src="/eui-cq-assets/helm/images/brands/admiral/cover-levels/admiral-level.svg"
+                alt="">
+            <p class="price">£123.45 total</p>
+        </div>
+
+    </div>
+</div>`);
 
         const basket_container_label = document.querySelector('.opti-quote-basket-dd-container .dd-label');
         if (basket_container_label) {
