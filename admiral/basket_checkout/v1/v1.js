@@ -344,15 +344,16 @@ utils.observeSelector('.adm-navbar__wrap .adm-navbar__nav', function (right_nav)
             line-height: 18px;
             color: #444444;
             text-transform: capitalize;
+            margin-bottom: 0;
         }
 
         .opti-quote-basket-dd-container .dd-panel .driver-info-section .driver-name-section .individual-driver-section .individual-driver-info .ncb-info,
         .opti-quote-basket-dd-container .dd-panel .driver-info-section .driver-name-section .individual-driver-section .individual-driver-info .protect-info {
             font-weight: 400;
             font-size: 12px;
-            font-weight: 700;
             line-height: 18px;
             color: #444444;
+            margin-bottom: 0;
         }
 
         .opti-quote-basket-dd-container .dd-panel .driver-info-section .driver-name-section .individual-driver-section .individual-driver-info .protect-info {
@@ -598,19 +599,23 @@ utils.observeSelector('#continue-button', function (continue_btn) {
                 handleUpdateSessionStorage_Cover_Page(document.querySelector('eui-motor-tier-select > adm-wrap'));
             }
         } else if (window.location.pathname == '/Admiral/ancillary/motorlegal') {
-            let session_storage_variable = JSON.parse(sessionStorage.getItem('opti-cover-info'));
+            let session_storage_variable = JSON.parse(JSON.stringify(JSON.parse(sessionStorage.getItem('opti-cover-info'))));
+            console.warn("session_storage_variable", session_storage_variable)
             const motor_legal_added_text = document.querySelector('eui-motor-legal span[data-test="cover-added-info"]');
             if (motor_legal_added_text) {
+                console.warn('adding')
                 session_storage_variable.cover_benefit_list.motorlegal = "motor legal protection";
             } else {
+                console.warn('have to delete motor_legal_added_text')
                 if ('motorlegal' in session_storage_variable.cover_benefit_list) {
+                    console.warn('deleting inside if');
                     delete session_storage_variable.cover_benefit_list.motorlegal;
                 }
             }
 
             sessionStorage.setItem('opti-cover-info', JSON.stringify(session_storage_variable));
         } else if (window.location.pathname == '/Admiral/ancillary/breakdown') {
-            let session_storage_variable = JSON.parse(sessionStorage.getItem('opti-cover-info'));
+            let session_storage_variable = JSON.parse(JSON.stringify(JSON.parse(sessionStorage.getItem('opti-cover-info'))));
             const breakdown_added_text = document.querySelector('eui-breakdown span[data-test="cover-added-info"]');
             if (breakdown_added_text) {
 
@@ -633,7 +638,7 @@ utils.observeSelector('#continue-button', function (continue_btn) {
 
             sessionStorage.setItem('opti-cover-info', JSON.stringify(session_storage_variable));
         } else if (window.location.pathname == '/Admiral/ancillary/personalinjury') {
-            let session_storage_variable = JSON.parse(sessionStorage.getItem('opti-cover-info'));
+            let session_storage_variable = JSON.parse(JSON.stringify(JSON.parse(sessionStorage.getItem('opti-cover-info'))));
             const personalinjury_added_text = document.querySelector('eui-personal-injury span[data-test="cover-added-info"]');
             if (personalinjury_added_text) {
 
@@ -654,7 +659,7 @@ utils.observeSelector('#continue-button', function (continue_btn) {
 
             sessionStorage.setItem('opti-cover-info', JSON.stringify(session_storage_variable));
         } else if (window.location.pathname == '/Admiral/ancillary/hirecar') {
-            let session_storage_variable = JSON.parse(sessionStorage.getItem('opti-cover-info'));
+            let session_storage_variable = JSON.parse(JSON.stringify(JSON.parse(sessionStorage.getItem('opti-cover-info'))));
             const hirecar_added_text = document.querySelector('eui-hire-car span[data-test="cover-added-info"]');
             if (hirecar_added_text) {
                 session_storage_variable.cover_benefit_list.hirecar = 'hire vehicle cover';
@@ -666,7 +671,7 @@ utils.observeSelector('#continue-button', function (continue_btn) {
 
             sessionStorage.setItem('opti-cover-info', JSON.stringify(session_storage_variable));
         } else if (window.location.pathname == '/Admiral/upgrade') {
-            let session_storage_variable = JSON.parse(sessionStorage.getItem('opti-cover-info'));
+            let session_storage_variable = JSON.parse(JSON.stringify(JSON.parse(sessionStorage.getItem('opti-cover-info'))));
             const selected_cover = document.querySelector('.adm-card--selected');
             if (selected_cover) {
                 session_storage_variable.cover_name = selected_cover.querySelector('h3[data-test="tier-header"]').innerText;
