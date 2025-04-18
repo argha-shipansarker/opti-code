@@ -591,7 +591,6 @@ utils.observeSelector('.adm-navbar__wrap .adm-navbar__nav', function (right_nav)
 
 utils.observeSelector('#continue-button', function (continue_btn) {
     continue_btn.addEventListener('mousedown', function () {
-        console.warn("clicking on ctn btn", document.querySelector('eui-motor-legal'), window.location.pathname, JSON.parse(JSON.stringify(JSON.parse(sessionStorage.getItem('opti-cover-info')))));
         if (window.location.pathname == '/Admiral/cover') {
             const new_selected_cover = document.querySelector('.adm-cover-levels__level--selected');
             if (new_selected_cover) {
@@ -601,16 +600,11 @@ utils.observeSelector('#continue-button', function (continue_btn) {
             }
         } else if (window.location.pathname == '/Admiral/ancillary/motorlegal') {
             let session_storage_variable = JSON.parse(JSON.stringify(JSON.parse(sessionStorage.getItem('opti-cover-info'))));
-            console.warn("session_storage_variable", session_storage_variable)
             const motor_legal_added_text = document.querySelector('eui-motor-legal span[data-test="cover-added-info"]');
-            console.warn("session_storage_variable", session_storage_variable, motor_legal_added_text)
             if (motor_legal_added_text) {
-                console.warn('adding')
                 session_storage_variable.cover_benefit_list.motorlegal = "motor legal protection";
             } else {
-                console.warn('have to delete motor_legal_added_text')
                 if ('motorlegal' in session_storage_variable.cover_benefit_list) {
-                    console.warn('deleting inside if');
                     delete session_storage_variable.cover_benefit_list.motorlegal;
                 }
             }
