@@ -627,8 +627,24 @@ utils.observeSelector('#continue-button', function (continue_btn) {
                     }
                 }
             } else {
-                if ('breakdown' in session_storage_variable.cover_benefit_list) {
-                    delete session_storage_variable.cover_benefit_list.breakdown;
+
+                const breakdown_added_node_when_2nd_car_removed = document.querySelector('eui-breakdown .adm-confirm__result-text');
+
+                if (breakdown_added_node_when_2nd_car_removed && window.getComputedStyle(breakdown_added_node_when_2nd_car_removed).color == 'rgb(15, 118, 50)') {
+
+                    let added_breakdown_name = breakdown_added_node_when_2nd_car_removed.innerText.toLowerCase().trim();
+                    if (added_breakdown_name.includes('roadside assistance')) {
+                        session_storage_variable.cover_benefit_list.breakdown = 'roadside assistance breakdown cover';
+                    } else if (added_breakdown_name.includes('national')) {
+                        session_storage_variable.cover_benefit_list.breakdown = 'national breakdown cover';
+                    } else if (added_breakdown_name.includes('european')) {
+                        session_storage_variable.cover_benefit_list.breakdown = 'european breakdown cover';
+                    }
+
+                } else {
+                    if ('breakdown' in session_storage_variable.cover_benefit_list) {
+                        delete session_storage_variable.cover_benefit_list.breakdown;
+                    }
                 }
             }
 
