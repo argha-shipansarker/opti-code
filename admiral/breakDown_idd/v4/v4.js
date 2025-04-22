@@ -415,7 +415,7 @@ if (window.location.pathname == '/Admiral/ancillary/breakdown') {
                     if (window.innerWidth < 500) {
                         const recomended_section_mobile = document.querySelector('.opti-recomended-section-mobile');
                         recomended_section_mobile.style.display = 'block';
-                        recomended_section_mobile.style.right = '20px';
+                        recomended_section_mobile.style.right = '19%';
                         recomended_section_mobile.style.top = '42px';
                     } else {
                         const recomended_section = document.querySelector('.opti-recomended-section');
