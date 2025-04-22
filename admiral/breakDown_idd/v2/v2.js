@@ -37,6 +37,11 @@ if (window.location.pathname == '/Admiral/ancillary/breakdown') {
         breakdownTierHeader.style.borderBottom = 0;
         breakdownTierHeader.style.marginBottom = "4px";
 
+        const section_header = breakdownTierHeader.querySelector('.adm-card__header-title');
+        if (section_header) {
+            section_header.innerText = "Do you need AA breakdown cover?";
+        }
+
         cleanup('.opti-europe-checkbox');
         breakdownTierHeader.insertAdjacentHTML("afterend", `<div class="opti-europe-checkbox">
                 <style>
@@ -204,13 +209,13 @@ if (window.location.pathname == '/Admiral/ancillary/breakdown') {
 
     });
 
-    utils.observeSelector('#no-breakdown-cover-selected', function (no_cover_selected) {
-        no_cover_selected.style.display = "none";
-    });
+    // utils.observeSelector('#no-breakdown-cover-selected', function (no_cover_selected) {
+    //     no_cover_selected.style.display = "none";
+    // });
 
-    utils.observeSelector('#breakdown-cover-tier-selected', function (cover_selected) {
-        cover_selected.parentElement.parentElement.style.display = "none";
-    });
+    // utils.observeSelector('#breakdown-cover-tier-selected', function (cover_selected) {
+    //     cover_selected.parentElement.parentElement.style.display = "none";
+    // });
 
     utils.observeSelector('#including-tiers-divided-ancillary', function (dividedAncillary) {
         const header = dividedAncillary.querySelector('.adm-card__header');
