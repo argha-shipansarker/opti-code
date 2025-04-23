@@ -76,7 +76,7 @@ utils.waitForElement('#productRecommendations #productRecommendationsCarousel .j
                 api_product_data = api_products[count];
             }
 
-            if (api_product_data && api_product_data.customProperties.variantid && api_product_data.customProperties.variantid.length && api_product_data.customProperties.price && api_product_data.customProperties.price.length && api_product_data.id) {
+            if (api_product_data && api_product_data.customProperties.variantid && api_product_data.customProperties.variantid.length && api_product_data.customProperties.price && api_product_data.customProperties.price.length && api_product_data.id && product.querySelector('.product-item__quick-shop .js-quick-add-trigger')) {
 
                 const product_image = product.querySelector('.product-item__images');
                 if (product_image) {
