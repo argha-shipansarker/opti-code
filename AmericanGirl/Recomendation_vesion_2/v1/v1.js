@@ -108,6 +108,7 @@ utils.waitForElement('#productRecommendations #productRecommendationsCarousel .j
                 const quick_add = product.querySelector('.product-item__quick-shop .js-quick-add-trigger');
                 if (quick_add) {
                     quick_add.setAttribute('data-variant-id', api_product_data.customProperties.variantid[0]);
+                    quick_add.setAttribute('data-handle', api_product_data.id.split('/').pop());
                 }
 
                 const product_title = product.querySelector('.product-item__desc .product-item__title a');
