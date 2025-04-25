@@ -1,0 +1,284 @@
+const utils = optimizely.get('utils');
+
+const cards = `
+<div style="position: relative;">
+  <div class="card-container">       
+    <div class="card">
+      <svg width="65" height="64" viewBox="0 0 65 64" fill="none"
+        xmlns="http://www.w3.org/2000/svg">
+        <path d="M33.6665 17.5801H31.6665V50.0101H33.6665V17.5801Z" fill="#11003A" />
+        <path
+          d="M52.1265 51.0101H13.2065L12.2065 50.0101V17.5801L13.2065 16.5801H52.1165L53.1165 17.5801V50.0101L52.1165 51.0101H52.1265ZM14.2065 49.0101H51.1165V18.5801H14.2065V49.0101Z"
+          fill="#11003A" />
+        <path
+          d="M12.1366 16.5L1.71655 32.71H23.5266L32.6666 18.5L41.8066 32.71H63.6166L53.1966 16.5H12.1366Z"
+          fill="#F91010" />
+      </svg>
+      <p class="card-title">Documents, packages, and boxes</p>
+      <p class="card-subtitle">Print your own labels and schedule pickups so you don’t
+        have
+        to wait in line.</p>
+      <div class="btn-group">
+        <a href="https://registration.stamps.com/registration/" target=""
+          class="btn get-started-btn  ">Ship Today</a>
+      </div>
+    </div>
+    <div class="card">
+      <svg width="64" height="64" viewBox="0 0 64 64" fill="none"
+        xmlns="http://www.w3.org/2000/svg">
+        <path d="M59 50H37V48H57V6H7V48H27.02V50H5V4H59V50Z" fill="#11003A" />
+        <path d="M46 14.0898H18V16.0898H46V14.0898Z" fill="#11003A" />
+        <path
+          d="M36.44 59.9102L32 56.9002L27.56 59.9102L26 59.0802V39.7002L27 38.7002H37L38 39.7002V59.0802L36.44 59.9102ZM31.44 54.8702H32.56L36 57.2002V40.7002H28V57.2002L31.44 54.8702Z"
+          fill="#11003A" />
+        <path
+          d="M32 23L35.67 26.13L40.49 26.51L40.87 31.33L44 35L40.87 38.67L40.49 43.49L35.67 43.87L32 47L28.33 43.87L23.51 43.49L23.13 38.67L20 35L23.13 31.33L23.51 26.51L28.33 26.13L32 23Z"
+          fill="#F91010" />
+        <path
+          d="M32.65 47.7602H31.35L27.92 44.8402L23.43 44.4802L22.51 43.5602L22.15 39.0702L19.23 35.6402V34.3402L22.15 30.9102L22.51 26.4202L23.43 25.5002L27.92 25.1402L31.35 22.2202H32.65L36.08 25.1402L40.57 25.5002L41.49 26.4202L41.85 30.9102L44.77 34.3402V35.6402L41.85 39.0702L41.49 43.5602L40.57 44.4802L36.08 44.8402L32.65 47.7602ZM24.44 42.5602L28.4 42.8802L28.97 43.1202L32 45.7002L35.03 43.1202L35.6 42.8802L39.56 42.5602L39.88 38.6002L40.12 38.0302L42.7 35.0002L40.12 31.9702L39.88 31.4002L39.56 27.4402L35.6 27.1202L35.03 26.8802L32 24.3002L28.97 26.8802L28.4 27.1202L24.44 27.4402L24.12 31.4002L23.88 31.9702L21.3 35.0002L23.88 38.0302L24.12 38.6002L24.44 42.5602Z"
+          fill="#F91010" />
+      </svg>
+      <p class="card-title">Court orders, contracts, and letters</p>
+      <p class="card-subtitle">No handwriting. We make it easy to send important documents
+        with Certified Mail®.</p>
+      <div class="btn-group">
+        <a href="https://registration.stamps.com/registration/" target=""
+          class="btn get-started-btn  ">Start Sending</a>
+      </div>
+    </div>
+     <div class="card">
+      <svg width="65" height="64" viewBox="0 0 65 64" fill="none"
+        xmlns="http://www.w3.org/2000/svg">
+        <path
+          d="M32.3333 60C16.8933 60 4.33325 47.44 4.33325 32C4.33325 16.56 16.8933 4 32.3333 4C47.7733 4 60.3333 16.56 60.3333 32C60.3333 47.44 47.7733 60 32.3333 60ZM32.3333 6C17.9933 6 6.33325 17.66 6.33325 32C6.33325 46.34 17.9933 58 32.3333 58C46.6733 58 58.3333 46.34 58.3333 32C58.3333 17.66 46.6733 6 32.3333 6Z"
+          fill="#11003A" />
+        <path
+          d="M31.3333 49.9998V45.9998C31.3333 45.4498 30.8833 44.9998 30.3333 44.9998H26.6133L23.3333 42.0498V38.9998H25.3333V40.7098C25.3333 40.9898 25.4533 41.2598 25.6633 41.4498L27.0933 42.7398C27.2733 42.9098 27.5133 42.9998 27.7633 42.9998H36.8933C37.1433 42.9998 37.3833 42.9098 37.5633 42.7398L38.9933 41.4498C39.2033 41.2598 39.3233 40.9898 39.3233 40.7098V35.2898C39.3233 35.0098 39.2033 34.7398 38.9933 34.5498L37.5633 33.2598C37.3833 33.0898 37.1433 32.9998 36.8933 32.9998H26.6133L23.3333 30.0498V21.9598L26.6133 19.0098H30.3333C30.8833 19.0098 31.3333 18.5598 31.3333 18.0098V14.0098H33.3333V18.0098C33.3333 18.5598 33.7833 19.0098 34.3333 19.0098H38.0533L41.3333 21.9598V25.0098H39.3333V23.2998C39.3333 23.0198 39.2133 22.7498 39.0033 22.5598L37.5733 21.2698C37.3933 21.0998 37.1533 21.0098 36.9033 21.0098H27.7733C27.5233 21.0098 27.2833 21.0998 27.1033 21.2698L25.6733 22.5598C25.4633 22.7498 25.3433 23.0198 25.3433 23.2998V28.7198C25.3433 28.9998 25.4633 29.2698 25.6733 29.4598L27.1033 30.7498C27.2833 30.9198 27.5233 31.0098 27.7733 31.0098H38.0533L41.3333 33.9598V42.0498L38.0533 44.9998H34.3333C33.7833 44.9998 33.3333 45.4498 33.3333 45.9998V49.9998H31.3333Z"
+          fill="#F91010" />
+        <path
+          d="M33.3333 50.9998H31.3333L30.3333 49.9998V45.9998H26.6133L25.9433 45.7398L22.6633 42.7898L22.3333 42.0498V38.9998L23.3333 37.9998H25.3333L26.3333 38.9998V40.7098L27.7633 41.9998H36.8933L38.3233 40.7098V35.2898L36.8933 33.9998H26.6133L25.9433 33.7398L22.6633 30.7898L22.3333 30.0498V21.9598L22.6633 21.2198L25.9433 18.2698L26.6133 18.0098H30.3333V14.0098L31.3333 13.0098H33.3333L34.3333 14.0098V18.0098H38.0533L38.7233 18.2698L42.0033 21.2198L42.3333 21.9598V25.0098L41.3333 26.0098H39.3333L38.3333 25.0098V23.2998L36.9033 22.0098H27.7733L26.3433 23.2998V28.7198L27.7733 30.0098H38.0533L38.7233 30.2698L42.0033 33.2198L42.3333 33.9598V42.0498L42.0033 42.7898L38.7233 45.7398L38.0533 45.9998H34.3333V49.9998L33.3333 50.9998ZM27.0033 43.9998H30.3333C31.4333 43.9998 32.3333 44.8998 32.3333 45.9998C32.3333 44.8998 33.2333 43.9998 34.3333 43.9998H27.7633C27.2633 43.9998 26.7933 43.8198 26.4233 43.4898L25.2733 42.4598L26.9933 44.0098L27.0033 43.9998ZM36.9033 43.9998H37.6733L39.3733 42.4698L38.2433 43.4798C37.8733 43.8098 37.4033 43.9898 36.9033 43.9898V43.9998ZM24.3333 41.5998L24.9833 42.1798C24.5733 41.7998 24.3333 41.2698 24.3333 40.7098V41.5998ZM40.3333 40.7098C40.3333 41.2698 40.0933 41.8098 39.6833 42.1798L40.3333 41.5998V40.7098ZM39.6833 33.8198C40.0933 34.1998 40.3333 34.7298 40.3333 35.2898V34.3998L39.6833 33.8198ZM27.0033 31.9998H36.9033C37.4033 31.9998 37.8733 32.1798 38.2433 32.5098L39.3933 33.5398L37.6733 31.9898H27.7733C27.2733 31.9898 26.8033 31.8098 26.4333 31.4798L25.2833 30.4498L27.0033 31.9998ZM24.3333 29.5998L24.9833 30.1798C24.5733 29.7998 24.3333 29.2698 24.3333 28.7098V29.5998ZM40.3333 23.9998V22.3998L39.6833 21.8198C40.0933 22.1998 40.3333 22.7298 40.3333 23.2898V23.9998ZM24.3333 22.3998V23.2898C24.3333 22.7298 24.5733 22.1898 24.9833 21.8198L24.3333 22.3998ZM36.9033 19.9998C37.4033 19.9998 37.8733 20.1798 38.2433 20.5098L39.3933 21.5398L37.6733 19.9898H36.9033V19.9998ZM27.0033 19.9998L25.3033 21.5298L26.4333 20.5198C26.8033 20.1898 27.2733 20.0098 27.7733 20.0098H27.0033V19.9998ZM30.3333 19.9998H34.3333C33.2333 19.9998 32.3333 19.0998 32.3333 17.9998C32.3333 19.0998 31.4333 19.9998 30.3333 19.9998Z"
+          fill="#F91010" />
+      </svg>
+      <p class="card-title">Invoices, checks, and statements</p>
+      <p class="card-subtitle">Print postage directly on envelopes to send the items that
+        keep your business running.</p>
+      <div class="btn-group">
+        <a href="https://registration.stamps.com/registration/" target=""
+          class="btn get-started-btn  ">Print Now</a>
+      </div>
+    </div>
+  </div>
+
+  <style>
+    .hero-block {top: 40px;}
+    .hero-block .container .hero .hero-content {
+      gap: 2rem;
+      color: #fff;
+    }
+
+    .hero-content h1 {
+      font-weight: 600;
+      font-size: 64px;
+      line-height: 4.2rem;
+      color: #fff;
+    }
+
+    .block-hero::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 80%;
+      height: 100%;
+      background: linear-gradient(to right, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0));
+    }
+
+    .block-hero {
+      position: relative;
+      background-image: url("//cdn.optimizely.com/img/23755770403/fe9b6f310bbe4d7f8155e21393fd684f.jpg");
+      background-size: 130%;
+      height: 600px;
+      background-position: 0% 35%;
+    }
+
+    .block-hero a {
+      font-weight: 600;
+      font-size: 18px;
+      line-height: 16px;
+    }
+
+    .block-hero > div:first-child {
+      margin-top: 30px !important;
+    }
+
+    .hero .hero-media {
+      display: none;
+    }
+    
+    .hero .btn-group {
+    	max-width: 33rem;
+    }
+    
+    .hero #hero-email-form {
+    	max-width: 33rem;
+    }
+    
+    .hero #hero-email-input {
+    	border-radius: 100px;
+      border: 2px solid grey-20;
+      background: #FFF;
+      color: #11003A;
+      font-family: Figtree;
+      font-size: 20px;
+      font-style: normal;
+      font-weight: 500;
+      line-height: 32px; /* 160% */
+    }
+    
+    .hero #email-get-started {
+    	position: absolute;
+    	top: 32px;
+			right: 12px;
+    }
+
+    .card-container {
+      display: flex;
+      position: absolute;
+      top: 70px;
+      gap: 35px;
+      width: 100%;
+      justify-content: center;
+    }
+
+    .card {
+      background-color: white;
+      max-width: 400px;
+      border-radius: 10px;
+      padding: 20px;
+      border: 2px solid #E5E5E3;
+    }
+
+    .card p {
+      margin: 15px 0;
+    }
+
+    .card-title {
+      font-weight: 600;
+      font-size: 24px;
+      line-height: 25.2px;
+      color: #11003A
+    }
+
+    .card-subtitle {
+      font-weight: 400;
+      font-size: 18px;
+      line-height: 28px;
+      color: #11003A
+    }
+
+    .block.padding-top--lg {
+      padding-top: 43rem;
+    }
+
+    @media (min-width: 769px) {
+      .block.padding-top--lg {
+        padding-top: 15rem;
+      }
+    }
+
+    @media screen and (max-width: 768px) {
+      .hero-block {top: 0;}
+      .hero-content {
+        text-align: center !important;
+      }
+      .hero-content h1 {
+        font-size: 48px;
+        line-height: 50.4px;
+      }
+
+      div.lead p, div.lead strong {
+        font-size: 22px;
+      }
+
+      .block-hero {
+        height: 900px;
+        background-size: 940px;
+        background-position: 50% 0%;
+        background-image: url("//cdn.optimizely.com/img/23755770403/cff5481bc7e8421086b8c9a24ae20c1e.png")
+      }
+
+      .block-hero::before {
+        content: "";
+        position: absolute;
+        width: 100%;
+        height: 80%;
+        background: linear-gradient(to bottom, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0));
+      }
+
+      .block-hero a {
+        width: fit-content;
+      }
+      
+      .hero #email-get-started {
+    		position: unset;
+    		top: unset;
+				right: unset;
+    	}
+
+      .hero-content .btn-group {
+        align-items: center;
+        align-self: center;
+      }
+
+      .card-container {
+        flex-direction: column;
+        top: 250px;
+        align-items: center;
+      }
+
+      .card {
+        max-width: 95%;
+      }
+
+      .card-title {
+        font-weight: 600;
+        font-size: 19.36px;
+        line-height: 20.33px;
+      }
+
+      .card-subtitle {
+        font-weight: 400;
+        font-size: 14.52px;
+        line-height: 22.59px;
+      }
+
+      .card .btn-group {
+        width: fit-content;
+        font-weight: 600;
+        font-size: 14.52px;
+      }
+    }
+  </style>
+</div>
+`;
+
+utils.waitForElement('.block-hero').then(function (hero) {
+  hero.insertAdjacentHTML('beforeend', cards);
+});
+
+document.addEventListener('DOMContentLoaded', function () {
+  const form = document.getElementById('hero-email-form');
+  const emailInput = document.getElementById('hero-email-input');
+
+  form.addEventListener('submit', function (event) {
+    event.preventDefault(); // Prevent form from submitting normally
+
+    const email = encodeURIComponent(emailInput.value.trim());
+    if (email) {
+      const redirectUrl = `https://registration.stamps.com/registration/?email=${email}`;
+      window.location.href = redirectUrl;
+    } else {
+      alert('Please enter a valid email address.');
+    }
+  });
+});
