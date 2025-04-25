@@ -266,6 +266,14 @@ utils.waitForElement('.block-hero').then(function (hero) {
     hero.insertAdjacentHTML('beforeend', cards);
 });
 
+utils.waitForElement('.block-hero .hero-block .hero-content .btn-group').then(function (hero_btn) {
+    hero_btn.style.display = 'none';
+    hero_btn.insertAdjacentHTML("afterend", `                    <form id="hero-email-form" class="relative">
+                        <input type="email" id="hero-email-input" placeholder="Your email" />
+                        <button id="email-get-started" class="btn">Ship Today</button>
+                    </form>`);
+});
+
 document.addEventListener('DOMContentLoaded', function () {
     const form = document.getElementById('hero-email-form');
     const emailInput = document.getElementById('hero-email-input');
