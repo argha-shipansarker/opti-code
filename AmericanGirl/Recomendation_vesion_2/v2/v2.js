@@ -5,6 +5,7 @@ utils.waitForElement('#productRecommendations #productRecommendationsCarousel .j
     console.warn("TESTING rec items", sliderSection);
 
     let api_products = null
+    let api_filtered_products_without_bun = []
 
     let count = 0;
 
@@ -26,7 +27,7 @@ utils.waitForElement('#productRecommendations #productRecommendationsCarousel .j
                         algorithm: "LOOK_ALIKE"
                     }],
                     filters: ["IN_STOCK", "SAME_CATEGORY", "BOUGHT"],
-                    count: 4
+                    count: 8
                 }
             ],
             frequencyCap: 1000
@@ -58,12 +59,26 @@ utils.waitForElement('#productRecommendations #productRecommendationsCarousel .j
                 SDG.Data.flickityInstance.remove(document.querySelectorAll('#productRecommendations #productRecommendationsCarousel .js-carousel-flickity article:nth-child(n+5)'));
             }
 
+            api_filtered_products_without_bun = api_products.filter(item => {
+                if (
+                    item &&
+                    item.customProperties &&
+                    Array.isArray(item.customProperties.sku) &&
+                    item.customProperties.sku.length > 0
+                ) {
+                    return !item.customProperties.sku[0].includes('BUN');
+                }
+                return true; // keep it if sku doesn't exist or is empty
+            })
+
+            console.warn("api_filtered_products_without_bun", api_filtered_products_without_bun)
+
             utils.observeSelector(`#productRecommendations #productRecommendationsCarousel .js-carousel-flickity article`, function (product) {
 
                 let api_product_data = null;
 
-                if (count < api_products.length) {
-                    api_product_data = api_products[count];
+                if (count < api_filtered_products_without_bun.length) {
+                    api_product_data = api_filtered_products_without_bun[count];
                 }
 
                 if (api_product_data && api_product_data.customProperties.variantid && api_product_data.customProperties.variantid.length && api_product_data.customProperties.price && api_product_data.customProperties.price.length && api_product_data.id && product.querySelector('.product-item__quick-shop .js-quick-add-trigger')) {

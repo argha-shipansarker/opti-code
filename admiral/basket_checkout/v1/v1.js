@@ -12,8 +12,15 @@ function handleUpdateSessionStorage_Cover_Page(cover_element) {
     session_storage_variable.cover_name = cover_name.innerText;
     let cover_image = cover_element.querySelector('.adm-cover-level-footer__logo img');
     session_storage_variable.cover_image = cover_image.getAttribute('src');
-    let cover_price = cover_element.querySelector('adm-cover-level-footer-price');
-    session_storage_variable.cover_price = cover_price.innerText;
+
+    if (cover_element.querySelector('.adm-cover-level-footer__total-inner')) {
+        //this is when the value is calculated in months
+        let cover_price = cover_element.querySelector('.adm-cover-level-footer__total-inner');
+        session_storage_variable.cover_price = cover_price.innerText.split(' ')[0];
+    } else {
+        let cover_price = cover_element.querySelector('adm-cover-level-footer-price');
+        session_storage_variable.cover_price = cover_price.innerText;
+    }
 
     let cover_benefit_list = {};
 
@@ -63,14 +70,37 @@ function handleUpdateSessionStorage_Cover_Page(cover_element) {
 }
 
 function handleUpdateSessionStorage_Quote_Page() {
+
+    const cover_image_mapping = {
+        admiral: "/eui-cq-assets/helm/images/brands/admiral/cover-levels/admiral-level.svg",
+        essential: "/eui-cq-assets/helm/images/brands/admiral/cover-levels/essential-level.svg",
+        gold: "/eui-cq-assets/helm/images/brands/admiral/cover-levels/gold-level.svg",
+        platinum: "/eui-cq-assets/helm/images/brands/admiral/cover-levels/platinum-level.svg"
+    }
+
     let session_storage_variable = {};
 
     if (sessionStorage.getItem('opti-cover-info')) {
         session_storage_variable = JSON.parse(sessionStorage.getItem('opti-cover-info'));
     }
 
-    let cover_price = document.querySelector('eui-quote adm-quote-hero-price-total');
-    session_storage_variable.cover_price = cover_price.innerText;
+    if (document.querySelector('eui-quote adm-quote-hero-price-terms strong')) {
+        //this is when the value is calculated in months
+        let cover_price = document.querySelector('eui-quote adm-quote-hero-price-terms strong');
+        session_storage_variable.cover_price = cover_price.innerText;
+    } else {
+        let cover_price = document.querySelector('eui-quote adm-quote-hero-price-total');
+        session_storage_variable.cover_price = cover_price.innerText;
+    }
+
+    if (!session_storage_variable.cover_name) {
+        console.warn('picking from dom');
+        const cove_name_node = document.querySelector('eui-quote adm-card[data-test="cover-summary"] .adm-details__title-text');
+        if (cove_name_node) {
+            session_storage_variable.cover_name = cove_name_node.innerText.trim().toLowerCase();
+            session_storage_variable.cover_image = cover_image_mapping[session_storage_variable.cover_name];
+        }
+    }
 
     const all_added_upgrades = document.querySelectorAll('eui-quote eui-motor-optional-upgrades-section adm-card[data-test="optional-upgrades-card"] adm-card-section[data-test="added-ancillary"] adm-details-title[data-test="added-ancillary-name"] span');
 
