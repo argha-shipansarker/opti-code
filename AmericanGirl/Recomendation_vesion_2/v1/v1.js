@@ -82,7 +82,7 @@ utils.waitForElement('#productRecommendations #productRecommendationsCarousel .j
                 ) {
                     return !item.customProperties.sku[0].includes('BUN');
                 }
-                return true; // keep it if sku doesn't exist or is empty
+                return false; // keep it if sku doesn't exist or is empty
             })
 
             console.warn("api_filtered_products_without_bun", api_filtered_products_without_bun)
