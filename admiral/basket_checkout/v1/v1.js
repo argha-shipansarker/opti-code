@@ -130,7 +130,7 @@ function handleUpdateSessionStorage_Quote_Page() {
     if (personalDetails) {
         session_storage_variable.level_of_cover = personalDetails.levelOfCover;
         session_storage_variable.number_of_driver = personalDetails.noOfDrivers;
-        session_storage_variable.driver_name = personalDetails.driver1name;
+        session_storage_variable.driver_name = JSON.parse(JSON.stringify(personalDetails.driver1name));
     }
 
     if (session_storage_variable.driver_name && document.querySelector('eui-quote .adm-driver-ncb__content-years')) {
