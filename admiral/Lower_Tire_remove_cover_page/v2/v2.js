@@ -1,11 +1,20 @@
 const utils = optimizely.get('utils');
 
-utils.observeSelector('eui-motor-tiers-table adm-wrap:nth-of-type(2) .adm-wrap__content', function (table_div) {
-    table_div.insertAdjacentHTML("afterend", `<div class="opti-cover-design">
+if (window.location.pathname == '/Admiral/cover' && sessionStorage.getItem('opti-landing-tier')) {
+    const opti_landing_tier = JSON.parse(sessionStorage.getItem('opti-landing-tier'));
+    console.warn("opti_landing_tier", opti_landing_tier)
+
+    if (opti_landing_tier == "essential") {
+        utils.observeSelector('eui-motor-tiers-table adm-wrap:nth-of-type(2) .adm-wrap__content', function (table_div) {
+
+            // table_div.style.display = "none";
+
+            if (!document.querySelector('.opti-cover-design')) {
+                table_div.insertAdjacentHTML("afterend", `<div class="opti-cover-design">
     <style>
         .opti-cover-design .essential-cover,
         .opti-cover-design .admiral-cover {
-            width: 640px;
+            max-width: 640px;
             border: 1px solid #CED9E5;
         }
 
@@ -17,7 +26,7 @@ utils.observeSelector('eui-motor-tiers-table adm-wrap:nth-of-type(2) .adm-wrap__
             padding: 17px 16px 18px;
             color: #FFFFFF;
             display: flex;
-            align-items: center;
+            align-items: start;
         }
 
         .opti-cover-design .essential-cover .cover-head {
@@ -64,16 +73,17 @@ utils.observeSelector('eui-motor-tiers-table adm-wrap:nth-of-type(2) .adm-wrap__
             margin-bottom: 0;
         }
 
-        .opti-cover-design .admiral-cover .cover-body .cover-benefits.last-benefit svg {
-            flex-basis: 6.9%;
-        }
-
         .opti-cover-design .cover-body .cover-benefits p {
             font-size: 16px;
             line-height: 24px;
             font-weight: 700;
             color: #444444;
             margin-left: 9px;
+        }
+
+        .opti-cover-design .cover-body .cover-benefits div {
+            height: 20px;
+            width: 20px;
         }
 
         .opti-cover-design .cover-footer {
@@ -86,8 +96,13 @@ utils.observeSelector('eui-motor-tiers-table adm-wrap:nth-of-type(2) .adm-wrap__
             gap: 29.5px;
         }
 
-        .opti-cover-design .cover-footer .price-selection-section .price-section {
+        .opti-cover-design .cover-footer .price-selection-section .price-insurance-section {
+            display: flex;
+            flex-direction: column;
             flex-basis: 47%;
+        }
+
+        .opti-cover-design .cover-footer .price-selection-section .price-section {
             display: flex;
             align-items: center;
             justify-content: space-between;
@@ -109,6 +124,19 @@ utils.observeSelector('eui-motor-tiers-table adm-wrap:nth-of-type(2) .adm-wrap__
         .opti-cover-design .cover-footer .price-selection-section .price-section img {
             height: 44px;
             width: 87.5px;
+        }
+
+        .opti-cover-design .cover-footer .price-selection-section .insurance-section {
+            display: flex;
+            align-items: center;
+            margin-top: 4px;
+        }
+
+        .opti-cover-design .cover-footer .price-selection-section .insurance-section a {
+            font-size: 12px;
+            line-height: 21px;
+            font-weight: 400;
+            margin-left: 10px;
         }
 
         .opti-cover-design .cover-footer .price-selection-section .selection-section {
@@ -176,71 +204,120 @@ utils.observeSelector('eui-motor-tiers-table adm-wrap:nth-of-type(2) .adm-wrap__
         .opti-cover-design .cover-footer .price-selection-section .selection-section input[type="radio"]:checked+.radio-label .radio-icon::after {
             background-color: #0A8A19;
         }
+
+        @media (max-width: 650px) {
+            .opti-cover-design {
+                padding: 0 20px;
+            }
+
+            .opti-cover-design .cover-head {
+                padding: 13px 14px 11px 16px;
+            }
+
+            .opti-cover-design .cover-head p {
+                font-size: 16px;
+                line-height: 24px;
+                margin-left: 9px;
+            }
+
+            .opti-cover-design .cover-head div,
+            .opti-cover-design .cover-head div svg {
+                height: 20px;
+                width: 20px;
+            }
+
+            .opti-cover-design .cover-body {
+                padding: 16px;
+            }
+
+            .opti-cover-design .cover-footer {
+                padding: 0 16px 16px;
+            }
+
+            .opti-cover-design .cover-footer .price-selection-section {
+                flex-direction: column;
+                gap: 5px;
+            }
+        }
     </style>
 
     <div class="essential-cover">
         <div class="cover-head">
-            <svg width="36" height="36" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path
-                    d="M18 1.5L4.5 7.5V16.5C4.5 24.825 10.26 32.61 18 34.5C25.74 32.61 31.5 24.825 31.5 16.5V7.5L18 1.5ZM15 25.5L9 19.5L11.115 17.385L15 21.255L24.885 11.37L27 13.5L15 25.5Z"
-                    fill="white" />
-            </svg>
+            <div>
+                <svg width="36" height="36" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path
+                        d="M18 1.5L4.5 7.5V16.5C4.5 24.825 10.26 32.61 18 34.5C25.74 32.61 31.5 24.825 31.5 16.5V7.5L18 1.5ZM15 25.5L9 19.5L11.115 17.385L15 21.255L24.885 11.37L27 13.5L15 25.5Z"
+                        fill="white" />
+                </svg>
+            </div>
             <p>You’ve selected Essential cover</p>
         </div>
 
         <div class="cover-body">
             <p class="heading-message">Cover includes:</p>
             <div class="cover-benefits">
-                <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path
-                        d="M7.50001 13.4751L4.02501 10.0001L2.84167 11.1751L7.50001 15.8334L17.5 5.83345L16.325 4.65845L7.50001 13.4751Z"
-                        fill="#41A5F5" />
-                </svg>
+                <div>
+                    <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path
+                            d="M7.50001 13.4751L4.02501 10.0001L2.84167 11.1751L7.50001 15.8334L17.5 5.83345L16.325 4.65845L7.50001 13.4751Z"
+                            fill="#41A5F5" />
+                    </svg>
+                </div>
                 <p>Courtesy Car</p>
             </div>
 
             <div class="cover-benefits">
-                <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path
-                        d="M7.50001 13.4751L4.02501 10.0001L2.84167 11.1751L7.50001 15.8334L17.5 5.83345L16.325 4.65845L7.50001 13.4751Z"
-                        fill="#41A5F5" />
-                </svg>
+                <div>
+                    <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path
+                            d="M7.50001 13.4751L4.02501 10.0001L2.84167 11.1751L7.50001 15.8334L17.5 5.83345L16.325 4.65845L7.50001 13.4751Z"
+                            fill="#41A5F5" />
+                    </svg>
+                </div>
                 <p>Personal Injury Cover up to £5,000</p>
             </div>
 
             <div class="cover-benefits">
-                <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path
-                        d="M7.50001 13.4751L4.02501 10.0001L2.84167 11.1751L7.50001 15.8334L17.5 5.83345L16.325 4.65845L7.50001 13.4751Z"
-                        fill="#41A5F5" />
-                </svg>
+                <div>
+                    <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path
+                            d="M7.50001 13.4751L4.02501 10.0001L2.84167 11.1751L7.50001 15.8334L17.5 5.83345L16.325 4.65845L7.50001 13.4751Z"
+                            fill="#41A5F5" />
+                    </svg>
+                </div>
                 <p>Uninsured driver promise</p>
             </div>
 
             <div class="cover-benefits">
-                <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path
-                        d="M7.50001 13.4751L4.02501 10.0001L2.84167 11.1751L7.50001 15.8334L17.5 5.83345L16.325 4.65845L7.50001 13.4751Z"
-                        fill="#41A5F5" />
-                </svg>
+                <div>
+                    <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path
+                            d="M7.50001 13.4751L4.02501 10.0001L2.84167 11.1751L7.50001 15.8334L17.5 5.83345L16.325 4.65845L7.50001 13.4751Z"
+                            fill="#41A5F5" />
+                    </svg>
+                </div>
                 <p>Up to £300 towards the cost of replacing the locks</p>
             </div>
 
             <div class="cover-benefits">
-                <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path
-                        d="M15.8333 5.34175L14.6583 4.16675L9.99999 8.82508L5.34166 4.16675L4.16666 5.34175L8.82499 10.0001L4.16666 14.6584L5.34166 15.8334L9.99999 11.1751L14.6583 15.8334L15.8333 14.6584L11.175 10.0001L15.8333 5.34175Z"
-                        fill="#CC0033" />
-                </svg>
+                <div>
+                    <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path
+                            d="M15.8333 5.34175L14.6583 4.16675L9.99999 8.82508L5.34166 4.16675L4.16666 5.34175L8.82499 10.0001L4.16666 14.6584L5.34166 15.8334L9.99999 11.1751L14.6583 15.8334L15.8333 14.6584L11.175 10.0001L15.8333 5.34175Z"
+                            fill="#CC0033" />
+                    </svg>
+                </div>
                 <p>No Windscreen cover</p>
             </div>
 
             <div class="cover-benefits last-benefit">
-                <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path
-                        d="M15.8333 5.34175L14.6583 4.16675L9.99999 8.82508L5.34166 4.16675L4.16666 5.34175L8.82499 10.0001L4.16666 14.6584L5.34166 15.8334L9.99999 11.1751L14.6583 15.8334L15.8333 14.6584L11.175 10.0001L15.8333 5.34175Z"
-                        fill="#CC0033" />
-                </svg>
+                <div>
+                    <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path
+                            d="M15.8333 5.34175L14.6583 4.16675L9.99999 8.82508L5.34166 4.16675L4.16666 5.34175L8.82499 10.0001L4.16666 14.6584L5.34166 15.8334L9.99999 11.1751L14.6583 15.8334L15.8333 14.6584L11.175 10.0001L15.8333 5.34175Z"
+                            fill="#CC0033" />
+                    </svg>
+                </div>
                 <p>No cover whilst driving other cars
                     <span style="font-size: 14px; line-height: 21px; font-weight: 400; display: block;">
                         John Jones will
@@ -254,14 +331,26 @@ utils.observeSelector('eui-motor-tiers-table adm-wrap:nth-of-type(2) .adm-wrap__
 
         <div class="cover-footer">
             <div class="price-selection-section">
-                <div class="price-section">
-                    <p>£29.99 <span>month</span></p>
-                    <img src="/eui-cq-assets/helm/images/brands/admiral/logos/tiers/essential.svg"
-                        alt="essential-image">
+                <div class="price-insurance-section">
+                    <div class="price-section">
+                        <p>${document.querySelector('#ESSENTIAL-col-footer .adm-control-radio__title strong').innerText} <span>${document.querySelector('#ESSENTIAL-col-footer small').innerText == "total" ? "total" : "month"}</span></p>
+                        <img src="/eui-cq-assets/helm/images/brands/admiral/logos/tiers/essential.svg"
+                            alt="essential-image">
+                    </div>
+                    <div class="insurance-section">
+                        <svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path
+                                d="M4.5 1.5C3.675 1.5 3.0075 2.175 3.0075 3L3 15C3 15.825 3.6675 16.5 4.4925 16.5H13.5C14.325 16.5 15 15.825 15 15V6L10.5 1.5H4.5ZM9.75 6.75V2.625L13.875 6.75H9.75Z"
+                                fill="#41A5F5" />
+                        </svg>
+                        <a
+                            href="https://mktgblobpubaccess0.blob.core.windows.net/eui-pdf-assets/admiral/IP-MO-2-005.pdf">Insurance
+                            Product Information Document</a>
+                    </div>
                 </div>
                 <div class="selection-section">
                     <label>
-                        <input checked type="radio" name="cover-choice" id="essential-cover" value="essential">
+                        <input type="radio" name="cover-choice" id="essential-cover" value="essential">
                         <span class="radio-label">
                             <span class="radio-icon"></span>
                             <span class="radio-text">Selected level of cover</span>
@@ -274,58 +363,70 @@ utils.observeSelector('eui-motor-tiers-table adm-wrap:nth-of-type(2) .adm-wrap__
 
     <div class="admiral-cover">
         <div class="cover-head">
-            <svg width="36" height="36" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path fill-rule="evenodd" clip-rule="evenodd"
-                    d="M4.5 7.5L18 1.5L31.5 7.5V16.5C31.5 24.825 25.74 32.61 18 34.5C10.26 32.61 4.5 24.825 4.5 16.5V7.5ZM25.5 19.5H19.5V25.5H16.5V19.5H10.5V16.5H16.5V10.5H19.5V16.5H25.5V19.5Z"
-                    fill="white" />
-            </svg>
+            <div>
+                <svg width="36" height="36" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path fill-rule="evenodd" clip-rule="evenodd"
+                        d="M4.5 7.5L18 1.5L31.5 7.5V16.5C31.5 24.825 25.74 32.61 18 34.5C10.26 32.61 4.5 24.825 4.5 16.5V7.5ZM25.5 19.5H19.5V25.5H16.5V19.5H10.5V16.5H16.5V10.5H19.5V16.5H25.5V19.5Z"
+                        fill="white" />
+                </svg>
+            </div>
             <p>Upgrade to Admiral cover <span>for an extra</span> £4.56 <span>month</span></p>
         </div>
 
         <div class="cover-body">
             <p class="heading-message">Cover includes all the benefits of Essential cover, plus:</p>
             <div class="cover-benefits">
-                <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path
-                        d="M7.50001 13.4751L4.02501 10.0001L2.84167 11.1751L7.50001 15.8334L17.5 5.83345L16.325 4.65845L7.50001 13.4751Z"
-                        fill="#41A5F5" />
-                </svg>
+                <div>
+                    <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path
+                            d="M7.50001 13.4751L4.02501 10.0001L2.84167 11.1751L7.50001 15.8334L17.5 5.83345L16.325 4.65845L7.50001 13.4751Z"
+                            fill="#41A5F5" />
+                    </svg>
+                </div>
                 <p>Windscreen Cover</p>
             </div>
 
             <div class="cover-benefits">
-                <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path
-                        d="M7.50001 13.4751L4.02501 10.0001L2.84167 11.1751L7.50001 15.8334L17.5 5.83345L16.325 4.65845L7.50001 13.4751Z"
-                        fill="#41A5F5" />
-                </svg>
+                <div>
+                    <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path
+                            d="M7.50001 13.4751L4.02501 10.0001L2.84167 11.1751L7.50001 15.8334L17.5 5.83345L16.325 4.65845L7.50001 13.4751Z"
+                            fill="#41A5F5" />
+                    </svg>
+                </div>
                 <p>European Cover</p>
             </div>
 
             <div class="cover-benefits">
-                <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path
-                        d="M7.50001 13.4751L4.02501 10.0001L2.84167 11.1751L7.50001 15.8334L17.5 5.83345L16.325 4.65845L7.50001 13.4751Z"
-                        fill="#41A5F5" />
-                </svg>
+                <div>
+                    <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path
+                            d="M7.50001 13.4751L4.02501 10.0001L2.84167 11.1751L7.50001 15.8334L17.5 5.83345L16.325 4.65845L7.50001 13.4751Z"
+                            fill="#41A5F5" />
+                    </svg>
+                </div>
                 <p>New vehicle replacement (subject to criteria)</p>
             </div>
 
             <div class="cover-benefits">
-                <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path
-                        d="M7.50001 13.4751L4.02501 10.0001L2.84167 11.1751L7.50001 15.8334L17.5 5.83345L16.325 4.65845L7.50001 13.4751Z"
-                        fill="#41A5F5" />
-                </svg>
+                <div>
+                    <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path
+                            d="M7.50001 13.4751L4.02501 10.0001L2.84167 11.1751L7.50001 15.8334L17.5 5.83345L16.325 4.65845L7.50001 13.4751Z"
+                            fill="#41A5F5" />
+                    </svg>
+                </div>
                 <p>Personal Belongings cover up to £200</p>
             </div>
 
             <div class="cover-benefits last-benefit">
-                <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path
-                        d="M7.50001 13.4751L4.02501 10.0001L2.84167 11.1751L7.50001 15.8334L17.5 5.83345L16.325 4.65845L7.50001 13.4751Z"
-                        fill="#41A5F5" />
-                </svg>
+                <div>
+                    <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path
+                            d="M7.50001 13.4751L4.02501 10.0001L2.84167 11.1751L7.50001 15.8334L17.5 5.83345L16.325 4.65845L7.50001 13.4751Z"
+                            fill="#41A5F5" />
+                    </svg>
+                </div>
                 <p>Cover whilst driving other cars
                     <span style="font-size: 14px; line-height: 21px; font-weight: 400; display: block;">
                         Third Party only cover for Barry Jones whilst driving privately insured cars – with the owner’s
@@ -337,9 +438,22 @@ utils.observeSelector('eui-motor-tiers-table adm-wrap:nth-of-type(2) .adm-wrap__
 
         <div class="cover-footer">
             <div class="price-selection-section">
-                <div class="price-section">
-                    <p>£34.56 <span>month</span></p>
-                    <img src="/eui-cq-assets/helm/images/brands/admiral/logos/tiers/admiral.svg" alt="admiral-image">
+                <div class="price-insurance-section">
+                    <div class="price-section">
+                        <p>${document.querySelector('#ADMIRAL-col-footer .adm-control-radio__title strong').innerText} <span>${document.querySelector('#ADMIRAL-col-footer small').innerText == "total" ? "total" : "month"}</span></p>
+                        <img src="/eui-cq-assets/helm/images/brands/admiral/logos/tiers/admiral.svg"
+                            alt="admiral-image">
+                    </div>
+                    <div class="insurance-section">
+                        <svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path
+                                d="M4.5 1.5C3.675 1.5 3.0075 2.175 3.0075 3L3 15C3 15.825 3.6675 16.5 4.4925 16.5H13.5C14.325 16.5 15 15.825 15 15V6L10.5 1.5H4.5ZM9.75 6.75V2.625L13.875 6.75H9.75Z"
+                                fill="#41A5F5" />
+                        </svg>
+                        <a
+                            href="https://mktgblobpubaccess0.blob.core.windows.net/eui-pdf-assets/admiral/IP-MO-2-005.pdf">Insurance
+                            Product Information Document</a>
+                    </div>
                 </div>
                 <div class="selection-section">
                     <label>
@@ -354,4 +468,23 @@ utils.observeSelector('eui-motor-tiers-table adm-wrap:nth-of-type(2) .adm-wrap__
         </div>
     </div>
 </div>`)
-});
+            }
+
+            if (document.querySelector('#essential-cover') && document.querySelector('#admiral-cover')) {
+                if (document.querySelector('.adm-control-table__col-header--admiral.selected')) {
+                    document.querySelector('#admiral-cover').checked = true
+                } else if (document.querySelector('.adm-control-table__col-header--essential.selected')) {
+                    document.querySelector('#essential-cover').checked = true
+                }
+
+                document.querySelector('#essential-cover').addEventListener('click', function () {
+                    document.querySelector('.adm-control-table__col-header--essential').click();
+                })
+
+                document.querySelector('#admiral-cover').addEventListener('click', function () {
+                    document.querySelector('.adm-control-table__col-header--admiral').click();
+                })
+            }
+        });
+    }
+}
