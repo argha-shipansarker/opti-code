@@ -1,0 +1,357 @@
+const utils = optimizely.get('utils');
+
+utils.observeSelector('eui-motor-tiers-table adm-wrap:nth-of-type(2) .adm-wrap__content', function (table_div) {
+    table_div.insertAdjacentHTML("afterend", `<div class="opti-cover-design">
+    <style>
+        .opti-cover-design .essential-cover,
+        .opti-cover-design .admiral-cover {
+            width: 640px;
+            border: 1px solid #CED9E5;
+        }
+
+        .opti-cover-design .admiral-cover {
+            margin-top: 27px;
+        }
+
+        .opti-cover-design .cover-head {
+            padding: 17px 16px 18px;
+            color: #FFFFFF;
+            display: flex;
+            align-items: center;
+        }
+
+        .opti-cover-design .essential-cover .cover-head {
+            background-color: #C20060;
+        }
+
+        .opti-cover-design .admiral-cover .cover-head {
+            background-color: #25469B;
+        }
+
+        .opti-cover-design .cover-head p {
+            font-size: 24px;
+            line-height: 30px;
+            font-weight: 700;
+            margin-left: 6px;
+            margin-bottom: 0;
+        }
+
+        .opti-cover-design .cover-head p span {
+            font-weight: 400;
+        }
+
+
+        .opti-cover-design .cover-body {
+            padding: 20px;
+            background-color: #FFFFFF;
+        }
+
+        .opti-cover-design .cover-body .heading-message {
+            font-size: 16px;
+            line-height: 24px;
+            font-weight: 400;
+            margin-bottom: 11px;
+        }
+
+        .opti-cover-design .cover-body .cover-benefits {
+            display: flex;
+            align-items: center;
+            margin-bottom: 12px;
+        }
+
+        .opti-cover-design .cover-body .cover-benefits.last-benefit {
+            align-items: flex-start;
+            margin-bottom: 0;
+        }
+
+        .opti-cover-design .admiral-cover .cover-body .cover-benefits.last-benefit svg {
+            flex-basis: 6.9%;
+        }
+
+        .opti-cover-design .cover-body .cover-benefits p {
+            font-size: 16px;
+            line-height: 24px;
+            font-weight: 700;
+            color: #444444;
+            margin-left: 9px;
+        }
+
+        .opti-cover-design .cover-footer {
+            background-color: #FFFFFF;
+            padding: 0 25px 9px 17px;
+        }
+
+        .opti-cover-design .cover-footer .price-selection-section {
+            display: flex;
+            gap: 29.5px;
+        }
+
+        .opti-cover-design .cover-footer .price-selection-section .price-section {
+            flex-basis: 47%;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .opti-cover-design .cover-footer .price-selection-section .price-section p {
+            font-size: 24px;
+            line-height: 30px;
+            font-weight: 700;
+            margin-bottom: 0;
+        }
+
+        .opti-cover-design .cover-footer .price-selection-section .price-section p span {
+            font-size: 18px;
+            line-height: 24px;
+            font-weight: 400;
+        }
+
+        .opti-cover-design .cover-footer .price-selection-section .price-section img {
+            height: 44px;
+            width: 87.5px;
+        }
+
+        .opti-cover-design .cover-footer .price-selection-section .selection-section {
+            flex-basis: 50%;
+        }
+
+
+        .opti-cover-design .cover-footer .price-selection-section .selection-section input[type="radio"] {
+            display: none;
+        }
+
+        .opti-cover-design .cover-footer .price-selection-section .selection-section label {
+            padding: 12px;
+            border: 1px solid #CED9E5;
+            border-radius: 3px;
+            margin-bottom: 0;
+        }
+
+        .opti-cover-design .cover-footer .price-selection-section .selection-section .radio-label {
+            display: flex;
+            align-items: center;
+            cursor: pointer;
+        }
+
+        .opti-cover-design .cover-footer .price-selection-section .selection-section .radio-label .radio-text {
+            font-size: 16px;
+            line-height: 20px;
+            font-weight: 700;
+            color: #006DCC;
+        }
+
+        .opti-cover-design .cover-footer .price-selection-section .selection-section .radio-label .radio-icon {
+            width: 20px;
+            height: 20px;
+            border: 2px solid #006DCC;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 10px;
+            transition: border-color 0.3s ease;
+        }
+
+        .opti-cover-design .cover-footer .price-selection-section .selection-section .radio-label .radio-icon::after {
+            content: "";
+            width: 10px;
+            height: 10px;
+            background-color: transparent;
+            border-radius: 50%;
+            transition: background-color 0.3s ease;
+        }
+
+        .opti-cover-design .cover-footer .price-selection-section .selection-section label:has(input[type="radio"]:checked) {
+            border-color: #0A8A19;
+        }
+
+        .opti-cover-design .cover-footer .price-selection-section .selection-section input[type="radio"]:checked+.radio-label .radio-icon {
+            border-color: #0A8A19;
+        }
+
+        .opti-cover-design .cover-footer .price-selection-section .selection-section input[type="radio"]:checked+.radio-label .radio-text {
+            color: #0A8A19;
+        }
+
+        .opti-cover-design .cover-footer .price-selection-section .selection-section input[type="radio"]:checked+.radio-label .radio-icon::after {
+            background-color: #0A8A19;
+        }
+    </style>
+
+    <div class="essential-cover">
+        <div class="cover-head">
+            <svg width="36" height="36" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path
+                    d="M18 1.5L4.5 7.5V16.5C4.5 24.825 10.26 32.61 18 34.5C25.74 32.61 31.5 24.825 31.5 16.5V7.5L18 1.5ZM15 25.5L9 19.5L11.115 17.385L15 21.255L24.885 11.37L27 13.5L15 25.5Z"
+                    fill="white" />
+            </svg>
+            <p>You’ve selected Essential cover</p>
+        </div>
+
+        <div class="cover-body">
+            <p class="heading-message">Cover includes:</p>
+            <div class="cover-benefits">
+                <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path
+                        d="M7.50001 13.4751L4.02501 10.0001L2.84167 11.1751L7.50001 15.8334L17.5 5.83345L16.325 4.65845L7.50001 13.4751Z"
+                        fill="#41A5F5" />
+                </svg>
+                <p>Courtesy Car</p>
+            </div>
+
+            <div class="cover-benefits">
+                <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path
+                        d="M7.50001 13.4751L4.02501 10.0001L2.84167 11.1751L7.50001 15.8334L17.5 5.83345L16.325 4.65845L7.50001 13.4751Z"
+                        fill="#41A5F5" />
+                </svg>
+                <p>Personal Injury Cover up to £5,000</p>
+            </div>
+
+            <div class="cover-benefits">
+                <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path
+                        d="M7.50001 13.4751L4.02501 10.0001L2.84167 11.1751L7.50001 15.8334L17.5 5.83345L16.325 4.65845L7.50001 13.4751Z"
+                        fill="#41A5F5" />
+                </svg>
+                <p>Uninsured driver promise</p>
+            </div>
+
+            <div class="cover-benefits">
+                <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path
+                        d="M7.50001 13.4751L4.02501 10.0001L2.84167 11.1751L7.50001 15.8334L17.5 5.83345L16.325 4.65845L7.50001 13.4751Z"
+                        fill="#41A5F5" />
+                </svg>
+                <p>Up to £300 towards the cost of replacing the locks</p>
+            </div>
+
+            <div class="cover-benefits">
+                <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path
+                        d="M15.8333 5.34175L14.6583 4.16675L9.99999 8.82508L5.34166 4.16675L4.16666 5.34175L8.82499 10.0001L4.16666 14.6584L5.34166 15.8334L9.99999 11.1751L14.6583 15.8334L15.8333 14.6584L11.175 10.0001L15.8333 5.34175Z"
+                        fill="#CC0033" />
+                </svg>
+                <p>No Windscreen cover</p>
+            </div>
+
+            <div class="cover-benefits last-benefit">
+                <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path
+                        d="M15.8333 5.34175L14.6583 4.16675L9.99999 8.82508L5.34166 4.16675L4.16666 5.34175L8.82499 10.0001L4.16666 14.6584L5.34166 15.8334L9.99999 11.1751L14.6583 15.8334L15.8333 14.6584L11.175 10.0001L15.8333 5.34175Z"
+                        fill="#CC0033" />
+                </svg>
+                <p>No cover whilst driving other cars
+                    <span style="font-size: 14px; line-height: 21px; font-weight: 400; display: block;">
+                        John Jones will
+                        not be covered by this policy when driving
+                        other
+                        cars.
+                    </span>
+                </p>
+            </div>
+        </div>
+
+        <div class="cover-footer">
+            <div class="price-selection-section">
+                <div class="price-section">
+                    <p>£29.99 <span>month</span></p>
+                    <img src="/eui-cq-assets/helm/images/brands/admiral/logos/tiers/essential.svg"
+                        alt="essential-image">
+                </div>
+                <div class="selection-section">
+                    <label>
+                        <input checked type="radio" name="cover-choice" id="essential-cover" value="essential">
+                        <span class="radio-label">
+                            <span class="radio-icon"></span>
+                            <span class="radio-text">Selected level of cover</span>
+                        </span>
+                    </label>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="admiral-cover">
+        <div class="cover-head">
+            <svg width="36" height="36" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path fill-rule="evenodd" clip-rule="evenodd"
+                    d="M4.5 7.5L18 1.5L31.5 7.5V16.5C31.5 24.825 25.74 32.61 18 34.5C10.26 32.61 4.5 24.825 4.5 16.5V7.5ZM25.5 19.5H19.5V25.5H16.5V19.5H10.5V16.5H16.5V10.5H19.5V16.5H25.5V19.5Z"
+                    fill="white" />
+            </svg>
+            <p>Upgrade to Admiral cover <span>for an extra</span> £4.56 <span>month</span></p>
+        </div>
+
+        <div class="cover-body">
+            <p class="heading-message">Cover includes all the benefits of Essential cover, plus:</p>
+            <div class="cover-benefits">
+                <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path
+                        d="M7.50001 13.4751L4.02501 10.0001L2.84167 11.1751L7.50001 15.8334L17.5 5.83345L16.325 4.65845L7.50001 13.4751Z"
+                        fill="#41A5F5" />
+                </svg>
+                <p>Windscreen Cover</p>
+            </div>
+
+            <div class="cover-benefits">
+                <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path
+                        d="M7.50001 13.4751L4.02501 10.0001L2.84167 11.1751L7.50001 15.8334L17.5 5.83345L16.325 4.65845L7.50001 13.4751Z"
+                        fill="#41A5F5" />
+                </svg>
+                <p>European Cover</p>
+            </div>
+
+            <div class="cover-benefits">
+                <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path
+                        d="M7.50001 13.4751L4.02501 10.0001L2.84167 11.1751L7.50001 15.8334L17.5 5.83345L16.325 4.65845L7.50001 13.4751Z"
+                        fill="#41A5F5" />
+                </svg>
+                <p>New vehicle replacement (subject to criteria)</p>
+            </div>
+
+            <div class="cover-benefits">
+                <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path
+                        d="M7.50001 13.4751L4.02501 10.0001L2.84167 11.1751L7.50001 15.8334L17.5 5.83345L16.325 4.65845L7.50001 13.4751Z"
+                        fill="#41A5F5" />
+                </svg>
+                <p>Personal Belongings cover up to £200</p>
+            </div>
+
+            <div class="cover-benefits last-benefit">
+                <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path
+                        d="M7.50001 13.4751L4.02501 10.0001L2.84167 11.1751L7.50001 15.8334L17.5 5.83345L16.325 4.65845L7.50001 13.4751Z"
+                        fill="#41A5F5" />
+                </svg>
+                <p>Cover whilst driving other cars
+                    <span style="font-size: 14px; line-height: 21px; font-weight: 400; display: block;">
+                        Third Party only cover for Barry Jones whilst driving privately insured cars – with the owner’s
+                        permission (provided the owner is not Barry Jones or their spouse/partner)
+                    </span>
+                </p>
+            </div>
+        </div>
+
+        <div class="cover-footer">
+            <div class="price-selection-section">
+                <div class="price-section">
+                    <p>£34.56 <span>month</span></p>
+                    <img src="/eui-cq-assets/helm/images/brands/admiral/logos/tiers/admiral.svg" alt="admiral-image">
+                </div>
+                <div class="selection-section">
+                    <label>
+                        <input type="radio" name="cover-choice" id="admiral-cover" value="admiral">
+                        <span class="radio-label">
+                            <span class="radio-icon"></span>
+                            <span class="radio-text">Upgrade to this level of cover</span>
+                        </span>
+                    </label>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>`)
+});
