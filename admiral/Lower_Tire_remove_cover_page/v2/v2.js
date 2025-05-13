@@ -616,6 +616,10 @@ if (window.location.pathname == '/Admiral/cover' && sessionStorage.getItem('opti
             margin-bottom: 0;
         }
 
+        .opti-cover-design .gold-cover .cover-body .cover-benefits.last-benefit {
+            display: flex;
+        }
+
         .opti-cover-design .cover-body .cover-benefits p {
             font-size: 16px;
             line-height: 24px;
@@ -776,6 +780,10 @@ if (window.location.pathname == '/Admiral/cover' && sessionStorage.getItem('opti
 
             .opti-cover-design .cover-body {
                 padding: 16px;
+            }
+
+            .opti-cover-design .gold-cover .cover-body .cover-benefits.last-benefit {
+                display: none;
             }
 
             .opti-cover-design .cover-footer {
@@ -1031,6 +1039,10 @@ if (window.location.pathname == '/Admiral/cover' && sessionStorage.getItem('opti
         </div>
     </div>
 </div>`);
+            }
+
+            if (window.innerWidth < 640 && document.querySelector('.opti-cover-design .gold-cover .cover-body .cover-benefits:nth-of-type(2)')) {
+                document.querySelector('.opti-cover-design .gold-cover .cover-body .cover-benefits:nth-of-type(2)').style.marginBottom = 0;
             }
 
             if (document.querySelector('#gold-cover') && document.querySelector('#admiral-cover')) {
