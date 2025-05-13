@@ -2,7 +2,6 @@ const utils = optimizely.get('utils');
 
 if (window.location.pathname == '/Admiral/cover' && sessionStorage.getItem('opti-landing-tier')) {
     const opti_landing_tier = JSON.parse(sessionStorage.getItem('opti-landing-tier'));
-    console.warn("opti_landing_tier", opti_landing_tier)
 
     utils.observeSelector('eui-tier eui-motor-tiers-table adm-hero .adm-hero__title', function (hero_title) {
         hero_title.innerText = "Do you need to upgrade your cover";
@@ -39,7 +38,7 @@ if (window.location.pathname == '/Admiral/cover' && sessionStorage.getItem('opti
         </svg>
     </div>
     <p>Consider existing insurance policies, to ensure that you aren’t duplicating your cover.</p>
-</div>`)
+</div>`);
         }
     });
 
@@ -516,23 +515,23 @@ if (window.location.pathname == '/Admiral/cover' && sessionStorage.getItem('opti
             </div>
         </div>
     </div>
-</div>`)
+</div>`);
             }
 
             if (document.querySelector('#essential-cover') && document.querySelector('#admiral-cover')) {
                 if (document.querySelector('.adm-control-table__col-header--admiral.selected')) {
-                    document.querySelector('#admiral-cover').checked = true
+                    document.querySelector('#admiral-cover').checked = true;
                 } else if (document.querySelector('.adm-control-table__col-header--essential.selected')) {
-                    document.querySelector('#essential-cover').checked = true
+                    document.querySelector('#essential-cover').checked = true;
                 }
 
                 document.querySelector('#essential-cover').addEventListener('click', function () {
                     document.querySelector('.adm-control-table__col-header--essential').click();
-                })
+                });
 
                 document.querySelector('#admiral-cover').addEventListener('click', function () {
                     document.querySelector('.adm-control-table__col-header--admiral').click();
-                })
+                });
             }
         });
     }
