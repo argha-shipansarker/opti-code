@@ -4,7 +4,12 @@ if (window.location.pathname == '/Admiral/cover' && sessionStorage.getItem('opti
     const opti_landing_tier = JSON.parse(sessionStorage.getItem('opti-landing-tier'));
 
     utils.observeSelector('eui-tier eui-motor-tiers-table adm-hero .adm-hero__title', function (hero_title) {
-        hero_title.innerText = "Do you need to upgrade your cover";
+
+        if (opti_landing_tier == "platinum") {
+            hero_title.innerText = "You’ve selected our highest level of cover";
+        } else {
+            hero_title.innerText = "Do you need to upgrade your cover";
+        }
 
         if (!document.querySelector('.opti-sub-heading')) {
             hero_title.insertAdjacentHTML("afterend", `<div class="opti-sub-heading">
@@ -1656,7 +1661,7 @@ if (window.location.pathname == '/Admiral/cover' && sessionStorage.getItem('opti
         .opti-cover-design .cover-footer .price-selection-section .price-insurance-section {
             display: flex;
             flex-direction: column;
-            flex-basis: 47%;
+            flex-basis: 100%;
         }
 
         .opti-cover-design .cover-footer .price-selection-section .price-section {
