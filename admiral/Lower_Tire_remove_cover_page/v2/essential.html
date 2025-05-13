@@ -20,6 +20,7 @@
 
         .opti-cover-design .essential-cover .cover-head {
             background-color: #C20060;
+            align-items: center;
         }
 
         .opti-cover-design .admiral-cover .cover-head {
@@ -314,7 +315,7 @@
                 </div>
                 <p>No cover whilst driving other cars
                     <span style="font-size: 14px; line-height: 21px; font-weight: 400; display: block;">
-                        John Jones will
+                        ${yourDetails_event.driver1name.firstName} ${yourDetails_event.driver1name.lastName} will
                         not be covered by this policy when driving
                         other
                         cars.
@@ -425,8 +426,11 @@
                 </div>
                 <p>Cover whilst driving other cars
                     <span style="font-size: 14px; line-height: 21px; font-weight: 400; display: block;">
-                        Third Party only cover for Barry Jones whilst driving privately insured cars – with the owner’s
-                        permission (provided the owner is not Barry Jones or their spouse/partner)
+                        Third Party only cover for ${yourDetails_event.driver1name.firstName}
+                        ${yourDetails_event.driver1name.lastName} whilst driving privately insured cars – with the
+                        owner’s
+                        permission (provided the owner is not ${yourDetails_event.driver1name.firstName}
+                        ${yourDetails_event.driver1name.lastName} or their spouse/partner)
                     </span>
                 </p>
             </div>
