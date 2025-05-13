@@ -395,7 +395,7 @@ if (window.location.pathname == '/Admiral/cover' && sessionStorage.getItem('opti
                                 fill="#41A5F5" />
                         </svg>
                         <a
-                            href="https://mktgblobpubaccess0.blob.core.windows.net/eui-pdf-assets/admiral/IP-MO-2-005.pdf">Insurance
+                            href="https://mktgblobpubaccess0.blob.core.windows.net/eui-pdf-assets/admiral/IP-MO-2-005.pdf" target="_blank">Insurance
                             Product Information Document</a>
                     </div>
                 </div>
@@ -502,7 +502,7 @@ if (window.location.pathname == '/Admiral/cover' && sessionStorage.getItem('opti
                                 fill="#41A5F5" />
                         </svg>
                         <a
-                            href="https://mktgblobpubaccess0.blob.core.windows.net/eui-pdf-assets/admiral/IP-MO-2-005.pdf">Insurance
+                            href="https://mktgblobpubaccess0.blob.core.windows.net/eui-pdf-assets/admiral/IP-MO-2-005.pdf" target="_blank">Insurance
                             Product Information Document</a>
                     </div>
                 </div>
@@ -902,7 +902,7 @@ if (window.location.pathname == '/Admiral/cover' && sessionStorage.getItem('opti
                                 fill="#41A5F5" />
                         </svg>
                         <a
-                            href="https://mktgblobpubaccess0.blob.core.windows.net/eui-pdf-assets/admiral/IP-MO-2-005.pdf">Insurance
+                            href="https://mktgblobpubaccess0.blob.core.windows.net/eui-pdf-assets/admiral/IP-MO-2-005.pdf" target="_blank">Insurance
                             Product Information Document</a>
                     </div>
                 </div>
@@ -1010,7 +1010,7 @@ if (window.location.pathname == '/Admiral/cover' && sessionStorage.getItem('opti
                                 fill="#41A5F5" />
                         </svg>
                         <a
-                            href="https://mktgblobpubaccess0.blob.core.windows.net/eui-pdf-assets/admiral/IP-MO-2-005.pdf">Insurance
+                            href="https://mktgblobpubaccess0.blob.core.windows.net/eui-pdf-assets/admiral/IP-MO-2-005.pdf" target="_blank">Insurance
                             Product Information Document</a>
                     </div>
                 </div>
@@ -1046,4 +1046,6 @@ if (window.location.pathname == '/Admiral/cover' && sessionStorage.getItem('opti
             }
         });
     }
+
+
 }
