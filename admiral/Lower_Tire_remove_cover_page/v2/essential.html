@@ -8,6 +8,7 @@
 
         .opti-cover-design .admiral-cover {
             margin-top: 27px;
+            margin-bottom: 70px;
         }
 
         .opti-cover-design .cover-head {
@@ -198,6 +199,11 @@
                 padding: 0 20px;
             }
 
+            .opti-cover-design .admiral-cover {
+                margin-top: 20px;
+                margin-bottom: 22.66px;
+            }
+
             .opti-cover-design .cover-head {
                 padding: 13px 14px 11px 16px;
             }
@@ -321,7 +327,9 @@
             <div class="price-selection-section">
                 <div class="price-insurance-section">
                     <div class="price-section">
-                        <p>£29.99 <span>month</span></p>
+                        <p>${document.querySelector('#ESSENTIAL-col-footer .adm-control-radio__title strong').innerText}
+                            <span>${document.querySelector('#ESSENTIAL-col-footer small').innerText == "total" ? "total"
+                                : "month"}</span></p>
                         <img src="/eui-cq-assets/helm/images/brands/admiral/logos/tiers/essential.svg"
                             alt="essential-image">
                     </div>
@@ -428,7 +436,9 @@
             <div class="price-selection-section">
                 <div class="price-insurance-section">
                     <div class="price-section">
-                        <p>£34.56 <span>month</span></p>
+                        <p>${document.querySelector('#ADMIRAL-col-footer .adm-control-radio__title strong').innerText}
+                            <span>${document.querySelector('#ADMIRAL-col-footer small').innerText == "total" ? "total" :
+                                "month"}</span></p>
                         <img src="/eui-cq-assets/helm/images/brands/admiral/logos/tiers/admiral.svg"
                             alt="admiral-image">
                     </div>
