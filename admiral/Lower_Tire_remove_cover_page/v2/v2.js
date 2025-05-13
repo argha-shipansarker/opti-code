@@ -4,10 +4,53 @@ if (window.location.pathname == '/Admiral/cover' && sessionStorage.getItem('opti
     const opti_landing_tier = JSON.parse(sessionStorage.getItem('opti-landing-tier'));
     console.warn("opti_landing_tier", opti_landing_tier)
 
-    if (opti_landing_tier == "essential") {
-        utils.observeSelector('eui-motor-tiers-table adm-wrap:nth-of-type(2) .adm-wrap__content', function (table_div) {
+    utils.observeSelector('eui-tier eui-motor-tiers-table adm-hero .adm-hero__title', function (hero_title) {
+        hero_title.innerText = "Do you need to upgrade your cover";
 
-            // table_div.style.display = "none";
+        if (!document.querySelector('.opti-sub-heading')) {
+            hero_title.insertAdjacentHTML("afterend", `<div class="opti-sub-heading">
+    <style>
+        .opti-sub-heading {
+            display: flex;
+            align-items: start;
+            justify-content: center;
+            margin-top: 10px;
+        }
+
+        .opti-sub-heading div {
+            height: 20px;
+            width: 20px;
+        }
+
+        .opti-sub-heading p {
+            font-size: 12px;
+            line-height: 21px;
+            font-weight: 400;
+            margin-bottom: 0;
+            margin-left: 9px;
+            text-align: start;
+        }
+    </style>
+    <div>
+        <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path
+                d="M9.99999 1.66675C5.39999 1.66675 1.66666 5.40008 1.66666 10.0001C1.66666 14.6001 5.39999 18.3334 9.99999 18.3334C14.6 18.3334 18.3333 14.6001 18.3333 10.0001C18.3333 5.40008 14.6 1.66675 9.99999 1.66675ZM10.8333 14.1667H9.16666V9.16675H10.8333V14.1667ZM10.8333 7.50008H9.16666V5.83342H10.8333V7.50008Z"
+                fill="#41A5F5" />
+        </svg>
+    </div>
+    <p>Consider existing insurance policies, to ensure that you aren’t duplicating your cover.</p>
+</div>`)
+        }
+    });
+
+    utils.observeSelector('eui-tier eui-motor-tiers-table adm-wrap:nth-of-type(3)', function (cove_selected_div) {
+        cove_selected_div.style.display = "none";
+    });
+
+    if (opti_landing_tier == "essential") {
+        utils.observeSelector('eui-tier eui-motor-tiers-table adm-wrap:nth-of-type(2) .adm-wrap__content', function (table_div) {
+
+            table_div.style.display = "none";
 
             if (!document.querySelector('.opti-cover-design')) {
                 table_div.insertAdjacentHTML("afterend", `<div class="opti-cover-design">
@@ -20,6 +63,7 @@ if (window.location.pathname == '/Admiral/cover' && sessionStorage.getItem('opti
 
         .opti-cover-design .admiral-cover {
             margin-top: 27px;
+            margin-bottom: 70px;
         }
 
         .opti-cover-design .cover-head {
@@ -208,6 +252,11 @@ if (window.location.pathname == '/Admiral/cover' && sessionStorage.getItem('opti
         @media (max-width: 650px) {
             .opti-cover-design {
                 padding: 0 20px;
+            }
+
+            .opti-cover-design .admiral-cover {
+                margin-top: 20px;
+                margin-bottom: 22.66px;
             }
 
             .opti-cover-design .cover-head {
