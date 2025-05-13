@@ -51,6 +51,8 @@ if (window.location.pathname == '/Admiral/cover' && sessionStorage.getItem('opti
 
             table_div.style.display = "none";
 
+            const yourDetails_event = dataLayer.find(obj => obj.event === 'yourDetails');
+
             if (!document.querySelector('.opti-cover-design')) {
                 table_div.insertAdjacentHTML("afterend", `<div class="opti-cover-design">
     <style>
@@ -74,6 +76,7 @@ if (window.location.pathname == '/Admiral/cover' && sessionStorage.getItem('opti
 
         .opti-cover-design .essential-cover .cover-head {
             background-color: #C20060;
+            align-items: center;
         }
 
         .opti-cover-design .admiral-cover .cover-head {
@@ -368,7 +371,7 @@ if (window.location.pathname == '/Admiral/cover' && sessionStorage.getItem('opti
                 </div>
                 <p>No cover whilst driving other cars
                     <span style="font-size: 14px; line-height: 21px; font-weight: 400; display: block;">
-                        John Jones will
+                        ${yourDetails_event.driver1name.firstName} ${yourDetails_event.driver1name.lastName} will
                         not be covered by this policy when driving
                         other
                         cars.
@@ -477,8 +480,8 @@ if (window.location.pathname == '/Admiral/cover' && sessionStorage.getItem('opti
                 </div>
                 <p>Cover whilst driving other cars
                     <span style="font-size: 14px; line-height: 21px; font-weight: 400; display: block;">
-                        Third Party only cover for Barry Jones whilst driving privately insured cars – with the owner’s
-                        permission (provided the owner is not Barry Jones or their spouse/partner)
+                        Third Party only cover for ${yourDetails_event.driver1name.firstName} ${yourDetails_event.driver1name.lastName} whilst driving privately insured cars – with the owner’s
+                        permission (provided the owner is not ${yourDetails_event.driver1name.firstName} ${yourDetails_event.driver1name.lastName} or their spouse/partner)
                     </span>
                 </p>
             </div>
