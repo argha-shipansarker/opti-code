@@ -130,17 +130,33 @@ function handleUpdateSessionStorage_Quote_Page() {
     if (personalDetails) {
         session_storage_variable.level_of_cover = personalDetails.levelOfCover;
         session_storage_variable.number_of_driver = personalDetails.noOfDrivers;
-        session_storage_variable.driver_name = JSON.parse(JSON.stringify(personalDetails.driver1name));
+        const first_driver_info = JSON.parse(JSON.stringify(personalDetails.driver1name));
+        session_storage_variable.driver_name = [{ name: `${first_driver_info.title} ${first_driver_info.firstName} ${first_driver_info.lastName}` }]
+
+        if (personalDetails.noOfDrivers == 2) {
+            const second_driver_info = JSON.parse(JSON.stringify(personalDetails.driver2name));
+            session_storage_variable.driver_name = [{ name: `${first_driver_info.title} ${first_driver_info.firstName} ${first_driver_info.lastName}` }, { name: `${second_driver_info.title} ${second_driver_info.firstName} ${second_driver_info.lastName}` }]
+        }
     }
 
-    if (session_storage_variable.driver_name && document.querySelector('eui-quote .adm-driver-ncb__content-years')) {
-        session_storage_variable.driver_name.ncb_year = document.querySelector('eui-quote .adm-driver-ncb__content-years').innerText;
+    if (session_storage_variable.driver_name && document.querySelector('eui-quote .adm-driver-ncb__content-name') && document.querySelector('eui-quote .adm-driver-ncb__content-years')) {
+        session_storage_variable.driver_name.forEach(driver => {
+            if (driver.name.toLowerCase() === document.querySelector('eui-quote .adm-driver-ncb__content-name').innerText.trim().toLowerCase()) {
+                driver.ncb_year = document.querySelector('eui-quote .adm-driver-ncb__content-years').innerText;
+            } else {
+                driver.ncb_year = null
+            }
+        });
     }
 
-    if (session_storage_variable.driver_name && document.querySelector('eui-quote #pncbAddButton adm-icon')) {
-        session_storage_variable.driver_name.is_protected = true;
-    } else {
-        session_storage_variable.driver_name.is_protected = false;
+    if (session_storage_variable.driver_name && document.querySelector('eui-quote .adm-driver-ncb__content-name') && document.querySelector('eui-quote #pncbAddButton adm-icon')) {
+        session_storage_variable.driver_name.forEach(driver => {
+            if (driver.name.toLowerCase() === document.querySelector('eui-quote .adm-driver-ncb__content-name').innerText.trim().toLowerCase()) {
+                driver.is_protected = true;
+            } else {
+                driver.is_protected = false;
+            }
+        })
     }
 
     sessionStorage.setItem('opti-cover-info', JSON.stringify(session_storage_variable));
@@ -177,11 +193,11 @@ function handleUpdatingValueOf_Basket() {
     const upgrade_number_section = document.querySelector('.opti-quote-basket-dd-container .dd-panel .added-upgrade-section .upgrade-number-section .upgrade-number');
     const upgrade_info_section = document.querySelector('.opti-quote-basket-dd-container .dd-panel .added-upgrade-section .upgrade-info');
 
-    const driver_name = document.querySelector('.opti-quote-basket-dd-container .dd-panel .driver-info-section .driver-name-section .individual-driver-section .individual-driver-info .name');
+    const driver_section = document.querySelector('.opti-quote-basket-dd-container .dd-panel .driver-info-section');
 
-    const driver_ncb_year_node = document.querySelector('.opti-quote-basket-dd-container .dd-panel .driver-info-section .driver-name-section .individual-driver-section .individual-driver-info .ncb-info');
+    const driver_number_section = document.querySelector('.opti-quote-basket-dd-container .dd-panel .driver-info-section .driver-number-section .driver-number');
 
-    const driver_protect_info_node = document.querySelector('.opti-quote-basket-dd-container .dd-panel .driver-info-section .driver-name-section .individual-driver-section .individual-driver-info .protect-info');
+    const driver_name_section = document.querySelector('.opti-quote-basket-dd-container .dd-panel .driver-info-section .driver-name-section');
 
     const cover_image = document.querySelector('.opti-quote-basket-dd-container .dd-panel .price-section .cover-image');
     const cover_price = document.querySelector('.opti-quote-basket-dd-container .dd-panel .price-section .price');
@@ -191,14 +207,31 @@ function handleUpdatingValueOf_Basket() {
     cover_image.setAttribute('src', session_storage_variable.cover_image);
     cover_price.innerText = `${session_storage_variable.cover_price} total`;
 
-    driver_name.innerText = `${session_storage_variable.driver_name.title} ${session_storage_variable.driver_name.firstName} ${session_storage_variable.driver_name.lastName}`;
+    if (session_storage_variable.driver_name.length) {
 
-    if (session_storage_variable.driver_name.ncb_year) {
-        driver_ncb_year_node.innerText = `Policyholder with ${session_storage_variable.driver_name.ncb_year}`;
-    }
+        driver_section.style.display = "block";
 
-    if (session_storage_variable.driver_name.is_protected) {
-        driver_protect_info_node.innerText = `Protected`;
+        driver_number_section.innerText = `${session_storage_variable.driver_name.length} ${session_storage_variable.driver_name.length == 1 ? "Driver" : "Drivers"}`;
+
+        driver_name_section.innerHTML = session_storage_variable.driver_name.map(
+            (driver) => `
+                <div class="individual-driver-section">
+                    <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path
+                            d="M8.00033 3.93341C8.77366 3.93341 9.40033 4.56008 9.40033 5.33341C9.40033 6.10675 8.77366 6.73341 8.00033 6.73341C7.22699 6.73341 6.60033 6.10675 6.60033 5.33341C6.60033 4.56008 7.22699 3.93341 8.00033 3.93341ZM8.00033 9.93341C9.98033 9.93341 12.067 10.9067 12.067 11.3334V12.0667H3.93366V11.3334C3.93366 10.9067 6.02033 9.93341 8.00033 9.93341ZM8.00033 2.66675C6.52699 2.66675 5.33366 3.86008 5.33366 5.33341C5.33366 6.80675 6.52699 8.00008 8.00033 8.00008C9.47366 8.00008 10.667 6.80675 10.667 5.33341C10.667 3.86008 9.47366 2.66675 8.00033 2.66675ZM8.00033 8.66675C6.22033 8.66675 2.66699 9.56008 2.66699 11.3334V13.3334H13.3337V11.3334C13.3337 9.56008 9.78032 8.66675 8.00033 8.66675Z"
+                            fill="#CED9E5" />
+                    </svg>
+                    <div class="individual-driver-info">
+                        <p class="name">${driver.name}</p>
+                        <p class="ncb-info">${driver.ncb_year ? `Policyholder with ${driver.ncb_year}` : ""}</p>
+                        <p class="protect-info">${driver.is_protected ? `Protected` : ""}</p>
+                    </div>
+                </div>
+            `
+        ).join('');
+
+    } else {
+        driver_section.style.display = "none";
     }
 
     if (Object.entries(session_storage_variable.cover_benefit_list).length) {
