@@ -1,6 +1,8 @@
 const utils = optimizely.get('utils');
 
-function handleUpdateSessionStorage_Cover_Page(cover_element) {
+function handleUpdateSessionStorage_Cover_Page() {
+
+    let selected_cover_column = null;
 
     let session_storage_variable = {};
 
@@ -8,49 +10,66 @@ function handleUpdateSessionStorage_Cover_Page(cover_element) {
         session_storage_variable = JSON.parse(sessionStorage.getItem('opti-cover-info'));
     }
 
-    let cover_name = cover_element.querySelector('h3[data-test="tier-heading"]');
-    session_storage_variable.cover_name = cover_name.innerText;
-    let cover_image = cover_element.querySelector('.adm-cover-level-footer__logo img');
-    session_storage_variable.cover_image = cover_image.getAttribute('src');
+    let selected_node = document.querySelector('eui-tier eui-motor-tiers-table table[data-test="eui-motor-tier-select"] thead tr th.selected');
 
-    if (cover_element.querySelector('.adm-cover-level-footer__total-inner')) {
-        //this is when the value is calculated in months
-        let cover_price = cover_element.querySelector('.adm-cover-level-footer__total-inner');
-        session_storage_variable.cover_price = cover_price.innerText.split(' ')[0];
-    } else {
-        let cover_price = cover_element.querySelector('adm-cover-level-footer-price');
-        session_storage_variable.cover_price = cover_price.innerText;
+    if (selected_node.id.includes("ESSENTIAL")) {
+        selected_cover_column = 2;
+        session_storage_variable.cover_name = "essential";
+    } else if (selected_node.id.includes("ADMIRAL")) {
+        selected_cover_column = 3;
+        session_storage_variable.cover_name = "admiral";
+    } else if (selected_node.id.includes("GOLD")) {
+        selected_cover_column = 4;
+        session_storage_variable.cover_name = "gold";
+    } else if (selected_node.id.includes("PLATINUM")) {
+        selected_cover_column = 5;
+        session_storage_variable.cover_name = "platinum";
     }
+
+    console.warn("selected_cover_column", selected_cover_column)
+
+    session_storage_variable.cover_image = document.querySelector(`eui-tier eui-motor-tiers-table table[data-test="eui-motor-tier-select"] thead tr th:nth-of-type(${selected_cover_column}) img`).getAttribute('src');
+
+    session_storage_variable.cover_price = document.querySelector(`eui-tier eui-motor-tiers-table table[data-test="eui-motor-tier-select"] tfoot tr td:nth-of-type(${selected_cover_column - 1}) adm-control-radio-title strong`).innerText;
+
+    const cover_table_headings = document.querySelectorAll(`eui-tier eui-motor-tiers-table table[data-test="eui-motor-tier-select"] tbody tr th:nth-of-type(1)`);
+
+    const motor_legal_protection_text = cover_table_headings[7].querySelector('.adm-control-table__row-header-content').innerText.toLowerCase();
+    const breakdown_node_text = cover_table_headings[8].querySelector('.adm-control-table__row-header-content').innerText.toLowerCase();
+    const personal_injury_text = cover_table_headings[9].querySelector('.adm-control-table__row-header-content').innerText.toLowerCase();
+    const hire_vehicle_text = cover_table_headings[9].querySelector('.adm-control-table__row-header-content').innerText.toLowerCase();
 
     let cover_benefit_list = {};
 
-    const cover_benefits = cover_element.querySelectorAll('adm-card-section-content adm-details-item span[data-test="benefit-description"]');
+    const selected_cover_benefits = document.querySelectorAll(`eui-tier eui-motor-tiers-table table[data-test="eui-motor-tier-select"] tbody tr td:nth-of-type(${selected_cover_column - 1})`);
 
-    cover_benefits.forEach(el => {
-        const text = el.innerText.trim().toLowerCase();
-        if (text === 'motor legal protection' || text === 'roadside assistance breakdown cover') {
-            if (text == "motor legal protection") {
-                cover_benefit_list.motorlegal = text;
+    selected_cover_benefits.forEach((element, index) => {
+        if (index == 7) {
+            if (selected_cover_column == 4 || selected_cover_column == 5) {
+                cover_benefit_list.motorlegal = motor_legal_protection_text;
             } else {
-                cover_benefit_list.breakdown = text;
+                if (element.querySelector('span').innerText.toLowerCase() !== "optional") {
+                    cover_benefit_list.motorlegal = motor_legal_protection_text;
+                }
+            }
+        } else if (index == 8) {
+            if (element.querySelector('span').innerText.toLowerCase() !== "optional") {
+                if (element.querySelector('span').innerText.toLowerCase() == "roadside assistance") {
+                    cover_benefit_list.breakdown = 'roadside assistance breakdown cover';
+                } else {
+                    cover_benefit_list.breakdown = breakdown_node_text;
+                }
+            }
+        } else if (index == 9) {
+            if (element.querySelector('span').innerText.toLowerCase() !== "optional") {
+                cover_benefit_list.personalinjury = personal_injury_text;
+            }
+        } else if (index == 10) {
+            if (element.querySelector('span').innerText.toLowerCase() !== "optional") {
+                cover_benefit_list.personalinjury = hire_vehicle_text;
             }
         }
-    });
-
-    const selected_cover_benefits = cover_element.querySelectorAll('adm-card-section-footer adm-details adm-details-item adm-flex-grid-item span');
-
-    selected_cover_benefits.forEach(el => {
-        const text = el.innerText.trim().toLowerCase();
-        if (text == "motor legal protection") {
-            cover_benefit_list.motorlegal = text;
-        } else if (text == "roadside assistance breakdown cover" || text == "national breakdown cover" || text == "european breakdown cover") {
-            cover_benefit_list.breakdown = text;
-        } else if (text == "personal injury cover" || text == "personal injury plus cover") {
-            cover_benefit_list.personalinjury = text;
-        } else if (text == "hire vehicle cover") {
-            cover_benefit_list.hirecar = text;
-        }
-    });
+    })
 
     session_storage_variable.cover_benefit_list = cover_benefit_list;
 
@@ -63,7 +82,15 @@ function handleUpdateSessionStorage_Cover_Page(cover_element) {
     if (personalDetails) {
         session_storage_variable.level_of_cover = personalDetails.levelOfCover;
         session_storage_variable.number_of_driver = personalDetails.noOfDrivers;
-        session_storage_variable.driver_name = personalDetails.driver1name;
+        if (!session_storage_variable.driver_name) {
+            const first_driver_info = JSON.parse(JSON.stringify(personalDetails.driver1name));
+            session_storage_variable.driver_name = [{ name: `${first_driver_info.title} ${first_driver_info.firstName} ${first_driver_info.lastName}` }]
+
+            if (personalDetails.noOfDrivers == 2) {
+                const second_driver_info = JSON.parse(JSON.stringify(personalDetails.driver2name));
+                session_storage_variable.driver_name = [{ name: `${first_driver_info.title} ${first_driver_info.firstName} ${first_driver_info.lastName}` }, { name: `${second_driver_info.title} ${second_driver_info.firstName} ${second_driver_info.lastName}` }]
+            }
+        }
     }
 
     sessionStorage.setItem('opti-cover-info', JSON.stringify(session_storage_variable));
@@ -253,9 +280,9 @@ function handleUpdatingValueOf_Basket() {
     }
 }
 
-utils.observeSelector('eui-motor-tier-select > adm-wrap', function (selected_cover) {
+utils.observeSelector('eui-tier eui-motor-tiers-table table[data-test="eui-motor-tier-select"] thead tr th.selected', function (selected_cover) {
     if (window.location.pathname == '/Admiral/cover') {
-        handleUpdateSessionStorage_Cover_Page(selected_cover);
+        handleUpdateSessionStorage_Cover_Page();
     }
 });
 
@@ -601,10 +628,8 @@ utils.observeSelector('.adm-navbar__wrap .adm-navbar__nav', function (right_nav)
                 const basket_container_panel = document.querySelector('.opti-quote-basket-dd-container .dd-panel');
 
                 if (window.location.pathname == '/Admiral/cover') {
-                    const selected_cover = document.querySelector('eui-motor-tier-select > adm-wrap');
-                    if (selected_cover) {
-                        handleUpdateSessionStorage_Cover_Page(selected_cover);
-                    }
+                    handleUpdateSessionStorage_Cover_Page();
+
                 } else if (window.location.pathname == '/Admiral/ancillary/motorlegal' || window.location.pathname == '/Admiral/ancillary/breakdown' || window.location.pathname == '/Admiral/ancillary/personalinjury' || window.location.pathname == '/Admiral/ancillary/hirecar' || window.location.pathname == '/Admiral/upgrade') {
                     let session_storage_variable = JSON.parse(sessionStorage.getItem('opti-cover-info'));
                     let ancils = dataLayer.reverse().find(obj => obj.event === 'ancils');
@@ -655,12 +680,8 @@ utils.observeSelector('.adm-navbar__wrap .adm-navbar__nav', function (right_nav)
 utils.observeSelector('#continue-button', function (continue_btn) {
     continue_btn.addEventListener('mousedown', function () {
         if (window.location.pathname == '/Admiral/cover') {
-            const new_selected_cover = document.querySelector('.adm-cover-levels__level--selected');
-            if (new_selected_cover) {
-                handleUpdateSessionStorage_Cover_Page(new_selected_cover);
-            } else {
-                handleUpdateSessionStorage_Cover_Page(document.querySelector('eui-motor-tier-select > adm-wrap'));
-            }
+            handleUpdateSessionStorage_Cover_Page();
+
         } else if (window.location.pathname == '/Admiral/ancillary/motorlegal') {
             let session_storage_variable = JSON.parse(JSON.stringify(JSON.parse(sessionStorage.getItem('opti-cover-info'))));
             const motor_legal_added_text = document.querySelector('eui-motor-legal span[data-test="cover-added-info"]');
