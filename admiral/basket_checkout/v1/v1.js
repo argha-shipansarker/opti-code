@@ -26,8 +26,6 @@ function handleUpdateSessionStorage_Cover_Page() {
         session_storage_variable.cover_name = "platinum";
     }
 
-    console.warn("selected_cover_column", selected_cover_column)
-
     session_storage_variable.cover_image = document.querySelector(`eui-tier eui-motor-tiers-table table[data-test="eui-motor-tier-select"] thead tr th:nth-of-type(${selected_cover_column}) img`).getAttribute('src');
 
     session_storage_variable.cover_price = document.querySelector(`eui-tier eui-motor-tiers-table table[data-test="eui-motor-tier-select"] tfoot tr td:nth-of-type(${selected_cover_column - 1}) adm-control-radio-title strong`).innerText;
@@ -121,7 +119,6 @@ function handleUpdateSessionStorage_Quote_Page() {
     }
 
     if (!session_storage_variable.cover_name) {
-        console.warn('picking from dom');
         const cove_name_node = document.querySelector('eui-quote adm-card[data-test="cover-summary"] .adm-details__title-text');
         if (cove_name_node) {
             session_storage_variable.cover_name = cove_name_node.innerText.trim().toLowerCase();
