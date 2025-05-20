@@ -67,7 +67,7 @@ function handleUpdateSessionStorage_Cover_Page() {
                 cover_benefit_list.hirecar = hire_vehicle_text;
             }
         }
-    })
+    });
 
     session_storage_variable.cover_benefit_list = cover_benefit_list;
 
@@ -82,11 +82,11 @@ function handleUpdateSessionStorage_Cover_Page() {
         session_storage_variable.number_of_driver = personalDetails.noOfDrivers;
         if (!session_storage_variable.driver_name) {
             const first_driver_info = JSON.parse(JSON.stringify(personalDetails.driver1name));
-            session_storage_variable.driver_name = [{ name: `${first_driver_info.title} ${first_driver_info.firstName} ${first_driver_info.lastName}` }]
+            session_storage_variable.driver_name = [{ name: `${first_driver_info.title} ${first_driver_info.firstName} ${first_driver_info.lastName}` }];
 
             if (personalDetails.noOfDrivers == 2) {
                 const second_driver_info = JSON.parse(JSON.stringify(personalDetails.driver2name));
-                session_storage_variable.driver_name = [{ name: `${first_driver_info.title} ${first_driver_info.firstName} ${first_driver_info.lastName}` }, { name: `${second_driver_info.title} ${second_driver_info.firstName} ${second_driver_info.lastName}` }]
+                session_storage_variable.driver_name = [{ name: `${first_driver_info.title} ${first_driver_info.firstName} ${first_driver_info.lastName}` }, { name: `${second_driver_info.title} ${second_driver_info.firstName} ${second_driver_info.lastName}` }];
             }
         }
     }
@@ -101,7 +101,7 @@ function handleUpdateSessionStorage_Quote_Page() {
         essential: "/eui-cq-assets/helm/images/brands/admiral/cover-levels/essential-level.svg",
         gold: "/eui-cq-assets/helm/images/brands/admiral/cover-levels/gold-level.svg",
         platinum: "/eui-cq-assets/helm/images/brands/admiral/cover-levels/platinum-level.svg"
-    }
+    };
 
     let session_storage_variable = {};
 
@@ -155,11 +155,11 @@ function handleUpdateSessionStorage_Quote_Page() {
         session_storage_variable.level_of_cover = personalDetails.levelOfCover;
         session_storage_variable.number_of_driver = personalDetails.noOfDrivers;
         const first_driver_info = JSON.parse(JSON.stringify(personalDetails.driver1name));
-        session_storage_variable.driver_name = [{ name: `${first_driver_info.title} ${first_driver_info.firstName} ${first_driver_info.lastName}` }]
+        session_storage_variable.driver_name = [{ name: `${first_driver_info.title} ${first_driver_info.firstName} ${first_driver_info.lastName}` }];
 
         if (personalDetails.noOfDrivers == 2) {
             const second_driver_info = JSON.parse(JSON.stringify(personalDetails.driver2name));
-            session_storage_variable.driver_name = [{ name: `${first_driver_info.title} ${first_driver_info.firstName} ${first_driver_info.lastName}` }, { name: `${second_driver_info.title} ${second_driver_info.firstName} ${second_driver_info.lastName}` }]
+            session_storage_variable.driver_name = [{ name: `${first_driver_info.title} ${first_driver_info.firstName} ${first_driver_info.lastName}` }, { name: `${second_driver_info.title} ${second_driver_info.firstName} ${second_driver_info.lastName}` }];
         }
     }
 
@@ -168,7 +168,7 @@ function handleUpdateSessionStorage_Quote_Page() {
             if (driver.name.toLowerCase() === document.querySelector('eui-quote .adm-driver-ncb__content-name').innerText.trim().toLowerCase()) {
                 driver.ncb_year = document.querySelector('eui-quote .adm-driver-ncb__content-years').innerText;
             } else {
-                driver.ncb_year = null
+                driver.ncb_year = null;
             }
         });
     }
@@ -180,7 +180,7 @@ function handleUpdateSessionStorage_Quote_Page() {
             } else {
                 driver.is_protected = false;
             }
-        })
+        });
     }
 
     sessionStorage.setItem('opti-cover-info', JSON.stringify(session_storage_variable));
