@@ -9,9 +9,9 @@ function callbackFn(activate, options) {
     const utils = optimizely.get('utils');
 
     utils.waitUntil(function () {
-        const multicarPrice_event = dataLayer.find(obj => obj.event === 'multicarPrice');
-        if (multicarPrice_event) {
-            if (multicarPrice_event.carsOnQuote >= 2) {
+        let personalDetails = dataLayer.find(obj => obj.event === 'yourDetails');
+        if (personalDetails) {
+            if (personalDetails.product == "singleCar") {
                 return true;
             }
         }
