@@ -37,7 +37,7 @@ function handleUpdateSessionStorage_Cover_Page() {
     const motor_legal_protection_text = cover_table_headings[7].querySelector('.adm-control-table__row-header-content').innerText.toLowerCase();
     const breakdown_node_text = cover_table_headings[8].querySelector('.adm-control-table__row-header-content').innerText.toLowerCase();
     const personal_injury_text = cover_table_headings[9].querySelector('.adm-control-table__row-header-content').innerText.toLowerCase();
-    const hire_vehicle_text = cover_table_headings[9].querySelector('.adm-control-table__row-header-content').innerText.toLowerCase();
+    const hire_vehicle_text = cover_table_headings[10].querySelector('.adm-control-table__row-header-content').innerText.toLowerCase();
 
     let cover_benefit_list = {};
 
@@ -66,7 +66,7 @@ function handleUpdateSessionStorage_Cover_Page() {
             }
         } else if (index == 10) {
             if (element.querySelector('span').innerText.toLowerCase() !== "optional") {
-                cover_benefit_list.personalinjury = hire_vehicle_text;
+                cover_benefit_list.hirecar = hire_vehicle_text;
             }
         }
     })
@@ -677,105 +677,115 @@ utils.observeSelector('.adm-navbar__wrap .adm-navbar__nav', function (right_nav)
     }
 });
 
+function handle_continue_back_button_click() {
+    if (window.location.pathname == '/Admiral/cover') {
+        handleUpdateSessionStorage_Cover_Page();
+
+    } else if (window.location.pathname == '/Admiral/ancillary/motorlegal') {
+        let session_storage_variable = JSON.parse(JSON.stringify(JSON.parse(sessionStorage.getItem('opti-cover-info'))));
+        const motor_legal_added_text = document.querySelector('eui-motor-legal span[data-test="cover-added-info"]');
+        if (motor_legal_added_text) {
+            session_storage_variable.cover_benefit_list.motorlegal = "motor legal protection";
+        } else {
+            if ('motorlegal' in session_storage_variable.cover_benefit_list) {
+                delete session_storage_variable.cover_benefit_list.motorlegal;
+            }
+        }
+
+        sessionStorage.setItem('opti-cover-info', JSON.stringify(session_storage_variable));
+    } else if (window.location.pathname == '/Admiral/ancillary/breakdown') {
+        let session_storage_variable = JSON.parse(JSON.stringify(JSON.parse(sessionStorage.getItem('opti-cover-info'))));
+        const breakdown_added_text = document.querySelector('eui-breakdown span[data-test="cover-added-info"]');
+        if (breakdown_added_text) {
+
+            let added_breakdown_node = document.querySelector('eui-breakdown #including-ancillary .adm-card__header-title');
+            if (added_breakdown_node) {
+                let added_breakdown_name = added_breakdown_node.innerText.toLowerCase().trim();
+                if (added_breakdown_name.includes('roadside assistance')) {
+                    session_storage_variable.cover_benefit_list.breakdown = 'roadside assistance breakdown cover';
+                } else if (added_breakdown_name.includes('national')) {
+                    session_storage_variable.cover_benefit_list.breakdown = 'national breakdown cover';
+                } else if (added_breakdown_name.includes('european')) {
+                    session_storage_variable.cover_benefit_list.breakdown = 'european breakdown cover';
+                }
+            }
+        } else {
+
+            const breakdown_added_node_when_2nd_car_removed = document.querySelector('eui-breakdown .adm-confirm__result-text');
+
+            if (breakdown_added_node_when_2nd_car_removed && window.getComputedStyle(breakdown_added_node_when_2nd_car_removed).color == 'rgb(15, 118, 50)') {
+
+                let added_breakdown_name = breakdown_added_node_when_2nd_car_removed.innerText.toLowerCase().trim();
+                if (added_breakdown_name.includes('roadside assistance')) {
+                    session_storage_variable.cover_benefit_list.breakdown = 'roadside assistance breakdown cover';
+                } else if (added_breakdown_name.includes('national')) {
+                    session_storage_variable.cover_benefit_list.breakdown = 'national breakdown cover';
+                } else if (added_breakdown_name.includes('european')) {
+                    session_storage_variable.cover_benefit_list.breakdown = 'european breakdown cover';
+                }
+
+            } else {
+                if ('breakdown' in session_storage_variable.cover_benefit_list) {
+                    delete session_storage_variable.cover_benefit_list.breakdown;
+                }
+            }
+        }
+
+        sessionStorage.setItem('opti-cover-info', JSON.stringify(session_storage_variable));
+    } else if (window.location.pathname == '/Admiral/ancillary/personalinjury') {
+        let session_storage_variable = JSON.parse(JSON.stringify(JSON.parse(sessionStorage.getItem('opti-cover-info'))));
+        const personalinjury_added_text = document.querySelector('eui-personal-injury span[data-test="cover-added-info"]');
+        if (personalinjury_added_text) {
+
+            let added_personalinjury_node = document.querySelector('eui-personal-injury #including-ancillary .adm-card__header-title');
+            if (added_personalinjury_node) {
+                let added_personalinjury_name = added_personalinjury_node.innerText.toLowerCase().trim();
+                if (added_personalinjury_name.includes('personal injury plus')) {
+                    session_storage_variable.cover_benefit_list.personalinjury = 'personal injury plus cover';
+                } else if (added_personalinjury_name.includes('personal injury')) {
+                    session_storage_variable.cover_benefit_list.personalinjury = 'personal injury cover';
+                }
+            }
+        } else {
+            if ('personalinjury' in session_storage_variable.cover_benefit_list) {
+                delete session_storage_variable.cover_benefit_list.personalinjury;
+            }
+        }
+
+        sessionStorage.setItem('opti-cover-info', JSON.stringify(session_storage_variable));
+    } else if (window.location.pathname == '/Admiral/ancillary/hirecar') {
+        let session_storage_variable = JSON.parse(JSON.stringify(JSON.parse(sessionStorage.getItem('opti-cover-info'))));
+        const hirecar_added_text = document.querySelector('eui-hire-car span[data-test="cover-added-info"]');
+        if (hirecar_added_text) {
+            session_storage_variable.cover_benefit_list.hirecar = 'hire vehicle cover';
+        } else {
+            if ('hirecar' in session_storage_variable.cover_benefit_list) {
+                delete session_storage_variable.cover_benefit_list.hirecar;
+            }
+        }
+
+        sessionStorage.setItem('opti-cover-info', JSON.stringify(session_storage_variable));
+    } else if (window.location.pathname == '/Admiral/upgrade') {
+        let session_storage_variable = JSON.parse(JSON.stringify(JSON.parse(sessionStorage.getItem('opti-cover-info'))));
+        const selected_cover = document.querySelector('.adm-card--selected');
+        if (selected_cover) {
+            session_storage_variable.cover_name = selected_cover.querySelector('h3[data-test="tier-header"]').innerText;
+            session_storage_variable.cover_image = selected_cover.querySelector('.adm-flex-grid__item img').getAttribute('src');
+        }
+        sessionStorage.setItem('opti-cover-info', JSON.stringify(session_storage_variable));
+    } else if (window.location.pathname == '/Admiral/quote') {
+        handleUpdateSessionStorage_Quote_Page();
+    }
+}
+
 utils.observeSelector('#continue-button', function (continue_btn) {
     continue_btn.addEventListener('mousedown', function () {
-        if (window.location.pathname == '/Admiral/cover') {
-            handleUpdateSessionStorage_Cover_Page();
+        handle_continue_back_button_click();
+    });
+});
 
-        } else if (window.location.pathname == '/Admiral/ancillary/motorlegal') {
-            let session_storage_variable = JSON.parse(JSON.stringify(JSON.parse(sessionStorage.getItem('opti-cover-info'))));
-            const motor_legal_added_text = document.querySelector('eui-motor-legal span[data-test="cover-added-info"]');
-            if (motor_legal_added_text) {
-                session_storage_variable.cover_benefit_list.motorlegal = "motor legal protection";
-            } else {
-                if ('motorlegal' in session_storage_variable.cover_benefit_list) {
-                    delete session_storage_variable.cover_benefit_list.motorlegal;
-                }
-            }
-
-            sessionStorage.setItem('opti-cover-info', JSON.stringify(session_storage_variable));
-        } else if (window.location.pathname == '/Admiral/ancillary/breakdown') {
-            let session_storage_variable = JSON.parse(JSON.stringify(JSON.parse(sessionStorage.getItem('opti-cover-info'))));
-            const breakdown_added_text = document.querySelector('eui-breakdown span[data-test="cover-added-info"]');
-            if (breakdown_added_text) {
-
-                let added_breakdown_node = document.querySelector('eui-breakdown #including-ancillary .adm-card__header-title');
-                if (added_breakdown_node) {
-                    let added_breakdown_name = added_breakdown_node.innerText.toLowerCase().trim();
-                    if (added_breakdown_name.includes('roadside assistance')) {
-                        session_storage_variable.cover_benefit_list.breakdown = 'roadside assistance breakdown cover';
-                    } else if (added_breakdown_name.includes('national')) {
-                        session_storage_variable.cover_benefit_list.breakdown = 'national breakdown cover';
-                    } else if (added_breakdown_name.includes('european')) {
-                        session_storage_variable.cover_benefit_list.breakdown = 'european breakdown cover';
-                    }
-                }
-            } else {
-
-                const breakdown_added_node_when_2nd_car_removed = document.querySelector('eui-breakdown .adm-confirm__result-text');
-
-                if (breakdown_added_node_when_2nd_car_removed && window.getComputedStyle(breakdown_added_node_when_2nd_car_removed).color == 'rgb(15, 118, 50)') {
-
-                    let added_breakdown_name = breakdown_added_node_when_2nd_car_removed.innerText.toLowerCase().trim();
-                    if (added_breakdown_name.includes('roadside assistance')) {
-                        session_storage_variable.cover_benefit_list.breakdown = 'roadside assistance breakdown cover';
-                    } else if (added_breakdown_name.includes('national')) {
-                        session_storage_variable.cover_benefit_list.breakdown = 'national breakdown cover';
-                    } else if (added_breakdown_name.includes('european')) {
-                        session_storage_variable.cover_benefit_list.breakdown = 'european breakdown cover';
-                    }
-
-                } else {
-                    if ('breakdown' in session_storage_variable.cover_benefit_list) {
-                        delete session_storage_variable.cover_benefit_list.breakdown;
-                    }
-                }
-            }
-
-            sessionStorage.setItem('opti-cover-info', JSON.stringify(session_storage_variable));
-        } else if (window.location.pathname == '/Admiral/ancillary/personalinjury') {
-            let session_storage_variable = JSON.parse(JSON.stringify(JSON.parse(sessionStorage.getItem('opti-cover-info'))));
-            const personalinjury_added_text = document.querySelector('eui-personal-injury span[data-test="cover-added-info"]');
-            if (personalinjury_added_text) {
-
-                let added_personalinjury_node = document.querySelector('eui-personal-injury #including-ancillary .adm-card__header-title');
-                if (added_personalinjury_node) {
-                    let added_personalinjury_name = added_personalinjury_node.innerText.toLowerCase().trim();
-                    if (added_personalinjury_name.includes('personal injury plus')) {
-                        session_storage_variable.cover_benefit_list.personalinjury = 'personal injury plus cover';
-                    } else if (added_personalinjury_name.includes('personal injury')) {
-                        session_storage_variable.cover_benefit_list.personalinjury = 'personal injury cover';
-                    }
-                }
-            } else {
-                if ('personalinjury' in session_storage_variable.cover_benefit_list) {
-                    delete session_storage_variable.cover_benefit_list.personalinjury;
-                }
-            }
-
-            sessionStorage.setItem('opti-cover-info', JSON.stringify(session_storage_variable));
-        } else if (window.location.pathname == '/Admiral/ancillary/hirecar') {
-            let session_storage_variable = JSON.parse(JSON.stringify(JSON.parse(sessionStorage.getItem('opti-cover-info'))));
-            const hirecar_added_text = document.querySelector('eui-hire-car span[data-test="cover-added-info"]');
-            if (hirecar_added_text) {
-                session_storage_variable.cover_benefit_list.hirecar = 'hire vehicle cover';
-            } else {
-                if ('hirecar' in session_storage_variable.cover_benefit_list) {
-                    delete session_storage_variable.cover_benefit_list.hirecar;
-                }
-            }
-
-            sessionStorage.setItem('opti-cover-info', JSON.stringify(session_storage_variable));
-        } else if (window.location.pathname == '/Admiral/upgrade') {
-            let session_storage_variable = JSON.parse(JSON.stringify(JSON.parse(sessionStorage.getItem('opti-cover-info'))));
-            const selected_cover = document.querySelector('.adm-card--selected');
-            if (selected_cover) {
-                session_storage_variable.cover_name = selected_cover.querySelector('h3[data-test="tier-header"]').innerText;
-                session_storage_variable.cover_image = selected_cover.querySelector('.adm-flex-grid__item img').getAttribute('src');
-            }
-            sessionStorage.setItem('opti-cover-info', JSON.stringify(session_storage_variable));
-        } else if (window.location.pathname == '/Admiral/quote') {
-            handleUpdateSessionStorage_Quote_Page();
-        }
+utils.observeSelector('#back-button', function (back_btn) {
+    back_btn.addEventListener('mousedown', function () {
+        handle_continue_back_button_click();
     });
 });
