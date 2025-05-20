@@ -292,7 +292,51 @@ utils.observeSelector('eui-quote eui-motor-quote-wrapper', function (quote_page_
     }
 });
 
+function handle_increasing_width_of_dd_label() {
+    const admiral_logo = document.querySelector(".adm-navbar__wrap adm-navbar-logo");
+    const admiral_nav_section = document.querySelector(".adm-navbar__wrap adm-navbar-nav");
+    const admiral_contact_us = document.querySelector('.adm-navbar__wrap .adm-navbar__nav adm-navbar-item:nth-of-type(2)');
+    const opti_basket = document.querySelector(".opti-quote-basket-dd-container");
+
+    if (admiral_logo && admiral_nav_section && admiral_contact_us && opti_basket) {
+        admiral_logo.style.display = "none";
+        admiral_nav_section.style.width = "100%";
+        admiral_contact_us.style.display = "none";
+        opti_basket.style.width = "100%";
+        opti_basket.style.marginLeft = "0";
+    }
+}
+
+function handle_decreasing_width_of_dd_label() {
+    const admiral_logo = document.querySelector(".adm-navbar__wrap adm-navbar-logo");
+    const admiral_nav_section = document.querySelector(".adm-navbar__wrap adm-navbar-nav");
+    const admiral_contact_us = document.querySelector('.adm-navbar__wrap .adm-navbar__nav adm-navbar-item:nth-of-type(2)');
+    const opti_basket = document.querySelector(".opti-quote-basket-dd-container");
+
+    if (admiral_logo && admiral_nav_section && admiral_contact_us && opti_basket) {
+        admiral_logo.style.display = "unset";
+        admiral_nav_section.style.width = "unset";
+        admiral_contact_us.style.display = "unset";
+        opti_basket.style.width = "unset";
+        opti_basket.style.marginLeft = "16px";
+    }
+}
+
 utils.observeSelector('.adm-navbar__wrap .adm-navbar__nav', function (right_nav) {
+
+    if (window.innerWidth < 500) {
+        const logout_node = document.querySelector('.adm-navbar__wrap .adm-navbar__nav adm-navbar-item:nth-of-type(1)');
+        if (logout_node) {
+            logout_node.style.display = "none";
+        }
+
+        const contact_us_node_text = document.querySelector('.adm-navbar__wrap .adm-navbar__nav adm-navbar-item:nth-of-type(2) .adm-btn-call__text');
+        if (contact_us_node_text) {
+            contact_us_node_text.innerText = "Call us";
+            contact_us_node_text.style.marginLeft = "4px";
+        }
+    }
+
 
     if (!document.querySelector('.opti-quote-basket-dd-container')) {
         right_nav.insertAdjacentHTML("beforeend", `<div class="opti-quote-basket-dd-container">
@@ -512,6 +556,12 @@ utils.observeSelector('.adm-navbar__wrap .adm-navbar__nav', function (right_nav)
             font-weight: 700;
             color: #444444;
         }
+
+        @media (max-width: 500px) {
+            .opti-quote-basket-dd-container .dd-panel {
+                width: 100%;
+            }
+        }
     </style>
     <div class="dd-label panel-close">
         <svg class="car-icon" width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -646,12 +696,19 @@ utils.observeSelector('.adm-navbar__wrap .adm-navbar__nav', function (right_nav)
 
                     handleUpdatingValueOf_Basket();
 
+                    if (window.innerWidth < 500) {
+                        handle_increasing_width_of_dd_label();
+                    }
+
                     basket_container_panel.classList.remove("panel-close");
                     basket_container_panel.classList.add("panel-open");
 
                     basket_container_label.classList.remove("panel-close");
                     basket_container_label.classList.add("panel-open");
                 } else {
+                    if (window.innerWidth < 500) {
+                        handle_decreasing_width_of_dd_label();
+                    }
                     basket_container_panel.classList.remove("panel-open");
                     basket_container_panel.classList.add("panel-close");
 
@@ -666,6 +723,9 @@ utils.observeSelector('.adm-navbar__wrap .adm-navbar__nav', function (right_nav)
                 const basket_container_panel = document.querySelector('.opti-quote-basket-dd-container .dd-panel');
 
                 if (!isLabel && !isPanel) {
+                    if (window.innerWidth < 500) {
+                        handle_decreasing_width_of_dd_label();
+                    }
                     basket_container_panel.classList.remove("panel-open");
                     basket_container_panel.classList.add("panel-close");
 
