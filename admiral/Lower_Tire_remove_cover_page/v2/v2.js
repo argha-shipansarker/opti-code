@@ -220,6 +220,11 @@ if (window.location.pathname == '/Admiral/cover' && sessionStorage.getItem('opti
             color: #006DCC;
         }
 
+        .opti-cover-design .cover-footer .price-selection-section .selection-section .radio-label .radio-text.checked,
+        .opti-cover-design .cover-footer .price-selection-section .selection-section .radio-label .radio-text.unchecked {
+            display: none;
+        }
+
         .opti-cover-design .cover-footer .price-selection-section .selection-section .radio-label .radio-icon {
             width: 20px;
             height: 20px;
@@ -251,6 +256,14 @@ if (window.location.pathname == '/Admiral/cover' && sessionStorage.getItem('opti
 
         .opti-cover-design .cover-footer .price-selection-section .selection-section input[type="radio"]:checked+.radio-label .radio-text {
             color: #0A8A19;
+        }
+
+        .opti-cover-design .cover-footer .price-selection-section .selection-section input[type="radio"]:checked+.radio-label .checked  {
+            display: inline;
+        }
+
+        .opti-cover-design .cover-footer .price-selection-section .selection-section input[type="radio"]:not(:checked)+.radio-label .unchecked   {
+            display: inline;
         }
 
         .opti-cover-design .cover-footer .price-selection-section .selection-section input[type="radio"]:checked+.radio-label .radio-icon::after {
@@ -410,7 +423,8 @@ if (window.location.pathname == '/Admiral/cover' && sessionStorage.getItem('opti
                         <input type="radio" name="cover-choice" id="essential-cover" value="essential">
                         <span class="radio-label">
                             <span class="radio-icon"></span>
-                            <span class="radio-text">Selected level of cover</span>
+                            <span class="radio-text checked">Selected level of cover</span>
+                            <span class="radio-text unchecked">Select level of cover</span>
                         </span>
                     </label>
                 </div>
@@ -721,6 +735,11 @@ if (window.location.pathname == '/Admiral/cover' && sessionStorage.getItem('opti
             color: #006DCC;
         }
 
+        .opti-cover-design .cover-footer .price-selection-section .selection-section .radio-label .radio-text.checked,
+        .opti-cover-design .cover-footer .price-selection-section .selection-section .radio-label .radio-text.unchecked {
+            display: none;
+        }
+
         .opti-cover-design .cover-footer .price-selection-section .selection-section .radio-label .radio-icon {
             width: 20px;
             height: 20px;
@@ -752,6 +771,14 @@ if (window.location.pathname == '/Admiral/cover' && sessionStorage.getItem('opti
 
         .opti-cover-design .cover-footer .price-selection-section .selection-section input[type="radio"]:checked+.radio-label .radio-text {
             color: #0A8A19;
+        }
+
+        .opti-cover-design .cover-footer .price-selection-section .selection-section input[type="radio"]:checked+.radio-label .checked  {
+            display: inline;
+        }
+
+        .opti-cover-design .cover-footer .price-selection-section .selection-section input[type="radio"]:not(:checked)+.radio-label .unchecked   {
+            display: inline;
         }
 
         .opti-cover-design .cover-footer .price-selection-section .selection-section input[type="radio"]:checked+.radio-label .radio-icon::after {
@@ -929,7 +956,8 @@ if (window.location.pathname == '/Admiral/cover' && sessionStorage.getItem('opti
                         <input type="radio" name="cover-choice" id="admiral-cover" value="admiral">
                         <span class="radio-label">
                             <span class="radio-icon"></span>
-                            <span class="radio-text">Selected level of cover</span>
+                            <span class="radio-text checked">Selected level of cover</span>
+                            <span class="radio-text unchecked">Select level of cover</span>
                         </span>
                     </label>
                 </div>
@@ -1238,6 +1266,11 @@ if (window.location.pathname == '/Admiral/cover' && sessionStorage.getItem('opti
             color: #006DCC;
         }
 
+        .opti-cover-design .cover-footer .price-selection-section .selection-section .radio-label .radio-text.checked,
+        .opti-cover-design .cover-footer .price-selection-section .selection-section .radio-label .radio-text.unchecked {
+            display: none;
+        }
+
         .opti-cover-design .cover-footer .price-selection-section .selection-section .radio-label .radio-icon {
             width: 20px;
             height: 20px;
@@ -1269,6 +1302,14 @@ if (window.location.pathname == '/Admiral/cover' && sessionStorage.getItem('opti
 
         .opti-cover-design .cover-footer .price-selection-section .selection-section input[type="radio"]:checked+.radio-label .radio-text {
             color: #0A8A19;
+        }
+
+        .opti-cover-design .cover-footer .price-selection-section .selection-section input[type="radio"]:checked+.radio-label .checked  {
+            display: inline;
+        }
+
+        .opti-cover-design .cover-footer .price-selection-section .selection-section input[type="radio"]:not(:checked)+.radio-label .unchecked   {
+            display: inline;
         }
 
         .opti-cover-design .cover-footer .price-selection-section .selection-section input[type="radio"]:checked+.radio-label .radio-icon::after {
@@ -1471,7 +1512,8 @@ if (window.location.pathname == '/Admiral/cover' && sessionStorage.getItem('opti
                         <input type="radio" name="cover-choice" id="gold-cover" value="gold">
                         <span class="radio-label">
                             <span class="radio-icon"></span>
-                            <span class="radio-text">Selected level of cover</span>
+                            <span class="radio-text checked">Selected level of cover</span>
+                            <span class="radio-text unchecked">Select level of cover</span>
                         </span>
                     </label>
                 </div>
