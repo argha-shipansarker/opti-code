@@ -33,6 +33,7 @@ if (window.location.pathname == '/Admiral/cover' && sessionStorage.getItem('opti
             margin-bottom: 0;
             margin-left: 9px;
             text-align: start;
+            color: #444444;
         }
     </style>
     <div>
