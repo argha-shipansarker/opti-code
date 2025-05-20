@@ -11,7 +11,7 @@ function callbackFn(activate, options) {
     utils.waitUntil(function () {
         let personalDetails = dataLayer.find(obj => obj.event === 'yourDetails');
         if (personalDetails) {
-            if (personalDetails.product == "singleCar") {
+            if (personalDetails.product == "singleCar" && personalDetails.levelOfCover == "Comprehensive") {
                 return true;
             }
         }
