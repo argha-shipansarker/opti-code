@@ -247,7 +247,7 @@ function handleUpdatingValueOf_Basket() {
     cover_image.setAttribute('src', session_storage_variable.cover_image);
 
     if (window.location.pathname == '/Admiral/ancillary/motorlegal' || window.location.pathname == '/Admiral/ancillary/breakdown' || window.location.pathname == '/Admiral/ancillary/personalinjury' || window.location.pathname == '/Admiral/ancillary/hirecar' || window.location.pathname == '/Admiral/upgrade') {
-        cover_price.innerText = `£${session_storage_variable.cover_price} total`;
+        cover_price.innerText = `£${Number(session_storage_variable.cover_price).toLocaleString('en-GB', { minimumFractionDigits: 2, maximumFractionDigits: 2 })} total`;
     } else {
         cover_price.innerText = `${session_storage_variable.cover_price} total`;
     }
@@ -339,6 +339,20 @@ function handle_decreasing_width_of_dd_label() {
         opti_basket.style.marginLeft = "16px";
     }
 }
+
+utils.observeSelector('eui-tier', function () {
+    let personalDetails = dataLayer.find(obj => obj.event === 'yourDetails');
+    if (personalDetails && personalDetails.product != "singleCar" && document.querySelector('.opti-quote-basket-dd-container')) {
+        document.querySelector('.opti-quote-basket-dd-container').style.display = "none";
+    }
+});
+
+utils.observeSelector('eui-vehicle-upgrades', function () {
+    let personalDetails = dataLayer.find(obj => obj.event === 'yourDetails');
+    if (personalDetails && personalDetails.product != "singleCar" && document.querySelector('.opti-quote-basket-dd-container')) {
+        document.querySelector('.opti-quote-basket-dd-container').style.display = "none";
+    }
+});
 
 utils.observeSelector('.adm-navbar__wrap .adm-navbar__nav', function (right_nav) {
 
