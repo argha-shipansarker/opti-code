@@ -781,38 +781,44 @@ function handle_continue_back_button_click() {
         sessionStorage.setItem('opti-cover-info', JSON.stringify(session_storage_variable));
     } else if (window.location.pathname == '/Admiral/ancillary/breakdown') {
         let session_storage_variable = JSON.parse(JSON.stringify(JSON.parse(sessionStorage.getItem('opti-cover-info'))));
-        const breakdown_added_text = document.querySelector('eui-breakdown span[data-test="cover-added-info"]');
-        if (breakdown_added_text) {
+        const roadside_breakdown_always_added_text = document.querySelector('eui-breakdown adm-alert[data-test="roadside-still-included"]');
 
-            let added_breakdown_node = document.querySelector('eui-breakdown #including-ancillary .adm-card__header-title');
-            if (added_breakdown_node) {
-                let added_breakdown_name = added_breakdown_node.innerText.toLowerCase().trim();
-                if (added_breakdown_name.includes('roadside assistance')) {
-                    session_storage_variable.cover_benefit_list.breakdown = 'roadside assistance breakdown cover';
-                } else if (added_breakdown_name.includes('national')) {
-                    session_storage_variable.cover_benefit_list.breakdown = 'national breakdown cover';
-                } else if (added_breakdown_name.includes('european')) {
-                    session_storage_variable.cover_benefit_list.breakdown = 'european breakdown cover';
-                }
-            }
+        if (roadside_breakdown_always_added_text) {
+            session_storage_variable.cover_benefit_list.breakdown = 'roadside assistance breakdown cover';
         } else {
+            const breakdown_added_text = document.querySelector('eui-breakdown span[data-test="cover-added-info"]');
+            if (breakdown_added_text) {
 
-            const breakdown_added_node_when_2nd_car_removed = document.querySelector('eui-breakdown .adm-confirm__result-text');
-
-            if (breakdown_added_node_when_2nd_car_removed && window.getComputedStyle(breakdown_added_node_when_2nd_car_removed).color == 'rgb(15, 118, 50)') {
-
-                let added_breakdown_name = breakdown_added_node_when_2nd_car_removed.innerText.toLowerCase().trim();
-                if (added_breakdown_name.includes('roadside assistance')) {
-                    session_storage_variable.cover_benefit_list.breakdown = 'roadside assistance breakdown cover';
-                } else if (added_breakdown_name.includes('national')) {
-                    session_storage_variable.cover_benefit_list.breakdown = 'national breakdown cover';
-                } else if (added_breakdown_name.includes('european')) {
-                    session_storage_variable.cover_benefit_list.breakdown = 'european breakdown cover';
+                let added_breakdown_node = document.querySelector('eui-breakdown #including-ancillary .adm-card__header-title');
+                if (added_breakdown_node) {
+                    let added_breakdown_name = added_breakdown_node.innerText.toLowerCase().trim();
+                    if (added_breakdown_name.includes('roadside assistance')) {
+                        session_storage_variable.cover_benefit_list.breakdown = 'roadside assistance breakdown cover';
+                    } else if (added_breakdown_name.includes('national')) {
+                        session_storage_variable.cover_benefit_list.breakdown = 'national breakdown cover';
+                    } else if (added_breakdown_name.includes('european')) {
+                        session_storage_variable.cover_benefit_list.breakdown = 'european breakdown cover';
+                    }
                 }
-
             } else {
-                if ('breakdown' in session_storage_variable.cover_benefit_list) {
-                    delete session_storage_variable.cover_benefit_list.breakdown;
+
+                const breakdown_added_node_when_2nd_car_removed = document.querySelector('eui-breakdown .adm-confirm__result-text');
+
+                if (breakdown_added_node_when_2nd_car_removed && window.getComputedStyle(breakdown_added_node_when_2nd_car_removed).color == 'rgb(15, 118, 50)') {
+
+                    let added_breakdown_name = breakdown_added_node_when_2nd_car_removed.innerText.toLowerCase().trim();
+                    if (added_breakdown_name.includes('roadside assistance')) {
+                        session_storage_variable.cover_benefit_list.breakdown = 'roadside assistance breakdown cover';
+                    } else if (added_breakdown_name.includes('national')) {
+                        session_storage_variable.cover_benefit_list.breakdown = 'national breakdown cover';
+                    } else if (added_breakdown_name.includes('european')) {
+                        session_storage_variable.cover_benefit_list.breakdown = 'european breakdown cover';
+                    }
+
+                } else {
+                    if ('breakdown' in session_storage_variable.cover_benefit_list) {
+                        delete session_storage_variable.cover_benefit_list.breakdown;
+                    }
                 }
             }
         }
