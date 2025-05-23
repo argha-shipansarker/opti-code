@@ -109,13 +109,15 @@ function handleUpdateSessionStorage_Quote_Page() {
         session_storage_variable = JSON.parse(sessionStorage.getItem('opti-cover-info'));
     }
 
-    if (document.querySelector('eui-quote adm-quote-hero-price-terms strong')) {
-        //this is when the value is calculated in months
-        let cover_price = document.querySelector('eui-quote adm-quote-hero-price-terms strong');
-        session_storage_variable.cover_price = cover_price.innerText;
-    } else {
+    if (document.querySelector('eui-quote adm-quote-hero-price-total')) {
         let cover_price = document.querySelector('eui-quote adm-quote-hero-price-total');
         session_storage_variable.cover_price = cover_price.innerText;
+    } else {
+        if (document.querySelector('eui-quote adm-quote-hero-price-terms strong')) {
+            //if cover price is in months
+            let cover_price = document.querySelector('eui-quote adm-quote-hero-price-terms strong');
+            session_storage_variable.cover_price = cover_price.innerText;
+        }
     }
 
     if (!session_storage_variable.cover_name) {
@@ -126,9 +128,23 @@ function handleUpdateSessionStorage_Quote_Page() {
         }
     }
 
-    const all_added_upgrades = document.querySelectorAll('eui-quote eui-motor-optional-upgrades-section adm-card[data-test="optional-upgrades-card"] adm-card-section[data-test="added-ancillary"] adm-details-title[data-test="added-ancillary-name"] span');
-
     let cover_benefit_list = {};
+
+    const upgrades_included_with_cover = document.querySelectorAll('eui-quote eui-motor-cover-benefits-card #cover-benefits adm-details-item strong[data-test="cover-benefits-label"]');
+
+    upgrades_included_with_cover.forEach(el => {
+        const text = el.innerText.trim().toLowerCase();
+        if (text === 'motor legal protection' || text === 'roadside assistance breakdown cover') {
+            if (text == "motor legal protection") {
+                cover_benefit_list.motorlegal = text;
+            } else {
+                cover_benefit_list.breakdown = text;
+            }
+        }
+    });
+
+
+    const all_added_upgrades = document.querySelectorAll('eui-quote eui-motor-optional-upgrades-section adm-card[data-test="optional-upgrades-card"] adm-card-section[data-test="added-ancillary"] adm-details-title[data-test="added-ancillary-name"] span');
 
     all_added_upgrades.forEach(function (el) {
         const text = el.innerText.trim().toLowerCase();
@@ -229,7 +245,12 @@ function handleUpdatingValueOf_Basket() {
     car_reg_number.innerText = session_storage_variable.vehicle_reg_number;
     level_of_cover.innerText = session_storage_variable.level_of_cover;
     cover_image.setAttribute('src', session_storage_variable.cover_image);
-    cover_price.innerText = `${session_storage_variable.cover_price} total`;
+
+    if (window.location.pathname == '/Admiral/ancillary/motorlegal' || window.location.pathname == '/Admiral/ancillary/breakdown' || window.location.pathname == '/Admiral/ancillary/personalinjury' || window.location.pathname == '/Admiral/ancillary/hirecar' || window.location.pathname == '/Admiral/upgrade') {
+        cover_price.innerText = `£${session_storage_variable.cover_price} total`;
+    } else {
+        cover_price.innerText = `${session_storage_variable.cover_price} total`;
+    }
 
     if (session_storage_variable.driver_name.length) {
 
