@@ -1,9 +1,5 @@
 const utils = optimizely.get('utils');
 
-utils.waitForElement('.ss-item-container').then(function (product_container) {
-    document.dispatchEvent(new CustomEvent('quickview-buttons-added'));
-});
-
 utils.observeSelector('.ss-item-container', function (product_container) {
     if (!product_container.querySelector('.test')) {
         product_container.insertAdjacentHTML("afterbegin", `<div class="opt-home-container"
@@ -25,7 +21,11 @@ utils.observeSelector('.ss-item-container', function (product_container) {
         }
     }
     console.warn("hello from product_container....")
-    document.dispatchEvent(new CustomEvent('quickview-buttons-added'));
+    setTimeout(() => {
+        console.warn("hello from product_container.... setTimeout")
+        document.dispatchEvent(new CustomEvent('quickview-buttons-added'));
+    }, 500);
+
 });
 
 utils.observeSelector('.ss-item-container .product-item__img', function (product_image) {
