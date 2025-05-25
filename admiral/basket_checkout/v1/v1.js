@@ -189,7 +189,7 @@ function handleUpdateSessionStorage_Quote_Page() {
         });
     }
 
-    if (session_storage_variable.driver_name && document.querySelector('eui-quote .adm-driver-ncb__content-name') && document.querySelector('eui-quote #pncbAddButton adm-icon')) {
+    if (session_storage_variable.driver_name && document.querySelector('eui-quote .adm-driver-ncb__content-name') && (document.querySelector('eui-quote #pncbAddButton adm-icon') || (document.querySelector('#add-ncb-multicar') && document.querySelector('#add-ncb-multicar').innerText == 'ADDED'))) {
         session_storage_variable.driver_name.forEach(driver => {
             if (driver.name.toLowerCase() === document.querySelector('eui-quote .adm-driver-ncb__content-name').innerText.trim().toLowerCase()) {
                 driver.is_protected = true;
