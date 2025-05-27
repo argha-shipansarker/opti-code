@@ -28,6 +28,8 @@ utils.observeSelector('.ss-item-container', function (product_container) {
 
 });
 
+window.product_url = null
+
 utils.observeSelector('.ss-item-container .product-item__img', function (product_image) {
     if (!product_image.querySelector('.opti-plus-sign')) {
         product_image.insertAdjacentHTML("beforeend", `<div class="opti-quick-view-modal">
@@ -64,6 +66,7 @@ utils.observeSelector('.ss-item-container .product-item__img', function (product
             el.addEventListener('click', function (event) {
                 event.preventDefault();
                 if (document.querySelector('.opt-home-container')) {
+                    window.product_url = el.getAttribute("data-handle");
                     document.querySelector('.opt-home-container').style.display = "flex";
                 }
             });
