@@ -896,3 +896,9 @@ utils.observeSelector('#back-button', function (back_btn) {
         handle_continue_back_button_click();
     });
 });
+
+utils.observeSelector('.adm-section:has(+#quote-summary)', function (home_car_van_section) {
+    if (document.querySelector('.opti-quote-basket-dd-container')) {
+        document.querySelector('.opti-quote-basket-dd-container').style.display = 'block';
+    }
+});
