@@ -1,5 +1,5 @@
-.product-sticky-block__holder {
-    position: unset !important;
+.opti-quick-view-modal .product-sticky-block__holder {
+    display: none;
 }
 
 .opti-quick-view-modal .quick-view-product {
