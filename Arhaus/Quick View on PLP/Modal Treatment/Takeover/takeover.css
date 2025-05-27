@@ -1,3 +1,7 @@
+.opti-quick-view-modal .shopify-section:not(:first-of-type) {
+    display: none;
+}
+
 .opti-quick-view-modal .product-sticky-block__holder {
     display: none;
 }
