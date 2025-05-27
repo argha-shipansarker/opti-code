@@ -12,8 +12,8 @@ utils.observeSelector('.opti-quick-view-modal .quick-view-product .product-image
             product_zoom_image.appendChild(cloned_plp_image);
 
             document.querySelector('.opti-quick-view-modal').style.display = "flex";
-            if (!document.querySelector('.opti-quick-view-modal .opti-close-icon')) {
-                document.querySelector('.opti-quick-view-modal').insertAdjacentHTML("beforeend", `<div class="opti-close-icon">
+            if (!document.querySelector('.opti-quick-view-modal .quick-view-product .opti-close-icon')) {
+                document.querySelector('.opti-quick-view-modal .quick-view-product').insertAdjacentHTML("beforeend", `<div class="opti-close-icon">
     <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
         <g clip-path="url(#clip0_221_379)">
             <path d="M14.2886 1.35352L0.853516 14.7886" stroke="black" />

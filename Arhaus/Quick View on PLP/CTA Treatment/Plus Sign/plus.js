@@ -2,12 +2,9 @@ const utils = optimizely.get('utils');
 
 utils.observeSelector('.ss-item-container', function (product_container) {
     if (!product_container.querySelector('.opti-quick-view-modal .quick-view-product')) {
-        product_container.insertAdjacentHTML("afterbegin", `<div class="opti-quick-view-modal"
-        style="display: none; z-index: 9999999999; position: fixed; height: 100%; width: 100%; top: 0; left: 0; background: rgba(0,0,0,.5); padding: 10px; "><div class="quick-view-product"></div></div>`)
+        product_container.insertAdjacentHTML("afterbegin", `<div class="opti-quick-view-modal"><div class="quick-view-product"></div></div>`)
     }
-    console.warn("hello from product_container....")
     setTimeout(() => {
-        console.warn("hello from product_container.... setTimeout")
         document.dispatchEvent(new CustomEvent('quickview-buttons-added'));
     }, 200);
 
