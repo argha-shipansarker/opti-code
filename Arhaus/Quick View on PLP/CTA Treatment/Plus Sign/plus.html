@@ -1,6 +1,7 @@
-<div class="opti-quick-view-modal">
+<a data-fetch-product data-handle="${product_image.href.split('/').pop()}" data-target=".quick-view-product"
+    class="opti-plus-sign">
     <style>
-        .opti-quick-view-modal .opti-plus-sign {
+        .opti-plus-sign {
             border-radius: 100%;
             background: #1D1D1D;
             padding: 10px;
@@ -11,18 +12,15 @@
             display: flex;
         }
     </style>
-    <a data-fetch-product data-handle="${product_image.href.split('/').pop()}" data-target=".test"
-        class="opti-plus-sign">
-        <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <g clip-path="url(#clip0_287_107)">
-                <path d="M8 2.59961V13.3996" stroke="white" />
-                <path d="M2 8H14" stroke="white" />
-            </g>
-            <defs>
-                <clipPath id="clip0_287_107">
-                    <rect width="12" height="12" fill="white" transform="translate(2 2)" />
-                </clipPath>
-            </defs>
-        </svg>
-    </a>
-</div>
+    <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <g clip-path="url(#clip0_287_107)">
+            <path d="M8 2.59961V13.3996" stroke="white" />
+            <path d="M2 8H14" stroke="white" />
+        </g>
+        <defs>
+            <clipPath id="clip0_287_107">
+                <rect width="12" height="12" fill="white" transform="translate(2 2)" />
+            </clipPath>
+        </defs>
+    </svg>
+</a>
