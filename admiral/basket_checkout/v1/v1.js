@@ -726,6 +726,12 @@ utils.observeSelector('.adm-navbar__wrap .adm-navbar__nav', function (right_nav)
                     if (ancils) {
                         session_storage_variable.cover_price = ancils.totalPriceAnnualAncil;
                         sessionStorage.setItem('opti-cover-info', JSON.stringify(session_storage_variable));
+                    } else {
+                        let gotPrice = dataLayer.reverse().find(obj => obj.event === 'gotPrice');
+                        if (gotPrice) {
+                            session_storage_variable.cover_price = gotPrice.totalPriceAnnual;
+                            sessionStorage.setItem('opti-cover-info', JSON.stringify(session_storage_variable));
+                        }
                     }
                 } else if (window.location.pathname == '/Admiral/quote') {
                     handleUpdateSessionStorage_Quote_Page();
