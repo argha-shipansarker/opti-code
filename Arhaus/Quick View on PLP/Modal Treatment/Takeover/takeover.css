@@ -1,0 +1,26 @@
+.product-sticky-block__holder {
+    position: unset !important;
+}
+
+.opti-quick-view-modal .quick-view-product {
+    background: white;
+    position: relative;
+}
+
+.opti-quick-view-modal .quick-view-product .product-image-zoom-block .product-gallery__img_link {
+    display: none;
+}
+
+.opti-quick-view-modal .quick-view-product .product-image-zoom-block .product-gallery-splide {
+    display: none;
+}
+
+.opti-quick-view-modal .quick-view-product .product-image-zoom-block .product-item__img .opti-plus-sign {
+    display: none;
+}
+
+.opti-quick-view-modal .opti-close-icon {
+    position: absolute;
+    top: 24px;
+    right: 24px;
+}

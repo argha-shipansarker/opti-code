@@ -51,7 +51,6 @@ utils.observeSelector('.ss-item-container .product-item__img', function (product
                 event.preventDefault();
                 if (document.querySelector('.opti-quick-view-modal')) {
                     window.product_url = el.getAttribute("data-handle");
-                    document.querySelector('.opti-quick-view-modal').style.display = "flex";
                 }
             });
         });
