@@ -23,6 +23,34 @@
     display: none;
 }
 
+.opti-quick-view-modal .quick-view-product .product__sku-box {
+    display: none;
+}
+
+.opti-quick-view-modal .quick-view-product .product-main-block__details div:has(.icon--collection) {
+    display: none !important;
+}
+
+.opti-quick-view-modal .quick-view-product .product-main-block__details div:has(.icon--swatches):not(.product__row){
+    display: none !important;
+}
+
+.opti-quick-view-modal .quick-view-product .product-quantity-availability-wrapper .col-5 {
+    display: none;
+}
+
+.opti-quick-view-modal .quick-view-product .product-quantity-availability-wrapper .justify-content-end {
+    justify-content: start !important;
+}
+
+.opti-quick-view-modal .quick-view-product .dimensions {
+    display: none;
+}
+
+.opti-quick-view-modal .quick-view-product #dimensions-section {
+    display: none;
+}
+
 .opti-quick-view-modal .opti-close-icon {
     position: absolute;
     top: 24px;
