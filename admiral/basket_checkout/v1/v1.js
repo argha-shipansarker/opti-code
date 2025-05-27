@@ -796,8 +796,9 @@ function handle_continue_back_button_click() {
     } else if (window.location.pathname == '/Admiral/ancillary/breakdown') {
         let session_storage_variable = JSON.parse(JSON.stringify(JSON.parse(sessionStorage.getItem('opti-cover-info'))));
         const roadside_breakdown_always_added_text = document.querySelector('eui-breakdown adm-alert[data-test="roadside-still-included"]');
+        const roadside_breakdown_included_test = document.querySelector('eui-breakdown #included-with-platinum');
 
-        if (roadside_breakdown_always_added_text) {
+        if (roadside_breakdown_always_added_text || roadside_breakdown_included_test) {
             session_storage_variable.cover_benefit_list.breakdown = 'roadside assistance breakdown cover';
         } else {
             const breakdown_added_text = document.querySelector('eui-breakdown span[data-test="cover-added-info"]');
