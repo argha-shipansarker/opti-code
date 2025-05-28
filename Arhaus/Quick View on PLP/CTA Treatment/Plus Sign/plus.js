@@ -28,16 +28,20 @@ utils.observeSelector('.ss-item-container .product-item__img', function (product
             display: none;
         }
 
+        .opti-plus-sign:hover {
+            background: #FFFFFF;
+        }
+
         .product-item__img:hover .opti-plus-sign {
             display: flex;
         }
 
-        .opti-plus-sign:hover svg path {
-            fill: #1D1D1D;
+        .opti-plus-sign svg {
+            color: #FFFFFF;
         }
 
-        .opti-plus-sign:hover svg rect {
-            fill: #1D1D1D;
+        .opti-plus-sign:hover svg {
+            color: #1D1D1D;
         }
 
         @media (max-width: 600px) {
@@ -56,8 +60,8 @@ utils.observeSelector('.ss-item-container .product-item__img', function (product
     </style>
     <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
         <g clip-path="url(#clip0_287_107)">
-            <path d="M8 2.59961V13.3996" stroke="white" />
-            <path d="M2 8H14" stroke="white" />
+            <path d="M8 2.59961V13.3996" stroke="currentColor" />
+            <path d="M2 8H14" stroke="currentColor" />
         </g>
         <defs>
             <clipPath id="clip0_287_107">
