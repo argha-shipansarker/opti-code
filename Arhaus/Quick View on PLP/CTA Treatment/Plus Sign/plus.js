@@ -25,7 +25,19 @@ utils.observeSelector('.ss-item-container .product-item__img', function (product
             bottom: 16px;
             left: 16px;
             z-index: 99;
+            display: none;
+        }
+
+        .product-item__img:hover .opti-plus-sign {
             display: flex;
+        }
+
+        .opti-plus-sign:hover svg path {
+            fill: #1D1D1D;
+        }
+
+        .opti-plus-sign:hover svg rect {
+            fill: #1D1D1D;
         }
 
         @media (max-width: 600px) {
@@ -33,6 +45,7 @@ utils.observeSelector('.ss-item-container .product-item__img', function (product
                 padding: 6px;
                 bottom: 8px;
                 left: 8px;
+                display: flex;
             }
 
             .opti-plus-sign svg {
