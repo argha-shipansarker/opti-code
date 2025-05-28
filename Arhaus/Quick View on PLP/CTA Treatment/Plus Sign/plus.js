@@ -31,6 +31,8 @@ utils.observeSelector('.ss-item-container .product-item__img', function (product
         @media (max-width: 600px) {
             .opti-plus-sign {
                 padding: 6px;
+                bottom: 8px;
+                left: 8px;
             }
 
             .opti-plus-sign svg {
