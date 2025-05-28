@@ -18,18 +18,29 @@ utils.observeSelector('.ss-item-container .product-item__img', function (product
     class="opti-plus-sign">
     <style>
         .opti-plus-sign {
-            border-radius: 100%;
             background: #1D1D1D;
-            padding: 8px;
+            padding: 4px 8px;
             position: absolute;
             bottom: 16px;
             left: 16px;
             z-index: 99;
             display: none;
+            color: #FFFFFF;
+            font-size: 11px;
+            line-height: 100%;
+            font-weight: 400;
+            text-decoration: none;
+            border-top-right-radius: 25px;
+            border-bottom-right-radius: 25px;
+            border-top-left-radius: 25px;
+            border-bottom-left-radius: 25px;
+            justify-content: center;
+            align-items: center;
         }
 
         .opti-plus-sign:hover {
             background: #FFFFFF;
+            color: #1D1D1D;
         }
 
         .product-item__img:hover .opti-plus-sign {
@@ -38,6 +49,7 @@ utils.observeSelector('.ss-item-container .product-item__img', function (product
 
         .opti-plus-sign svg {
             color: #FFFFFF;
+            margin-right: 4px;
         }
 
         .opti-plus-sign:hover svg {
@@ -46,16 +58,11 @@ utils.observeSelector('.ss-item-container .product-item__img', function (product
 
         @media (max-width: 600px) {
             .opti-plus-sign {
-                padding: 6px;
                 bottom: 8px;
                 left: 8px;
                 display: flex;
             }
 
-            .opti-plus-sign svg {
-                height: 12px;
-                width: 12px;
-            }
         }
     </style>
     <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -69,6 +76,7 @@ utils.observeSelector('.ss-item-container .product-item__img', function (product
             </clipPath>
         </defs>
     </svg>
+    Quick view
 </a>`)
     }
 
