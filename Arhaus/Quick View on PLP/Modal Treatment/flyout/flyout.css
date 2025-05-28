@@ -7,16 +7,22 @@
     top: 0;
     left: 0;
     background: rgba(0, 0, 0, .5);
-    padding: 10px;
-    justify-content: center;
+    padding: 0px;
+    justify-content: end;
     align-items: center;
 }
 
 .opti-quick-view-modal .quick-view-product {
     background: white;
     position: relative;
-    width: 1194px;
+    width: 575px;
     max-width: 100%;
+    height: 100vh;
+    overflow: auto;
+}
+
+.opti-quick-view-modal .quick-view-product .row.no-gutters {
+    flex-direction: column;
 }
 
 .opti-quick-view-modal .quick-view-product .opti-close-icon {
@@ -24,6 +30,7 @@
     top: 24px;
     right: 24px;
     cursor: pointer;
+    z-index: 999;
 }
 
 .opti-quick-view-modal .quick-view-product section {
@@ -31,13 +38,13 @@
 }
 
 .opti-quick-view-modal .quick-view-product .product-image-zoom-block {
-    flex: 0 0 65%;
-    max-width: 65%;
+    flex: unset;
+    max-width: unset;
 }
 
 .opti-quick-view-modal .quick-view-product .product-main-block div:has(.product-main-block__details):not(.row) {
-    flex: 0 0 35%;
-    max-width: 35%;
+    flex: unset;
+    max-width: unset;
 }
 
 .opti-quick-view-modal .quick-view-product section .product-section-container {
@@ -127,18 +134,14 @@
 
 @media (max-width: 600px) {
 
+    .opti-quick-view-modal {
+        padding: 10px;
+        justify-content: center;
+    }
+
     .opti-quick-view-modal .quick-view-product {
+        width: 1194px;
+        max-width: 100%;
         height: 100%;
-        overflow: auto;
-    }
-
-    .opti-quick-view-modal .quick-view-product .product-image-zoom-block {
-        flex: unset;
-        max-width: unset;
-    }
-
-    .opti-quick-view-modal .quick-view-product .product-main-block div:has(.product-main-block__details):not(.row) {
-        flex: unset;
-        max-width: unset
     }
 }
