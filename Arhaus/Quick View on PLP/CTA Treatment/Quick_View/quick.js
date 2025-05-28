@@ -18,57 +18,45 @@ utils.observeSelector('.ss-item-container .product-item__img', function (product
     class="opti-plus-sign">
     <style>
         .opti-plus-sign {
-            border-radius: 100%;
             background: #1D1D1D;
-            padding: 8px;
+            padding: 3px 10px;
             position: absolute;
             bottom: 16px;
             left: 16px;
             z-index: 99;
             display: none;
+            color: #FFFFFF;
+            font-size: 11px;
+            line-height: 100%;
+            font-weight: 400;
+            text-decoration: none;
+            border-top-right-radius: 25px;
+            border-bottom-right-radius: 25px;
+            border-top-left-radius: 25px;
+            border-bottom-left-radius: 25px;
         }
 
         .opti-plus-sign:hover {
             background: #FFFFFF;
+            color: #1D1D1D;
         }
 
         .product-item__img:hover .opti-plus-sign {
             display: flex;
         }
 
-        .opti-plus-sign svg {
-            color: #FFFFFF;
-        }
-
-        .opti-plus-sign:hover svg {
-            color: #1D1D1D;
-        }
-
         @media (max-width: 600px) {
             .opti-plus-sign {
-                padding: 6px;
+                padding: 6px 10px;
                 bottom: 8px;
                 left: 8px;
                 display: flex;
+                font-size: 10px;
             }
 
-            .opti-plus-sign svg {
-                height: 12px;
-                width: 12px;
-            }
         }
     </style>
-    <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <g clip-path="url(#clip0_287_107)">
-            <path d="M8 2.59961V13.3996" stroke="currentColor" />
-            <path d="M2 8H14" stroke="currentColor" />
-        </g>
-        <defs>
-            <clipPath id="clip0_287_107">
-                <rect width="12" height="12" fill="white" transform="translate(2 2)" />
-            </clipPath>
-        </defs>
-    </svg>
+    Quick view
 </a>`)
     }
 
