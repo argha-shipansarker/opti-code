@@ -14,48 +14,62 @@ window.product_url = null
 
 utils.observeSelector('.ss-item-container .product-item__img', function (product_image) {
     if (!product_image.querySelector('.opti-plus-sign')) {
-        product_image.insertAdjacentHTML("beforeend", `<a data-fetch-product data-handle="${product_image.href.split('/').pop()}" data-target=".quick-view-product"
-    class="opti-plus-sign">
+        product_image.insertAdjacentHTML("beforeend", `<div class="opti-plus-sign-container">
     <style>
+        .opti-plus-sign-container {
+            position: absolute;
+            top: 0px;
+            z-index: 99;
+            width: 100%;
+            height: 100%;
+            display: none;
+            justify-content: center;
+            align-items: center;
+            background-color: #FFFFFFB3;
+        }
+
         .opti-plus-sign {
             background: #1E372F;
             padding: 11px 0;
-            position: absolute;
-            bottom: 0px;
-            z-index: 99;
-            display: none;
             justify-content: center;
             align-items: center;
             color: #FFFFFF;
             font-size: 12px;
             line-height: 100%;
             font-weight: 400;
-            width: 100%;
+            width: 80%;
             text-decoration: none;
+            display: flex;
         }
 
         .opti-plus-sign:hover {
             background: #4F5F59;
         }
 
-        .product-item__img:hover .opti-plus-sign {
+        .product-item__img:hover .opti-plus-sign-container {
             display: flex;
         }
 
+        .opti-quick-view-modal .product-item__img:hover .opti-plus-sign-container {
+            display: none;
+        }
+
         @media (max-width: 600px) {
-            .opti-plus-sign {
-                font-size: 10px;
-                display: flex;
+            .opti-plus-sign-container {
+                display: none;
             }
 
-            .opti-plus-sign svg {
-                height: 12px;
-                width: 12px;
+            .product-item__img:hover .opti-plus-sign-container {
+                display: none;
             }
+
         }
     </style>
-    Quick view
-</a>`)
+    <a data-fetch-product data-handle="${product_image.href.split('/').pop()}" data-target=".quick-view-product"
+        class="opti-plus-sign">
+        Quick view
+    </a>
+</div>`)
     }
 
     if (document.querySelectorAll('.opti-plus-sign')) {
