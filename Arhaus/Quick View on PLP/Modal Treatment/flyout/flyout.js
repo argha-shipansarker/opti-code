@@ -1,7 +1,6 @@
 const utils = optimizely.get('utils');
 
 utils.observeSelector('.opti-quick-view-modal .quick-view-product .product-image-zoom-block', function (product_zoom_image) {
-    console.warn("window.product_url", window.product_url);
 
     if (window.product_url) {
 
@@ -65,5 +64,15 @@ utils.observeSelector('.opti-quick-view-modal .quick-view-product .product-image
             }
 
         }
+
+        utils.observeSelector('.opti-quick-view-modal .quick-view-product .product__row .material-wrapper', function (material_wrapper) {
+            const rect = material_wrapper.getBoundingClientRect();
+            const offsetFromTop = rect.top;
+
+            utils.observeSelector('.opti-quick-view-modal .quick-view-product .product__row .material-wrapper .swatch-overlay__slide', function (swatch_overlay__slide) {
+                swatch_overlay__slide.style.top = `${offsetFromTop}px`;
+            });
+        });
+
     }
 });

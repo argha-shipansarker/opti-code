@@ -132,6 +132,12 @@
     justify-content: start !important;
 }
 
+.opti-quick-view-modal .quick-view-product .product__row .material-wrapper .swatch-overlay__slide {
+    position: fixed;
+    right: 545px;
+    max-width: 370px;
+}
+
 @media (max-width: 600px) {
 
     .opti-quick-view-modal {
