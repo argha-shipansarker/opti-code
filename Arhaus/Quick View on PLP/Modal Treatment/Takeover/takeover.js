@@ -28,6 +28,35 @@ utils.observeSelector('.opti-quick-view-modal .quick-view-product .product-image
 </div>`);
             }
 
+            if (document.querySelector('.opti-quick-view-modal .quick-view-product #product_add_cart .see-full-desc-link')) {
+                document.querySelector('.opti-quick-view-modal .quick-view-product #product_add_cart .see-full-desc-link').remove();
+                document.querySelector('.opti-quick-view-modal .quick-view-product #product_add_cart').insertAdjacentHTML("beforeend", `<a class="see-full-desc-link" href="${cloned_plp_image.href}">
+                <style>
+                    .see-full-desc-link {
+                        font-size: 12px;
+                        line-height: 16px;
+                        font-weight: 700;
+                        text-decoration: underline;
+                        color: #000000;
+                    }
+                </style>
+                See Full Description
+            </a>`);
+            } else {
+                document.querySelector('.opti-quick-view-modal .quick-view-product #product_add_cart').insertAdjacentHTML("beforeend", `<a class="see-full-desc-link" href="${cloned_plp_image.href}">
+                    <style>
+                        .see-full-desc-link {
+                            font-size: 12px;
+                            line-height: 16px;
+                            font-weight: 700;
+                            text-decoration: underline;
+                            color: #000000;
+                        }
+                    </style>
+                    See Full Description
+                </a>`);
+            }
+
             const close_icon = document.querySelector('.opti-quick-view-modal .opti-close-icon');
             if (close_icon) {
                 close_icon.addEventListener('click', function () {
