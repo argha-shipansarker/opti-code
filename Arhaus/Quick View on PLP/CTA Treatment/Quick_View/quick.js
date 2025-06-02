@@ -19,7 +19,7 @@ utils.observeSelector('.ss-item-container .product-item__img', function (product
     <style>
         .opti-plus-sign {
             background: #1D1D1D;
-            padding: 3px 10px;
+            padding: 6px 10px;
             position: absolute;
             bottom: 16px;
             left: 16px;
@@ -56,7 +56,7 @@ utils.observeSelector('.ss-item-container .product-item__img', function (product
 
         }
     </style>
-    Quick view
+    Quick View
 </a>`)
     }
 
