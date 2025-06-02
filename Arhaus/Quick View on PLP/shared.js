@@ -59,3 +59,18 @@ utils.observeSelector('.opti-quick-view-modal .quick-view-product .custom-input.
         element.dataset.listenerAdded = "true";
     }
 });
+
+utils.observeSelector('.opti-quick-view-modal .quick-view-product .product__label-link', function (element) {
+    if (!element.dataset.listenerAdded) {
+        element.addEventListener("click", function () {
+            window['optimizely'] = window['optimizely'] || [];
+            window['optimizely'].push({
+                type: "event",
+                eventName: "click__quick_view_engagement_",
+            });
+        });
+
+        // Mark as added
+        element.dataset.listenerAdded = "true";
+    }
+});
