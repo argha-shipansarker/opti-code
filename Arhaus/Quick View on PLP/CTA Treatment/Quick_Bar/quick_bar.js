@@ -54,7 +54,7 @@ utils.observeSelector('.ss-item-container .product-item__img', function (product
             }
         }
     </style>
-    Quick view
+    QUICK VIEW
 </a>`)
     }
 
