@@ -67,7 +67,7 @@ utils.observeSelector('.ss-item-container .product-item__img', function (product
     </style>
     <a data-fetch-product data-handle="${product_image.href.split('/').pop()}" data-target=".quick-view-product"
         class="opti-plus-sign">
-        Quick view
+        QUICK VIEW
     </a>
 </div>`)
     }
