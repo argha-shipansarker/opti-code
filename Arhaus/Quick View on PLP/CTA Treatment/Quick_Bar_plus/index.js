@@ -50,6 +50,7 @@ utils.observeSelector('.ss-item-container .product-item__img', function (product
             .opti-plus-sign {
                 font-size: 10px;
                 display: flex;
+                padding: 8.5px 0;
             }
 
             .opti-plus-sign svg {
