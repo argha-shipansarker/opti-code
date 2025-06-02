@@ -141,4 +141,10 @@
         flex: unset;
         max-width: unset
     }
+
+    .see-full-desc-link {
+        display: flex;
+        justify-content: center;
+        margin-top: 24px;
+    }
 }

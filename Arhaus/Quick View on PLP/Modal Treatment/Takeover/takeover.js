@@ -64,6 +64,13 @@ utils.observeSelector('.opti-quick-view-modal .quick-view-product .product-image
                 })
             }
 
+            utils.observeSelector('#cart-popup .cart-popup__header', function (cart_popup) {
+                document.querySelector('.opti-quick-view-modal').style.display = "none";
+            });
+
+            utils.observeSelector('#shopify-section-wishlist .wishlist-save-popup__header', function (wishlist_popup) {
+                document.querySelector('.opti-quick-view-modal').style.display = "none";
+            });
         }
     }
 });
