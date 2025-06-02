@@ -150,4 +150,10 @@
         max-width: 100%;
         height: 100%;
     }
+
+    .see-full-desc-link {
+        display: flex;
+        justify-content: center;
+        margin-top: 24px;
+    }
 }
