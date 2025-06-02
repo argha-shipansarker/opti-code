@@ -76,7 +76,7 @@ utils.observeSelector('.ss-item-container .product-item__img', function (product
             </clipPath>
         </defs>
     </svg>
-    Quick view
+    Quick View
 </a>`)
     }
 
