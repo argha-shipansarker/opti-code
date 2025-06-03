@@ -144,7 +144,18 @@ utils.observeSelector('eui-navigation-bar', function (navigation_bar) {
 utils.observeSelector('eui-tier', function (cover_page) {
     if (document.querySelector('.opti-multicar-progression')) {
 
-        handle_showing_opti_progress_bar();
+        const multi_car_table = document.querySelector('eui-tier eui-multi-motor-tier-page-content');
+        if (multi_car_table) {
+            document.querySelector('.opti-multicar-progression').style.display = "block";
+            if (document.querySelector('eui-progress-bar')) {
+                document.querySelector('eui-progress-bar').style.display = "none";
+            }
+        } else {
+            document.querySelector('.opti-multicar-progression').style.display = "none";
+            if (document.querySelector('eui-progress-bar')) {
+                document.querySelector('eui-progress-bar').style.display = "block";
+            }
+        }
 
         const cover_step = document.querySelector(".opti-multicar-progression .steps.cover");
         const upgrade_step = document.querySelector(".opti-multicar-progression .steps.upgrades");
@@ -234,31 +245,37 @@ utils.observeSelector('eui-gateway-s-payment', function (payment_page) {
 
 utils.observeSelector('eui-motor-legal', function (motor_legal_page) {
     if (document.querySelector('.opti-multicar-progression')) {
-        handle_showing_opti_progress_bar();
-    }
-});
-
-utils.observeSelector('eui-breakdown', function (motor_legal_page) {
-    if (document.querySelector('.opti-multicar-progression')) {
-        handle_showing_opti_progress_bar();
+        document.querySelector('.opti-multicar-progression').style.display = "none";
+        if (document.querySelector('eui-progress-bar')) {
+            document.querySelector('eui-progress-bar').style.display = "block";
+        }
     }
 });
 
 utils.observeSelector('eui-breakdown', function (breakdown_page) {
     if (document.querySelector('.opti-multicar-progression')) {
-        handle_showing_opti_progress_bar();
+        document.querySelector('.opti-multicar-progression').style.display = "none";
+        if (document.querySelector('eui-progress-bar')) {
+            document.querySelector('eui-progress-bar').style.display = "block";
+        }
     }
 });
 
 utils.observeSelector('eui-personal-injury', function (personal_injury_page) {
     if (document.querySelector('.opti-multicar-progression')) {
-        handle_showing_opti_progress_bar();
+        document.querySelector('.opti-multicar-progression').style.display = "none";
+        if (document.querySelector('eui-progress-bar')) {
+            document.querySelector('eui-progress-bar').style.display = "block";
+        }
     }
 });
 
 utils.observeSelector('eui-hire-car', function (hire_car_page) {
     if (document.querySelector('.opti-multicar-progression')) {
-        handle_showing_opti_progress_bar();
+        document.querySelector('.opti-multicar-progression').style.display = "none";
+        if (document.querySelector('eui-progress-bar')) {
+            document.querySelector('eui-progress-bar').style.display = "block";
+        }
     }
 });
 
