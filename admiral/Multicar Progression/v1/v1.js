@@ -1,51 +1,5 @@
 const utils = optimizely.get('utils');
 
-function handle_calculating_progress_bar_state(step_name) {
-    if (step_name == "cover") {
-        if (window.location.pathname.includes('/Admiral/cover/')) {
-            return "selected";
-        } else {
-            return "completed";
-        }
-    } else if (step_name == 'upgrades') {
-        if (window.location.pathname == "/Admiral/vehicleupgrades") {
-            return "selected";
-        } else {
-            if (window.location.pathname == "/Admiral/quote" || window.location.pathname == "/Admiral/checks" || window.location.pathname == "/Admiral/payment") {
-                return "completed";
-            } else {
-                return "";
-            }
-        }
-    } else if (step_name == 'discount') {
-        if (window.location.pathname == "/Admiral/quote") {
-            return "selected";
-        } else {
-            if (window.location.pathname == "/Admiral/checks" || window.location.pathname == "/Admiral/payment") {
-                return "completed";
-            } else {
-                return "";
-            }
-        }
-    } else if (step_name == 'checks') {
-        if (window.location.pathname == "/Admiral/checks") {
-            return "selected";
-        } else {
-            if (window.location.pathname == "/Admiral/payment") {
-                return "completed";
-            } else {
-                return "";
-            }
-        }
-    } else if (step_name == 'payment') {
-        if (window.location.pathname == "/Admiral/payment") {
-            return "selected";
-        } else {
-            return "";
-        }
-    }
-}
-
 function handle_showing_opti_progress_bar() {
     let personalDetails = dataLayer.find(obj => obj.event === 'yourDetails');
     if (personalDetails && personalDetails.product == "multiCar") {
@@ -117,23 +71,23 @@ utils.observeSelector('eui-navigation-bar', function (navigation_bar) {
         }
     </style>
     <div class="progression-container">
-        <div class="steps cover ${handle_calculating_progress_bar_state("cover")}">
+        <div class="steps cover">
             <p class="heading">Cover</p>
             <div class="line"></div>
         </div>
-        <div class="steps upgrades ${handle_calculating_progress_bar_state('upgrades')}">
+        <div class="steps upgrades">
             <p class="heading">Upgrades</p>
             <div class="line"></div>
         </div>
-        <div class="steps discount ${handle_calculating_progress_bar_state('discount')}">
+        <div class="steps discount">
             <p class="heading">Discount</p>
             <div class="line"></div>
         </div>
-        <div class="steps checks ${handle_calculating_progress_bar_state('checks')}">
+        <div class="steps checks">
             <p class="heading">Checks</p>
             <div class="line"></div>
         </div>
-        <div class="steps payment ${handle_calculating_progress_bar_state('payment')}">
+        <div class="steps payment">
             <p class="heading">Payment</p>
             <div class="line"></div>
         </div>
