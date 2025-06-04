@@ -1,0 +1,68 @@
+<div class="opti-multicar-progression">
+    <style>
+        .opti-multicar-progression {
+            padding: .5em 2.5%;
+            background-color: #FFFFFF;
+        }
+
+        .opti-multicar-progression .progression-container {
+            margin: auto;
+            max-width: 75em;
+        }
+
+        .opti-multicar-progression .progression-container .step-number-text {
+            font-size: 16px;
+            line-height: 24px;
+            font-weight: 700;
+            color: #25469B;
+            text-align: end;
+        }
+
+        .opti-multicar-progression .progression-container .progress-bar {
+            display: flex;
+            gap: 4px;
+        }
+
+        .opti-multicar-progression .progression-container .steps {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            flex-basis: 20%;
+        }
+
+        .opti-multicar-progression .progression-container .steps .line {
+            height: 4px;
+            width: 100%;
+            background-color: #CED9E5;
+            border-radius: 4px;
+        }
+
+        .opti-multicar-progression .progression-container .steps.selected .line {
+            background-color: #41A5F5;
+        }
+
+        .opti-multicar-progression .progression-container .steps.completed .line {
+            background-color: #00C535;
+        }
+    </style>
+    <div class="progression-container">
+        <p class="step-number-text">Step 1 of 5</p>
+        <div class="progress-bar">
+            <div class="steps cover ${handle_calculating_progress_bar_state(" cover")}">
+                <div class="line"></div>
+            </div>
+            <div class="steps upgrades ${handle_calculating_progress_bar_state(" upgrades")}">
+                <div class="line"></div>
+            </div>
+            <div class="steps discount ${handle_calculating_progress_bar_state(" discount")}">
+                <div class="line"></div>
+            </div>
+            <div class="steps checks ${handle_calculating_progress_bar_state(" checks")}">
+                <div class="line"></div>
+            </div>
+            <div class="steps payment ${handle_calculating_progress_bar_state(" payment")}">
+                <div class="line"></div>
+            </div>
+        </div>
+    </div>
+</div>
