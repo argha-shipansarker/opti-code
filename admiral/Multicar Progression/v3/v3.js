@@ -72,18 +72,22 @@ utils.observeSelector('eui-navigation-bar', function (navigation_bar) {
         .opti-multicar-progression .progression-container {
             display: flex;
             margin: auto;
-            max-width: 75em;
+            max-width: 45em;
             gap: 4px;
         }
 
         .opti-multicar-progression .progression-container .steps {
-            flex-basis: 20%;
+            flex: 1;
         }
 
         .opti-multicar-progression .progression-container .steps .mobile {
             display: none;
             flex-direction: column;
             align-items: center;
+        }
+
+        .opti-multicar-progression .progression-container .steps.payment {
+            flex: 0 0 auto;
         }
 
         .opti-multicar-progression .progression-container .steps .heading {
@@ -120,20 +124,44 @@ utils.observeSelector('eui-navigation-bar', function (navigation_bar) {
 
         .opti-multicar-progression .progression-container .steps .desktop {
             display: flex;
+            align-items: center;
+        }
+
+        .opti-multicar-progression .progression-container .steps .icon,
+        .opti-multicar-progression .progression-container .steps .completed-icon {
+            display: flex;
         }
 
         .opti-multicar-progression .progression-container .steps .icon svg {
-            fill: #656560;
+            color: #656560;
+        }
+
+        .opti-multicar-progression .progression-container .steps.selected .icon svg {
+            color: #41A5F5;
+        }
+
+        .opti-multicar-progression .progression-container .steps.completed .icon {
+            display: none;
         }
 
         .opti-multicar-progression .progression-container .steps .completed-icon {
             display: none;
         }
 
+        .opti-multicar-progression .progression-container .steps.completed .completed-icon {
+            display: flex;
+        }
+
         .opti-multicar-progression .progression-container .steps .desktop-line {
             height: 2px;
             border-top: 2px dashed #CED9E5;
             width: 100%;
+            margin-left: 2px;
+            border-radius: 4px;
+        }
+
+        .opti-multicar-progression .progression-container .steps.completed .desktop-line {
+            border: 2px solid #00C535;
         }
 
         @media (max-width: 600px) {
@@ -144,10 +172,22 @@ utils.observeSelector('eui-navigation-bar', function (navigation_bar) {
             .opti-multicar-progression .progression-container .steps .mobile {
                 display: flex;
             }
+
+            .opti-multicar-progression .progression-container .steps .desktop {
+                display: none;
+            }
+
+            .opti-multicar-progression .progression-container .steps {
+                flex: 0 0 25%;
+            }
+
+            .opti-multicar-progression .progression-container .steps.payment {
+                flex: 0 0 25%;
+            }
         }
     </style>
     <div class="progression-container">
-        <div class="steps cover ${handle_calculating_progress_bar_state(" cover")}">
+        <div class="steps cover ${handle_calculating_progress_bar_state("cover")}">
             <div class="mobile">
                 <p class="heading">Cover</p>
                 <div class="line"></div>
@@ -170,7 +210,7 @@ utils.observeSelector('eui-navigation-bar', function (navigation_bar) {
                 <div class="desktop-line"></div>
             </div>
         </div>
-        <div class="steps upgrades ${handle_calculating_progress_bar_state(" upgrades")}">
+        <div class="steps upgrades ${handle_calculating_progress_bar_state("upgrades")}">
             <div class="mobile">
                 <p class="heading">Upgrades</p>
                 <div class="line"></div>
@@ -193,7 +233,7 @@ utils.observeSelector('eui-navigation-bar', function (navigation_bar) {
                 <div class="desktop-line"></div>
             </div>
         </div>
-        <div class="steps discount ${handle_calculating_progress_bar_state(" discount")}">
+        <div class="steps discount ${handle_calculating_progress_bar_state("discount")}">
             <div class="mobile">
                 <p class="heading">Discount</p>
                 <div class="line"></div>
@@ -216,7 +256,7 @@ utils.observeSelector('eui-navigation-bar', function (navigation_bar) {
                 <div class="desktop-line"></div>
             </div>
         </div>
-        <div class="steps payment ${handle_calculating_progress_bar_state(" payment")}">
+        <div class="steps payment ${handle_calculating_progress_bar_state("payment")}">
             <div class="mobile">
                 <p class="heading">Payment</p>
                 <div class="line"></div>
