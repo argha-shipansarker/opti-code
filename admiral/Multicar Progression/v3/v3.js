@@ -11,7 +11,7 @@ function handle_calculating_progress_bar_state(step_name) {
         if (window.location.pathname == "/Admiral/vehicleupgrades") {
             return "selected";
         } else {
-            if (window.location.pathname == "/Admiral/quote" || window.location.pathname == "/Admiral/checks" || window.location.pathname == "/Admiral/payment") {
+            if (window.location.pathname == "/Admiral/quote" || window.location.pathname == "/Admiral/payment") {
                 return "completed";
             } else {
                 return "";
@@ -19,16 +19,6 @@ function handle_calculating_progress_bar_state(step_name) {
         }
     } else if (step_name == 'discount') {
         if (window.location.pathname == "/Admiral/quote") {
-            return "selected";
-        } else {
-            if (window.location.pathname == "/Admiral/checks" || window.location.pathname == "/Admiral/payment") {
-                return "completed";
-            } else {
-                return "";
-            }
-        }
-    } else if (step_name == 'checks') {
-        if (window.location.pathname == "/Admiral/checks") {
             return "selected";
         } else {
             if (window.location.pathname == "/Admiral/payment") {
@@ -96,6 +86,7 @@ utils.observeSelector('eui-navigation-bar', function (navigation_bar) {
             font-weight: 400;
             color: #656560;
             margin-bottom: 4px;
+            text-transform: uppercase;
         }
 
         .opti-multicar-progression .progression-container .steps .line {
@@ -331,7 +322,7 @@ utils.observeSelector('eui-quote eui-quote-summary', function (quote_page) {
 
         const upgrade_step = document.querySelector(".opti-multicar-progression .steps.upgrades");
         const discount_step = document.querySelector(".opti-multicar-progression .steps.discount");
-        const checks_step = document.querySelector(".opti-multicar-progression .steps.checks");
+        const payment_step = document.querySelector(".opti-multicar-progression .steps.payment");
 
         upgrade_step.classList.add("completed");
         upgrade_step.classList.remove("selected");
@@ -339,7 +330,8 @@ utils.observeSelector('eui-quote eui-quote-summary', function (quote_page) {
         discount_step.classList.add("selected");
         discount_step.classList.remove("completed");
 
-        checks_step.classList.remove("selected");
+        payment_step.classList.remove("selected");
+
     }
 });
 
@@ -349,14 +341,12 @@ utils.observeSelector('eui-final-checks', function (checks_page) {
         handle_showing_opti_progress_bar();
 
         const discount_step = document.querySelector(".opti-multicar-progression .steps.discount");
-        const checks_step = document.querySelector(".opti-multicar-progression .steps.checks");
         const payment_step = document.querySelector(".opti-multicar-progression .steps.payment");
 
-        discount_step.classList.add("completed");
         discount_step.classList.remove("selected");
+        discount_step.classList.remove("completed");
 
-        checks_step.classList.add("selected");
-        checks_step.classList.remove("completed");
+        discount_step.classList.add("selected");
 
         payment_step.classList.remove("selected");
     }
@@ -367,11 +357,11 @@ utils.observeSelector('eui-gateway-s-payment', function (payment_page) {
 
         handle_showing_opti_progress_bar();
 
-        const checks_step = document.querySelector(".opti-multicar-progression .steps.checks");
+        const discount_step = document.querySelector(".opti-multicar-progression .steps.discount");
         const payment_step = document.querySelector(".opti-multicar-progression .steps.payment");
 
-        checks_step.classList.add("completed");
-        checks_step.classList.remove("selected");
+        discount_step.classList.add("completed");
+        discount_step.classList.remove("selected");
 
         payment_step.classList.add("selected");
     }

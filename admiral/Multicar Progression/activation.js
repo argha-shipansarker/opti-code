@@ -9,9 +9,9 @@ function callbackFn(activate, options) {
     const utils = optimizely.get('utils');
 
     utils.waitUntil(function () {
-        let personalDetails = dataLayer.find(obj => obj.event === 'yourDetails');
-        if (personalDetails) {
-            if (personalDetails.product == "multiCar") {
+        let productTracking = dataLayer.find(obj => obj.event === 'productTracking');
+        if (productTracking) {
+            if (productTracking.currentProduct == "MULTICAR") {
                 return true;
             }
         }
