@@ -7,18 +7,19 @@
 
 function callbackFn(activate, options) {
     const utils = optimizely.get('utils');
-
     utils.waitUntil(function () {
         let productTracking = dataLayer.find(obj => obj.event === 'productTracking');
         console.warn("productTracking", productTracking)
         if (productTracking) {
             console.warn("productTracking.currentProduct", productTracking.currentProduct)
             if (productTracking.currentProduct == "MULTICAR") {
+                console.warn('got it')
                 return true;
             }
         }
         return false;
     }).then(function () {
+        console.warn('activating')
         activate();
     });
 }
