@@ -267,13 +267,12 @@ function loadScript(url, callback) {
         };
     }
 
-    /*script.onload = () => {
-        MktoForms2.loadForm("//my.aplaceformom.com", "549-VJU-277", 1793, function (form) {
-            MktoForms2.lightbox(form).show();
-        });
-  };*/
-
     script.src = url;
+    /*script.onload = () => {
+          MktoForms2.loadForm("//my.aplaceformom.com", "549-VJU-277", 1793, function (form) {
+              MktoForms2.lightbox(form).show();
+          });
+    };*/
     document.getElementsByTagName("head")[0].appendChild(script);
 }
 
