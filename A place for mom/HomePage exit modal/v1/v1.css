@@ -1,0 +1,153 @@
+.opt-hidden {
+    display: none !important;
+}
+
+.opt-disclaimer {
+    font-size: 14px;
+}
+
+.opt-overlay {
+    background-color: rgba(0, 0, 0, .5);
+    position: fixed;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 10000000000;
+}
+
+.opt-close {
+    position: absolute;
+    right: 15px;
+    top: 15px;
+    cursor: pointer;
+}
+
+.opt-close svg {
+    color: #6e6e6e;
+}
+
+.opt-modal {
+    position: fixed;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    background-color: white;
+    z-index: 500;
+    width: 700px;
+    padding: 50px 150px;
+    border-radius: 10px;
+    z-index: 10000000001;
+}
+
+.opt-form input {
+    border-width: 0px 0px 1px;
+    border-image: initial;
+    border-bottom-style: solid;
+    border-bottom-color: #6e6e6e;
+    height: 56px;
+    width: 100%;
+    padding: 16px 8px;
+    display: block;
+    font-size: 16px;
+    font-weight: 400;
+    color: black;
+    transition: all;
+    margin-bottom: 15px;
+}
+
+.opt-form input::-webkit-input-placeholder,
+textarea::-webkit-input-placeholder {
+    color: #6e6e6e;
+}
+
+.opt-form input:-moz-placeholder,
+textarea:-moz-placeholder {
+    color: #6e6e6e;
+}
+
+.opt-form input::-moz-placeholder,
+textarea::-moz-placeholder {
+    color: #6e6e6e;
+}
+
+.opt-form input:-ms-input-placeholder,
+textarea:-ms-input-placeholder {
+    color: #6e6e6e;
+}
+
+.opt-main-heading {
+    font: 600 1.5rem / 1.5 var(--font-serif);
+    display: block;
+    text-align: center;
+    margin: 10px 50px;
+}
+
+.opt-subtitle {
+    text-align: center;
+    margin-top: 15px;
+    margin-bottom: 20px;
+    display: block;
+    font-size: 16px;
+    line-height: 25px;
+}
+
+.opt-form-field {
+    margin: 0px 55px;
+}
+
+.opt-submit-button {
+    background-color: rgb(96, 36, 162);
+    min-height: 42px;
+    padding: 12px 48px;
+    display: inline-block;
+    transition: all;
+    border: 2px solid rgb(96, 36, 162);
+    color: white;
+    font-size: 16px;
+    font-weight: 600;
+    border-radius: 25px;
+    width: 80%;
+    margin: 30px 37px;
+    cursor: pointer;
+}
+
+.opt-disabled {
+    background-color: rgb(208, 208, 208) !important;
+    border: 2px solid rgb(208, 208, 208) !important;
+    color: rgb(163, 163, 163) !important;
+}
+
+.opt-error {
+    color: rgb(244, 67, 54);
+    margin-top: 8px;
+    display: block;
+}
+
+.opt-invalid {
+    color: rgb(244, 67, 54) !important;
+}
+
+.overflow-hidden {
+    overflow: hidden !important;
+}
+
+@media (max-width: 700px) {
+    .opt-main-heading {
+        margin: 10px 40px;
+    }
+
+    .opt-modal {
+        width: 95% !important;
+        padding: 30px 20px !important;
+    }
+
+    .opt-form-field {
+        margin: 0 15px;
+    }
+
+    .opt-submit-button {
+        margin: 30px 0;
+        width: 98%;
+    }
+}

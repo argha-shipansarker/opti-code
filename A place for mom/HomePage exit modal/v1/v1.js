@@ -1,11 +1,11 @@
 var utils = optimizelyEdge.get('utils');
 var html = `
-<div class="opt-container opt-hidden">
+<div class="opt-container opt-hidden homepage">
 <div class="opt-overlay"></div><div class="opt-modal">
 <a class="opt-close"><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 12 12" fill="none"><path d="M11 1L1 11" stroke="currentColor" stroke-width="2" stroke-linecap="round"></path><path d="M1 1L11 11" stroke="currentColor" stroke-width="2" stroke-linecap="round"></path></svg></a>
   <div class="opt-header">
-  	<span class="opt-main-heading">The ultimate guide to paying for senior care</span>
-    <span class="opt-subtitle">Discover private and public pay options to help cover you loved one's long-term care costs.</span>
+  	<span class="opt-main-heading">You want the best for them – but where do you start?</span>
+    <span class="opt-subtitle">Our quick-start guide to senior care helps you start a conversation with family, explore care options, and plan for next steps with clarity and compassion.</span>
   </div>
   <div class="opt-form">
     <div class="opt-email opt-form-field">
@@ -13,7 +13,7 @@ var html = `
       <span class="opt-error opt-hidden">Please enter a valid email address.</span>
      </div>
      <button class="opt-submit-button opt-disabled" disabled>Download the free guide</button>
-     <div class="opt-disclaimer">By clicking ‘download the free guide,’ you agree to receive A Place for Mom’s caregiver newsletter and email communications. You can unsubscribe at any time.</div>
+     <div class="opt-disclaimer">By clicking "download free guide" you agree to receive A Place for Mom's caregiver newsletter and email communications. You can unsubscribe at any time.</div>
   </div>
 </div>
 </div>`;
@@ -109,16 +109,11 @@ function showModal() {
     const cookiePattern = "DownloadModal";
 
     if (!getCookieByPattern(cookiePattern)) { //sessionStorage.getItem("afpm-download-modal-popup-shown")
-        window['optimizelyEdge'] = window['optimizelyEdge'] || [];
-        window['optimizelyEdge'].push({
-            type: "event",
-            eventName: "exit-intent-modal-view",
-        });
 
         window['optimizelyEdge'] = window['optimizelyEdge'] || [];
         window['optimizelyEdge'].push({
             type: "event",
-            eventName: "Download_Guide_Viewed_Modal"
+            eventName: "download_guide___viewed_modal_homepage",
         });
 
         // sessionStorage.setItem("afpm-download-modal-popup-shown", "true");
@@ -174,7 +169,7 @@ utils.waitForElement('body').then(function (body) {
             window['optimizelyEdge'] = window['optimizelyEdge'] || [];
             window['optimizelyEdge'].push({
                 type: "event",
-                eventName: "download_guide_-_cta_click"
+                eventName: "download_guide_-_cta_click_homepage",
             });
 
             let isValid = true;
@@ -193,11 +188,6 @@ utils.waitForElement('body').then(function (body) {
 
     utils.waitForElement('.opt-close').then(function (close) {
         close.addEventListener('click', function () {
-            window['optimizelyEdge'] = window['optimizelyEdge'] || [];
-            window['optimizelyEdge'].push({
-                type: "event",
-                eventName: "download_guide_-_closed_modal"
-            });
             closeModal();
         });
     });
