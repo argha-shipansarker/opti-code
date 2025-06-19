@@ -103,50 +103,50 @@ if (window.location.pathname == '/Admiral/cover' && sessionStorage.getItem('opti
                         document.querySelector('#price-per-month').click();
 
                         if (opti_landing_tier == "essential") {
-                            document.querySelector('.opti-cover-design .essential-cover .cover-footer .price-section p').innerHTML = `${document.querySelector('#ESSENTIAL-col-footer .adm-control-radio__title strong').innerText} month`;
+                            document.querySelector('.opti-cover-design .essential-cover .cover-footer .price-section p').innerHTML = `${document.querySelector('#ESSENTIAL-col-footer .adm-control-radio__title strong').innerText} <span>month</span>`;
 
-                            document.querySelector('.opti-cover-design .admiral-cover .cover-footer .price-section p').innerHTML = `${document.querySelector('#ADMIRAL-col-footer .adm-control-radio__title strong').innerText} month`;
+                            document.querySelector('.opti-cover-design .admiral-cover .cover-footer .price-section p').innerHTML = `${document.querySelector('#ADMIRAL-col-footer .adm-control-radio__title strong').innerText} <span>month</span>`;
                         }
 
                         if (opti_landing_tier == "admiral") {
-                            document.querySelector('.opti-cover-design .admiral-cover .cover-footer .price-section p').innerHTML = `${document.querySelector('#ADMIRAL-col-footer .adm-control-radio__title strong').innerText} month`;
+                            document.querySelector('.opti-cover-design .admiral-cover .cover-footer .price-section p').innerHTML = `${document.querySelector('#ADMIRAL-col-footer .adm-control-radio__title strong').innerText} <span>month</span>`;
 
-                            document.querySelector('.opti-cover-design .gold-cover .cover-footer .price-section p').innerHTML = `${document.querySelector('#GOLD-col-footer .adm-control-radio__title strong').innerText} month`;
+                            document.querySelector('.opti-cover-design .gold-cover .cover-footer .price-section p').innerHTML = `${document.querySelector('#GOLD-col-footer .adm-control-radio__title strong').innerText} <span>month</span>`;
                         }
 
                         if (opti_landing_tier == "gold") {
-                            document.querySelector('.opti-cover-design .gold-cover .cover-footer .price-section p').innerHTML = `${document.querySelector('#GOLD-col-footer .adm-control-radio__title strong').innerText} month`;
+                            document.querySelector('.opti-cover-design .gold-cover .cover-footer .price-section p').innerHTML = `${document.querySelector('#GOLD-col-footer .adm-control-radio__title strong').innerText} <span>month</span>`;
 
-                            document.querySelector('.opti-cover-design .platinum-cover .cover-footer .price-section p').innerHTML = `${document.querySelector('#PLATINUM-col-footer .adm-control-radio__title strong').innerText} month`;
+                            document.querySelector('.opti-cover-design .platinum-cover .cover-footer .price-section p').innerHTML = `${document.querySelector('#PLATINUM-col-footer .adm-control-radio__title strong').innerText} <span>month</span>`;
                         }
 
                         if (opti_landing_tier == "platinum") {
-                            document.querySelector('.opti-cover-design .platinum-cover .cover-footer .price-section p').innerHTML = `${document.querySelector('#PLATINUM-col-footer .adm-control-radio__title strong').innerText} month`;
+                            document.querySelector('.opti-cover-design .platinum-cover .cover-footer .price-section p').innerHTML = `${document.querySelector('#PLATINUM-col-footer .adm-control-radio__title strong').innerText} <span>month</span>`;
                         }
                     } else {
 
                         document.querySelector('#price-per-year').click();
 
                         if (opti_landing_tier == "essential") {
-                            document.querySelector('.opti-cover-design .essential-cover .cover-footer .price-section p').innerHTML = `${document.querySelector('#ESSENTIAL-col-footer .adm-control-radio__title strong').innerText} total`;
+                            document.querySelector('.opti-cover-design .essential-cover .cover-footer .price-section p').innerHTML = `${document.querySelector('#ESSENTIAL-col-footer .adm-control-radio__title strong').innerText} <span>total</span>`;
 
-                            document.querySelector('.opti-cover-design .admiral-cover .cover-footer .price-section p').innerHTML = `${document.querySelector('#ADMIRAL-col-footer .adm-control-radio__title strong').innerText} total`;
+                            document.querySelector('.opti-cover-design .admiral-cover .cover-footer .price-section p').innerHTML = `${document.querySelector('#ADMIRAL-col-footer .adm-control-radio__title strong').innerText} <span>total</span>`;
                         }
 
                         if (opti_landing_tier == "admiral") {
-                            document.querySelector('.opti-cover-design .admiral-cover .cover-footer .price-section p').innerHTML = `${document.querySelector('#ADMIRAL-col-footer .adm-control-radio__title strong').innerText} total`;
+                            document.querySelector('.opti-cover-design .admiral-cover .cover-footer .price-section p').innerHTML = `${document.querySelector('#ADMIRAL-col-footer .adm-control-radio__title strong').innerText} <span>total</span>`;
 
-                            document.querySelector('.opti-cover-design .gold-cover .cover-footer .price-section p').innerHTML = `${document.querySelector('#GOLD-col-footer .adm-control-radio__title strong').innerText} total`;
+                            document.querySelector('.opti-cover-design .gold-cover .cover-footer .price-section p').innerHTML = `${document.querySelector('#GOLD-col-footer .adm-control-radio__title strong').innerText} <span>total</span>`;
                         }
 
                         if (opti_landing_tier == "gold") {
-                            document.querySelector('.opti-cover-design .gold-cover .cover-footer .price-section p').innerHTML = `${document.querySelector('#GOLD-col-footer .adm-control-radio__title strong').innerText} total`;
+                            document.querySelector('.opti-cover-design .gold-cover .cover-footer .price-section p').innerHTML = `${document.querySelector('#GOLD-col-footer .adm-control-radio__title strong').innerText} <span>total</span>`;
 
-                            document.querySelector('.opti-cover-design .platinum-cover .cover-footer .price-section p').innerHTML = `${document.querySelector('#PLATINUM-col-footer .adm-control-radio__title strong').innerText} total`;
+                            document.querySelector('.opti-cover-design .platinum-cover .cover-footer .price-section p').innerHTML = `${document.querySelector('#PLATINUM-col-footer .adm-control-radio__title strong').innerText} <span>total</span>`;
                         }
 
                         if (opti_landing_tier == "platinum") {
-                            document.querySelector('.opti-cover-design .platinum-cover .cover-footer .price-section p').innerHTML = `${document.querySelector('#PLATINUM-col-footer .adm-control-radio__title strong').innerText} total`;
+                            document.querySelector('.opti-cover-design .platinum-cover .cover-footer .price-section p').innerHTML = `${document.querySelector('#PLATINUM-col-footer .adm-control-radio__title strong').innerText} <span>total</span>`;
                         }
                     }
                 });
@@ -2171,4 +2171,40 @@ if (window.location.pathname == '/Admiral/cover' && sessionStorage.getItem('opti
         });
     }
 
+    utils.observeSelector('eui-tier', function (cover_page) {
+        if (sessionStorage.getItem('is_going_back_from_quote_page') == "true") {
+
+            utils.observeSelector('eui-tier eui-motor-tiers-table adm-hero .adm-hero__title', function (hero_title) {
+                hero_title.innerText = "We have 4 levels of cover";
+
+                if (document.querySelector('.opti-sub-heading')) {
+                    document.querySelector('.opti-sub-heading').style.display = "none";
+                }
+
+                if (document.querySelector('.opti-annual-monthly-radio-inputs')) {
+                    document.querySelector('.opti-annual-monthly-radio-inputs').style.display = "none";
+                }
+            });
+
+            utils.observeSelector('eui-tier eui-motor-tiers-table adm-wrap:nth-of-type(2) .adm-wrap__content', function (table_div) {
+                table_div.style.display = "block";
+
+                if (document.querySelector('.opti-cover-design')) {
+                    document.querySelector('.opti-cover-design').style.display = "none";
+                }
+
+            });
+
+            utils.observeSelector('eui-tier eui-motor-tiers-table adm-wrap:nth-of-type(3)', function (cove_selected_div) {
+                cove_selected_div.style.display = "flex";
+            });
+        }
+    });
+
 }
+
+utils.observeSelector('eui-quote small[data-test="other-tier-options"] a', function (change_cover_cta) {
+    change_cover_cta.addEventListener('click', function () {
+        sessionStorage.setItem('is_going_back_from_quote_page', "true");
+    });
+});
