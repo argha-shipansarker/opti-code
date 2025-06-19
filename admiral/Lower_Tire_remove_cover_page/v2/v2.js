@@ -1,3 +1,7 @@
+function cleanup(selector) {
+    document.querySelectorAll(selector).forEach(el => el.remove());
+}
+
 const utils = optimizely.get('utils');
 
 if (window.location.pathname == '/Admiral/cover' && sessionStorage.getItem('opti-landing-tier')) {
@@ -9,6 +13,145 @@ if (window.location.pathname == '/Admiral/cover' && sessionStorage.getItem('opti
             hero_title.innerText = "You’ve selected our highest level of cover";
         } else {
             hero_title.innerText = "Do you need to upgrade your cover";
+        }
+
+        if (document.querySelector('#price-per-month') && document.querySelector('#price-per-year')) {
+            cleanup(".opti-annual-monthly-radio-inputs");
+            hero_title.insertAdjacentHTML("afterend", `<div class="opti-annual-monthly-radio-inputs">
+                    <style>
+                        .opti-annual-monthly-radio-inputs {
+                            margin-top: 10px;
+                            display: flex;
+                            justify-content: center;
+                        }
+
+                        .opti-annual-monthly-radio-inputs .radio-inputs {
+                            display: flex;
+                        }
+
+                        .opti-annual-monthly-radio-inputs input[type="radio"] {
+                            display: none;
+                        }
+
+                        .opti-annual-monthly-radio-inputs label {
+                            width: 142px;
+                            padding: 6px 0px;
+                            border: 1px solid #CED9E5;
+                            margin-bottom: 0;
+                            background-color: #F7F7F5;
+                            text-align: center;
+                            cursor: pointer;
+                        }
+
+                        .opti-annual-monthly-radio-inputs .radio-inputs label:nth-of-type(1) {
+                            border-top-left-radius: 16px;
+                            border-bottom-left-radius: 16px;
+                        }
+
+                        .opti-annual-monthly-radio-inputs .radio-inputs label:nth-of-type(2) {
+                            border-top-right-radius: 16px;
+                            border-bottom-right-radius: 16px;
+                        }
+
+                        .opti-annual-monthly-radio-inputs .radio-text {
+                            font-size: 12px;
+                            line-height: 21px;
+                            color: #656560;
+                            font-weight: 400;
+                            text-transform: uppercase;
+                        }
+
+                        .opti-annual-monthly-radio-inputs label:has(input[type="radio"]:checked) {
+                            background-color: #FFFFFF;
+                        }
+
+                        .opti-annual-monthly-radio-inputs input[type="radio"]:checked+.radio-text {
+                            color: #0A8A19;
+                            font-weight: 700;
+                        }
+
+                        @media (max-width: 500px) {
+                            .opti-annual-monthly-radio-inputs {
+                                margin-top: 8px;
+                            }
+                        }
+                    </style>
+                    <div class="radio-inputs">
+                        <label>
+                            <input type="radio" name="radio-choice" id="opti-monthly" value="opti-monthly">
+                            <span class="radio-text">Pay Monthly</span>
+                        </label>
+                        <label>
+                            <input type="radio" name="radio-choice" id="opti-annually" value="opti-annually">
+                            <span class="radio-text">Pay Annually</span>
+                        </label>
+                    </div>
+                </div>`);
+
+            if (document.querySelector('#ESSENTIAL-col-footer small').innerText == "total") {
+                document.querySelector('#opti-annually').checked = true;
+            } else {
+                document.querySelector('#opti-monthly').checked = true;
+            }
+
+            const radio_inputs = document.querySelectorAll('.opti-annual-monthly-radio-inputs .radio-inputs input[type="radio"]');
+
+            radio_inputs.forEach(radio => {
+                radio.addEventListener('change', (event) => {
+                    if (event.target.value == "opti-monthly") {
+
+                        document.querySelector('#price-per-month').click();
+
+                        if (opti_landing_tier == "essential") {
+                            document.querySelector('.opti-cover-design .essential-cover .cover-footer .price-section p').innerHTML = `${document.querySelector('#ESSENTIAL-col-footer .adm-control-radio__title strong').innerText} month`;
+
+                            document.querySelector('.opti-cover-design .admiral-cover .cover-footer .price-section p').innerHTML = `${document.querySelector('#ADMIRAL-col-footer .adm-control-radio__title strong').innerText} month`;
+                        }
+
+                        if (opti_landing_tier == "admiral") {
+                            document.querySelector('.opti-cover-design .admiral-cover .cover-footer .price-section p').innerHTML = `${document.querySelector('#ADMIRAL-col-footer .adm-control-radio__title strong').innerText} month`;
+
+                            document.querySelector('.opti-cover-design .gold-cover .cover-footer .price-section p').innerHTML = `${document.querySelector('#GOLD-col-footer .adm-control-radio__title strong').innerText} month`;
+                        }
+
+                        if (opti_landing_tier == "gold") {
+                            document.querySelector('.opti-cover-design .gold-cover .cover-footer .price-section p').innerHTML = `${document.querySelector('#GOLD-col-footer .adm-control-radio__title strong').innerText} month`;
+
+                            document.querySelector('.opti-cover-design .platinum-cover .cover-footer .price-section p').innerHTML = `${document.querySelector('#PLATINUM-col-footer .adm-control-radio__title strong').innerText} month`;
+                        }
+
+                        if (opti_landing_tier == "platinum") {
+                            document.querySelector('.opti-cover-design .platinum-cover .cover-footer .price-section p').innerHTML = `${document.querySelector('#PLATINUM-col-footer .adm-control-radio__title strong').innerText} month`;
+                        }
+                    } else {
+
+                        document.querySelector('#price-per-year').click();
+
+                        if (opti_landing_tier == "essential") {
+                            document.querySelector('.opti-cover-design .essential-cover .cover-footer .price-section p').innerHTML = `${document.querySelector('#ESSENTIAL-col-footer .adm-control-radio__title strong').innerText} total`;
+
+                            document.querySelector('.opti-cover-design .admiral-cover .cover-footer .price-section p').innerHTML = `${document.querySelector('#ADMIRAL-col-footer .adm-control-radio__title strong').innerText} total`;
+                        }
+
+                        if (opti_landing_tier == "admiral") {
+                            document.querySelector('.opti-cover-design .admiral-cover .cover-footer .price-section p').innerHTML = `${document.querySelector('#ADMIRAL-col-footer .adm-control-radio__title strong').innerText} total`;
+
+                            document.querySelector('.opti-cover-design .gold-cover .cover-footer .price-section p').innerHTML = `${document.querySelector('#GOLD-col-footer .adm-control-radio__title strong').innerText} total`;
+                        }
+
+                        if (opti_landing_tier == "gold") {
+                            document.querySelector('.opti-cover-design .gold-cover .cover-footer .price-section p').innerHTML = `${document.querySelector('#GOLD-col-footer .adm-control-radio__title strong').innerText} total`;
+
+                            document.querySelector('.opti-cover-design .platinum-cover .cover-footer .price-section p').innerHTML = `${document.querySelector('#PLATINUM-col-footer .adm-control-radio__title strong').innerText} total`;
+                        }
+
+                        if (opti_landing_tier == "platinum") {
+                            document.querySelector('.opti-cover-design .platinum-cover .cover-footer .price-section p').innerHTML = `${document.querySelector('#PLATINUM-col-footer .adm-control-radio__title strong').innerText} total`;
+                        }
+                    }
+                });
+            });
+
         }
 
         if (!document.querySelector('.opti-sub-heading')) {
