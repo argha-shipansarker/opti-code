@@ -5,6 +5,10 @@ if (window.location.pathname == '/Admiral/cover' && sessionStorage.getItem('opti
     console.warn("opti_landing_tier", opti_landing_tier)
 
     if (opti_landing_tier == "admiral") {
+        utils.observeSelector('eui-tier eui-motor-tiers-table adm-hero .adm-hero__title', function (hero_title) {
+            hero_title.innerText = "We have 3 levels of cover";
+        });
+
         utils.observeSelector('table[data-test="eui-motor-tier-select"] thead tr th:nth-of-type(2)', function (essential_table_header) {
             essential_table_header.style.display = 'none';
         });
@@ -27,6 +31,10 @@ if (window.location.pathname == '/Admiral/cover' && sessionStorage.getItem('opti
     }
 
     if (opti_landing_tier == "gold") {
+        utils.observeSelector('eui-tier eui-motor-tiers-table adm-hero .adm-hero__title', function (hero_title) {
+            hero_title.innerText = "We have 2 levels of cover";
+        });
+
         utils.observeSelector('table[data-test="eui-motor-tier-select"] thead tr th:nth-of-type(2)', function (essential_table_header) {
             essential_table_header.style.display = 'none';
         });
@@ -61,6 +69,10 @@ if (window.location.pathname == '/Admiral/cover' && sessionStorage.getItem('opti
     }
 
     if (opti_landing_tier == "platinum") {
+        utils.observeSelector('eui-tier eui-motor-tiers-table adm-hero .adm-hero__title', function (hero_title) {
+            hero_title.innerText = "We have 1 level of cover";
+        });
+
         utils.observeSelector('table[data-test="eui-motor-tier-select"] thead tr th:nth-of-type(2)', function (essential_table_header) {
             essential_table_header.style.display = 'none';
         });
