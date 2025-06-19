@@ -1,0 +1,70 @@
+<div class="opti-annual-monthly-radio-inputs">
+    <style>
+        .opti-annual-monthly-radio-inputs {
+            margin-top: 10px;
+            display: flex;
+            justify-content: center;
+        }
+
+        .opti-annual-monthly-radio-inputs .radio-inputs {
+            display: flex;
+        }
+
+        .opti-annual-monthly-radio-inputs input[type="radio"] {
+            display: none;
+        }
+
+        .opti-annual-monthly-radio-inputs label {
+            width: 142px;
+            padding: 6px 0px;
+            border: 1px solid #CED9E5;
+            margin-bottom: 0;
+            background-color: #F7F7F5;
+            text-align: center;
+            cursor: pointer;
+        }
+
+        .opti-annual-monthly-radio-inputs .radio-inputs label:nth-of-type(1) {
+            border-top-left-radius: 16px;
+            border-bottom-left-radius: 16px;
+        }
+
+        .opti-annual-monthly-radio-inputs .radio-inputs label:nth-of-type(2) {
+            border-top-right-radius: 16px;
+            border-bottom-right-radius: 16px;
+        }
+
+        .opti-annual-monthly-radio-inputs .radio-text {
+            font-size: 12px;
+            line-height: 21px;
+            color: #656560;
+            font-weight: 400;
+            text-transform: uppercase;
+        }
+
+        .opti-annual-monthly-radio-inputs label:has(input[type="radio"]:checked) {
+            background-color: #FFFFFF;
+        }
+
+        .opti-annual-monthly-radio-inputs input[type="radio"]:checked+.radio-text {
+            color: #0A8A19;
+            font-weight: 700;
+        }
+
+        @media (max-width: 500px) {
+            .opti-annual-monthly-radio-inputs {
+                margin-top: 8px;
+            }
+        }
+    </style>
+    <div class="radio-inputs">
+        <label>
+            <input type="radio" name="radio-choice" id="monthly" value="monthly">
+            <span class="radio-text">Pay Monthly</span>
+        </label>
+        <label>
+            <input type="radio" name="radio-choice" id="annually" value="annually">
+            <span class="radio-text">Pay Annually</span>
+        </label>
+    </div>
+</div>
