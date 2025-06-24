@@ -8,7 +8,7 @@ utils.observeSelector('article.pi.js-product-item', function (productTiles) {
     if (product_name_node && product_image) {
         const product_name = product_name_node.innerText.trim();
 
-        if (product_name == "Glossier You EDP" || product_name == "Glossier You Rêve" || product_name == "Glossier You Doux" || product_name == "Glossier You Fleur" || product_name == "Boy Brow" || product_name == "Ultralip" || product_name == "Lash Slick" || product_name == "Cloud Paint" || product_name == "Balm Dotcom" || product_name == "Lip Line") {
+        if (product_name == "Glossier You" || product_name == "Glossier You Rêve" || product_name == "Glossier You Doux" || product_name == "Glossier You Fleur" || product_name == "Boy Brow" || product_name == "Ultralip" || product_name == "Lash Slick" || product_name == "Cloud Paint" || product_name == "Balm Dotcom" || product_name == "Lip Line") {
 
             const product_existing_badge_node = productTiles.querySelector('.pi__img-label:not(.hide)');
 
@@ -65,7 +65,7 @@ utils.waitForElement('.pv-essential .pv-header').then(function (pdp_page_header)
     if (product_name_node) {
         const product_name = product_name_node.innerText.trim();
 
-        if (product_name == "Glossier You EDP" || product_name == "Glossier You Rêve" || product_name == "Glossier You Doux" || product_name == "Glossier You Fleur" || product_name == "Boy Brow" || product_name == "Ultralip" || product_name == "Lash Slick" || product_name == "Cloud Paint" || product_name == "Balm Dotcom" || product_name == "Lip Line") {
+        if (product_name == "Glossier You" || product_name == "Glossier You Rêve" || product_name == "Glossier You Doux" || product_name == "Glossier You Fleur" || product_name == "Boy Brow" || product_name == "Ultralip" || product_name == "Lash Slick" || product_name == "Cloud Paint" || product_name == "Balm Dotcom" || product_name == "Lip Line") {
             pdp_page_header.insertAdjacentHTML("beforeend", `<span class="pv-header__sale-tag opti-pdp-badge">Best seller</span>`);
         }
 
