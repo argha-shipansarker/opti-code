@@ -25,6 +25,21 @@ utils.waitForElement('nav .menu .menu__root-links > li:nth-of-type(1)').then(fun
     nav .menu .menu__root-links>li:nth-of-type(1) .menu-panels .menu-panels__scroll>li:nth-of-type(3) {
         display: none;
     }
+
+    nav .menu .menu__root-links>li:nth-of-type(1) .menu-panels .menu-panels__scroll>li:nth-of-type(4) .picture-container picture img {
+        height: 230px;
+    }
+
+    nav .menu .menu__root-links>li:nth-of-type(1) .menu-panels .menu-panels__scroll>li:nth-of-type(4) p {
+        font-size: 16px;
+    }
+
+    nav .menu .menu__root-links>li:nth-of-type(1) .menu-panels .menu-panels__scroll>li:nth-of-type(4) p a {
+        font-size: 16px;
+        text-decoration: underline;
+        color: #282829;
+        font-weight: 400;
+    }
 </style>`)
 
     engagement_menu.insertAdjacentHTML("beforeend", `<div class="menu-panels menu-panels--close opti-engagement-cut-panels">
@@ -42,6 +57,10 @@ utils.waitForElement('nav .menu .menu__root-links > li:nth-of-type(1)').then(fun
             align-items: center;
             width: 100px;
             margin-bottom: 24px;
+        }
+
+        .opti-engagement-cut-panels .menu-panels__panel .menu-items .icon {
+            display: flex;
         }
 
         .opti-engagement-cut-panels .menu-panels__panel .menu-items p {
@@ -541,6 +560,10 @@ utils.waitForElement('nav .menu .menu__root-links > li:nth-of-type(1)').then(fun
             margin-bottom: 16px;
         }
 
+        .opti-engagement-bridal-collections .menu-panels__panel .menu-items .icon {
+            display: flex;
+        }
+
         .opti-engagement-bridal-collections .menu-panels__panel .menu-items p {
             font-size: 16px;
             line-height: 1.2;
@@ -775,5 +798,10 @@ utils.waitForElement('nav .menu .menu__root-links > li:nth-of-type(1)').then(fun
                 engagement_panel.click();
             }
         })
+    }
+
+    const fourth_section_perfect_ring_text = engagement_menu.querySelector('.menu-panels .menu-panels__scroll>li:nth-of-type(4) p:nth-of-type(3)');
+    if (fourth_section_perfect_ring_text) {
+        fourth_section_perfect_ring_text.innerHTML = `Your need-to-know to pick your perfect ring.`;
     }
 });
