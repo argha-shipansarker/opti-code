@@ -754,7 +754,7 @@ utils.waitForElement('nav .menu .menu__root-links > li:nth-of-type(1)').then(fun
                 cut_menu_panel.classList.remove('menu-panels--open');
             }
 
-            const engagement_panel = engagement_menu.querySelector('.menu-panels:not(.opti-engagement-cut-panels) .menu-panels__header-close');
+            const engagement_panel = engagement_menu.querySelector('.menu-panels:not(.opti-engagement-cut-panels):not(.opti-engagement-bridal-collections) .menu-panels__header-close');
             if (engagement_panel) {
                 engagement_panel.click();
             }
@@ -793,7 +793,7 @@ utils.waitForElement('nav .menu .menu__root-links > li:nth-of-type(1)').then(fun
                 bridal_menu_panel.classList.remove('menu-panels--open');
             }
 
-            const engagement_panel = engagement_menu.querySelector('.menu-panels:not(.opti-engagement-cut-panels) .menu-panels__header-close');
+            const engagement_panel = engagement_menu.querySelector('.menu-panels:not(.opti-engagement-cut-panels):not(.opti-engagement-bridal-collections) .menu-panels__header-close');
             if (engagement_panel) {
                 engagement_panel.click();
             }
@@ -851,6 +851,93 @@ utils.waitForElement('nav .menu .menu__root-links > li:nth-of-type(2)').then(fun
     }
 </style>`);
 
+    wedding_menu.insertAdjacentHTML("beforeend", `<div class="menu-panels menu-panels--close opti-wedding-ring-type">
+    <style>
+        .opti-wedding-ring-type .menu-panels__header {
+            border-bottom: 0;
+        }
+
+        .opti-wedding-ring-type .menu-panels__panel {
+            display: flex;
+            flex-wrap: wrap;
+            column-gap: 12px;
+            padding-top: 0;
+        }
+
+        .opti-wedding-ring-type .menu-panels__panel .menu-items {
+            display: flex;
+            flex-direction: column;
+            flex-basis: 48%;
+            margin-bottom: 16px;
+        }
+
+        .opti-wedding-ring-type .menu-panels__panel .menu-items p {
+            font-size: 16px;
+            line-height: 1.2;
+            letter-spacing: 0.02rem;
+            font-weight: 400;
+            margin-bottom: 0;
+            margin-top: 8px;
+        }
+    </style>
+
+    <div class="menu-panels__header">
+        <button class="menu-panels__header-close" title="Close">
+            <svg class="icons">
+                <use href="/_nuxt3/icons.DgK34huS.svg#cross"></use>
+            </svg>
+        </button>
+        <button class="menu-panels__header-back">
+            <svg class="icons">
+                <use href="/_nuxt3/icons.DgK34huS.svg#arrow-carousel-left"></use>
+            </svg>
+            Wedding Rings
+        </button>
+    </div>
+
+    <ul class="menu-panels__scroll">
+
+        <li class="menu-panels__panel">
+            <a href="/wedding/wedding-bands/womens" class="menu-items">
+                <img src="https://cdn.optimizely.com/img/24400620820/52e6f25bc4d7482d8efc2a75579ac27d.jpg" alt="">
+                <p>Women’s Wedding Rings</p>
+            </a>
+
+            <a href="/wedding/wedding-bands/mens" class="menu-items">
+                <img src="https://cdn.optimizely.com/img/24400620820/fb7590e118b54d34ac1ea6f0d313c7b3.jpg" alt="">
+                <p>Men’s Wedding Rings</p>
+            </a>
+
+            <a href="/wedding/wedding-bands/plain" class="menu-items">
+                <img src="https://cdn.optimizely.com/img/24400620820/d452b3fde11a4dd7919691c9314b9fa3.jpg" alt="">
+                <p>Plain Wedding Rings</p>
+            </a>
+
+            <a href="/wedding/wedding-bands/gold" class="menu-items">
+                <img src="https://cdn.optimizely.com/img/24400620820/1aabbaef3d044a82a844c537a9e67a02.jpg" alt="">
+                <p>Gold Wedding Rings</p>
+            </a>
+
+            <a href="/wedding/wedding-bands/diamond" class="menu-items">
+                <img src="https://cdn.optimizely.com/img/24400620820/fc57172adb3a4607a15e40c5e19f0744.jpg" alt="">
+                <p>Diamond Wedding Rings</p>
+            </a>
+
+            <a href="/wedding/wedding-bands/curved" class="menu-items">
+                <img src="https://cdn.optimizely.com/img/24400620820/db8164c8651f4f1d88e88ced39459f90.jpg" alt="">
+                <p>Curved Wedding Rings</p>
+            </a>
+
+            <a href="/wedding" class="menu-items">
+                <img src="https://cdn.optimizely.com/img/24400620820/418c4cf89f5846ff89f8e366ee90f04d.jpg" alt="">
+                <p>All Wedding Rings</p>
+            </a>
+        </li>
+
+    </ul>
+
+</div>`);
+
     const wedding_menu_panel_first_section = wedding_menu.querySelector('.menu-panels .menu-panels__scroll > li:nth-of-type(1)');
 
     wedding_menu_panel_first_section.insertAdjacentHTML("afterend", `<div class="opti-new-wedding-menu">
@@ -903,6 +990,44 @@ utils.waitForElement('nav .menu .menu__root-links > li:nth-of-type(2)').then(fun
     </div>
 
 </div>`);
+
+    const ring_by_type_menu = document.querySelector('.opti-new-wedding-menu .bold-menu.ring-by-type');
+    if (ring_by_type_menu) {
+        ring_by_type_menu.addEventListener('click', function () {
+            const ring_by_type_menu_panel = document.querySelector('.opti-wedding-ring-type');
+            if (ring_by_type_menu_panel) {
+                ring_by_type_menu_panel.classList.remove('menu-panels--close');
+                ring_by_type_menu_panel.classList.add('menu-panels--open');
+            }
+        })
+    }
+
+    const ring_by_type_menu_panel_back = document.querySelector('.opti-wedding-ring-type .menu-panels__header-back');
+    if (ring_by_type_menu_panel_back) {
+        ring_by_type_menu_panel_back.addEventListener('click', function () {
+            const ring_by_type_menu_panel = document.querySelector('.opti-wedding-ring-type');
+            if (ring_by_type_menu_panel) {
+                ring_by_type_menu_panel.classList.add('menu-panels--close');
+                ring_by_type_menu_panel.classList.remove('menu-panels--open');
+            }
+        })
+    }
+
+    const ring_by_type_menu_panel_close = document.querySelector('.opti-wedding-ring-type .menu-panels__header-close');
+    if (ring_by_type_menu_panel_close) {
+        ring_by_type_menu_panel_close.addEventListener('click', function () {
+            const ring_by_type_menu_panel = document.querySelector('.opti-wedding-ring-type');
+            if (ring_by_type_menu_panel) {
+                ring_by_type_menu_panel.classList.add('menu-panels--close');
+                ring_by_type_menu_panel.classList.remove('menu-panels--open');
+            }
+
+            const wedding_panel = wedding_menu.querySelector('.menu-panels:not(.opti-wedding-ring-type) .menu-panels__header-close');
+            if (wedding_panel) {
+                wedding_panel.click();
+            }
+        })
+    }
 
     const wedding_menu_fourth_section_image_container = wedding_menu.querySelector('.menu-panels .menu-panels__scroll > li:nth-of-type(4) .picture-container');
 
