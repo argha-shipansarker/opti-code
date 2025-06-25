@@ -938,6 +938,125 @@ utils.waitForElement('nav .menu .menu__root-links > li:nth-of-type(2)').then(fun
 
 </div>`);
 
+    wedding_menu.insertAdjacentHTML("beforeend", `<div class="menu-panels menu-panels--close opti-wedding-ring-metal">
+    <style>
+        .opti-wedding-ring-metal .menu-panels__panel .menu-items {
+            display: flex;
+            padding: 12.5px 0;
+            align-items: center;
+        }
+
+        .opti-wedding-ring-metal .menu-panels__panel .menu-items .round {
+            height: 20px;
+            width: 20px;
+            border-radius: 100%;
+            margin-right: 8px;
+        }
+
+        .opti-wedding-ring-metal .menu-panels__panel .menu-items .round.yellow {
+            background-color: #DFB877;
+        }
+
+        .opti-wedding-ring-metal .menu-panels__panel .menu-items .round.white {
+            background-color: #EAEAEA;
+        }
+
+        .opti-wedding-ring-metal .menu-panels__panel .menu-items .round.rose {
+            background-color: #DDA383;
+        }
+
+        .opti-wedding-ring-metal .menu-panels__panel .menu-items .round.silver {
+            background-color: #CAD1D6;
+        }
+
+        .opti-wedding-ring-metal .menu-panels__panel .menu-items .round.platinum {
+            background-color: #BEC3C7;
+        }
+
+        .opti-wedding-ring-metal .menu-panels__panel .menu-items .round.black {
+            background-color: #474747;
+        }
+
+        .opti-wedding-ring-metal .menu-panels__panel .menu-items .round.grey {
+            background-color: #CFD4D9;
+        }
+
+        .opti-wedding-ring-metal .menu-panels__panel .menu-items p {
+            font-size: 16px;
+            line-height: 1.2;
+            letter-spacing: 0.02rem;
+            font-weight: 400;
+            margin-bottom: 0;
+            color: #282829;
+        }
+
+        .opti-wedding-ring-metal .menu-panels__panel .menu-items.all p {
+            font-weight: 700;
+        }
+    </style>
+
+    <div class="menu-panels__header">
+        <button class="menu-panels__header-close" title="Close">
+            <svg class="icons">
+                <use href="/_nuxt3/icons.DgK34huS.svg#cross"></use>
+            </svg>
+        </button>
+        <button class="menu-panels__header-back">
+            <svg class="icons">
+                <use href="/_nuxt3/icons.DgK34huS.svg#arrow-carousel-left"></use>
+            </svg>
+            Wedding Rings by Metal
+        </button>
+    </div>
+
+    <ul class="menu-panels__scroll">
+
+        <li class="menu-panels__panel">
+
+            <a href="/wedding/wedding-bands/yellow-gold" class="menu-items">
+                <div class="round yellow"></div>
+                <p>Yellow Gold</p>
+            </a>
+
+            <a href="/wedding/wedding-bands/white-gold" class="menu-items">
+                <div class="round white"></div>
+                <p>White Gold</p>
+            </a>
+
+            <a href="/wedding/wedding-bands/rose-gold" class="menu-items">
+                <div class="round rose"></div>
+                <p>Rose Gold</p>
+            </a>
+
+            <a href="/wedding/wedding-bands?ref=quicklink&metalColour=Silver" class="menu-items">
+                <div class="round silver"></div>
+                <p>Silver</p>
+            </a>
+
+            <a href="/wedding/wedding-bands?ref=quicklink&metalColour=Platinum" class="menu-items">
+                <div class="round platinum"></div>
+                <p>Platinum</p>
+            </a>
+
+            <a href="/wedding/wedding-bands?ref=quicklink&metalColour=Black" class="menu-items">
+                <div class="round black"></div>
+                <p>Black</p>
+            </a>
+
+            <a href="/wedding/wedding-bands?ref=quicklink&metalColour=Grey" class="menu-items">
+                <div class="round grey"></div>
+                <p>Grey</p>
+            </a>
+
+            <a href="/wedding/wedding-bands" class="menu-items all">
+                <p>All Metals</p>
+            </a>
+        </li>
+
+    </ul>
+
+</div>`)
+
     const wedding_menu_panel_first_section = wedding_menu.querySelector('.menu-panels .menu-panels__scroll > li:nth-of-type(1)');
 
     wedding_menu_panel_first_section.insertAdjacentHTML("afterend", `<div class="opti-new-wedding-menu">
@@ -991,6 +1110,7 @@ utils.waitForElement('nav .menu .menu__root-links > li:nth-of-type(2)').then(fun
 
 </div>`);
 
+    //ring by type
     const ring_by_type_menu = document.querySelector('.opti-new-wedding-menu .bold-menu.ring-by-type');
     if (ring_by_type_menu) {
         ring_by_type_menu.addEventListener('click', function () {
@@ -1022,7 +1142,46 @@ utils.waitForElement('nav .menu .menu__root-links > li:nth-of-type(2)').then(fun
                 ring_by_type_menu_panel.classList.remove('menu-panels--open');
             }
 
-            const wedding_panel = wedding_menu.querySelector('.menu-panels:not(.opti-wedding-ring-type) .menu-panels__header-close');
+            const wedding_panel = wedding_menu.querySelector('.menu-panels:not(.opti-wedding-ring-type):not(.opti-wedding-ring-metal) .menu-panels__header-close');
+            if (wedding_panel) {
+                wedding_panel.click();
+            }
+        })
+    }
+
+    //ring by metal
+    const ring_by_metal_menu = document.querySelector('.opti-new-wedding-menu .bold-menu.ring-by-metal');
+    if (ring_by_metal_menu) {
+        ring_by_metal_menu.addEventListener('click', function () {
+            const ring_by_metal_menu_panel = document.querySelector('.opti-wedding-ring-metal');
+            if (ring_by_metal_menu_panel) {
+                ring_by_metal_menu_panel.classList.remove('menu-panels--close');
+                ring_by_metal_menu_panel.classList.add('menu-panels--open');
+            }
+        })
+    }
+
+    const ring_by_metal_menu_panel_back = document.querySelector('.opti-wedding-ring-metal .menu-panels__header-back');
+    if (ring_by_metal_menu_panel_back) {
+        ring_by_metal_menu_panel_back.addEventListener('click', function () {
+            const ring_by_metal_menu_panel = document.querySelector('.opti-wedding-ring-metal');
+            if (ring_by_metal_menu_panel) {
+                ring_by_metal_menu_panel.classList.add('menu-panels--close');
+                ring_by_metal_menu_panel.classList.remove('menu-panels--open');
+            }
+        })
+    }
+
+    const ring_by_metal_menu_panel_close = document.querySelector('.opti-wedding-ring-metal .menu-panels__header-close');
+    if (ring_by_metal_menu_panel_close) {
+        ring_by_metal_menu_panel_close.addEventListener('click', function () {
+            const ring_by_metal_menu_panel = document.querySelector('.opti-wedding-ring-metal');
+            if (ring_by_metal_menu_panel) {
+                ring_by_metal_menu_panel.classList.add('menu-panels--close');
+                ring_by_metal_menu_panel.classList.remove('menu-panels--open');
+            }
+
+            const wedding_panel = wedding_menu.querySelector('.menu-panels:not(.opti-wedding-ring-type):not(.opti-wedding-ring-metal) .menu-panels__header-close');
             if (wedding_panel) {
                 wedding_panel.click();
             }
