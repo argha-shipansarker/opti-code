@@ -805,3 +805,113 @@ utils.waitForElement('nav .menu .menu__root-links > li:nth-of-type(1)').then(fun
         fourth_section_perfect_ring_text.innerHTML = `Your need-to-know to pick your perfect ring.`;
     }
 });
+
+
+//Wedding menu
+utils.waitForElement('nav .menu .menu__root-links > li:nth-of-type(2)').then(function (wedding_menu) {
+    wedding_menu.insertAdjacentHTML("beforeend", `<style>
+    nav .menu .menu__root-links>li:nth-of-type(2) .menu-panels .menu-panels__scroll>li:nth-of-type(1) {
+        border-bottom: 0px;
+    }
+
+    nav .menu .menu__root-links>li:nth-of-type(2) .menu-panels .menu-panels__scroll>li:nth-of-type(1) ul>li:nth-of-type(1),
+    nav .menu .menu__root-links>li:nth-of-type(2) .menu-panels .menu-panels__scroll>li:nth-of-type(1) ul>li:nth-of-type(4),
+    nav .menu .menu__root-links>li:nth-of-type(2) .menu-panels .menu-panels__scroll>li:nth-of-type(1) ul>li:nth-of-type(5),
+    nav .menu .menu__root-links>li:nth-of-type(2) .menu-panels .menu-panels__scroll>li:nth-of-type(1) ul>li:nth-of-type(6),
+    nav .menu .menu__root-links>li:nth-of-type(2) .menu-panels .menu-panels__scroll>li:nth-of-type(1) ul>li:nth-of-type(7) {
+        display: none;
+    }
+
+    nav .menu .menu__root-links>li:nth-of-type(2) .menu-panels .menu-panels__scroll>li:nth-of-type(1) ul>li:nth-of-type(3) {
+        margin-bottom: 12px;
+    }
+
+    nav .menu .menu__root-links>li:nth-of-type(2) .menu-panels .menu-panels__scroll>li:nth-of-type(1) ul li a {
+        font-size: 16px;
+    }
+
+    nav .menu .menu__root-links>li:nth-of-type(2) .menu-panels .menu-panels__scroll>li:nth-of-type(2),
+    nav .menu .menu__root-links>li:nth-of-type(2) .menu-panels .menu-panels__scroll>li:nth-of-type(3) {
+        display: none;
+    }
+
+    nav .menu .menu__root-links>li:nth-of-type(2) .menu-panels .menu-panels__scroll>li:nth-of-type(4) picture {
+        display: none;
+    }
+
+    nav .menu .menu__root-links>li:nth-of-type(2) .menu-panels .menu-panels__scroll>li:nth-of-type(4) p {
+        font-size: 16px;
+    }
+
+    nav .menu .menu__root-links>li:nth-of-type(2) .menu-panels .menu-panels__scroll>li:nth-of-type(4) p a {
+        font-size: 16px;
+        text-decoration: underline;
+        color: #282829;
+        font-weight: 400;
+    }
+</style>`);
+
+    const wedding_menu_panel_first_section = wedding_menu.querySelector('.menu-panels .menu-panels__scroll > li:nth-of-type(1)');
+
+    wedding_menu_panel_first_section.insertAdjacentHTML("afterend", `<div class="opti-new-wedding-menu">
+    <style>
+        .opti-new-wedding-menu .bold-menu {
+            font-size: 16px;
+            font-weight: 700;
+            line-height: 1.2;
+            letter-spacing: 0.02rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            color: #282829;
+            text-decoration: none;
+            padding: 18.5px 0;
+            border-bottom: 1px solid #E8E9EA;
+        }
+
+        .opti-new-wedding-menu .bold-menu .icons {
+            height: 1rem;
+        }
+    </style>
+
+    <div class="bold-menu ring-by-type">
+        Weddings Rings by Type
+        <svg class="icons">
+            <use href="/_nuxt3/icons.DgK34huS.svg#arrow-carousel-right"></use>
+        </svg>
+    </div>
+
+    <div class="bold-menu ring-by-metal">
+        Weddings Rings by Metal
+        <svg class="icons">
+            <use href="/_nuxt3/icons.DgK34huS.svg#arrow-carousel-right"></use>
+        </svg>
+    </div>
+
+    <div class="bold-menu gift">
+        Wedding Gifts
+        <svg class="icons">
+            <use href="/_nuxt3/icons.DgK34huS.svg#arrow-carousel-right"></use>
+        </svg>
+    </div>
+
+    <div class="bold-menu accessories">
+        Wedding Accessories
+        <svg class="icons">
+            <use href="/_nuxt3/icons.DgK34huS.svg#arrow-carousel-right"></use>
+        </svg>
+    </div>
+
+</div>`);
+
+    const wedding_menu_fourth_section_image_container = wedding_menu.querySelector('.menu-panels .menu-panels__scroll > li:nth-of-type(4) .picture-container');
+
+    if (wedding_menu_fourth_section_image_container) {
+        wedding_menu_fourth_section_image_container.insertAdjacentHTML("beforeend", `<img class="opti-new-wedding-image" src="https://cdn.optimizely.com/img/22916101539/85604d0a489b47808f3a67c2ae85ca02.jpg" alt="">`)
+    }
+
+    const wedding_menu_fourth_section_text = wedding_menu.querySelector('.menu-panels .menu-panels__scroll > li:nth-of-type(4) p:nth-of-type(3)');
+    if (wedding_menu_fourth_section_text) {
+        wedding_menu_fourth_section_text.innerText = 'Your need-to-know to pick your perfect ring.';
+    }
+});
