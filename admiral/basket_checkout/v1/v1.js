@@ -30,6 +30,8 @@ function handleUpdateSessionStorage_Cover_Page() {
 
     session_storage_variable.cover_price = document.querySelector(`eui-tier eui-motor-tiers-table table[data-test="eui-motor-tier-select"] tfoot tr td:nth-of-type(${selected_cover_column - 1}) adm-control-radio-title strong`).innerText;
 
+    session_storage_variable.price_type = document.querySelector(`eui-tier eui-motor-tiers-table table[data-test="eui-motor-tier-select"] tfoot tr td:nth-of-type(${selected_cover_column - 1}) small`).innerText == "total" ? "annual" : "monthly";
+
     const cover_table_headings = document.querySelectorAll(`eui-tier eui-motor-tiers-table table[data-test="eui-motor-tier-select"] tbody tr th:nth-of-type(1)`);
 
     const motor_legal_protection_text = cover_table_headings[7].querySelector('.adm-control-table__row-header-content').innerText.toLowerCase();
@@ -247,9 +249,9 @@ function handleUpdatingValueOf_Basket() {
     cover_image.setAttribute('src', session_storage_variable.cover_image);
 
     if (window.location.pathname == '/Admiral/ancillary/motorlegal' || window.location.pathname == '/Admiral/ancillary/breakdown' || window.location.pathname == '/Admiral/ancillary/personalinjury' || window.location.pathname == '/Admiral/ancillary/hirecar' || window.location.pathname == '/Admiral/upgrade') {
-        cover_price.innerText = `£${Number(session_storage_variable.cover_price).toLocaleString('en-GB', { minimumFractionDigits: 2, maximumFractionDigits: 2 })} total`;
+        cover_price.innerText = `£${Number(session_storage_variable.cover_price).toLocaleString('en-GB', { minimumFractionDigits: 2, maximumFractionDigits: 2 })} ${session_storage_variable.price_type == "annual" ? "total" : "per month"}`;
     } else {
-        cover_price.innerText = `${session_storage_variable.cover_price} total`;
+        cover_price.innerText = `${session_storage_variable.cover_price} ${session_storage_variable.price_type == "annual" ? "total" : "per month"}`;
     }
 
     if (session_storage_variable.driver_name.length) {
@@ -724,12 +726,12 @@ utils.observeSelector('.adm-navbar__wrap .adm-navbar__nav', function (right_nav)
                     let session_storage_variable = JSON.parse(sessionStorage.getItem('opti-cover-info'));
                     let ancils = dataLayer.reverse().find(obj => obj.event === 'ancils');
                     if (ancils) {
-                        session_storage_variable.cover_price = ancils.totalPriceAnnualAncil;
+                        session_storage_variable.cover_price = ancils.totalPolicyPriceMonthlyAncil;
                         sessionStorage.setItem('opti-cover-info', JSON.stringify(session_storage_variable));
                     } else {
                         let gotPrice = dataLayer.reverse().find(obj => obj.event === 'gotPrice');
                         if (gotPrice) {
-                            session_storage_variable.cover_price = gotPrice.totalPriceAnnual;
+                            session_storage_variable.cover_price = session_storage_variable.price_type == "annual" ? gotPrice.totalPriceAnnual : gotPrice.totalPolicyPriceMonthly;
                             sessionStorage.setItem('opti-cover-info', JSON.stringify(session_storage_variable));
                         }
                     }
