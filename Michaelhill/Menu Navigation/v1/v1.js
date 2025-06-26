@@ -2405,3 +2405,152 @@ utils.waitForElement('nav .menu .menu__root-links > li:nth-of-type(4)').then(fun
         }
     );
 });
+
+//Gifts menu
+utils.waitForElement('nav .menu .menu__root-links > li:nth-of-type(5)').then(function (gift_menu) {
+    gift_menu.insertAdjacentHTML("beforeend", `<style>
+    nav .menu .menu__root-links>li:nth-of-type(5) .menu-panels .menu-panels__scroll>li:nth-of-type(1) .menu-panels__panel-link,
+    nav .menu .menu__root-links>li:nth-of-type(5) .menu-panels .menu-panels__scroll>li:nth-of-type(1) ul>li:nth-of-type(5),
+    nav .menu .menu__root-links>li:nth-of-type(5) .menu-panels .menu-panels__scroll>li:nth-of-type(1) ul>li:nth-of-type(6),
+    nav .menu .menu__root-links>li:nth-of-type(5) .menu-panels .menu-panels__scroll>li:nth-of-type(1) ul>li:nth-of-type(7) {
+        display: none;
+    }
+
+    nav .menu .menu__root-links>li:nth-of-type(5) .menu-panels .menu-panels__scroll>li:nth-of-type(1) ul>li:nth-of-type(8) {
+        margin-bottom: 12px;
+    }
+
+    nav .menu .menu__root-links>li:nth-of-type(5) .menu-panels .menu-panels__scroll>li:nth-of-type(1) ul li a {
+        font-size: 16px;
+        font-weight: 400;
+        color: #282829;
+    }
+
+    nav .menu .menu__root-links>li:nth-of-type(5) .menu-panels .menu-panels__scroll>li:nth-of-type(2),
+    nav .menu .menu__root-links>li:nth-of-type(5) .menu-panels .menu-panels__scroll>li:nth-of-type(3) {
+        display: none;
+    }
+
+    nav .menu .menu__root-links>li:nth-of-type(5) .menu-panels .menu-panels__scroll>li:nth-of-type(4) p {
+        font-size: 16px;
+    }
+
+    nav .menu .menu__root-links>li:nth-of-type(5) .menu-panels .menu-panels__scroll>li:nth-of-type(4) .picture-container picture {
+        display: none;
+    }
+
+    nav .menu .menu__root-links>li:nth-of-type(5) .menu-panels .menu-panels__scroll>li:nth-of-type(4) p a {
+        font-size: 16px;
+        text-decoration: underline;
+        color: #282829;
+        font-weight: 400;
+    }
+</style>`);
+
+    const gift_menu_panel_first_section = gift_menu.querySelector('.menu-panels .menu-panels__scroll > li:nth-of-type(1)');
+
+    gift_menu_panel_first_section.insertAdjacentHTML("afterend", `<div class="opti-new-gift-menu">
+    <style>
+        .opti-new-gift-menu .bold-menu {
+            font-size: 16px;
+            font-weight: 700;
+            line-height: 1.2;
+            letter-spacing: 0.02rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            color: #282829;
+            text-decoration: none;
+            padding: 14.5px 0;
+            border-bottom: 1px solid #E8E9EA;
+        }
+
+        .opti-new-gift-menu a.bold-menu {
+            padding: 16px 0;
+        }
+
+        .opti-new-gift-menu .bold-menu .sub {
+            font-weight: 400;
+            color: #707172;
+        }
+
+        .opti-new-gift-menu .bold-menu .icons {
+            height: 1rem;
+        }
+
+        .opti-new-gift-menu .menu-heading {
+            font-size: 12px;
+            line-height: 1.2;
+            letter-spacing: 0.08rem;
+            font-weight: 700;
+            color: #707172;
+            padding: 28px 0 12px;
+            text-transform: uppercase;
+            margin-bottom: 0;
+        }
+
+        .opti-new-gift-menu .normal-menu {
+            font-size: 16px;
+            line-height: 1.2;
+            letter-spacing: 0.02rem;
+            font-weight: 400;
+            color: #282829;
+            padding: 12px 0;
+            text-decoration: none;
+            display: block;
+        }
+
+        .opti-new-gift-menu .normal-menu.last {
+            padding-bottom: 20px;
+            border-bottom: 1px solid #E8E9EA;
+        }
+    </style>
+
+    <a href="/gifts/gift-ideas/shop-all-gifts" class="bold-menu">
+        Explore Gifts
+    </a>
+
+    <p class="menu-heading">By Price</p>
+
+    <a href="/gifts/gift-ideas/gifts-under-150" class="normal-menu">Under $150</a>
+    <a href="/gifts/gift-ideas/gifts-under-500" class="normal-menu">Under $500</a>
+    <a href="/gifts/gift-ideas/gifts-over-1000" class="normal-menu last">Luxury Gifts</a>
+
+    <div class="bold-menu personalised">
+        Personalised Jewellery
+        <svg class="icons">
+            <use href="/_nuxt3/icons.DgK34huS.svg#arrow-carousel-right"></use>
+        </svg>
+    </div>
+
+    <div class="bold-menu occasion">
+        Occasion
+        <svg class="icons">
+            <use href="/_nuxt3/icons.DgK34huS.svg#arrow-carousel-right"></use>
+        </svg>
+    </div>
+
+</div>`);
+
+    const gift_menu_fourth_section_image_container = gift_menu.querySelector('.menu-panels .menu-panels__scroll > li:nth-of-type(4) .picture-container');
+
+    if (gift_menu_fourth_section_image_container) {
+        gift_menu_fourth_section_image_container.insertAdjacentHTML("beforeend", `<a href="/gifts/birthstones/august---peridot?ref=quicklink"><img class="opti-new-gift-image" src="https://cdn.optimizely.com/img/24400620820/0467abb1323c47f29a91770fe6c100e4.jpg" alt=""></a>`)
+    }
+
+    const gift_menu_fourth_section_text_1 = gift_menu.querySelector('.menu-panels .menu-panels__scroll > li:nth-of-type(4) p:nth-of-type(1)');
+    if (gift_menu_fourth_section_text_1) {
+        gift_menu_fourth_section_text_1.innerHTML = '<strong>Mar Birthstone - Aquamarine</strong>';
+        gift_menu_fourth_section_text_1.style.marginTop = "16px";
+    }
+
+    const gift_menu_fourth_section_text_2 = gift_menu.querySelector('.menu-panels .menu-panels__scroll > li:nth-of-type(4) p:nth-of-type(2)');
+    if (gift_menu_fourth_section_text_2) {
+        gift_menu_fourth_section_text_2.innerText = 'Your need-to-know to pick your perfect ring.';
+    }
+
+    const gift_menu_fourth_section_text_3 = gift_menu.querySelector('.menu-panels .menu-panels__scroll > li:nth-of-type(4) p:nth-of-type(3) a');
+    if (gift_menu_fourth_section_text_3) {
+        gift_menu_fourth_section_text_3.href = 'https://www.michaelhill.com.au/gifts/birthstones/august---peridot?ref=quicklink';
+    }
+});
