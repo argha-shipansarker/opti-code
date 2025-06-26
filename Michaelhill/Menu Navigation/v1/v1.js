@@ -1340,3 +1340,121 @@ utils.waitForElement('nav .menu .menu__root-links > li:nth-of-type(2)').then(fun
         wedding_menu_fourth_section_text.innerText = 'Your need-to-know to pick your perfect ring.';
     }
 });
+
+
+//Jewellery menu
+utils.waitForElement('nav .menu .menu__root-links > li:nth-of-type(3)').then(function (jewellery_menu) {
+
+    jewellery_menu.insertAdjacentHTML("beforeend", `<style>
+    nav .menu .menu__root-links>li:nth-of-type(3) .menu-panels .menu-panels__scroll>li:nth-of-type(1) {
+        border-bottom: 0px;
+    }
+
+    nav .menu .menu__root-links>li:nth-of-type(3) .menu-panels .menu-panels__scroll>li:nth-of-type(1) .menu-panels__panel-link,
+    nav .menu .menu__root-links>li:nth-of-type(3) .menu-panels .menu-panels__scroll>li:nth-of-type(1) ul>li:nth-of-type(8) {
+        display: none;
+    }
+
+    nav .menu .menu__root-links>li:nth-of-type(3) .menu-panels .menu-panels__scroll>li:nth-of-type(1) ul>li:nth-of-type(10) {
+        margin-bottom: 12px;
+    }
+
+    nav .menu .menu__root-links>li:nth-of-type(3) .menu-panels .menu-panels__scroll>li:nth-of-type(1) ul li a {
+        font-size: 16px;
+        font-weight: 400;
+        color: #282829;
+    }
+
+    nav .menu .menu__root-links>li:nth-of-type(3) .menu-panels .menu-panels__scroll>li:nth-of-type(2),
+    nav .menu .menu__root-links>li:nth-of-type(3) .menu-panels .menu-panels__scroll>li:nth-of-type(3) {
+        display: none;
+    }
+
+    nav .menu .menu__root-links>li:nth-of-type(3) .menu-panels .menu-panels__scroll>li:nth-of-type(4) p {
+        font-size: 16px;
+        color: #282829;
+    }
+
+    nav .menu .menu__root-links>li:nth-of-type(3) .menu-panels .menu-panels__scroll>li:nth-of-type(4) p a {
+        font-size: 16px;
+        text-decoration: underline;
+        color: #282829;
+        font-weight: 400;
+    }
+</style>`);
+
+    const jewellery_menu_panel_first_section = jewellery_menu.querySelector('.menu-panels .menu-panels__scroll > li:nth-of-type(1)');
+    const list = jewellery_menu_panel_first_section?.querySelector('ul');
+
+    const tennis_menu = list.children[5];
+    const chains_menu = list.children[6];
+
+    console.warn("hello", jewellery_menu_panel_first_section, tennis_menu, chains_menu)
+
+    if (tennis_menu && chains_menu && list) {
+        list.insertBefore(chains_menu, tennis_menu);
+    }
+
+    const shop_all_jewellery = jewellery_menu.querySelector('.menu-panels .menu-panels__scroll > li:nth-of-type(1)  ul>li:nth-of-type(10) a')
+    if (shop_all_jewellery) {
+        shop_all_jewellery.href = '/jewellery';
+    }
+
+    jewellery_menu_panel_first_section.insertAdjacentHTML("afterend", `<div class="opti-new-jewellery-menu">
+    <style>
+        .opti-new-jewellery-menu .bold-menu {
+            font-size: 16px;
+            font-weight: 700;
+            line-height: 1.2;
+            letter-spacing: 0.02rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            color: #282829;
+            text-decoration: none;
+            padding: 18.5px 0;
+            border-bottom: 1px solid #E8E9EA;
+        }
+
+        .opti-new-jewellery-menu a.bold-menu {
+            padding: 16px 0;
+        }
+
+        .opti-new-jewellery-menu .bold-menu .icons {
+            height: 1rem;
+        }
+    </style>
+
+    <div class="bold-menu gemstones">
+        Gemstones
+        <svg class="icons">
+            <use href="/_nuxt3/icons.DgK34huS.svg#arrow-carousel-right"></use>
+        </svg>
+    </div>
+
+    <div class="bold-menu metals">
+        Metals
+        <svg class="icons">
+            <use href="/_nuxt3/icons.DgK34huS.svg#arrow-carousel-right"></use>
+        </svg>
+    </div>
+
+    <div class="bold-menu collections">
+        Collections
+        <svg class="icons">
+            <use href="/_nuxt3/icons.DgK34huS.svg#arrow-carousel-right"></use>
+        </svg>
+    </div>
+
+    <div class="bold-menu personalised-jewellery">
+        Personalised Jewellery
+        <svg class="icons">
+            <use href="/_nuxt3/icons.DgK34huS.svg#arrow-carousel-right"></use>
+        </svg>
+    </div>
+
+    <a href="/jewellery" class="bold-menu">
+        Explore Jewellery
+    </a>
+</div>`);
+});
