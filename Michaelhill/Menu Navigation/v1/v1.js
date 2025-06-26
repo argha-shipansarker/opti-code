@@ -1115,6 +1115,79 @@ utils.waitForElement('nav .menu .menu__root-links > li:nth-of-type(2)').then(fun
 
 </div>`);
 
+    wedding_menu.insertAdjacentHTML("beforeend", `<div class="menu-panels menu-panels--close opti-wedding-accessories-panel">
+    <style>
+        .opti-wedding-accessories-panel .menu-panels__header {
+            border-bottom: 0;
+        }
+
+        .opti-wedding-accessories-panel .menu-panels__panel {
+            display: flex;
+            flex-wrap: wrap;
+            column-gap: 12px;
+            padding-top: 0;
+        }
+
+        .opti-wedding-accessories-panel .menu-panels__panel .menu-items {
+            display: flex;
+            flex-direction: column;
+            flex-basis: 48%;
+            margin-bottom: 16px;
+        }
+
+        .opti-wedding-accessories-panel .menu-panels__panel .menu-items p {
+            font-size: 16px;
+            line-height: 1.2;
+            letter-spacing: 0.02rem;
+            font-weight: 400;
+            margin-bottom: 0;
+            margin-top: 8px;
+            color: #282829;
+        }
+    </style>
+
+    <div class="menu-panels__header">
+        <button class="menu-panels__header-close" title="Close">
+            <svg class="icons">
+                <use href="/_nuxt3/icons.DgK34huS.svg#cross"></use>
+            </svg>
+        </button>
+        <button class="menu-panels__header-back">
+            <svg class="icons">
+                <use href="/_nuxt3/icons.DgK34huS.svg#arrow-carousel-left"></use>
+            </svg>
+            Wedding Accessories
+        </button>
+    </div>
+
+    <ul class="menu-panels__scroll">
+
+        <li class="menu-panels__panel">
+            <a href="/wedding/wedding-accessories" class="menu-items">
+                <img src="https://cdn.optimizely.com/img/24400620820/b70505576e3d43b5a8754a98cf92d01f.jpg" alt="">
+                <p>Wedding Day Jewellery</p>
+            </a>
+
+            <a href="/wedding/wedding-accessories/earrings" class="menu-items">
+                <img src="https://cdn.optimizely.com/img/24400620820/d049afc23efc4068a9caf999f719e70f.jpg" alt="">
+                <p>Wedding Earrings</p>
+            </a>
+
+            <a href="/wedding/wedding-accessories/necklaces" class="menu-items">
+                <img src="https://cdn.optimizely.com/img/24400620820/fe9abf542f1f42fdbb524f90b523fd9f.jpg" alt="">
+                <p>Wedding Necklaces</p>
+            </a>
+
+            <a href="/wedding/wedding-accessories" class="menu-items">
+                <img src="https://cdn.optimizely.com/img/24400620820/9370241b421b407db30ac465b3e411e8.jpg" alt="">
+                <p>All Wedding Accessories</p>
+            </a>
+        </li>
+
+    </ul>
+
+</div>`);
+
     const wedding_menu_panel_first_section = wedding_menu.querySelector('.menu-panels .menu-panels__scroll > li:nth-of-type(1)');
 
     wedding_menu_panel_first_section.insertAdjacentHTML("afterend", `<div class="opti-new-wedding-menu">
@@ -1185,7 +1258,7 @@ utils.waitForElement('nav .menu .menu__root-links > li:nth-of-type(2)').then(fun
         '.opti-wedding-ring-type',
         false,
         () => {
-            const wedding_panel = wedding_menu.querySelector('.menu-panels:not(.opti-wedding-ring-type):not(.opti-wedding-ring-metal):not(.opti-wedding-gifts) .menu-panels__header-close');
+            const wedding_panel = wedding_menu.querySelector('.menu-panels:not(.opti-wedding-ring-type):not(.opti-wedding-ring-metal):not(.opti-wedding-gifts):not(.opti-wedding-accessories-panel) .menu-panels__header-close');
             if (wedding_panel) wedding_panel.click();
         }
     );
@@ -1207,7 +1280,7 @@ utils.waitForElement('nav .menu .menu__root-links > li:nth-of-type(2)').then(fun
         '.opti-wedding-ring-metal',
         false,
         () => {
-            const wedding_panel = wedding_menu.querySelector('.menu-panels:not(.opti-wedding-ring-type):not(.opti-wedding-ring-metal):not(.opti-wedding-gifts) .menu-panels__header-close');
+            const wedding_panel = wedding_menu.querySelector('.menu-panels:not(.opti-wedding-ring-type):not(.opti-wedding-ring-metal):not(.opti-wedding-gifts):not(.opti-wedding-accessories-panel) .menu-panels__header-close');
             if (wedding_panel) wedding_panel.click();
         }
     );
@@ -1229,7 +1302,29 @@ utils.waitForElement('nav .menu .menu__root-links > li:nth-of-type(2)').then(fun
         '.opti-wedding-gifts',
         false,
         () => {
-            const wedding_panel = wedding_menu.querySelector('.menu-panels:not(.opti-wedding-ring-type):not(.opti-wedding-ring-metal):not(.opti-wedding-gifts) .menu-panels__header-close');
+            const wedding_panel = wedding_menu.querySelector('.menu-panels:not(.opti-wedding-ring-type):not(.opti-wedding-ring-metal):not(.opti-wedding-gifts):not(.opti-wedding-accessories-panel) .menu-panels__header-close');
+            if (wedding_panel) wedding_panel.click();
+        }
+    );
+
+    //wedding accessories
+    bindToggleButton(
+        '.opti-new-wedding-menu .bold-menu.accessories',
+        '.opti-wedding-accessories-panel'
+    );
+
+    bindToggleButton(
+        '.opti-wedding-accessories-panel .menu-panels__header-back',
+        '.opti-wedding-accessories-panel',
+        false
+    );
+
+    bindToggleButton(
+        '.opti-wedding-accessories-panel .menu-panels__header-close',
+        '.opti-wedding-accessories-panel',
+        false,
+        () => {
+            const wedding_panel = wedding_menu.querySelector('.menu-panels:not(.opti-wedding-ring-type):not(.opti-wedding-ring-metal):not(.opti-wedding-gifts):not(.opti-wedding-accessories-panel) .menu-panels__header-close');
             if (wedding_panel) wedding_panel.click();
         }
     );
@@ -1237,7 +1332,7 @@ utils.waitForElement('nav .menu .menu__root-links > li:nth-of-type(2)').then(fun
     const wedding_menu_fourth_section_image_container = wedding_menu.querySelector('.menu-panels .menu-panels__scroll > li:nth-of-type(4) .picture-container');
 
     if (wedding_menu_fourth_section_image_container) {
-        wedding_menu_fourth_section_image_container.insertAdjacentHTML("beforeend", `<img class="opti-new-wedding-image" src="https://cdn.optimizely.com/img/22916101539/85604d0a489b47808f3a67c2ae85ca02.jpg" alt="">`)
+        wedding_menu_fourth_section_image_container.insertAdjacentHTML("beforeend", `<a href="/connected/all-about-wedding-bands"><img class="opti-new-wedding-image" src="https://cdn.optimizely.com/img/22916101539/85604d0a489b47808f3a67c2ae85ca02.jpg" alt=""></a>`)
     }
 
     const wedding_menu_fourth_section_text = wedding_menu.querySelector('.menu-panels .menu-panels__scroll > li:nth-of-type(4) p:nth-of-type(3)');
