@@ -1,5 +1,23 @@
 const utils = optimizely.get('utils');
 
+function togglePanel(selector, open = true) {
+    const panel = document.querySelector(selector);
+    if (panel) {
+        panel.classList.toggle('menu-panels--open', open);
+        panel.classList.toggle('menu-panels--close', !open);
+    }
+}
+
+function bindToggleButton(buttonSelector, panelSelector, open = true, callback = null) {
+    const button = document.querySelector(buttonSelector);
+    if (button) {
+        button.addEventListener('click', function () {
+            togglePanel(panelSelector, open);
+            if (callback) callback();
+        });
+    }
+}
+
 //Engagement Menu 
 utils.waitForElement('nav .menu .menu__root-links > li:nth-of-type(1)').then(function (engagement_menu) {
 
@@ -723,82 +741,50 @@ utils.waitForElement('nav .menu .menu__root-links > li:nth-of-type(1)').then(fun
     <a href="/article/knowledge-advice/engagement-ring-guide" class="normal-menu">Engagement Ring Guide</a>
 </div>`);
 
-    const cut_menu = document.querySelector('.opti-new-engagement-menu .bold-menu.cut');
-    if (cut_menu) {
-        cut_menu.addEventListener('click', function () {
-            const cut_menu_panel = document.querySelector('.opti-engagement-cut-panels');
-            if (cut_menu_panel) {
-                cut_menu_panel.classList.remove('menu-panels--close');
-                cut_menu_panel.classList.add('menu-panels--open');
-            }
-        })
-    }
+    //cut menu
+    bindToggleButton(
+        '.opti-new-engagement-menu .bold-menu.cut',
+        '.opti-engagement-cut-panels'
+    );
 
-    const cut_menu_panel_back = document.querySelector('.opti-engagement-cut-panels .menu-panels__header-back');
-    if (cut_menu_panel_back) {
-        cut_menu_panel_back.addEventListener('click', function () {
-            const cut_menu_panel = document.querySelector('.opti-engagement-cut-panels');
-            if (cut_menu_panel) {
-                cut_menu_panel.classList.add('menu-panels--close');
-                cut_menu_panel.classList.remove('menu-panels--open');
-            }
-        })
-    }
+    bindToggleButton(
+        '.opti-engagement-cut-panels .menu-panels__header-back',
+        '.opti-engagement-cut-panels',
+        false
+    );
 
-    const cut_menu_panel_close = document.querySelector('.opti-engagement-cut-panels .menu-panels__header-close');
-    if (cut_menu_panel_close) {
-        cut_menu_panel_close.addEventListener('click', function () {
-            const cut_menu_panel = document.querySelector('.opti-engagement-cut-panels');
-            if (cut_menu_panel) {
-                cut_menu_panel.classList.add('menu-panels--close');
-                cut_menu_panel.classList.remove('menu-panels--open');
-            }
-
+    bindToggleButton(
+        '.opti-engagement-cut-panels .menu-panels__header-close',
+        '.opti-engagement-cut-panels',
+        false,
+        () => {
             const engagement_panel = engagement_menu.querySelector('.menu-panels:not(.opti-engagement-cut-panels):not(.opti-engagement-bridal-collections) .menu-panels__header-close');
-            if (engagement_panel) {
-                engagement_panel.click();
-            }
-        })
-    }
+            if (engagement_panel) engagement_panel.click();
+        }
+    );
 
+    //bridal menu
 
-    const bridal_menu = document.querySelector('.opti-new-engagement-menu .bold-menu.bridal-collection');
-    if (bridal_menu) {
-        bridal_menu.addEventListener('click', function () {
-            const bridal_menu_panel = document.querySelector('.opti-engagement-bridal-collections');
-            if (bridal_menu_panel) {
-                bridal_menu_panel.classList.remove('menu-panels--close');
-                bridal_menu_panel.classList.add('menu-panels--open');
-            }
-        })
-    }
+    bindToggleButton(
+        '.opti-new-engagement-menu .bold-menu.bridal-collection',
+        '.opti-engagement-bridal-collections'
+    );
 
-    const bridal_menu_panel_back = document.querySelector('.opti-engagement-bridal-collections .menu-panels__header-back');
-    if (bridal_menu_panel_back) {
-        bridal_menu_panel_back.addEventListener('click', function () {
-            const bridal_menu_panel = document.querySelector('.opti-engagement-bridal-collections');
-            if (bridal_menu_panel) {
-                bridal_menu_panel.classList.add('menu-panels--close');
-                bridal_menu_panel.classList.remove('menu-panels--open');
-            }
-        })
-    }
+    bindToggleButton(
+        '.opti-engagement-bridal-collections .menu-panels__header-back',
+        '.opti-engagement-bridal-collections',
+        false
+    );
 
-    const bridal_menu_panel_close = document.querySelector('.opti-engagement-bridal-collections .menu-panels__header-close');
-    if (bridal_menu_panel_close) {
-        bridal_menu_panel_close.addEventListener('click', function () {
-            const bridal_menu_panel = document.querySelector('.opti-engagement-bridal-collections');
-            if (bridal_menu_panel) {
-                bridal_menu_panel.classList.add('menu-panels--close');
-                bridal_menu_panel.classList.remove('menu-panels--open');
-            }
-
+    bindToggleButton(
+        '.opti-engagement-bridal-collections .menu-panels__header-close',
+        '.opti-engagement-bridal-collections',
+        false,
+        () => {
             const engagement_panel = engagement_menu.querySelector('.menu-panels:not(.opti-engagement-cut-panels):not(.opti-engagement-bridal-collections) .menu-panels__header-close');
-            if (engagement_panel) {
-                engagement_panel.click();
-            }
-        })
-    }
+            if (engagement_panel) engagement_panel.click();
+        }
+    );
 
     const fourth_section_perfect_ring_text = engagement_menu.querySelector('.menu-panels .menu-panels__scroll>li:nth-of-type(4) p:nth-of-type(3)');
     if (fourth_section_perfect_ring_text) {
@@ -1055,7 +1041,79 @@ utils.waitForElement('nav .menu .menu__root-links > li:nth-of-type(2)').then(fun
 
     </ul>
 
-</div>`)
+</div>`);
+
+    wedding_menu.insertAdjacentHTML("beforeend", `<div class="menu-panels menu-panels--close opti-wedding-gifts">
+    <style>
+        .opti-wedding-gifts .menu-panels__panel .menu-items {
+            padding: 12px 0;
+            align-items: center;
+        }
+
+        .opti-wedding-gifts .menu-panels__panel .menu-items p {
+            font-size: 16px;
+            line-height: 1.2;
+            letter-spacing: 0.02rem;
+            font-weight: 400;
+            margin-bottom: 0;
+            color: #282829;
+        }
+
+        .opti-wedding-gifts .menu-panels__panel .menu-items.all p {
+            font-weight: 700;
+        }
+    </style>
+
+    <div class="menu-panels__header">
+        <button class="menu-panels__header-close" title="Close">
+            <svg class="icons">
+                <use href="/_nuxt3/icons.DgK34huS.svg#cross"></use>
+            </svg>
+        </button>
+        <button class="menu-panels__header-back">
+            <svg class="icons">
+                <use href="/_nuxt3/icons.DgK34huS.svg#arrow-carousel-left"></use>
+            </svg>
+            Wedding Gifts
+        </button>
+    </div>
+
+    <ul class="menu-panels__scroll">
+
+        <li class="menu-panels__panel">
+
+            <a href="/gifts/wedding/for-bride" class="menu-items">
+                <p>For Bride</p>
+            </a>
+
+            <a href="/gifts/occasions/bridal-bridesmaid-gifts" class="menu-items">
+                <p>For Bridesmaids</p>
+            </a>
+
+            <a href="/gifts/wedding/for-maid-of-honour" class="menu-items">
+                <p>For Maid of Honour</p>
+            </a>
+
+            <a href="/gifts/wedding/for-mother-of-bride" class="menu-items">
+                <p>For Mother of the Bride</p>
+            </a>
+
+            <a href="/gifts/wedding/for-groom" class="menu-items">
+                <p>For Groom</p>
+            </a>
+
+            <a href="/gifts/wedding/for-groomsmen-best-man" class="menu-items">
+                <p>For Groomsmen</p>
+            </a>
+
+            <a href="/gifts/wedding" class="menu-items all">
+                <p>All Wedding Gifts</p>
+            </a>
+        </li>
+
+    </ul>
+
+</div>`);
 
     const wedding_menu_panel_first_section = wedding_menu.querySelector('.menu-panels .menu-panels__scroll > li:nth-of-type(1)');
 
@@ -1111,82 +1169,70 @@ utils.waitForElement('nav .menu .menu__root-links > li:nth-of-type(2)').then(fun
 </div>`);
 
     //ring by type
-    const ring_by_type_menu = document.querySelector('.opti-new-wedding-menu .bold-menu.ring-by-type');
-    if (ring_by_type_menu) {
-        ring_by_type_menu.addEventListener('click', function () {
-            const ring_by_type_menu_panel = document.querySelector('.opti-wedding-ring-type');
-            if (ring_by_type_menu_panel) {
-                ring_by_type_menu_panel.classList.remove('menu-panels--close');
-                ring_by_type_menu_panel.classList.add('menu-panels--open');
-            }
-        })
-    }
+    bindToggleButton(
+        '.opti-new-wedding-menu .bold-menu.ring-by-type',
+        '.opti-wedding-ring-type'
+    );
 
-    const ring_by_type_menu_panel_back = document.querySelector('.opti-wedding-ring-type .menu-panels__header-back');
-    if (ring_by_type_menu_panel_back) {
-        ring_by_type_menu_panel_back.addEventListener('click', function () {
-            const ring_by_type_menu_panel = document.querySelector('.opti-wedding-ring-type');
-            if (ring_by_type_menu_panel) {
-                ring_by_type_menu_panel.classList.add('menu-panels--close');
-                ring_by_type_menu_panel.classList.remove('menu-panels--open');
-            }
-        })
-    }
+    bindToggleButton(
+        '.opti-wedding-ring-type .menu-panels__header-back',
+        '.opti-wedding-ring-type',
+        false
+    );
 
-    const ring_by_type_menu_panel_close = document.querySelector('.opti-wedding-ring-type .menu-panels__header-close');
-    if (ring_by_type_menu_panel_close) {
-        ring_by_type_menu_panel_close.addEventListener('click', function () {
-            const ring_by_type_menu_panel = document.querySelector('.opti-wedding-ring-type');
-            if (ring_by_type_menu_panel) {
-                ring_by_type_menu_panel.classList.add('menu-panels--close');
-                ring_by_type_menu_panel.classList.remove('menu-panels--open');
-            }
-
-            const wedding_panel = wedding_menu.querySelector('.menu-panels:not(.opti-wedding-ring-type):not(.opti-wedding-ring-metal) .menu-panels__header-close');
-            if (wedding_panel) {
-                wedding_panel.click();
-            }
-        })
-    }
+    bindToggleButton(
+        '.opti-wedding-ring-type .menu-panels__header-close',
+        '.opti-wedding-ring-type',
+        false,
+        () => {
+            const wedding_panel = wedding_menu.querySelector('.menu-panels:not(.opti-wedding-ring-type):not(.opti-wedding-ring-metal):not(.opti-wedding-gifts) .menu-panels__header-close');
+            if (wedding_panel) wedding_panel.click();
+        }
+    );
 
     //ring by metal
-    const ring_by_metal_menu = document.querySelector('.opti-new-wedding-menu .bold-menu.ring-by-metal');
-    if (ring_by_metal_menu) {
-        ring_by_metal_menu.addEventListener('click', function () {
-            const ring_by_metal_menu_panel = document.querySelector('.opti-wedding-ring-metal');
-            if (ring_by_metal_menu_panel) {
-                ring_by_metal_menu_panel.classList.remove('menu-panels--close');
-                ring_by_metal_menu_panel.classList.add('menu-panels--open');
-            }
-        })
-    }
+    bindToggleButton(
+        '.opti-new-wedding-menu .bold-menu.ring-by-metal',
+        '.opti-wedding-ring-metal'
+    );
 
-    const ring_by_metal_menu_panel_back = document.querySelector('.opti-wedding-ring-metal .menu-panels__header-back');
-    if (ring_by_metal_menu_panel_back) {
-        ring_by_metal_menu_panel_back.addEventListener('click', function () {
-            const ring_by_metal_menu_panel = document.querySelector('.opti-wedding-ring-metal');
-            if (ring_by_metal_menu_panel) {
-                ring_by_metal_menu_panel.classList.add('menu-panels--close');
-                ring_by_metal_menu_panel.classList.remove('menu-panels--open');
-            }
-        })
-    }
+    bindToggleButton(
+        '.opti-wedding-ring-metal .menu-panels__header-back',
+        '.opti-wedding-ring-metal',
+        false
+    );
 
-    const ring_by_metal_menu_panel_close = document.querySelector('.opti-wedding-ring-metal .menu-panels__header-close');
-    if (ring_by_metal_menu_panel_close) {
-        ring_by_metal_menu_panel_close.addEventListener('click', function () {
-            const ring_by_metal_menu_panel = document.querySelector('.opti-wedding-ring-metal');
-            if (ring_by_metal_menu_panel) {
-                ring_by_metal_menu_panel.classList.add('menu-panels--close');
-                ring_by_metal_menu_panel.classList.remove('menu-panels--open');
-            }
+    bindToggleButton(
+        '.opti-wedding-ring-metal .menu-panels__header-close',
+        '.opti-wedding-ring-metal',
+        false,
+        () => {
+            const wedding_panel = wedding_menu.querySelector('.menu-panels:not(.opti-wedding-ring-type):not(.opti-wedding-ring-metal):not(.opti-wedding-gifts) .menu-panels__header-close');
+            if (wedding_panel) wedding_panel.click();
+        }
+    );
 
-            const wedding_panel = wedding_menu.querySelector('.menu-panels:not(.opti-wedding-ring-type):not(.opti-wedding-ring-metal) .menu-panels__header-close');
-            if (wedding_panel) {
-                wedding_panel.click();
-            }
-        })
-    }
+    //wedding gifts
+    bindToggleButton(
+        '.opti-new-wedding-menu .bold-menu.gift',
+        '.opti-wedding-gifts'
+    );
+
+    bindToggleButton(
+        '.opti-wedding-gifts .menu-panels__header-back',
+        '.opti-wedding-gifts',
+        false
+    );
+
+    bindToggleButton(
+        '.opti-wedding-gifts .menu-panels__header-close',
+        '.opti-wedding-gifts',
+        false,
+        () => {
+            const wedding_panel = wedding_menu.querySelector('.menu-panels:not(.opti-wedding-ring-type):not(.opti-wedding-ring-metal):not(.opti-wedding-gifts) .menu-panels__header-close');
+            if (wedding_panel) wedding_panel.click();
+        }
+    );
 
     const wedding_menu_fourth_section_image_container = wedding_menu.querySelector('.menu-panels .menu-panels__scroll > li:nth-of-type(4) .picture-container');
 
