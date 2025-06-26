@@ -114,6 +114,7 @@ function handleUpdateSessionStorage_Quote_Page() {
     if (document.querySelector('eui-quote adm-quote-hero-price-total')) {
         let cover_price = document.querySelector('eui-quote adm-quote-hero-price-total');
         session_storage_variable.cover_price = cover_price.innerText;
+        session_storage_variable.price_type = document.querySelector('eui-quote adm-quote-hero-price-frequency').innerText.trim() == "year" ? "annual" : "monthly";
     } else {
         if (document.querySelector('eui-quote adm-quote-hero-price-terms strong')) {
             //if cover price is in months
@@ -309,6 +310,23 @@ utils.observeSelector('eui-tier eui-motor-tiers-table table[data-test="eui-motor
 utils.observeSelector('eui-quote eui-motor-quote-wrapper', function (quote_page_content) {
     if (window.location.pathname == '/Admiral/quote') {
         handleUpdateSessionStorage_Quote_Page();
+    }
+});
+
+utils.observeSelector('eui-final-checks eui-your-quote', function (final_check_page_content) {
+    if (window.location.pathname == '/Admiral/checks') {
+        const price_title = document.querySelector('eui-final-checks #priceTitle');
+        const price = document.querySelector('eui-final-checks .adm-payment-frequency__item-price');
+        if (price_title && price) {
+            let session_storage_variable = JSON.parse(JSON.stringify(JSON.parse(sessionStorage.getItem('opti-cover-info'))));
+            if (price_title.innerText.trim().toLowerCase().includes('total')) {
+                session_storage_variable.price_type = "annual";
+            } else {
+                session_storage_variable.price_type = "monthly";
+            }
+            session_storage_variable.cover_price = price.innerText.trim();
+            sessionStorage.setItem('opti-cover-info', JSON.stringify(session_storage_variable));
+        }
     }
 });
 
