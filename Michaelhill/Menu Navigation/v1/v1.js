@@ -1884,7 +1884,7 @@ utils.waitForElement('nav .menu .menu__root-links > li:nth-of-type(3)').then(fun
 </div>`);
 
     const jewellery_menu_panel_first_section = jewellery_menu.querySelector('.menu-panels .menu-panels__scroll > li:nth-of-type(1)');
-    const list = jewellery_menu_panel_first_section?.querySelector('ul');
+    const list = jewellery_menu_panel_first_section.querySelector('ul');
 
     const tennis_menu = list.children[5];
     const chains_menu = list.children[6];
