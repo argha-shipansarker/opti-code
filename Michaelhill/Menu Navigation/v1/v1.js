@@ -1571,6 +1571,143 @@ utils.waitForElement('nav .menu .menu__root-links > li:nth-of-type(3)').then(fun
 
 </div>`);
 
+    jewellery_menu.insertAdjacentHTML("beforeend", `<div class="menu-panels menu-panels--close opti-jewellery-metal-panel">
+    <style>
+        .opti-jewellery-metal-panel .menu-panels__panel .menu-items {
+            display: flex;
+            padding: 12.5px 0;
+            align-items: center;
+        }
+
+        .opti-jewellery-metal-panel .menu-panels__panel .menu-items .round {
+            height: 20px;
+            width: 20px;
+            border-radius: 100%;
+            margin-right: 8px;
+        }
+
+        .opti-jewellery-metal-panel .menu-panels__panel .menu-items .round.yellow {
+            background-color: #DFB877;
+        }
+
+        .opti-jewellery-metal-panel .menu-panels__panel .menu-items .round.white {
+            background-color: #EAEAEA;
+        }
+
+        .opti-jewellery-metal-panel .menu-panels__panel .menu-items .round.rose {
+            background-color: #DDA383;
+        }
+
+        .opti-jewellery-metal-panel .menu-panels__panel .menu-items .round.silver {
+            background-color: #CAD1D6;
+        }
+
+        .opti-jewellery-metal-panel .menu-panels__panel .menu-items .round.platinum {
+            background-color: #BEC3C7;
+        }
+
+        .opti-jewellery-metal-panel .menu-panels__panel .menu-items .round.grey {
+            background-color: #CFD4D9;
+        }
+
+        .opti-jewellery-metal-panel .menu-panels__panel .menu-items .round.steel {
+            background-color: #93979F;
+        }
+
+        .opti-jewellery-metal-panel .menu-panels__panel .menu-items .round.black {
+            background-color: #474747;
+        }
+
+        .opti-jewellery-metal-panel .menu-panels__panel .menu-items .round.red {
+            background-color: #C51317;
+        }
+
+        .opti-jewellery-metal-panel .menu-panels__panel .menu-items p {
+            font-size: 16px;
+            line-height: 1.2;
+            letter-spacing: 0.02rem;
+            font-weight: 400;
+            margin-bottom: 0;
+            color: #282829;
+        }
+
+        .opti-jewellery-metal-panel .menu-panels__panel .menu-items.all p {
+            font-weight: 700;
+        }
+    </style>
+
+    <div class="menu-panels__header">
+        <button class="menu-panels__header-close" title="Close">
+            <svg class="icons">
+                <use href="/_nuxt3/icons.DgK34huS.svg#cross"></use>
+            </svg>
+        </button>
+        <button class="menu-panels__header-back">
+            <svg class="icons">
+                <use href="/_nuxt3/icons.DgK34huS.svg#arrow-carousel-left"></use>
+            </svg>
+            Metals
+        </button>
+    </div>
+
+    <ul class="menu-panels__scroll">
+
+        <li class="menu-panels__panel">
+
+            <a href="/jewellery/mixed-metal" class="menu-items all">
+                <p>All Metals</p>
+            </a>
+
+            <a href="/jewellery/gold/yellow-gold" class="menu-items">
+                <div class="round yellow"></div>
+                <p>Yellow Gold</p>
+            </a>
+
+            <a href="/jewellery/gold/white-gold" class="menu-items">
+                <div class="round white"></div>
+                <p>White Gold</p>
+            </a>
+
+            <a href="/jewellery/gold/rose-gold" class="menu-items">
+                <div class="round rose"></div>
+                <p>Rose Gold</p>
+            </a>
+
+            <a href="/jewellery/shop-all?metalColour=Silver" class="menu-items">
+                <div class="round silver"></div>
+                <p>Silver</p>
+            </a>
+
+            <a href="/jewellery/shop-all?metalColour=Platinum" class="menu-items">
+                <div class="round platinum"></div>
+                <p>Platinum</p>
+            </a>
+
+            <a href="/jewellery/shop-all?metalColour=Grey" class="menu-items">
+                <div class="round grey"></div>
+                <p>Grey</p>
+            </a>
+
+            <a href="/jewellery/shop-all?metalColour=Steel" class="menu-items">
+                <div class="round steel"></div>
+                <p>Steel</p>
+            </a>
+
+            <a href="/jewellery/shop-all?metalColour=Black" class="menu-items">
+                <div class="round black"></div>
+                <p>Black</p>
+            </a>
+
+            <a href="/jewellery/shop-all?metalColour=Red" class="menu-items">
+                <div class="round red"></div>
+                <p>Red</p>
+            </a>
+        </li>
+
+    </ul>
+
+</div>`);
+
     const jewellery_menu_panel_first_section = jewellery_menu.querySelector('.menu-panels .menu-panels__scroll > li:nth-of-type(1)');
     const list = jewellery_menu_panel_first_section?.querySelector('ul');
 
@@ -1661,7 +1798,29 @@ utils.waitForElement('nav .menu .menu__root-links > li:nth-of-type(3)').then(fun
         '.opti-jewellery-gemstone-panel',
         false,
         () => {
-            const jewellery_panel = jewellery_menu.querySelector('.menu-panels:not(.opti-jewellery-gemstone-panel) .menu-panels__header-close');
+            const jewellery_panel = jewellery_menu.querySelector('.menu-panels:not(.opti-jewellery-gemstone-panel):not(.opti-jewellery-metal-panel) .menu-panels__header-close');
+            if (jewellery_panel) jewellery_panel.click();
+        }
+    );
+
+    //metal
+    bindToggleButton(
+        '.opti-new-jewellery-menu .bold-menu.metals',
+        '.opti-jewellery-metal-panel'
+    );
+
+    bindToggleButton(
+        '.opti-jewellery-metal-panel .menu-panels__header-back',
+        '.opti-jewellery-metal-panel',
+        false
+    );
+
+    bindToggleButton(
+        '.opti-jewellery-metal-panel .menu-panels__header-close',
+        '.opti-jewellery-metal-panel',
+        false,
+        () => {
+            const jewellery_panel = jewellery_menu.querySelector('.menu-panels:not(.opti-jewellery-gemstone-panel):not(.opti-jewellery-metal-panel) .menu-panels__header-close');
             if (jewellery_panel) jewellery_panel.click();
         }
     );
