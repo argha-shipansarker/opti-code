@@ -1383,13 +1383,199 @@ utils.waitForElement('nav .menu .menu__root-links > li:nth-of-type(3)').then(fun
     }
 </style>`);
 
+    jewellery_menu.insertAdjacentHTML("beforeend", `<div class="menu-panels menu-panels--close opti-jewellery-gemstone-panel">
+    <style>
+        .opti-jewellery-gemstone-panel .menu-panels__panel .menu-items {
+            display: flex;
+            padding: 12.5px 0;
+            align-items: center;
+        }
+
+        .opti-jewellery-gemstone-panel .menu-panels__panel .menu-items p {
+            font-size: 16px;
+            line-height: 1.2;
+            letter-spacing: 0.02rem;
+            font-weight: 400;
+            margin-bottom: 0;
+            color: #282829;
+            margin-left: 8px;
+        }
+
+        .opti-jewellery-gemstone-panel .menu-panels__panel .menu-items.all p {
+            font-weight: 700;
+            margin-left: 0px;
+        }
+    </style>
+
+    <div class="menu-panels__header">
+        <button class="menu-panels__header-close" title="Close">
+            <svg class="icons">
+                <use href="/_nuxt3/icons.DgK34huS.svg#cross"></use>
+            </svg>
+        </button>
+        <button class="menu-panels__header-back">
+            <svg class="icons">
+                <use href="/_nuxt3/icons.DgK34huS.svg#arrow-carousel-left"></use>
+            </svg>
+            Gemstones
+        </button>
+    </div>
+
+    <ul class="menu-panels__scroll">
+
+        <li class="menu-panels__panel">
+
+            <a href="/jewellery/gemstones" class="menu-items all">
+                <p>All Gemstones</p>
+            </a>
+
+            <a href="/jewellery/gemstones/aquamarine" class="menu-items">
+                <svg width="20" height="21" viewBox="0 0 20 21" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path
+                        d="M10 20.8984C15.5228 20.8984 20 16.4213 20 10.8984C20 5.37559 15.5228 0.898438 10 0.898438C4.47715 0.898438 0 5.37559 0 10.8984C0 16.4213 4.47715 20.8984 10 20.8984Z"
+                        fill="#BEC7C7" />
+                    <rect x="2.92871" y="10.8984" width="10" height="10" transform="rotate(-45 2.92871 10.8984)"
+                        fill="#E8F1F3" />
+                </svg>
+                <p>Aquamarine</p>
+            </a>
+
+            <a href="/diamonds/diamond-jewellery" class="menu-items">
+                <svg width="20" height="21" viewBox="0 0 20 21" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path
+                        d="M10 20.8984C15.5228 20.8984 20 16.4213 20 10.8984C20 5.37559 15.5228 0.898438 10 0.898438C4.47715 0.898438 0 5.37559 0 10.8984C0 16.4213 4.47715 20.8984 10 20.8984Z"
+                        fill="#E5E5E2" />
+                    <rect x="2.92871" y="10.8984" width="10" height="10" transform="rotate(-45 2.92871 10.8984)"
+                        fill="#FEFEFE" />
+                </svg>
+                <p>Diamonds</p>
+            </a>
+
+            <a href="/jewellery/gemstones/pearl" class="menu-items">
+                <svg width="20" height="21" viewBox="0 0 20 21" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path
+                        d="M10 20.8984C15.5228 20.8984 20 16.4213 20 10.8984C20 5.37559 15.5228 0.898438 10 0.898438C4.47715 0.898438 0 5.37559 0 10.8984C0 16.4213 4.47715 20.8984 10 20.8984Z"
+                        fill="#EAE8E7" />
+                    <rect x="10" y="3.89844" width="10" height="10" rx="5" transform="rotate(45 10 3.89844)"
+                        fill="#FBFAF8" />
+                </svg>
+                <p>Pearls</p>
+            </a>
+
+            <a href="/jewellery/gemstones/emerald" class="menu-items">
+                <svg width="20" height="21" viewBox="0 0 20 21" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path
+                        d="M10 20.8984C15.5228 20.8984 20 16.4213 20 10.8984C20 5.37559 15.5228 0.898438 10 0.898438C4.47715 0.898438 0 5.37559 0 10.8984C0 16.4213 4.47715 20.8984 10 20.8984Z"
+                        fill="#005835" />
+                    <rect x="2.92871" y="10.8984" width="10" height="10" transform="rotate(-45 2.92871 10.8984)"
+                        fill="#028F56" />
+                </svg>
+                <p>Emerald</p>
+            </a>
+
+            <a href="/jewellery/gemstones/garnet" class="menu-items">
+                <svg width="20" height="21" viewBox="0 0 20 21" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path
+                        d="M10 20.8984C15.5228 20.8984 20 16.4213 20 10.8984C20 5.37559 15.5228 0.898438 10 0.898438C4.47715 0.898438 0 5.37559 0 10.8984C0 16.4213 4.47715 20.8984 10 20.8984Z"
+                        fill="#552620" />
+                    <rect x="2.92871" y="10.8984" width="10" height="10" transform="rotate(-45 2.92871 10.8984)"
+                        fill="#E94531" />
+                </svg>
+                <p>Garnet</p>
+            </a>
+
+            <a href="/jewellery/gemstones/morganite" class="menu-items">
+                <svg width="20" height="21" viewBox="0 0 20 21" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path
+                        d="M10 20.8984C15.5228 20.8984 20 16.4213 20 10.8984C20 5.37559 15.5228 0.898438 10 0.898438C4.47715 0.898438 0 5.37559 0 10.8984C0 16.4213 4.47715 20.8984 10 20.8984Z"
+                        fill="#D1AC96" />
+                    <rect x="2.92871" y="10.8984" width="10" height="10" transform="rotate(-45 2.92871 10.8984)"
+                        fill="#FAECDD" />
+                    <path
+                        d="M10 20.8984C15.5228 20.8984 20 16.4213 20 10.8984C20 5.37559 15.5228 0.898438 10 0.898438C4.47715 0.898438 0 5.37559 0 10.8984C0 16.4213 4.47715 20.8984 10 20.8984Z"
+                        fill="#D1AC96" />
+                    <rect x="10" y="3.89844" width="10.1011" height="10.1011" transform="rotate(45 10 3.89844)"
+                        fill="#FAECDD" />
+                </svg>
+                <p>Morganite</p>
+            </a>
+
+            <a href="/jewellery/gemstones/opal" class="menu-items">
+                <svg width="20" height="21" viewBox="0 0 20 21" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path
+                        d="M10 20.8984C15.5228 20.8984 20 16.4213 20 10.8984C20 5.37559 15.5228 0.898438 10 0.898438C4.47715 0.898438 0 5.37559 0 10.8984C0 16.4213 4.47715 20.8984 10 20.8984Z"
+                        fill="#EFF1EB" />
+                    <rect x="10" y="3.89844" width="10" height="10" rx="5" transform="rotate(45 10 3.89844)"
+                        fill="#EBE4DA" />
+                </svg>
+                <p>Opal</p>
+            </a>
+
+            <a href="/jewellery/gemstones/peridot" class="menu-items">
+                <svg width="20" height="21" viewBox="0 0 20 21" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path
+                        d="M10 20.8984C15.5228 20.8984 20 16.4213 20 10.8984C20 5.37559 15.5228 0.898438 10 0.898438C4.47715 0.898438 0 5.37559 0 10.8984C0 16.4213 4.47715 20.8984 10 20.8984Z"
+                        fill="#9E9E54" />
+                    <rect x="2.92871" y="10.8984" width="10" height="10" transform="rotate(-45 2.92871 10.8984)"
+                        fill="#C3CD6F" />
+                </svg>
+                <p>Peridot</p>
+            </a>
+
+            <a href="/jewellery/gemstones/ruby" class="menu-items">
+                <svg width="20" height="21" viewBox="0 0 20 21" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path
+                        d="M10 20.8984C15.5228 20.8984 20 16.4213 20 10.8984C20 5.37559 15.5228 0.898438 10 0.898438C4.47715 0.898438 0 5.37559 0 10.8984C0 16.4213 4.47715 20.8984 10 20.8984Z"
+                        fill="#341B1F" />
+                    <rect x="2.92871" y="10.8984" width="10" height="10" transform="rotate(-45 2.92871 10.8984)"
+                        fill="#C60158" />
+                </svg>
+                <p>Ruby</p>
+            </a>
+
+            <a href="/jewellery/gemstones/sapphire" class="menu-items">
+                <svg width="20" height="21" viewBox="0 0 20 21" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path
+                        d="M10 20.8984C15.5228 20.8984 20 16.4213 20 10.8984C20 5.37559 15.5228 0.898438 10 0.898438C4.47715 0.898438 0 5.37559 0 10.8984C0 16.4213 4.47715 20.8984 10 20.8984Z"
+                        fill="#181C44" />
+                    <rect x="2.92871" y="10.8984" width="10" height="10" transform="rotate(-45 2.92871 10.8984)"
+                        fill="#2F4B93" />
+                </svg>
+                <p>Sapphire</p>
+            </a>
+
+            <a href="/jewellery/gemstones/tanzanite" class="menu-items">
+                <svg width="20" height="21" viewBox="0 0 20 21" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path
+                        d="M10 20.8984C15.5228 20.8984 20 16.4213 20 10.8984C20 5.37559 15.5228 0.898438 10 0.898438C4.47715 0.898438 0 5.37559 0 10.8984C0 16.4213 4.47715 20.8984 10 20.8984Z"
+                        fill="#88B1EB" />
+                    <rect x="2.92871" y="10.8984" width="10" height="10" transform="rotate(-45 2.92871 10.8984)"
+                        fill="#C3DBF1" />
+                </svg>
+                <p>Tanzanite</p>
+            </a>
+
+            <a href="/jewellery/gemstones/tourmaline" class="menu-items">
+                <svg width="20" height="21" viewBox="0 0 20 21" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path
+                        d="M10 20.8984C15.5228 20.8984 20 16.4213 20 10.8984C20 5.37559 15.5228 0.898438 10 0.898438C4.47715 0.898438 0 5.37559 0 10.8984C0 16.4213 4.47715 20.8984 10 20.8984Z"
+                        fill="#88B1EB" />
+                    <rect x="2.92871" y="10.8984" width="10" height="10" transform="rotate(-45 2.92871 10.8984)"
+                        fill="#C3DBF1" />
+                </svg>
+                <p>Tourmaline</p>
+            </a>
+        </li>
+
+    </ul>
+
+</div>`);
+
     const jewellery_menu_panel_first_section = jewellery_menu.querySelector('.menu-panels .menu-panels__scroll > li:nth-of-type(1)');
     const list = jewellery_menu_panel_first_section?.querySelector('ul');
 
     const tennis_menu = list.children[5];
     const chains_menu = list.children[6];
-
-    console.warn("hello", jewellery_menu_panel_first_section, tennis_menu, chains_menu)
 
     if (tennis_menu && chains_menu && list) {
         list.insertBefore(chains_menu, tennis_menu);
@@ -1457,4 +1643,26 @@ utils.waitForElement('nav .menu .menu__root-links > li:nth-of-type(3)').then(fun
         Explore Jewellery
     </a>
 </div>`);
+
+    //gemstone
+    bindToggleButton(
+        '.opti-new-jewellery-menu .bold-menu.gemstones',
+        '.opti-jewellery-gemstone-panel'
+    );
+
+    bindToggleButton(
+        '.opti-jewellery-gemstone-panel .menu-panels__header-back',
+        '.opti-jewellery-gemstone-panel',
+        false
+    );
+
+    bindToggleButton(
+        '.opti-jewellery-gemstone-panel .menu-panels__header-close',
+        '.opti-jewellery-gemstone-panel',
+        false,
+        () => {
+            const jewellery_panel = jewellery_menu.querySelector('.menu-panels:not(.opti-jewellery-gemstone-panel) .menu-panels__header-close');
+            if (jewellery_panel) jewellery_panel.click();
+        }
+    );
 });
