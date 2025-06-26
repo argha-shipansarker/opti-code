@@ -1708,6 +1708,94 @@ utils.waitForElement('nav .menu .menu__root-links > li:nth-of-type(3)').then(fun
 
 </div>`);
 
+    jewellery_menu.insertAdjacentHTML("beforeend", `<div class="menu-panels menu-panels--close opti-jewellery-collections-panel">
+    <style>
+        .opti-jewellery-collections-panel .menu-panels__panel {
+            display: flex;
+            flex-wrap: wrap;
+            column-gap: 12px;
+        }
+
+        .opti-jewellery-collections-panel .menu-panels__panel .menu-items {
+            display: flex;
+            flex-direction: column;
+            flex-basis: 48%;
+            margin-bottom: 16px;
+        }
+
+        .opti-jewellery-collections-panel .menu-panels__panel .menu-items p {
+            font-size: 16px;
+            line-height: 1.2;
+            letter-spacing: 0.02rem;
+            font-weight: 400;
+            margin-bottom: 0;
+            margin-top: 8px;
+            color: #282829;
+        }
+    </style>
+
+    <div class="menu-panels__header">
+        <button class="menu-panels__header-close" title="Close">
+            <svg class="icons">
+                <use href="/_nuxt3/icons.DgK34huS.svg#cross"></use>
+            </svg>
+        </button>
+        <button class="menu-panels__header-back">
+            <svg class="icons">
+                <use href="/_nuxt3/icons.DgK34huS.svg#arrow-carousel-left"></use>
+            </svg>
+            Collections
+        </button>
+    </div>
+
+    <ul class="menu-panels__scroll">
+
+        <li class="menu-panels__panel">
+            <a href="/jewellery/collections/pendant-bar" class="menu-items">
+                <img src="https://cdn.optimizely.com/img/24400620820/5ba37290c7b44e11afabf732b098bada.jpg" alt="">
+                <p>Pendant Bar</p>
+            </a>
+
+            <a href="/jewellery/collections/lab" class="menu-items">
+                <img src="https://cdn.optimizely.com/img/24400620820/3edf186fe0a94d30b47ec46a7c133e49.jpg" alt="">
+                <p>LAB.</p>
+            </a>
+
+            <a href="/diamonds/diamond-jewellery/signature-diamond" class="menu-items">
+                <img src="https://cdn.optimizely.com/img/22916101539/0b81d15d2e564bde8285dc4a6dad2761.jpg" alt="">
+                <p>Signature Diamond</p>
+            </a>
+
+            <a href="/jewellery/collections/signature-lock" class="menu-items">
+                <img src="https://cdn.optimizely.com/img/24400620820/1346082b42b54cb99f2f76dea037441a.jpg" alt="">
+                <p>Signature Lock</p>
+            </a>
+
+            <a href="/jewellery/collections/everlight" class="menu-items">
+                <img src="https://cdn.optimizely.com/img/24400620820/7c78ea63bbd1416fa3da3cb29142ca2d.jpg" alt="">
+                <p>Everlight</p>
+            </a>
+
+            <a href="/jewellery/collections/signature-connect" class="menu-items">
+                <img src="https://cdn.optimizely.com/img/24400620820/86468ce3af344fa299012de8581dcd29.jpg" alt="">
+                <p>Signature Connect</p>
+            </a>
+
+            <a href="/high-jewellery/signature-collection" class="menu-items">
+                <img src="https://cdn.optimizely.com/img/24400620820/86468ce3af344fa299012de8581dcd29.jpg" alt="">
+                <p>Signature High Jewellery</p>
+            </a>
+
+            <a href="/collections/fashion" class="menu-items">
+                <img src="https://cdn.optimizely.com/img/24400620820/bc65c3ae68c044088ee173099dc70794.jpg" alt="">
+                <p>Shop All Collections</p>
+            </a>
+        </li>
+
+    </ul>
+
+</div>`);
+
     const jewellery_menu_panel_first_section = jewellery_menu.querySelector('.menu-panels .menu-panels__scroll > li:nth-of-type(1)');
     const list = jewellery_menu_panel_first_section?.querySelector('ul');
 
@@ -1798,7 +1886,7 @@ utils.waitForElement('nav .menu .menu__root-links > li:nth-of-type(3)').then(fun
         '.opti-jewellery-gemstone-panel',
         false,
         () => {
-            const jewellery_panel = jewellery_menu.querySelector('.menu-panels:not(.opti-jewellery-gemstone-panel):not(.opti-jewellery-metal-panel) .menu-panels__header-close');
+            const jewellery_panel = jewellery_menu.querySelector('.menu-panels:not(.opti-jewellery-gemstone-panel):not(.opti-jewellery-metal-panel):not(.opti-jewellery-collections-panel) .menu-panels__header-close');
             if (jewellery_panel) jewellery_panel.click();
         }
     );
@@ -1820,7 +1908,29 @@ utils.waitForElement('nav .menu .menu__root-links > li:nth-of-type(3)').then(fun
         '.opti-jewellery-metal-panel',
         false,
         () => {
-            const jewellery_panel = jewellery_menu.querySelector('.menu-panels:not(.opti-jewellery-gemstone-panel):not(.opti-jewellery-metal-panel) .menu-panels__header-close');
+            const jewellery_panel = jewellery_menu.querySelector('.menu-panels:not(.opti-jewellery-gemstone-panel):not(.opti-jewellery-metal-panel):not(.opti-jewellery-collections-panel) .menu-panels__header-close');
+            if (jewellery_panel) jewellery_panel.click();
+        }
+    );
+
+    //collections
+    bindToggleButton(
+        '.opti-new-jewellery-menu .bold-menu.collections',
+        '.opti-jewellery-collections-panel'
+    );
+
+    bindToggleButton(
+        '.opti-jewellery-collections-panel .menu-panels__header-back',
+        '.opti-jewellery-collections-panel',
+        false
+    );
+
+    bindToggleButton(
+        '.opti-jewellery-collections-panel .menu-panels__header-close',
+        '.opti-jewellery-collections-panel',
+        false,
+        () => {
+            const jewellery_panel = jewellery_menu.querySelector('.menu-panels:not(.opti-jewellery-gemstone-panel):not(.opti-jewellery-metal-panel):not(.opti-jewellery-collections-panel) .menu-panels__header-close');
             if (jewellery_panel) jewellery_panel.click();
         }
     );
