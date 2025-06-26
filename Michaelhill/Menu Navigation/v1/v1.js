@@ -2047,6 +2047,136 @@ utils.waitForElement('nav .menu .menu__root-links > li:nth-of-type(3)').then(fun
     const jewellery_menu_fourth_section_image_container = jewellery_menu.querySelector('.menu-panels .menu-panels__scroll > li:nth-of-type(4) .picture-container');
 
     if (jewellery_menu_fourth_section_image_container) {
-        jewellery_menu_fourth_section_image_container.insertAdjacentHTML("beforeend", `<a href="/jewellery/collections/lab"><img class="opti-new-wedding-image" src="https://cdn.optimizely.com/img/24400620820/404fbc9f05674ba4a578d039bdc2409e.jpg" alt=""></a>`)
+        jewellery_menu_fourth_section_image_container.insertAdjacentHTML("beforeend", `<a href="/jewellery/collections/lab"><img class="opti-new-jewellery-image" src="https://cdn.optimizely.com/img/24400620820/404fbc9f05674ba4a578d039bdc2409e.jpg" alt=""></a>`)
+    }
+});
+
+//Watches menu
+utils.waitForElement('nav .menu .menu__root-links > li:nth-of-type(4)').then(function (watch_menu) {
+
+    watch_menu.insertAdjacentHTML("beforeend", `<style>
+    nav .menu .menu__root-links>li:nth-of-type(4) .menu-panels .menu-panels__scroll>li:nth-of-type(1),
+    nav .menu .menu__root-links>li:nth-of-type(4) .menu-panels .menu-panels__scroll>li:nth-of-type(2),
+    nav .menu .menu__root-links>li:nth-of-type(4) .menu-panels .menu-panels__scroll>li:nth-of-type(3) {
+        display: none;
+    }
+
+    nav .menu .menu__root-links>li:nth-of-type(4) .menu-panels .menu-panels__scroll>li:nth-of-type(4) .picture-container .picture-link {
+        display: none;
+    }
+
+    nav .menu .menu__root-links>li:nth-of-type(4) .menu-panels .menu-panels__scroll>li:nth-of-type(4) p {
+        font-size: 16px;
+    }
+
+    nav .menu .menu__root-links>li:nth-of-type(4) .menu-panels .menu-panels__scroll>li:nth-of-type(4) p a {
+        font-size: 16px;
+        text-decoration: underline;
+        color: #282829;
+        font-weight: 400;
+    }
+</style>`);
+    const watch_menu_panel_first_section = watch_menu.querySelector('.menu-panels .menu-panels__scroll > li:nth-of-type(1)');
+
+    watch_menu_panel_first_section.insertAdjacentHTML("afterend", `<div class="opti-new-watch-menu">
+    <style>
+        .opti-new-watch-menu {
+            padding-top: 24px;
+        }
+
+        .opti-new-watch-menu .bold-menu {
+            font-size: 16px;
+            font-weight: 700;
+            line-height: 1.2;
+            letter-spacing: 0.02rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            color: #282829;
+            text-decoration: none;
+            padding: 18.5px 0;
+            border-bottom: 1px solid #E8E9EA;
+        }
+
+        .opti-new-watch-menu a.bold-menu {
+            padding: 16px 0;
+        }
+
+        .opti-new-watch-menu .bold-menu .sub {
+            font-weight: 400;
+            color: #707172;
+        }
+
+        .opti-new-watch-menu .bold-menu .icons {
+            height: 1rem;
+        }
+
+        .opti-new-watch-menu .menu-heading {
+            font-size: 12px;
+            line-height: 1.2;
+            letter-spacing: 0.08rem;
+            font-weight: 700;
+            color: #707172;
+            padding: 12px 0;
+            text-transform: uppercase;
+            margin-bottom: 0;
+        }
+
+        .opti-new-watch-menu .menu-heading.last {
+            margin-top: 8px;
+        }
+
+        .opti-new-watch-menu .normal-menu {
+            font-size: 16px;
+            line-height: 1.2;
+            letter-spacing: 0.02rem;
+            font-weight: 400;
+            color: #282829;
+            padding: 12px 0;
+            text-decoration: none;
+            display: block;
+        }
+
+        .opti-new-watch-menu .normal-menu.last {
+            padding-bottom: 20px;
+            border-bottom: 1px solid #E8E9EA;
+        }
+    </style>
+
+    <p class="menu-heading">Gender</p>
+
+    <a href="/watches/mens-watches" class="normal-menu">Men’s</a>
+    <a href="/watches/ladies-watches" class="normal-menu">Women’s</a>
+    <a href="/watches/shop-all-watches" class="normal-menu last">View All Watches</a>
+
+    <p class="menu-heading last">Collection</p>
+
+    <a href="/watches/seiko-watches" class="normal-menu">Sieko</a>
+    <a href="/watches/shop-all-watches?mHJCollection=Michael%20Hill%20Watches" class="normal-menu last">Michael Hill</a>
+
+    <div class="bold-menu type">
+        Shop by Type
+        <svg class="icons">
+            <use href="/_nuxt3/icons.DgK34huS.svg#arrow-carousel-right"></use>
+        </svg>
+    </div>
+
+    <div class="bold-menu color">
+        Shop by Colour
+        <svg class="icons">
+            <use href="/_nuxt3/icons.DgK34huS.svg#arrow-carousel-right"></use>
+        </svg>
+    </div>
+</div>`);
+
+    const watch_menu_fourth_section_image_container = watch_menu.querySelector('.menu-panels .menu-panels__scroll > li:nth-of-type(4) .picture-container');
+
+    if (watch_menu_fourth_section_image_container) {
+        watch_menu_fourth_section_image_container.insertAdjacentHTML("beforeend", `<a href="/jewellery/we-love/new-in?mHJPrimaryCategory=Watches"><img class="opti-new-watch-image" src="https://cdn.optimizely.com/img/24400620820/2a5b6ca858db4257a6006b649d19d7bf.jpg" alt=""></a>`)
+    }
+
+    const watch_menu_fourth_section_text = watch_menu.querySelector('.menu-panels .menu-panels__scroll > li:nth-of-type(4) p:nth-of-type(3)');
+    if (watch_menu_fourth_section_text) {
+        watch_menu_fourth_section_text.innerText = 'Your need-to-know to pick your perfect ring.';
     }
 });
