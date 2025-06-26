@@ -2076,6 +2076,71 @@ utils.waitForElement('nav .menu .menu__root-links > li:nth-of-type(4)').then(fun
         font-weight: 400;
     }
 </style>`);
+
+    watch_menu.insertAdjacentHTML("beforeend", `<div class="menu-panels menu-panels--close opti-watch-type-panel">
+    <style>
+        .opti-watch-type-panel .menu-panels__panel {
+            padding-top: 24px;
+        }
+
+        .opti-watch-type-panel .menu-panels__panel .menu-items {
+            padding: 12px 0;
+            align-items: center;
+        }
+
+        .opti-watch-type-panel .menu-panels__panel .menu-items p {
+            font-size: 16px;
+            line-height: 1.2;
+            letter-spacing: 0.02rem;
+            font-weight: 400;
+            margin-bottom: 0;
+            color: #282829;
+        }
+
+        .opti-watch-type-panel .menu-panels__panel .menu-items.all p {
+            font-weight: 700;
+        }
+    </style>
+
+    <div class="menu-panels__header">
+        <button class="menu-panels__header-close" title="Close">
+            <svg class="icons">
+                <use href="/_nuxt3/icons.DgK34huS.svg#cross"></use>
+            </svg>
+        </button>
+        <button class="menu-panels__header-back">
+            <svg class="icons">
+                <use href="/_nuxt3/icons.DgK34huS.svg#arrow-carousel-left"></use>
+            </svg>
+            Shop by Type
+        </button>
+    </div>
+
+    <ul class="menu-panels__scroll">
+
+        <div class="menu-panels__panel">
+
+            <a href="/watches/automatic" class="menu-items">
+                <p>Automatic</p>
+            </a>
+
+            <a href="/watches/quartz" class="menu-items">
+                <p>Quatz</p>
+            </a>
+
+            <a href="/watches/solar" class="menu-items">
+                <p>Solar</p>
+            </a>
+
+            <a href="/watches/shop-all-watches" class="menu-items all">
+                <p>All Types</p>
+            </a>
+        </div>
+
+    </ul>
+
+</div>`);
+
     const watch_menu_panel_first_section = watch_menu.querySelector('.menu-panels .menu-panels__scroll > li:nth-of-type(1)');
 
     watch_menu_panel_first_section.insertAdjacentHTML("afterend", `<div class="opti-new-watch-menu">
@@ -2179,4 +2244,26 @@ utils.waitForElement('nav .menu .menu__root-links > li:nth-of-type(4)').then(fun
     if (watch_menu_fourth_section_text) {
         watch_menu_fourth_section_text.innerText = 'Your need-to-know to pick your perfect ring.';
     }
+
+    //type
+    bindToggleButton(
+        '.opti-new-watch-menu .bold-menu.type',
+        '.opti-watch-type-panel'
+    );
+
+    bindToggleButton(
+        '.opti-watch-type-panel .menu-panels__header-back',
+        '.opti-watch-type-panel',
+        false
+    );
+
+    bindToggleButton(
+        '.opti-watch-type-panel .menu-panels__header-close',
+        '.opti-watch-type-panel',
+        false,
+        () => {
+            const watch_panel = watch_menu.querySelector('.menu-panels:not(.opti-watch-type-panel) .menu-panels__header-close');
+            if (watch_panel) watch_panel.click();
+        }
+    );
 });
