@@ -2141,6 +2141,122 @@ utils.waitForElement('nav .menu .menu__root-links > li:nth-of-type(4)').then(fun
 
 </div>`);
 
+    watch_menu.insertAdjacentHTML("beforeend", `<div class="menu-panels menu-panels--close opti-watch-color-panel">
+    <style>
+        .opti-watch-color-panel .menu-panels__panel {
+            padding-top: 24px;
+        }
+
+        .opti-watch-color-panel .menu-panels__panel .menu-items {
+            display: flex;
+            padding: 12.5px 0;
+            align-items: center;
+        }
+
+        .opti-watch-color-panel .menu-panels__panel .menu-items p {
+            font-size: 16px;
+            line-height: 1.2;
+            letter-spacing: 0.02rem;
+            font-weight: 400;
+            margin-bottom: 0;
+            color: #282829;
+            margin-left: 8px;
+        }
+
+        .opti-watch-color-panel .menu-panels__panel .menu-items.all p {
+            font-weight: 700;
+            margin-left: 0px;
+        }
+    </style>
+
+    <div class="menu-panels__header">
+        <button class="menu-panels__header-close" title="Close">
+            <svg class="icons">
+                <use href="/_nuxt3/icons.DgK34huS.svg#cross"></use>
+            </svg>
+        </button>
+        <button class="menu-panels__header-back">
+            <svg class="icons">
+                <use href="/_nuxt3/icons.DgK34huS.svg#arrow-carousel-left"></use>
+            </svg>
+            Shop by Colour
+        </button>
+    </div>
+
+    <ul class="menu-panels__scroll">
+
+        <div class="menu-panels__panel">
+
+            <a href="/watches/gold" class="menu-items">
+                <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path
+                        d="M10 20C15.5228 20 20 15.5228 20 10C20 4.47715 15.5228 0 10 0C4.47715 0 0 4.47715 0 10C0 15.5228 4.47715 20 10 20Z"
+                        fill="#DFB877" />
+                </svg>
+                <p>Gold Tone</p>
+            </a>
+
+            <a href="/watches/rose" class="menu-items">
+                <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path
+                        d="M10 20C15.5228 20 20 15.5228 20 10C20 4.47715 15.5228 0 10 0C4.47715 0 0 4.47715 0 10C0 15.5228 4.47715 20 10 20Z"
+                        fill="#DDA383" />
+                </svg>
+                <p>Rose Tone</p>
+            </a>
+
+            <a href="/watches/silver" class="menu-items">
+                <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path
+                        d="M10 20C15.5228 20 20 15.5228 20 10C20 4.47715 15.5228 0 10 0C4.47715 0 0 4.47715 0 10C0 15.5228 4.47715 20 10 20Z"
+                        fill="#CAD1D6" />
+                </svg>
+                <p>Silver Tone</p>
+            </a>
+
+            <a href="/watches/black" class="menu-items">
+                <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path
+                        d="M10 20C15.5228 20 20 15.5228 20 10C20 4.47715 15.5228 0 10 0C4.47715 0 0 4.47715 0 10C0 15.5228 4.47715 20 10 20Z"
+                        fill="#474747" />
+                </svg>
+                <p>Black</p>
+            </a>
+
+            <a href="/watches/two-tone" class="menu-items">
+                <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <mask id="mask0_2345_3637" style="mask-type:luminance" maskUnits="userSpaceOnUse" x="0" y="0"
+                        width="10" height="20">
+                        <path d="M10 0H0V20H10V0Z" fill="white" />
+                    </mask>
+                    <g mask="url(#mask0_2345_3637)">
+                        <path
+                            d="M10 20C15.5228 20 20 15.5228 20 10C20 4.47715 15.5228 0 10 0C4.47715 0 0 4.47715 0 10C0 15.5228 4.47715 20 10 20Z"
+                            fill="#93979F" />
+                    </g>
+                    <mask id="mask1_2345_3637" style="mask-type:luminance" maskUnits="userSpaceOnUse" x="10" y="0"
+                        width="10" height="20">
+                        <path d="M20 0H10V20H20V0Z" fill="white" />
+                    </mask>
+                    <g mask="url(#mask1_2345_3637)">
+                        <path
+                            d="M10 20C15.5228 20 20 15.5228 20 10C20 4.47715 15.5228 0 10 0C4.47715 0 0 4.47715 0 10C0 15.5228 4.47715 20 10 20Z"
+                            fill="#DFB877" />
+                    </g>
+                </svg>
+                <p>Two-Tone</p>
+            </a>
+
+            <a href="/watches/shop-all-watches" class="menu-items all">
+                <p>All Colours</p>
+            </a>
+
+        </div>
+
+    </ul>
+
+</div>`);
+
     const watch_menu_panel_first_section = watch_menu.querySelector('.menu-panels .menu-panels__scroll > li:nth-of-type(1)');
 
     watch_menu_panel_first_section.insertAdjacentHTML("afterend", `<div class="opti-new-watch-menu">
@@ -2262,7 +2378,29 @@ utils.waitForElement('nav .menu .menu__root-links > li:nth-of-type(4)').then(fun
         '.opti-watch-type-panel',
         false,
         () => {
-            const watch_panel = watch_menu.querySelector('.menu-panels:not(.opti-watch-type-panel) .menu-panels__header-close');
+            const watch_panel = watch_menu.querySelector('.menu-panels:not(.opti-watch-type-panel):not(.opti-watch-color-panel) .menu-panels__header-close');
+            if (watch_panel) watch_panel.click();
+        }
+    );
+
+    //color
+    bindToggleButton(
+        '.opti-new-watch-menu .bold-menu.color',
+        '.opti-watch-color-panel'
+    );
+
+    bindToggleButton(
+        '.opti-watch-color-panel .menu-panels__header-back',
+        '.opti-watch-color-panel',
+        false
+    );
+
+    bindToggleButton(
+        '.opti-watch-color-panel .menu-panels__header-close',
+        '.opti-watch-color-panel',
+        false,
+        () => {
+            const watch_panel = watch_menu.querySelector('.menu-panels:not(.opti-watch-type-panel):not(.opti-watch-color-panel) .menu-panels__header-close');
             if (watch_panel) watch_panel.click();
         }
     );
