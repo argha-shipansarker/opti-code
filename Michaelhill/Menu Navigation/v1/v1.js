@@ -1370,6 +1370,10 @@ utils.waitForElement('nav .menu .menu__root-links > li:nth-of-type(3)').then(fun
         display: none;
     }
 
+    nav .menu .menu__root-links>li:nth-of-type(3) .menu-panels .menu-panels__scroll>li:nth-of-type(4) picture {
+        display: none;
+    }
+
     nav .menu .menu__root-links>li:nth-of-type(3) .menu-panels .menu-panels__scroll>li:nth-of-type(4) p {
         font-size: 16px;
         color: #282829;
@@ -2039,4 +2043,10 @@ utils.waitForElement('nav .menu .menu__root-links > li:nth-of-type(3)').then(fun
             if (jewellery_panel) jewellery_panel.click();
         }
     );
+
+    const jewellery_menu_fourth_section_image_container = jewellery_menu.querySelector('.menu-panels .menu-panels__scroll > li:nth-of-type(4) .picture-container');
+
+    if (jewellery_menu_fourth_section_image_container) {
+        jewellery_menu_fourth_section_image_container.insertAdjacentHTML("beforeend", `<a href="/jewellery/collections/lab"><img class="opti-new-wedding-image" src="https://cdn.optimizely.com/img/24400620820/404fbc9f05674ba4a578d039bdc2409e.jpg" alt=""></a>`)
+    }
 });
