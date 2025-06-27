@@ -1,313 +1,796 @@
 var utils = optimizely.get('utils');
 
+var isSafari = /^((?!chrome|android).)*safari/i.test(navigator.userAgent) || [
+    'iPad Simulator',
+    'iPhone Simulator',
+    'iPod Simulator',
+    'iPad',
+    'iPhone',
+    'iPod'
+].includes(navigator.platform);
+
+const symptom_list = [
+    {
+        label: "Cold, flu or COVID-19 symptoms",
+        value: "Cold, flu or COVID-19 symptoms (body ache, congestion, cough, fever, sinus infection, sore throat)",
+        type: ['primary', 'urgent'],
+    },
+    {
+        label: "Urinary, kidney and bladder infections",
+        value: "Urinary, kidney and bladder infections",
+        type: ['primary', 'urgent'],
+    },
+    {
+        label: "Ear ache and infection",
+        value: "Ear ache and infection",
+        type: ['primary', 'urgent'],
+    },
+    {
+        label: "Vaginal itching or irritation",
+        value: "Vaginal itching or irritation",
+        type: ['primary', 'urgent', 'wrh'],
+    },
+    {
+        label: "Annual Wellness Visit",
+        value: "Annual Wellness Visit",
+        type: ['wrh'],
+    },
+
+    {
+        label: "Rashes",
+        value: "Rashes",
+        type: ['primary', 'urgent'],
+    },
+    {
+        label: "Mammogram",
+        value: "Mammogram",
+        type: ['mammo'],
+    },
+    {
+        label: "Back pain",
+        value: "Isolated back pain",
+        type: ['primary', 'urgent'],
+    },
+    {
+        label: "Nausea, vomiting or diarrhea without bleeding, abdominal pain or dehydration",
+        value: "Nausea, vomiting or diarrhea without bleeding, abdominal pain or dehydration",
+        type: ['urgent'],
+    },
+    {
+        label: "Primary Care Wellness",
+        value: "Primary Care Wellness",
+        type: ['primary'],
+    },
+    {
+        label: "Injuries",
+        value: "Injuries (possible broken bones, sprains, dislocations)",
+        type: ['urgent'],
+    },
+    {
+        label: "Sexually transmitted diseases",
+        value: "Sexually transmitted diseases and infections",
+        type: ['primary', 'urgent', 'wrh'],
+    },
+    {
+        label: "Blood pressure checks or tests",
+        value: "Blood pressure checks or tests",
+        type: ['primary'],
+    },
+    {
+        label: "Blood sugar checks or tests",
+        value: "Blood sugar checks or tests",
+        type: ['primary'],
+    },
+    {
+        label: "Chronic disease/condition",
+        value: "Chronic disease/condition",
+        type: ['primary'],
+    },
+    {
+        label: "Chronic headache",
+        value: "Chronic headache",
+        type: ['primary'],
+    },
+    {
+        label: "Substance use concerns",
+        value: "Substance use concerns (drugs, alcohol)",
+        type: ['primary'],
+    },
+    {
+        label: "Fatigue",
+        value: "Fatigue",
+        type: ['primary'],
+    },
+    {
+        label: "Health screening examinations",
+        value: "Health screening examinations (biometric screening for work)",
+        type: ['primary'],
+    },
+    {
+        label: "Medication refill",
+        value: "Medication refill",
+        type: ['primary', 'urgent'],
+    },
+    {
+        label: "Mental health concern",
+        value: "Mental health concern (anxiety, depression)",
+        type: ['primary'],
+    },
+    {
+        label: "Head injury",
+        value: "Head injury (bump, bruise, or cut on the head without loss of consciousness)",
+        type: ['primary'],
+    },
+    {
+        label: "Newborn care",
+        value: "Newborn care",
+        type: ['primary'],
+    },
+    {
+        label: "Nutrition",
+        value: "Nutrition",
+        type: ['primary'],
+    },
+    {
+        label: "Pink eye, red eye, itching",
+        value: "Pink eye, red eye, itching",
+        type: ['primary', 'urgent'],
+    },
+    {
+        label: "Post injury follow-up",
+        value: "Post injury follow-up",
+        type: ['primary'],
+    },
+    {
+        label: "Preventive care",
+        value: "Preventive care",
+        type: ['primary'],
+    },
+    {
+        label: "Referral to a specialist",
+        value: "Referral to a specialist",
+        type: ['primary'],
+    },
+    {
+        label: "Routine care",
+        value: "Routine care",
+        type: ['primary'],
+    },
+    {
+        label: "Skin concerns",
+        value: "Skin concerns",
+        type: ['primary'],
+    },
+    {
+        label: "School and sports physicals",
+        value: "School and sports physicals",
+        type: ['primary'],
+    },
+    {
+        label: "Suture/staple removal",
+        value: "Suture/staple removal",
+        type: ['primary', 'urgent'],
+    },
+    {
+        label: "Vaccine",
+        value: "Vaccine",
+        type: ['primary'],
+    },
+    {
+        label: "Weight Management",
+        value: "Weight Management",
+        type: ['primary'],
+    },
+    {
+        label: "Wellness",
+        value: "Wellness",
+        type: ['primary'],
+    },
+    {
+        label: "Women's health concern",
+        value: "Women's health concern",
+        type: ['primary', 'wrh'],
+    },
+    {
+        label: "Wound check",
+        value: "Wound check (Increased pain, tenderness, redness, swelling or warmth around the cut or injury, fever)",
+        type: ['primary', 'urgent'],
+    },
+    {
+        label: "Animal and insect bites and stings",
+        value: "Animal and insect bites and stings",
+        type: ['urgent'],
+    },
+    {
+        label: "Asthma Flare-up",
+        value: "Asthma Flare-up (wheezing, not improving with inhalers, no difficulty breathing)",
+        type: ['urgent'],
+    },
+    {
+        label: "Cuts, bruises or may need stitches",
+        value: "Cuts, bruises or may need stitches",
+        type: ['urgent'],
+    },
+    {
+        label: "Minor allergic reactions",
+        value: "Minor allergic reactions",
+        type: ['urgent'],
+    },
+    {
+        label: "Minor burns",
+        value: "Minor burns",
+        type: ['urgent'],
+    },
+    {
+        label: "Minor nosebleeds",
+        value: "Minor nosebleeds",
+        type: ['urgent'],
+    },
+    {
+        label: "Sprains and strains",
+        value: "Sprains and strains",
+        type: ['urgent'],
+    },
+    {
+        label: "Abnormal Bleeding",
+        value: "Abnormal Bleeding",
+        type: ['wrh'],
+    },
+    {
+        label: "Birth Control Options",
+        value: "Birth Control Options",
+        type: ['wrh'],
+    },
+    {
+        label: "Breast Pain/Lump",
+        value: "Breast Pain/Lump",
+        type: ['wrh'],
+    },
+    {
+        label: "Menopause",
+        value: "Menopause",
+        type: ['wrh'],
+    },
+    {
+        label: "Pelvic Pain",
+        value: "Pelvic Pain",
+        type: ['wrh'],
+    },
+    {
+        label: "Positive Pregnancy Test",
+        value: "Positive Pregnancy Test",
+        type: ['wrh'],
+    },
+]
+
+window.searchInputEventTriggered = true;
+
+window.renderSymptoms = getAll => {
+    var searchInput = document.querySelector('.search-input input')
+    var searchInputValue = searchInput ? searchInput.value : "";
+
+    var browseAllMessage = document.querySelector(".browse-all-message");
+    if (browseAllMessage) {
+        browseAllMessage.style = getAll ? "display: none;" : "";
+    }
+
+    if (searchInputValue && searchInputEventTriggered) {
+        optimizely.push({
+            type: "event",
+            eventName: "opt-symptom-search-started",
+        });
+
+        searchInputEventTriggered = false;
+        setTimeout(() => searchInputEventTriggered = true, 5000);
+    }
+
+    var displayed_symptoms = symptom_list.filter(f => f.value.toLowerCase().includes(searchInputValue.toLowerCase()) || searchInputValue.length < 3 || !searchInputValue).slice(0, getAll ? symptom_list.length : 12);
+
+    let desktop_symptom_list_container = document.querySelector('.opti-new-design .body-section');
+    if (desktop_symptom_list_container) {
+        if (displayed_symptoms.length > 0) {
+            desktop_symptom_list_container.innerHTML = '<div class="symptom-list-view">' + displayed_symptoms.map((symptom, index) => {
+                return `<div class="opt-symptom-link" onclick="showScheduleModal(\`${symptom.type.join(",")}\`, \`${symptom.label}\`)">
+                    <p>${symptom.label}</p>
+                    <svg width="10" height="16" viewBox="0 0 10 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M0.333008 14.12L6.10179 8L0.333008 1.88L2.10899 0L9.66634 8L2.10899 16L0.333008 14.12Z" fill="#0070AB"/>
+                    </svg>
+                    </div>`;
+            }).join('') + (getAll && displayed_symptoms.length == symptom_list.length ? '<div class="symptom-list-view"></div><div class="symptom-list-view"></div>' : "") + "</div>";
+        }
+        else {
+            desktop_symptom_list_container.innerHTML = `
+             <div class="no-result-found-section">
+                 <p class="no-result-message">No results found for "${searchInputValue}"</p>
+                 <p class="consider-message">Please consider the following:</p>
+                 <ul class="search-hints">
+                     <li>Consider using more general language</li>
+                     <li>Check spelling</li>
+                     <li>Select from the list of commonly searched terms:</li>
+                 </ul>
+                 <ul class="suggested-symptom">
+                     <li><a href="https://www.ohiohealth.com/find-a-doctor/results/?q=primary&#x2B;care">Primary Care</a></li>
+                     <li><a
+                             href="https://www.ohiohealth.com/find-a-doctor/results/?q=obstetrics/gynecology">Obstetrics/Gynecology</a>
+                     </li>
+                     <li><a href="https://www.ohiohealth.com/find-a-doctor/results/?q=orthopedics">Orthopedics</a></li>
+                     <li><a href="https://www.ohiohealth.com/find-a-doctor/results/?q=cardiologist">Cardiologist</a></li>
+                     <li><a href="https://www.ohiohealth.com/find-a-doctor/results?q=Gynecology&type=doctors">Gynecology</a>
+                     </li>
+                     <li><a href="https://www.ohiohealth.com/find-a-doctor/results/?q=heart">Heart and Vascular</a></li>
+                     <li><a href="https://www.ohiohealth.com/find-a-doctor/results/?q=Internal%20Medicine">Internal
+                             Medicine</a></li>
+                     <li><a href="https://www.ohiohealth.com/find-a-doctor/results/?q=Family%20Medicine">Family Medicine</a>
+                     </li>
+                     <li><a href="https://www.ohiohealth.com/find-a-doctor/results/?q=neurologist">Neurologist</a></li>
+                 </ul>
+             </div>`
+        }
+    }
+}
+
+window.removeScheduleModal = retainSearch => {
+    document.body.style = "";
+    var searchInput = document.querySelector('.search-input input');
+    if (searchInput && !retainSearch) searchInput.value = "";
+    var dialog = document.querySelector('.opt-modal-dialog-container');
+    if (dialog) dialog.remove();
+    renderSymptoms();
+};
+
+window.showPrimaryCareInnerModal = symptom => {
+
+    var modal = document.querySelector('.opt-modal-dialog');
+    if (modal) {
+        var modalContent = getModalContent("primary", symptom);
+        modal.innerHTML = `<div style="" class="opt-modal-dialog-close" onclick="removeScheduleModal(true)">
+            <svg class="opt-modal-dialog-close" width="23px" height="23px" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <path xmlns="http://www.w3.org/2000/svg" fill-rule="evenodd" clip-rule="evenodd" d="M12.6871 10.2917L21.2992 18.9038C21.6603 19.2648 21.6626 19.8475 21.3051 20.2051L21.3036 20.2065C20.9458 20.5643 20.3634 20.5617 20.0023 20.2006L11.3902 11.5885L2.25105 20.7277C1.89025 21.0885 1.30734 21.0911 0.949527 20.7333L0.948327 20.7321C0.590511 20.3743 0.593132 19.7914 0.95394 19.4306L10.0931 10.2914L1.37088 1.5692C1.01007 1.2084 1.00721 0.625732 1.36503 0.267917L1.36647 0.266477C1.72404 -0.0910994 2.30695 -0.0884776 2.66775 0.272329L11.39 8.99455L19.5854 0.799141C19.9464 0.438092 20.5291 0.435713 20.8869 0.793529L20.8881 0.794729C21.2459 1.15254 21.2435 1.73521 20.8825 2.09625L12.6871 10.2917Z" fill="#A5A09D"/>
+            </svg>
+        </div>
+        ${modalContent}`;
+    }
+}
+
+window.getModalContent = (type, symptom) => {
+    var modalContent = "";
+    var multiTypeStyles = `<style>
+        .opt-modal-dialog .opt-modal-subsection {
+            max-width: 343px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+        .opt-modal-dialog .opt-modal-subsection-text {
+            font-family: Aller W01 Regular, arial, sans-serif;
+            font-weight: 400;
+            font-size: 14px;
+            line-height: 20px;
+            letter-spacing: 0px;
+            color: rgb(51,51,51);
+            text-align: left;
+            margin-top: 12px;
+            margin-bottom: 28px;
+        }
+        .opt-modal-subsection-container {
+            display: flex;
+            width: 100%;
+            justify-content: space-between;
+            gap: 20px;
+        }
+        .opt-modal-dialog {
+            padding: 35px 100px !important;
+        }
+        .opt-mychart-container {
+            background-color: rgba(188, 228, 248, 0.4);
+            display: flex;
+            padding: 20px;
+            height: 82px;
+            padding-top: 14px;
+            padding-right: 24px;
+            padding-bottom: 14px;
+            padding-left: 24px;
+            border-radius: 3px;
+            width: 100%;
+            justify-content: space-around;
+            align-items: center;
+        }
+        .opt-mychart-text {
+            font-family: Aller W01 Regular, arial, sans-serif;
+            max-width: 454px;
+            font-weight: 400;
+            font-size: 16px;
+            line-height: 20px;
+            letter-spacing: 0px;
+            color: rgb(51,51,51);
+            display: flex;
+            align-items: center;
+        }
+        .opt-mychart-login {
+            font-family: Aller W01 Regular, arial, sans-serif;
+            font-weight: 700;
+            font-size: 16px;
+            line-height: 20px;
+            letter-spacing: 0px;
+            color: rgba(0, 112, 171, 1);
+            cursor: pointer;
+            user-select: none;
+            padding-left: 20px;
+            border-left: 1px solid #A1A1A1;
+            display: flex;
+            align-items: center;
+            margin-top: 13px;
+            margin-bottom: 13px;
+            min-width: 71px;
+        }
+        .opt-cta-2-container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 24px 0px;
+            max-width: 363px;
+            width: 100%;
+        }
+        @media only screen and (max-width: 880px) 
+        {  
+            .opt-mychart-container {
+                gap: 24px;
+                height: auto;
+            }
+        }
+        @media only screen and (max-width: 700px) 
+        { 
+            .opt-modal-dialog h1 {
+                display: none;
+            }
+            body .opt-modal-dialog {
+                padding-top: 50px !important;
+                padding-left: 0px !important;
+                padding-right: 0px !important;
+                padding-bottom: 0px !important;
+                max-height: 95svh;
+                overflow-y: auto;
+            }
+            .opt-mychart-container img {
+                display: none;
+            }
+            .opt-modal-subsection-container {
+                flex-direction: column;
+                gap: 20px;
+            }
+            .opt-modal-subsection {
+                border-top: 1px solid #D8D8D8;
+                border-bottom: 1px solid #D8D8D8;
+                padding: 18px 12px;
+            }
+            body .opt-modal-dialog p {
+                padding-left: 12px;
+                padding-right: 12px;
+            }
+            .opt-mychart-login {
+                background-color: rgba(0, 112, 171, 1);
+                color: white;
+                border: none;
+                font-weight: 700;
+                font-size: 14px;
+                line-height: 100%;
+                letter-spacing: 0px;
+                text-transform: uppercase;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                margin: 0;
+                border-radius: 3px;
+                padding: 0px;
+                max-height: 32px;
+                height: 32px;
+            }
+            .opt-mychart-text {
+                font-weight: 400;
+                font-size: 12px;
+                line-height: 16px;
+                letter-spacing: 0px;
+                text-align: center;
+            }
+            .opt-mychart-container {
+                padding: 24px;
+            }
+        }
+    </style>`;
+    switch (type) {
+        case "urgent": modalContent = `<h1>Urgent care scheduling</h1>
+        <p>For your <strong>${symptom.toLowerCase()}</strong>, we suggest visiting an urgent care location. Clicking the link below will take you to our Urgent Care locations page with a list of locations to schedule an appointment at. Alternatively, if you have a MyChart account you can sign in for faster scheduling.</p>
+        <div class="opt-modal-buttons-container">
+            <div class="opt-modal-dialog-button cta-1 opt-mychart-login-selector" onclick="removeScheduleModal(); location.href = 'https://mychart.ohiohealth.com/MyChart/Authentication/Login'">LOGIN WITH MYCHART</div>
+            <div class="opt-modal-dialog-button cta-2" onclick="removeScheduleModal(); location.href = 'https://www.ohiohealth.com/schedule-online/urgent-care-scheduling'">CONTINUE TO URGENT CARE LOCATIONS</div>
+            <div class="opt-modal-dialog-button cta-3" onclick="removeScheduleModal(true);">Choose a different symptom or service</div>
+        </div>`; break;
+        case "primary": modalContent = `<h1>Primary care scheduling</h1>
+        <p>For your <strong>${symptom.toLowerCase()}</strong>, we suggest visiting a primary care provider. Clicking the link below will take you to our Find a Doctor page with a list of providers ready to meet your needs. Alternatively, if you have a MyChart account you can sign in to schedule an appointment with your care team.</p>
+        <div class="opt-modal-buttons-container">
+            <div class="opt-modal-dialog-button cta-1 opt-mychart-login-selector" onclick="removeScheduleModal(); location.href = 'https://mychart.ohiohealth.com/MyChart/Authentication/Login'">LOGIN WITH MYCHART</div>
+            <div class="opt-modal-dialog-button cta-2" onclick="removeScheduleModal(); location.href = 'https://www.ohiohealth.com/find-a-doctor/results/?accpat=anp%7coos&spec=489%7c289%7c256&sort=first-available'">CONTINUE TO FIND A DOCTOR</div>
+            <div class="opt-modal-dialog-button cta-3" onclick="removeScheduleModal(true); ">Choose a different symptom or service</div>
+        </div>`; break;
+        case "primary,urgent": modalContent = `<h1>Schedule by service or symptom</h1>
+        <p>For your <strong>${symptom.toLowerCase()}</strong>, we suggest seeing a primary care provider <strong>OR</strong> visiting an urgent care location. Check the options below to begin.</p>
+        <div class="opt-modal-subsection-container">
+            <div class="opt-modal-subsection">
+                <h2>Primary care</h2>
+                <div class="opt-modal-subsection-text">
+                    Comprehensive care for everyday medical needs from providers you know and trust.
+                </div>
+                <div class="opt-modal-buttons-container">
+                    <div class="opt-modal-dialog-button cta-1" onclick="showPrimaryCareInnerModal(\`${symptom.toLowerCase()}\`);">FIND A NEW DOCTOR</div>
+                </div>
+            </div>
+            <div class="opt-modal-subsection">
+                <h2>Urgent care</h2>
+                <div class="opt-modal-subsection-text">
+                    Convenient treatment for minor illnesses and injuries with same-day appointments available.
+                </div>
+                <div class="opt-modal-buttons-container">
+                    <div class="opt-modal-dialog-button cta-1" onclick="removeScheduleModal(); location.href = 'https://www.ohiohealth.com/schedule-online/urgent-care-scheduling'">FIND A LOCATION</div>
+                </div>
+            </div>
+        </div>
+        <div class="opt-cta-2-container">
+            <div class="opt-modal-dialog-button cta-2" onclick="removeScheduleModal(true); ">CHOOSE A DIFFERENT SYMPTOM OR SERVICE</div>
+        </div>
+        <div class="opt-mychart-container">
+            <img src="//cdn.optimizely.com/img/17941920996/8d0afd6915bf45118b40fcbc5cfc2fbf.svgz">
+            <div class="opt-mychart-text">
+                Already have an OhioHealth MyChart account? Login to schedule with a new provider or one you've seen before.
+            </div>
+            <div class="opt-mychart-login opt-mychart-login-selector" onclick="removeScheduleModal(); location.href = 'https://mychart.ohiohealth.com/MyChart/Authentication/Login'">
+                LOG IN
+            </div>
+            ${multiTypeStyles}
+        </div>
+       `; break;
+        case "primary,wrh": modalContent = `<h1>Schedule by service or symptom</h1>
+        <p>For your <strong>${symptom.toLowerCase()}</strong>, we suggest seeing a primary care provider <strong>OR</strong> seeing a women's reproductive health specialist. Check the options below to begin.</p>
+        <div class="opt-modal-subsection-container">
+            <div class="opt-modal-subsection">
+                <h2>Primary care</h2>
+                <div class="opt-modal-subsection-text">
+                    Comprehensive care for everyday medical needs from providers you know and trust.
+                </div>
+                <div class="opt-modal-buttons-container">
+                    <div class="opt-modal-dialog-button cta-1" onclick="showPrimaryCareInnerModal(\`${symptom.toLowerCase()}\`);">FIND A NEW DOCTOR</div>
+                </div>
+            </div>
+            <div class="opt-modal-subsection">
+                <h2>Women's reproductive health</h2>
+                <div class="opt-modal-subsection-text">
+                    The women's healthcare experts at OhioHealth are here for you every step of the journey.
+                </div>
+                <div class="opt-modal-buttons-container">
+                    <div class="opt-modal-dialog-button cta-1" onclick="removeScheduleModal(); location.href = 'https://www.ohiohealth.com/find-a-doctor/results/?q=women%27s+reproductive+health&accpat=oos&sort=first-available'">FIND A SPECIALIST</div>
+                </div>
+            </div>
+        </div>
+        <div class="opt-cta-2-container">
+            <div class="opt-modal-dialog-button cta-2" onclick="removeScheduleModal(true); ">CHOOSE A DIFFERENT SYMPTOM OR SERVICE</div>
+        </div>
+        <div class="opt-mychart-container">
+            <img src="//cdn.optimizely.com/img/17941920996/8d0afd6915bf45118b40fcbc5cfc2fbf.svgz">
+            <div class="opt-mychart-text">
+                Already have an OhioHealth MyChart account? Login to schedule with a new provider or one you've seen before.
+            </div>
+            <div class="opt-mychart-login opt-mychart-login-selector" onclick="removeScheduleModal(); location.href = 'https://mychart.ohiohealth.com/MyChart/Authentication/Login'">
+                LOG IN
+            </div>
+            ${multiTypeStyles}
+        </div>
+       `; break;
+        case "primary,urgent,wrh": modalContent = `<h1>Schedule by service or symptom</h1>
+       <p>For your <strong>${symptom.toLowerCase()}</strong>, we suggest seeing a primary care provider, visiting an urgent care location <strong>OR</strong> seeing a women's reproductive health specialist. Check the options below to begin.</p>
+       <div class="opt-modal-subsection-container">
+           <div class="opt-modal-subsection">
+               <h2>Primary care</h2>
+               <div class="opt-modal-subsection-text">
+                   Comprehensive care for everyday medical needs from providers you know and trust.
+               </div>
+               <div class="opt-modal-buttons-container">
+                   <div class="opt-modal-dialog-button cta-1" onclick="showPrimaryCareInnerModal('${symptom.toLowerCase()}');">FIND A NEW DOCTOR</div>
+               </div>
+           </div>
+           <div class="opt-modal-subsection">
+               <h2>Urgent care</h2>
+               <div class="opt-modal-subsection-text">
+                   Convenient treatment for minor illnesses and injuries with same-day appointments available.
+               </div>
+               <div class="opt-modal-buttons-container">
+                   <div class="opt-modal-dialog-button cta-1" onclick="removeScheduleModal(); location.href = 'https://www.ohiohealth.com/schedule-online/urgent-care-scheduling'">FIND A LOCATION</div>
+               </div>
+           </div>
+           <div class="opt-modal-subsection">
+                <h2>Women's reproductive health</h2>
+                <div class="opt-modal-subsection-text">
+                    The women's healthcare experts at OhioHealth are here for you every step of the journey.
+                </div>
+                <div class="opt-modal-buttons-container">
+                    <div class="opt-modal-dialog-button cta-1" onclick="removeScheduleModal(); location.href = 'https://www.ohiohealth.com/find-a-doctor/results/?q=women%27s+reproductive+health&accpat=oos&sort=first-available'">FIND A SPECIALIST</div>
+                </div>
+            </div>
+       </div>
+       <div class="opt-cta-2-container">
+           <div class="opt-modal-dialog-button cta-2" onclick="removeScheduleModal(true); ">CHOOSE A DIFFERENT SYMPTOM OR SERVICE</div>
+       </div>
+       <div class="opt-mychart-container">
+           <img src="//cdn.optimizely.com/img/17941920996/8d0afd6915bf45118b40fcbc5cfc2fbf.svgz">
+           <div class="opt-mychart-text">
+               Already have an OhioHealth MyChart account? Login to schedule with a new provider or one you've seen before.
+           </div>
+           <div class="opt-mychart-login opt-mychart-login-selector" onclick="removeScheduleModal(); location.href = 'https://mychart.ohiohealth.com/MyChart/Authentication/Login'">
+               LOG IN
+           </div>
+           ${multiTypeStyles}
+       </div>
+      `; break;
+    }
+
+    return modalContent;
+}
+
+window.showScheduleModal = (type, symptom) => {
+    document.body.style = "overflow: hidden";
+    if (type == "wrh") {
+        location.href = "https://www.ohiohealth.com/find-a-doctor/results/?q=women%27s+reproductive+health&accpat=oos&sort=first-available";
+        var searchInput = document.querySelector('.search-input input');
+        if (searchInput) searchInput.value = "";
+    }
+    else if (type == "mammo") {
+        location.href = "https://www.ohiohealth.com/schedule-online/mammogram/";
+        var searchInput = document.querySelector('.search-input input');
+        if (searchInput) searchInput.value = "";
+    }
+    else {
+        var modalContent = getModalContent(type, symptom);
+        document.querySelector('body').insertAdjacentHTML('beforeEnd', `<div class="opt-modal-dialog-container" style="display: flex; z-index: 9999999999; position: fixed; height: 100%; width: 100%; top: 0; left: 0; background: rgba(0, 42, 92, 0.92); padding: 10px;">
+<div class="opt-modal-dialog" visible="true">
+        <div style="" class="opt-modal-dialog-close" onclick="removeScheduleModal(true)">
+            <svg class="opt-modal-dialog-close" width="23px" height="23px" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <path xmlns="http://www.w3.org/2000/svg" fill-rule="evenodd" clip-rule="evenodd" d="M12.6871 10.2917L21.2992 18.9038C21.6603 19.2648 21.6626 19.8475 21.3051 20.2051L21.3036 20.2065C20.9458 20.5643 20.3634 20.5617 20.0023 20.2006L11.3902 11.5885L2.25105 20.7277C1.89025 21.0885 1.30734 21.0911 0.949527 20.7333L0.948327 20.7321C0.590511 20.3743 0.593132 19.7914 0.95394 19.4306L10.0931 10.2914L1.37088 1.5692C1.01007 1.2084 1.00721 0.625732 1.36503 0.267917L1.36647 0.266477C1.72404 -0.0910994 2.30695 -0.0884776 2.66775 0.272329L11.39 8.99455L19.5854 0.799141C19.9464 0.438092 20.5291 0.435713 20.8869 0.793529L20.8881 0.794729C21.2459 1.15254 21.2435 1.73521 20.8825 2.09625L12.6871 10.2917Z" fill="#A5A09D"/>
+            </svg>
+        </div>
+        ${modalContent}
+    </div>
+    <style>
+        .opt-modal-dialog-close {
+            position: absolute; 
+            right: 11px; 
+            top: 11px; 
+            cursor: pointer; 
+        }
+        .opt-modal-dialog {
+            max-width: 1000px;
+            background-color: white;
+            margin: auto;
+            padding: 75px 100px;
+            text-align: center;
+            display: flex; 
+            flex-direction: column; 
+            align-items: center;
+            position: relative;
+        }
+        .opt-modal-dialog h2 {
+            font-family: Adelle W01 SemiBold, arial, sans-serif;
+            font-weight: ${isSafari ? "500" : "600"};;
+            font-size: 18px;
+            line-height: 100%;
+            letter-spacing: 0px;
+            color: rgba(0, 42, 92, 1);
+        }
+        .opt-modal-dialog h1
+        {
+            font-family: Adelle W01 SemiBold, arial, sans-serif;
+            font-weight: ${isSafari ? "500" : "600"};;
+            font-size: 40px;
+            line-height: 100%;
+            color: rgba(0, 42, 92, 1);
+            margin-bottom: 24px;
+        }
+        .opt-modal-dialog p
+        {
+            font-family: Aller W01 Regular, arial, sans-serif;
+            max-width: 750px;
+            font-weight: 400;
+            font-size: 14px;
+            line-height: 20px;
+            color: #002A5C;
+            margin-bottom: 24px;
+        }
+        .opt-modal-buttons-container {
+            max-width: 334px; 
+            width: 100%; 
+            display: flex; 
+            flex-direction: column; 
+            gap: 16px;
+        }
+        .opt-modal-dialog-button {
+            display: block;
+            background-color: rgba(0, 112, 171, 1);
+            color: white;
+            max-width: 334px;
+            width: 100%;
+            height: 30px;
+            border-radius: 3px;
+            padding-top: 7px;
+            padding-bottom: 6px;
+            font-family: Aller W01 Regular;
+            font-weight: 700;
+            font-size: 14px;
+            line-height: 100%;
+            letter-spacing: 0px;
+            text-align: center;
+            cursor: pointer;
+            user-select: none;
+        }
+        .opt-modal-dialog .opt-modal-subsection .opt-modal-dialog-button {
+            height: 42px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .opt-modal-dialog-button.cta-2 {
+            background-color: white;
+            border: 1px solid rgba(0, 112, 171, 1);
+            color: rgba(0, 112, 171, 1);
+        }
+        .opt-modal-dialog-button.cta-3 {
+            background-color: white;
+            color: rgba(0, 112, 171, 1);
+            font-weight: 400;
+            font-size: 14px;
+            line-height: 20px;
+            height: 20px;
+            padding: 0px;
+        }
+        @media only screen and (max-width: 700px) 
+        {   
+            .opt-modal-dialog h1 {
+                font-weight: ${isSafari ? "500" : "600"};;
+                font-size: 18px;
+                line-height: 100%;
+                letter-spacing: 0px;
+            }
+            .opt-cta-2-container {
+                padding: 0 12px;
+            }
+            .opt-modal-dialog .opt-modal-subsection-text, .opt-modal-dialog p {
+                text-align: center;
+            }
+            .opt-modal-dialog .opt-modal-subsection,
+            .opt-modal-dialog-button,
+            .opt-modal-buttons-container {
+                max-width: 100% !important;
+                width: 100% !important;
+            }
+            .opt-modal-dialog {
+                padding-top: 40px !important;
+                padding-left: 12px !important;
+                padding-right: 12px !important;
+                padding-bottom: 40px !important;
+            }
+            .opt-modal-dialog-close {
+                right: 7px;
+                top: 7px;
+                transform: none;
+            }
+        } 
+    </style>
+</div>`);
+    }
+}
+
 utils.waitForElement('.full-site-container > .epi-blocks:not(.no-margin-top.no-border)').then(function (existing_section) {
-
-    const symptom_list = [
-        {
-            label: "Blood pressure checks or tests",
-            value: "Blood pressure checks or tests",
-            type: ['primary'],
-            url: "https://www.ohiohealth.com/find-a-doctor/results/?accpat=anp%7coos&spec=489%7c289%7c256&sort=first-available"
-        },
-        {
-            label: "Blood sugar checks or tests",
-            value: "Blood sugar checks or tests",
-            type: ['primary'],
-            url: "https://www.ohiohealth.com/find-a-doctor/results/?accpat=anp%7coos&spec=489%7c289%7c256&sort=first-available"
-        },
-        {
-            label: "Chronic disease/condition",
-            value: "Chronic disease/condition",
-            type: ['primary'],
-            url: "https://www.ohiohealth.com/find-a-doctor/results/?accpat=anp%7coos&spec=489%7c289%7c256&sort=first-available"
-        },
-        {
-            label: "Chronic headache",
-            value: "Chronic headache",
-            type: ['primary'],
-            url: "https://www.ohiohealth.com/find-a-doctor/results/?accpat=anp%7coos&spec=489%7c289%7c256&sort=first-available"
-        },
-        {
-            label: "Cold, flu or COVID-19 symptoms",
-            value: "Cold, flu or COVID-19 symptoms (body ache, congestion, cough, fever, sinus infection, sore throat)",
-            type: ['primary', 'urgent'],
-            url: null
-        },
-        {
-            label: "Substance use concerns",
-            value: "Substance use concerns (drugs, alcohol)",
-            type: ['primary'],
-            url: "https://www.ohiohealth.com/find-a-doctor/results/?accpat=anp%7coos&spec=489%7c289%7c256&sort=first-available"
-        },
-        {
-            label: "Ear ache and infection",
-            value: "Ear ache and infection",
-            type: ['primary', 'urgent'],
-            url: null
-        },
-        {
-            label: "Fatigue",
-            value: "Fatigue",
-            type: ['primary'],
-            url: "https://www.ohiohealth.com/find-a-doctor/results/?accpat=anp%7coos&spec=489%7c289%7c256&sort=first-available"
-        },
-        {
-            label: "Health screening examinations",
-            value: "Health screening examinations (biometric screening for work)",
-            type: ['primary'],
-            url: "https://www.ohiohealth.com/find-a-doctor/results/?accpat=anp%7coos&spec=489%7c289%7c256&sort=first-available"
-        },
-        {
-            label: "Isolated back pain",
-            value: "Isolated back pain",
-            type: ['primary', 'urgent'],
-            url: null
-        },
-        {
-            label: "Medication refill",
-            value: "Medication refill",
-            type: ['primary', 'urgent'],
-            url: null
-        },
-        {
-            label: "Mental health concern",
-            value: "Mental health concern (anxiety, depression)",
-            type: ['primary'],
-            url: "https://www.ohiohealth.com/find-a-doctor/results/?accpat=anp%7coos&spec=489%7c289%7c256&sort=first-available"
-        },
-        {
-            label: "Head injury",
-            value: "Head injury (bump, bruise, or cut on the head without loss of consciousness)",
-            type: ['primary'],
-            url: "https://www.ohiohealth.com/find-a-doctor/results/?accpat=anp%7coos&spec=489%7c289%7c256&sort=first-available"
-        },
-        {
-            label: "Newborn care",
-            value: "Newborn care",
-            type: ['primary'],
-            url: "https://www.ohiohealth.com/find-a-doctor/results/?accpat=anp%7coos&spec=489%7c289%7c256&sort=first-available"
-        },
-        {
-            label: "Nutrition",
-            value: "Nutrition",
-            type: ['primary'],
-            url: "https://www.ohiohealth.com/find-a-doctor/results/?accpat=anp%7coos&spec=489%7c289%7c256&sort=first-available"
-        },
-        {
-            label: "Pink eye, red eye, itching",
-            value: "Pink eye, red eye, itching",
-            type: ['primary', 'urgent'],
-            url: null
-        },
-        {
-            label: "Post injury follow-up",
-            value: "Post injury follow-up",
-            type: ['primary'],
-            url: "https://www.ohiohealth.com/find-a-doctor/results/?accpat=anp%7coos&spec=489%7c289%7c256&sort=first-available"
-        },
-        {
-            label: "Preventive care",
-            value: "Preventive care",
-            type: ['primary'],
-            url: "https://www.ohiohealth.com/find-a-doctor/results/?accpat=anp%7coos&spec=489%7c289%7c256&sort=first-available"
-        },
-        {
-            label: "Rashes",
-            value: "Rashes",
-            type: ['primary', 'urgent'],
-            url: null
-        },
-        {
-            label: "Referral to a specialist",
-            value: "Referral to a specialist",
-            type: ['primary'],
-            url: "https://www.ohiohealth.com/find-a-doctor/results/?accpat=anp%7coos&spec=489%7c289%7c256&sort=first-available"
-        },
-        {
-            label: "Routine care",
-            value: "Routine care",
-            type: ['primary'],
-            url: "https://www.ohiohealth.com/find-a-doctor/results/?accpat=anp%7coos&spec=489%7c289%7c256&sort=first-available"
-        },
-        {
-            label: "Skin concerns",
-            value: "Skin concerns",
-            type: ['primary'],
-            url: "https://www.ohiohealth.com/find-a-doctor/results/?accpat=anp%7coos&spec=489%7c289%7c256&sort=first-available"
-        },
-        {
-            label: "School and sports physicals",
-            value: "School and sports physicals",
-            type: ['primary'],
-            url: "https://www.ohiohealth.com/find-a-doctor/results/?accpat=anp%7coos&spec=489%7c289%7c256&sort=first-available"
-        },
-        {
-            label: "Sexually transmitted infections",
-            value: "Sexually transmitted infections",
-            type: ['primary', 'urgent', 'wrh'],
-            url: null
-        },
-        {
-            label: "Suture/staple removal",
-            value: "Suture/staple removal",
-            type: ['primary', 'urgent'],
-            url: null
-        },
-        {
-            label: "Urinary, kidney and bladder infections",
-            value: "Urinary, kidney and bladder infections",
-            type: ['primary', 'urgent'],
-            url: null
-        },
-        {
-            label: "Vaccine",
-            value: "Vaccine",
-            type: ['primary'],
-            url: "https://www.ohiohealth.com/find-a-doctor/results/?accpat=anp%7coos&spec=489%7c289%7c256&sort=first-available"
-        },
-        {
-            label: "Vaginal itching or irritation",
-            value: "Vaginal itching or irritation",
-            type: ['primary', 'urgent', 'wrh'],
-            url: null
-        },
-        {
-            label: "Weight Management",
-            value: "Weight Management",
-            type: ['primary'],
-            url: "https://www.ohiohealth.com/find-a-doctor/results/?accpat=anp%7coos&spec=489%7c289%7c256&sort=first-available"
-        },
-        {
-            label: "Wellness",
-            value: "Wellness",
-            type: ['primary'],
-            url: "https://www.ohiohealth.com/find-a-doctor/results/?accpat=anp%7coos&spec=489%7c289%7c256&sort=first-available"
-        },
-        {
-            label: "Women's health concern",
-            value: "Women's health concern",
-            type: ['primary'],
-            url: "https://www.ohiohealth.com/find-a-doctor/results/?accpat=anp%7coos&spec=489%7c289%7c256&sort=first-available"
-        },
-        {
-            label: "Wound check",
-            value: "Wound check (Increased pain, tenderness, redness, swelling or warmth around the cut or injury, fever)",
-            type: ['primary', 'urgent'],
-            url: null
-        },
-        {
-            label: "Animal and insect bites and stings",
-            value: "Animal and insect bites and stings",
-            type: ['urgent'],
-            url: 'https://www.ohiohealth.com/schedule-online/urgent-care-scheduling/guest-scheduling'
-        },
-        {
-            label: "Asthma Flare-up",
-            value: "Asthma Flare-up (wheezing, not improving with inhalers, no difficulty breathing)",
-            type: ['urgent'],
-            url: 'https://www.ohiohealth.com/schedule-online/urgent-care-scheduling/guest-scheduling'
-        },
-        {
-            label: "Cuts, bruises or may need stitches",
-            value: "Cuts, bruises or may need stitches",
-            type: ['urgent'],
-            url: 'https://www.ohiohealth.com/schedule-online/urgent-care-scheduling/guest-scheduling'
-        },
-        {
-            label: "Injuries",
-            value: "Injuries (possible broken bones, sprains, dislocations)",
-            type: ['urgent'],
-            url: 'https://www.ohiohealth.com/schedule-online/urgent-care-scheduling/guest-scheduling'
-        },
-        {
-            label: "Minor allergic reactions",
-            value: "Minor allergic reactions",
-            type: ['urgent'],
-            url: 'https://www.ohiohealth.com/schedule-online/urgent-care-scheduling/guest-scheduling'
-        },
-        {
-            label: "Minor burns",
-            value: "Minor burns",
-            type: ['urgent'],
-            url: 'https://www.ohiohealth.com/schedule-online/urgent-care-scheduling/guest-scheduling'
-        },
-        {
-            label: "Nausea, vomiting or diarrhea without bleeding, abdominal pain or dehydration",
-            value: "Nausea, vomiting or diarrhea without bleeding, abdominal pain or dehydration",
-            type: ['urgent'],
-            url: 'https://www.ohiohealth.com/schedule-online/urgent-care-scheduling/guest-scheduling'
-        },
-        {
-            label: "Minor nosebleeds",
-            value: "Minor nosebleeds",
-            type: ['urgent'],
-            url: 'https://www.ohiohealth.com/schedule-online/urgent-care-scheduling/guest-scheduling'
-        },
-        {
-            label: "Sprains and strains",
-            value: "Sprains and strains",
-            type: ['urgent'],
-            url: 'https://www.ohiohealth.com/schedule-online/urgent-care-scheduling/guest-scheduling'
-        },
-        {
-            label: "Cuts, bruises or may need stitches",
-            value: "Cuts, bruises or may need stitches",
-            type: ['urgent'],
-            url: 'https://www.ohiohealth.com/schedule-online/urgent-care-scheduling/guest-scheduling'
-        },
-        {
-            label: "Abnormal Bleeding",
-            value: "Abnormal Bleeding",
-            type: ['wrh'],
-            url: 'https://www.ohiohealth.com/find-a-doctor/results/?q=women%27s+reproductive+health&accpat=oos&sort=first-available'
-        },
-        {
-            label: "Annual Wellness Visit",
-            value: "Annual Wellness Visit (Note this is different from PC)",
-            type: ['wrh'],
-            url: 'https://www.ohiohealth.com/find-a-doctor/results/?q=women%27s+reproductive+health&accpat=oos&sort=first-available'
-        },
-        {
-            label: "Birth Control Options",
-            value: "Birth Control Options",
-            type: ['wrh'],
-            url: 'https://www.ohiohealth.com/find-a-doctor/results/?q=women%27s+reproductive+health&accpat=oos&sort=first-available'
-        },
-        {
-            label: "Breast Pain/Lump",
-            value: "Breast Pain/Lump",
-            type: ['wrh'],
-            url: 'https://www.ohiohealth.com/find-a-doctor/results/?q=women%27s+reproductive+health&accpat=oos&sort=first-available'
-        },
-        {
-            label: "Menopause",
-            value: "Menopause",
-            type: ['wrh'],
-            url: 'https://www.ohiohealth.com/find-a-doctor/results/?q=women%27s+reproductive+health&accpat=oos&sort=first-available'
-        },
-        {
-            label: "Pelvic Pain",
-            value: "Pelvic Pain",
-            type: ['wrh'],
-            url: 'https://www.ohiohealth.com/find-a-doctor/results/?q=women%27s+reproductive+health&accpat=oos&sort=first-available'
-        },
-        {
-            label: "Positive Pregnancy Test",
-            value: "Positive Pregnancy Test",
-            type: ['wrh'],
-            url: 'https://www.ohiohealth.com/find-a-doctor/results/?q=women%27s+reproductive+health&accpat=oos&sort=first-available'
-        },
-        {
-            label: "Mammo",
-            value: "Mammo",
-            type: ['mammo'],
-            url: 'https://www.ohiohealth.com/schedule-online/mammogram/'
-        },
-    ]
-
+    if (window.innerWidth < 600) {
+        document.head.insertAdjacentHTML('beforeEnd', '<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />');
+    }
     existing_section.style.display = 'none';
     existing_section.insertAdjacentHTML("afterend", `<div class="opti-new-design">
-
     <style>
         .opti-new-design {
             box-sizing: border-box;
@@ -336,7 +819,7 @@ utils.waitForElement('.full-site-container > .epi-blocks:not(.no-margin-top.no-b
 
         .opti-new-design .header-section .page-heading {
             font-family: Adelle W01 SemiBold, arial, sans-serif;
-            font-weight: 600;
+            font-weight: ${isSafari ? "500" : "600"};;
             font-size: 40px;
             line-height: 50px;
             color: #0070AB;
@@ -345,7 +828,7 @@ utils.waitForElement('.full-site-container > .epi-blocks:not(.no-margin-top.no-b
 
         .opti-new-design .header-section .page-sub-heading {
             font-family: Adelle W01 SemiBold, arial, sans-serif;
-            font-weight: 600;
+            font-weight: ${isSafari ? "500" : "600"};;
             font-size: 24px;
             line-height: 30px;
             color: #002A5C;
@@ -393,6 +876,11 @@ utils.waitForElement('.full-site-container > .epi-blocks:not(.no-margin-top.no-b
             left: 8px;
         }
 
+        .opti-new-design .body-section {
+            width: 100%;
+            padding: 0 20px;
+        }
+
         .opti-new-design .body-section .symptom-list-view {
             display: flex;
             flex-wrap: wrap;
@@ -409,7 +897,7 @@ utils.waitForElement('.full-site-container > .epi-blocks:not(.no-margin-top.no-b
         .opti-new-design .body-section .symptom-list-view a,
         .opti-new-design .body-section .symptom-list-view p {
             font-family: Adelle W01 SemiBold, arial, sans-serif;
-            font-weight: 600;
+            font-weight: ${isSafari ? "500" : "600"};;
             font-size: 18px;
             line-height: 22.5px;
             color: #0070AB;
@@ -435,7 +923,7 @@ utils.waitForElement('.full-site-container > .epi-blocks:not(.no-margin-top.no-b
 
         .opti-new-design .body-section .no-result-found-section .no-result-message {
             font-family: Adelle W01 SemiBold, arial, sans-serif;
-            font-weight: 600;
+            font-weight: ${isSafari ? "500" : "600"};;
             font-size: 24px;
             line-height: 30px;
             color: #333333;
@@ -505,7 +993,7 @@ utils.waitForElement('.full-site-container > .epi-blocks:not(.no-margin-top.no-b
         .opti-new-design .footer-section .location-message {
             font-family: Aller W01 Regular, arial, sans-serif;
             font-weight: 400;
-            font-size: 14px;
+            font-size: 16px;
             line-height: 20px;
             color: #666666;
             margin-bottom: 30px;
@@ -520,7 +1008,7 @@ utils.waitForElement('.full-site-container > .epi-blocks:not(.no-margin-top.no-b
         }
 
         .opti-new-design .footer-section .desktop-login svg {
-            margin-right: 64px;
+            margin-right: ${isSafari ? "48" : "64"}px;
         }
 
         .opti-new-design .footer-section .desktop-login .message-section {
@@ -618,6 +1106,10 @@ utils.waitForElement('.full-site-container > .epi-blocks:not(.no-margin-top.no-b
                 margin-top: 40px;
             }
 
+            .opti-new-design .body-section {
+                padding: 0px;
+            }
+
             .opti-new-design .body-section .symptom-list-view div {
                 flex-basis: 100%;
                 display: flex;
@@ -627,6 +1119,7 @@ utils.waitForElement('.full-site-container > .epi-blocks:not(.no-margin-top.no-b
 
             .opti-new-design .body-section .symptom-list-view div svg {
                 display: inline-block;
+                min-width: 9px;
             }
 
             .opti-new-design .body-section .no-result-found-section .no-result-message {
@@ -686,7 +1179,7 @@ utils.waitForElement('.full-site-container > .epi-blocks:not(.no-margin-top.no-b
             feature.
         </p>
         <div class="search-input">
-            <input type="text" placeholder="Search by service or symptom" />
+            <input type="text" placeholder="Search a Symptom (3 characters min)" />
             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path
                     d="M19.9 21L13.325 14.425C12.825 14.8583 12.242 15.1958 11.576 15.4375C10.91 15.6792 10.2014 15.8 9.45 15.8C7.6473 15.8 6.12163 15.175 4.87298 13.925C3.62433 12.675 3 11.1667 3 9.4C3 7.63333 3.625 6.125 4.875 4.875C6.125 3.625 7.6375 3 9.4125 3C11.1875 3 12.6958 3.625 13.9375 4.875C15.1792 6.125 15.8 7.63458 15.8 9.40375C15.8 10.1179 15.6833 10.8083 15.45 11.475C15.2167 12.1417 14.8667 12.7667 14.4 13.35L21 19.9L19.9 21ZM9.425 14.3C10.7792 14.3 11.9302 13.8208 12.8781 12.8625C13.826 11.9042 14.3 10.75 14.3 9.4C14.3 8.05 13.826 6.89583 12.8781 5.9375C11.9302 4.97917 10.7792 4.5 9.425 4.5C8.05695 4.5 6.8941 4.97917 5.93645 5.9375C4.97882 6.89583 4.5 8.05 4.5 9.4C4.5 10.75 4.97882 11.9042 5.93645 12.8625C6.8941 13.8208 8.05695 14.3 9.425 14.3Z"
@@ -697,46 +1190,17 @@ utils.waitForElement('.full-site-container > .epi-blocks:not(.no-margin-top.no-b
     </div>
 
     <div class="body-section">
-        <div class="symptom-list-view">
-
-        </div>
-
-        <div class="no-result-found-section">
-            <p class="no-result-message">No results found for "asdfghj"</p>
-            <p class="consider-message">Please consider the following:</p>
-            <ul class="search-hints">
-                <li>Consider using more general language</li>
-                <li>Check spelling</li>
-                <li>Select from the list of commonly searched terms:</li>
-            </ul>
-            <ul class="suggested-symptom">
-                <li><a href="https://www.ohiohealth.com/find-a-doctor/results/?q=primary&#x2B">Primary Care</a></li>
-                <li><a
-                        href="https://www.ohiohealth.com/find-a-doctor/results/?q=obstetrics/gynecology">Obstetrics/Gynecology</a>
-                </li>
-                <li><a href="https://www.ohiohealth.com/find-a-doctor/results/?q=orthopedics">Orthopedics</a></li>
-                <li><a href="https://www.ohiohealth.com/find-a-doctor/results/?q=cardiologist">Cardiologist</a></li>
-                <li><a href="https://www.ohiohealth.com/find-a-doctor/results?q=Gynecology&type=doctors">Gynecology</a>
-                </li>
-                <li><a href="https://www.ohiohealth.com/find-a-doctor/results/?q=heart">Heart and Vascular</a></li>
-                <li><a href="https://www.ohiohealth.com/find-a-doctor/results/?q=Family%20Medicine">Internal
-                        Medicine</a></li>
-                <li><a href="https://www.ohiohealth.com/find-a-doctor/results/?q=Family%20Medicine">Family Medicine</a>
-                </li>
-                <li><a href="https://www.ohiohealth.com/find-a-doctor/results/?q=neurologist">Neurologist</a></li>
-            </ul>
-        </div>
+        
 
     </div>
-
     <div class="footer-section">
         <p class="browse-all-message">
-            Can’t find what you need? <a href="https://www.ohiohealth.com/services/browse-all/"
-                style="color: #0070AB;text-decoration: none; border: 0; font-weight: 700;">Browse All</a>
+            Can't find what you need? <a onclick="renderSymptoms(true)"
+                style="color: #0070AB;text-decoration: none; border: 0; font-weight: 700; cursor: pointer;">Browse All</a>
         </p>
         <p class="location-message">
             24/7 treatment for severe and life-threatening conditions is nearby at more than <a
-                href="https://www.ohiohealth.com/locations/ "
+                href="https://www.ohiohealth.com/locations/emergency-care/"
                 style="color: #0070AB;text-decoration: none; border: 0;">20 locations</a> and three trauma
             centers.
         </p>
@@ -755,35 +1219,21 @@ utils.waitForElement('.full-site-container > .epi-blocks:not(.no-margin-top.no-b
             <div class="message-section">
                 <p>Already have an OhioHealth MyChart account? Login to schedule with your doctor.</p>
                 <div></div>
-                <a href="https://mychart.ohiohealth.com/MyChart/Authentication/Login">LOG IN</a>
+                <a class="opt-mychart-login-selector" href="https://mychart.ohiohealth.com/MyChart/Authentication/Login">LOG IN</a>
             </div>
         </div>
         <div class="mobile-login">
             <p>Save time and sign in to <span style="color: #0070AB; font-weight: 700;">MyChart</span>.</p>
-            <a href="https://mychart.ohiohealth.com/MyChart/Authentication/Login">LOG IN</a>
+            <a class="opt-mychart-login opt-mychart-login-selector" href="https://mychart.ohiohealth.com/MyChart/Authentication/Login">LOG IN</a>
         </div>
     </div>
-</div>`)
+</div>`);
 
-    const first_12_symptoms = symptom_list.slice(0, 12);
+    renderSymptoms();
+    var searchInput = document.querySelector('.search-input input');
+    searchInput.addEventListener("input", () => renderSymptoms())
+});
 
-    let desktop_symptom_list_container = document.querySelector('.opti-new-design .body-section .symptom-list-view');
-    if (desktop_symptom_list_container) {
-        desktop_symptom_list_container.innerHTML = first_12_symptoms.map((symptom, index) => {
-            return symptom.url
-                ? `<div>
-                <a href="${symptom.url}">${symptom.label}</a>
-                <svg width="10" height="16" viewBox="0 0 10 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M0.333008 14.12L6.10179 8L0.333008 1.88L2.10899 0L9.66634 8L2.10899 16L0.333008 14.12Z" fill="#0070AB"/>
-                </svg>
-                </div>`
-                : `<div>
-                <p>${symptom.label}</p>
-                <svg width="10" height="16" viewBox="0 0 10 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M0.333008 14.12L6.10179 8L0.333008 1.88L2.10899 0L9.66634 8L2.10899 16L0.333008 14.12Z" fill="#0070AB"/>
-                </svg>
-                </div>`;
-        }).join('');
-    }
-
+window.addEventListener("pageshow", () => {
+    renderSymptoms();
 });
