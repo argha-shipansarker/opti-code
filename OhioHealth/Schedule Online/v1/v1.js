@@ -21,24 +21,24 @@ const symptom_list = [
         type: ['primary', 'urgent'],
     },
     {
-        label: "Ear ache and infection",
-        value: "Ear ache and infection",
+        label: "Earache and infection",
+        value: "Earache and infection",
         type: ['primary', 'urgent'],
     },
     {
-        label: "Vaginal itching or irritation",
-        value: "Vaginal itching or irritation",
+        label: "Vaginal issues",
+        value: "Vaginal issues",
         type: ['primary', 'urgent', 'wrh'],
     },
     {
-        label: "Annual Wellness Visit",
-        value: "Annual Wellness Visit",
+        label: "Women’s annual wellness visit",
+        value: "Women’s annual wellness visit",
         type: ['wrh'],
     },
 
     {
-        label: "Rashes",
-        value: "Rashes",
+        label: "Rash",
+        value: "Rash",
         type: ['primary', 'urgent'],
     },
     {
@@ -52,22 +52,22 @@ const symptom_list = [
         type: ['primary', 'urgent'],
     },
     {
-        label: "Nausea, vomiting or diarrhea without bleeding, abdominal pain or dehydration",
+        label: "Nausea, vomiting or diarrhea*",
         value: "Nausea, vomiting or diarrhea without bleeding, abdominal pain or dehydration",
         type: ['urgent'],
     },
     {
-        label: "Primary Care Wellness",
-        value: "Primary Care Wellness",
+        label: "Primary care wellness",
+        value: "Primary care wellness",
         type: ['primary'],
     },
     {
-        label: "Injuries",
+        label: "Injuries (possible broken bones, sprains, dislocations)",
         value: "Injuries (possible broken bones, sprains, dislocations)",
         type: ['urgent'],
     },
     {
-        label: "Sexually transmitted diseases",
+        label: "Sexually transmitted infections",
         value: "Sexually transmitted diseases and infections",
         type: ['primary', 'urgent', 'wrh'],
     },
