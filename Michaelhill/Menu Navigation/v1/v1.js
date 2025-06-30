@@ -2986,6 +2986,76 @@ utils.waitForElement('nav .menu .menu__root-links > li:nth-of-type(7)').then(fun
 
 </div>`);
 
+    our_world_menu.insertAdjacentHTML("beforeend", `<div class="menu-panels menu-panels--close opti-our-world-story-panel">
+    <style>
+        .opti-our-world-story-panel .menu-panels__panel {
+            display: flex;
+            flex-wrap: wrap;
+            column-gap: 12px;
+            padding-top: 24px;
+        }
+
+        .opti-our-world-story-panel .menu-panels__panel .menu-items {
+            display: flex;
+            flex-direction: column;
+            flex-basis: 48%;
+            margin-bottom: 16px;
+        }
+
+        .opti-our-world-story-panel .menu-panels__panel .menu-items p {
+            font-size: 16px;
+            line-height: 1.2;
+            letter-spacing: 0.02rem;
+            font-weight: 400;
+            margin-bottom: 0;
+            margin-top: 8px;
+            color: #282829;
+        }
+    </style>
+
+    <div class="menu-panels__header">
+        <button class="menu-panels__header-close" title="Close">
+            <svg class="icons">
+                <use href="/_nuxt3/icons.DgK34huS.svg#cross"></use>
+            </svg>
+        </button>
+        <button class="menu-panels__header-back">
+            <svg class="icons">
+                <use href="/_nuxt3/icons.DgK34huS.svg#arrow-carousel-left"></use>
+            </svg>
+            Our Story
+        </button>
+    </div>
+
+    <ul class="menu-panels__scroll">
+
+        <div class="menu-panels__panel">
+            <a href="/article/about-michael-hill/michael-hill-story" class="menu-items">
+                <img src="https://cdn.optimizely.com/img/24400620820/66a30305d7194be8867a1dee5292691f.jpg" alt="">
+                <p>The New Era</p>
+            </a>
+
+            <a href="/discover/brand-history" class="menu-items">
+                <img src="https://cdn.optimizely.com/img/24400620820/461fd312248d4ad083f28ee9da02e9f8.jpg" alt="">
+                <p>Our Story</p>
+            </a>
+
+            <a href="/discover/our-ambassador" class="menu-items">
+                <img src="https://cdn.optimizely.com/img/24400620820/49e01b981202406a9ef1fb0d54d62e0c.jpg" alt="">
+                <p>Our Ambassador</p>
+            </a>
+
+            <a href="/discover/our-flagship" class="menu-items">
+                <img src="https://cdn.optimizely.com/img/24400620820/951e3d495a734215a742ed591e7aa2e9.jpg" alt="">
+                <p>Our Flagship Stores</p>
+            </a>
+
+        </div>
+
+    </ul>
+
+</div>`)
+
     //education
     bindToggleButton(
         '.opti-new-our-world-menu .bold-menu.education',
@@ -3003,7 +3073,29 @@ utils.waitForElement('nav .menu .menu__root-links > li:nth-of-type(7)').then(fun
         '.opti-our-world-education-panel',
         false,
         () => {
-            const our_world_panel = our_world_menu.querySelector('.menu-panels:not(.opti-our-world-education-panel) .menu-panels__header-close');
+            const our_world_panel = our_world_menu.querySelector('.menu-panels:not(.opti-our-world-education-panel):not(.opti-our-world-story-panel) .menu-panels__header-close');
+            if (our_world_panel) our_world_panel.click();
+        }
+    );
+
+    //story
+    bindToggleButton(
+        '.opti-new-our-world-menu .bold-menu.story',
+        '.opti-our-world-story-panel'
+    );
+
+    bindToggleButton(
+        '.opti-our-world-story-panel .menu-panels__header-back',
+        '.opti-our-world-story-panel',
+        false
+    );
+
+    bindToggleButton(
+        '.opti-our-world-story-panel .menu-panels__header-close',
+        '.opti-our-world-story-panel',
+        false,
+        () => {
+            const our_world_panel = our_world_menu.querySelector('.menu-panels:not(.opti-our-world-education-panel):not(.opti-our-world-story-panel) .menu-panels__header-close');
             if (our_world_panel) our_world_panel.click();
         }
     );
