@@ -2831,3 +2831,106 @@ utils.waitForElement('nav .menu .menu__root-links > li:nth-of-type(6)').then(fun
 
 </div>`);
 });
+
+//our world menu
+utils.waitForElement('nav .menu .menu__root-links > li:nth-of-type(7)').then(function (our_world_menu) {
+    our_world_menu.insertAdjacentHTML("beforeend", `<style>
+    nav .menu .menu__root-links>li:nth-of-type(7) .menu-panels .menu-panels__scroll>li:nth-of-type(1),
+    nav .menu .menu__root-links>li:nth-of-type(7) .menu-panels .menu-panels__scroll>li:nth-of-type(2),
+    nav .menu .menu__root-links>li:nth-of-type(7) .menu-panels .menu-panels__scroll>li:nth-of-type(3) {
+        display: none;
+    }
+
+    nav .menu .menu__root-links>li:nth-of-type(7) .menu-panels .menu-panels__scroll>li:nth-of-type(4) .picture-container .picture-link {
+        display: none;
+    }
+
+    nav .menu .menu__root-links>li:nth-of-type(7) .menu-panels .menu-panels__scroll>li:nth-of-type(4) .picture-container .opti-new-our-world-image {
+        height: 230px;
+    }
+
+    nav .menu .menu__root-links>li:nth-of-type(7) .menu-panels .menu-panels__scroll>li:nth-of-type(4) p {
+        font-size: 16px;
+    }
+
+    nav .menu .menu__root-links>li:nth-of-type(7) .menu-panels .menu-panels__scroll>li:nth-of-type(4) p a {
+        font-size: 16px;
+        text-decoration: underline;
+        color: #282829;
+        font-weight: 400;
+    }
+</style>`);
+
+    const our_world_menu_panel_first_section = our_world_menu.querySelector('.menu-panels .menu-panels__scroll > li:nth-of-type(1)');
+
+    our_world_menu_panel_first_section.insertAdjacentHTML("afterend", `<div class="opti-new-our-world-menu">
+    <style>
+        .opti-new-our-world-menu {
+            margin-top: 24px;
+        }
+
+        .opti-new-our-world-menu .bold-menu {
+            font-size: 16px;
+            font-weight: 700;
+            line-height: 1.2;
+            letter-spacing: 0.02rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            color: #282829;
+            text-decoration: none;
+            padding: 14.5px 0;
+            border-bottom: 1px solid #E8E9EA;
+        }
+
+        .opti-new-our-world-menu .bold-menu .icons {
+            height: 1rem;
+        }
+    </style>
+
+    <div class="bold-menu education">
+        Education & Guides
+        <svg class="icons">
+            <use href="/_nuxt3/icons.DgK34huS.svg#arrow-carousel-right"></use>
+        </svg>
+    </div>
+
+    <div class="bold-menu story">
+        Our Story
+        <svg class="icons">
+            <use href="/_nuxt3/icons.DgK34huS.svg#arrow-carousel-right"></use>
+        </svg>
+    </div>
+
+    <div class="bold-menu impact">
+        Our Impact
+        <svg class="icons">
+            <use href="/_nuxt3/icons.DgK34huS.svg#arrow-carousel-right"></use>
+        </svg>
+    </div>
+
+</div>`);
+
+    const our_world_menu_fourth_section_image_container = our_world_menu.querySelector('.menu-panels .menu-panels__scroll > li:nth-of-type(4) .picture-container');
+
+    if (our_world_menu_fourth_section_image_container) {
+        our_world_menu_fourth_section_image_container.insertAdjacentHTML("beforeend", `<a href="/discover/brand-history"><img class="opti-new-our-world-image" src="https://cdn.optimizely.com/img/24400620820/537cb63ce2b84a588417d19c48855eee.jpg" alt=""></a>`)
+    }
+
+    const our_world_menu_fourth_section_text_1 = our_world_menu.querySelector('.menu-panels .menu-panels__scroll > li:nth-of-type(4) p:nth-of-type(2)');
+    if (our_world_menu_fourth_section_text_1) {
+        our_world_menu_fourth_section_text_1.innerHTML = '<strong>About Us </strong>';
+    }
+
+    const our_world_menu_fourth_section_text_2 = our_world_menu.querySelector('.menu-panels .menu-panels__scroll > li:nth-of-type(4) p:nth-of-type(3)');
+    if (our_world_menu_fourth_section_text_2) {
+        our_world_menu_fourth_section_text_2.innerText = `Marking life's most meaningful moments since 1979.`;
+    }
+
+    const our_world_menu_fourth_section_text_3 = our_world_menu.querySelector('.menu-panels .menu-panels__scroll > li:nth-of-type(4) p:nth-of-type(4) a');
+    if (our_world_menu_fourth_section_text_3) {
+        our_world_menu_fourth_section_text_3.innerText = 'Discover';
+        our_world_menu_fourth_section_text_3.href = '/discover/brand-history';
+    }
+
+});
