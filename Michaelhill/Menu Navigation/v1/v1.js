@@ -2615,6 +2615,70 @@ utils.waitForElement('nav .menu .menu__root-links > li:nth-of-type(5)').then(fun
 
 </div>`);
 
+    gift_menu.insertAdjacentHTML("beforeend", `<div class="menu-panels menu-panels--close opti-gift-occasion-panel">
+    <style>
+        .opti-gift-occasion-panel .menu-panels__panel .menu-items {
+            padding: 12px 0;
+            align-items: center;
+        }
+
+        .opti-gift-occasion-panel .menu-panels__panel .menu-items p {
+            font-size: 16px;
+            line-height: 1.2;
+            letter-spacing: 0.02rem;
+            font-weight: 400;
+            margin-bottom: 0;
+            color: #282829;
+        }
+
+        .opti-gift-occasion-panel .menu-panels__panel .menu-items.all p {
+            font-weight: 700;
+        }
+    </style>
+
+    <div class="menu-panels__header">
+        <button class="menu-panels__header-close" title="Close">
+            <svg class="icons">
+                <use href="/_nuxt3/icons.DgK34huS.svg#cross"></use>
+            </svg>
+        </button>
+        <button class="menu-panels__header-back">
+            <svg class="icons">
+                <use href="/_nuxt3/icons.DgK34huS.svg#arrow-carousel-left"></use>
+            </svg>
+            Occasion
+        </button>
+    </div>
+
+    <ul class="menu-panels__scroll">
+
+        <li class="menu-panels__panel">
+
+            <a href="/anniversary" class="menu-items">
+                <p>Anniversary Gifts</p>
+            </a>
+
+            <a href="/gifts/occasions/birthday-gifts" class="menu-items">
+                <p>Birthday Gifts</p>
+            </a>
+
+            <a href="/gifts/occasions/graduation-gifts" class="menu-items">
+                <p>Graduation Gifts</p>
+            </a>
+
+            <a href="/gifts/occasions/bridal-bridesmaid-gifts" class="menu-items">
+                <p>Bridesmaid Gifts</p>
+            </a>
+
+            <a href="/gifts" class="menu-items all">
+                <p>All Occasions</p>
+            </a>
+        </li>
+
+    </ul>
+
+</div>`);
+
     //personalized
     bindToggleButton(
         '.opti-new-gift-menu .bold-menu.personalised',
@@ -2632,7 +2696,29 @@ utils.waitForElement('nav .menu .menu__root-links > li:nth-of-type(5)').then(fun
         '.opti-gift-personalised-panel',
         false,
         () => {
-            const gift_panel = gift_menu.querySelector('.menu-panels:not(.opti-gift-personalised-panel) .menu-panels__header-close');
+            const gift_panel = gift_menu.querySelector('.menu-panels:not(.opti-gift-personalised-panel):not(.opti-gift-occasion-panel) .menu-panels__header-close');
+            if (gift_panel) gift_panel.click();
+        }
+    );
+
+    //occasion
+    bindToggleButton(
+        '.opti-new-gift-menu .bold-menu.occasion',
+        '.opti-gift-occasion-panel'
+    );
+
+    bindToggleButton(
+        '.opti-gift-occasion-panel .menu-panels__header-back',
+        '.opti-gift-occasion-panel',
+        false
+    );
+
+    bindToggleButton(
+        '.opti-gift-occasion-panel .menu-panels__header-close',
+        '.opti-gift-occasion-panel',
+        false,
+        () => {
+            const gift_panel = gift_menu.querySelector('.menu-panels:not(.opti-gift-personalised-panel):not(.opti-gift-occasion-panel) .menu-panels__header-close');
             if (gift_panel) gift_panel.click();
         }
     );
