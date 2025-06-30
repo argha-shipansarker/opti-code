@@ -3056,6 +3056,81 @@ utils.waitForElement('nav .menu .menu__root-links > li:nth-of-type(7)').then(fun
 
 </div>`)
 
+    our_world_menu.insertAdjacentHTML("beforeend", `<div class="menu-panels menu-panels--close opti-our-world-impact-panel">
+    <style>
+        .opti-our-world-impact-panel .menu-panels__panel {
+            display: flex;
+            flex-wrap: wrap;
+            column-gap: 12px;
+            padding-top: 24px;
+        }
+
+        .opti-our-world-impact-panel .menu-panels__panel .menu-items {
+            display: flex;
+            flex-direction: column;
+            flex-basis: 48%;
+            margin-bottom: 16px;
+        }
+
+        .opti-our-world-impact-panel .menu-panels__panel .menu-items p {
+            font-size: 16px;
+            line-height: 1.2;
+            letter-spacing: 0.02rem;
+            font-weight: 400;
+            margin-bottom: 0;
+            margin-top: 8px;
+            color: #282829;
+        }
+    </style>
+
+    <div class="menu-panels__header">
+        <button class="menu-panels__header-close" title="Close">
+            <svg class="icons">
+                <use href="/_nuxt3/icons.DgK34huS.svg#cross"></use>
+            </svg>
+        </button>
+        <button class="menu-panels__header-back">
+            <svg class="icons">
+                <use href="/_nuxt3/icons.DgK34huS.svg#arrow-carousel-left"></use>
+            </svg>
+            Our Impact
+        </button>
+    </div>
+
+    <ul class="menu-panels__scroll">
+
+        <div class="menu-panels__panel">
+            <a href="/sustainability" class="menu-items">
+                <img src="https://cdn.optimizely.com/img/24400620820/7d47e5d53424491488e49c168f504a81.jpg" alt="">
+                <p>Our 2030 Goals</p>
+            </a>
+
+            <a href="/sustainability/michael-hill-foundation" class="menu-items">
+                <img src="https://cdn.optimizely.com/img/24400620820/cf914ef8726e437091f530a4192dbdfa.jpg" alt="">
+                <p>The Michael Hill Foundation</p>
+            </a>
+
+            <a href="/article/recycle" class="menu-items">
+                <img src="https://cdn.optimizely.com/img/24400620820/80bf2fe28e724dd0af5c9af4cc9f0ca3.jpg" alt="">
+                <p>re:cycle Program</p>
+            </a>
+
+            <a href="/jewellery-repairs/restore" class="menu-items">
+                <img src="https://cdn.optimizely.com/img/24400620820/95d0de6387454240b8d6aed532061a82.jpg" alt="">
+                <p>re:store Program</p>
+            </a>
+
+            <a href="/discover/reimagine" class="menu-items">
+                <img src="https://cdn.optimizely.com/img/24400620820/e11a3c59f73a46e6a53dd59a463d4e19.jpg" alt="">
+                <p>re:imagine Program</p>
+            </a>
+
+        </div>
+
+    </ul>
+
+</div>`);
+
     //education
     bindToggleButton(
         '.opti-new-our-world-menu .bold-menu.education',
@@ -3073,7 +3148,7 @@ utils.waitForElement('nav .menu .menu__root-links > li:nth-of-type(7)').then(fun
         '.opti-our-world-education-panel',
         false,
         () => {
-            const our_world_panel = our_world_menu.querySelector('.menu-panels:not(.opti-our-world-education-panel):not(.opti-our-world-story-panel) .menu-panels__header-close');
+            const our_world_panel = our_world_menu.querySelector('.menu-panels:not(.opti-our-world-education-panel):not(.opti-our-world-story-panel):not(.opti-our-world-impact-panel) .menu-panels__header-close');
             if (our_world_panel) our_world_panel.click();
         }
     );
@@ -3095,7 +3170,29 @@ utils.waitForElement('nav .menu .menu__root-links > li:nth-of-type(7)').then(fun
         '.opti-our-world-story-panel',
         false,
         () => {
-            const our_world_panel = our_world_menu.querySelector('.menu-panels:not(.opti-our-world-education-panel):not(.opti-our-world-story-panel) .menu-panels__header-close');
+            const our_world_panel = our_world_menu.querySelector('.menu-panels:not(.opti-our-world-education-panel):not(.opti-our-world-story-panel):not(.opti-our-world-impact-panel) .menu-panels__header-close');
+            if (our_world_panel) our_world_panel.click();
+        }
+    );
+
+    //impact
+    bindToggleButton(
+        '.opti-new-our-world-menu .bold-menu.impact',
+        '.opti-our-world-impact-panel'
+    );
+
+    bindToggleButton(
+        '.opti-our-world-impact-panel .menu-panels__header-back',
+        '.opti-our-world-impact-panel',
+        false
+    );
+
+    bindToggleButton(
+        '.opti-our-world-impact-panel .menu-panels__header-close',
+        '.opti-our-world-impact-panel',
+        false,
+        () => {
+            const our_world_panel = our_world_menu.querySelector('.menu-panels:not(.opti-our-world-education-panel):not(.opti-our-world-story-panel):not(.opti-our-world-impact-panel) .menu-panels__header-close');
             if (our_world_panel) our_world_panel.click();
         }
     );
