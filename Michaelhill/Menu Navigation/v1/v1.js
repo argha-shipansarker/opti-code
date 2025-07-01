@@ -1571,6 +1571,14 @@ utils.waitForElement('nav .menu .menu__root-links > li:nth-of-type(3)').then(fun
 
     jewellery_menu.insertAdjacentHTML("beforeend", `<div class="menu-panels menu-panels--close opti-jewellery-gemstone-panel">
     <style>
+        .opti-jewellery-gemstone-panel .menu-panels__header-back {
+            gap: 16px !important;
+        }
+
+        .opti-jewellery-gemstone-panel .menu-panels__header-back svg {
+            height: unset !important;
+        }
+
         .opti-jewellery-gemstone-panel .menu-panels__panel .menu-items {
             display: flex;
             padding: 12.5px 0;
@@ -1595,13 +1603,29 @@ utils.waitForElement('nav .menu .menu__root-links > li:nth-of-type(3)').then(fun
 
     <div class="menu-panels__header">
         <button class="menu-panels__header-close" title="Close">
-            <svg class="icons">
-                <use href="/_nuxt3/icons.DgK34huS.svg#cross"></use>
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <mask id="mask0_2345_3243" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="0" y="0" width="24"
+                    height="24">
+                    <rect width="24" height="24" fill="#D9D9D9" />
+                </mask>
+                <g mask="url(#mask0_2345_3243)">
+                    <path
+                        d="M6.7077 18.6154L6 17.9077L11.6 12.3077L6 6.7077L6.7077 6L12.3077 11.6L17.9077 6L18.6154 6.7077L13.0154 12.3077L18.6154 17.9077L17.9077 18.6154L12.3077 13.0154L6.7077 18.6154Z"
+                        fill="#010101" />
+                </g>
             </svg>
         </button>
         <button class="menu-panels__header-back">
-            <svg class="icons">
-                <use href="/_nuxt3/icons.DgK34huS.svg#arrow-carousel-left"></use>
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <mask id="mask0_2345_3247" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="0" y="0" width="24"
+                    height="24">
+                    <rect width="24" height="24" fill="#D9D9D9" />
+                </mask>
+                <g mask="url(#mask0_2345_3247)">
+                    <path
+                        d="M14.3077 17.6154L9 12.3077L14.3077 7L15.0154 7.7077L10.4154 12.3077L15.0154 16.9077L14.3077 17.6154Z"
+                        fill="#010101" />
+                </g>
             </svg>
             Gemstones
         </button>
@@ -1759,6 +1783,14 @@ utils.waitForElement('nav .menu .menu__root-links > li:nth-of-type(3)').then(fun
 
     jewellery_menu.insertAdjacentHTML("beforeend", `<div class="menu-panels menu-panels--close opti-jewellery-metal-panel">
     <style>
+        .opti-jewellery-metal-panel .menu-panels__header-back {
+            gap: 16px !important;
+        }
+
+        .opti-jewellery-metal-panel .menu-panels__header-back svg {
+            height: unset !important;
+        }
+
         .opti-jewellery-metal-panel .menu-panels__panel .menu-items {
             display: flex;
             padding: 12.5px 0;
@@ -1824,13 +1856,29 @@ utils.waitForElement('nav .menu .menu__root-links > li:nth-of-type(3)').then(fun
 
     <div class="menu-panels__header">
         <button class="menu-panels__header-close" title="Close">
-            <svg class="icons">
-                <use href="/_nuxt3/icons.DgK34huS.svg#cross"></use>
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <mask id="mask0_2345_3243" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="0" y="0" width="24"
+                    height="24">
+                    <rect width="24" height="24" fill="#D9D9D9" />
+                </mask>
+                <g mask="url(#mask0_2345_3243)">
+                    <path
+                        d="M6.7077 18.6154L6 17.9077L11.6 12.3077L6 6.7077L6.7077 6L12.3077 11.6L17.9077 6L18.6154 6.7077L13.0154 12.3077L18.6154 17.9077L17.9077 18.6154L12.3077 13.0154L6.7077 18.6154Z"
+                        fill="#010101" />
+                </g>
             </svg>
         </button>
         <button class="menu-panels__header-back">
-            <svg class="icons">
-                <use href="/_nuxt3/icons.DgK34huS.svg#arrow-carousel-left"></use>
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <mask id="mask0_2345_3247" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="0" y="0" width="24"
+                    height="24">
+                    <rect width="24" height="24" fill="#D9D9D9" />
+                </mask>
+                <g mask="url(#mask0_2345_3247)">
+                    <path
+                        d="M14.3077 17.6154L9 12.3077L14.3077 7L15.0154 7.7077L10.4154 12.3077L15.0154 16.9077L14.3077 17.6154Z"
+                        fill="#010101" />
+                </g>
             </svg>
             Metals
         </button>
@@ -1896,6 +1944,14 @@ utils.waitForElement('nav .menu .menu__root-links > li:nth-of-type(3)').then(fun
 
     jewellery_menu.insertAdjacentHTML("beforeend", `<div class="menu-panels menu-panels--close opti-jewellery-collections-panel">
     <style>
+        .opti-jewellery-collections-panel .menu-panels__header-back {
+            gap: 16px !important;
+        }
+
+        .opti-jewellery-collections-panel .menu-panels__header-back svg {
+            height: unset !important;
+        }
+
         .opti-jewellery-collections-panel .menu-panels__panel {
             display: flex;
             flex-wrap: wrap;
@@ -1922,13 +1978,29 @@ utils.waitForElement('nav .menu .menu__root-links > li:nth-of-type(3)').then(fun
 
     <div class="menu-panels__header">
         <button class="menu-panels__header-close" title="Close">
-            <svg class="icons">
-                <use href="/_nuxt3/icons.DgK34huS.svg#cross"></use>
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <mask id="mask0_2345_3243" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="0" y="0" width="24"
+                    height="24">
+                    <rect width="24" height="24" fill="#D9D9D9" />
+                </mask>
+                <g mask="url(#mask0_2345_3243)">
+                    <path
+                        d="M6.7077 18.6154L6 17.9077L11.6 12.3077L6 6.7077L6.7077 6L12.3077 11.6L17.9077 6L18.6154 6.7077L13.0154 12.3077L18.6154 17.9077L17.9077 18.6154L12.3077 13.0154L6.7077 18.6154Z"
+                        fill="#010101" />
+                </g>
             </svg>
         </button>
         <button class="menu-panels__header-back">
-            <svg class="icons">
-                <use href="/_nuxt3/icons.DgK34huS.svg#arrow-carousel-left"></use>
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <mask id="mask0_2345_3247" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="0" y="0" width="24"
+                    height="24">
+                    <rect width="24" height="24" fill="#D9D9D9" />
+                </mask>
+                <g mask="url(#mask0_2345_3247)">
+                    <path
+                        d="M14.3077 17.6154L9 12.3077L14.3077 7L15.0154 7.7077L10.4154 12.3077L15.0154 16.9077L14.3077 17.6154Z"
+                        fill="#010101" />
+                </g>
             </svg>
             Collections
         </button>
@@ -1984,6 +2056,14 @@ utils.waitForElement('nav .menu .menu__root-links > li:nth-of-type(3)').then(fun
 
     jewellery_menu.insertAdjacentHTML("beforeend", `<div class="menu-panels menu-panels--close opti-jewellery-personalised-panel">
     <style>
+        .opti-jewellery-personalised-panel .menu-panels__header-back {
+            gap: 16px !important;
+        }
+
+        .opti-jewellery-personalised-panel .menu-panels__header-back svg {
+            height: unset !important;
+        }
+
         .opti-jewellery-personalised-panel .menu-panels__panel {
             display: flex;
             flex-wrap: wrap;
@@ -2010,13 +2090,29 @@ utils.waitForElement('nav .menu .menu__root-links > li:nth-of-type(3)').then(fun
 
     <div class="menu-panels__header">
         <button class="menu-panels__header-close" title="Close">
-            <svg class="icons">
-                <use href="/_nuxt3/icons.DgK34huS.svg#cross"></use>
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <mask id="mask0_2345_3243" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="0" y="0" width="24"
+                    height="24">
+                    <rect width="24" height="24" fill="#D9D9D9" />
+                </mask>
+                <g mask="url(#mask0_2345_3243)">
+                    <path
+                        d="M6.7077 18.6154L6 17.9077L11.6 12.3077L6 6.7077L6.7077 6L12.3077 11.6L17.9077 6L18.6154 6.7077L13.0154 12.3077L18.6154 17.9077L17.9077 18.6154L12.3077 13.0154L6.7077 18.6154Z"
+                        fill="#010101" />
+                </g>
             </svg>
         </button>
         <button class="menu-panels__header-back">
-            <svg class="icons">
-                <use href="/_nuxt3/icons.DgK34huS.svg#arrow-carousel-left"></use>
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <mask id="mask0_2345_3247" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="0" y="0" width="24"
+                    height="24">
+                    <rect width="24" height="24" fill="#D9D9D9" />
+                </mask>
+                <g mask="url(#mask0_2345_3247)">
+                    <path
+                        d="M14.3077 17.6154L9 12.3077L14.3077 7L15.0154 7.7077L10.4154 12.3077L15.0154 16.9077L14.3077 17.6154Z"
+                        fill="#010101" />
+                </g>
             </svg>
             Personalised Jewellery
         </button>
@@ -2099,37 +2195,61 @@ utils.waitForElement('nav .menu .menu__root-links > li:nth-of-type(3)').then(fun
         .opti-new-jewellery-menu a.bold-menu {
             padding: 16px 0;
         }
-
-        .opti-new-jewellery-menu .bold-menu .icons {
-            height: 1rem;
-        }
     </style>
 
     <div class="bold-menu gemstones">
         Gemstones
-        <svg class="icons">
-            <use href="/_nuxt3/icons.DgK34huS.svg#arrow-carousel-right"></use>
+        <svg width="24" height="25" viewBox="0 0 24 25" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <mask id="mask0_2345_2756" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="0" y="0" width="24"
+                height="25">
+                <rect y="0.746094" width="24" height="24" fill="#D9D9D9" />
+            </mask>
+            <g mask="url(#mask0_2345_2756)">
+                <path d="M13.6 13.0538L9 8.45379L9.7077 7.74609L15.0154 13.0538L9.7077 18.3615L9 17.6538L13.6 13.0538Z"
+                    fill="#010101" />
+            </g>
         </svg>
     </div>
 
     <div class="bold-menu metals">
         Metals
-        <svg class="icons">
-            <use href="/_nuxt3/icons.DgK34huS.svg#arrow-carousel-right"></use>
+        <svg width="24" height="25" viewBox="0 0 24 25" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <mask id="mask0_2345_2756" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="0" y="0" width="24"
+                height="25">
+                <rect y="0.746094" width="24" height="24" fill="#D9D9D9" />
+            </mask>
+            <g mask="url(#mask0_2345_2756)">
+                <path d="M13.6 13.0538L9 8.45379L9.7077 7.74609L15.0154 13.0538L9.7077 18.3615L9 17.6538L13.6 13.0538Z"
+                    fill="#010101" />
+            </g>
         </svg>
     </div>
 
     <div class="bold-menu collections">
         Collections
-        <svg class="icons">
-            <use href="/_nuxt3/icons.DgK34huS.svg#arrow-carousel-right"></use>
+        <svg width="24" height="25" viewBox="0 0 24 25" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <mask id="mask0_2345_2756" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="0" y="0" width="24"
+                height="25">
+                <rect y="0.746094" width="24" height="24" fill="#D9D9D9" />
+            </mask>
+            <g mask="url(#mask0_2345_2756)">
+                <path d="M13.6 13.0538L9 8.45379L9.7077 7.74609L15.0154 13.0538L9.7077 18.3615L9 17.6538L13.6 13.0538Z"
+                    fill="#010101" />
+            </g>
         </svg>
     </div>
 
     <div class="bold-menu personalised-jewellery">
         Personalised Jewellery
-        <svg class="icons">
-            <use href="/_nuxt3/icons.DgK34huS.svg#arrow-carousel-right"></use>
+        <svg width="24" height="25" viewBox="0 0 24 25" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <mask id="mask0_2345_2756" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="0" y="0" width="24"
+                height="25">
+                <rect y="0.746094" width="24" height="24" fill="#D9D9D9" />
+            </mask>
+            <g mask="url(#mask0_2345_2756)">
+                <path d="M13.6 13.0538L9 8.45379L9.7077 7.74609L15.0154 13.0538L9.7077 18.3615L9 17.6538L13.6 13.0538Z"
+                    fill="#010101" />
+            </g>
         </svg>
     </div>
 
