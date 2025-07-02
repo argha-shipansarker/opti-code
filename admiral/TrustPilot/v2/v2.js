@@ -1,31 +1,31 @@
 const utils = optimizely.get('utils');
 
 function handleGettingTrustPilotScript() {
-  if (document.getElementById("opti-trustpilot-script") && window.Trustpilot) {
-    window.Trustpilot = null;
-    const existingScript = document.getElementById("opti-trustpilot-script");
-    if (existingScript) {
-      existingScript.remove();
-      const newScript = document.createElement('script');
-      newScript.id = "opti-trustpilot-script"; // use the same ID again
-      newScript.src = "//widget.trustpilot.com/bootstrap/v5/tp.widget.bootstrap.min.js";
-      newScript.type = "text/javascript";
-      newScript.async = true;
-      document.body.appendChild(newScript);
+    if (document.getElementById("opti-trustpilot-script") && window.Trustpilot) {
+        window.Trustpilot = null;
+        const existingScript = document.getElementById("opti-trustpilot-script");
+        if (existingScript) {
+            existingScript.remove();
+            const newScript = document.createElement('script');
+            newScript.id = "opti-trustpilot-script"; // use the same ID again
+            newScript.src = "//widget.trustpilot.com/bootstrap/v5/tp.widget.bootstrap.min.js";
+            newScript.type = "text/javascript";
+            newScript.async = true;
+            document.body.appendChild(newScript);
+        }
+    } else {
+        const script = document.createElement('script');
+        script.id = "opti-trustpilot-script";
+        script.src = "//widget.trustpilot.com/bootstrap/v5/tp.widget.bootstrap.min.js";
+        script.type = "text/javascript";
+        script.async = true;
+        document.body.appendChild(script);
     }
-  } else {
-    const script = document.createElement('script');
-    script.id = "opti-trustpilot-script";
-    script.src = "//widget.trustpilot.com/bootstrap/v5/tp.widget.bootstrap.min.js";
-    script.type = "text/javascript";
-    script.async = true;
-    document.body.appendChild(script);
-  }
 }
 
 utils.observeSelector('eui-registration-lookup adm-wrap', function (lookup_section) {
-  if (window.location.pathname == '/Admiral/direct/search' && !document.querySelector('.opti-trust-pilot-design')) {
-    lookup_section.insertAdjacentHTML("beforeend", `<div class="opti-trust-pilot-design">
+    if (window.location.pathname == '/Admiral/direct/search' && !document.querySelector('.opti-trust-pilot-design')) {
+        lookup_section.insertAdjacentHTML("beforeend", `<div class="opti-trust-pilot-design">
     <style>
         .opti-trust-pilot-design .benefit-section {
             display: flex;
@@ -155,6 +155,33 @@ utils.observeSelector('eui-registration-lookup adm-wrap', function (lookup_secti
         <a href="https://uk.trustpilot.com/review/www.admiral.com" target="_blank" rel="noopener">Trustpilot</a>
     </div>
 </div>`);
-    handleGettingTrustPilotScript();
-  }
+        handleGettingTrustPilotScript();
+    }
+});
+
+utils.observeSelector('adm-page-actions > div', function (page_action_section) {
+    if (window.location.pathname == '/Admiral/direct/list' && !document.querySelector('.opti-trustpilot')) {
+        page_action_section.insertAdjacentHTML("afterbegin", `<style>
+    adm-page-actions>div {
+        align-items: center;
+    }
+
+    adm-page-actions adm-page-actions-primary {
+        margin-left: unset !important;
+    }
+
+    @media (max-width: 500px) {
+        .opti-trustpilot {
+            margin: auto;
+            order: 99;
+            margin-top: 16px;
+        }
+    }
+</style>
+<div class="trustpilot-widget opti-trustpilot" data-locale="en-GB" data-template-id="5406e65db0d04a09e042d5fc"
+    data-businessunit-id="4be0843700006400050788f5" data-style-height="28px" data-style-width="100%" data-theme="light">
+    <a href="https://uk.trustpilot.com/review/www.admiral.com" target="_blank" rel="noopener">Trustpilot</a>
+</div>`);
+        handleGettingTrustPilotScript();
+    }
 });

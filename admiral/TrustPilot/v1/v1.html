@@ -1,31 +1,4 @@
-const utils = optimizely.get('utils');
-
-function handleGettingTrustPilotScript() {
-  if (document.getElementById("opti-trustpilot-script") && window.Trustpilot) {
-    window.Trustpilot = null;
-    const existingScript = document.getElementById("opti-trustpilot-script");
-    if (existingScript) {
-      existingScript.remove();
-      const newScript = document.createElement('script');
-      newScript.id = "opti-trustpilot-script"; // use the same ID again
-      newScript.src = "//widget.trustpilot.com/bootstrap/v5/tp.widget.bootstrap.min.js";
-      newScript.type = "text/javascript";
-      newScript.async = true;
-      document.body.appendChild(newScript);
-    }
-  } else {
-    const script = document.createElement('script');
-    script.id = "opti-trustpilot-script";
-    script.src = "//widget.trustpilot.com/bootstrap/v5/tp.widget.bootstrap.min.js";
-    script.type = "text/javascript";
-    script.async = true;
-    document.body.appendChild(script);
-  }
-}
-
-utils.observeSelector('eui-registration-lookup adm-wrap', function (lookup_section) {
-  if (window.location.pathname == '/Admiral/direct/search' && !document.querySelector('.opti-trust-pilot-design')) {
-    lookup_section.insertAdjacentHTML("beforeend", `<div class="opti-trust-pilot-design">
+<div class="opti-trust-pilot-design">
     <style>
         .opti-trust-pilot-design .benefit-section {
             display: flex;
@@ -154,7 +127,4 @@ utils.observeSelector('eui-registration-lookup adm-wrap', function (lookup_secti
         data-theme="light">
         <a href="https://uk.trustpilot.com/review/www.admiral.com" target="_blank" rel="noopener">Trustpilot</a>
     </div>
-</div>`);
-    handleGettingTrustPilotScript();
-  }
-});
+</div>
