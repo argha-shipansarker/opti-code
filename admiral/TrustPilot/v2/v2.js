@@ -160,7 +160,7 @@ utils.observeSelector('eui-registration-lookup adm-wrap', function (lookup_secti
 });
 
 utils.observeSelector('adm-page-actions > div', function (page_action_section) {
-    if (window.location.pathname == '/Admiral/direct/list' && !document.querySelector('.opti-trustpilot')) {
+    if ((window.location.pathname == '/Admiral/direct/list' || window.location.pathname == '/Admiral/direct/summary') && !document.querySelector('.opti-trustpilot')) {
         page_action_section.insertAdjacentHTML("afterbegin", `<style>
     adm-page-actions>div {
         align-items: center;
@@ -185,3 +185,4 @@ utils.observeSelector('adm-page-actions > div', function (page_action_section) {
         handleGettingTrustPilotScript();
     }
 });
+
