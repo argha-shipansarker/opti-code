@@ -3717,3 +3717,25 @@ utils.waitForElement('nav .menu .menu__root-links > li:nth-of-type(7)').then(fun
     }
 
 });
+
+
+//Vue.js menu logics.
+window.opti_selected_menu_name = "";
+
+utils.observeSelector('.header-menu-drawer .header-menu-drawer__main-panel-wrapper .header-menu-drawer__navigation-links', function (vue_menu_container) {
+    const links = vue_menu_container.querySelectorAll('.header-menu-drawer__navigation-link-wrapper');
+    links.forEach(link => {
+        link.addEventListener('mousedown', function () {
+            const anchor = this.querySelector('a');
+            if (anchor) {
+                console.warn("anchor", anchor)
+                window.opti_selected_menu_name = anchor.innerText.trim();
+                console.warn("window.opti_selected_menu_name form first", window.opti_selected_menu_name)
+            }
+        });
+    });
+});
+
+utils.observeSelector('.header-menu-drawer .header-menu-drawer__panel-switcher-wrapper', function (vue_menu_2nd_level_container) {
+    console.warn("window.opti_selected_menu_name", window.opti_selected_menu_name);
+});
