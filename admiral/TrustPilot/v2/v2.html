@@ -1,15 +1,77 @@
-<style>
-    .opti-trustpilot {
-        margin: 48px auto 0;
-    }
-
-    @media (max-width: 500px) {
-        .opti-trustpilot {
-            margin: 37px auto 25px;
+<div class="opti-trustpilot-widget">
+    <style>
+        adm-page-actions>div {
+            align-items: center;
         }
-    }
-</style>
-<div class="trustpilot-widget opti-trustpilot" data-locale="en-GB" data-template-id="5406e65db0d04a09e042d5fc"
-    data-businessunit-id="4be0843700006400050788f5" data-style-height="28px" data-style-width="100%" data-theme="light">
-    <a href="https://uk.trustpilot.com/review/www.admiral.com" target="_blank" rel="noopener">Trustpilot</a>
+
+        adm-page-actions adm-page-actions-primary {
+            margin-left: unset !important;
+        }
+
+        .opti-trustpilot-widget {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 9px;
+            flex-wrap: wrap;
+            margin-right: 20px;
+        }
+
+        .opti-trustpilot-widget .excellent-message {
+            font-size: 16px;
+            line-height: 24px;
+            font-weight: 700;
+            color: #444444;
+            margin: 0;
+        }
+
+        .opti-trustpilot-widget .rating-image {
+            width: 107.14px;
+            height: 20px;
+        }
+
+        .opti-trustpilot-widget .break {
+            display: none;
+            flex-basis: 100%;
+            height: 0;
+        }
+
+        .opti-trustpilot-widget .review-number {
+            font-size: 12px;
+            line-height: 21px;
+            font-weight: 400;
+            margin: 0;
+            color: #444444;
+        }
+
+        .opti-trustpilot-widget .review-number span {
+            text-decoration: underline;
+        }
+
+        .opti-trustpilot-widget .logo-image {
+            width: 80.69px;
+            height: 20px;
+        }
+
+        @media (max-width: 500px) {
+            .opti-trustpilot-widget {
+                margin: auto;
+                order: 99;
+                margin-top: 16px;
+                margin-right: 0;
+                margin-bottom: 30px;
+            }
+
+            .opti-trustpilot-widget .break {
+                display: block;
+            }
+        }
+    </style>
+    <p class="excellent-message">Excellent</p>
+    <img class="rating-image" src="https://cdn.optimizely.com/img/24400620820/9c75db0fb97b4933b7ee75f712c9bfdb.png"
+        alt="trustpilot-rating">
+    <div class="break"></div>
+    <p class="review-number"><span>107,906 reviews</span> on</p>
+    <img class="logo-image" src="https://cdn.optimizely.com/img/24400620820/dc4622a7b2c64d3bac21437cfac5a436.png"
+        alt="trustpilot-logo">
 </div>
