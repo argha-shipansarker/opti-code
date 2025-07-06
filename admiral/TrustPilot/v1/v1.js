@@ -1,28 +1,5 @@
 const utils = optimizely.get('utils');
 
-function handleGettingTrustPilotScript() {
-    if (document.getElementById("opti-trustpilot-script") && window.Trustpilot) {
-        window.Trustpilot = null;
-        const existingScript = document.getElementById("opti-trustpilot-script");
-        if (existingScript) {
-            existingScript.remove();
-            const newScript = document.createElement('script');
-            newScript.id = "opti-trustpilot-script"; // use the same ID again
-            newScript.src = "//widget.trustpilot.com/bootstrap/v5/tp.widget.bootstrap.min.js";
-            newScript.type = "text/javascript";
-            newScript.async = true;
-            document.body.appendChild(newScript);
-        }
-    } else {
-        const script = document.createElement('script');
-        script.id = "opti-trustpilot-script";
-        script.src = "//widget.trustpilot.com/bootstrap/v5/tp.widget.bootstrap.min.js";
-        script.type = "text/javascript";
-        script.async = true;
-        document.body.appendChild(script);
-    }
-}
-
 utils.observeSelector('eui-registration-lookup adm-wrap', function (lookup_section) {
     if (window.location.pathname == '/Admiral/direct/search' && !document.querySelector('.opti-trust-pilot-design')) {
         lookup_section.insertAdjacentHTML("beforeend", `<div class="opti-trust-pilot-design">
@@ -64,6 +41,50 @@ utils.observeSelector('eui-registration-lookup adm-wrap', function (lookup_secti
             margin-bottom: 19.19px;
         }
 
+        .opti-trust-pilot-design .opti-trustpilot-widget {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 9px;
+            flex-wrap: wrap;
+        }
+
+        .opti-trust-pilot-design .opti-trustpilot-widget .excellent-message {
+            font-size: 16px;
+            line-height: 24px;
+            font-weight: 700;
+            color: #444444;
+            margin: 0;
+        }
+
+        .opti-trust-pilot-design .opti-trustpilot-widget .rating-image {
+            width: 107.14px;
+            height: 20px;
+        }
+
+        .opti-trust-pilot-design .opti-trustpilot-widget .break {
+            display: none;
+            flex-basis: 100%;
+            height: 0;
+        }
+
+        .opti-trust-pilot-design .opti-trustpilot-widget .review-number {
+            font-size: 12px;
+            line-height: 21px;
+            font-weight: 400;
+            margin: 0;
+            color: #444444;
+        }
+
+        .opti-trust-pilot-design .opti-trustpilot-widget .review-number span {
+            text-decoration: underline;
+        }
+
+        .opti-trust-pilot-design .opti-trustpilot-widget .logo-image {
+            width: 80.69px;
+            height: 20px;
+        }
+
         @media (max-width: 500px) {
             .opti-trust-pilot-design .benefit-section {
                 flex-direction: column;
@@ -91,7 +112,11 @@ utils.observeSelector('eui-registration-lookup adm-wrap', function (lookup_secti
             .opti-trust-pilot-design .star-message {
                 padding-bottom: 12px;
                 border-bottom: 1px solid #CED9E5;
-                margin-bottom: 12px;
+                margin-bottom: 20px;
+            }
+
+            .opti-trust-pilot-design .opti-trustpilot-widget .break {
+                display: block;
             }
         }
     </style>
@@ -149,13 +174,16 @@ utils.observeSelector('eui-registration-lookup adm-wrap', function (lookup_secti
         </div>
     </div>
     <p class="star-message">*Based on claims made during 2024 with Admiral, Gold, Platinum and Telematics covers.</p>
-    <div class="trustpilot-widget" data-locale="en-GB" data-template-id="5406e65db0d04a09e042d5fc"
-        data-businessunit-id="4be0843700006400050788f5" data-style-height="28px" data-style-width="100%"
-        data-theme="light">
-        <a href="https://uk.trustpilot.com/review/www.admiral.com" target="_blank" rel="noopener">Trustpilot</a>
+    <div class="opti-trustpilot-widget">
+        <p class="excellent-message">Excellent</p>
+        <img class="rating-image" src="https://cdn.optimizely.com/img/24400620820/9c75db0fb97b4933b7ee75f712c9bfdb.png"
+            alt="trustpilot-rating">
+        <div class="break"></div>
+        <p class="review-number"><span>107,906 reviews</span> on</p>
+        <img class="logo-image" src="https://cdn.optimizely.com/img/24400620820/dc4622a7b2c64d3bac21437cfac5a436.png"
+            alt="trustpilot-logo">
     </div>
 </div>`);
-        handleGettingTrustPilotScript();
     }
 });
 
@@ -206,6 +234,50 @@ utils.observeSelector('eui-coverable-summary > adm-wrap .adm-wrap__content', fun
             margin-bottom: 19.19px;
         }
 
+        .opti-trust-pilot-design .opti-trustpilot-widget {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 9px;
+            flex-wrap: wrap;
+        }
+
+        .opti-trust-pilot-design .opti-trustpilot-widget .excellent-message {
+            font-size: 16px;
+            line-height: 24px;
+            font-weight: 700;
+            color: #444444;
+            margin: 0;
+        }
+
+        .opti-trust-pilot-design .opti-trustpilot-widget .rating-image {
+            width: 107.14px;
+            height: 20px;
+        }
+
+        .opti-trust-pilot-design .opti-trustpilot-widget .break {
+            display: none;
+            flex-basis: 100%;
+            height: 0;
+        }
+
+        .opti-trust-pilot-design .opti-trustpilot-widget .review-number {
+            font-size: 12px;
+            line-height: 21px;
+            font-weight: 400;
+            margin: 0;
+            color: #444444;
+        }
+
+        .opti-trust-pilot-design .opti-trustpilot-widget .review-number span {
+            text-decoration: underline;
+        }
+
+        .opti-trust-pilot-design .opti-trustpilot-widget .logo-image {
+            width: 80.69px;
+            height: 20px;
+        }
+
         @media (max-width: 500px) {
             .opti-trust-pilot-design .benefit-section {
                 flex-direction: column;
@@ -231,7 +303,11 @@ utils.observeSelector('eui-coverable-summary > adm-wrap .adm-wrap__content', fun
             .opti-trust-pilot-design .star-message {
                 padding-bottom: 12px;
                 border-bottom: 1px solid #CED9E5;
-                margin-bottom: 12px;
+                margin-bottom: 20px;
+            }
+
+            .opti-trust-pilot-design .opti-trustpilot-widget .break {
+                display: block;
             }
         }
     </style>
@@ -289,12 +365,15 @@ utils.observeSelector('eui-coverable-summary > adm-wrap .adm-wrap__content', fun
         </div>
     </div>
     <p class="star-message">*Based on claims made during 2024 with Admiral, Gold, Platinum and Telematics covers.</p>
-    <div class="trustpilot-widget" data-locale="en-GB" data-template-id="5406e65db0d04a09e042d5fc"
-        data-businessunit-id="4be0843700006400050788f5" data-style-height="28px" data-style-width="100%"
-        data-theme="light">
-        <a href="https://uk.trustpilot.com/review/www.admiral.com" target="_blank" rel="noopener">Trustpilot</a>
+    <div class="opti-trustpilot-widget">
+        <p class="excellent-message">Excellent</p>
+        <img class="rating-image" src="https://cdn.optimizely.com/img/24400620820/9c75db0fb97b4933b7ee75f712c9bfdb.png"
+            alt="trustpilot-rating">
+        <div class="break"></div>
+        <p class="review-number"><span>107,906 reviews</span> on</p>
+        <img class="logo-image" src="https://cdn.optimizely.com/img/24400620820/dc4622a7b2c64d3bac21437cfac5a436.png"
+            alt="trustpilot-logo">
     </div>
 </div>`);
-        handleGettingTrustPilotScript();
     }
 });
