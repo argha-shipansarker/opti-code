@@ -3738,4 +3738,8 @@ utils.observeSelector('.header-menu-drawer .header-menu-drawer__main-panel-wrapp
 
 utils.observeSelector('.header-menu-drawer .header-menu-drawer__panel-switcher-wrapper', function (vue_menu_2nd_level_container) {
     console.warn("window.opti_selected_menu_name", window.opti_selected_menu_name);
+    if (window.opti_selected_menu_name == "ENGAGEMENT") {
+        first_grid_menu = vue_menu_2nd_level_container.querySelector('.navigation-section-panel .navigation-section-panel__grid .navigation-section-panel__grid-unit:nth-of-type(1)');
+        // first_grid_menu.
+    }
 });
