@@ -52,7 +52,7 @@ utils.observeSelector('.opti-quick-view-modal .quick-view-product .product-image
                 document.querySelector('.opti-quick-view-modal .quick-view-product #product_add_cart .shopify-product-form__button').insertAdjacentHTML("afterend", `<a class="see-full-desc-link" href="${cloned_plp_image.href}">
                 <style>
                     .see-full-desc-link {
-                        line-height: 16px;
+                        line-height: 12.1px;
                         font-weight: 700;
                         display: flex;
                         padding: 11px 0;
@@ -60,8 +60,8 @@ utils.observeSelector('.opti-quick-view-modal .quick-view-product .product-image
                         text-decoration: none;
                         border: 2px solid #272122;
                         color: #3B3130;
-                        font-size: 13.2px;
-                        letter-spacing: 2.56px;
+                        font-size: 11px;
+                        letter-spacing: 1.65px;
                         margin-bottom: 14px;
                     }
                 </style>
@@ -71,7 +71,7 @@ utils.observeSelector('.opti-quick-view-modal .quick-view-product .product-image
                 document.querySelector('.opti-quick-view-modal .quick-view-product #product_add_cart .shopify-product-form__button').insertAdjacentHTML("afterend", `<a class="see-full-desc-link" href="${cloned_plp_image.href}">
                     <style>
                         .see-full-desc-link {
-                            line-height: 16px;
+                            line-height: 12.1px;
                             font-weight: 700;
                             display: flex;
                             padding: 11px 0;
@@ -79,8 +79,8 @@ utils.observeSelector('.opti-quick-view-modal .quick-view-product .product-image
                             text-decoration: none;
                             border: 2px solid #272122;
                             color: #3B3130;
-                            font-size: 13.2px;
-                            letter-spacing: 2.56px;
+                            font-size: 11px;
+                            letter-spacing: 1.65px;
                             margin-bottom: 14px;
                         }
                     </style>
