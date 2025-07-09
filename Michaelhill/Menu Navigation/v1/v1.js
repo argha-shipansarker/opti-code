@@ -763,6 +763,12 @@ utils.waitForElement('nav .menu .menu__root-links > li:nth-of-type(1)').then(fun
             text-decoration: none;
             display: block;
         }
+
+        .opti-new-engagement-menu .normal-menu:hover,
+        .opti-new-engagement-menu .bold-menu.explore:hover {
+            text-decoration: underline;
+            color: #4c6335;
+        }
     </style>
 
     <div class="bold-menu cut">
@@ -793,7 +799,7 @@ utils.waitForElement('nav .menu .menu__root-links > li:nth-of-type(1)').then(fun
         </svg>
     </div>
 
-    <a href="/engagement" class="bold-menu">
+    <a href="/engagement" class="bold-menu explore">
         Explore Engagement
     </a>
 
@@ -2195,6 +2201,11 @@ utils.waitForElement('nav .menu .menu__root-links > li:nth-of-type(3)').then(fun
         .opti-new-jewellery-menu a.bold-menu {
             padding: 16px 0;
         }
+
+        .opti-new-jewellery-menu .bold-menu.explore:hover {
+            text-decoration: underline;
+            color: #4c6335;
+        }
     </style>
 
     <div class="bold-menu gemstones">
@@ -2253,7 +2264,7 @@ utils.waitForElement('nav .menu .menu__root-links > li:nth-of-type(3)').then(fun
         </svg>
     </div>
 
-    <a href="/jewellery" class="bold-menu">
+    <a href="/jewellery" class="bold-menu explore">
         Explore Jewellery
     </a>
 </div>`);
@@ -2663,6 +2674,11 @@ utils.waitForElement('nav .menu .menu__root-links > li:nth-of-type(4)').then(fun
             padding-bottom: 20px;
             border-bottom: 1px solid #E8E9EA;
         }
+
+        .opti-new-watch-menu .normal-menu:hover {
+            text-decoration: underline;
+            color: #4c6335;
+        }
     </style>
 
     <p class="menu-heading">Gender</p>
@@ -2850,9 +2866,15 @@ utils.waitForElement('nav .menu .menu__root-links > li:nth-of-type(5)').then(fun
             padding-bottom: 20px;
             border-bottom: 1px solid #E8E9EA;
         }
+
+        .opti-new-gift-menu .normal-menu:hover,
+        .opti-new-gift-menu .bold-menu.explore:hover {
+            text-decoration: underline;
+            color: #4c6335;
+        }
     </style>
 
-    <a href="/gifts/gift-ideas/shop-all-gifts" class="bold-menu">
+    <a href="/gifts/gift-ideas/shop-all-gifts" class="bold-menu explore">
         Explore Gifts
     </a>
 
@@ -3215,6 +3237,12 @@ utils.waitForElement('nav .menu .menu__root-links > li:nth-of-type(6)').then(fun
             text-decoration: none;
             display: block;
         }
+
+        .opti-new-clearance-menu .normal-menu:hover,
+        .opti-new-clearance-menu .bold-menu.explore:hover {
+            text-decoration: underline;
+            color: #4c6335;
+        }
     </style>
 
     <p class="menu-heading">Clearance by Category</p>
@@ -3226,7 +3254,7 @@ utils.waitForElement('nav .menu .menu__root-links > li:nth-of-type(6)').then(fun
         class="normal-menu">Rings</a>
     <a href="/sale/jewellery/bracelets-bangles" class="normal-menu">Bracelets & Bangles</a>
     <a href="/sale/mens" class="normal-menu">Men’s Jewellery</a>
-    <a href="/sale" class="bold-menu">
+    <a href="/sale" class="bold-menu explore">
         Shop All Clearance
     </a>
 
