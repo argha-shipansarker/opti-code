@@ -3807,130 +3807,145 @@ utils.observeSelector('.header-menu-drawer .header-menu-drawer__panel-switcher-w
         color: #282829;
         font-weight: 400;
     }
+
+    .opti-engagement-bridal-heading.close {
+        display: none;
+    }
+
+    .opti-engagement-bridal-heading.open {
+        display: flex;
+    }
+
+    .opti-engagement-bridal-collections.close {
+        display: none;
+    }
+
+    .opti-engagement-bridal-collections.open {
+        display: block;
+    }
+
+    .opti-engagement-bridal-heading {
+        padding-bottom: 24px;
+    }
+
+    .opti-engagement-bridal-heading p {
+        font-family: "Söhne-Kräftig", Arial, Helvetica, sans-serif;
+        font-size: 16px;
+        line-height: 24px;
+        margin: 0 0 0 16px !important;
+    }
+
+    .opti-engagement-bridal-collections {
+        box-sizing: border-box;
+        max-height: calc(100vh - 128px);
+        overflow: scroll;
+        scrollbar-width: none;
+        width: 100%;
+        margin: 0;
+        padding: 0;
+    }
+
+    .opti-engagement-bridal-collections .menu-panels__panel {
+        display: flex;
+        flex-wrap: wrap;
+        column-gap: 12px;
+        padding-top: 0;
+    }
+
+    .opti-engagement-bridal-collections .menu-panels__panel .menu-items {
+        display: flex;
+        flex-direction: column;
+        flex-basis: 48%;
+        margin-bottom: 16px;
+        text-decoration: none;
+    }
+
+    .opti-engagement-bridal-collections .menu-panels__panel .menu-items .icon {
+        display: flex;
+    }
+
+    .opti-engagement-bridal-collections .menu-panels__panel .menu-items p {
+        font-size: 16px;
+        line-height: 1.2;
+        letter-spacing: 0.02rem;
+        font-weight: 400;
+        margin-bottom: 0 !important;
+        margin-top: 8px;
+    }
 </style>`)
 
-        vue_menu_2nd_level_container.insertAdjacentHTML("beforeend", `<div class="menu-panels menu-panels--close opti-engagement-bridal-collections">
-    <style>
-        .opti-engagement-bridal-collections.menu-panels--close {
-            display: none;
-        }
+        vue_menu_2nd_level_container.insertAdjacentHTML("beforeend", `<div class="opti-engagement-bridal-heading close">
+    <button>
+        <svg data-v-ce454e80="" width="24" height="24" viewBox="0 0 24 24" fill="none"
+            xmlns="http://www.w3.org/2000/svg" class="">
+            <mask data-v-ce454e80="" id="mask0_3820_13683" maskUnits="userSpaceOnUse" x="0" y="0" width="24" height="24"
+                style="mask-type: alpha;">
+                <rect data-v-ce454e80="" width="24" height="24" fill="#D9D9D9"></rect>
+            </mask>
+            <g data-v-ce454e80="" mask="url(#mask0_3820_13683)">
+                <path data-v-ce454e80=""
+                    d="M14.3077 17.6154L9 12.3077L14.3077 7L15.0154 7.7077L10.4154 12.3077L15.0154 16.9077L14.3077 17.6154Z"
+                    fill="#010101"></path>
+            </g>
+        </svg>
+    </button>
+    <p>
+        Bridal Collections
+    </p>
+</div>
 
-        .opti-engagement-bridal-collections.menu-panels--open {
-            display: block;
-        }
+<div class="opti-engagement-bridal-collections close">
 
-        .opti-engagement-bridal-collections .menu-panels__header-back {
-            gap: 16px !important;
-        }
+    <div class="menu-panels__panel">
+        <a href="/engagement/collections/lab" class="menu-items">
+            <div class="icon">
+                <img src="https://cdn.optimizely.com/img/22916101539/a11cbc1272aa448dbceb9384c9dfa612.jpg" alt="">
+            </div>
+            <p>LAB.</p>
+        </a>
 
-        .opti-engagement-bridal-collections .menu-panels__header-back svg {
-            height: unset !important;
-        }
+        <a href="/engagement/collections/evermore" class="menu-items">
+            <div class="icon">
+                <img src="https://cdn.optimizely.com/img/22916101539/c30f9d8f259949d887535218ceec47cc.jpg" alt="">
+            </div>
+            <p>Evermore</p>
+        </a>
 
-        .opti-engagement-bridal-collections .menu-panels__header {
-            border-bottom: 0;
-        }
+        <a href="/engagement/collections/canadian-diamonds" class="menu-items">
+            <div class="icon">
+                <img src="https://cdn.optimizely.com/img/22916101539/d6b49d708b224d25ad7f5d951a11cfe7.jpg" alt="">
+            </div>
+            <p>Canadian Diamonds</p>
+        </a>
 
-        .opti-engagement-bridal-collections .menu-panels__panel {
-            display: flex;
-            flex-wrap: wrap;
-            column-gap: 12px;
-            padding-top: 0;
-        }
+        <a href="/engagement/collections/michael-hill-solitaire" class="menu-items">
+            <div class="icon">
+                <img src="https://cdn.optimizely.com/img/22916101539/2d71e6ffa6b344c68111687df930ebfe.jpg" alt="">
+            </div>
+            <p>Solitaire by Michael Hill</p>
+        </a>
 
-        .opti-engagement-bridal-collections .menu-panels__panel .menu-items {
-            display: flex;
-            flex-direction: column;
-            flex-basis: 48%;
-            margin-bottom: 16px;
-        }
+        <a href="/engagement/collections/sir-michael-hill-designer-bridal-collection" class="menu-items">
+            <div class="icon">
+                <img src="https://cdn.optimizely.com/img/22916101539/d1e7e888cace44e0956db801e74db771.jpg" alt="">
+            </div>
+            <p>Sir Michael Hill Designer Bridal</p>
+        </a>
 
-        .opti-engagement-bridal-collections .menu-panels__panel .menu-items .icon {
-            display: flex;
-        }
+        <a href="/engagement/collections/signature" class="menu-items">
+            <div class="icon">
+                <img src="https://cdn.optimizely.com/img/22916101539/0b81d15d2e564bde8285dc4a6dad2761.jpg" alt="">
+            </div>
+            <p>Signature Diamond</p>
+        </a>
 
-        .opti-engagement-bridal-collections .menu-panels__panel .menu-items p {
-            font-size: 16px;
-            line-height: 1.2;
-            letter-spacing: 0.02rem;
-            font-weight: 400;
-            margin-bottom: 0;
-            margin-top: 8px;
-        }
-    </style>
-
-    <div class="menu-panels__header">
-        <button class="menu-panels__header-back">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <mask id="mask0_2345_3247" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="0" y="0" width="24"
-                    height="24">
-                    <rect width="24" height="24" fill="#D9D9D9" />
-                </mask>
-                <g mask="url(#mask0_2345_3247)">
-                    <path
-                        d="M14.3077 17.6154L9 12.3077L14.3077 7L15.0154 7.7077L10.4154 12.3077L15.0154 16.9077L14.3077 17.6154Z"
-                        fill="#010101" />
-                </g>
-            </svg>
-            Bridal Collections
-        </button>
+        <a href="/collections/bridal" class="menu-items">
+            <div class="icon">
+                <img src="https://cdn.optimizely.com/img/22916101539/3ae5632a5c744c2f9490086f1cf702bc.jpg" alt="">
+            </div>
+            <p>View All Bridal Collections</p>
+        </a>
     </div>
-
-    <ul class="menu-panels__scroll">
-
-        <li class="menu-panels__panel">
-            <a href="/engagement/collections/lab" class="menu-items">
-                <div class="icon">
-                    <img src="https://cdn.optimizely.com/img/22916101539/a11cbc1272aa448dbceb9384c9dfa612.jpg" alt="">
-                </div>
-                <p>LAB.</p>
-            </a>
-
-            <a href="/engagement/collections/evermore" class="menu-items">
-                <div class="icon">
-                    <img src="https://cdn.optimizely.com/img/22916101539/c30f9d8f259949d887535218ceec47cc.jpg" alt="">
-                </div>
-                <p>Evermore</p>
-            </a>
-
-            <a href="/engagement/collections/canadian-diamonds" class="menu-items">
-                <div class="icon">
-                    <img src="https://cdn.optimizely.com/img/22916101539/d6b49d708b224d25ad7f5d951a11cfe7.jpg" alt="">
-                </div>
-                <p>Canadian Diamonds</p>
-            </a>
-
-            <a href="/engagement/collections/michael-hill-solitaire" class="menu-items">
-                <div class="icon">
-                    <img src="https://cdn.optimizely.com/img/22916101539/2d71e6ffa6b344c68111687df930ebfe.jpg" alt="">
-                </div>
-                <p>Solitaire by Michael Hill</p>
-            </a>
-
-            <a href="/engagement/collections/sir-michael-hill-designer-bridal-collection" class="menu-items">
-                <div class="icon">
-                    <img src="https://cdn.optimizely.com/img/22916101539/d1e7e888cace44e0956db801e74db771.jpg" alt="">
-                </div>
-                <p>Sir Michael Hill Designer Bridal</p>
-            </a>
-
-            <a href="/engagement/collections/signature" class="menu-items">
-                <div class="icon">
-                    <img src="https://cdn.optimizely.com/img/22916101539/0b81d15d2e564bde8285dc4a6dad2761.jpg" alt="">
-                </div>
-                <p>Signature Diamond</p>
-            </a>
-
-            <a href="/collections/bridal" class="menu-items">
-                <div class="icon">
-                    <img src="https://cdn.optimizely.com/img/22916101539/3ae5632a5c744c2f9490086f1cf702bc.jpg" alt="">
-                </div>
-                <p>View All Bridal Collections</p>
-            </a>
-        </li>
-
-    </ul>
-
 </div>`);
 
         first_grid_menu = vue_menu_2nd_level_container.querySelector('.navigation-section-panel .navigation-section-panel__grid .navigation-section-panel__grid-unit:nth-of-type(1)');
@@ -3985,6 +4000,12 @@ utils.observeSelector('.header-menu-drawer .header-menu-drawer__panel-switcher-w
             text-decoration: none;
             display: block;
         }
+
+        .opti-new-engagement-menu .normal-menu:hover,
+        .opti-new-engagement-menu .bold-menu.explore:hover {
+            text-decoration: underline;
+            color: #4c6335;
+        }
     </style>
 
     <div class="bold-menu cut">
@@ -4015,7 +4036,7 @@ utils.observeSelector('.header-menu-drawer .header-menu-drawer__panel-switcher-w
         </svg>
     </div>
 
-    <a href="/engagement" class="bold-menu">
+    <a href="/engagement" class="bold-menu explore">
         Explore Engagement
     </a>
 
@@ -4026,9 +4047,10 @@ utils.observeSelector('.header-menu-drawer .header-menu-drawer__panel-switcher-w
 </div>`);
 
         document.querySelector('.opti-new-engagement-menu .bridal-collection').addEventListener('click', function () {
-            vue_menu_2nd_level_container.querySelector('.header-menu-drawer__panel-switcher-link-content').style.display = "none";
-            vue_menu_2nd_level_container.querySelector('.header-menu-drawer__panel-switcher').style.display = "none";
-            vue_menu_2nd_level_container.querySelector('.opti-engagement-bridal-collections').style.display = "block";
+            vue_menu_2nd_level_container.querySelector('.header-menu-drawer__panel-switcher-link-content:not(.opti-engagement-bridal-heading)').style.display = "none";
+            vue_menu_2nd_level_container.querySelector('.header-menu-drawer__panel-switcher:not(.opti-engagement-bridal-collections)').style.display = "none";
+            vue_menu_2nd_level_container.querySelector('.opti-engagement-bridal-heading').classList.add('open');
+            vue_menu_2nd_level_container.querySelector('.opti-engagement-bridal-collections').classList.add('open');
         })
     }
 });
