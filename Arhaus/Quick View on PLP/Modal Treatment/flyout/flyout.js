@@ -49,30 +49,42 @@ utils.observeSelector('.opti-quick-view-modal .quick-view-product .product-image
 
             if (document.querySelector('.opti-quick-view-modal .quick-view-product #product_add_cart .see-full-desc-link')) {
                 document.querySelector('.opti-quick-view-modal .quick-view-product #product_add_cart .see-full-desc-link').remove();
-                document.querySelector('.opti-quick-view-modal .quick-view-product #product_add_cart').insertAdjacentHTML("beforeend", `<a class="see-full-desc-link" href="${cloned_plp_image.href}">
+                document.querySelector('.opti-quick-view-modal .quick-view-product #product_add_cart .shopify-product-form__button').insertAdjacentHTML("afterend", `<a class="see-full-desc-link" href="${cloned_plp_image.href}">
                 <style>
                     .see-full-desc-link {
-                        font-size: 12px;
                         line-height: 16px;
                         font-weight: 700;
-                        text-decoration: underline;
-                        color: #000000;
+                        display: flex;
+                        padding: 11px 0;
+                        justify-content: center;
+                        text-decoration: none;
+                        border: 2px solid #272122;
+                        color: #3B3130;
+                        font-size: 13.2px;
+                        letter-spacing: 2.56px;
+                        margin-bottom: 14px;
                     }
                 </style>
-                See Full Description
+                SEE FULL DESCRIPTION
             </a>`);
             } else {
-                document.querySelector('.opti-quick-view-modal .quick-view-product #product_add_cart').insertAdjacentHTML("beforeend", `<a class="see-full-desc-link" href="${cloned_plp_image.href}">
+                document.querySelector('.opti-quick-view-modal .quick-view-product #product_add_cart .shopify-product-form__button').insertAdjacentHTML("afterend", `<a class="see-full-desc-link" href="${cloned_plp_image.href}">
                     <style>
                         .see-full-desc-link {
-                            font-size: 12px;
                             line-height: 16px;
                             font-weight: 700;
-                            text-decoration: underline;
-                            color: #000000;
+                            display: flex;
+                            padding: 11px 0;
+                            justify-content: center;
+                            text-decoration: none;
+                            border: 2px solid #272122;
+                            color: #3B3130;
+                            font-size: 13.2px;
+                            letter-spacing: 2.56px;
+                            margin-bottom: 14px;
                         }
                     </style>
-                    See Full Description
+                    SEE FULL DESCRIPTION
                 </a>`);
             }
 
