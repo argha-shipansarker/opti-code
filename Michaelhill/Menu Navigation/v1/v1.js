@@ -18,6 +18,54 @@ function bindToggleButton(buttonSelector, panelSelector, open = true, callback =
     }
 }
 
+function toggleVueMenu({
+    isOpening,
+    headingSelector,
+    collectionsSelector,
+    container
+}) {
+    const switcherLink = container.querySelector('.header-menu-drawer__panel-switcher-link-content');
+    const panelSwitcher = container.querySelector('.header-menu-drawer__panel-switcher');
+    const heading = container.querySelector(headingSelector);
+    const collections = container.querySelector(collectionsSelector);
+
+    if (!heading || !collections) return;
+
+    switcherLink.style.display = isOpening ? 'none' : 'flex';
+    panelSwitcher.style.display = isOpening ? 'none' : 'block';
+
+    heading.classList.toggle('open', isOpening);
+    collections.classList.toggle('open', isOpening);
+
+    heading.classList.toggle('close', !isOpening);
+    collections.classList.toggle('close', !isOpening);
+}
+
+function bindVueMenuToggleClick({
+    triggerSelector,
+    isOpening,
+    headingSelector,
+    collectionsSelector,
+    container
+}) {
+    const triggerEl = document.querySelector(triggerSelector);
+
+    if (!triggerEl) {
+        return;
+    }
+
+    triggerEl.addEventListener('click', function () {
+        toggleVueMenu({
+            isOpening,
+            headingSelector,
+            collectionsSelector,
+            container
+        });
+    });
+}
+
+
+
 //Engagement Menu 
 utils.waitForElement('nav .menu .menu__root-links > li:nth-of-type(1)').then(function (engagement_menu) {
 
@@ -3767,6 +3815,7 @@ utils.observeSelector('.header-menu-drawer .header-menu-drawer__main-panel-wrapp
 utils.observeSelector('.header-menu-drawer .header-menu-drawer__panel-switcher-wrapper', function (vue_menu_2nd_level_container) {
     console.warn("window.opti_selected_menu_name", window.opti_selected_menu_name);
     if (window.opti_selected_menu_name == "ENGAGEMENT") {
+
         vue_menu_2nd_level_container.classList.add('opti-engagement-vue-menu-panel');
 
         vue_menu_2nd_level_container.insertAdjacentHTML("afterbegin", `<style>
@@ -4046,11 +4095,20 @@ utils.observeSelector('.header-menu-drawer .header-menu-drawer__panel-switcher-w
     <a href="/article/knowledge-advice/engagement-ring-guide" class="normal-menu">Engagement Ring Guide</a>
 </div>`);
 
-        document.querySelector('.opti-new-engagement-menu .bridal-collection').addEventListener('click', function () {
-            vue_menu_2nd_level_container.querySelector('.header-menu-drawer__panel-switcher-link-content:not(.opti-engagement-bridal-heading)').style.display = "none";
-            vue_menu_2nd_level_container.querySelector('.header-menu-drawer__panel-switcher:not(.opti-engagement-bridal-collections)').style.display = "none";
-            vue_menu_2nd_level_container.querySelector('.opti-engagement-bridal-heading').classList.add('open');
-            vue_menu_2nd_level_container.querySelector('.opti-engagement-bridal-collections').classList.add('open');
-        })
+        bindVueMenuToggleClick({
+            triggerSelector: '.opti-new-engagement-menu .bridal-collection',
+            isOpening: true,
+            headingSelector: '.opti-engagement-bridal-heading',
+            collectionsSelector: '.opti-engagement-bridal-collections',
+            container: vue_menu_2nd_level_container
+        });
+
+        bindVueMenuToggleClick({
+            triggerSelector: '.opti-engagement-bridal-heading',
+            isOpening: false,
+            headingSelector: '.opti-engagement-bridal-heading',
+            collectionsSelector: '.opti-engagement-bridal-collections',
+            container: vue_menu_2nd_level_container
+        });
     }
 });
