@@ -4692,31 +4692,36 @@ utils.observeSelector('.header-menu-drawer .header-menu-drawer__panel-switcher-w
 
     .opti-wedding-ring-type-heading.close,
     .opti-wedding-ring-metal-heading.close,
-    .opti-wedding-gifts-heading.close {
+    .opti-wedding-gifts-heading.close,
+    .opti-wedding-accessories-heading.close {
         display: none;
     }
 
     .opti-wedding-ring-type-heading.open,
     .opti-wedding-ring-metal-heading.open,
-    .opti-wedding-gifts-heading.open {
+    .opti-wedding-gifts-heading.open,
+    .opti-wedding-accessories-heading.open {
         display: flex;
     }
 
     .opti-wedding-ring-type.close,
     .opti-wedding-ring-metal.close,
-    .opti-wedding-gifts.close {
+    .opti-wedding-gifts.close,
+    .opti-wedding-accessories-panel.close {
         display: none;
     }
 
     .opti-wedding-ring-type.open,
     .opti-wedding-ring-metal.open,
-    .opti-wedding-gifts.open {
+    .opti-wedding-gifts.open,
+    .opti-wedding-accessories-panel.open {
         display: block;
     }
 
     .opti-wedding-ring-type-heading,
     .opti-wedding-ring-metal-heading,
-    .opti-wedding-gifts-heading {
+    .opti-wedding-gifts-heading,
+    .opti-wedding-accessories-heading {
         padding-bottom: 24px;
     }
 
@@ -4727,7 +4732,8 @@ utils.observeSelector('.header-menu-drawer .header-menu-drawer__panel-switcher-w
 
     .opti-wedding-ring-type-heading p,
     .opti-wedding-ring-metal-heading p,
-    .opti-wedding-gifts-heading p {
+    .opti-wedding-gifts-heading p,
+    .opti-wedding-accessories-heading p {
         font-family: "Söhne-Kräftig", Arial, Helvetica, sans-serif;
         font-size: 16px;
         line-height: 24px;
@@ -4736,7 +4742,8 @@ utils.observeSelector('.header-menu-drawer .header-menu-drawer__panel-switcher-w
 
     .opti-wedding-ring-type,
     .opti-wedding-ring-metal,
-    .opti-wedding-gifts {
+    .opti-wedding-gifts,
+    .opti-wedding-accessories-panel {
         box-sizing: border-box;
         max-height: calc(100vh - 128px);
         overflow: scroll;
@@ -4746,14 +4753,16 @@ utils.observeSelector('.header-menu-drawer .header-menu-drawer__panel-switcher-w
         padding: 0;
     }
 
-    .opti-wedding-ring-type .menu-panels__panel {
+    .opti-wedding-ring-type .menu-panels__panel,
+    .opti-wedding-accessories-panel .menu-panels__panel {
         display: flex;
         flex-wrap: wrap;
         column-gap: 12px;
         padding-top: 0;
     }
 
-    .opti-wedding-ring-type .menu-panels__panel .menu-items {
+    .opti-wedding-ring-type .menu-panels__panel .menu-items,
+    .opti-wedding-accessories-panel .menu-panels__panel .menu-items {
         display: flex;
         flex-direction: column;
         flex-basis: 48%;
@@ -4761,13 +4770,15 @@ utils.observeSelector('.header-menu-drawer .header-menu-drawer__panel-switcher-w
         text-decoration: none;
     }
 
-    .opti-wedding-ring-type .menu-panels__panel .menu-items p {
+    .opti-wedding-ring-type .menu-panels__panel .menu-items p,
+    .opti-wedding-accessories-panel .menu-panels__panel .menu-items p {
         font-size: 16px;
         line-height: 1.2;
         letter-spacing: 0.02rem;
         font-weight: 400;
         margin-bottom: 0 !important;
         margin-top: 8px;
+        color: #282829;
     }
 
     .opti-wedding-ring-metal .menu-panels__panel,
@@ -5022,6 +5033,52 @@ utils.observeSelector('.header-menu-drawer .header-menu-drawer__panel-switcher-w
 
 </div>`);
 
+        vue_menu_2nd_level_container.insertAdjacentHTML("beforeend", `<div class="opti-wedding-accessories-heading close">
+    <button>
+        <svg data-v-ce454e80="" width="24" height="24" viewBox="0 0 24 24" fill="none"
+            xmlns="http://www.w3.org/2000/svg" class="">
+            <mask data-v-ce454e80="" id="mask0_3820_13683" maskUnits="userSpaceOnUse" x="0" y="0" width="24" height="24"
+                style="mask-type: alpha;">
+                <rect data-v-ce454e80="" width="24" height="24" fill="#D9D9D9"></rect>
+            </mask>
+            <g data-v-ce454e80="" mask="url(#mask0_3820_13683)">
+                <path data-v-ce454e80=""
+                    d="M14.3077 17.6154L9 12.3077L14.3077 7L15.0154 7.7077L10.4154 12.3077L15.0154 16.9077L14.3077 17.6154Z"
+                    fill="#010101"></path>
+            </g>
+        </svg>
+    </button>
+    <p>
+        Wedding Accessories
+    </p>
+</div>
+
+<div class="opti-wedding-accessories-panel close">
+
+    <div class="menu-panels__panel">
+        <a href="/wedding/wedding-accessories" class="menu-items">
+            <img src="https://cdn.optimizely.com/img/24400620820/b70505576e3d43b5a8754a98cf92d01f.jpg" alt="">
+            <p>Wedding Day Jewellery</p>
+        </a>
+
+        <a href="/wedding/wedding-accessories/earrings" class="menu-items">
+            <img src="https://cdn.optimizely.com/img/24400620820/d049afc23efc4068a9caf999f719e70f.jpg" alt="">
+            <p>Wedding Earrings</p>
+        </a>
+
+        <a href="/wedding/wedding-accessories/necklaces" class="menu-items">
+            <img src="https://cdn.optimizely.com/img/24400620820/fe9abf542f1f42fdbb524f90b523fd9f.jpg" alt="">
+            <p>Wedding Necklaces</p>
+        </a>
+
+        <a href="/wedding/wedding-accessories" class="menu-items">
+            <img src="https://cdn.optimizely.com/img/24400620820/9370241b421b407db30ac465b3e411e8.jpg" alt="">
+            <p>All Wedding Accessories</p>
+        </a>
+    </div>
+
+</div>`)
+
         first_grid_menu = vue_menu_2nd_level_container.querySelector('.navigation-section-panel .navigation-section-panel__grid .navigation-section-panel__grid-unit:nth-of-type(1)');
 
         first_grid_menu.insertAdjacentHTML("afterend", `<div class="opti-new-wedding-menu">
@@ -5145,6 +5202,22 @@ utils.observeSelector('.header-menu-drawer .header-menu-drawer__panel-switcher-w
             isOpening: false,
             headingSelector: '.opti-wedding-gifts-heading',
             collectionsSelector: '.opti-wedding-gifts',
+            container: vue_menu_2nd_level_container
+        });
+
+        bindVueMenuToggleClick({
+            triggerSelector: '.opti-new-wedding-menu .accessories',
+            isOpening: true,
+            headingSelector: '.opti-wedding-accessories-heading',
+            collectionsSelector: '.opti-wedding-accessories-panel',
+            container: vue_menu_2nd_level_container
+        });
+
+        bindVueMenuToggleClick({
+            triggerSelector: '.opti-wedding-accessories-heading',
+            isOpening: false,
+            headingSelector: '.opti-wedding-accessories-heading',
+            collectionsSelector: '.opti-wedding-accessories-panel',
             container: vue_menu_2nd_level_container
         });
 

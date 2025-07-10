@@ -50,31 +50,36 @@
 
     .opti-wedding-ring-type-heading.close,
     .opti-wedding-ring-metal-heading.close,
-    .opti-wedding-gifts-heading.close {
+    .opti-wedding-gifts-heading.close,
+    .opti-wedding-accessories-heading.close {
         display: none;
     }
 
     .opti-wedding-ring-type-heading.open,
     .opti-wedding-ring-metal-heading.open,
-    .opti-wedding-gifts-heading.open {
+    .opti-wedding-gifts-heading.open,
+    .opti-wedding-accessories-heading.open {
         display: flex;
     }
 
     .opti-wedding-ring-type.close,
     .opti-wedding-ring-metal.close,
-    .opti-wedding-gifts.close {
+    .opti-wedding-gifts.close,
+    .opti-wedding-accessories-panel.close {
         display: none;
     }
 
     .opti-wedding-ring-type.open,
     .opti-wedding-ring-metal.open,
-    .opti-wedding-gifts.open {
+    .opti-wedding-gifts.open,
+    .opti-wedding-accessories-panel.open {
         display: block;
     }
 
     .opti-wedding-ring-type-heading,
     .opti-wedding-ring-metal-heading,
-    .opti-wedding-gifts-heading {
+    .opti-wedding-gifts-heading,
+    .opti-wedding-accessories-heading {
         padding-bottom: 24px;
     }
 
@@ -85,7 +90,8 @@
 
     .opti-wedding-ring-type-heading p,
     .opti-wedding-ring-metal-heading p,
-    .opti-wedding-gifts-heading p {
+    .opti-wedding-gifts-heading p,
+    .opti-wedding-accessories-heading p {
         font-family: "Söhne-Kräftig", Arial, Helvetica, sans-serif;
         font-size: 16px;
         line-height: 24px;
@@ -94,7 +100,8 @@
 
     .opti-wedding-ring-type,
     .opti-wedding-ring-metal,
-    .opti-wedding-gifts {
+    .opti-wedding-gifts,
+    .opti-wedding-accessories-panel {
         box-sizing: border-box;
         max-height: calc(100vh - 128px);
         overflow: scroll;
@@ -104,14 +111,16 @@
         padding: 0;
     }
 
-    .opti-wedding-ring-type .menu-panels__panel {
+    .opti-wedding-ring-type .menu-panels__panel,
+    .opti-wedding-accessories-panel .menu-panels__panel {
         display: flex;
         flex-wrap: wrap;
         column-gap: 12px;
         padding-top: 0;
     }
 
-    .opti-wedding-ring-type .menu-panels__panel .menu-items {
+    .opti-wedding-ring-type .menu-panels__panel .menu-items,
+    .opti-wedding-accessories-panel .menu-panels__panel .menu-items {
         display: flex;
         flex-direction: column;
         flex-basis: 48%;
@@ -119,13 +128,15 @@
         text-decoration: none;
     }
 
-    .opti-wedding-ring-type .menu-panels__panel .menu-items p {
+    .opti-wedding-ring-type .menu-panels__panel .menu-items p,
+    .opti-wedding-accessories-panel .menu-panels__panel .menu-items p {
         font-size: 16px;
         line-height: 1.2;
         letter-spacing: 0.02rem;
         font-weight: 400;
         margin-bottom: 0 !important;
         margin-top: 8px;
+        color: #282829;
     }
 
     .opti-wedding-ring-metal .menu-panels__panel,
