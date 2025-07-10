@@ -28,6 +28,7 @@ function toggleVueMenu({
     const panelSwitcher = container.querySelector('.header-menu-drawer__panel-switcher');
     const heading = container.querySelector(headingSelector);
     const collections = container.querySelector(collectionsSelector);
+    console.warn('hello from toggleVueMenu')
 
     if (!heading || !collections) return;
 
@@ -4649,7 +4650,7 @@ utils.observeSelector('.header-menu-drawer .header-menu-drawer__panel-switcher-w
     }
 
     .header-menu-drawer .header-menu-drawer__panel-switcher-wrapper .navigation-section-panel .navigation-section-panel__grid .navigation-section-panel__grid-unit:nth-of-type(1) {
-        padding: 36px 0 12px !important;
+        padding: 36px 0 0px !important;
         border-bottom: 0px;
     }
 
@@ -4665,12 +4666,16 @@ utils.observeSelector('.header-menu-drawer .header-menu-drawer__panel-switcher-w
         display: none;
     }
 
+    .header-menu-drawer .header-menu-drawer__panel-switcher-wrapper .navigation-section-panel .navigation-section-panel__grid .navigation-section-panel__grid-unit:nth-of-type(1) .navigation-utility-panel .navigation-utility-panel__links li:nth-of-type(3) {
+        margin-bottom: 12px;
+    }
+
     .header-menu-drawer .header-menu-drawer__panel-switcher-wrapper .navigation-section-panel .navigation-section-panel__grid .navigation-section-panel__grid-unit:nth-of-type(3),
     .header-menu-drawer .header-menu-drawer__panel-switcher-wrapper .navigation-section-panel .navigation-section-panel__grid .navigation-section-panel__grid-unit:nth-of-type(4) {
         display: none;
     }
 
-    .header-menu-drawer .header-menu-drawer__panel-switcher-wrapper .navigation-section-panel .navigation-section-panel__grid .navigation-section-panel__grid-unit:nth-of-type(5) .optimised-picture-wrapper picture {
+    .header-menu-drawer .header-menu-drawer__panel-switcher-wrapper .navigation-section-panel .navigation-section-panel__grid .navigation-section-panel__grid-unit:nth-of-type(5) .optimised-picture-wrapper {
         display: none !important;
     }
 
@@ -4684,10 +4689,384 @@ utils.observeSelector('.header-menu-drawer .header-menu-drawer__panel-switcher-w
         color: #282829;
         font-weight: 400;
     }
+
+    .opti-wedding-ring-type-heading.close,
+    .opti-wedding-ring-metal-heading.close {
+        display: none;
+    }
+
+    .opti-wedding-ring-type-heading.open,
+    .opti-wedding-ring-metal-heading.open {
+        display: flex;
+    }
+
+    .opti-wedding-ring-type.close,
+    .opti-wedding-ring-metal.close {
+        display: none;
+    }
+
+    .opti-wedding-ring-type.open,
+    .opti-wedding-ring-metal.open {
+        display: block;
+    }
+
+    .opti-wedding-ring-type-heading,
+    .opti-wedding-ring-metal-heading {
+        padding-bottom: 24px;
+    }
+
+    .opti-wedding-ring-metal-heading {
+        border-bottom: 1px solid #E8E9EA;
+    }
+
+    .opti-wedding-ring-type-heading p,
+    .opti-wedding-ring-metal-heading p {
+        font-family: "Söhne-Kräftig", Arial, Helvetica, sans-serif;
+        font-size: 16px;
+        line-height: 24px;
+        margin: 0 0 0 16px !important;
+    }
+
+    .opti-wedding-ring-type,
+    .opti-wedding-ring-metal {
+        box-sizing: border-box;
+        max-height: calc(100vh - 128px);
+        overflow: scroll;
+        scrollbar-width: none;
+        width: 100%;
+        margin: 0;
+        padding: 0;
+    }
+
+    .opti-wedding-ring-type .menu-panels__panel {
+        display: flex;
+        flex-wrap: wrap;
+        column-gap: 12px;
+        padding-top: 0;
+    }
+
+    .opti-wedding-ring-type .menu-panels__panel .menu-items {
+        display: flex;
+        flex-direction: column;
+        flex-basis: 48%;
+        margin-bottom: 16px;
+        text-decoration: none;
+    }
+
+    .opti-wedding-ring-type .menu-panels__panel .menu-items p {
+        font-size: 16px;
+        line-height: 1.2;
+        letter-spacing: 0.02rem;
+        font-weight: 400;
+        margin-bottom: 0 !important;
+        margin-top: 8px;
+    }
+
+    .opti-wedding-ring-metal .menu-panels__panel {
+        padding-top: 24px;
+    }
+
+    .opti-wedding-ring-metal .menu-panels__panel .menu-items {
+        display: flex;
+        padding: 12.5px 0;
+        align-items: center;
+        text-decoration: none;
+    }
+
+    .opti-wedding-ring-metal .menu-panels__panel .menu-items .round {
+        height: 20px;
+        width: 20px;
+        border-radius: 100%;
+        margin-right: 8px;
+    }
+
+    .opti-wedding-ring-metal .menu-panels__panel .menu-items .round.yellow {
+        background-color: #DFB877;
+    }
+
+    .opti-wedding-ring-metal .menu-panels__panel .menu-items .round.white {
+        background-color: #EAEAEA;
+    }
+
+    .opti-wedding-ring-metal .menu-panels__panel .menu-items .round.rose {
+        background-color: #DDA383;
+    }
+
+    .opti-wedding-ring-metal .menu-panels__panel .menu-items .round.silver {
+        background-color: #CAD1D6;
+    }
+
+    .opti-wedding-ring-metal .menu-panels__panel .menu-items .round.platinum {
+        background-color: #BEC3C7;
+    }
+
+    .opti-wedding-ring-metal .menu-panels__panel .menu-items .round.black {
+        background-color: #474747;
+    }
+
+    .opti-wedding-ring-metal .menu-panels__panel .menu-items .round.grey {
+        background-color: #CFD4D9;
+    }
+
+    .opti-wedding-ring-metal .menu-panels__panel .menu-items p {
+        font-size: 16px;
+        line-height: 1.2;
+        letter-spacing: 0.02rem;
+        font-weight: 400;
+        margin-bottom: 0 !important;
+        color: #282829;
+    }
+
+    .opti-wedding-ring-metal .menu-panels__panel .menu-items.all p {
+        font-weight: 700;
+    }
 </style>`);
+
+        vue_menu_2nd_level_container.insertAdjacentHTML("beforeend", `<div class="opti-wedding-ring-type-heading close">
+    <button>
+        <svg data-v-ce454e80="" width="24" height="24" viewBox="0 0 24 24" fill="none"
+            xmlns="http://www.w3.org/2000/svg" class="">
+            <mask data-v-ce454e80="" id="mask0_3820_13683" maskUnits="userSpaceOnUse" x="0" y="0" width="24" height="24"
+                style="mask-type: alpha;">
+                <rect data-v-ce454e80="" width="24" height="24" fill="#D9D9D9"></rect>
+            </mask>
+            <g data-v-ce454e80="" mask="url(#mask0_3820_13683)">
+                <path data-v-ce454e80=""
+                    d="M14.3077 17.6154L9 12.3077L14.3077 7L15.0154 7.7077L10.4154 12.3077L15.0154 16.9077L14.3077 17.6154Z"
+                    fill="#010101"></path>
+            </g>
+        </svg>
+    </button>
+    <p>
+        Wedding Rings
+    </p>
+</div>
+
+<div class="opti-wedding-ring-type close">
+
+    <div class="menu-panels__panel">
+        <a href="/wedding/wedding-bands/womens" class="menu-items">
+            <img src="https://cdn.optimizely.com/img/24400620820/52e6f25bc4d7482d8efc2a75579ac27d.jpg" alt="">
+            <p>Women’s Wedding Rings</p>
+        </a>
+
+        <a href="/wedding/wedding-bands/mens" class="menu-items">
+            <img src="https://cdn.optimizely.com/img/24400620820/fb7590e118b54d34ac1ea6f0d313c7b3.jpg" alt="">
+            <p>Men’s Wedding Rings</p>
+        </a>
+
+        <a href="/wedding/wedding-bands/plain" class="menu-items">
+            <img src="https://cdn.optimizely.com/img/24400620820/d452b3fde11a4dd7919691c9314b9fa3.jpg" alt="">
+            <p>Plain Wedding Rings</p>
+        </a>
+
+        <a href="/wedding/wedding-bands/gold" class="menu-items">
+            <img src="https://cdn.optimizely.com/img/24400620820/1aabbaef3d044a82a844c537a9e67a02.jpg" alt="">
+            <p>Gold Wedding Rings</p>
+        </a>
+
+        <a href="/wedding/wedding-bands/diamond" class="menu-items">
+            <img src="https://cdn.optimizely.com/img/24400620820/fc57172adb3a4607a15e40c5e19f0744.jpg" alt="">
+            <p>Diamond Wedding Rings</p>
+        </a>
+
+        <a href="/wedding/wedding-bands/curved" class="menu-items">
+            <img src="https://cdn.optimizely.com/img/24400620820/db8164c8651f4f1d88e88ced39459f90.jpg" alt="">
+            <p>Curved Wedding Rings</p>
+        </a>
+
+        <a href="/wedding" class="menu-items">
+            <img src="https://cdn.optimizely.com/img/24400620820/418c4cf89f5846ff89f8e366ee90f04d.jpg" alt="">
+            <p>All Wedding Rings</p>
+        </a>
+    </div>
+
+</div>`);
+
+        vue_menu_2nd_level_container.insertAdjacentHTML("beforeend", `<div class="opti-wedding-ring-metal-heading close">
+    <button>
+        <svg data-v-ce454e80="" width="24" height="24" viewBox="0 0 24 24" fill="none"
+            xmlns="http://www.w3.org/2000/svg" class="">
+            <mask data-v-ce454e80="" id="mask0_3820_13683" maskUnits="userSpaceOnUse" x="0" y="0" width="24" height="24"
+                style="mask-type: alpha;">
+                <rect data-v-ce454e80="" width="24" height="24" fill="#D9D9D9"></rect>
+            </mask>
+            <g data-v-ce454e80="" mask="url(#mask0_3820_13683)">
+                <path data-v-ce454e80=""
+                    d="M14.3077 17.6154L9 12.3077L14.3077 7L15.0154 7.7077L10.4154 12.3077L15.0154 16.9077L14.3077 17.6154Z"
+                    fill="#010101"></path>
+            </g>
+        </svg>
+    </button>
+    <p>
+        Wedding Rings by Metal
+    </p>
+</div>
+
+<div class="opti-wedding-ring-metal close">
+
+    <div class="menu-panels__panel">
+
+        <a href="/wedding/wedding-bands/yellow-gold" class="menu-items">
+            <div class="round yellow"></div>
+            <p>Yellow Gold</p>
+        </a>
+
+        <a href="/wedding/wedding-bands/white-gold" class="menu-items">
+            <div class="round white"></div>
+            <p>White Gold</p>
+        </a>
+
+        <a href="/wedding/wedding-bands/rose-gold" class="menu-items">
+            <div class="round rose"></div>
+            <p>Rose Gold</p>
+        </a>
+
+        <a href="/wedding/wedding-bands?ref=quicklink&metalColour=Silver" class="menu-items">
+            <div class="round silver"></div>
+            <p>Silver</p>
+        </a>
+
+        <a href="/wedding/wedding-bands?ref=quicklink&metalColour=Platinum" class="menu-items">
+            <div class="round platinum"></div>
+            <p>Platinum</p>
+        </a>
+
+        <a href="/wedding/wedding-bands?ref=quicklink&metalColour=Black" class="menu-items">
+            <div class="round black"></div>
+            <p>Black</p>
+        </a>
+
+        <a href="/wedding/wedding-bands?ref=quicklink&metalColour=Grey" class="menu-items">
+            <div class="round grey"></div>
+            <p>Grey</p>
+        </a>
+
+        <a href="/wedding/wedding-bands" class="menu-items all">
+            <p>All Metals</p>
+        </a>
+    </div>
+
+</div>`);
 
         first_grid_menu = vue_menu_2nd_level_container.querySelector('.navigation-section-panel .navigation-section-panel__grid .navigation-section-panel__grid-unit:nth-of-type(1)');
 
-        first_grid_menu.insertAdjacentHTML("afterend", ``);
+        first_grid_menu.insertAdjacentHTML("afterend", `<div class="opti-new-wedding-menu">
+    <style>
+        .opti-new-wedding-menu .bold-menu {
+            font-size: 16px;
+            font-weight: 700;
+            line-height: 1.2;
+            letter-spacing: 0.02rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            color: #282829;
+            text-decoration: none;
+            padding: 18.5px 0;
+            border-bottom: 1px solid #E8E9EA;
+        }
+    </style>
+
+    <div class="bold-menu ring-by-type">
+        Weddings Rings by Type
+        <svg width="24" height="25" viewBox="0 0 24 25" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <mask id="mask0_2345_2756" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="0" y="0" width="24"
+                height="25">
+                <rect y="0.746094" width="24" height="24" fill="#D9D9D9" />
+            </mask>
+            <g mask="url(#mask0_2345_2756)">
+                <path d="M13.6 13.0538L9 8.45379L9.7077 7.74609L15.0154 13.0538L9.7077 18.3615L9 17.6538L13.6 13.0538Z"
+                    fill="#010101" />
+            </g>
+        </svg>
+    </div>
+
+    <div class="bold-menu ring-by-metal">
+        Weddings Rings by Metal
+        <svg width="24" height="25" viewBox="0 0 24 25" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <mask id="mask0_2345_2756" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="0" y="0" width="24"
+                height="25">
+                <rect y="0.746094" width="24" height="24" fill="#D9D9D9" />
+            </mask>
+            <g mask="url(#mask0_2345_2756)">
+                <path d="M13.6 13.0538L9 8.45379L9.7077 7.74609L15.0154 13.0538L9.7077 18.3615L9 17.6538L13.6 13.0538Z"
+                    fill="#010101" />
+            </g>
+        </svg>
+    </div>
+
+    <div class="bold-menu gift">
+        Wedding Gifts
+        <svg width="24" height="25" viewBox="0 0 24 25" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <mask id="mask0_2345_2756" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="0" y="0" width="24"
+                height="25">
+                <rect y="0.746094" width="24" height="24" fill="#D9D9D9" />
+            </mask>
+            <g mask="url(#mask0_2345_2756)">
+                <path d="M13.6 13.0538L9 8.45379L9.7077 7.74609L15.0154 13.0538L9.7077 18.3615L9 17.6538L13.6 13.0538Z"
+                    fill="#010101" />
+            </g>
+        </svg>
+    </div>
+
+    <div class="bold-menu accessories">
+        Wedding Accessories
+        <svg width="24" height="25" viewBox="0 0 24 25" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <mask id="mask0_2345_2756" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="0" y="0" width="24"
+                height="25">
+                <rect y="0.746094" width="24" height="24" fill="#D9D9D9" />
+            </mask>
+            <g mask="url(#mask0_2345_2756)">
+                <path d="M13.6 13.0538L9 8.45379L9.7077 7.74609L15.0154 13.0538L9.7077 18.3615L9 17.6538L13.6 13.0538Z"
+                    fill="#010101" />
+            </g>
+        </svg>
+    </div>
+
+</div>`);
+
+        bindVueMenuToggleClick({
+            triggerSelector: '.opti-new-wedding-menu .ring-by-type',
+            isOpening: true,
+            headingSelector: '.opti-wedding-ring-type-heading',
+            collectionsSelector: '.opti-wedding-ring-type',
+            container: vue_menu_2nd_level_container
+        });
+
+        bindVueMenuToggleClick({
+            triggerSelector: '.opti-wedding-ring-type-heading',
+            isOpening: false,
+            headingSelector: '.opti-wedding-ring-type-heading',
+            collectionsSelector: '.opti-wedding-ring-type',
+            container: vue_menu_2nd_level_container
+        });
+
+        bindVueMenuToggleClick({
+            triggerSelector: '.opti-new-wedding-menu .ring-by-metal',
+            isOpening: true,
+            headingSelector: '.opti-wedding-ring-metal-heading',
+            collectionsSelector: '.opti-wedding-ring-metal',
+            container: vue_menu_2nd_level_container
+        });
+
+        bindVueMenuToggleClick({
+            triggerSelector: '.opti-wedding-ring-metal-heading',
+            isOpening: false,
+            headingSelector: '.opti-wedding-ring-metal-heading',
+            collectionsSelector: '.opti-wedding-ring-metal',
+            container: vue_menu_2nd_level_container
+        });
+
+        const wedding_menu_fourth_section_image_container = vue_menu_2nd_level_container.querySelector('.navigation-section-panel .navigation-section-panel__grid .navigation-section-panel__grid-unit:nth-of-type(5) .optimised-picture-wrapper');
+
+        if (wedding_menu_fourth_section_image_container) {
+            wedding_menu_fourth_section_image_container.insertAdjacentHTML("afterend", `<a href="/connected/all-about-wedding-bands"><img class="opti-new-wedding-image" src="https://cdn.optimizely.com/img/22916101539/85604d0a489b47808f3a67c2ae85ca02.jpg" alt=""></a>`)
+        }
+
+        const wedding_menu_fourth_section_text = vue_menu_2nd_level_container.querySelector('.navigation-section-panel .navigation-section-panel__grid .navigation-section-panel__grid-unit:nth-of-type(5) p:nth-of-type(3)');
+        if (wedding_menu_fourth_section_text) {
+            wedding_menu_fourth_section_text.innerText = 'Your need-to-know to pick your perfect ring.';
+        }
     }
 });
