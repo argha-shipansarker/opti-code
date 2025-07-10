@@ -6935,6 +6935,7 @@ utils.observeSelector('.header-menu-drawer .header-menu-drawer__panel-switcher-w
 
     .header-menu-drawer .header-menu-drawer__panel-switcher-wrapper .navigation-section-panel .navigation-section-panel__grid .navigation-section-panel__grid-unit:nth-of-type(5) .opti-new-our-world-image {
         height: 230px;
+        width: 100%;
     }
 
     .header-menu-drawer .header-menu-drawer__panel-switcher-wrapper .navigation-section-panel .navigation-section-panel__grid .navigation-section-panel__grid-unit:nth-of-type(5) p {
@@ -6947,7 +6948,241 @@ utils.observeSelector('.header-menu-drawer .header-menu-drawer__panel-switcher-w
         color: #282829;
         font-weight: 400;
     }
+
+    .opti-our-world-education-heading.close,
+    .opti-our-world-story-heading.close,
+    .opti-our-world-impact-heading.close {
+        display: none;
+    }
+
+    .opti-our-world-education-heading.open,
+    .opti-our-world-story-heading.open,
+    .opti-our-world-impact-heading.open {
+        display: flex;
+    }
+
+    .opti-our-world-education-panel.close,
+    .opti-our-world-story-panel.close,
+    .opti-our-world-impact-panel.close {
+        display: none;
+    }
+
+    .opti-our-world-education-panel.open,
+    .opti-our-world-story-panel.open,
+    .opti-our-world-impact-panel.open {
+        display: block;
+    }
+
+    .opti-our-world-education-heading,
+    .opti-our-world-story-heading,
+    .opti-our-world-impact-heading {
+        padding-bottom: 24px;
+        border-bottom: 1px solid #E8E9EA;
+    }
+
+    .opti-our-world-education-heading p,
+    .opti-our-world-story-heading p,
+    .opti-our-world-impact-heading p {
+        font-family: "Söhne-Kräftig", Arial, Helvetica, sans-serif;
+        font-size: 16px;
+        line-height: 24px;
+        margin: 0 0 0 16px !important;
+    }
+
+    .opti-our-world-education-panel,
+    .opti-our-world-story-panel,
+    .opti-our-world-impact-panel {
+        box-sizing: border-box;
+        max-height: calc(100vh - 128px);
+        overflow: scroll;
+        scrollbar-width: none;
+        width: 100%;
+        margin: 0;
+        padding: 0;
+    }
+
+    .opti-our-world-education-panel .menu-panels__panel,
+    .opti-our-world-story-panel .menu-panels__panel,
+    .opti-our-world-impact-panel .menu-panels__panel {
+        display: flex;
+        flex-wrap: wrap;
+        column-gap: 12px;
+        padding-top: 24px;
+    }
+
+    .opti-our-world-education-panel .menu-panels__panel .menu-items,
+    .opti-our-world-story-panel .menu-panels__panel .menu-items,
+    .opti-our-world-impact-panel .menu-panels__panel .menu-items {
+        display: flex;
+        flex-direction: column;
+        flex-basis: 48%;
+        margin-bottom: 16px;
+        text-decoration: none;
+    }
+
+    .opti-our-world-education-panel .menu-panels__panel .menu-items p,
+    .opti-our-world-story-panel .menu-panels__panel .menu-items p,
+    .opti-our-world-impact-panel .menu-panels__panel .menu-items p {
+        font-size: 16px;
+        line-height: 1.2;
+        letter-spacing: 0.02rem;
+        font-weight: 400;
+        margin-bottom: 0 !important;
+        margin-top: 8px;
+        color: #282829;
+    }
 </style>`);
+
+        vue_menu_2nd_level_container.insertAdjacentHTML("beforeend", `<div class="opti-our-world-education-heading close">
+    <button>
+        <svg data-v-ce454e80="" width="24" height="24" viewBox="0 0 24 24" fill="none"
+            xmlns="http://www.w3.org/2000/svg" class="">
+            <mask data-v-ce454e80="" id="mask0_3820_13683" maskUnits="userSpaceOnUse" x="0" y="0" width="24" height="24"
+                style="mask-type: alpha;">
+                <rect data-v-ce454e80="" width="24" height="24" fill="#D9D9D9"></rect>
+            </mask>
+            <g data-v-ce454e80="" mask="url(#mask0_3820_13683)">
+                <path data-v-ce454e80=""
+                    d="M14.3077 17.6154L9 12.3077L14.3077 7L15.0154 7.7077L10.4154 12.3077L15.0154 16.9077L14.3077 17.6154Z"
+                    fill="#010101"></path>
+            </g>
+        </svg>
+    </button>
+    <p>
+        Education
+    </p>
+</div>
+
+<div class="opti-our-world-education-panel close">
+
+    <div class="menu-panels__panel">
+        <a href="/article/knowledge-advice/diamond-guide" class="menu-items">
+            <img src="https://cdn.optimizely.com/img/24400620820/c4267f8938ea405eb0bca3cc0610674b.jpg" alt="">
+            <p>Diamond Buying Guide</p>
+        </a>
+
+        <a href="/article#EngagementWeddingGuides" class="menu-items">
+            <img src="https://cdn.optimizely.com/img/24400620820/a30583bacae543c3a15e42a8c6f35b45.jpg" alt="">
+            <p>Engagement & Wedding Guides</p>
+        </a>
+
+        <a href="/jewellery-care-guides" class="menu-items">
+            <img src="https://cdn.optimizely.com/img/24400620820/1b25235945aa47f1b0adc44f878c9866.jpg" alt="">
+            <p>Care Guides</p>
+        </a>
+
+        <a href="/article/knowledge-advice/size-guide" class="menu-items">
+            <img src="https://cdn.optimizely.com/img/22916101539/3ae5632a5c744c2f9490086f1cf702bc.jpg" alt="">
+            <p>Size Guides</p>
+        </a>
+
+        <a href="/connected" class="menu-items">
+            <img src="https://cdn.optimizely.com/img/24400620820/375b676909b74d91965269e8d57d4e44.jpg" alt="">
+            <p>Explore the blog</p>
+        </a>
+
+    </div>
+
+</div>`);
+
+        vue_menu_2nd_level_container.insertAdjacentHTML("beforeend", `<div class="opti-our-world-story-heading close">
+    <button>
+        <svg data-v-ce454e80="" width="24" height="24" viewBox="0 0 24 24" fill="none"
+            xmlns="http://www.w3.org/2000/svg" class="">
+            <mask data-v-ce454e80="" id="mask0_3820_13683" maskUnits="userSpaceOnUse" x="0" y="0" width="24" height="24"
+                style="mask-type: alpha;">
+                <rect data-v-ce454e80="" width="24" height="24" fill="#D9D9D9"></rect>
+            </mask>
+            <g data-v-ce454e80="" mask="url(#mask0_3820_13683)">
+                <path data-v-ce454e80=""
+                    d="M14.3077 17.6154L9 12.3077L14.3077 7L15.0154 7.7077L10.4154 12.3077L15.0154 16.9077L14.3077 17.6154Z"
+                    fill="#010101"></path>
+            </g>
+        </svg>
+    </button>
+    <p>
+        Our Story
+    </p>
+</div>
+
+<div class="opti-our-world-story-panel close">
+
+    <div class="menu-panels__panel">
+        <a href="/article/about-michael-hill/michael-hill-story" class="menu-items">
+            <img src="https://cdn.optimizely.com/img/24400620820/66a30305d7194be8867a1dee5292691f.jpg" alt="">
+            <p>The New Era</p>
+        </a>
+
+        <a href="/discover/brand-history" class="menu-items">
+            <img src="https://cdn.optimizely.com/img/24400620820/461fd312248d4ad083f28ee9da02e9f8.jpg" alt="">
+            <p>Our Story</p>
+        </a>
+
+        <a href="/discover/our-ambassador" class="menu-items">
+            <img src="https://cdn.optimizely.com/img/24400620820/49e01b981202406a9ef1fb0d54d62e0c.jpg" alt="">
+            <p>Our Ambassador</p>
+        </a>
+
+        <a href="/discover/our-flagship" class="menu-items">
+            <img src="https://cdn.optimizely.com/img/24400620820/951e3d495a734215a742ed591e7aa2e9.jpg" alt="">
+            <p>Our Flagship Stores</p>
+        </a>
+
+    </div>
+
+</div>`);
+
+        vue_menu_2nd_level_container.insertAdjacentHTML("beforeend", `<div class="opti-our-world-impact-heading close">
+    <button>
+        <svg data-v-ce454e80="" width="24" height="24" viewBox="0 0 24 24" fill="none"
+            xmlns="http://www.w3.org/2000/svg" class="">
+            <mask data-v-ce454e80="" id="mask0_3820_13683" maskUnits="userSpaceOnUse" x="0" y="0" width="24" height="24"
+                style="mask-type: alpha;">
+                <rect data-v-ce454e80="" width="24" height="24" fill="#D9D9D9"></rect>
+            </mask>
+            <g data-v-ce454e80="" mask="url(#mask0_3820_13683)">
+                <path data-v-ce454e80=""
+                    d="M14.3077 17.6154L9 12.3077L14.3077 7L15.0154 7.7077L10.4154 12.3077L15.0154 16.9077L14.3077 17.6154Z"
+                    fill="#010101"></path>
+            </g>
+        </svg>
+    </button>
+    <p>
+        Our Impact
+    </p>
+</div>
+
+<div class="opti-our-world-impact-panel close">
+
+    <div class="menu-panels__panel">
+        <a href="/sustainability" class="menu-items">
+            <img src="https://cdn.optimizely.com/img/24400620820/7d47e5d53424491488e49c168f504a81.jpg" alt="">
+            <p>Our 2030 Goals</p>
+        </a>
+
+        <a href="/sustainability/michael-hill-foundation" class="menu-items">
+            <img src="https://cdn.optimizely.com/img/24400620820/cf914ef8726e437091f530a4192dbdfa.jpg" alt="">
+            <p>The Michael Hill Foundation</p>
+        </a>
+
+        <a href="/article/recycle" class="menu-items">
+            <img src="https://cdn.optimizely.com/img/24400620820/80bf2fe28e724dd0af5c9af4cc9f0ca3.jpg" alt="">
+            <p>re:cycle Program</p>
+        </a>
+
+        <a href="/jewellery-repairs/restore" class="menu-items">
+            <img src="https://cdn.optimizely.com/img/24400620820/95d0de6387454240b8d6aed532061a82.jpg" alt="">
+            <p>re:store Program</p>
+        </a>
+
+        <a href="/discover/reimagine" class="menu-items">
+            <img src="https://cdn.optimizely.com/img/24400620820/e11a3c59f73a46e6a53dd59a463d4e19.jpg" alt="">
+            <p>re:imagine Program</p>
+        </a>
+
+    </div>
+
+</div>`);
 
         first_grid_menu = vue_menu_2nd_level_container.querySelector('.navigation-section-panel .navigation-section-panel__grid .navigation-section-panel__grid-unit:nth-of-type(1)');
 
@@ -7015,6 +7250,54 @@ utils.observeSelector('.header-menu-drawer .header-menu-drawer__panel-switcher-w
     </div>
 
 </div>`);
+
+        bindVueMenuToggleClick({
+            triggerSelector: '.opti-new-our-world-menu .education',
+            isOpening: true,
+            headingSelector: '.opti-our-world-education-heading',
+            collectionsSelector: '.opti-our-world-education-panel',
+            container: vue_menu_2nd_level_container
+        });
+
+        bindVueMenuToggleClick({
+            triggerSelector: '.opti-our-world-education-heading',
+            isOpening: false,
+            headingSelector: '.opti-our-world-education-heading',
+            collectionsSelector: '.opti-our-world-education-panel',
+            container: vue_menu_2nd_level_container
+        });
+
+        bindVueMenuToggleClick({
+            triggerSelector: '.opti-new-our-world-menu .story',
+            isOpening: true,
+            headingSelector: '.opti-our-world-story-heading',
+            collectionsSelector: '.opti-our-world-story-panel',
+            container: vue_menu_2nd_level_container
+        });
+
+        bindVueMenuToggleClick({
+            triggerSelector: '.opti-our-world-story-heading',
+            isOpening: false,
+            headingSelector: '.opti-our-world-story-heading',
+            collectionsSelector: '.opti-our-world-story-panel',
+            container: vue_menu_2nd_level_container
+        });
+
+        bindVueMenuToggleClick({
+            triggerSelector: '.opti-new-our-world-menu .impact',
+            isOpening: true,
+            headingSelector: '.opti-our-world-impact-heading',
+            collectionsSelector: '.opti-our-world-impact-panel',
+            container: vue_menu_2nd_level_container
+        });
+
+        bindVueMenuToggleClick({
+            triggerSelector: '.opti-our-world-impact-heading',
+            isOpening: false,
+            headingSelector: '.opti-our-world-impact-heading',
+            collectionsSelector: '.opti-our-world-impact-panel',
+            container: vue_menu_2nd_level_container
+        });
 
         const our_world_menu_fourth_section_image_container = vue_menu_2nd_level_container.querySelector('.navigation-section-panel .navigation-section-panel__grid .navigation-section-panel__grid-unit:nth-of-type(5) .optimised-picture-wrapper');
 
