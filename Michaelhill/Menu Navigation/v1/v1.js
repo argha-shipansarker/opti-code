@@ -3847,8 +3847,8 @@ utils.observeSelector('.header-menu-drawer .header-menu-drawer__panel-switcher-w
         display: none;
     }
 
-    .header-menu-drawer .header-menu-drawer__panel-switcher-wrapper .navigation-section-panel .navigation-section-panel__grid .navigation-section-panel__grid-unit:nth-of-type(5) .optimised-picture-wrapper picture img {
-        height: 230px;
+    .header-menu-drawer .header-menu-drawer__panel-switcher-wrapper .navigation-section-panel .navigation-section-panel__grid .navigation-section-panel__grid-unit:nth-of-type(5) .optimised-picture-wrapper {
+        height: 230px !important;
     }
 
     .header-menu-drawer .header-menu-drawer__panel-switcher-wrapper .navigation-section-panel .navigation-section-panel__grid .navigation-section-panel__grid-unit:nth-of-type(5) p {
@@ -4633,5 +4633,61 @@ utils.observeSelector('.header-menu-drawer .header-menu-drawer__panel-switcher-w
         if (fourth_section_perfect_ring_text) {
             fourth_section_perfect_ring_text.innerHTML = `Your need-to-know to pick your perfect ring.`;
         }
+    }
+
+    if (window.opti_selected_menu_name == "WEDDING") {
+
+        vue_menu_2nd_level_container.classList.add('opti-wedding-vue-menu-panel');
+
+        vue_menu_2nd_level_container.insertAdjacentHTML("afterbegin", `<style>
+    .header-menu-drawer .header-menu-drawer__close-button {
+        background: #FFFFFF !important;
+    }
+
+    .header-menu-drawer .header-menu-drawer__panel-switcher-wrapper .header-menu-drawer__panel-switcher-link-content {
+        border-bottom: 1px solid #E8E9EA;
+    }
+
+    .header-menu-drawer .header-menu-drawer__panel-switcher-wrapper .navigation-section-panel .navigation-section-panel__grid .navigation-section-panel__grid-unit:nth-of-type(1) {
+        padding: 36px 0 12px !important;
+        border-bottom: 0px;
+    }
+
+    .header-menu-drawer .header-menu-drawer__panel-switcher-wrapper .navigation-section-panel .navigation-section-panel__grid .navigation-section-panel__grid-unit:nth-of-type(1) a {
+        font-size: 16px;
+    }
+
+    .header-menu-drawer .header-menu-drawer__panel-switcher-wrapper .navigation-section-panel .navigation-section-panel__grid .navigation-section-panel__grid-unit:nth-of-type(1) .navigation-utility-panel .navigation-utility-panel__links li:nth-of-type(1),
+    .header-menu-drawer .header-menu-drawer__panel-switcher-wrapper .navigation-section-panel .navigation-section-panel__grid .navigation-section-panel__grid-unit:nth-of-type(1) .navigation-utility-panel .navigation-utility-panel__links li:nth-of-type(4),
+    .header-menu-drawer .header-menu-drawer__panel-switcher-wrapper .navigation-section-panel .navigation-section-panel__grid .navigation-section-panel__grid-unit:nth-of-type(1) .navigation-utility-panel .navigation-utility-panel__links li:nth-of-type(5),
+    .header-menu-drawer .header-menu-drawer__panel-switcher-wrapper .navigation-section-panel .navigation-section-panel__grid .navigation-section-panel__grid-unit:nth-of-type(1) .navigation-utility-panel .navigation-utility-panel__links li:nth-of-type(6),
+    .header-menu-drawer .header-menu-drawer__panel-switcher-wrapper .navigation-section-panel .navigation-section-panel__grid .navigation-section-panel__grid-unit:nth-of-type(1) .navigation-utility-panel .navigation-utility-panel__links li:nth-of-type(7) {
+        display: none;
+    }
+
+    .header-menu-drawer .header-menu-drawer__panel-switcher-wrapper .navigation-section-panel .navigation-section-panel__grid .navigation-section-panel__grid-unit:nth-of-type(3),
+    .header-menu-drawer .header-menu-drawer__panel-switcher-wrapper .navigation-section-panel .navigation-section-panel__grid .navigation-section-panel__grid-unit:nth-of-type(4) {
+        display: none;
+    }
+
+    .header-menu-drawer .header-menu-drawer__panel-switcher-wrapper .navigation-section-panel .navigation-section-panel__grid .navigation-section-panel__grid-unit:nth-of-type(5) .optimised-picture-wrapper picture {
+        display: none !important;
+    }
+
+    .header-menu-drawer .header-menu-drawer__panel-switcher-wrapper .navigation-section-panel .navigation-section-panel__grid .navigation-section-panel__grid-unit:nth-of-type(5) p {
+        font-size: 16px;
+    }
+
+    .header-menu-drawer .header-menu-drawer__panel-switcher-wrapper .navigation-section-panel .navigation-section-panel__grid .navigation-section-panel__grid-unit:nth-of-type(5) p a {
+        font-size: 16px;
+        text-decoration: underline;
+        color: #282829;
+        font-weight: 400;
+    }
+</style>`);
+
+        first_grid_menu = vue_menu_2nd_level_container.querySelector('.navigation-section-panel .navigation-section-panel__grid .navigation-section-panel__grid-unit:nth-of-type(1)');
+
+        first_grid_menu.insertAdjacentHTML("afterend", ``);
     }
 });
