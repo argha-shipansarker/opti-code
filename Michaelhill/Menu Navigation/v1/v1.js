@@ -3299,7 +3299,7 @@ utils.waitForElement('nav .menu .menu__root-links > li:nth-of-type(6)').then(fun
     <a href="/sale/bridal-engagement" class="normal-menu">Engagement & Wedding Rings</a>
     <a href="/sale/jewellery/necklaces-pendants" class="normal-menu">Necklaces & Pendants</a>
     <a href="/sale/jewellery/earrings" class="normal-menu">Earrings</a>
-    <a href="/sale?mHJRetailCategory=Rings&mHJPrimaryCategory=Plain%20Silver&mHJPrimaryCategory=Men%27s%20Department&mHJPrimaryCategory=Coloured%20Stones&mHJPrimaryCategory=Diamond%20Fashion&mHJPrimaryCategory=Plain%20Gold&ref=quicklink"
+    <a href="/sale?mHJRetailCategory=Rings&mHJPrimaryCategory=Plain%20Silver&mHJPrimaryCategory=Men%27s%20Department&mHJPrimaryCategory=Coloured%20Stones&mHJPrimaryCategory=Diamond%20Fashion&mHJPrimaryCategory=Plain%20Gold"
         class="normal-menu">Rings</a>
     <a href="/sale/jewellery/bracelets-bangles" class="normal-menu">Bracelets & Bangles</a>
     <a href="/sale/mens" class="normal-menu">Men’s Jewellery</a>
@@ -6804,5 +6804,110 @@ utils.observeSelector('.header-menu-drawer .header-menu-drawer__panel-switcher-w
         if (gift_menu_fourth_section_text_3) {
             gift_menu_fourth_section_text_3.href = 'https://www.michaelhill.com.au/gifts/birthstones/august---peridot?ref=quicklink';
         }
+    }
+
+    if (window.opti_selected_menu_name == "CLEARANCE") {
+        vue_menu_2nd_level_container.classList.add('opti-clearance-vue-menu-panel');
+
+        vue_menu_2nd_level_container.insertAdjacentHTML("afterbegin", `<style>
+    .header-menu-drawer .header-menu-drawer__close-button {
+        background: #FFFFFF !important;
+    }
+
+    .header-menu-drawer .header-menu-drawer__panel-switcher-wrapper .header-menu-drawer__panel-switcher-link-content {
+        border-bottom: 1px solid #E8E9EA;
+    }
+
+    .header-menu-drawer .header-menu-drawer__panel-switcher-wrapper .header-menu-drawer__panel-switcher-link-content a {
+        color: #282829 !important;
+    }
+
+    .header-menu-drawer .header-menu-drawer__panel-switcher-wrapper .navigation-section-panel .navigation-section-panel__grid .navigation-section-panel__grid-unit:nth-of-type(1),
+    .header-menu-drawer .header-menu-drawer__panel-switcher-wrapper .navigation-section-panel .navigation-section-panel__grid .navigation-section-panel__grid-unit:nth-of-type(3) {
+        display: none;
+    }
+</style>`);
+
+        first_grid_menu = vue_menu_2nd_level_container.querySelector('.navigation-section-panel .navigation-section-panel__grid .navigation-section-panel__grid-unit:nth-of-type(1)');
+
+        first_grid_menu.insertAdjacentHTML("afterend", `<div class="opti-new-clearance-menu">
+    <style>
+        .opti-new-clearance-menu {
+            padding-top: 24px;
+        }
+
+        .opti-new-clearance-menu .bold-menu {
+            font-size: 16px;
+            font-weight: 700;
+            line-height: 1.2;
+            letter-spacing: 0.02rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            color: #282829;
+            text-decoration: none;
+            padding: 18.5px 0;
+            border-bottom: 1px solid #E8E9EA;
+        }
+
+        .opti-new-clearance-menu a.bold-menu {
+            padding: 16px 0;
+            border-top: 1px solid #E8E9EA;
+        }
+
+        .opti-new-clearance-menu .menu-heading {
+            font-size: 12px;
+            line-height: 1.2;
+            letter-spacing: 0.08rem;
+            font-weight: 700;
+            color: #707172;
+            padding: 12px 0;
+            text-transform: uppercase;
+            margin-bottom: 0;
+        }
+
+        .opti-new-clearance-menu .menu-heading.last {
+            margin-top: 16px;
+        }
+
+        .opti-new-clearance-menu .normal-menu {
+            font-size: 16px;
+            line-height: 1.2;
+            letter-spacing: 0.02rem;
+            font-weight: 400;
+            color: #282829;
+            padding: 12px 0;
+            text-decoration: none;
+            display: block;
+        }
+
+        .opti-new-clearance-menu .normal-menu:hover,
+        .opti-new-clearance-menu .bold-menu.explore:hover {
+            text-decoration: underline;
+            color: #4c6335;
+        }
+    </style>
+
+    <p class="menu-heading">Clearance by Category</p>
+
+    <a href="/sale/bridal-engagement" class="normal-menu">Engagement & Wedding Rings</a>
+    <a href="/sale/jewellery/necklaces-pendants" class="normal-menu">Necklaces & Pendants</a>
+    <a href="/sale/jewellery/earrings" class="normal-menu">Earrings</a>
+    <a href="/sale?mHJRetailCategory=Rings&mHJPrimaryCategory=Plain%20Silver&mHJPrimaryCategory=Men%27s%20Department&mHJPrimaryCategory=Coloured%20Stones&mHJPrimaryCategory=Diamond%20Fashion&mHJPrimaryCategory=Plain%20Gold"
+        class="normal-menu">Rings</a>
+    <a href="/sale/jewellery/bracelets-bangles" class="normal-menu">Bracelets & Bangles</a>
+    <a href="/sale/mens" class="normal-menu">Men’s Jewellery</a>
+    <a href="/sale" class="bold-menu explore">
+        Shop All Clearance
+    </a>
+
+    <p class="menu-heading last">Clearance by Collection</p>
+
+    <a href="/sale/diamonds" class="normal-menu">Diamonds</a>
+    <a href="/sale/jewellery/gold" class="normal-menu">Gold</a>
+    <a href="/sale/jewellery/silver" class="normal-menu">Silver</a>
+    <a href="/sale/jewellery/gemstones" class="normal-menu">Gemstones</a>
+
+</div>`);
     }
 });
