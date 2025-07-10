@@ -6910,4 +6910,11 @@ utils.observeSelector('.header-menu-drawer .header-menu-drawer__panel-switcher-w
 
 </div>`);
     }
+
+    if (window.opti_selected_menu_name == "OUR WORLD") {
+        vue_menu_2nd_level_container.classList.add('opti-our-world-vue-menu-panel');
+
+        vue_menu_2nd_level_container.insertAdjacentHTML("afterbegin", ``);
+
+    }
 });
