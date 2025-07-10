@@ -1,4 +1,8 @@
 <style>
+    .header-menu-drawer .header-menu-drawer__close-button {
+        background: #FFFFFF !important;
+    }
+
     .header-menu-drawer .header-menu-drawer__panel-switcher-wrapper .header-menu-drawer__panel-switcher-link-content {
         border-bottom: 1px solid #E8E9EA;
     }
@@ -37,34 +41,45 @@
         font-weight: 400;
     }
 
-    .opti-engagement-bridal-heading.close {
+    .opti-engagement-bridal-heading.close,
+    .opti-engagement-cut-heading.close {
         display: none;
     }
 
-    .opti-engagement-bridal-heading.open {
+    .opti-engagement-bridal-heading.open,
+    .opti-engagement-cut-heading.open {
         display: flex;
     }
 
-    .opti-engagement-bridal-collections.close {
+    .opti-engagement-bridal-collections.close,
+    .opti-engagement-cut-panels.close {
         display: none;
     }
 
-    .opti-engagement-bridal-collections.open {
+    .opti-engagement-bridal-collections.open,
+    .opti-engagement-cut-panels.open {
         display: block;
     }
 
-    .opti-engagement-bridal-heading {
+    .opti-engagement-bridal-heading,
+    .opti-engagement-cut-heading {
         padding-bottom: 24px;
     }
 
-    .opti-engagement-bridal-heading p {
+    .opti-engagement-cut-heading {
+        border-bottom: 1px solid #E8E9EA;
+    }
+
+    .opti-engagement-bridal-heading p,
+    .opti-engagement-cut-heading p {
         font-family: "Söhne-Kräftig", Arial, Helvetica, sans-serif;
         font-size: 16px;
         line-height: 24px;
         margin: 0 0 0 16px !important;
     }
 
-    .opti-engagement-bridal-collections {
+    .opti-engagement-bridal-collections,
+    .opti-engagement-cut-panels {
         box-sizing: border-box;
         max-height: calc(100vh - 128px);
         overflow: scroll;
@@ -89,16 +104,35 @@
         text-decoration: none;
     }
 
-    .opti-engagement-bridal-collections .menu-panels__panel .menu-items .icon {
+    .opti-engagement-bridal-collections .menu-panels__panel .menu-items .icon,
+    .opti-engagement-cut-panels .menu-panels__panel .menu-items .icon {
         display: flex;
     }
 
-    .opti-engagement-bridal-collections .menu-panels__panel .menu-items p {
+    .opti-engagement-bridal-collections .menu-panels__panel .menu-items p,
+    .opti-engagement-cut-panels .menu-panels__panel .menu-items p {
         font-size: 16px;
         line-height: 1.2;
         letter-spacing: 0.02rem;
         font-weight: 400;
         margin-bottom: 0 !important;
         margin-top: 8px;
+    }
+
+    .opti-engagement-cut-panels .menu-panels__panel {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        padding-top: 24px;
+    }
+
+    .opti-engagement-cut-panels .menu-panels__panel .menu-items {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        width: 100px;
+        margin-bottom: 24px;
+        text-decoration: none;
     }
 </style>
