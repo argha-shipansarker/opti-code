@@ -27,4 +27,96 @@
         color: #282829;
         font-weight: 400;
     }
+
+    .opti-watch-type-heading.close,
+    .opti-watch-color-heading.close {
+        display: none;
+    }
+
+    .opti-watch-type-heading.open,
+    .opti-watch-color-heading.open {
+        display: flex;
+    }
+
+    .opti-watch-type-panel.close,
+    .opti-watch-color-panel.close {
+        display: none;
+    }
+
+    .opti-watch-type-panel.open,
+    .opti-watch-color-panel.open {
+        display: block;
+    }
+
+    .opti-watch-type-heading,
+    .opti-watch-color-heading {
+        padding-bottom: 24px;
+        border-bottom: 1px solid #E8E9EA;
+    }
+
+    .opti-watch-type-heading p,
+    .opti-watch-color-heading p {
+        font-family: "Söhne-Kräftig", Arial, Helvetica, sans-serif;
+        font-size: 16px;
+        line-height: 24px;
+        margin: 0 0 0 16px !important;
+    }
+
+    .opti-watch-type-panel,
+    .opti-watch-color-panel {
+        box-sizing: border-box;
+        max-height: calc(100vh - 128px);
+        overflow: scroll;
+        scrollbar-width: none;
+        width: 100%;
+        margin: 0;
+        padding: 0;
+    }
+
+    .opti-watch-type-panel .menu-panels__panel,
+    .opti-watch-color-panel .menu-panels__panel {
+        padding-top: 24px;
+    }
+
+    .opti-watch-type-panel .menu-panels__panel .menu-items {
+        padding: 12px 0;
+        align-items: center;
+        text-decoration: none;
+        display: flex;
+    }
+
+    .opti-watch-type-panel .menu-panels__panel .menu-items p {
+        font-size: 16px;
+        line-height: 1.2;
+        letter-spacing: 0.02rem;
+        font-weight: 400;
+        margin-bottom: 0 !important;
+        color: #282829;
+    }
+
+    .opti-watch-type-panel .menu-panels__panel .menu-items.all p {
+        font-weight: 700;
+    }
+
+    .opti-watch-color-panel .menu-panels__panel .menu-items {
+        display: flex;
+        padding: 12.5px 0;
+        align-items: center;
+        text-decoration: none;
+    }
+
+    .opti-watch-color-panel .menu-panels__panel .menu-items p {
+        font-size: 16px;
+        line-height: 1.2;
+        letter-spacing: 0.02rem;
+        font-weight: 400;
+        margin-bottom: 0 !important;
+        color: #282829;
+        margin-left: 8px;
+    }
+
+    .opti-watch-color-panel .menu-panels__panel .menu-items.all p {
+        font-weight: 700;
+        margin-left: 0px;
+    }
 </style>

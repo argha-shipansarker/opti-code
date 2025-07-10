@@ -6023,7 +6023,235 @@ utils.observeSelector('.header-menu-drawer .header-menu-drawer__panel-switcher-w
         color: #282829;
         font-weight: 400;
     }
+
+    .opti-watch-type-heading.close,
+    .opti-watch-color-heading.close {
+        display: none;
+    }
+
+    .opti-watch-type-heading.open,
+    .opti-watch-color-heading.open {
+        display: flex;
+    }
+
+    .opti-watch-type-panel.close,
+    .opti-watch-color-panel.close {
+        display: none;
+    }
+
+    .opti-watch-type-panel.open,
+    .opti-watch-color-panel.open {
+        display: block;
+    }
+
+    .opti-watch-type-heading,
+    .opti-watch-color-heading {
+        padding-bottom: 24px;
+        border-bottom: 1px solid #E8E9EA;
+    }
+
+    .opti-watch-type-heading p,
+    .opti-watch-color-heading p {
+        font-family: "Söhne-Kräftig", Arial, Helvetica, sans-serif;
+        font-size: 16px;
+        line-height: 24px;
+        margin: 0 0 0 16px !important;
+    }
+
+    .opti-watch-type-panel,
+    .opti-watch-color-panel {
+        box-sizing: border-box;
+        max-height: calc(100vh - 128px);
+        overflow: scroll;
+        scrollbar-width: none;
+        width: 100%;
+        margin: 0;
+        padding: 0;
+    }
+
+    .opti-watch-type-panel .menu-panels__panel,
+    .opti-watch-color-panel .menu-panels__panel {
+        padding-top: 24px;
+    }
+
+    .opti-watch-type-panel .menu-panels__panel .menu-items {
+        padding: 12px 0;
+        align-items: center;
+        text-decoration: none;
+        display: flex;
+    }
+
+    .opti-watch-type-panel .menu-panels__panel .menu-items p {
+        font-size: 16px;
+        line-height: 1.2;
+        letter-spacing: 0.02rem;
+        font-weight: 400;
+        margin-bottom: 0 !important;
+        color: #282829;
+    }
+
+    .opti-watch-type-panel .menu-panels__panel .menu-items.all p {
+        font-weight: 700;
+    }
+
+    .opti-watch-color-panel .menu-panels__panel .menu-items {
+        display: flex;
+        padding: 12.5px 0;
+        align-items: center;
+        text-decoration: none;
+    }
+
+    .opti-watch-color-panel .menu-panels__panel .menu-items p {
+        font-size: 16px;
+        line-height: 1.2;
+        letter-spacing: 0.02rem;
+        font-weight: 400;
+        margin-bottom: 0 !important;
+        color: #282829;
+        margin-left: 8px;
+    }
+
+    .opti-watch-color-panel .menu-panels__panel .menu-items.all p {
+        font-weight: 700;
+        margin-left: 0px;
+    }
 </style>`);
+
+        vue_menu_2nd_level_container.insertAdjacentHTML("beforeend", `<div class="opti-watch-type-heading close">
+    <button>
+        <svg data-v-ce454e80="" width="24" height="24" viewBox="0 0 24 24" fill="none"
+            xmlns="http://www.w3.org/2000/svg" class="">
+            <mask data-v-ce454e80="" id="mask0_3820_13683" maskUnits="userSpaceOnUse" x="0" y="0" width="24" height="24"
+                style="mask-type: alpha;">
+                <rect data-v-ce454e80="" width="24" height="24" fill="#D9D9D9"></rect>
+            </mask>
+            <g data-v-ce454e80="" mask="url(#mask0_3820_13683)">
+                <path data-v-ce454e80=""
+                    d="M14.3077 17.6154L9 12.3077L14.3077 7L15.0154 7.7077L10.4154 12.3077L15.0154 16.9077L14.3077 17.6154Z"
+                    fill="#010101"></path>
+            </g>
+        </svg>
+    </button>
+    <p>
+        Shop by Type
+    </p>
+</div>
+
+<div class="opti-watch-type-panel close">
+
+    <div class="menu-panels__panel">
+
+        <a href="/watches/automatic" class="menu-items">
+            <p>Automatic</p>
+        </a>
+
+        <a href="/watches/quartz" class="menu-items">
+            <p>Quatz</p>
+        </a>
+
+        <a href="/watches/solar" class="menu-items">
+            <p>Solar</p>
+        </a>
+
+        <a href="/watches/shop-all-watches" class="menu-items all">
+            <p>All Types</p>
+        </a>
+    </div>
+
+</div>`);
+
+        vue_menu_2nd_level_container.insertAdjacentHTML("beforeend", `<div class="opti-watch-color-heading close">
+    <button>
+        <svg data-v-ce454e80="" width="24" height="24" viewBox="0 0 24 24" fill="none"
+            xmlns="http://www.w3.org/2000/svg" class="">
+            <mask data-v-ce454e80="" id="mask0_3820_13683" maskUnits="userSpaceOnUse" x="0" y="0" width="24" height="24"
+                style="mask-type: alpha;">
+                <rect data-v-ce454e80="" width="24" height="24" fill="#D9D9D9"></rect>
+            </mask>
+            <g data-v-ce454e80="" mask="url(#mask0_3820_13683)">
+                <path data-v-ce454e80=""
+                    d="M14.3077 17.6154L9 12.3077L14.3077 7L15.0154 7.7077L10.4154 12.3077L15.0154 16.9077L14.3077 17.6154Z"
+                    fill="#010101"></path>
+            </g>
+        </svg>
+    </button>
+    <p>
+        Shop by Colour
+    </p>
+</div>
+
+<div class="opti-watch-color-panel close">
+
+    <div class="menu-panels__panel">
+
+        <a href="/watches/gold" class="menu-items">
+            <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path
+                    d="M10 20C15.5228 20 20 15.5228 20 10C20 4.47715 15.5228 0 10 0C4.47715 0 0 4.47715 0 10C0 15.5228 4.47715 20 10 20Z"
+                    fill="#DFB877" />
+            </svg>
+            <p>Gold Tone</p>
+        </a>
+
+        <a href="/watches/rose" class="menu-items">
+            <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path
+                    d="M10 20C15.5228 20 20 15.5228 20 10C20 4.47715 15.5228 0 10 0C4.47715 0 0 4.47715 0 10C0 15.5228 4.47715 20 10 20Z"
+                    fill="#DDA383" />
+            </svg>
+            <p>Rose Tone</p>
+        </a>
+
+        <a href="/watches/silver" class="menu-items">
+            <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path
+                    d="M10 20C15.5228 20 20 15.5228 20 10C20 4.47715 15.5228 0 10 0C4.47715 0 0 4.47715 0 10C0 15.5228 4.47715 20 10 20Z"
+                    fill="#CAD1D6" />
+            </svg>
+            <p>Silver Tone</p>
+        </a>
+
+        <a href="/watches/black" class="menu-items">
+            <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path
+                    d="M10 20C15.5228 20 20 15.5228 20 10C20 4.47715 15.5228 0 10 0C4.47715 0 0 4.47715 0 10C0 15.5228 4.47715 20 10 20Z"
+                    fill="#474747" />
+            </svg>
+            <p>Black</p>
+        </a>
+
+        <a href="/watches/two-tone" class="menu-items">
+            <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <mask id="mask0_2345_3637" style="mask-type:luminance" maskUnits="userSpaceOnUse" x="0" y="0" width="10"
+                    height="20">
+                    <path d="M10 0H0V20H10V0Z" fill="white" />
+                </mask>
+                <g mask="url(#mask0_2345_3637)">
+                    <path
+                        d="M10 20C15.5228 20 20 15.5228 20 10C20 4.47715 15.5228 0 10 0C4.47715 0 0 4.47715 0 10C0 15.5228 4.47715 20 10 20Z"
+                        fill="#93979F" />
+                </g>
+                <mask id="mask1_2345_3637" style="mask-type:luminance" maskUnits="userSpaceOnUse" x="10" y="0"
+                    width="10" height="20">
+                    <path d="M20 0H10V20H20V0Z" fill="white" />
+                </mask>
+                <g mask="url(#mask1_2345_3637)">
+                    <path
+                        d="M10 20C15.5228 20 20 15.5228 20 10C20 4.47715 15.5228 0 10 0C4.47715 0 0 4.47715 0 10C0 15.5228 4.47715 20 10 20Z"
+                        fill="#DFB877" />
+                </g>
+            </svg>
+            <p>Two-Tone</p>
+        </a>
+
+        <a href="/watches/shop-all-watches" class="menu-items all">
+            <p>All Colours</p>
+        </a>
+
+    </div>
+
+
+</div>`);
 
         first_grid_menu = vue_menu_2nd_level_container.querySelector('.navigation-section-panel .navigation-section-panel__grid .navigation-section-panel__grid-unit:nth-of-type(1)');
 
@@ -6127,6 +6355,38 @@ utils.observeSelector('.header-menu-drawer .header-menu-drawer__panel-switcher-w
         </svg>
     </div>
 </div>`);
+
+        bindVueMenuToggleClick({
+            triggerSelector: '.opti-new-watch-menu .type',
+            isOpening: true,
+            headingSelector: '.opti-watch-type-heading',
+            collectionsSelector: '.opti-watch-type-panel',
+            container: vue_menu_2nd_level_container
+        });
+
+        bindVueMenuToggleClick({
+            triggerSelector: '.opti-watch-type-heading',
+            isOpening: false,
+            headingSelector: '.opti-watch-type-heading',
+            collectionsSelector: '.opti-watch-type-panel',
+            container: vue_menu_2nd_level_container
+        });
+
+        bindVueMenuToggleClick({
+            triggerSelector: '.opti-new-watch-menu .color',
+            isOpening: true,
+            headingSelector: '.opti-watch-color-heading',
+            collectionsSelector: '.opti-watch-color-panel',
+            container: vue_menu_2nd_level_container
+        });
+
+        bindVueMenuToggleClick({
+            triggerSelector: '.opti-watch-color-heading',
+            isOpening: false,
+            headingSelector: '.opti-watch-color-heading',
+            collectionsSelector: '.opti-watch-color-panel',
+            container: vue_menu_2nd_level_container
+        });
 
         const watch_menu_fourth_section_image_container = vue_menu_2nd_level_container.querySelector('.navigation-section-panel .navigation-section-panel__grid .navigation-section-panel__grid-unit:nth-of-type(5) .optimised-picture-wrapper');
 
