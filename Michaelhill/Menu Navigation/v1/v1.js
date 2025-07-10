@@ -6450,7 +6450,134 @@ utils.observeSelector('.header-menu-drawer .header-menu-drawer__panel-switcher-w
         color: #282829;
         font-weight: 400;
     }
+
+    .opti-gift-personalised-heading.close {
+        display: none;
+    }
+
+    .opti-gift-personalised-heading.open {
+        display: flex;
+    }
+
+    .opti-gift-personalised-panel.close {
+        display: none;
+    }
+
+    .opti-gift-personalised-panel.open {
+        display: block;
+    }
+
+    .opti-gift-personalised-heading {
+        padding-bottom: 24px;
+        border-bottom: 1px solid #E8E9EA;
+    }
+
+    .opti-gift-personalised-heading p {
+        font-family: "Söhne-Kräftig", Arial, Helvetica, sans-serif;
+        font-size: 16px;
+        line-height: 24px;
+        margin: 0 0 0 16px !important;
+    }
+
+    .opti-gift-personalised-panel {
+        box-sizing: border-box;
+        max-height: calc(100vh - 128px);
+        overflow: scroll;
+        scrollbar-width: none;
+        width: 100%;
+        margin: 0;
+        padding: 0;
+    }
+
+    .opti-gift-personalised-panel .menu-panels__panel {
+        padding-top: 24px;
+    }
+
+    .opti-gift-personalised-panel .menu-panels__panel {
+        display: flex;
+        flex-wrap: wrap;
+        column-gap: 12px;
+    }
+
+    .opti-gift-personalised-panel .menu-panels__panel .menu-items {
+        display: flex;
+        flex-direction: column;
+        flex-basis: 48%;
+        margin-bottom: 16px;
+        text-decoration: none;
+    }
+
+    .opti-gift-personalised-panel .menu-panels__panel .menu-items p {
+        font-size: 16px;
+        line-height: 1.2;
+        letter-spacing: 0.02rem;
+        font-weight: 400;
+        margin-bottom: 0 !important;
+        margin-top: 8px;
+        color: #282829;
+    }
 </style>`);
+
+        vue_menu_2nd_level_container.insertAdjacentHTML("beforeend", `<div class="opti-gift-personalised-heading close">
+    <button>
+        <svg data-v-ce454e80="" width="24" height="24" viewBox="0 0 24 24" fill="none"
+            xmlns="http://www.w3.org/2000/svg" class="">
+            <mask data-v-ce454e80="" id="mask0_3820_13683" maskUnits="userSpaceOnUse" x="0" y="0" width="24" height="24"
+                style="mask-type: alpha;">
+                <rect data-v-ce454e80="" width="24" height="24" fill="#D9D9D9"></rect>
+            </mask>
+            <g data-v-ce454e80="" mask="url(#mask0_3820_13683)">
+                <path data-v-ce454e80=""
+                    d="M14.3077 17.6154L9 12.3077L14.3077 7L15.0154 7.7077L10.4154 12.3077L15.0154 16.9077L14.3077 17.6154Z"
+                    fill="#010101"></path>
+            </g>
+        </svg>
+    </button>
+    <p>
+        Personalised Jewellery
+    </p>
+</div>
+
+<div class="opti-gift-personalised-panel close">
+
+    <div class="menu-panels__panel">
+        <a href="/gifts/personalised/engravables" class="menu-items">
+            <img src="https://cdn.optimizely.com/img/24400620820/546c25d220444710974a097b9e98078d.jpg" alt="">
+            <p>Engravables</p>
+        </a>
+
+        <a href="/gifts/birthstones" class="menu-items">
+            <img src="https://cdn.optimizely.com/img/24400620820/83f37126aea54b0ea8e3c456c12b9cae.jpg" alt="">
+            <p>Birthstones</p>
+        </a>
+
+        <a href="/gifts/personalised/initials" class="menu-items">
+            <img src="https://cdn.optimizely.com/img/24400620820/4a72289045b04120b83b365399315cb7.jpg" alt="">
+            <p>Initials</p>
+        </a>
+
+        <a href="/jewellery/necklaces-pendants/locket" class="menu-items">
+            <img src="https://cdn.optimizely.com/img/24400620820/810eb39a49dd4ee7b40e9ad00023ca80.jpg" alt="">
+            <p>Lockets</p>
+        </a>
+
+        <a href="/jewellery/necklaces-pendants/cross" class="menu-items">
+            <img src="https://cdn.optimizely.com/img/24400620820/12fcd1abfc5e4a0e8f7076f3875fabf6.jpg" alt="">
+            <p>Cross Necklaces</p>
+        </a>
+
+        <a href="/gifts/personalised/zodiacs" class="menu-items">
+            <img src="https://cdn.optimizely.com/img/24400620820/6380342e04634dfc9c9fc6b40df3e5cf.jpg" alt="">
+            <p>Zodiacs</p>
+        </a>
+
+        <a href="/personalisation" class="menu-items">
+            <img src="https://cdn.optimizely.com/img/24400620820/1ab78f334f294ae7b918d9278015e746.jpg" alt="">
+            <p>All Personalised Jewellery</p>
+        </a>
+    </div>
+
+</div>`);
 
         first_grid_menu = vue_menu_2nd_level_container.querySelector('.navigation-section-panel .navigation-section-panel__grid .navigation-section-panel__grid-unit:nth-of-type(1)');
 
@@ -6547,6 +6674,22 @@ utils.observeSelector('.header-menu-drawer .header-menu-drawer__panel-switcher-w
     </div>
 
 </div>`);
+
+        bindVueMenuToggleClick({
+            triggerSelector: '.opti-new-gift-menu .personalised',
+            isOpening: true,
+            headingSelector: '.opti-gift-personalised-heading',
+            collectionsSelector: '.opti-gift-personalised-panel',
+            container: vue_menu_2nd_level_container
+        });
+
+        bindVueMenuToggleClick({
+            triggerSelector: '.opti-gift-personalised-heading',
+            isOpening: false,
+            headingSelector: '.opti-gift-personalised-heading',
+            collectionsSelector: '.opti-gift-personalised-panel',
+            container: vue_menu_2nd_level_container
+        });
 
         const gift_menu_fourth_section_image_container = vue_menu_2nd_level_container.querySelector('.navigation-section-panel .navigation-section-panel__grid .navigation-section-panel__grid-unit:nth-of-type(5) .optimised-picture-wrapper');
 

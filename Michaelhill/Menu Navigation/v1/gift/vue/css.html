@@ -45,4 +45,70 @@
         color: #282829;
         font-weight: 400;
     }
+
+    .opti-gift-personalised-heading.close {
+        display: none;
+    }
+
+    .opti-gift-personalised-heading.open {
+        display: flex;
+    }
+
+    .opti-gift-personalised-panel.close {
+        display: none;
+    }
+
+    .opti-gift-personalised-panel.open {
+        display: block;
+    }
+
+    .opti-gift-personalised-heading {
+        padding-bottom: 24px;
+        border-bottom: 1px solid #E8E9EA;
+    }
+
+    .opti-gift-personalised-heading p {
+        font-family: "Söhne-Kräftig", Arial, Helvetica, sans-serif;
+        font-size: 16px;
+        line-height: 24px;
+        margin: 0 0 0 16px !important;
+    }
+
+    .opti-gift-personalised-panel {
+        box-sizing: border-box;
+        max-height: calc(100vh - 128px);
+        overflow: scroll;
+        scrollbar-width: none;
+        width: 100%;
+        margin: 0;
+        padding: 0;
+    }
+
+    .opti-gift-personalised-panel .menu-panels__panel {
+        padding-top: 24px;
+    }
+
+    .opti-gift-personalised-panel .menu-panels__panel {
+        display: flex;
+        flex-wrap: wrap;
+        column-gap: 12px;
+    }
+
+    .opti-gift-personalised-panel .menu-panels__panel .menu-items {
+        display: flex;
+        flex-direction: column;
+        flex-basis: 48%;
+        margin-bottom: 16px;
+        text-decoration: none;
+    }
+
+    .opti-gift-personalised-panel .menu-panels__panel .menu-items p {
+        font-size: 16px;
+        line-height: 1.2;
+        letter-spacing: 0.02rem;
+        font-weight: 400;
+        margin-bottom: 0 !important;
+        margin-top: 8px;
+        color: #282829;
+    }
 </style>
