@@ -5990,4 +5990,153 @@ utils.observeSelector('.header-menu-drawer .header-menu-drawer__panel-switcher-w
             jewellery_menu_fourth_section_image_container.insertAdjacentHTML("afterend", `<a href="/jewellery/collections/lab"><img class="opti-new-jewellery-image" src="https://cdn.optimizely.com/img/24400620820/404fbc9f05674ba4a578d039bdc2409e.jpg" alt=""></a>`)
         }
     }
+
+    if (window.opti_selected_menu_name == "WATCHES") {
+        vue_menu_2nd_level_container.classList.add('opti-watches-vue-menu-panel');
+
+        vue_menu_2nd_level_container.insertAdjacentHTML("afterbegin", `<style>
+    .header-menu-drawer .header-menu-drawer__close-button {
+        background: #FFFFFF !important;
+    }
+
+    .header-menu-drawer .header-menu-drawer__panel-switcher-wrapper .header-menu-drawer__panel-switcher-link-content {
+        border-bottom: 1px solid #E8E9EA;
+    }
+
+    .header-menu-drawer .header-menu-drawer__panel-switcher-wrapper .navigation-section-panel .navigation-section-panel__grid .navigation-section-panel__grid-unit:nth-of-type(1),
+    .header-menu-drawer .header-menu-drawer__panel-switcher-wrapper .navigation-section-panel .navigation-section-panel__grid .navigation-section-panel__grid-unit:nth-of-type(3),
+    .header-menu-drawer .header-menu-drawer__panel-switcher-wrapper .navigation-section-panel .navigation-section-panel__grid .navigation-section-panel__grid-unit:nth-of-type(4) {
+        display: none;
+    }
+
+    .header-menu-drawer .header-menu-drawer__panel-switcher-wrapper .navigation-section-panel .navigation-section-panel__grid .navigation-section-panel__grid-unit:nth-of-type(5) .optimised-picture-wrapper {
+        display: none !important;
+    }
+
+    .header-menu-drawer .header-menu-drawer__panel-switcher-wrapper .navigation-section-panel .navigation-section-panel__grid .navigation-section-panel__grid-unit:nth-of-type(5) p {
+        font-size: 16px;
+    }
+
+    .header-menu-drawer .header-menu-drawer__panel-switcher-wrapper .navigation-section-panel .navigation-section-panel__grid .navigation-section-panel__grid-unit:nth-of-type(5) p a {
+        font-size: 16px;
+        text-decoration: underline;
+        color: #282829;
+        font-weight: 400;
+    }
+</style>`);
+
+        first_grid_menu = vue_menu_2nd_level_container.querySelector('.navigation-section-panel .navigation-section-panel__grid .navigation-section-panel__grid-unit:nth-of-type(1)');
+
+        first_grid_menu.insertAdjacentHTML("afterend", `<div class="opti-new-watch-menu">
+    <style>
+        .opti-new-watch-menu {
+            padding-top: 24px;
+        }
+
+        .opti-new-watch-menu .bold-menu {
+            font-size: 16px;
+            font-weight: 700;
+            line-height: 1.2;
+            letter-spacing: 0.02rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            color: #282829;
+            text-decoration: none;
+            padding: 18.5px 0;
+            border-bottom: 1px solid #E8E9EA;
+        }
+
+        .opti-new-watch-menu a.bold-menu {
+            padding: 16px 0;
+        }
+
+        .opti-new-watch-menu .menu-heading {
+            font-size: 12px;
+            line-height: 1.2;
+            letter-spacing: 0.08rem;
+            font-weight: 700;
+            color: #707172;
+            padding: 12px 0;
+            text-transform: uppercase;
+            margin-bottom: 0;
+        }
+
+        .opti-new-watch-menu .menu-heading.last {
+            margin-top: 8px;
+        }
+
+        .opti-new-watch-menu .normal-menu {
+            font-size: 16px;
+            line-height: 1.2;
+            letter-spacing: 0.02rem;
+            font-weight: 400;
+            color: #282829;
+            padding: 12px 0;
+            text-decoration: none;
+            display: block;
+        }
+
+        .opti-new-watch-menu .normal-menu.last {
+            padding-bottom: 20px;
+            border-bottom: 1px solid #E8E9EA;
+        }
+
+        .opti-new-watch-menu .normal-menu:hover {
+            text-decoration: underline;
+            color: #4c6335;
+        }
+    </style>
+
+    <p class="menu-heading">Gender</p>
+
+    <a href="/watches/mens-watches" class="normal-menu">Men’s</a>
+    <a href="/watches/ladies-watches" class="normal-menu">Women’s</a>
+    <a href="/watches/shop-all-watches" class="normal-menu last">View All Watches</a>
+
+    <p class="menu-heading last">Collection</p>
+
+    <a href="/watches/seiko-watches" class="normal-menu">Sieko</a>
+    <a href="/watches/shop-all-watches?mHJCollection=Michael%20Hill%20Watches" class="normal-menu last">Michael Hill</a>
+
+    <div class="bold-menu type">
+        Shop by Type
+        <svg width="24" height="25" viewBox="0 0 24 25" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <mask id="mask0_2345_2756" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="0" y="0" width="24"
+                height="25">
+                <rect y="0.746094" width="24" height="24" fill="#D9D9D9" />
+            </mask>
+            <g mask="url(#mask0_2345_2756)">
+                <path d="M13.6 13.0538L9 8.45379L9.7077 7.74609L15.0154 13.0538L9.7077 18.3615L9 17.6538L13.6 13.0538Z"
+                    fill="#010101" />
+            </g>
+        </svg>
+    </div>
+
+    <div class="bold-menu color">
+        Shop by Colour
+        <svg width="24" height="25" viewBox="0 0 24 25" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <mask id="mask0_2345_2756" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="0" y="0" width="24"
+                height="25">
+                <rect y="0.746094" width="24" height="24" fill="#D9D9D9" />
+            </mask>
+            <g mask="url(#mask0_2345_2756)">
+                <path d="M13.6 13.0538L9 8.45379L9.7077 7.74609L15.0154 13.0538L9.7077 18.3615L9 17.6538L13.6 13.0538Z"
+                    fill="#010101" />
+            </g>
+        </svg>
+    </div>
+</div>`);
+
+        const watch_menu_fourth_section_image_container = vue_menu_2nd_level_container.querySelector('.navigation-section-panel .navigation-section-panel__grid .navigation-section-panel__grid-unit:nth-of-type(5) .optimised-picture-wrapper');
+
+        if (watch_menu_fourth_section_image_container) {
+            watch_menu_fourth_section_image_container.insertAdjacentHTML("afterend", `<a href="/jewellery/we-love/new-in?mHJPrimaryCategory=Watches"><img class="opti-new-watch-image" src="https://cdn.optimizely.com/img/24400620820/2a5b6ca858db4257a6006b649d19d7bf.jpg" alt=""></a>`)
+        }
+
+        const watch_menu_fourth_section_text = vue_menu_2nd_level_container.querySelector('.navigation-section-panel .navigation-section-panel__grid .navigation-section-panel__grid-unit:nth-of-type(5) p:nth-of-type(3)');
+        if (watch_menu_fourth_section_text) {
+            watch_menu_fourth_section_text.innerText = 'Your need-to-know to pick your perfect ring.';
+        }
+    }
 });
