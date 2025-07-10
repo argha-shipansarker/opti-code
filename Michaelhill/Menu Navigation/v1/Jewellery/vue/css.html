@@ -47,27 +47,32 @@
     }
 
     .opti-jewellery-gemstone-heading.close,
-    .opti-jewellery-metal-heading.close {
+    .opti-jewellery-metal-heading.close,
+    .opti-jewellery-collections-heading.close {
         display: none;
     }
 
     .opti-jewellery-gemstone-heading.open,
-    .opti-jewellery-metal-heading.open {
+    .opti-jewellery-metal-heading.open,
+    .opti-jewellery-collections-heading.open {
         display: flex;
     }
 
     .opti-jewellery-gemstone-panel.close,
-    .opti-jewellery-metal-panel.close {
+    .opti-jewellery-metal-panel.close,
+    .opti-jewellery-collections-panel.close {
         display: none;
     }
 
     .opti-jewellery-gemstone-panel.open,
-    .opti-jewellery-metal-panel.open {
+    .opti-jewellery-metal-panel.open,
+    .opti-jewellery-collections-panel.open {
         display: block;
     }
 
     .opti-jewellery-gemstone-heading,
-    .opti-jewellery-metal-heading {
+    .opti-jewellery-metal-heading,
+    .opti-jewellery-collections-heading {
         padding-bottom: 24px;
     }
 
@@ -77,7 +82,8 @@
     }
 
     .opti-jewellery-gemstone-heading p,
-    .opti-jewellery-metal-heading p {
+    .opti-jewellery-metal-heading p,
+    .opti-jewellery-collections-heading p {
         font-family: "Söhne-Kräftig", Arial, Helvetica, sans-serif;
         font-size: 16px;
         line-height: 24px;
@@ -85,7 +91,8 @@
     }
 
     .opti-jewellery-gemstone-panel,
-    .opti-jewellery-metal-panel {
+    .opti-jewellery-metal-panel,
+    .opti-jewellery-collections-panel {
         box-sizing: border-box;
         max-height: calc(100vh - 128px);
         overflow: scroll;
@@ -165,5 +172,29 @@
 
     .opti-jewellery-metal-panel .menu-panels__panel .menu-items .round.red {
         background-color: #C51317;
+    }
+
+    .opti-jewellery-collections-panel .menu-panels__panel {
+        display: flex;
+        flex-wrap: wrap;
+        column-gap: 12px;
+    }
+
+    .opti-jewellery-collections-panel .menu-panels__panel .menu-items {
+        display: flex;
+        flex-direction: column;
+        flex-basis: 48%;
+        margin-bottom: 16px;
+        text-decoration: none;
+    }
+
+    .opti-jewellery-collections-panel .menu-panels__panel .menu-items p {
+        font-size: 16px;
+        line-height: 1.2;
+        letter-spacing: 0.02rem;
+        font-weight: 400;
+        margin-bottom: 0 !important;
+        margin-top: 8px;
+        color: #282829;
     }
 </style>
