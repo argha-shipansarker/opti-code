@@ -49,36 +49,43 @@
     }
 
     .opti-wedding-ring-type-heading.close,
-    .opti-wedding-ring-metal-heading.close {
+    .opti-wedding-ring-metal-heading.close,
+    .opti-wedding-gifts-heading.close {
         display: none;
     }
 
     .opti-wedding-ring-type-heading.open,
-    .opti-wedding-ring-metal-heading.open {
+    .opti-wedding-ring-metal-heading.open,
+    .opti-wedding-gifts-heading.open {
         display: flex;
     }
 
     .opti-wedding-ring-type.close,
-    .opti-wedding-ring-metal.close {
+    .opti-wedding-ring-metal.close,
+    .opti-wedding-gifts.close {
         display: none;
     }
 
     .opti-wedding-ring-type.open,
-    .opti-wedding-ring-metal.open {
+    .opti-wedding-ring-metal.open,
+    .opti-wedding-gifts.open {
         display: block;
     }
 
     .opti-wedding-ring-type-heading,
-    .opti-wedding-ring-metal-heading {
+    .opti-wedding-ring-metal-heading,
+    .opti-wedding-gifts-heading {
         padding-bottom: 24px;
     }
 
-    .opti-wedding-ring-metal-heading {
+    .opti-wedding-ring-metal-heading,
+    .opti-wedding-gifts-heading {
         border-bottom: 1px solid #E8E9EA;
     }
 
     .opti-wedding-ring-type-heading p,
-    .opti-wedding-ring-metal-heading p {
+    .opti-wedding-ring-metal-heading p,
+    .opti-wedding-gifts-heading p {
         font-family: "Söhne-Kräftig", Arial, Helvetica, sans-serif;
         font-size: 16px;
         line-height: 24px;
@@ -86,7 +93,8 @@
     }
 
     .opti-wedding-ring-type,
-    .opti-wedding-ring-metal {
+    .opti-wedding-ring-metal,
+    .opti-wedding-gifts {
         box-sizing: border-box;
         max-height: calc(100vh - 128px);
         overflow: scroll;
@@ -120,7 +128,8 @@
         margin-top: 8px;
     }
 
-    .opti-wedding-ring-metal .menu-panels__panel {
+    .opti-wedding-ring-metal .menu-panels__panel,
+    .opti-wedding-gifts .menu-panels__panel {
         padding-top: 24px;
     }
 
@@ -166,7 +175,8 @@
         background-color: #CFD4D9;
     }
 
-    .opti-wedding-ring-metal .menu-panels__panel .menu-items p {
+    .opti-wedding-ring-metal .menu-panels__panel .menu-items p,
+    .opti-wedding-gifts .menu-panels__panel .menu-items p {
         font-size: 16px;
         line-height: 1.2;
         letter-spacing: 0.02rem;
@@ -175,7 +185,15 @@
         color: #282829;
     }
 
-    .opti-wedding-ring-metal .menu-panels__panel .menu-items.all p {
+    .opti-wedding-ring-metal .menu-panels__panel .menu-items.all p,
+    .opti-wedding-gifts .menu-panels__panel .menu-items.all p {
         font-weight: 700;
+    }
+
+    .opti-wedding-gifts .menu-panels__panel .menu-items {
+        padding: 12px 0;
+        align-items: center;
+        text-decoration: none;
+        display: flex;
     }
 </style>
