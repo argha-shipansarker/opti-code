@@ -5286,42 +5286,44 @@ utils.observeSelector('.header-menu-drawer .header-menu-drawer__panel-switcher-w
 
     .opti-jewellery-gemstone-heading.close,
     .opti-jewellery-metal-heading.close,
-    .opti-jewellery-collections-heading.close {
+    .opti-jewellery-collections-heading.close,
+    .opti-jewellery-personalised-heading.close {
         display: none;
     }
 
     .opti-jewellery-gemstone-heading.open,
     .opti-jewellery-metal-heading.open,
-    .opti-jewellery-collections-heading.open {
+    .opti-jewellery-collections-heading.open,
+    .opti-jewellery-personalised-heading.open {
         display: flex;
     }
 
     .opti-jewellery-gemstone-panel.close,
     .opti-jewellery-metal-panel.close,
-    .opti-jewellery-collections-panel.close {
+    .opti-jewellery-collections-panel.close,
+    .opti-jewellery-personalised-panel.close {
         display: none;
     }
 
     .opti-jewellery-gemstone-panel.open,
     .opti-jewellery-metal-panel.open,
-    .opti-jewellery-collections-panel.open {
+    .opti-jewellery-collections-panel.open,
+    .opti-jewellery-personalised-panel.open {
         display: block;
     }
 
     .opti-jewellery-gemstone-heading,
     .opti-jewellery-metal-heading,
-    .opti-jewellery-collections-heading {
+    .opti-jewellery-collections-heading,
+    .opti-jewellery-personalised-heading {
         padding-bottom: 24px;
-    }
-
-    .opti-jewellery-gemstone-heading,
-    .opti-jewellery-metal-heading {
         border-bottom: 1px solid #E8E9EA;
     }
 
     .opti-jewellery-gemstone-heading p,
     .opti-jewellery-metal-heading p,
-    .opti-jewellery-collections-heading p {
+    .opti-jewellery-collections-heading p,
+    .opti-jewellery-personalised-heading p {
         font-family: "Söhne-Kräftig", Arial, Helvetica, sans-serif;
         font-size: 16px;
         line-height: 24px;
@@ -5330,7 +5332,8 @@ utils.observeSelector('.header-menu-drawer .header-menu-drawer__panel-switcher-w
 
     .opti-jewellery-gemstone-panel,
     .opti-jewellery-metal-panel,
-    .opti-jewellery-collections-panel {
+    .opti-jewellery-collections-panel,
+    .opti-jewellery-personalised-panel {
         box-sizing: border-box;
         max-height: calc(100vh - 128px);
         overflow: scroll;
@@ -5341,7 +5344,9 @@ utils.observeSelector('.header-menu-drawer .header-menu-drawer__panel-switcher-w
     }
 
     .opti-jewellery-gemstone-panel .menu-panels__panel,
-    .opti-jewellery-metal-panel .menu-panels__panel {
+    .opti-jewellery-metal-panel .menu-panels__panel,
+    .opti-jewellery-collections-panel .menu-panels__panel,
+    .opti-jewellery-personalised-panel .menu-panels__panel {
         padding-top: 24px;
     }
 
@@ -5412,13 +5417,15 @@ utils.observeSelector('.header-menu-drawer .header-menu-drawer__panel-switcher-w
         background-color: #C51317;
     }
 
-    .opti-jewellery-collections-panel .menu-panels__panel {
+    .opti-jewellery-collections-panel .menu-panels__panel,
+    .opti-jewellery-personalised-panel .menu-panels__panel {
         display: flex;
         flex-wrap: wrap;
         column-gap: 12px;
     }
 
-    .opti-jewellery-collections-panel .menu-panels__panel .menu-items {
+    .opti-jewellery-collections-panel .menu-panels__panel .menu-items,
+    .opti-jewellery-personalised-panel .menu-panels__panel .menu-items {
         display: flex;
         flex-direction: column;
         flex-basis: 48%;
@@ -5426,7 +5433,8 @@ utils.observeSelector('.header-menu-drawer .header-menu-drawer__panel-switcher-w
         text-decoration: none;
     }
 
-    .opti-jewellery-collections-panel .menu-panels__panel .menu-items p {
+    .opti-jewellery-collections-panel .menu-panels__panel .menu-items p,
+    .opti-jewellery-personalised-panel .menu-panels__panel .menu-items p {
         font-size: 16px;
         line-height: 1.2;
         letter-spacing: 0.02rem;
@@ -5747,6 +5755,67 @@ utils.observeSelector('.header-menu-drawer .header-menu-drawer__panel-switcher-w
 
 </div>`);
 
+        vue_menu_2nd_level_container.insertAdjacentHTML("beforeend", `<div class="opti-jewellery-personalised-heading close">
+    <button>
+        <svg data-v-ce454e80="" width="24" height="24" viewBox="0 0 24 24" fill="none"
+            xmlns="http://www.w3.org/2000/svg" class="">
+            <mask data-v-ce454e80="" id="mask0_3820_13683" maskUnits="userSpaceOnUse" x="0" y="0" width="24" height="24"
+                style="mask-type: alpha;">
+                <rect data-v-ce454e80="" width="24" height="24" fill="#D9D9D9"></rect>
+            </mask>
+            <g data-v-ce454e80="" mask="url(#mask0_3820_13683)">
+                <path data-v-ce454e80=""
+                    d="M14.3077 17.6154L9 12.3077L14.3077 7L15.0154 7.7077L10.4154 12.3077L15.0154 16.9077L14.3077 17.6154Z"
+                    fill="#010101"></path>
+            </g>
+        </svg>
+    </button>
+    <p>
+        Personalised Jewellery
+    </p>
+</div>
+
+<div class="opti-jewellery-personalised-panel close">
+
+    <div class="menu-panels__panel">
+        <a href="/gifts/personalised/engravables" class="menu-items">
+            <img src="https://cdn.optimizely.com/img/24400620820/546c25d220444710974a097b9e98078d.jpg" alt="">
+            <p>Engravables</p>
+        </a>
+
+        <a href="/gifts/birthstones" class="menu-items">
+            <img src="https://cdn.optimizely.com/img/24400620820/83f37126aea54b0ea8e3c456c12b9cae.jpg" alt="">
+            <p>Birthstones</p>
+        </a>
+
+        <a href="/gifts/personalised/initials" class="menu-items">
+            <img src="https://cdn.optimizely.com/img/24400620820/4a72289045b04120b83b365399315cb7.jpg" alt="">
+            <p>Initials</p>
+        </a>
+
+        <a href="/jewellery/necklaces-pendants/locket" class="menu-items">
+            <img src="https://cdn.optimizely.com/img/24400620820/810eb39a49dd4ee7b40e9ad00023ca80.jpg" alt="">
+            <p>Lockets</p>
+        </a>
+
+        <a href="/jewellery/necklaces-pendants/cross" class="menu-items">
+            <img src="https://cdn.optimizely.com/img/24400620820/12fcd1abfc5e4a0e8f7076f3875fabf6.jpg" alt="">
+            <p>Cross Necklaces</p>
+        </a>
+
+        <a href="/gifts/personalised/zodiacs" class="menu-items">
+            <img src="https://cdn.optimizely.com/img/24400620820/6380342e04634dfc9c9fc6b40df3e5cf.jpg" alt="">
+            <p>Zodiacs</p>
+        </a>
+
+        <a href="/personalisation" class="menu-items">
+            <img src="https://cdn.optimizely.com/img/24400620820/1ab78f334f294ae7b918d9278015e746.jpg" alt="">
+            <p>All Personalised Jewellery</p>
+        </a>
+    </div>
+
+</div>`);
+
         first_grid_menu = vue_menu_2nd_level_container.querySelector('.navigation-section-panel .navigation-section-panel__grid .navigation-section-panel__grid-unit:nth-of-type(1)');
 
         first_grid_menu.insertAdjacentHTML("afterend", `<div class="opti-new-jewellery-menu">
@@ -5896,6 +5965,22 @@ utils.observeSelector('.header-menu-drawer .header-menu-drawer__panel-switcher-w
             isOpening: false,
             headingSelector: '.opti-jewellery-collections-heading',
             collectionsSelector: '.opti-jewellery-collections-panel',
+            container: vue_menu_2nd_level_container
+        });
+
+        bindVueMenuToggleClick({
+            triggerSelector: '.opti-new-jewellery-menu .personalised-jewellery',
+            isOpening: true,
+            headingSelector: '.opti-jewellery-personalised-heading',
+            collectionsSelector: '.opti-jewellery-personalised-panel',
+            container: vue_menu_2nd_level_container
+        });
+
+        bindVueMenuToggleClick({
+            triggerSelector: '.opti-jewellery-personalised-heading',
+            isOpening: false,
+            headingSelector: '.opti-jewellery-personalised-heading',
+            collectionsSelector: '.opti-jewellery-personalised-panel',
             container: vue_menu_2nd_level_container
         });
 

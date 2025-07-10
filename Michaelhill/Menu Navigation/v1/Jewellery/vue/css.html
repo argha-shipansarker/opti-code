@@ -48,42 +48,44 @@
 
     .opti-jewellery-gemstone-heading.close,
     .opti-jewellery-metal-heading.close,
-    .opti-jewellery-collections-heading.close {
+    .opti-jewellery-collections-heading.close,
+    .opti-jewellery-personalised-heading.close {
         display: none;
     }
 
     .opti-jewellery-gemstone-heading.open,
     .opti-jewellery-metal-heading.open,
-    .opti-jewellery-collections-heading.open {
+    .opti-jewellery-collections-heading.open,
+    .opti-jewellery-personalised-heading.open {
         display: flex;
     }
 
     .opti-jewellery-gemstone-panel.close,
     .opti-jewellery-metal-panel.close,
-    .opti-jewellery-collections-panel.close {
+    .opti-jewellery-collections-panel.close,
+    .opti-jewellery-personalised-panel.close {
         display: none;
     }
 
     .opti-jewellery-gemstone-panel.open,
     .opti-jewellery-metal-panel.open,
-    .opti-jewellery-collections-panel.open {
+    .opti-jewellery-collections-panel.open,
+    .opti-jewellery-personalised-panel.open {
         display: block;
     }
 
     .opti-jewellery-gemstone-heading,
     .opti-jewellery-metal-heading,
-    .opti-jewellery-collections-heading {
+    .opti-jewellery-collections-heading,
+    .opti-jewellery-personalised-heading {
         padding-bottom: 24px;
-    }
-
-    .opti-jewellery-gemstone-heading,
-    .opti-jewellery-metal-heading {
         border-bottom: 1px solid #E8E9EA;
     }
 
     .opti-jewellery-gemstone-heading p,
     .opti-jewellery-metal-heading p,
-    .opti-jewellery-collections-heading p {
+    .opti-jewellery-collections-heading p,
+    .opti-jewellery-personalised-heading p {
         font-family: "Söhne-Kräftig", Arial, Helvetica, sans-serif;
         font-size: 16px;
         line-height: 24px;
@@ -92,7 +94,8 @@
 
     .opti-jewellery-gemstone-panel,
     .opti-jewellery-metal-panel,
-    .opti-jewellery-collections-panel {
+    .opti-jewellery-collections-panel,
+    .opti-jewellery-personalised-panel {
         box-sizing: border-box;
         max-height: calc(100vh - 128px);
         overflow: scroll;
@@ -103,7 +106,9 @@
     }
 
     .opti-jewellery-gemstone-panel .menu-panels__panel,
-    .opti-jewellery-metal-panel .menu-panels__panel {
+    .opti-jewellery-metal-panel .menu-panels__panel,
+    .opti-jewellery-collections-panel .menu-panels__panel,
+    .opti-jewellery-personalised-panel .menu-panels__panel {
         padding-top: 24px;
     }
 
@@ -174,13 +179,15 @@
         background-color: #C51317;
     }
 
-    .opti-jewellery-collections-panel .menu-panels__panel {
+    .opti-jewellery-collections-panel .menu-panels__panel,
+    .opti-jewellery-personalised-panel .menu-panels__panel {
         display: flex;
         flex-wrap: wrap;
         column-gap: 12px;
     }
 
-    .opti-jewellery-collections-panel .menu-panels__panel .menu-items {
+    .opti-jewellery-collections-panel .menu-panels__panel .menu-items,
+    .opti-jewellery-personalised-panel .menu-panels__panel .menu-items {
         display: flex;
         flex-direction: column;
         flex-basis: 48%;
@@ -188,7 +195,8 @@
         text-decoration: none;
     }
 
-    .opti-jewellery-collections-panel .menu-panels__panel .menu-items p {
+    .opti-jewellery-collections-panel .menu-panels__panel .menu-items p,
+    .opti-jewellery-personalised-panel .menu-panels__panel .menu-items p {
         font-size: 16px;
         line-height: 1.2;
         letter-spacing: 0.02rem;
