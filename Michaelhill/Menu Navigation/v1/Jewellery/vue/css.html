@@ -46,38 +46,46 @@
         font-weight: 400;
     }
 
-    .opti-jewellery-gemstone-heading.close {
+    .opti-jewellery-gemstone-heading.close,
+    .opti-jewellery-metal-heading.close {
         display: none;
     }
 
-    .opti-jewellery-gemstone-heading.open {
+    .opti-jewellery-gemstone-heading.open,
+    .opti-jewellery-metal-heading.open {
         display: flex;
     }
 
-    .opti-jewellery-gemstone-panel.close {
+    .opti-jewellery-gemstone-panel.close,
+    .opti-jewellery-metal-panel.close {
         display: none;
     }
 
-    .opti-jewellery-gemstone-panel.open {
+    .opti-jewellery-gemstone-panel.open,
+    .opti-jewellery-metal-panel.open {
         display: block;
     }
 
-    .opti-jewellery-gemstone-heading {
+    .opti-jewellery-gemstone-heading,
+    .opti-jewellery-metal-heading {
         padding-bottom: 24px;
     }
 
-    .opti-jewellery-gemstone-heading {
+    .opti-jewellery-gemstone-heading,
+    .opti-jewellery-metal-heading {
         border-bottom: 1px solid #E8E9EA;
     }
 
-    .opti-jewellery-gemstone-heading p {
+    .opti-jewellery-gemstone-heading p,
+    .opti-jewellery-metal-heading p {
         font-family: "Söhne-Kräftig", Arial, Helvetica, sans-serif;
         font-size: 16px;
         line-height: 24px;
         margin: 0 0 0 16px !important;
     }
 
-    .opti-jewellery-gemstone-panel {
+    .opti-jewellery-gemstone-panel,
+    .opti-jewellery-metal-panel {
         box-sizing: border-box;
         max-height: calc(100vh - 128px);
         overflow: scroll;
@@ -87,18 +95,21 @@
         padding: 0;
     }
 
-    .opti-jewellery-gemstone-panel .menu-panels__panel {
+    .opti-jewellery-gemstone-panel .menu-panels__panel,
+    .opti-jewellery-metal-panel .menu-panels__panel {
         padding-top: 24px;
     }
 
-    .opti-jewellery-gemstone-panel .menu-panels__panel .menu-items {
+    .opti-jewellery-gemstone-panel .menu-panels__panel .menu-items,
+    .opti-jewellery-metal-panel .menu-panels__panel .menu-items {
         display: flex;
         padding: 12.5px 0;
         align-items: center;
         text-decoration: none;
     }
 
-    .opti-jewellery-gemstone-panel .menu-panels__panel .menu-items p {
+    .opti-jewellery-gemstone-panel .menu-panels__panel .menu-items p,
+    .opti-jewellery-metal-panel .menu-panels__panel .menu-items p {
         font-size: 16px;
         line-height: 1.2;
         letter-spacing: 0.02rem;
@@ -108,8 +119,51 @@
         margin-left: 8px;
     }
 
-    .opti-jewellery-gemstone-panel .menu-panels__panel .menu-items.all p {
+    .opti-jewellery-gemstone-panel .menu-panels__panel .menu-items.all p,
+    .opti-jewellery-metal-panel .menu-panels__panel .menu-items.all p {
         font-weight: 700;
         margin-left: 0px;
+    }
+
+    .opti-jewellery-metal-panel .menu-panels__panel .menu-items .round {
+        height: 20px;
+        width: 20px;
+        border-radius: 100%;
+    }
+
+    .opti-jewellery-metal-panel .menu-panels__panel .menu-items .round.yellow {
+        background-color: #DFB877;
+    }
+
+    .opti-jewellery-metal-panel .menu-panels__panel .menu-items .round.white {
+        background-color: #EAEAEA;
+    }
+
+    .opti-jewellery-metal-panel .menu-panels__panel .menu-items .round.rose {
+        background-color: #DDA383;
+    }
+
+    .opti-jewellery-metal-panel .menu-panels__panel .menu-items .round.silver {
+        background-color: #CAD1D6;
+    }
+
+    .opti-jewellery-metal-panel .menu-panels__panel .menu-items .round.platinum {
+        background-color: #BEC3C7;
+    }
+
+    .opti-jewellery-metal-panel .menu-panels__panel .menu-items .round.grey {
+        background-color: #CFD4D9;
+    }
+
+    .opti-jewellery-metal-panel .menu-panels__panel .menu-items .round.steel {
+        background-color: #93979F;
+    }
+
+    .opti-jewellery-metal-panel .menu-panels__panel .menu-items .round.black {
+        background-color: #474747;
+    }
+
+    .opti-jewellery-metal-panel .menu-panels__panel .menu-items .round.red {
+        background-color: #C51317;
     }
 </style>

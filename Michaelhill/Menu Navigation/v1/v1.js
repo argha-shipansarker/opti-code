@@ -5284,38 +5284,46 @@ utils.observeSelector('.header-menu-drawer .header-menu-drawer__panel-switcher-w
         font-weight: 400;
     }
 
-    .opti-jewellery-gemstone-heading.close {
+    .opti-jewellery-gemstone-heading.close,
+    .opti-jewellery-metal-heading.close {
         display: none;
     }
 
-    .opti-jewellery-gemstone-heading.open {
+    .opti-jewellery-gemstone-heading.open,
+    .opti-jewellery-metal-heading.open {
         display: flex;
     }
 
-    .opti-jewellery-gemstone-panel.close {
+    .opti-jewellery-gemstone-panel.close,
+    .opti-jewellery-metal-panel.close {
         display: none;
     }
 
-    .opti-jewellery-gemstone-panel.open {
+    .opti-jewellery-gemstone-panel.open,
+    .opti-jewellery-metal-panel.open {
         display: block;
     }
 
-    .opti-jewellery-gemstone-heading {
+    .opti-jewellery-gemstone-heading,
+    .opti-jewellery-metal-heading {
         padding-bottom: 24px;
     }
 
-    .opti-jewellery-gemstone-heading {
+    .opti-jewellery-gemstone-heading,
+    .opti-jewellery-metal-heading {
         border-bottom: 1px solid #E8E9EA;
     }
 
-    .opti-jewellery-gemstone-heading p {
+    .opti-jewellery-gemstone-heading p,
+    .opti-jewellery-metal-heading p {
         font-family: "Söhne-Kräftig", Arial, Helvetica, sans-serif;
         font-size: 16px;
         line-height: 24px;
         margin: 0 0 0 16px !important;
     }
 
-    .opti-jewellery-gemstone-panel {
+    .opti-jewellery-gemstone-panel,
+    .opti-jewellery-metal-panel {
         box-sizing: border-box;
         max-height: calc(100vh - 128px);
         overflow: scroll;
@@ -5325,18 +5333,21 @@ utils.observeSelector('.header-menu-drawer .header-menu-drawer__panel-switcher-w
         padding: 0;
     }
 
-    .opti-jewellery-gemstone-panel .menu-panels__panel {
+    .opti-jewellery-gemstone-panel .menu-panels__panel,
+    .opti-jewellery-metal-panel .menu-panels__panel {
         padding-top: 24px;
     }
 
-    .opti-jewellery-gemstone-panel .menu-panels__panel .menu-items {
+    .opti-jewellery-gemstone-panel .menu-panels__panel .menu-items,
+    .opti-jewellery-metal-panel .menu-panels__panel .menu-items {
         display: flex;
         padding: 12.5px 0;
         align-items: center;
         text-decoration: none;
     }
 
-    .opti-jewellery-gemstone-panel .menu-panels__panel .menu-items p {
+    .opti-jewellery-gemstone-panel .menu-panels__panel .menu-items p,
+    .opti-jewellery-metal-panel .menu-panels__panel .menu-items p {
         font-size: 16px;
         line-height: 1.2;
         letter-spacing: 0.02rem;
@@ -5346,9 +5357,52 @@ utils.observeSelector('.header-menu-drawer .header-menu-drawer__panel-switcher-w
         margin-left: 8px;
     }
 
-    .opti-jewellery-gemstone-panel .menu-panels__panel .menu-items.all p {
+    .opti-jewellery-gemstone-panel .menu-panels__panel .menu-items.all p,
+    .opti-jewellery-metal-panel .menu-panels__panel .menu-items.all p {
         font-weight: 700;
         margin-left: 0px;
+    }
+
+    .opti-jewellery-metal-panel .menu-panels__panel .menu-items .round {
+        height: 20px;
+        width: 20px;
+        border-radius: 100%;
+    }
+
+    .opti-jewellery-metal-panel .menu-panels__panel .menu-items .round.yellow {
+        background-color: #DFB877;
+    }
+
+    .opti-jewellery-metal-panel .menu-panels__panel .menu-items .round.white {
+        background-color: #EAEAEA;
+    }
+
+    .opti-jewellery-metal-panel .menu-panels__panel .menu-items .round.rose {
+        background-color: #DDA383;
+    }
+
+    .opti-jewellery-metal-panel .menu-panels__panel .menu-items .round.silver {
+        background-color: #CAD1D6;
+    }
+
+    .opti-jewellery-metal-panel .menu-panels__panel .menu-items .round.platinum {
+        background-color: #BEC3C7;
+    }
+
+    .opti-jewellery-metal-panel .menu-panels__panel .menu-items .round.grey {
+        background-color: #CFD4D9;
+    }
+
+    .opti-jewellery-metal-panel .menu-panels__panel .menu-items .round.steel {
+        background-color: #93979F;
+    }
+
+    .opti-jewellery-metal-panel .menu-panels__panel .menu-items .round.black {
+        background-color: #474747;
+    }
+
+    .opti-jewellery-metal-panel .menu-panels__panel .menu-items .round.red {
+        background-color: #C51317;
     }
 </style>`);
 
@@ -5520,6 +5574,82 @@ utils.observeSelector('.header-menu-drawer .header-menu-drawer__panel-switcher-w
 
 </div>`);
 
+        vue_menu_2nd_level_container.insertAdjacentHTML("beforeend", `<div class="opti-jewellery-metal-heading close">
+    <button>
+        <svg data-v-ce454e80="" width="24" height="24" viewBox="0 0 24 24" fill="none"
+            xmlns="http://www.w3.org/2000/svg" class="">
+            <mask data-v-ce454e80="" id="mask0_3820_13683" maskUnits="userSpaceOnUse" x="0" y="0" width="24" height="24"
+                style="mask-type: alpha;">
+                <rect data-v-ce454e80="" width="24" height="24" fill="#D9D9D9"></rect>
+            </mask>
+            <g data-v-ce454e80="" mask="url(#mask0_3820_13683)">
+                <path data-v-ce454e80=""
+                    d="M14.3077 17.6154L9 12.3077L14.3077 7L15.0154 7.7077L10.4154 12.3077L15.0154 16.9077L14.3077 17.6154Z"
+                    fill="#010101"></path>
+            </g>
+        </svg>
+    </button>
+    <p>
+        Metals
+    </p>
+</div>
+
+<div class="opti-jewellery-metal-panel close">
+
+    <div class="menu-panels__panel">
+
+        <a href="/jewellery/mixed-metal" class="menu-items all">
+            <p>All Metals</p>
+        </a>
+
+        <a href="/jewellery/gold/yellow-gold" class="menu-items">
+            <div class="round yellow"></div>
+            <p>Yellow Gold</p>
+        </a>
+
+        <a href="/jewellery/gold/white-gold" class="menu-items">
+            <div class="round white"></div>
+            <p>White Gold</p>
+        </a>
+
+        <a href="/jewellery/gold/rose-gold" class="menu-items">
+            <div class="round rose"></div>
+            <p>Rose Gold</p>
+        </a>
+
+        <a href="/jewellery/shop-all?metalColour=Silver" class="menu-items">
+            <div class="round silver"></div>
+            <p>Silver</p>
+        </a>
+
+        <a href="/jewellery/shop-all?metalColour=Platinum" class="menu-items">
+            <div class="round platinum"></div>
+            <p>Platinum</p>
+        </a>
+
+        <a href="/jewellery/shop-all?metalColour=Grey" class="menu-items">
+            <div class="round grey"></div>
+            <p>Grey</p>
+        </a>
+
+        <a href="/jewellery/shop-all?metalColour=Steel" class="menu-items">
+            <div class="round steel"></div>
+            <p>Steel</p>
+        </a>
+
+        <a href="/jewellery/shop-all?metalColour=Black" class="menu-items">
+            <div class="round black"></div>
+            <p>Black</p>
+        </a>
+
+        <a href="/jewellery/shop-all?metalColour=Red" class="menu-items">
+            <div class="round red"></div>
+            <p>Red</p>
+        </a>
+    </div>
+
+</div>`);
+
         first_grid_menu = vue_menu_2nd_level_container.querySelector('.navigation-section-panel .navigation-section-panel__grid .navigation-section-panel__grid-unit:nth-of-type(1)');
 
         first_grid_menu.insertAdjacentHTML("afterend", `<div class="opti-new-jewellery-menu">
@@ -5637,6 +5767,22 @@ utils.observeSelector('.header-menu-drawer .header-menu-drawer__panel-switcher-w
             isOpening: false,
             headingSelector: '.opti-jewellery-gemstone-heading',
             collectionsSelector: '.opti-jewellery-gemstone-panel',
+            container: vue_menu_2nd_level_container
+        });
+
+        bindVueMenuToggleClick({
+            triggerSelector: '.opti-new-jewellery-menu .metals',
+            isOpening: true,
+            headingSelector: '.opti-jewellery-metal-heading',
+            collectionsSelector: '.opti-jewellery-metal-panel',
+            container: vue_menu_2nd_level_container
+        });
+
+        bindVueMenuToggleClick({
+            triggerSelector: '.opti-jewellery-metal-heading',
+            isOpening: false,
+            headingSelector: '.opti-jewellery-metal-heading',
+            collectionsSelector: '.opti-jewellery-metal-panel',
             container: vue_menu_2nd_level_container
         });
 
