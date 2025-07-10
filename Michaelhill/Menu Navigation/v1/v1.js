@@ -6914,7 +6914,129 @@ utils.observeSelector('.header-menu-drawer .header-menu-drawer__panel-switcher-w
     if (window.opti_selected_menu_name == "OUR WORLD") {
         vue_menu_2nd_level_container.classList.add('opti-our-world-vue-menu-panel');
 
-        vue_menu_2nd_level_container.insertAdjacentHTML("afterbegin", ``);
+        vue_menu_2nd_level_container.insertAdjacentHTML("afterbegin", `<style>
+    .header-menu-drawer .header-menu-drawer__close-button {
+        background: #FFFFFF !important;
+    }
+
+    .header-menu-drawer .header-menu-drawer__panel-switcher-wrapper .header-menu-drawer__panel-switcher-link-content {
+        border-bottom: 1px solid #E8E9EA;
+    }
+
+    .header-menu-drawer .header-menu-drawer__panel-switcher-wrapper .navigation-section-panel .navigation-section-panel__grid .navigation-section-panel__grid-unit:nth-of-type(1),
+    .header-menu-drawer .header-menu-drawer__panel-switcher-wrapper .navigation-section-panel .navigation-section-panel__grid .navigation-section-panel__grid-unit:nth-of-type(3),
+    .header-menu-drawer .header-menu-drawer__panel-switcher-wrapper .navigation-section-panel .navigation-section-panel__grid .navigation-section-panel__grid-unit:nth-of-type(4) {
+        display: none;
+    }
+
+    .header-menu-drawer .header-menu-drawer__panel-switcher-wrapper .navigation-section-panel .navigation-section-panel__grid .navigation-section-panel__grid-unit:nth-of-type(5) .optimised-picture-wrapper {
+        display: none !important;
+    }
+
+    .header-menu-drawer .header-menu-drawer__panel-switcher-wrapper .navigation-section-panel .navigation-section-panel__grid .navigation-section-panel__grid-unit:nth-of-type(5) .opti-new-our-world-image {
+        height: 230px;
+    }
+
+    .header-menu-drawer .header-menu-drawer__panel-switcher-wrapper .navigation-section-panel .navigation-section-panel__grid .navigation-section-panel__grid-unit:nth-of-type(5) p {
+        font-size: 16px;
+    }
+
+    .header-menu-drawer .header-menu-drawer__panel-switcher-wrapper .navigation-section-panel .navigation-section-panel__grid .navigation-section-panel__grid-unit:nth-of-type(5) p a {
+        font-size: 16px;
+        text-decoration: underline;
+        color: #282829;
+        font-weight: 400;
+    }
+</style>`);
+
+        first_grid_menu = vue_menu_2nd_level_container.querySelector('.navigation-section-panel .navigation-section-panel__grid .navigation-section-panel__grid-unit:nth-of-type(1)');
+
+        first_grid_menu.insertAdjacentHTML("afterend", `<div class="opti-new-our-world-menu">
+    <style>
+        .opti-new-our-world-menu {
+            margin-top: 24px;
+        }
+
+        .opti-new-our-world-menu .bold-menu {
+            font-size: 16px;
+            font-weight: 700;
+            line-height: 1.2;
+            letter-spacing: 0.02rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            color: #282829;
+            text-decoration: none;
+            padding: 14.5px 0;
+            border-bottom: 1px solid #E8E9EA;
+        }
+    </style>
+
+    <div class="bold-menu education">
+        Education & Guides
+        <svg width="24" height="25" viewBox="0 0 24 25" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <mask id="mask0_2345_2756" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="0" y="0" width="24"
+                height="25">
+                <rect y="0.746094" width="24" height="24" fill="#D9D9D9" />
+            </mask>
+            <g mask="url(#mask0_2345_2756)">
+                <path d="M13.6 13.0538L9 8.45379L9.7077 7.74609L15.0154 13.0538L9.7077 18.3615L9 17.6538L13.6 13.0538Z"
+                    fill="#010101" />
+            </g>
+        </svg>
+    </div>
+
+    <div class="bold-menu story">
+        Our Story
+        <svg width="24" height="25" viewBox="0 0 24 25" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <mask id="mask0_2345_2756" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="0" y="0" width="24"
+                height="25">
+                <rect y="0.746094" width="24" height="24" fill="#D9D9D9" />
+            </mask>
+            <g mask="url(#mask0_2345_2756)">
+                <path d="M13.6 13.0538L9 8.45379L9.7077 7.74609L15.0154 13.0538L9.7077 18.3615L9 17.6538L13.6 13.0538Z"
+                    fill="#010101" />
+            </g>
+        </svg>
+    </div>
+
+    <div class="bold-menu impact">
+        Our Impact
+        <svg width="24" height="25" viewBox="0 0 24 25" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <mask id="mask0_2345_2756" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="0" y="0" width="24"
+                height="25">
+                <rect y="0.746094" width="24" height="24" fill="#D9D9D9" />
+            </mask>
+            <g mask="url(#mask0_2345_2756)">
+                <path d="M13.6 13.0538L9 8.45379L9.7077 7.74609L15.0154 13.0538L9.7077 18.3615L9 17.6538L13.6 13.0538Z"
+                    fill="#010101" />
+            </g>
+        </svg>
+    </div>
+
+</div>`);
+
+        const our_world_menu_fourth_section_image_container = vue_menu_2nd_level_container.querySelector('.navigation-section-panel .navigation-section-panel__grid .navigation-section-panel__grid-unit:nth-of-type(5) .optimised-picture-wrapper');
+
+        if (our_world_menu_fourth_section_image_container) {
+            our_world_menu_fourth_section_image_container.insertAdjacentHTML("afterend", `<a href="/discover/brand-history"><img class="opti-new-our-world-image" src="https://cdn.optimizely.com/img/24400620820/537cb63ce2b84a588417d19c48855eee.jpg" alt=""></a>`)
+        }
+
+        const our_world_menu_fourth_section_text_1 = vue_menu_2nd_level_container.querySelector('.navigation-section-panel .navigation-section-panel__grid .navigation-section-panel__grid-unit:nth-of-type(5) p:nth-of-type(2)');
+        if (our_world_menu_fourth_section_text_1) {
+            our_world_menu_fourth_section_text_1.innerHTML = '<strong>About Us </strong>';
+        }
+
+        const our_world_menu_fourth_section_text_2 = vue_menu_2nd_level_container.querySelector('.navigation-section-panel .navigation-section-panel__grid .navigation-section-panel__grid-unit:nth-of-type(5) p:nth-of-type(3)');
+        if (our_world_menu_fourth_section_text_2) {
+            our_world_menu_fourth_section_text_2.innerText = `Marking life's most meaningful moments since 1979.`;
+        }
+
+        const our_world_menu_fourth_section_text_3 = vue_menu_2nd_level_container.querySelector('.navigation-section-panel .navigation-section-panel__grid .navigation-section-panel__grid-unit:nth-of-type(5) p:nth-of-type(4) a');
+        if (our_world_menu_fourth_section_text_3) {
+            our_world_menu_fourth_section_text_3.innerText = 'Discover';
+            our_world_menu_fourth_section_text_3.href = '/discover/brand-history';
+        }
 
     }
 });
