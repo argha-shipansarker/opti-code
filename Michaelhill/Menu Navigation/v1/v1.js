@@ -6399,4 +6399,10 @@ utils.observeSelector('.header-menu-drawer .header-menu-drawer__panel-switcher-w
             watch_menu_fourth_section_text.innerText = 'Your need-to-know to pick your perfect ring.';
         }
     }
+
+    if (window.opti_selected_menu_name == "GIFTS") {
+        vue_menu_2nd_level_container.classList.add('opti-gifts-vue-menu-panel');
+
+        vue_menu_2nd_level_container.insertAdjacentHTML("afterbegin", ``);
+    }
 });
