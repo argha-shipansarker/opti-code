@@ -6451,35 +6451,42 @@ utils.observeSelector('.header-menu-drawer .header-menu-drawer__panel-switcher-w
         font-weight: 400;
     }
 
-    .opti-gift-personalised-heading.close {
+    .opti-gift-personalised-heading.close,
+    .opti-gift-occasion-heading.close {
         display: none;
     }
 
-    .opti-gift-personalised-heading.open {
+    .opti-gift-personalised-heading.open,
+    .opti-gift-occasion-heading.open {
         display: flex;
     }
 
-    .opti-gift-personalised-panel.close {
+    .opti-gift-personalised-panel.close,
+    .opti-gift-occasion-panel.close {
         display: none;
     }
 
-    .opti-gift-personalised-panel.open {
+    .opti-gift-personalised-panel.open,
+    .opti-gift-occasion-panel.open {
         display: block;
     }
 
-    .opti-gift-personalised-heading {
+    .opti-gift-personalised-heading,
+    .opti-gift-occasion-heading {
         padding-bottom: 24px;
         border-bottom: 1px solid #E8E9EA;
     }
 
-    .opti-gift-personalised-heading p {
+    .opti-gift-personalised-heading p,
+    .opti-gift-occasion-heading p {
         font-family: "Söhne-Kräftig", Arial, Helvetica, sans-serif;
         font-size: 16px;
         line-height: 24px;
         margin: 0 0 0 16px !important;
     }
 
-    .opti-gift-personalised-panel {
+    .opti-gift-personalised-panel,
+    .opti-gift-occasion-panel {
         box-sizing: border-box;
         max-height: calc(100vh - 128px);
         overflow: scroll;
@@ -6489,7 +6496,8 @@ utils.observeSelector('.header-menu-drawer .header-menu-drawer__panel-switcher-w
         padding: 0;
     }
 
-    .opti-gift-personalised-panel .menu-panels__panel {
+    .opti-gift-personalised-panel .menu-panels__panel,
+    .opti-gift-occasion-panel .menu-panels__panel {
         padding-top: 24px;
     }
 
@@ -6515,6 +6523,26 @@ utils.observeSelector('.header-menu-drawer .header-menu-drawer__panel-switcher-w
         margin-bottom: 0 !important;
         margin-top: 8px;
         color: #282829;
+    }
+
+    .opti-gift-occasion-panel .menu-panels__panel .menu-items {
+        padding: 12px 0;
+        align-items: center;
+        text-decoration: none;
+        display: flex;
+    }
+
+    .opti-gift-occasion-panel .menu-panels__panel .menu-items p {
+        font-size: 16px;
+        line-height: 1.2;
+        letter-spacing: 0.02rem;
+        font-weight: 400;
+        margin-bottom: 0 !important;
+        color: #282829;
+    }
+
+    .opti-gift-occasion-panel .menu-panels__panel .menu-items.all p {
+        font-weight: 700;
     }
 </style>`);
 
@@ -6574,6 +6602,53 @@ utils.observeSelector('.header-menu-drawer .header-menu-drawer__panel-switcher-w
         <a href="/personalisation" class="menu-items">
             <img src="https://cdn.optimizely.com/img/24400620820/1ab78f334f294ae7b918d9278015e746.jpg" alt="">
             <p>All Personalised Jewellery</p>
+        </a>
+    </div>
+
+</div>`);
+
+        vue_menu_2nd_level_container.insertAdjacentHTML("beforeend", `<div class="opti-gift-occasion-heading close">
+    <button>
+        <svg data-v-ce454e80="" width="24" height="24" viewBox="0 0 24 24" fill="none"
+            xmlns="http://www.w3.org/2000/svg" class="">
+            <mask data-v-ce454e80="" id="mask0_3820_13683" maskUnits="userSpaceOnUse" x="0" y="0" width="24" height="24"
+                style="mask-type: alpha;">
+                <rect data-v-ce454e80="" width="24" height="24" fill="#D9D9D9"></rect>
+            </mask>
+            <g data-v-ce454e80="" mask="url(#mask0_3820_13683)">
+                <path data-v-ce454e80=""
+                    d="M14.3077 17.6154L9 12.3077L14.3077 7L15.0154 7.7077L10.4154 12.3077L15.0154 16.9077L14.3077 17.6154Z"
+                    fill="#010101"></path>
+            </g>
+        </svg>
+    </button>
+    <p>
+        Occasion
+    </p>
+</div>
+
+<div class="opti-gift-occasion-panel close">
+
+    <div class="menu-panels__panel">
+
+        <a href="/anniversary" class="menu-items">
+            <p>Anniversary Gifts</p>
+        </a>
+
+        <a href="/gifts/occasions/birthday-gifts" class="menu-items">
+            <p>Birthday Gifts</p>
+        </a>
+
+        <a href="/gifts/occasions/graduation-gifts" class="menu-items">
+            <p>Graduation Gifts</p>
+        </a>
+
+        <a href="/gifts/occasions/bridal-bridesmaid-gifts" class="menu-items">
+            <p>Bridesmaid Gifts</p>
+        </a>
+
+        <a href="/gifts" class="menu-items all">
+            <p>All Occasions</p>
         </a>
     </div>
 
@@ -6688,6 +6763,22 @@ utils.observeSelector('.header-menu-drawer .header-menu-drawer__panel-switcher-w
             isOpening: false,
             headingSelector: '.opti-gift-personalised-heading',
             collectionsSelector: '.opti-gift-personalised-panel',
+            container: vue_menu_2nd_level_container
+        });
+
+        bindVueMenuToggleClick({
+            triggerSelector: '.opti-new-gift-menu .occasion',
+            isOpening: true,
+            headingSelector: '.opti-gift-occasion-heading',
+            collectionsSelector: '.opti-gift-occasion-panel',
+            container: vue_menu_2nd_level_container
+        });
+
+        bindVueMenuToggleClick({
+            triggerSelector: '.opti-gift-occasion-heading',
+            isOpening: false,
+            headingSelector: '.opti-gift-occasion-heading',
+            collectionsSelector: '.opti-gift-occasion-panel',
             container: vue_menu_2nd_level_container
         });
 
