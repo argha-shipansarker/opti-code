@@ -1,0 +1,250 @@
+const utils = optimizely.get('utils');
+
+utils.observeSelector('.hero-banner--electric-vehicle', function (hero_banner) {
+    hero_banner.style.display = "none";
+    hero_banner.insertAdjacentHTML("afterend", `<div class="opti-new-home-banner">
+    <style>
+        .opti-new-home-banner {
+            position: relative;
+            max-width: 1380px;
+            height: 635px;
+            background-image: url(https://cdn.optimizely.com/img/17941920996/8d53368489d4463296b6a10426e9c624.png);
+            background-position: center center;
+            background-size: cover;
+            background-repeat: no-repeat;
+            margin: 30px auto 0;
+            border-radius: 24px;
+        }
+
+        .opti-new-home-banner .opti-container {
+            max-width: 1024px;
+            height: 100%;
+            padding: 63px 24px 0;
+            position: relative;
+            margin: auto;
+            display: flex;
+            gap: 23px;
+        }
+
+        .opti-new-home-banner .opti-container .welcome-message,
+        .opti-new-home-banner .opti-container .policy-section {
+            flex-basis: 49%;
+        }
+
+        .opti-new-home-banner .opti-container .welcome-message .heading {
+            font-size: 42px;
+            line-height: 48px;
+            font-weight: 600;
+            color: #0045A0;
+            margin: 20px 0 8px;
+            padding: 0px;
+        }
+
+        .opti-new-home-banner .opti-container .welcome-message .sub-heading {
+            font-size: 20px;
+            line-height: 28px;
+            font-weight: 300;
+            color: #21201C;
+            margin: 0 0 20px;
+            padding: 0;
+        }
+
+        .opti-new-home-banner .opti-container .welcome-message .action-cta {
+            display: flex;
+            gap: 12px;
+        }
+
+        .opti-new-home-banner .opti-container .welcome-message .pink-btn {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 12px 20px;
+            color: #FFFFFF;
+            border-radius: 100px;
+            background-color: #B00058;
+            max-width: fit-content;
+            font-size: 16px;
+            line-height: 100%;
+            font-weight: 600;
+        }
+
+        .opti-new-home-banner .opti-container .welcome-message .pink-btn svg {
+            margin-right: 8px;
+        }
+
+        .opti-new-home-banner .opti-container .policy-section {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .opti-new-home-banner .opti-container .policy {
+            display: flex;
+            align-items: center;
+            border-radius: 16px;
+            overflow: hidden;
+        }
+
+        .opti-new-home-banner .opti-container .policy-section .policy .info {
+            padding: 13.5px 0 13.5px 24px;
+        }
+
+        .opti-new-home-banner .opti-container .policy-section .policy .info .heading {
+            font-size: 22px;
+            line-height: 34px;
+            font-weight: 600;
+            margin: 0 0 12px;
+            padding: 0;
+        }
+
+        .opti-new-home-banner .opti-container .policy-section .policy .info .sub-heading {
+            font-size: 16px;
+            line-height: 22px;
+            font-weight: 300;
+            margin: 0 0 16px;
+            padding: 0;
+            color: #21201C;
+        }
+
+        .opti-new-home-banner .opti-container .policy-section .policy .info .link {
+            display: flex;
+            align-items: center;
+            font-size: 16px;
+            line-height: 28px;
+            font-weight: 600;
+        }
+
+        .opti-new-home-banner .opti-container .policy-section .policy .info .link svg {
+            margin-left: 6px;
+        }
+
+        .opti-new-home-banner .opti-container .policy-section .policy.details {
+            background-color: #AFF0F0;
+        }
+
+        .opti-new-home-banner .opti-container .policy-section .policy.details .info .heading,
+        .opti-new-home-banner .opti-container .policy-section .policy.details .info .link {
+            color: #00535C;
+        }
+
+        .opti-new-home-banner .opti-container .policy-section .policy.details img {
+            width: 134px;
+            height: 150px;
+            object-fit: cover;
+            margin-bottom: -45px;
+        }
+
+        .opti-new-home-banner .opti-container .policy-section .policy.home {
+            background-color: #FFDBEA;
+        }
+
+        .opti-new-home-banner .opti-container .policy-section .policy.home .info .heading,
+        .opti-new-home-banner .opti-container .policy-section .policy.home .info .link {
+            color: #94004C;
+        }
+
+        .opti-new-home-banner .opti-container .policy-section .policy.home img {
+            width: 120px;
+            height: 150px;
+            object-fit: contain;
+            flex-basis: 40%;
+            margin-bottom: -20px;
+        }
+
+        .opti-new-home-banner .opti-container .policy-section .policy.car {
+            background-color: #E8F7CC;
+        }
+
+        .opti-new-home-banner .opti-container .policy-section .policy.car .info .heading,
+        .opti-new-home-banner .opti-container .policy-section .policy.car .info .link {
+            color: #1A6035;
+        }
+
+        .opti-new-home-banner .opti-container .policy-section .policy.car img {
+            width: 179px;
+            height: 146px;
+            object-fit: contain;
+            flex-basis: 35%;
+            margin-bottom: -20px;
+        }
+    </style>
+
+    <div class="opti-container">
+        <div class="welcome-message">
+            <p class="heading">Welcome to Admiral</p>
+            <p class="sub-heading">Everything to manage your policy, under one roof.</p>
+            <div class="action-cta">
+                <a href="https://www.admiral.com/existing-customers/make-a-claim.php" class="pink-btn claims">
+                    <svg width="16" height="18" viewBox="0 0 16 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path fill-rule="evenodd" clip-rule="evenodd"
+                            d="M8.99395 5.98073L8.78629 8.27259C8.7622 8.63153 8.69336 8.90129 8.55454 9.08076C8.46276 9.23793 8.2769 9.30482 8.09219 9.32822C7.7916 9.35052 7.58394 9.21564 7.46806 8.99158C7.39923 8.8344 7.32924 8.58694 7.30629 8.27259L7.14453 6.02643C7.12158 5.5772 7.09864 5.26174 7.09864 5.08227C7.09864 4.76792 7.19042 4.52045 7.37513 4.31869C7.55984 4.11693 7.7916 4.02663 8.09219 4.02663C8.55454 4.02663 8.7622 4.25181 8.85513 4.43128C8.97101 4.65533 9.0169 4.94739 9.0169 5.32974C9.04099 5.5315 9.0169 5.75667 8.99395 5.98073ZM8.60158 11.8218C8.43981 11.911 8.25395 11.979 8.06924 11.9556C7.81454 11.9556 7.60688 11.8664 7.42217 11.7093C7.23746 11.5521 7.14453 11.3715 7.12158 11.1251C7.09864 10.8777 7.21336 10.541 7.39923 10.3616C7.58394 10.1821 7.81454 10.0918 8.06924 10.0918C8.32394 10.0918 8.55454 10.1821 8.73925 10.3616C8.94806 10.541 9.04099 10.8331 9.0169 11.1029C9.0169 11.4172 8.87808 11.6647 8.60158 11.8218ZM15.7675 11.5521L9.41042 0.791727C8.78629 -0.263909 7.21336 -0.263909 6.58924 0.791727L0.232132 11.5521C-0.416084 12.6077 0.369806 14 1.64215 14H14.3805C15.6299 14 16.4157 12.6077 15.7675 11.5521Z"
+                            fill="white" />
+                    </svg>
+                    Claims
+                </a>
+
+                <a href="https://www.admiral.com/contact-us" class="pink-btn contact">
+                    <svg width="16" height="14" viewBox="0 0 16 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path fill-rule="evenodd" clip-rule="evenodd"
+                            d="M9.75649 9.47106C10.6421 9.47106 12.3638 9.47106 12.3638 6.74812V2.6423C12.3638 1.18276 11.2307 0 9.83388 0H2.52989C1.13214 0 0 1.18276 0 2.6423V6.74812C0 7.99758 0.714635 9.1913 1.9576 9.47106L1.1159 12.0208L5.43524 9.47106H9.75649ZM13.4481 3.1381H13.9125C15.2433 3.1381 16 4.4025 16 5.76248V9.33566C16 10.5513 15.2873 11.5787 14.309 11.9073L14.9032 14L11.3663 12.0168H8.52117C7.5524 12.0168 6.71929 11.3557 6.35529 10.4686H10.7998C12.6466 10.4686 13.4481 9.33566 13.4481 7.41715V3.1381Z"
+                            fill="white" />
+                    </svg>
+                    Contact us
+                </a>
+            </div>
+        </div>
+
+        <div class="policy-section">
+
+            <div class="policy details">
+                <div class="info">
+                    <p class="heading">Update your details</p>
+                    <p class="sub-heading">Update your personal details and see all your documents</p>
+                    <a href="https://login.admiral.com/myaccount/login/" class="link">
+                        View my policy
+                        <svg width="20" height="21" viewBox="0 0 20 21" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <rect y="0.5" width="20" height="20" rx="10" fill="white" />
+                            <path d="M8.45508 15.5899L13.5451 10.4999L8.45508 5.40991" stroke="#00535C"
+                                stroke-width="1.692" stroke-linecap="round" stroke-linejoin="round" />
+                        </svg>
+                    </a>
+                </div>
+                <img src="https://cdn.optimizely.com/img/17941920996/4300bf4c74524d6cab64c43c279cfa98.png" alt="">
+            </div>
+
+            <div class="policy home">
+                <div class="info">
+                    <p class="heading">Add a home</p>
+                    <p class="sub-heading">With our Defaqto five star rated cover, you know you’re in safe hands</p>
+                    <a href="https://www.admiral.com/home-insurance" class="link">
+                        Add a home to your policy
+                        <svg width="20" height="21" viewBox="0 0 20 21" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <rect y="0.5" width="20" height="20" rx="10" fill="white" />
+                            <path d="M8.45508 15.5899L13.5451 10.4999L8.45508 5.40991" stroke="#94004C"
+                                stroke-width="1.692" stroke-linecap="round" stroke-linejoin="round" />
+                        </svg>
+                    </a>
+                </div>
+                <img src="https://cdn.optimizely.com/img/17941920996/c57681de5377442385126cf23a9b0a3b.png" alt="">
+            </div>
+
+            <div class="policy car">
+                <div class="info">
+                    <p class="heading">Add a car</p>
+                    <p class="sub-heading">Drive off with Defaqto five star rated car insurance</p>
+                    <a href="https://www.admiral.com/car-insurance" class="link">
+                        Add a car to your policy
+                        <svg width="20" height="21" viewBox="0 0 20 21" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <rect y="0.5" width="20" height="20" rx="10" fill="white" />
+                            <path d="M8.45508 15.59L13.5451 10.5L8.45508 5.41003" stroke="#1A6035" stroke-width="1.692"
+                                stroke-linecap="round" stroke-linejoin="round" />
+                        </svg>
+                    </a>
+                </div>
+                <img src="https://cdn.optimizely.com/img/17941920996/b1548ee4b0d94dcf85b21e1159027941.png" alt="">
+            </div>
+
+        </div>
+    </div>
+</div>`);
+});
