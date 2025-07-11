@@ -15,7 +15,7 @@ utils.observeSelector('article.pi.js-product-item', function (productTiles) {
             if (!product_existing_badge_node) {
                 product_image.insertAdjacentHTML("afterbegin", `<div class="pi__img-label opti-new-badge">
                     <span class="pi__img-label-text">
-                        Best seller
+                        Best-seller
                     </span>
                 </div>`);
             }
@@ -28,7 +28,7 @@ utils.observeSelector('article.pi.js-product-item', function (productTiles) {
             if (!product_existing_badge_node) {
                 product_image.insertAdjacentHTML("afterbegin", `<div class="pi__img-label opti-new-badge">
                     <span class="pi__img-label-text">
-                        Top rated
+                        Top-rated
                     </span>
                 </div>`);
             }
@@ -46,11 +46,11 @@ utils.waitForElement('.pv-essential .pv-header').then(function (pdp_page_header)
         const product_name = product_name_node.innerText.trim();
 
         if (product_name == "Glossier You" || product_name == "Glossier You Rêve" || product_name == "Glossier You Doux" || product_name == "Glossier You Fleur" || product_name == "Boy Brow" || product_name == "Ultralip" || product_name == "Lash Slick" || product_name == "Cloud Paint" || product_name == "Balm Dotcom" || product_name == "Lip Line") {
-            pdp_page_header.insertAdjacentHTML("beforeend", `<span class="pv-header__sale-tag opti-pdp-badge">Best seller</span>`);
+            pdp_page_header.insertAdjacentHTML("beforeend", `<span class="pv-header__sale-tag opti-pdp-badge">Best-seller</span>`);
         }
 
         if (product_name == "Futuredew Solid" || product_name == "Super Bounce" || product_name == "Body Hero Exfoliating Bar" || product_name == "Milky Jelly Cleansing Bar" || product_name == "Priming Moisturizer Balance" || product_name == "Full Orbit") {
-            pdp_page_header.insertAdjacentHTML("beforeend", `<span class="pv-header__sale-tag opti-pdp-badge">Top rated</span>`);
+            pdp_page_header.insertAdjacentHTML("beforeend", `<span class="pv-header__sale-tag opti-pdp-badge">Top-rated</span>`);
         }
     }
 });
