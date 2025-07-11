@@ -27,7 +27,7 @@ utils.observeSelector('.hero-banner--electric-vehicle', function (hero_banner) {
             position: absolute;
             bottom: 0;
             right: 0;
-            width: 550px;
+            max-width: 550px;
         }
 
         .opti-new-home-banner .opti-container .banner-info .heading {
@@ -38,7 +38,6 @@ utils.observeSelector('.hero-banner--electric-vehicle', function (hero_banner) {
             border-bottom: 1px solid #357BB0;
             color: #2350A5;
             margin: 0 0 24px;
-            text-align: center;
             text-align: center;
         }
 
@@ -75,6 +74,10 @@ utils.observeSelector('.hero-banner--electric-vehicle', function (hero_banner) {
             line-height: 100%;
             font-weight: 600;
             margin: 0 auto 98px;
+        }
+
+        .opti-new-home-banner .opti-container .banner-info .banner-logo.mobile {
+            display: none;
         }
 
         .opti-new-home-banner .opti-container .banner-info .login-cta svg {
@@ -130,6 +133,84 @@ utils.observeSelector('.hero-banner--electric-vehicle', function (hero_banner) {
             color: #1A6035;
             border-top-right-radius: 16px;
         }
+
+        @media (max-width: 768px) {
+            .opti-new-home-banner {
+                background-image: none;
+                background-position: unset;
+                background-size: unset;
+                background-repeat: unset;
+                min-height: 500px;
+                height: auto;
+                background-color: white;
+            }
+
+            .opti-new-home-banner .opti-container {
+                padding: 0px;
+            }
+
+            .opti-new-home-banner .opti-container .banner-info {
+                position: unset;
+                max-width: unset;
+            }
+
+            .opti-new-home-banner .opti-container .banner-info .heading {
+                font-size: 24px;
+                line-height: 30px;
+                padding: 40px 0px 8px;
+                margin: 0 24px 24px;
+            }
+
+            .opti-new-home-banner .opti-container .banner-info .sub-heading {
+                font-size: 18px;
+                line-height: 24px;
+                padding: 0 24px;
+            }
+
+            .opti-new-home-banner .opti-container .banner-info .sub-description {
+                font-size: 16px;
+                line-height: 22px;
+                margin: 0 0 16px;
+                padding: 0 24px;
+            }
+
+            .opti-new-home-banner .opti-container .banner-info .login-cta {
+                padding: 15px 24px;
+                font-size: 15px;
+                line-height: 100%;
+                font-weight: 600;
+                margin: 0 auto 0px;
+                position: relative;
+                z-index: 9;
+            }
+
+            .opti-new-home-banner .opti-container .banner-info .banner-logo.mobile {
+                display: block;
+                width: 100%;
+                height: 197px;
+                margin-top: -28px;
+            }
+
+            .opti-new-home-banner .opti-container .banner-info .policy-options {
+                border: 1px solid #B8B8CC;
+                border-top-right-radius: 0px;
+                border-top-left-radius: 0px;
+                border-bottom: 1px solid #B8B8CC;
+            }
+
+            .opti-new-home-banner .opti-container .banner-info .policy-options .policy p {
+                text-align: center;
+                font-size: 15px;
+            }
+
+            .opti-new-home-banner .opti-container .banner-info .policy-options .policy.car {
+                border-top-left-radius: 0px;
+            }
+
+            .opti-new-home-banner .opti-container .banner-info .policy-options .policy.contact {
+                border-top-right-radius: 0px;
+            }
+        }
     </style>
     <div class="opti-container">
         <div class="banner-info">
@@ -146,6 +227,9 @@ utils.observeSelector('.hero-banner--electric-vehicle', function (hero_banner) {
                 </svg>
                 Log in to MyAccount
             </a>
+
+            <img class="banner-logo mobile"
+                src="https://cdn.optimizely.com/img/17941920996/605bd568bd2743ceb692ca749cabccdc.png" alt="banner-logo">
 
             <div class="policy-options">
                 <a href="https://www.admiral.com/car-insurance" class="policy car">
