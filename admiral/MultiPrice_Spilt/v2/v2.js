@@ -84,6 +84,28 @@ var renderChanges = () => {
     }
 }
 
+const maintain_opt_447_insert_section = () => {
+    const frequency_value = document.querySelector('adm-multi-risk-quote-price-frequency');
+    const opt_447_div = document.querySelector('.opt-447-insert');
+
+    if (frequency_value && opt_447_div) {
+        if (frequency_value.innerText.trim() == "month") {
+            opt_447_div.style.display = "none";
+        } else {
+            opt_447_div.style.display = "block";
+            const parent = opt_447_div.parentElement;
+            const total_value = parent.querySelector('adm-quote-hero-price [size="h1"]');
+            if (total_value) {
+                if (opt_447_div.compareDocumentPosition(total_value) & Node.DOCUMENT_POSITION_FOLLOWING) {
+                    // Move total_value before opt_447_div
+                    parent.insertBefore(total_value, opt_447_div);
+                }
+            }
+        }
+
+    }
+}
+
 modifyElement("#quote-summary adm-card-deck [data-test='coverable-title'] h3", () => {
     renderChanges();
     var total = document.querySelector('adm-multi-risk-quote-price-amount');
@@ -91,6 +113,7 @@ modifyElement("#quote-summary adm-card-deck [data-test='coverable-title'] h3", (
         var mutationObserver = new MutationObserver(function (mutations) {
             mutations.forEach(function (mutation) {
                 renderChanges();
+                maintain_opt_447_insert_section();
             });
         });
 
