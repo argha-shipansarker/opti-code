@@ -87,7 +87,7 @@ function submitModal() {
         console.warn('opt-form-submit-issue');
     }
 
-    var url = 'https://img.prod.aplaceformom.com/main/uploads/lh/paying-for-senior-care-guide-2025.pdf';
+    var url = 'https://img.prod.aplaceformom.com/main/uploads/lh/quick-start-guide-to-finding-senior-care.pdf';
     var ref = window.open(url, '_blank');
     //fix if the new window i snot working in safari
     /*if (ref)
@@ -193,7 +193,6 @@ utils.waitForElement('body').then(function (body) {
     });
 
     if (isMobile) {
-        console.warn('opt-is-mobile');
         function resetTimer() {
             clearTimeout(timeoutPhone);
 
@@ -266,4 +265,4 @@ function loadScript(url, callback) {
     document.getElementsByTagName("head")[0].appendChild(script);
 }
 
-loadScript("//my.aplaceformom.com/js/forms2/js/forms2.min.js", function () { console.warn('opt - script loaded'); });
+loadScript("//my.aplaceformom.com/js/forms2/js/forms2.min.js", function () { });
