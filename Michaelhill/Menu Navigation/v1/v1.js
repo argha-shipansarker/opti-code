@@ -28,7 +28,6 @@ function toggleVueMenu({
     const panelSwitcher = container.querySelector('.header-menu-drawer__panel-switcher');
     const heading = container.querySelector(headingSelector);
     const collections = container.querySelector(collectionsSelector);
-    console.warn('hello from toggleVueMenu')
 
     if (!heading || !collections) return;
 
@@ -3805,16 +3804,13 @@ utils.observeSelector('.header-menu-drawer .header-menu-drawer__main-panel-wrapp
         link.addEventListener('mousedown', function () {
             const anchor = this.querySelector('a');
             if (anchor) {
-                console.warn("anchor", anchor)
                 window.opti_selected_menu_name = anchor.innerText.trim();
-                console.warn("window.opti_selected_menu_name form first", window.opti_selected_menu_name)
             }
         });
     });
 });
 
 utils.observeSelector('.header-menu-drawer .header-menu-drawer__panel-switcher-wrapper', function (vue_menu_2nd_level_container) {
-    console.warn("window.opti_selected_menu_name", window.opti_selected_menu_name);
 
     if (window.opti_selected_menu_name == "ENGAGEMENT") {
 
