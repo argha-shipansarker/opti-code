@@ -3953,6 +3953,12 @@ utils.observeSelector('.header-menu-drawer .header-menu-drawer__panel-switcher-w
         margin-bottom: 24px;
         text-decoration: none;
     }
+
+    .opti-engagement-cut-panels .menu-panels__panel .menu-items:hover p,
+    .opti-engagement-bridal-collections .menu-panels__panel .menu-items:hover p {
+        color: #4c6335;
+        text-decoration: underline;
+    }
 </style>`)
 
         vue_menu_2nd_level_container.insertAdjacentHTML("beforeend", `<div class="opti-engagement-bridal-heading close">
@@ -4749,6 +4755,14 @@ utils.observeSelector('.header-menu-drawer .header-menu-drawer__panel-switcher-w
         padding: 0;
     }
 
+    .opti-wedding-ring-type .menu-panels__panel .menu-items:hover p,
+    .opti-wedding-ring-metal .menu-panels__panel .menu-items:hover p,
+    .opti-wedding-gifts .menu-panels__panel .menu-items:hover p,
+    .opti-wedding-accessories-panel .menu-panels__panel .menu-items:hover p {
+        color: #4c6335;
+        text-decoration: underline;
+    }
+
     .opti-wedding-ring-type .menu-panels__panel,
     .opti-wedding-accessories-panel .menu-panels__panel {
         display: flex;
@@ -5337,6 +5351,14 @@ utils.observeSelector('.header-menu-drawer .header-menu-drawer__panel-switcher-w
         width: 100%;
         margin: 0;
         padding: 0;
+    }
+
+    .opti-jewellery-gemstone-panel .menu-panels__panel .menu-items:hover p,
+    .opti-jewellery-metal-panel .menu-panels__panel .menu-items:hover p,
+    .opti-jewellery-collections-panel .menu-panels__panel .menu-items:hover p,
+    .opti-jewellery-personalised-panel .menu-panels__panel .menu-items:hover p {
+        color: #4c6335;
+        text-decoration: underline;
     }
 
     .opti-jewellery-gemstone-panel .menu-panels__panel,
@@ -6065,6 +6087,12 @@ utils.observeSelector('.header-menu-drawer .header-menu-drawer__panel-switcher-w
         padding: 0;
     }
 
+    .opti-watch-type-panel .menu-panels__panel .menu-items:hover p,
+    .opti-watch-color-panel .menu-panels__panel .menu-items:hover p {
+        color: #4c6335;
+        text-decoration: underline;
+    }
+
     .opti-watch-type-panel .menu-panels__panel,
     .opti-watch-color-panel .menu-panels__panel {
         padding-top: 24px;
@@ -6490,6 +6518,12 @@ utils.observeSelector('.header-menu-drawer .header-menu-drawer__panel-switcher-w
         width: 100%;
         margin: 0;
         padding: 0;
+    }
+
+    .opti-gift-personalised-panel .menu-panels__panel .menu-items:hover p,
+    .opti-gift-occasion-panel .menu-panels__panel .menu-items:hover p {
+        color: #4c6335;
+        text-decoration: underline;
     }
 
     .opti-gift-personalised-panel .menu-panels__panel,
@@ -6995,6 +7029,13 @@ utils.observeSelector('.header-menu-drawer .header-menu-drawer__panel-switcher-w
         width: 100%;
         margin: 0;
         padding: 0;
+    }
+
+    .opti-our-world-education-panel .menu-panels__panel .menu-items:hover p,
+    .opti-our-world-story-panel .menu-panels__panel .menu-items:hover p,
+    .opti-our-world-impact-panel .menu-panels__panel .menu-items:hover p {
+        color: #4c6335;
+        text-decoration: underline;
     }
 
     .opti-our-world-education-panel .menu-panels__panel,
