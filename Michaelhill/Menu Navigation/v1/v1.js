@@ -2410,6 +2410,11 @@ utils.waitForElement('nav .menu .menu__root-links > li:nth-of-type(3)').then(fun
     if (jewellery_menu_fourth_section_image_container) {
         jewellery_menu_fourth_section_image_container.insertAdjacentHTML("beforeend", `<a href="/jewellery/collections/lab"><img class="opti-new-jewellery-image" src="https://cdn.optimizely.com/img/24400620820/404fbc9f05674ba4a578d039bdc2409e.jpg" alt=""></a>`)
     }
+
+    const jewellery_menu_fourth_section_text_3 = jewellery_menu.querySelector('.menu-panels .menu-panels__scroll > li:nth-of-type(4) p:nth-of-type(3) a');
+    if (jewellery_menu_fourth_section_text_3) {
+        jewellery_menu_fourth_section_text_3.href = 'https://www.michaelhill.com.au/jewellery/collections/lab';
+    }
 });
 
 //Watches menu
@@ -6006,6 +6011,11 @@ utils.observeSelector('.header-menu-drawer .header-menu-drawer__panel-switcher-w
 
         if (jewellery_menu_fourth_section_image_container) {
             jewellery_menu_fourth_section_image_container.insertAdjacentHTML("afterend", `<a href="/jewellery/collections/lab"><img class="opti-new-jewellery-image" src="https://cdn.optimizely.com/img/24400620820/404fbc9f05674ba4a578d039bdc2409e.jpg" alt=""></a>`)
+        }
+
+        const jewellery_menu_fourth_section_text_3 = vue_menu_2nd_level_container.querySelector('.navigation-section-panel .navigation-section-panel__grid .navigation-section-panel__grid-unit:nth-of-type(5) p:nth-of-type(3) a');
+        if (jewellery_menu_fourth_section_text_3) {
+            jewellery_menu_fourth_section_text_3.href = 'https://www.michaelhill.com.au/jewellery/collections/lab';
         }
     }
 
