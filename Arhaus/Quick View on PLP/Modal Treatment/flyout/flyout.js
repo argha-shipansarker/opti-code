@@ -96,6 +96,14 @@ utils.observeSelector('.opti-quick-view-modal .quick-view-product .product-image
                 })
             }
 
+            document.addEventListener('click', function (event) {
+                const modal = document.querySelector('.opti-quick-view-modal .quick-view-product');
+
+                if (modal && document.querySelector('.opti-quick-view-modal').style.display !== 'none' && !modal.contains(event.target)) {
+                    document.querySelector('.opti-quick-view-modal').style.display = 'none';
+                }
+            });
+
         }
 
         utils.observeSelector('.opti-quick-view-modal .quick-view-product .product__row .material-wrapper', function (material_wrapper) {

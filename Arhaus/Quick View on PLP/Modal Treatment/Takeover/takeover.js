@@ -96,6 +96,14 @@ utils.observeSelector('.opti-quick-view-modal .quick-view-product .product-image
                 })
             }
 
+            document.addEventListener('click', function (event) {
+                const modal = document.querySelector('.opti-quick-view-modal .quick-view-product');
+
+                if (modal && document.querySelector('.opti-quick-view-modal').style.display !== 'none' && !modal.contains(event.target)) {
+                    document.querySelector('.opti-quick-view-modal').style.display = 'none';
+                }
+            });
+
             utils.observeSelector('#cart-popup .cart-popup__header', function (cart_popup) {
                 document.querySelector('.opti-quick-view-modal').style.display = "none";
                 handle_initiallizing_ulObserver_debounceTimer();
