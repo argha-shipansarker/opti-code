@@ -7,8 +7,7 @@ utils.observeSelector('.hero-banner--electric-vehicle', function (hero_banner) {
         .opti-new-home-banner {
             position: relative;
             max-width: 1380px;
-            height: 635px;
-            background-image: url(https://cdn.optimizely.com/img/17941920996/8d53368489d4463296b6a10426e9c624.png);
+            background-image: url(https://cdn.optimizely.com/img/17941920996/42131efc17eb404c9dc2a8502ccb8a44.png);
             background-position: center center;
             background-size: cover;
             background-repeat: no-repeat;
@@ -23,7 +22,7 @@ utils.observeSelector('.hero-banner--electric-vehicle', function (hero_banner) {
         .opti-new-home-banner .opti-container {
             max-width: 1024px;
             height: 100%;
-            padding: 63px 24px 0;
+            padding: 63px 24px;
             position: relative;
             margin: auto;
             display: flex;
@@ -65,7 +64,7 @@ utils.observeSelector('.hero-banner--electric-vehicle', function (hero_banner) {
             padding: 12px 20px;
             color: #FFFFFF;
             border-radius: 100px;
-            background-color: #B00058;
+            background-color: #C20060;
             max-width: fit-content;
             font-size: 16px;
             line-height: 100%;
@@ -178,8 +177,6 @@ utils.observeSelector('.hero-banner--electric-vehicle', function (hero_banner) {
                 background-position: unset;
                 background-size: unset;
                 background-repeat: unset;
-                min-height: 500px;
-                height: auto;
                 background-color: white;
                 margin: 0;
                 border-radius: 0;
