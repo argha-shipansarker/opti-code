@@ -270,5 +270,5 @@ utils.observeSelector('.hero-banner--electric-vehicle', function (hero_banner) {
             </div>
         </div>
     </div>
-</div>`)
+</div>`);
 });
