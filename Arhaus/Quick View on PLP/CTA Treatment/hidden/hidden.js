@@ -56,13 +56,20 @@ utils.observeSelector('.ss-item-container .product-item__img', function (product
 
         @media (max-width: 600px) {
             .opti-plus-sign-container {
-                display: none;
+                display: flex;
+                background: unset;
+                align-items: end;
             }
 
-            .product-item__img:hover .opti-plus-sign-container {
-                display: none;
+            .opti-plus-sign-container .opti-plus-sign {
+                width: 100%;
+                font-size: 10px;
+                padding: 8.5px 0;
             }
 
+            .opti-quick-view-modal .opti-plus-sign-container {
+                display: none;
+            }
         }
     </style>
     <a data-fetch-product data-handle="${product_image.href.split('/').pop()}" data-target=".quick-view-product"

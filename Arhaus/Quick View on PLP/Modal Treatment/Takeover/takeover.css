@@ -149,9 +149,11 @@
         max-width: unset
     }
 
-    .see-full-desc-link {
-        display: flex;
-        justify-content: center;
-        margin-top: 24px;
+    .opti-quick-view-modal .shopify-product-form__button {
+        margin-bottom: 14px !important;
+    }
+
+    .opti-quick-view-modal .product-item__img .product-item__img--alt {
+        display: none !important;
     }
 }
