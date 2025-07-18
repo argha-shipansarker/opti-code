@@ -335,9 +335,11 @@ function handle_increasing_width_of_dd_label() {
     const admiral_nav_section = document.querySelector(".adm-navbar__wrap adm-navbar-nav");
     const admiral_contact_us = document.querySelector('.adm-navbar__wrap .adm-navbar__nav adm-navbar-item:nth-of-type(2)');
     const opti_basket = document.querySelector(".opti-quote-basket-dd-container");
+    const logout_node = document.querySelector('.adm-navbar__wrap .adm-navbar__nav adm-navbar-item:nth-of-type(1)');
 
-    if (admiral_logo && admiral_nav_section && admiral_contact_us && opti_basket) {
+    if (admiral_logo && admiral_nav_section && admiral_contact_us && opti_basket && logout_node && window.innerWidth < 500) {
         admiral_logo.style.display = "none";
+        logout_node.style.display = "none";
         admiral_nav_section.style.width = "100%";
         admiral_contact_us.style.display = "none";
         opti_basket.style.width = "100%";
@@ -350,13 +352,15 @@ function handle_decreasing_width_of_dd_label() {
     const admiral_nav_section = document.querySelector(".adm-navbar__wrap adm-navbar-nav");
     const admiral_contact_us = document.querySelector('.adm-navbar__wrap .adm-navbar__nav adm-navbar-item:nth-of-type(2)');
     const opti_basket = document.querySelector(".opti-quote-basket-dd-container");
+    const logout_node = document.querySelector('.adm-navbar__wrap .adm-navbar__nav adm-navbar-item:nth-of-type(1)');
 
-    if (admiral_logo && admiral_nav_section && admiral_contact_us && opti_basket) {
+    if (admiral_logo && admiral_nav_section && admiral_contact_us && opti_basket && logout_node && window.innerWidth < 500) {
         admiral_logo.style.display = "unset";
+        logout_node.style.display = "unset";
         admiral_nav_section.style.width = "unset";
         admiral_contact_us.style.display = "unset";
         opti_basket.style.width = "unset";
-        opti_basket.style.marginLeft = "16px";
+        opti_basket.style.marginLeft = "7px";
     }
 }
 
@@ -375,20 +379,6 @@ utils.observeSelector('eui-vehicle-upgrades', function () {
 });
 
 utils.observeSelector('.adm-navbar__wrap .adm-navbar__nav', function (right_nav) {
-
-    if (window.innerWidth < 500) {
-        const logout_node = document.querySelector('.adm-navbar__wrap .adm-navbar__nav adm-navbar-item:nth-of-type(1)');
-        if (logout_node) {
-            logout_node.style.display = "none";
-        }
-
-        const contact_us_node_text = document.querySelector('.adm-navbar__wrap .adm-navbar__nav adm-navbar-item:nth-of-type(2) .adm-btn-call__text');
-        if (contact_us_node_text) {
-            contact_us_node_text.innerText = "Call us";
-            contact_us_node_text.style.marginLeft = "4px";
-        }
-    }
-
 
     if (!document.querySelector('.opti-quote-basket-dd-container')) {
         right_nav.insertAdjacentHTML("beforeend", `<div class="opti-quote-basket-dd-container">
@@ -423,6 +413,14 @@ utils.observeSelector('.adm-navbar__wrap .adm-navbar__nav', function (right_nav)
             line-height: 24px;
             color: #25469B;
             margin-bottom: 0;
+        }
+
+        .opti-quote-basket-dd-container .dd-label .lable.desktop {
+            display: block;
+        }
+
+        .opti-quote-basket-dd-container .dd-label .lable.mobile {
+            display: none;
         }
 
         .opti-quote-basket-dd-container .dd-label.panel-close .arrow-down {
@@ -616,8 +614,32 @@ utils.observeSelector('.adm-navbar__wrap .adm-navbar__nav', function (right_nav)
         }
 
         @media (max-width: 500px) {
+            .opti-quote-basket-dd-container {
+                margin-left: 7px;
+            }
+
             .opti-quote-basket-dd-container .dd-panel {
                 width: 100%;
+            }
+
+            .opti-quote-basket-dd-container .dd-label .lable.desktop {
+                display: none;
+            }
+
+            .opti-quote-basket-dd-container .dd-label .lable.mobile {
+                display: block;
+            }
+        }
+
+        @media (max-width: 390px) {
+            .opti-quote-basket-dd-container .dd-label {
+                padding: 3px;
+            }
+        }
+
+        @media (max-width: 374px) {
+            .opti-quote-basket-dd-container .dd-label .car-icon {
+                margin-right: 2px;
             }
         }
     </style>
@@ -628,7 +650,8 @@ utils.observeSelector('.adm-navbar__wrap .adm-navbar__nav', function (right_nav)
                     d="M13.6938 6.86802C13.6938 6.86802 13.1938 4.8126 12.9718 3.78469C12.7497 2.92344 12.3605 2.36802 10.9163 2.14594C9.24967 1.95135 6.86092 1.95135 5.13842 2.14594C3.52717 2.42385 3.24967 3.03469 3.05509 3.84052C2.80509 4.86844 2.33301 6.89594 2.33301 6.89594C2.33301 6.89594 1.33301 7.34052 1.33301 8.64594C1.33301 9.61802 1.33301 10.618 1.33301 11.5905C1.33301 11.7572 1.83301 11.8405 1.86092 11.8405C1.86092 12.1739 1.86092 13.0626 1.86092 13.3959C1.88884 14.2014 2.16634 14.2293 3.11092 14.2293C4.08301 14.2293 4.33301 14.1459 4.33301 13.3405C4.33301 13.0351 4.33301 12.2851 4.33301 11.9518C6.58301 12.2297 9.41634 12.2297 11.6109 11.9518V12.063C11.6109 12.3409 11.6109 12.5076 11.6109 12.813C11.6109 14.1464 11.7776 14.2297 12.8609 14.2297C13.7776 14.2297 14.083 14.1464 14.083 12.813C14.083 12.5076 14.083 12.2297 14.083 11.9243V11.8409C14.1109 11.8409 14.6663 11.7297 14.6663 11.563C14.6663 10.5909 14.6663 9.64636 14.6663 8.67427C14.6663 7.42427 13.6943 6.86885 13.6943 6.86885L13.6938 6.86802ZM3.36051 10.618C2.63842 10.618 2.22176 9.92344 2.19384 9.45136C2.16592 8.86802 2.66592 8.20136 3.36051 8.20136C3.99926 8.20136 4.49926 8.75677 4.49926 9.39594C4.49926 10.0905 3.99926 10.618 3.36051 10.618ZM3.86051 6.64594C3.86051 6.64594 4.08259 4.97927 4.47176 3.78469C4.72176 2.97927 11.3605 3.03469 11.4997 3.75677C11.8884 5.06219 12.1384 6.61802 12.1663 6.64552C9.77759 6.34011 6.19426 6.36761 3.86092 6.64552L3.86051 6.64594ZM12.4993 10.618C11.7772 10.618 11.3605 9.95136 11.3326 9.45136C11.3047 8.84011 11.8047 8.20136 12.4993 8.20136C13.138 8.20136 13.6659 8.75677 13.6659 9.39594C13.6659 10.0905 13.138 10.618 12.4993 10.618Z"
                     fill="#41A5F5" />
             </svg>
-            <p class="lable">Your Quote</p>
+            <p class="lable desktop">Your Quote</p>
+            <p class="lable mobile">Quote</p>
         </div>
         <svg class="arrow-down" width="16" height="16" viewBox="0 0 16 16" fill="none"
             xmlns="http://www.w3.org/2000/svg">
@@ -762,9 +785,7 @@ utils.observeSelector('.adm-navbar__wrap .adm-navbar__nav', function (right_nav)
 
                     handleUpdatingValueOf_Basket();
 
-                    if (window.innerWidth < 500) {
-                        handle_increasing_width_of_dd_label();
-                    }
+                    handle_increasing_width_of_dd_label();
 
                     basket_container_panel.classList.remove("panel-close");
                     basket_container_panel.classList.add("panel-open");
@@ -772,9 +793,9 @@ utils.observeSelector('.adm-navbar__wrap .adm-navbar__nav', function (right_nav)
                     basket_container_label.classList.remove("panel-close");
                     basket_container_label.classList.add("panel-open");
                 } else {
-                    if (window.innerWidth < 500) {
-                        handle_decreasing_width_of_dd_label();
-                    }
+
+                    handle_decreasing_width_of_dd_label();
+
                     basket_container_panel.classList.remove("panel-open");
                     basket_container_panel.classList.add("panel-close");
 
@@ -789,9 +810,9 @@ utils.observeSelector('.adm-navbar__wrap .adm-navbar__nav', function (right_nav)
                 const basket_container_panel = document.querySelector('.opti-quote-basket-dd-container .dd-panel');
 
                 if (!isLabel && !isPanel) {
-                    if (window.innerWidth < 500) {
-                        handle_decreasing_width_of_dd_label();
-                    }
+
+                    handle_decreasing_width_of_dd_label();
+
                     basket_container_panel.classList.remove("panel-open");
                     basket_container_panel.classList.add("panel-close");
 
