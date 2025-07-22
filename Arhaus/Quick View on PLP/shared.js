@@ -49,3 +49,13 @@ utils.observeSelector('.opti-quick-view-modal .quick-view-product .product__labe
         });
     });
 });
+
+utils.observeSelector('.opti-quick-view-modal .quick-view-product .product-qty .product-qty__btn', function (element) {
+    element.addEventListener("click", function () {
+        window['optimizely'] = window['optimizely'] || [];
+        window['optimizely'].push({
+            type: "event",
+            eventName: "click__quick_view_engagement_",
+        });
+    });
+});
