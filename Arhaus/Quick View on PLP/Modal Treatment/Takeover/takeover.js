@@ -96,6 +96,11 @@ utils.observeSelector('.opti-quick-view-modal .quick-view-product .product-image
             if (close_icon) {
                 close_icon.addEventListener('click', function () {
                     document.querySelector('.opti-quick-view-modal').style.display = "none";
+                    window['optimizely'] = window['optimizely'] || [];
+                    window['optimizely'].push({
+                        type: "event",
+                        eventName: "click__quick_view_close_cta_",
+                    });
                     handle_initiallizing_ulObserver_debounceTimer();
                 })
             }
@@ -121,6 +126,11 @@ utils.observeSelector('.opti-quick-view-modal .quick-view-product .product-image
 
                 if (modal && document.querySelector('.opti-quick-view-modal').style.display !== 'none' && !modal.contains(event.target)) {
                     document.querySelector('.opti-quick-view-modal').style.display = 'none';
+                    window['optimizely'] = window['optimizely'] || [];
+                    window['optimizely'].push({
+                        type: "event",
+                        eventName: "click__quick_view_close_cta_",
+                    });
                     handle_initiallizing_ulObserver_debounceTimer();
                 }
             });
