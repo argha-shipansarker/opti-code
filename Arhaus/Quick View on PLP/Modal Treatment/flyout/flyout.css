@@ -131,6 +131,10 @@
     padding-bottom: 0 !important;
 }
 
+.opti-quick-view-modal .quick-view-product .product-main-block__details #product_add_cart .product-qty {
+    z-index: 1;
+}
+
 .opti-quick-view-modal .quick-view-product .product-main-block__details .product__variant-label-box {
     margin-bottom: 16px !important;
 }

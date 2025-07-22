@@ -127,13 +127,16 @@ utils.observeSelector('.opti-quick-view-modal .quick-view-product .product-image
 
         }
 
-        utils.observeSelector('.opti-quick-view-modal .quick-view-product .product__row .material-wrapper', function (material_wrapper) {
-            const rect = material_wrapper.getBoundingClientRect();
-            const offsetFromTop = rect.top;
+        utils.observeSelector('.opti-quick-view-modal .quick-view-product .product__row .material-wrapper .custom-input--materials', function (material_wrapper_divs) {
+            material_wrapper_divs.addEventListener('mouseenter', function () {
+                const rect = material_wrapper_divs.getBoundingClientRect();
+                const offsetFromTop = rect.top;
 
-            utils.observeSelector('.opti-quick-view-modal .quick-view-product .product__row .material-wrapper .swatch-overlay__slide', function (swatch_overlay__slide) {
-                swatch_overlay__slide.style.top = `${offsetFromTop}px`;
-            });
+                const swatch_overlay__slide = material_wrapper_divs.querySelector('.swatch-overlay__slide');
+                if (swatch_overlay__slide) {
+                    swatch_overlay__slide.style.top = `${offsetFromTop}px`;
+                }
+            })
         });
 
         utils.observeSelector('#cart-popup .cart-popup__header', function (cart_popup) {
