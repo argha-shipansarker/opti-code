@@ -655,7 +655,7 @@ utils.waitForElement('nav .menu .menu__root-links > li:nth-of-type(1)').then(fun
             display: flex;
             flex-direction: column;
             flex-basis: 48%;
-            margin-bottom: 16px;
+            margin-bottom: 24px;
         }
 
         .opti-engagement-bridal-collections .menu-panels__panel .menu-items .icon {
@@ -854,7 +854,6 @@ utils.waitForElement('nav .menu .menu__root-links > li:nth-of-type(1)').then(fun
     <p class="menu-heading">Guides</p>
 
     <a href="/article/knowledge-advice/size-guide/rings" class="normal-menu">Size Guide</a>
-    <a href="/article/knowledge-advice/engagement-ring-guide" class="normal-menu">Engagement Ring Guide</a>
 </div>`);
 
     //cut menu
@@ -978,7 +977,7 @@ utils.waitForElement('nav .menu .menu__root-links > li:nth-of-type(2)').then(fun
             display: flex;
             flex-direction: column;
             flex-basis: 48%;
-            margin-bottom: 16px;
+            margin-bottom: 24px;
         }
 
         .opti-wedding-ring-type .menu-panels__panel .menu-items p {
@@ -1328,7 +1327,7 @@ utils.waitForElement('nav .menu .menu__root-links > li:nth-of-type(2)').then(fun
             display: flex;
             flex-direction: column;
             flex-basis: 48%;
-            margin-bottom: 16px;
+            margin-bottom: 24px;
         }
 
         .opti-wedding-accessories-panel .menu-panels__panel .menu-items p {
@@ -1568,12 +1567,22 @@ utils.waitForElement('nav .menu .menu__root-links > li:nth-of-type(2)').then(fun
     const wedding_menu_fourth_section_image_container = wedding_menu.querySelector('.menu-panels .menu-panels__scroll > li:nth-of-type(4) .picture-container');
 
     if (wedding_menu_fourth_section_image_container) {
-        wedding_menu_fourth_section_image_container.insertAdjacentHTML("beforeend", `<a href="/connected/all-about-wedding-bands"><img class="opti-new-wedding-image" src="https://cdn.optimizely.com/img/22916101539/85604d0a489b47808f3a67c2ae85ca02.jpg" alt=""></a>`)
+        wedding_menu_fourth_section_image_container.insertAdjacentHTML("beforeend", `<a href="/connected/all-about-wedding-bands"><img class="opti-new-wedding-image" src="https://cdn.optimizely.com/img/24400620820/7f201d8c1dd246568cdaba6c7b8f60a8.png" alt=""></a>`)
     }
 
-    const wedding_menu_fourth_section_text = wedding_menu.querySelector('.menu-panels .menu-panels__scroll > li:nth-of-type(4) p:nth-of-type(3)');
-    if (wedding_menu_fourth_section_text) {
-        wedding_menu_fourth_section_text.innerText = 'Your need-to-know to pick your perfect ring.';
+    const wedding_menu_fourth_section_text_1 = wedding_menu.querySelector('.menu-panels .menu-panels__scroll > li:nth-of-type(4) p:nth-of-type(2)');
+    if (wedding_menu_fourth_section_text_1) {
+        wedding_menu_fourth_section_text_1.innerHTML = '<strong>BUILD YOUR DREAM WEDDING RING</strong>';
+    }
+
+    const wedding_menu_fourth_section_text_2 = wedding_menu.querySelector('.menu-panels .menu-panels__scroll > li:nth-of-type(4) p:nth-of-type(3)');
+    if (wedding_menu_fourth_section_text_2) {
+        wedding_menu_fourth_section_text_2.innerText = 'Customise your perfect forever-piece with our online ring builder.';
+    }
+
+    const wedding_menu_fourth_section_text_3 = wedding_menu.querySelector('.menu-panels .menu-panels__scroll > li:nth-of-type(4) p:nth-of-type(4) a');
+    if (wedding_menu_fourth_section_text_3) {
+        wedding_menu_fourth_section_text_3.href = 'https://www.michaelhill.com.au/made-for-you/rings';
     }
 });
 
@@ -1821,11 +1830,8 @@ utils.waitForElement('nav .menu .menu__root-links > li:nth-of-type(3)').then(fun
 
             <a href="/jewellery/gemstones/tourmaline" class="menu-items">
                 <svg width="20" height="21" viewBox="0 0 20 21" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path
-                        d="M10 20.8984C15.5228 20.8984 20 16.4213 20 10.8984C20 5.37559 15.5228 0.898438 10 0.898438C4.47715 0.898438 0 5.37559 0 10.8984C0 16.4213 4.47715 20.8984 10 20.8984Z"
-                        fill="#88B1EB" />
-                    <rect x="2.92871" y="10.8984" width="10" height="10" transform="rotate(-45 2.92871 10.8984)"
-                        fill="#C3DBF1" />
+                <path d="M10 20.8984C15.5228 20.8984 20 16.4213 20 10.8984C20 5.37559 15.5228 0.898438 10 0.898438C4.47715 0.898438 0 5.37559 0 10.8984C0 16.4213 4.47715 20.8984 10 20.8984Z" fill="#4A673C"/>
+                <rect x="2.92871" y="10.8984" width="10" height="10" transform="rotate(-45 2.92871 10.8984)" fill="#A5C782"/>
                 </svg>
                 <p>Tourmaline</p>
             </a>
@@ -2016,7 +2022,7 @@ utils.waitForElement('nav .menu .menu__root-links > li:nth-of-type(3)').then(fun
             display: flex;
             flex-direction: column;
             flex-basis: 48%;
-            margin-bottom: 16px;
+            margin-bottom: 24px;
         }
 
         .opti-jewellery-collections-panel .menu-panels__panel .menu-items p {
@@ -2089,7 +2095,7 @@ utils.waitForElement('nav .menu .menu__root-links > li:nth-of-type(3)').then(fun
             </a>
 
             <a href="/jewellery/collections/signature-connect" class="menu-items">
-                <img src="https://cdn.optimizely.com/img/24400620820/86468ce3af344fa299012de8581dcd29.jpg" alt="">
+                <img src="https://cdn.optimizely.com/img/24400620820/130382115a91483bb1d896676f48d583.png" alt="">
                 <p>Signature Connect</p>
             </a>
 
@@ -2128,7 +2134,7 @@ utils.waitForElement('nav .menu .menu__root-links > li:nth-of-type(3)').then(fun
             display: flex;
             flex-direction: column;
             flex-basis: 48%;
-            margin-bottom: 16px;
+            margin-bottom: 24px;
         }
 
         .opti-jewellery-personalised-panel .menu-panels__panel .menu-items p {
@@ -2409,6 +2415,17 @@ utils.waitForElement('nav .menu .menu__root-links > li:nth-of-type(3)').then(fun
 
     if (jewellery_menu_fourth_section_image_container) {
         jewellery_menu_fourth_section_image_container.insertAdjacentHTML("beforeend", `<a href="/jewellery/collections/lab"><img class="opti-new-jewellery-image" src="https://cdn.optimizely.com/img/24400620820/404fbc9f05674ba4a578d039bdc2409e.jpg" alt=""></a>`)
+    }
+
+    const jewellery_menu_fourth_section_text_1 = jewellery_menu.querySelector('.menu-panels .menu-panels__scroll > li:nth-of-type(4) p:nth-of-type(1)');
+    if (jewellery_menu_fourth_section_text_1) {
+        jewellery_menu_fourth_section_text_1.innerHTML = '<strong>LABORATORY-GROWN DIAMONDS</strong>';
+        jewellery_menu_fourth_section_text_1.style.marginTop = "16px";
+    }
+
+    const jewellery_menu_fourth_section_text_2 = jewellery_menu.querySelector('.menu-panels .menu-panels__scroll > li:nth-of-type(4) p:nth-of-type(2)');
+    if (jewellery_menu_fourth_section_text_2) {
+        jewellery_menu_fourth_section_text_2.innerText = 'Certified sustainable.';
     }
 
     const jewellery_menu_fourth_section_text_3 = jewellery_menu.querySelector('.menu-panels .menu-panels__scroll > li:nth-of-type(4) p:nth-of-type(3) a');
@@ -2987,7 +3004,7 @@ utils.waitForElement('nav .menu .menu__root-links > li:nth-of-type(5)').then(fun
             display: flex;
             flex-direction: column;
             flex-basis: 48%;
-            margin-bottom: 16px;
+            margin-bottom: 24px;
         }
 
         .opti-gift-personalised-panel .menu-panels__panel .menu-items p {
@@ -3214,13 +3231,13 @@ utils.waitForElement('nav .menu .menu__root-links > li:nth-of-type(5)').then(fun
 
     const gift_menu_fourth_section_text_1 = gift_menu.querySelector('.menu-panels .menu-panels__scroll > li:nth-of-type(4) p:nth-of-type(1)');
     if (gift_menu_fourth_section_text_1) {
-        gift_menu_fourth_section_text_1.innerHTML = '<strong>Mar Birthstone - Aquamarine</strong>';
+        gift_menu_fourth_section_text_1.innerHTML = '<strong>AUGUST BIRTHSTONE - PERIDOT</strong>';
         gift_menu_fourth_section_text_1.style.marginTop = "16px";
     }
 
     const gift_menu_fourth_section_text_2 = gift_menu.querySelector('.menu-panels .menu-panels__scroll > li:nth-of-type(4) p:nth-of-type(2)');
     if (gift_menu_fourth_section_text_2) {
-        gift_menu_fourth_section_text_2.innerText = 'Your need-to-know to pick your perfect ring.';
+        gift_menu_fourth_section_text_2.innerText = 'Peridot is believed to promote prosperity, fearlessness, and beauty.';
     }
 
     const gift_menu_fourth_section_text_3 = gift_menu.querySelector('.menu-panels .menu-panels__scroll > li:nth-of-type(4) p:nth-of-type(3) a');
@@ -3438,7 +3455,7 @@ utils.waitForElement('nav .menu .menu__root-links > li:nth-of-type(7)').then(fun
             display: flex;
             flex-direction: column;
             flex-basis: 48%;
-            margin-bottom: 16px;
+            margin-bottom: 24px;
         }
 
         .opti-our-world-education-panel .menu-panels__panel .menu-items p {
@@ -3537,7 +3554,7 @@ utils.waitForElement('nav .menu .menu__root-links > li:nth-of-type(7)').then(fun
             display: flex;
             flex-direction: column;
             flex-basis: 48%;
-            margin-bottom: 16px;
+            margin-bottom: 24px;
         }
 
         .opti-our-world-story-panel .menu-panels__panel .menu-items p {
@@ -3631,7 +3648,7 @@ utils.waitForElement('nav .menu .menu__root-links > li:nth-of-type(7)').then(fun
             display: flex;
             flex-direction: column;
             flex-basis: 48%;
-            margin-bottom: 16px;
+            margin-bottom: 24px;
         }
 
         .opti-our-world-impact-panel .menu-panels__panel .menu-items p {
@@ -3778,22 +3795,22 @@ utils.waitForElement('nav .menu .menu__root-links > li:nth-of-type(7)').then(fun
     const our_world_menu_fourth_section_image_container = our_world_menu.querySelector('.menu-panels .menu-panels__scroll > li:nth-of-type(4) .picture-container');
 
     if (our_world_menu_fourth_section_image_container) {
-        our_world_menu_fourth_section_image_container.insertAdjacentHTML("beforeend", `<a href="/discover/brand-history"><img class="opti-new-our-world-image" src="https://cdn.optimizely.com/img/24400620820/537cb63ce2b84a588417d19c48855eee.jpg" alt=""></a>`)
+        our_world_menu_fourth_section_image_container.insertAdjacentHTML("beforeend", `<a href="/discover/brand-history"><img class="opti-new-our-world-image" src="https://cdn.optimizely.com/img/24400620820/b5eccdc596bf4f27b14045718ae4188b.png" alt=""></a>`)
     }
 
     const our_world_menu_fourth_section_text_1 = our_world_menu.querySelector('.menu-panels .menu-panels__scroll > li:nth-of-type(4) p:nth-of-type(2)');
     if (our_world_menu_fourth_section_text_1) {
-        our_world_menu_fourth_section_text_1.innerHTML = '<strong>About Us </strong>';
+        our_world_menu_fourth_section_text_1.innerHTML = '<strong>SINCE 1979</strong>';
     }
 
     const our_world_menu_fourth_section_text_2 = our_world_menu.querySelector('.menu-panels .menu-panels__scroll > li:nth-of-type(4) p:nth-of-type(3)');
     if (our_world_menu_fourth_section_text_2) {
-        our_world_menu_fourth_section_text_2.innerText = `Marking life's most meaningful moments since 1979.`;
+        our_world_menu_fourth_section_text_2.innerText = `Born from love. Shaped by craft. We are proud to have been part of your most meaningful moments since 1979.`;
     }
 
     const our_world_menu_fourth_section_text_3 = our_world_menu.querySelector('.menu-panels .menu-panels__scroll > li:nth-of-type(4) p:nth-of-type(4) a');
     if (our_world_menu_fourth_section_text_3) {
-        our_world_menu_fourth_section_text_3.innerText = 'Discover';
+        our_world_menu_fourth_section_text_3.innerText = 'Discover Our Story';
         our_world_menu_fourth_section_text_3.href = '/discover/brand-history';
     }
 
@@ -3923,7 +3940,7 @@ utils.observeSelector('.header-menu-drawer .header-menu-drawer__panel-switcher-w
         display: flex;
         flex-direction: column;
         flex-basis: 48%;
-        margin-bottom: 16px;
+        margin-bottom: 24px;
         text-decoration: none;
     }
 
@@ -4602,7 +4619,6 @@ utils.observeSelector('.header-menu-drawer .header-menu-drawer__panel-switcher-w
     <p class="menu-heading">Guides</p>
 
     <a href="/article/knowledge-advice/size-guide/rings" class="normal-menu">Size Guide</a>
-    <a href="/article/knowledge-advice/engagement-ring-guide" class="normal-menu">Engagement Ring Guide</a>
 </div>`);
 
         bindVueMenuToggleClick({
@@ -4781,7 +4797,7 @@ utils.observeSelector('.header-menu-drawer .header-menu-drawer__panel-switcher-w
         display: flex;
         flex-direction: column;
         flex-basis: 48%;
-        margin-bottom: 16px;
+        margin-bottom: 24px;
         text-decoration: none;
     }
 
@@ -5239,12 +5255,23 @@ utils.observeSelector('.header-menu-drawer .header-menu-drawer__panel-switcher-w
         const wedding_menu_fourth_section_image_container = vue_menu_2nd_level_container.querySelector('.navigation-section-panel .navigation-section-panel__grid .navigation-section-panel__grid-unit:nth-of-type(5) .optimised-picture-wrapper');
 
         if (wedding_menu_fourth_section_image_container) {
-            wedding_menu_fourth_section_image_container.insertAdjacentHTML("afterend", `<a href="/connected/all-about-wedding-bands"><img class="opti-new-wedding-image" src="https://cdn.optimizely.com/img/22916101539/85604d0a489b47808f3a67c2ae85ca02.jpg" alt=""></a>`)
+            wedding_menu_fourth_section_image_container.insertAdjacentHTML("afterend", `<a href="/connected/all-about-wedding-bands"><img class="opti-new-wedding-image" src="https://cdn.optimizely.com/img/24400620820/7f201d8c1dd246568cdaba6c7b8f60a8.png" alt=""></a>`)
         }
 
-        const wedding_menu_fourth_section_text = vue_menu_2nd_level_container.querySelector('.navigation-section-panel .navigation-section-panel__grid .navigation-section-panel__grid-unit:nth-of-type(5) p:nth-of-type(3)');
-        if (wedding_menu_fourth_section_text) {
-            wedding_menu_fourth_section_text.innerText = 'Your need-to-know to pick your perfect ring.';
+        const wedding_menu_fourth_section_text_1 = vue_menu_2nd_level_container.querySelector('.navigation-section-panel .navigation-section-panel__grid .navigation-section-panel__grid-unit:nth-of-type(5) p:nth-of-type(2)');
+
+        if (wedding_menu_fourth_section_text_1) {
+            wedding_menu_fourth_section_text_1.innerHTML = '<strong>BUILD YOUR DREAM WEDDING RING</strong>';
+        }
+
+        const wedding_menu_fourth_section_text_2 = vue_menu_2nd_level_container.querySelector('.navigation-section-panel .navigation-section-panel__grid .navigation-section-panel__grid-unit:nth-of-type(5) p:nth-of-type(3)');
+        if (wedding_menu_fourth_section_text_2) {
+            wedding_menu_fourth_section_text_2.innerText = 'Customise your perfect forever-piece with our online ring builder.';
+        }
+
+        const wedding_menu_fourth_section_text_3 = vue_menu_2nd_level_container.querySelector('.navigation-section-panel .navigation-section-panel__grid .navigation-section-panel__grid-unit:nth-of-type(5) p:nth-of-type(4) a');
+        if (wedding_menu_fourth_section_text_3) {
+            wedding_menu_fourth_section_text_3.href = 'https://www.michaelhill.com.au/made-for-you/rings';
         }
     }
 
@@ -5452,7 +5479,7 @@ utils.observeSelector('.header-menu-drawer .header-menu-drawer__panel-switcher-w
         display: flex;
         flex-direction: column;
         flex-basis: 48%;
-        margin-bottom: 16px;
+        margin-bottom: 24px;
         text-decoration: none;
     }
 
@@ -5623,13 +5650,10 @@ utils.observeSelector('.header-menu-drawer .header-menu-drawer__panel-switcher-w
         </a>
 
         <a href="/jewellery/gemstones/tourmaline" class="menu-items">
-            <svg width="20" height="21" viewBox="0 0 20 21" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path
-                    d="M10 20.8984C15.5228 20.8984 20 16.4213 20 10.8984C20 5.37559 15.5228 0.898438 10 0.898438C4.47715 0.898438 0 5.37559 0 10.8984C0 16.4213 4.47715 20.8984 10 20.8984Z"
-                    fill="#88B1EB" />
-                <rect x="2.92871" y="10.8984" width="10" height="10" transform="rotate(-45 2.92871 10.8984)"
-                    fill="#C3DBF1" />
-            </svg>
+                <svg width="20" height="21" viewBox="0 0 20 21" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M10 20.8984C15.5228 20.8984 20 16.4213 20 10.8984C20 5.37559 15.5228 0.898438 10 0.898438C4.47715 0.898438 0 5.37559 0 10.8984C0 16.4213 4.47715 20.8984 10 20.8984Z" fill="#4A673C"/>
+                <rect x="2.92871" y="10.8984" width="10" height="10" transform="rotate(-45 2.92871 10.8984)" fill="#A5C782"/>
+                </svg>
             <p>Tourmaline</p>
         </a>
     </div>
@@ -5761,7 +5785,7 @@ utils.observeSelector('.header-menu-drawer .header-menu-drawer__panel-switcher-w
         </a>
 
         <a href="/jewellery/collections/signature-connect" class="menu-items">
-            <img src="https://cdn.optimizely.com/img/24400620820/86468ce3af344fa299012de8581dcd29.jpg" alt="">
+            <img src="https://cdn.optimizely.com/img/24400620820/130382115a91483bb1d896676f48d583.png" alt="">
             <p>Signature Connect</p>
         </a>
 
@@ -6011,6 +6035,17 @@ utils.observeSelector('.header-menu-drawer .header-menu-drawer__panel-switcher-w
 
         if (jewellery_menu_fourth_section_image_container) {
             jewellery_menu_fourth_section_image_container.insertAdjacentHTML("afterend", `<a href="/jewellery/collections/lab"><img class="opti-new-jewellery-image" src="https://cdn.optimizely.com/img/24400620820/404fbc9f05674ba4a578d039bdc2409e.jpg" alt=""></a>`)
+        }
+
+        const jewellery_menu_fourth_section_text_1 = vue_menu_2nd_level_container.querySelector('.navigation-section-panel .navigation-section-panel__grid .navigation-section-panel__grid-unit:nth-of-type(5) p:nth-of-type(1)');
+        if (jewellery_menu_fourth_section_text_1) {
+            jewellery_menu_fourth_section_text_1.innerHTML = '<strong>LABORATORY-GROWN DIAMONDS</strong>';
+            jewellery_menu_fourth_section_text_1.style.marginTop = "16px";
+        }
+
+        const jewellery_menu_fourth_section_text_2 = vue_menu_2nd_level_container.querySelector('.navigation-section-panel .navigation-section-panel__grid .navigation-section-panel__grid-unit:nth-of-type(5) p:nth-of-type(2)');
+        if (jewellery_menu_fourth_section_text_2) {
+            jewellery_menu_fourth_section_text_2.innerText = 'Certified sustainable.';
         }
 
         const jewellery_menu_fourth_section_text_3 = vue_menu_2nd_level_container.querySelector('.navigation-section-panel .navigation-section-panel__grid .navigation-section-panel__grid-unit:nth-of-type(5) p:nth-of-type(3) a');
@@ -6551,7 +6586,7 @@ utils.observeSelector('.header-menu-drawer .header-menu-drawer__panel-switcher-w
         display: flex;
         flex-direction: column;
         flex-basis: 48%;
-        margin-bottom: 16px;
+        margin-bottom: 24px;
         text-decoration: none;
     }
 
@@ -6831,13 +6866,13 @@ utils.observeSelector('.header-menu-drawer .header-menu-drawer__panel-switcher-w
         const gift_menu_fourth_section_text_1 = vue_menu_2nd_level_container.querySelector('.navigation-section-panel .navigation-section-panel__grid .navigation-section-panel__grid-unit:nth-of-type(5) p:nth-of-type(1)');
 
         if (gift_menu_fourth_section_text_1) {
-            gift_menu_fourth_section_text_1.innerHTML = '<strong>Mar Birthstone - Aquamarine</strong>';
+            gift_menu_fourth_section_text_1.innerHTML = '<strong>AUGUST BIRTHSTONE - PERIDOT</strong>';
             gift_menu_fourth_section_text_1.style.marginTop = "16px";
         }
 
         const gift_menu_fourth_section_text_2 = vue_menu_2nd_level_container.querySelector('.navigation-section-panel .navigation-section-panel__grid .navigation-section-panel__grid-unit:nth-of-type(5) p:nth-of-type(2)');
         if (gift_menu_fourth_section_text_2) {
-            gift_menu_fourth_section_text_2.innerText = 'Your need-to-know to pick your perfect ring.';
+            gift_menu_fourth_section_text_2.innerText = 'Peridot is believed to promote prosperity, fearlessness, and beauty.';
         }
 
         const gift_menu_fourth_section_text_3 = vue_menu_2nd_level_container.querySelector('.navigation-section-panel .navigation-section-panel__grid .navigation-section-panel__grid-unit:nth-of-type(5) p:nth-of-type(3) a');
@@ -7063,7 +7098,7 @@ utils.observeSelector('.header-menu-drawer .header-menu-drawer__panel-switcher-w
         display: flex;
         flex-direction: column;
         flex-basis: 48%;
-        margin-bottom: 16px;
+        margin-bottom: 24px;
         text-decoration: none;
     }
 
@@ -7349,22 +7384,22 @@ utils.observeSelector('.header-menu-drawer .header-menu-drawer__panel-switcher-w
         const our_world_menu_fourth_section_image_container = vue_menu_2nd_level_container.querySelector('.navigation-section-panel .navigation-section-panel__grid .navigation-section-panel__grid-unit:nth-of-type(5) .optimised-picture-wrapper');
 
         if (our_world_menu_fourth_section_image_container) {
-            our_world_menu_fourth_section_image_container.insertAdjacentHTML("afterend", `<a href="/discover/brand-history"><img class="opti-new-our-world-image" src="https://cdn.optimizely.com/img/24400620820/537cb63ce2b84a588417d19c48855eee.jpg" alt=""></a>`)
+            our_world_menu_fourth_section_image_container.insertAdjacentHTML("afterend", `<a href="/discover/brand-history"><img class="opti-new-our-world-image" src="https://cdn.optimizely.com/img/24400620820/b5eccdc596bf4f27b14045718ae4188b.png" alt=""></a>`)
         }
 
         const our_world_menu_fourth_section_text_1 = vue_menu_2nd_level_container.querySelector('.navigation-section-panel .navigation-section-panel__grid .navigation-section-panel__grid-unit:nth-of-type(5) p:nth-of-type(2)');
         if (our_world_menu_fourth_section_text_1) {
-            our_world_menu_fourth_section_text_1.innerHTML = '<strong>About Us </strong>';
+            our_world_menu_fourth_section_text_1.innerHTML = '<strong>SINCE 1979</strong>';
         }
 
         const our_world_menu_fourth_section_text_2 = vue_menu_2nd_level_container.querySelector('.navigation-section-panel .navigation-section-panel__grid .navigation-section-panel__grid-unit:nth-of-type(5) p:nth-of-type(3)');
         if (our_world_menu_fourth_section_text_2) {
-            our_world_menu_fourth_section_text_2.innerText = `Marking life's most meaningful moments since 1979.`;
+            our_world_menu_fourth_section_text_2.innerText = `Born from love. Shaped by craft. We are proud to have been part of your most meaningful moments since 1979.`;
         }
 
         const our_world_menu_fourth_section_text_3 = vue_menu_2nd_level_container.querySelector('.navigation-section-panel .navigation-section-panel__grid .navigation-section-panel__grid-unit:nth-of-type(5) p:nth-of-type(4) a');
         if (our_world_menu_fourth_section_text_3) {
-            our_world_menu_fourth_section_text_3.innerText = 'Discover';
+            our_world_menu_fourth_section_text_3.innerText = 'Discover Our Story';
             our_world_menu_fourth_section_text_3.href = '/discover/brand-history';
         }
 
