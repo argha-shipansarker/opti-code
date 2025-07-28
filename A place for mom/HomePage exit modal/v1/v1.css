@@ -116,6 +116,7 @@ textarea:-ms-input-placeholder {
     background-color: rgb(208, 208, 208) !important;
     border: 2px solid rgb(208, 208, 208) !important;
     color: rgb(163, 163, 163) !important;
+    cursor: not-allowed;
 }
 
 .opt-error {

@@ -23,8 +23,12 @@ function showError(validation, name) {
     var formInput = formContainer.querySelector('input');
     var errorMessage = formContainer.querySelector('.opt-error');
 
+    var submitButton = document.querySelector('.opt-submit-button');
+
     if (validation) {
         formInput.classList.add('opt-valid');
+        submitButton.disabled = false;
+        submitButton.classList.remove('opt-disabled');
 
         if (!errorMessage.classList.contains('opt-hidden')) {
             errorMessage.classList.add('opt-hidden');
@@ -35,6 +39,9 @@ function showError(validation, name) {
             errorMessage.classList.remove('opt-hidden');
             formInput.classList.add('opt-invalid');
             formInput.classList.remove('opt-valid');
+
+            submitButton.disabled = true;
+            submitButton.classList.add('opt-disabled');
         }
     }
 }
@@ -44,37 +51,13 @@ function validateEmail(email) {
     showError(regex.test(email), 'email');
 }
 
-// function validatePhone(phone) {
-//   var regex = /^\(?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})$/;
-//   showError(regex.test(phone), 'phone');
-// }
-
-// function validateName(name) {
-//   const nameParts = name.trim().split(/\s+/);
-//   const regex = /^[a-zA-Z\s'-]+$/;
-//   let tested = true;
-
-//   if (nameParts.length >= 2) {
-//     for (const part of nameParts) {
-//       if (!regex.test(part)) {
-//         tested = false;
-//       }
-//     }
-//   } else {
-//     tested = false;
-//   }
-
-//   showError(tested, 'fullName');
-// }
 function closeModal() {
     document.querySelector('.opt-container').classList.add('opt-hidden');
     document.querySelector('body').classList.remove('overflow-hidden');
 }
 
 function submitModal() {
-    // var name = document.querySelector('.opt-form input[name=fullName]').value;
     var email = document.querySelector('.opt-form input[name=email]').value;
-    // var phone = document.querySelector('.opt-form input[name=phone]').value;
 
     try {
         var myForm = MktoForms2.allForms()[0];
@@ -89,12 +72,6 @@ function submitModal() {
 
     var url = 'https://img.prod.aplaceformom.com/main/uploads/lh/quick-start-guide-to-finding-senior-care.pdf';
     var ref = window.open(url, '_blank');
-    //fix if the new window i snot working in safari
-    /*if (ref)
-      ref.focus();
-    else {
-      window.open(url, '_top');
-    }*/
 
     closeModal();
 }
@@ -108,7 +85,7 @@ function showModal() {
 
     const cookiePattern = "DownloadModal";
 
-    if (!getCookieByPattern(cookiePattern)) { //sessionStorage.getItem("afpm-download-modal-popup-shown")
+    if (!getCookieByPattern(cookiePattern)) {
 
         window['optimizelyEdge'] = window['optimizelyEdge'] || [];
         window['optimizelyEdge'].push({
@@ -116,13 +93,13 @@ function showModal() {
             eventName: "download_guide___viewed_modal_homepage",
         });
 
-        // sessionStorage.setItem("afpm-download-modal-popup-shown", "true");
         document.cookie = "DownloadModal=opened; expires=Thu, 31 Dec 2030 12:00:00 utc; path=/; domain=aplaceformom.com";
         MktoForms2.loadForm("//my.aplaceformom.com", "549-VJU-277", 1793);
         document.querySelector('.opt-container').classList.remove('opt-hidden');
         document.querySelector('body').classList.add('overflow-hidden');
     }
 }
+
 utils.waitForElement('body').then(function (body) {
     let timeoutPC;
     let timeoutPhone;
@@ -132,39 +109,15 @@ utils.waitForElement('body').then(function (body) {
         body.insertAdjacentHTML('beforeend', html);
     }
 
-    // utils.waitForElement('#opt-full-name').then(function (fullName) {
-    //   fullName.addEventListener('change', function () {
-    //     validateName(fullName.value);
-    //   });
-    // });
-
     utils.waitForElement('#opt-email').then(function (email) {
-        email.addEventListener('change', function () {
+        email.addEventListener('input', function () {
             validateEmail(email.value);
         });
     });
 
-    // utils.waitForElement('#opt-phone').then(function (phone) {
-    //   phone.addEventListener('change', function () {
-    //     validatePhone(phone.value);
-    //   });
-    // });
+    var submitButton = document.querySelector('.opt-submit-button');
 
-    utils.waitUntil(function () {
-        var checkForInputs = true;
-
-        document.querySelectorAll('.opt-modal input').forEach(function (input) {
-            if (!input.classList.contains('opt-valid')) {
-                checkForInputs = false;
-            }
-        });
-
-        return checkForInputs;
-    }).then(function () {
-        var submitButton = document.querySelector('.opt-submit-button');
-
-        submitButton.disabled = false;
-        submitButton.classList.remove('opt-disabled');
+    if (submitButton) {
         submitButton.addEventListener('click', function () {
             window['optimizelyEdge'] = window['optimizelyEdge'] || [];
             window['optimizelyEdge'].push({
@@ -172,19 +125,9 @@ utils.waitForElement('body').then(function (body) {
                 eventName: "download_guide_-_cta_click_homepage",
             });
 
-            let isValid = true;
-
-            document.querySelectorAll('.opt-modal input').forEach(function (input) {
-                if (!input.classList.contains('opt-valid')) {
-                    isValid = false;
-                }
-            });
-
-            if (isValid) {
-                submitModal();
-            }
+            submitModal();
         });
-    });
+    }
 
     utils.waitForElement('.opt-close').then(function (close) {
         close.addEventListener('click', function () {
@@ -257,11 +200,6 @@ function loadScript(url, callback) {
     }
 
     script.src = url;
-    /*script.onload = () => {
-          MktoForms2.loadForm("//my.aplaceformom.com", "549-VJU-277", 1793, function (form) {
-              MktoForms2.lightbox(form).show();
-          });
-    };*/
     document.getElementsByTagName("head")[0].appendChild(script);
 }
 
