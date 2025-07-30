@@ -23,7 +23,7 @@ utils.observeSelector('#quote-summary .adm-card-deck__cards button[data-test="re
                     modal_heading.insertAdjacentHTML("afterend", `<p class="opti-price-message">Remember, you only pay today for the car with the earliest start date</p>`);
                 }
 
-                modal_body_message.innerHTML = `<p>We've saved your car details <span style="font-weight: bold;">for later</span> incase you want to re-add this before you buy.</p>`;
+                modal_body_message.innerHTML = `<p>We've saved your car details <span style="font-weight: bold;">for later</span> in case you want to re-add this before you buy.</p>`;
             }
         });
 
