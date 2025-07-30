@@ -6,9 +6,8 @@ utils.observeSelector('#quote-summary .adm-card-deck__cards button[data-test="re
         if (car_card) {
             const multiSavingsAmount = car_card.querySelector('adm-text-helper[data-test="multi-savings-amount"]');
             if (multiSavingsAmount) {
-                console.warn('Found element:', multiSavingsAmount);
 
-                utils.observeSelector('.adm-modal-container__inner', function (car_remove_modal) {
+                utils.observeSelector('eui-remove-confirmation-modal', function (car_remove_modal) {
                     const added_car_number = document.querySelectorAll('#quote-summary .adm-card-deck__cards');
 
                     const modal_heading = car_remove_modal.querySelector('.adm-important-message__content .adm-important-message__message');

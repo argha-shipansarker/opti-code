@@ -3,7 +3,7 @@ const utils = optimizely.get('utils');
 utils.observeSelector('#quote-summary .adm-card-deck__cards button[data-test="remove-button"]', function (remove_button) {
     remove_button.addEventListener('click', function () {
 
-        utils.observeSelector('.adm-modal-container__inner', function (car_remove_modal) {
+        utils.observeSelector('eui-remove-confirmation-modal', function (car_remove_modal) {
 
             const modal_heading = car_remove_modal.querySelector('.adm-important-message__content .adm-important-message__message');
             const modal_body_message = car_remove_modal.querySelector('.adm-important-message__content p:not(.opti-price-message)');
