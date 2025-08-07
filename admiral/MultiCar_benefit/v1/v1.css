@@ -1,32 +1,32 @@
-.adm-modal-container__inner .adm-important-message__content .adm-important-message__message {
+eui-remove-confirmation-modal .adm-important-message__content .adm-important-message__message {
     margin-bottom: 15px;
     font-size: 24px;
     line-height: 30px;
 }
 
-.adm-modal-container__inner .adm-important-message__content .opti-price-message {
+eui-remove-confirmation-modal .adm-important-message__content .opti-price-message {
     margin-bottom: 15px;
     font-size: 18px;
     line-height: 24px;
 }
 
-.adm-modal-container__inner .adm-important-message__content p:not(.opti-price-message) {
+eui-remove-confirmation-modal .adm-important-message__content p:not(.opti-price-message) {
     font-size: 16px;
     color: #0045a0;
     line-height: 24px;
 }
 
 @media (max-width: 500px) {
-    .adm-modal-container__inner .adm-important-message__content .adm-important-message__message {
+    eui-remove-confirmation-modal .adm-important-message__content .adm-important-message__message {
         margin-bottom: 12px;
     }
 
-    .adm-modal-container__inner .adm-important-message__content .opti-price-message {
+    eui-remove-confirmation-modal .adm-important-message__content .opti-price-message {
         margin-bottom: 12px;
         font-size: 16px;
     }
 
-    .adm-modal-container__inner .adm-important-message__content p:not(.opti-price-message) {
+    eui-remove-confirmation-modal .adm-important-message__content p:not(.opti-price-message) {
         font-size: 14px;
         line-height: 21px;
     }
