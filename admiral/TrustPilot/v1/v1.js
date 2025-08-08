@@ -149,9 +149,7 @@ utils.observeSelector('eui-registration-lookup adm-wrap', function (lookup_secti
         </div>
     </div>
     <p class="star-message">*Based on claims made during 2024 with Admiral, Gold, Platinum and Telematics covers.</p>
-    <div class="trustpilot-widget" data-locale="en-GB" data-template-id="5406e65db0d04a09e042d5fc"
-        data-businessunit-id="4be0843700006400050788f5" data-style-height="28px" data-style-width="100%"
-        data-theme="light">
+    <div class="trustpilot-widget" data-locale="en-GB" data-template-id="5406e65db0d04a09e042d5fc" data-businessunit-id="4be0843700006400050788f5" data-style-height="28px" data-style-width="100%" data-theme="light">
         <a href="https://uk.trustpilot.com/review/www.admiral.com" target="_blank" rel="noopener">Trustpilot</a>
     </div>
 </div>`);
@@ -289,9 +287,7 @@ utils.observeSelector('eui-coverable-summary > adm-wrap .adm-wrap__content', fun
         </div>
     </div>
     <p class="star-message">*Based on claims made during 2024 with Admiral, Gold, Platinum and Telematics covers.</p>
-    <div class="trustpilot-widget" data-locale="en-GB" data-template-id="5406e65db0d04a09e042d5fc"
-        data-businessunit-id="4be0843700006400050788f5" data-style-height="28px" data-style-width="100%"
-        data-theme="light">
+    <div class="trustpilot-widget" data-locale="en-GB" data-template-id="5406e65db0d04a09e042d5fc" data-businessunit-id="4be0843700006400050788f5" data-style-height="28px" data-style-width="100%" data-theme="light">
         <a href="https://uk.trustpilot.com/review/www.admiral.com" target="_blank" rel="noopener">Trustpilot</a>
     </div>
 </div>`);
