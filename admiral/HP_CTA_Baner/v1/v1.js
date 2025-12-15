@@ -1,6 +1,6 @@
 const utils = optimizely.get('utils');
 
-utils.observeSelector('.hero-banner--electric-vehicle', function (hero_banner) {
+utils.observeSelector('.hero-banner--multicover-sleep', function (hero_banner) {
     hero_banner.style.display = "none";
     hero_banner.insertAdjacentHTML("afterend", `<div class="opti-new-home-banner">
     <style>
